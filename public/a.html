@@ -58,17 +58,18 @@
                                 </div>
                                 <div>
                                     <script>
-                                        // Add active class to the current button (highlight it)
-                                        var header = document.getElementById("scontainer");
-                                        var btns = header.getElementsByClassName("select");
-                                        for (var i = 0; i < btns.length; i++) {
-                                            btns[i].addEventListener("click", function() {
-                                                var current = document.getElementsByClassName("active");
-                                                if (current.length > 0) {
-                                                    current[0].className = current[0].className.replace(" active", "");
-                                                }
-                                                this.className += " active";
-                                            });
+                                        function $(id) {
+                                            return document.getElementById(id);
+                                        };
+                                        $('scontainer').onclick = function() {
+                                            var url = $('url').value;
+                                            var det = document.domain;
+                                            var domain = det.replace('www.', '').split(/[/?#]/)[0];
+                                            window.location.href = "https://cdn." + domain + "/alloy?url=" + url;
+                                            return false;
+                                        };
+                                        window.onload = function() {
+                                            $('url').focus();
                                         }
                                     </script>
                                 </div>
