@@ -1,0 +1,122 @@
+/*
+ * Javascript/Canvas Textured 3D Renderer v0.3
+ * Copyright (c) 2008 Jacob Seidelin, cupboy@gmail.com
+ * This software is free to use for non-commercial purposes. For anything else, please contact the author.
+ * This is a version modified by Stefano Gioffre'.
+ */
+
+Canvas3D.Matrix3 = function() {
+	this.e = [
+		[1.0, 0.0, 0.0],
+		[0.0, 1.0, 0.0],
+		[0.0, 0.0, 1.0]
+	];
+}
+
+Canvas3D.Matrix3.prototype.multiplyVector = function(v) {
+	var p = new Canvas3D.Vec3;
+	var e0 = this.e[0], e1 = this.e[1], e2 = this.e[2];
+
+	var vx = v.x, vy = v.y, vz = v.z;
+
+	p.x = vx * e0[0] + vy * e0[1] + vz * e0[2];
+	p.y = vx * e1[0] + vy * e1[1] + vz * e1[2];
+	p.z = vx * e2[0] + vy * e2[1] + vz * e2[2];
+	return p;
+}
+
+Canvas3D.Matrix3.prototype.multiplyMatrix = function(M) {
+	var p = new Canvas3D.Matrix3();
+	var e0 = this.e[0], e1 = this.e[1], e2 = this.e[2];
+
+	var m0 = M.e[0], m1 = M.e[1], m2 = M.e[2];
+
+	var e00 = e0[0], e01 = e0[1], e02 = e0[2];
+	var e10 = e1[0], e11 = e1[1], e12 = e1[2];
+	var e20 = e2[0], e21 = e2[1], e22 = e2[2];
+
+	var m00 = m0[0], m01 = m0[1], m02 = m0[2];
+	var m10 = m1[0], m11 = m1[1], m12 = m1[2];
+	var m20 = m2[0], m21 = m2[1], m22 = m2[2];
+
+	p.e[0][0] = m00 * e00 + m10 * e01 + m20 * e02;
+	p.e[0][1] = m01 * e00 + m11 * e01 + m21 * e02;
+	p.e[0][2] = m02 * e00 + m12 * e01 + m22 * e02;
+
+	p.e[1][0] = m00 * e10 + m10 * e11 + m20 * e12;
+	p.e[1][1] = m01 * e10 + m11 * e11 + m21 * e12;
+	p.e[1][2] = m02 * e10 + m12 * e11 + m22 * e12;
+
+	p.e[2][0] = m00 * e20 + m10 * e21 + m20 * e22;
+	p.e[2][1] = m01 * e20 + m11 * e21 + m21 * e22;
+	p.e[2][2] = m02 * e20 + m12 * e21 + m22 * e22;
+
+	return p;
+}
+
+Canvas3D.Matrix3.prototype.transpose = function() {
+	var t = new Canvas3D.Matrix3();
+	t.e[0][0] = this.e[0][0];
+	t.e[0][1] = this.e[1][0];
+	t.e[0][2] = this.e[2][0];
+	t.e[1][0] = this.e[0][1];
+	t.e[1][1] = this.e[1][1];
+	t.e[1][2] = this.e[2][1];
+	t.e[2][0] = this.e[0][2];
+	t.e[2][1] = this.e[1][2];
+	t.e[2][2] = this.e[2][2];
+	return t;
+}
+
+Canvas3D.Matrix3.prototype.loadIdentity = function() {
+	var e0 = this.e[0], e1 = this.e[1], e2 = this.e[2];
+	e0[0] = 1; e0[1] = 0; e0[2] = 0;
+	e1[0] = 0; e1[1] = 1; e1[2] = 0;
+	e2[0] = 0; e2[1] = 0; e2[2] = 1;
+}
+
+Canvas3D.Matrix3.prototype.loadRotationX = function(s, c) {
+	var e0 = this.e[0], e1 = this.e[1], e2 = this.e[2];
+	e0[0] = 1; e0[1] = 0; e0[2] = 0;
+	e1[0] = 0; e1[1] = c; e1[2] = -s;
+	e2[0] = 0; e2[1] = s; e2[2] = c;
+}
+
+Canvas3D.Matrix3.prototype.loadRotationY = function(s, c) {
+	var e0 = this.e[0], e1 = this.e[1], e2 = this.e[2];
+	e0[0] = c;  e0[1] = 0; e0[2] = s;
+	e1[0] = 0;  e1[1] = 1; e1[2] = 0;
+	e2[0] = -s; e2[1] = 0; e2[2] = c;
+}
+
+Canvas3D.Matrix3.prototype.loadRotationZ = function(s, c) {
+	var e0 = this.e[0], e1 = this.e[1], e2 = this.e[2];
+	e0[0] = c; e0[1] = -s; e0[2] = 0;
+	e1[0] = s; e1[1] = c;  e1[2] = 0;
+	e2[0] = 0; e2[1] = 0;  e2[2] = 1;
+}
+
+Canvas3D.Matrix3.prototype.loadRotationAxis = function(A, s, c) {
+	var t = 1 - c;
+	var tx = t * A.x;
+	var ty = t * A.y;
+	var txx = tx * A.x;
+	var txy = tx * A.y;
+	var txz = tx * A.z;
+	var tyy = ty * A.y;
+	var tyz = ty * A.z;
+	var tzz = t * A.z * A.z;
+	var sx = s * A.x;
+	var sy = s * A.y;
+	var sz = s * A.z;
+
+	this.e[0][0] = txx + c;
+	this.e[0][1] = txy - sz;
+	this.e[0][2] = txz + sy;
+	this.e[1][0] = txy + sz;
+	this.e[1][1] = tyy + c;
+	this.e[1][2] = tyz - sx;
+	this.e[2][0] = txz - sy;
+	this.e[2][1] = tyz + sx;
+	this.e[2][2] = tzz + c;
+}

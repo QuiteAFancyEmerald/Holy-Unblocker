@@ -49,49 +49,26 @@
                     </script>
                     <div class="d-flex align-items-center order-12" style="height:200px;">
                         <div class="container text-center justify-content-center align-items-center button" style="color: rgb(255,255,255);filter: blur(0px);background-color: #000000;">
-                            <form id="unblocker-form" action="b" method="get">
+                            <form id="scontainer" action="url" method="get">
                                 <p style="font-size: 46px;">Alloy Proxy</p>
                                 <p style="font-family: 'Montserrat Alternates', sans-serif;">A fast, lightweight proxy developed by Titanium Network.</p>
-                                <div class="input-group">
-                                    <div class="input-group-prepend"></div><input class="bg-white border rounded-0 border-warning shadow-lg form-control form-control-lg" type="text" name="url" value="https://google.com" inputmode="url" style="width: 194px;font-family: 'Montserrat Alternates', sans-serif;">
-                                    <div class="input-group-append"><button class="btn btn-dark btn-lg bg-dark border rounded-0 border-warning shadow-lg select" type="submit" style="width: 78px;padding: 8px;margin: 0px;height: 48px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">Alloy</button>
-                                        <button class="btn btn-dark btn-lg bg-dark border rounded-0 border-warning shadow-lg" type="submit" style="width: 97px;padding: 8px;margin: 0px;height: 48px;font-family: 'Montserrat Alternates', sans-serif;font-size: 14px;">Node (Old)</button>
-                                    </div>
+                                <div class="input-group" id="scontainer">
+                                    <div class="input-group-prepend"></div><input class="bg-white border rounded-0 border-warning shadow-lg form-control form-control-lg" type="text" id="url" name="url" value="https://google.com" inputmode="url" style="width: 194px;font-family: 'Montserrat Alternates', sans-serif;">
+                                    <div class="input-group-append"><button class="btn btn-dark btn-lg bg-dark border rounded-0 border-warning shadow-lg select" type="submit" style="width: 78px;padding: 8px;margin: 0px;height: 48px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">Alloy</button></div>
                                 </div>
                                 <div>
                                     <script>
-                                        function $(id) {
-                                            return document.getElementById(id);
-                                        }
-
-                                        $('unblocker-form').onsubmit = function() {
-                                            var url = $('url').value;
-                                            if (url.substr(0, 4) != "http") {
-                                                url = "http://" + url;
-                                            }
-                                            window.location.pathname = 'b?url=' + url;
-                                            return false;
-                                        };
-
-                                        function checkError() {
-                                            var search = window.location.search;
-                                            var start = search.indexOf('error=');
-                                            if (start > -1) {
-                                                var stop = search.indexOf('&', start);
-                                                if (stop == -1) {
-                                                    stop = undefined;
+                                        // Add active class to the current button (highlight it)
+                                        var header = document.getElementById("scontainer");
+                                        var btns = header.getElementsByClassName("select");
+                                        for (var i = 0; i < btns.length; i++) {
+                                            btns[i].addEventListener("click", function() {
+                                                var current = document.getElementsByClassName("active");
+                                                if (current.length > 0) {
+                                                    current[0].className = current[0].className.replace(" active", "");
                                                 }
-                                                // +6 for "error="
-                                                var err = search.substr(start + 6, stop);
-                                                var $error = $('error');
-                                                $error.innerText = $error.textContent = decodeURIComponent(err);
-                                                $error.style.display = "block";
-                                            }
-                                        }
-
-                                        window.onload = function() {
-                                            $('url').focus();
-                                            checkError();
+                                                this.className += " active";
+                                            });
                                         }
                                     </script>
                                 </div>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<title>Snake</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/design/style.css" />
+<script src="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/source/Board.js" type="a5625fca2ead421f117db7be-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/source/Demo.js" type="a5625fca2ead421f117db7be-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/source/Display.js" type="a5625fca2ead421f117db7be-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/source/Food.js" type="a5625fca2ead421f117db7be-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/source/HighScores.js" type="a5625fca2ead421f117db7be-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/source/Instance.js" type="a5625fca2ead421f117db7be-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/source/Keyboard.js" type="a5625fca2ead421f117db7be-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/source/Matrix.js" type="a5625fca2ead421f117db7be-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/source/Score.js" type="a5625fca2ead421f117db7be-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/source/Snake.js" type="a5625fca2ead421f117db7be-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/source/Init.js" type="a5625fca2ead421f117db7be-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/utils/Utils.js" type="a5625fca2ead421f117db7be-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/utils/Queue.js" type="a5625fca2ead421f117db7be-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/utils/Storage.js" type="a5625fca2ead421f117db7be-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/html5games/snake/utils/Sounds.js" type="a5625fca2ead421f117db7be-text/javascript"></script>
+</head>
+<body>
+<div id="container" class="mainScreen">
+<div class="board"></div>
+<div class="game">
+<div class="start"></div>
+<div class="snake"></div>
+<div class="food">
+<div class="foodShadow">
+<div></div><div></div>
+<div></div><div></div>
+</div>
+<div class="foodBody">
+<div></div><div></div>
+<div></div><div></div>
+</div>
+</div>
+<div class="score"></div>
+<div class="time"></div>
+<div class="level"></div>
+</div>
+<div class="messages">
+<div class="text">
+<h2>Snake</h2>
+<p>Select a level</p>
+</div>
+<div class="main help">
+<div class="demo"></div>
+<ul>
+<li><a href="#" data-action="play" data-level="1">Eas<u>y</u></a></li>
+<li><a href="#" data-action="play" data-level="2">M<u>e</u>dium</a></li>
+<li><a href="#" data-action="play" data-level="3">Ha<u>r</u>d</a></li>
+<li><a href="#" data-action="play" data-level="4">S<u>u</u>per</a></li>
+<li><a href="#" data-action="highScores">H<u>i</u>gh Scores</a></li>
+<li><a href="#" data-action="help"><u>H</u>elp</a></li>
+<li><a href="#" data-action="restore">Con<u>t</u>inue</a></li>
+</ul>
+<div class="audio" data-action="sound">
+<div class="waves">
+<div></div><div></div>
+<div></div><div></div>
+</div>
+<div class="triangle"></div>
+<div class="box"></div>
+</div>
+</div>
+<ul class="pause">
+<li><a href="#" data-action="endPause"><u>C</u>ontinue</a></li>
+<li><a href="#" data-action="finishGame"><u>N</u>ew Game</a></li>
+</ul>
+<div class="input">
+<input type="text" placeholder="name" />
+<a class="submit" href="#" data-action="save"><u>O</u>k</a>
+<a class="restart" href="#" data-action="newGame"><u>N</u>ew Game</a>
+</div>
+<div class="high">
+<div class="scores"></div>
+<div class="none">No scores available</div>
+<ul>
+<li><a href="#" data-action="showScores" data-level="1"><u>E</u>asy</a></li>
+<li><a href="#" data-action="showScores" data-level="2"><u>M</u>edium</a></li>
+<li><a href="#" data-action="showScores" data-level="3">Ha<u>r</u>d</a></li>
+<li><a href="#" data-action="showScores" data-level="4">S<u>u</u>per</a></li>
+<li><a href="#" data-action="mainScreen"><u>B</u>ack</a></li>
+</ul>
+</div>
+<div class="controls">
+<ol>
+<li>Use the arrows or WASD keys to move the snake.</li>
+<li>Space or P will pause the game.</li>
+<li>M will trigger the sound on or off.</li>
+<li>Use the links or keys (underline letters) to navigate throught the screens.</li>
+</ol>
+<a href="#" data-action="mainScreen"><u>B</u>ack</a>
+</div>
+</div>
+</div>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="a5625fca2ead421f117db7be-|49" defer=""></script></body>
+
+</html>

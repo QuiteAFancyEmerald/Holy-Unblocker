@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>GBA</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=160">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<!--Required Scripts-->
+		<script src="IodineGBA/includes/TypedArrayShim.js"></script>
+		<script src="IodineGBA/core/Cartridge.js"></script>
+		<script src="IodineGBA/core/DMA.js"></script>
+		<script src="IodineGBA/core/Emulator.js"></script>
+		<script src="IodineGBA/core/Graphics.js"></script>
+		<script src="IodineGBA/core/RunLoop.js"></script>
+		<script src="IodineGBA/core/Memory.js"></script>
+		<script src="IodineGBA/core/IRQ.js"></script>
+		<script src="IodineGBA/core/JoyPad.js"></script>
+		<script src="IodineGBA/core/Serial.js"></script>
+		<script src="IodineGBA/core/Sound.js"></script>
+		<script src="IodineGBA/core/Timer.js"></script>
+		<script src="IodineGBA/core/Wait.js"></script>
+		<script src="IodineGBA/core/CPU.js"></script>
+		<script src="IodineGBA/core/Saves.js"></script>
+		<script src="IodineGBA/core/sound/FIFO.js"></script>
+		<script src="IodineGBA/core/sound/Channel1.js"></script>
+		<script src="IodineGBA/core/sound/Channel2.js"></script>
+		<script src="IodineGBA/core/sound/Channel3.js"></script>
+		<script src="IodineGBA/core/sound/Channel4.js"></script>
+		<script src="IodineGBA/core/CPU/ARM.js"></script>
+		<script src="IodineGBA/core/CPU/THUMB.js"></script>
+		<script src="IodineGBA/core/CPU/CPSR.js"></script>
+		<script src="IodineGBA/core/graphics/Renderer.js"></script>
+		<script src="IodineGBA/core/graphics/RendererShim.js"></script>
+		<script src="IodineGBA/core/graphics/RendererProxy.js"></script>
+		<script src="IodineGBA/core/graphics/BGTEXT.js"></script>
+		<script src="IodineGBA/core/graphics/BG2FrameBuffer.js"></script>
+		<script src="IodineGBA/core/graphics/BGMatrix.js"></script>
+		<script src="IodineGBA/core/graphics/AffineBG.js"></script>
+		<script src="IodineGBA/core/graphics/ColorEffects.js"></script>
+		<script src="IodineGBA/core/graphics/Mosaic.js"></script>
+		<script src="IodineGBA/core/graphics/OBJ.js"></script>
+		<script src="IodineGBA/core/graphics/OBJWindow.js"></script>
+		<script src="IodineGBA/core/graphics/Window.js"></script>
+		<script src="IodineGBA/core/graphics/Compositor.js"></script>
+		<script src="IodineGBA/core/memory/DMA0.js"></script>
+		<script src="IodineGBA/core/memory/DMA1.js"></script>
+		<script src="IodineGBA/core/memory/DMA2.js"></script>
+		<script src="IodineGBA/core/memory/DMA3.js"></script>
+		<script src="IodineGBA/core/cartridge/SaveDeterminer.js"></script>
+		<script src="IodineGBA/core/cartridge/SRAM.js"></script>
+		<script src="IodineGBA/core/cartridge/FLASH.js"></script>
+		<script src="IodineGBA/core/cartridge/EEPROM.js"></script>
+		<script src="IodineGBA/core/cartridge/GPIO.js"></script>
+		<!--Add your webpage scripts below-->
+		<script src="user_scripts/AudioGlueCode.js"></script>
+		<script src="user_scripts/base64.js"></script>
+		<script src="user_scripts/CoreGlueCode.js"></script>
+		<script src="user_scripts/GfxGlueCode.js"></script>
+		<script src="user_scripts/GUIGlueCode.js"></script>
+		<script src="user_scripts/JoyPadGlueCode.js"></script>
+		<script src="user_scripts/ROMLoadGlueCode.js"></script>
+		<script src="user_scripts/SavesGlueCode.js"></script>
+		<script src="user_scripts/WorkerGfxGlueCode.js"></script>
+		<script src="user_scripts/WorkerGlueCode.js"></script>
+		<script src="user_scripts/XAudioJS/swfobject.js"></script>
+		<script src="user_scripts/XAudioJS/resampler.js"></script>
+		<script src="user_scripts/XAudioJS/XAudioServer.js"></script>
+		<link rel="stylesheet" href="user_css/main.css">
+	</head>
+	<body>
+		<div id="container">
+			<!-- Minified Useless -->
+			<div id="menu" class="paused"> <ul id="menu_top"> <li> File <ul> <li><span>BIOS: </span> <input type="file" id="bios_load" class="files"></li><li><span>Game: </span> <input type="file" id="rom_load" class="files"></li></ul> </li><li id="play" class="show">Play</li><li id="pause" class="hide">Pause</li><li id="restart">Restart</li><li> Settings <ul> <li> <input type="checkbox" id="skip_boot" checked="checked"> Skip Boot Intro </li><li> <input type="checkbox" id="toggleSmoothScaling"> Smooth Scaling </li><li> <input type="checkbox" id="toggleDynamicSpeed"> Dynamic Speed </li><li> <input type="checkbox" id="offthread-cpu" checked="checked"> CPU off-thread </li><li> <input type="checkbox" id="offthread-gpu" checked="checked"> GPU off-thread </li><li> <input type="checkbox" id="sound"> Sound </li><li> GBA Bindings <ul> <li id="key_a"> <span>A</span> </li><li id="key_b"> <span>B</span> </li><li id="key_l"> <span>L</span> </li><li id="key_r"> <span>R</span> </li><li id="key_start"> <span>Start</span> </li><li id="key_select"> <span>Select</span> </li><li id="key_up"> <span>↑</span> </li><li id="key_down"> <span>↓</span> </li><li id="key_left"> <span>←</span> </li><li id="key_right"> <span>→</span> </li></ul> </li><li> Emulator Bindings <ul> <li id="key_volumeup"> <span>Volume Up</span> </li><li id="key_volumedown"> <span>Volume Down</span> </li><li id="key_speedup"> <span>Speed Up</span> </li><li id="key_slowdown"> <span>Slow Down</span> </li><li id="key_speedreset"> <span>Speed Reset</span> </li><li id="key_fullscreen"> <span>Fullscreen</span> </li><li id="key_playpause"> <span>Play/Pause</span> </li><li id="key_restart"> <span>Restart</span> </li></ul> </li></ul> </li><li> Volume <ul> <li> <input type="range" id="volume"> </li></ul> </li><li id="fullscreen">Fullscreen</li><li> <span id="speed">Speed</span> <ul> <li> <input type="range" id="speedset"> </li></ul> </li></ul> </div>
+			<!-- End useless -->
+			<ul class="menu">
+				<li>Controls<ul>
+						<li>DPad: Arrow keys</li>
+						<li>Start: Enter</li>
+						<li>Select: Space</li>
+						<li>A Button: D</li>
+						<li>B Button: C</li>
+						<li>L Bumper: S</li>
+						<li>R Bumper: X</li>
+					</ul>
+				</li>
+				<li>
+					<input type="checkbox" id="smooth" onclick="setSmooth()">Smooth
+				</li>
+				<li id="saves_menu">Saves<ul id="saves_menu_container">
+						<li>Import: <input type="file" id="import" class="files" accept=".export">
+						<label for="import">Upload Save</label>
+						</li>
+						<li>
+							<a href="./" id="export" target="_new">Export All Saves</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<div id="ffd" style="display: none;">
+				<h2>Upload GBA ROM</h2>
+				<input type="file" id="upload" accept=".gba" onchange="gba_upload(this)" />
+				<label for="upload">Choose File</label>
+			</div>
+			<div id="main">
+				<canvas class="canvas" id="emulator_target" width="240" height="160" oncontextmenu="event.preventDefault()"></canvas>
+			</div>
+			<div class="touch-controls">
+				<div class="touch-dpad">
+					<button id="touch-up">↑</button><br>
+					<button id="touch-left">←</button>
+					<button id="touch-right">→</button><br>
+					<button id="touch-down">↓</button>
+				</div>
+				<div class="touch-buttons">
+					<button id="touch-select">SELECT</button> 
+					<button id="touch-start">START</button>
+				</div>
+				<div class="touch-buttons">
+					<button id="touch-a">A</button>
+					<button id="touch-b">B</button><br>
+					<button id="touch-l">L</button>
+					<button id="touch-r">R</button>
+				</div>
+			</div>
+			<span class="message" id="tempMessage"></span>
+		</div>
+	</body>
+</html>

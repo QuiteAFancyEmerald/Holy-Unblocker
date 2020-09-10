@@ -1,0 +1,281 @@
+/*
+|-----------------------------------------
+| Core CSS
+|-----------------------------------------
+ */
+
+html, body {
+    font-family: Open Sans, Arial, sans-serif;
+    height: 100%;
+    width:100%;
+    margin: 0;
+    padding: 0;
+    background: #000;
+    overflow: hidden;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* reset all list items */
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+}
+
+#main {
+    position:absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+	background-color: black;
+}
+
+/*
+|-----------------------------------------
+| Canvas
+|-----------------------------------------
+|
+| Classes are automatically overwritten 
+| by the filter styles, therefore only
+| attributes and id's can be used.
+|
+ */
+
+canvas {
+    margin: auto;
+    display: block;
+    padding: 0px;
+    background-color: black;
+}
+
+canvas.textureSmooth {
+    image-rendering: auto;
+    image-rendering: optimizeQuality;
+    -ms-interpolation-mode: bicubic;
+}
+
+canvas.texturePixelated {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+/*
+|-----------------------------------------
+| Messages
+|-----------------------------------------
+ */
+
+.message {
+    background: #6cc27d;
+    padding: 1em 2em;
+    text-align: center;
+    color: #fff;
+    bottom: 0px;
+    position: fixed;
+    left: 0px;
+    display: none;
+    font-weight: bold;
+    vertical-align: bottom;
+    font-family: monospace;
+    z-index: 1;
+}
+
+/*
+|-----------------------------------------
+| Main Menu
+|-----------------------------------------
+ */
+
+/* top level menu */
+div#menu {
+	display: none !important;
+	width: 0px;
+	height: 0px;
+}
+
+ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.menu {
+	position: fixed;
+	display: flex;
+	flex-wrap: wrap;
+	background: #fff;
+	transition: .3s ease;
+	cursor: pointer;
+	font-family: sans-serif;
+	z-index: 1;
+	opacity: 0;
+	height: 42px;
+}
+
+.menu:hover{opacity: 0.9;}
+
+.menu ul{
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	top:100%;
+	left:0;
+	background-color: rgb(245, 245, 245);
+	box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);
+	transition: .3s ease;
+	z-index: 1;
+}
+
+.menu ul li {
+	padding: .3em 1em !important;
+}
+
+.menu li{
+	white-space: nowrap;
+	position: relative;
+	cursor:pointer;
+	padding: .7em 1em;
+}
+
+.menu li:hover {
+	background: rgba(0,0,0,.1);
+}
+
+.menu li:hover > ul{
+	visibility: visible;
+	opacity: 1;
+}
+
+li #smooth {
+	transform: scale(1.5);
+	margin: 0px 13px 0px 0px;
+}
+
+#import {
+	display: none;
+}
+
+#import + label {
+	border: 1px solid rgb(118, 118, 118);
+	border-radius: 2px;
+	padding: 4px;
+	margin: 2px;
+	font-size: 13px;
+}
+
+#export {
+	color: black;
+	text-decoration: none;
+}
+
+#ffd {
+	z-index: 5;
+	height: 200px;
+	width: 400px;
+	position: absolute;
+	background: #ddd;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	font-family: sans-serif;
+	border-radius: 2px;
+}
+
+#upload {
+	display: none;
+}
+
+#upload + label {
+	border: 1px solid rgb(118, 118, 118);
+	border-radius: 2px;
+	padding: 4px;
+	margin: 10px;
+	font-size: 13px;
+	background-color: white;
+	display: inline-block;
+	transition: ease .1s;
+}
+
+#upload + label:hover {
+	background-color: #eee;
+}
+
+/*
+|-----------------------------------------
+| Touch Controls
+|-----------------------------------------
+ */
+
+.touch-controls{
+    display: flex;
+    padding: 1em;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.touch-controls button{
+    display: inline-block;
+    -webkit-appearance: none;
+    border:0;
+    outline: 0;
+    background: #fff;
+    opacity: 0.7;
+    width: 3em;
+    height: 3em;
+    line-height: 3em;
+    text-align: center;
+    cursor: pointer;
+    transition: .1s ease;
+    margin:.5em;
+}
+
+.touch-controls button:active{
+    transform: scale(0.95);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.4) inset;
+}
+
+.touch-dpad, .touch-buttons{
+    flex-grow: 1;
+    text-align: center;
+}
+
+.touch-buttons{
+    align-self: flex-end;
+}
+
+.touch-dpad--up{
+    flex-grow: 1;
+    width: 100%;
+}
+
+/* Only show controls on portrait mode screens */
+@media screen and (min-aspect-ratio: 1/1) {
+    .touch-controls{
+        display: none;
+    }
+    #main {
+        display: flex;
+        justify-content: center;
+        flex-grow: 1;
+        align-items: center;
+    }
+}
