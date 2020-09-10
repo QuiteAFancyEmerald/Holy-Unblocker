@@ -49,7 +49,7 @@
                     </script>
                     <div class="d-flex align-items-center order-12" style="height:200px;">
                         <div class="container text-center justify-content-center align-items-center button" style="color: rgb(255,255,255);filter: blur(0px);background-color: #000000;">
-                            <form id="scontainer" action="url" method="get">
+                            <form id="scontainer">
                                 <p style="font-size: 46px;">Alloy Proxy</p>
                                 <p style="font-family: 'Montserrat Alternates', sans-serif;">A fast, lightweight proxy developed by Titanium Network.</p>
                                 <div class="input-group" id="url">
@@ -65,7 +65,7 @@
                                             var url = $('url').value;
                                             var det = document.domain;
                                             var domain = det.replace('www.', '').split(/[/?#]/)[0];
-                                            window.location.href = "https://www." + domain + "/alloy?url=" + url;
+                                            window.location.href = "https://a." + domain + "/alloy?url=" + url;
                                             return false;
                                         };
                                         window.onload = function() {
