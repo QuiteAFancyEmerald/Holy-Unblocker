@@ -1,5 +1,5 @@
 {
-  "name": "Node Unblocker",
-  "description": "Evande internet censorship",
-  "repository": "https://github.com/nfriedly/nodeunblocker.com"
+    "name": "Holy Unblocker",
+    "description": "A website that can be used to bypass web filters; both online and firewall.",
+    "repository": "https://github.com/QuiteAFancyEmerald/HolyUB"
 }
