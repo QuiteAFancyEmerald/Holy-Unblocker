@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /proxy/http
+Disallow: /proxy/http:
+Disallow: /proxy/http:/
+Disallow: /proxy/https
+Disallow: /proxy/https:
+Disallow: /proxy/https:/

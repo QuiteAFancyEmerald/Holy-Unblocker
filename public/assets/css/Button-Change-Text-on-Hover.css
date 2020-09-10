@@ -1,0 +1,85 @@
+.button {
+  display: inline-block;
+  position: relative;
+  margin: 1em;
+  padding: 10px 30px;
+  border: 2px solid #ffffff;
+  overflow: hidden;
+  text-decoration: none;
+  font-size: 16px;
+  outline: none;
+  color: #ffffff;
+  background: transparent;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 700;
+}
+
+a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.button span {
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.button:before, .button:after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  -webkit-transition: .4s;
+  -moz-transition: .4s;
+  -o-transition: .4s;
+  transition: .4s;
+}
+
+.button:before {
+  content: attr(data-hover);
+  -webkit-transform: 0.4s;
+  -moz-transform: 0.4s;
+  -ms-transform: 0.4s;
+  -o-transform: 0.4s;
+  transform: 0.4s;
+}
+
+.button:hover span, .button:active span {
+  opacity: 0;
+  -webkit-transform: 0.4s;
+  -moz-transform: 0.4s;
+  -ms-transform: 0.4s;
+  -o-transform: 0.4s;
+  transform: 0.4s;
+}
+
+.button:hover:before, .button:active:after {
+  opacity: 1;
+  -webkit-transform: 0.4s;
+  -moz-transform: 0.4s;
+  -ms-transform: 0.4s;
+  -o-transform: 0.4s;
+  transform: 0.4s;
+  -webkit-transition-delay: .4s;
+  -moz-transition-delay: .4s;
+  -o-transition-delay: .4s;
+  transition-delay: .4s;
+}
+
+.button:active:before {
+  -webkit-transform: 0.4s;
+  -moz-transform: 0.4s;
+  -ms-transform: 0.4s;
+  -o-transform: 0.4s;
+  transform: 0.4s;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
