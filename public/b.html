@@ -64,10 +64,10 @@
 
                                         $('unblocker-form').onsubmit = function() {
                                             var url = $('url').value;
-                                            //   var det = document.domain;
-                                            //  var domain = det.replace('www.', '').split(/[/?#]/)[0];
-                                            //   window.location.href = "https://a." + domain + "/call/" + url;
-                                            //   return false;
+                                            var det = document.domain;
+                                            var domain = det.replace('www.', '').split(/[/?#]/)[0];
+                                            window.location.href = "https://a." + domain + "/call/" + url;
+                                            return false;
 
                                             if (url.substr(0, 4) != "http") {
                                                 url = "http://a." + url;
@@ -76,26 +76,26 @@
                                             return false;
                                         };
 
-                                        //function checkError() {
-                                        //   var search = window.location.search;
-                                        //   var start = search.indexOf('error=');
-                                        //  if (start > -1) {
-                                        //      var stop = search.indexOf('&', start);
-                                        //      if (stop == -1) {
-                                        //          stop = undefined;
-                                        //      }
-                                        //      // +6 for "error="
-                                        //      var err = search.substr(start + 6, stop);
-                                        //       var $error = $('error');
-                                        //       $error.innerText = $error.textContent = decodeURIComponent(err);
-                                        //       $error.style.display = "block";
-                                        // }
-                                        // }
+                                        function checkError() {
+                                            var search = window.location.search;
+                                            var start = search.indexOf('error=');
+                                            if (start > -1) {
+                                                var stop = search.indexOf('&', start);
+                                                if (stop == -1) {
+                                                    stop = undefined;
+                                                }
+                                                // +6 for "error="
+                                                var err = search.substr(start + 6, stop);
+                                                var $error = $('error');
+                                                $error.innerText = $error.textContent = decodeURIComponent(err);
+                                                $error.style.display = "block";
+                                            }
+                                        }
 
-                                        //  window.onload = function() {
-                                        //      $('url').focus();
-                                        //      checkError();
-                                        //  }
+                                        window.onload = function() {
+                                            $('url').focus();
+                                            checkError();
+                                        }
                                     </script>
                                 </div>
                                 <p style="font-size: 20px;font-family: 'Montserrat Alternates', sans-serif;">More Information:<br></p>
