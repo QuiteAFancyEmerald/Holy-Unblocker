@@ -325,10 +325,13 @@ res.sendFile(__dirname + '/alloy' + req.url,  function (err) {
 })
 
 
-app.use(express.static('public'))
-
-app.use(function (req, res ,next) {
-  if (req.session.fetchURL) {
-    return res.redirect(307, '/fetch/' + req.session.fetchURL + req.url)
-  } else return res.send(error('404', 'No valid directory or file was found!'))
+app.use(function (req, res, next) { 
+res.sendFile(__dirname + '/public' + req.url,  function (err) {
+  if (err) {
+    if (req.session.fetchURL) {
+      return res.redirect(307, '/fetch/' + req.session.fetchURL + req.url)
+    } else return res.redirect(307, '/')
+  }
 })
+
+});
