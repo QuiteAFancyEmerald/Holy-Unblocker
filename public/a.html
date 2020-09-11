@@ -49,28 +49,28 @@
                     </script>
                     <div class="d-flex align-items-center order-12" style="height:200px;">
                         <div class="container text-center justify-content-center align-items-center button" style="color: rgb(255,255,255);filter: blur(0px);background-color: #000000;">
-                            <form id="scontainer">
+                            <form id="scontainer" method="POST" action="/createSession">
                                 <p style="font-size: 46px;">Alloy Proxy</p>
                                 <p style="font-family: 'Montserrat Alternates', sans-serif;">A fast, lightweight proxy developed by Titanium Network.</p>
                                 <div class="input-group">
-                                    <div class="input-group-prepend"></div><input id="url" class="bg-white border rounded-0 border-warning shadow-lg form-control form-control-lg" type="text" name="url" value="https://google.com" style="width: 194px;font-family: 'Montserrat Alternates', sans-serif;">
-                                    <div class="input-group-append"><button id="buttona" class="btn btn-dark btn-lg bg-dark border rounded-0 border-warning shadow-lg select" type="submit" style="width: 78px;padding: 8px;margin: 0px;height: 48px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">Alloy</button></div>
+                                    <div class="input-group-prepend"></div><input id="iurl" class="bg-white border rounded-0 border-warning shadow-lg form-control form-control-lg" type="text" name="url" value="https://google.com" style="width: 194px;font-family: 'Montserrat Alternates', sans-serif;">
+                                    <div class="input-group-append"><button id="btn" class="btn btn-dark btn-lg bg-dark border rounded-0 border-warning shadow-lg select" type="submit" style="width: 78px;padding: 8px;margin: 0px;height: 48px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">Alloy</button></div>
                                 </div>
                                 <div>
                                     <script>
-                                        function $(id) {
-                                            return document.getElementById(id);
-                                        };
-                                        $('scontainer').onsubmit = function() {
-                                            var url = $('url').value;
-                                            var det = document.domain;
-                                            var domain = det.replace('www.', '').split(/[/?#]/)[0];
-                                            window.location.href = "https://" + domain + "/alloy?url=" + url;
-                                            return false;
-                                        };
-                                        window.onload = function() {
-                                            $('url').focus();
-                                        }
+                                        //  function $(id) {
+                                        //      return document.getElementById(id);
+                                        //  };
+                                        //  $('scontainer').onsubmit = function() {
+                                        //      var url = $('url').value;
+                                        //      var det = document.domain;
+                                        //     var domain = det.replace('www.', '').split(/[/?#]/)[0];
+                                        //     window.location.href = "https://" + domain + "/alloy?url=" + url;
+                                        //      return false;
+                                        //  };
+                                        //  window.onload = function() {
+                                        //      $('url').focus();
+                                        // }
                                     </script>
                                 </div>
                                 <p style="font-size: 20px;font-family: 'Montserrat Alternates', sans-serif;">More Information:<br></p>
