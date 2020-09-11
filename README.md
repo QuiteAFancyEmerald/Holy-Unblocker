@@ -1,5 +1,5 @@
 # Holy Unblocker
-A website that can be used to bypass web filters; both online and firewall. The public source code for Holy Unblocker.
+A website that can be used to bypass web filters; both extension and firewall. This is the public source code for Holy Unblocker.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/titaniumnetwork-dev/alloyproxy/)
 
