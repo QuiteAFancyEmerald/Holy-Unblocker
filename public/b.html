@@ -64,16 +64,16 @@
 
                                         $('unblocker-form').onsubmit = function() {
                                             var url = $('url').value;
-                                            var det = document.domain;
-                                            var domain = det.replace('www.', '').split(/[/?#]/)[0];
-                                            window.location.href = "https://a." + domain + "/call/" + url;
-                                            return false;
+                                            //   var det = document.domain;
+                                            //  var domain = det.replace('www.', '').split(/[/?#]/)[0];
+                                            //   window.location.href = "https://a." + domain + "/call/" + url;
+                                            //   return false;
 
-                                            //if (url.substr(0, 4) != "http") {
-                                            //     url = "http://" + url;
-                                            //}
-                                            // window.location.pathname = 'b?url=' + url;
-                                            // return false;
+                                            if (url.substr(0, 4) != "http") {
+                                                url = "http://a." + url;
+                                            }
+                                            window.location.pathname = 'b?url=' + url;
+                                            return false;
                                         };
 
                                         //function checkError() {
