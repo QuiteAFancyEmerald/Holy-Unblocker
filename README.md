@@ -17,6 +17,8 @@ Either use the button above to deploy to Heroku or do the below:
 
 The default place for the proxy when its started is `http://localhost:8080` but you can change it if needed in config.json
 
+This website has been hosted locally on Alloy Proxy. More more information go to the Alloy Proxy repo below.
+
 
 ## Structure
 - `index.html` : The official homepage of the site.
