@@ -1,0 +1,32 @@
+{
+  "name": "alloyproxy",
+  "version": "1.0.0",
+  "description": "A powerful web proxy!",
+  "main": "app.js",
+  "scripts": {
+    "test": "proxy",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/titaniumnetwork-dev/alloyproxy.git"
+  },
+  "keywords": [
+    "web-proxy"
+  ],
+  "author": "titaniumnetwork-dev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/titaniumnetwork-dev/alloyproxy/issues"
+  },
+  "homepage": "https://github.com/titaniumnetwork-dev/alloyproxy#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "follow-redirects": "^1.13.0",
+    "node-fetch": "^2.6.0",
+    "parse-raw-http": "0.0.1"
+  }
+}

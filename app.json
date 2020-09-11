@@ -1,0 +1,7 @@
+{
+  "name": "Alloy Proxy",
+  "description": "A node.js web proxy featuring URL encoding, and amazing compatablity!",
+  "repository": "https://github.com/titaniumnetwork-dev/alloyproxy/",
+  "logo": "https://avatars1.githubusercontent.com/u/47227492?s=200&v=4",
+  "keywords": ["node", "proxy", "unblocker"]
+}
