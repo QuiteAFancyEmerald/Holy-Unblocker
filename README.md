@@ -3,7 +3,7 @@
 
 A node.js proxy that features URL encoding, and amazing compatablity!
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/QuiteAFancyEmerald/HolyUB/)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/titaniumnetwork-dev/alloyproxy/)
 
 # How to install and use:
 
@@ -28,6 +28,15 @@ When a attribute is rewritten, depending on the contents inside. It will turn:
 `href="/assets/js/main.js"` into `href="/fetch/websiteURL/assets/js/main.js"`.
 
 A porition of its rewriting is in client-side JS so `Element.setAttribute`, `window.fetch()`, XMLHttpRequest, and more are rewritten.
+
+# Implementing your website in Alloyproxy
+
+To implement your website into AlloyProxy. Upload all of your files into the `public` folder then your done. Avoid having the directory `alloy`
+Since that might mess up script injection stuff.
+
+# Things not to do
+
+We recommend NOT to delete the `alloy` folder. It contains script injection and error pages. And don't tamper with any rewriting that adds script injection since script injection makes websites such as Discord and Youtube work more properly.
 
 # Extra information:
 
@@ -68,3 +77,4 @@ and plenty more!
 - Full URL encoding / encryption mode
 
 - Websocket proxing
+
