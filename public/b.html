@@ -53,7 +53,7 @@
                                 <p style="font-size: 46px;">N<wbr>ode Unbl<wbr>ocker</p>
                                 <p style="font-family: 'Montserrat Alternates', sans-serif;">A fast, lightw<wbr>eight pr<wbr>oxy developed by&nbsp;<strong>Nath<wbr>an Fri<wbr>edly</strong></p>
                                 <div class="input-group">
-                                    <div class="input-group-prepend"></div><input class="bg-white border rounded-0 border-warning shadow-lg form-control form-control-lg" type="text" name="url" value="https://google.com" inputmode="url" style="width: 194px;font-family: 'Montserrat Alternates', sans-serif;">
+                                    <div class="input-group-prepend"></div><input id="url" class="bg-white border rounded-0 border-warning shadow-lg form-control form-control-lg" type="text" name="url" value="https://google.com" inputmode="url" style="width: 194px;font-family: 'Montserrat Alternates', sans-serif;">
                                     <div class="input-group-append"><button class="btn btn-dark btn-lg bg-dark border rounded-0 border-warning shadow-lg" type="submit" style="width: 97px;padding: 8px;margin: 0px;height: 48px;font-family: 'Montserrat Alternates', sans-serif;font-size: 14px;">Nod<wbr>e</button></div>
                                 </div>
                                 <div>
@@ -66,7 +66,7 @@
                                             var url = $('url').value;
                                             var det = document.domain;
                                             var domain = det.replace('www.', '').split(/[/?#]/)[0];
-                                            window.location.href = "https://" + domain + "/call/" + url;
+                                            window.location.href = "https://a" + domain + "/call/" + url;
                                             return false;
 
                                             //if (url.substr(0, 4) != "http") {
@@ -76,26 +76,26 @@
                                             // return false;
                                         };
 
-                                        function checkError() {
-                                            var search = window.location.search;
-                                            var start = search.indexOf('error=');
-                                            if (start > -1) {
-                                                var stop = search.indexOf('&', start);
-                                                if (stop == -1) {
-                                                    stop = undefined;
-                                                }
-                                                // +6 for "error="
-                                                var err = search.substr(start + 6, stop);
-                                                var $error = $('error');
-                                                $error.innerText = $error.textContent = decodeURIComponent(err);
-                                                $error.style.display = "block";
-                                            }
-                                        }
+                                        //function checkError() {
+                                        //   var search = window.location.search;
+                                        //   var start = search.indexOf('error=');
+                                        //  if (start > -1) {
+                                        //      var stop = search.indexOf('&', start);
+                                        //      if (stop == -1) {
+                                        //          stop = undefined;
+                                        //      }
+                                        //      // +6 for "error="
+                                        //      var err = search.substr(start + 6, stop);
+                                        //       var $error = $('error');
+                                        //       $error.innerText = $error.textContent = decodeURIComponent(err);
+                                        //       $error.style.display = "block";
+                                        // }
+                                        // }
 
-                                        window.onload = function() {
-                                            $('url').focus();
-                                            checkError();
-                                        }
+                                        //  window.onload = function() {
+                                        //      $('url').focus();
+                                        //      checkError();
+                                        //  }
                                     </script>
                                 </div>
                                 <p style="font-size: 20px;font-family: 'Montserrat Alternates', sans-serif;">More Information:<br></p>
