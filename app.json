@@ -1,6 +1,0 @@
-{
-    "name": "Holy Unblocker",
-    "description": "A website that can be used to bypass web filters; both online and firewall. Uses Alloy Proxy locally and Node Unblocker.",
-    "repository": "https://github.com/QuiteAFancyEmerald/HolyUB",
-    "keywords": ["node", "proxy", "unblocker"]
-}
