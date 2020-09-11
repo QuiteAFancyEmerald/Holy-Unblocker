@@ -1,6 +1,23 @@
 # Holy Unblocker
 A website that can be used to bypass web filters; both online and firewall. The public source code for Holy Unblocker.
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/titaniumnetwork-dev/alloyproxy/)
+
+## How to Install
+
+Either use the button above to deploy to Heroku or do the below:
+
+`git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git`
+
+`cd HolyUnblockerPublic`
+
+`npm install`
+
+`npm start`
+
+The default place for the proxy when its started is `http://localhost:8080` but you can change it if needed in config.json
+
+
 ## Structure
 - `index.html` : The official homepage of the site.
 - `z.html` : Surf Freely page, redirectly to either Alloy or Node.
