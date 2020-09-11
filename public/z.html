@@ -54,8 +54,32 @@
                                 <p style="font-family: 'Montserrat Alternates', sans-serif;">Choose which proxy you would like to use. Below is some information.</p>
                                 <p style="font-size: 20px;font-family: 'Montserrat Alternates', sans-serif;">More Information:<br></p>
                                 <p>All<wbr>oy:<br>Works on Disc<wbr>ord (QR Code Only), Youtube (Might need to reload), etc.<br>Many sites work with this. Explore!<br>Nod<wbr>e:<br>Flexible but use Al<wbr>loy since its better.</p>
-                                <div class="btn-group" role="group" style="background-color: #030303;"><a class="btn btn-primary border-warning" role="button" style="background-color: rgb(24,26,28);" href="/a.html">Alloy Proxy</a><a class="btn btn-primary border-warning" role="button" style="background-color: rgb(24,26,28);"
-                                        href="/b.html">No<wbr>de Unb<wbr>loc<wbr>ker</a></div>
+                                <div class="btn-group" role="group" style="background-color: #030303;"><a class="btn btn-primary border-warning" role="button" style="background-color: rgb(24,26,28);" href="/a.html">Alloy Proxy</a><a id="node" class="btn btn-primary border-warning" role="button" style="background-color: rgb(24,26,28);"
+                                        href="//b.html">No<wbr>de Unb<wbr>loc<wbr>ker</a>
+                                    <script>
+                                        function $(id) {
+                                            return document.getElementById(id);
+                                        }
+
+                                        $('node').onclick = function() {
+                                            var url = $('node').value;
+                                            var det = document.domain;
+                                            var domain = det.replace('www.', '').split(/[/?#]/)[0];
+                                            window.location.href = "https://a." + domain;
+                                            return false;
+
+                                            //  if (url.substr(0, 4) != "http") {
+                                            //      url = "http://a." + url;
+                                            //  }
+                                            //  window.location.pathname = 'b?url=' + url;
+                                        };
+
+                                        window.onload = function() {
+                                            $('node').focus();
+                                            checkError();
+                                        }
+                                    </script>
+                                </div>
                             </form>
                         </div>
                     </div>
