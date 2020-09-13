@@ -22,7 +22,7 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 
 ## Structure
 - `index.html` : The official homepage of the site.
-- `z.html` : Surf Freely page, redirected to either Alloy or Node.
+- `z.html` : Surf Freely page, page offers to be redirected to either Alloy or Node.
 - `a.html` : Alloy Proxy page, configured as recommended with Alloy Proxy.
 - `b.html` : Links to a subdomain for Node Unblocker. I left it in just in case you would like to setup the site differently.
 - `g.html` : Games page, credits given to OlyB and Titanium Network for its assets.
