@@ -33,7 +33,7 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 - Cookie Authorization
 - Filters
 
-This project uses Alloy Proxy and Node Unblocker, linked below. Credits also given to Titanium Network and all its developers as this project would not be possible without them. View the official website for more detail.
+This project uses Alloy Proxy and Node Unblocker, linked below. Credits also given to Titanium Network and all its developers as this project would not be possible without them. View the official website for more detail. :)
 
 - https://github.com/titaniumnetwork-dev/
 - https://github.com/titaniumnetwork-dev/alloyproxy
