@@ -135,8 +135,6 @@
                     </script>
                     <div class="container">
                         <div class="box">
-                            <input type="text" id="gsearchbar" onkeyup="gsearch()" autocomplete="off" placeholder="Search" />
-
                             <div id="glist">
                                 <script>
                                     function gsearch() {
@@ -144,13 +142,9 @@
                                         for (e = document.getElementById("gsearchbar").value.toUpperCase(), t = document.getElementById("glist"), a = 0; a < t.querySelectorAll("a[href]").length; a++)(n = t.getElementsByTagName("a")[a]).innerHTML.toUpperCase().indexOf(e) > -1 ? n.style.display = "block" : n.style.display = "none"
                                     }
                                 </script>
+                                <input type="text" id="gsearchbar" onkeyup="gsearch()" autocomplete="off" placeholder="Search" />
+
                                 <h2>HTML5 Games</h2>
-                                <script>
-                                    function gsearch() {
-                                        var e, t, n, a;
-                                        for (e = document.getElementById("gsearchbar").value.toUpperCase(), t = document.getElementById("glist"), a = 0; a < t.querySelectorAll("a[href]").length; a++)(n = t.getElementsByTagName("a")[a]).innerHTML.toUpperCase().indexOf(e) > -1 ? n.style.display = "block" : n.style.display = "none"
-                                    }
-                                </script>
                                 <a class="glink" href="./gfiles/html5games/2048/index.html">2<wbr>048</a>
                                 <a class="glink" href="./gfiles/html5games/asteroids/index.html">Aste<wbr>roids</a>
                                 <a class="glink" href="./gfiles/html5games/astray/index.html">Ast<wbr>ray</a>
