@@ -5,74 +5,40 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Launch Meeting − Zoom</title>
-    <meta name="description" content="Get past internet censorship today!
-
-:D">
+    <meta name="description" content="Get past internet censorship today!">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon.png">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700">
-    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/Customizable-Background--Overlay.css">
-    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
-    <link rel="stylesheet" href="assets/css/Header-Dark.css">
-    <link rel="stylesheet" href="assets/css/iframe.css">
+    <style type="text/css">
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
-    <div>
-        <div class="header-dark" style="background-color: rgb(0,0,0);background-image: url(&quot;assets/img/black.jpg&quot;);">
-            <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
-                <div class="container"><a class="navbar-brand" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/index.html">Hol<wbr>y Un<wbr>block<wbr>er</a>
-                    <div class="collapse navbar-collapse" id="navcol-1">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item" role="presentation"><a class="nav-link active" href="/z.html">S<wbr>urf Free<wbr>ly</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="g.html">Gam<wbr>es</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="/yt.html">You<wbr>Tube</a></li>
-                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">More</a>
-                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;"><a class="dropdown-item" role="presentation" href="/k.html" style="color: rgb(255,255,255);">Kr<wbr>unker</a><a class="dropdown-item" role="presentation" href="/c.html" style="color: rgb(255,255,255);">Credits</a></div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <div style="background-image: url(&quot;assets/img/black.jpg&quot;);height: 700px;background-position: center;background-size: cover;background-repeat: no-repeat;background-color: #000000;font-family: 'Montserrat Alternates', sans-serif;font-weight: bold;width: 700px;">
-                <div class="d-flex justify-content-center align-items-center" style="height: 100%;min-height: initial;width: 100%;position: absolute;left: 0;background-color: rgba(1,1,,0.63);"><iframe src="https://krunker.io" width="90%" height="90%" style="border:none;overflow:hidden" scrolling="yes" frameborder="0" allowTransparency="true" allowfullscreen></iframe></div>
-            </div>
+    <script type="text/javascript">
+        function PopUp(hideOrshow) {
+            if (hideOrshow == 'hide') document.getElementById('ac-wrapper').style.display = "none";
+            else document.getElementById('ac-wrapper').removeAttribute('style');
+        }
+        window.onload = function() {
+            setTimeout(function() {
+                PopUp('show');
+            }, 2000);
+        }
+    </script>
+    <div id="ac-wrapper" style='display:none'>
+        <div id="popup">
+            <center>
+                <h2>If a video appears white, right click on the page and select 'Reload Frame'.</h2>
+                <input type="submit" name="submit" value="Submit" onClick="PopUp('hide')" />
+            </center>
         </div>
     </div>
-    <div class="footer-dark" style="background-color: rgb(0,0,0);">
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 item text">
-                        <h3>Holy Unb<wbr>l<wbr>o<wbr>cker</h3>
-                        <p>Made by Stude<wbr>nts, For Stu<wbr>dents.&nbsp;</p>
-                    </div>
-                    <div class="col-sm-6 col-md-3 item">
-                        <h3>Services</h3>
-                        <ul>
-                            <li><a href="/a.html">All<wbr>oy</a></li>
-                            <li><a href="/b.html">N<wbr>ode</a></li>
-                            <li><a href="https://nodeclusters.com/">Node<wbr>Clusters</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-md-3 item">
-                        <h3>About</h3>
-                        <ul>
-                            <li><a href="https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic">GitHub</a></li>
-                            <li><a href="c.html">Support</a></li>
-                            <li><a href="c.html">Credits</a></li>
-                        </ul>
-                    </div>
-                    <div class="col item social"><a href="https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic"><i class="icon ion-social-github-outline" style="font-family: 'Montserrat Alternates', sans-serif;"></i></a></div>
-                </div>
-                <p class="copyright">Holy Un<wbr>blo<wbr>cker © 2020</p>
-            </div>
-        </footer>
-    </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <iframe src="//krunker.io" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="yes" frameborder="0" allowTransparency="true" allowfullscreen="true"></iframe>
     <script src="assets/js/header.js"></script>
 </body>
 
