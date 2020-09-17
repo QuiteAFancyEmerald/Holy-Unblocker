@@ -52,8 +52,9 @@
                                 <p style="font-size: 20px;font-family: 'Montserrat Alternates', sans-serif;">More Information:<br></p>
                                 <p>All<wbr>oy:<br>Works on Disc<wbr>ord (QR Code Only), Youtube (Might need to reload), etc.<br>Many sites work with this. Explore!<br>Nod<wbr>e:<br>Flexible but use Al<wbr>loy since its better.</p>
                                 <div class="btn-group" role="group" style="background-color: #030303;"><a class="btn btn-primary" role="button" style="background-color: rgb(24,26,28);" href="/a.html">Alloy Proxy</a><a id="node" class="btn btn-primary" role="button" style="background-color: rgb(24,26,28);" href="//b.html">No<wbr>de Unb<wbr>loc<wbr>ker</a>
-                                    <a class="btn btn-primary" role="button" style="background-color: rgb(24,26,28);" href="/p.html">PM Pr<wbr>o<wbr>xy</a>
+                                    <a id="pm" class="btn btn-primary" role="button" style="background-color: rgb(24,26,28);" href="/p.html">PM Pr<wbr>o<wbr>xy</a>
                                     <script>
+                                        //Leads to external NU
                                         function $(id) {
                                             return document.getElementById(id);
                                         }
@@ -64,15 +65,29 @@
                                             var domain = det.replace('www.', '').split(/[/?#]/)[0];
                                             window.location.href = "https://a." + domain;
                                             return false;
-
-                                            //  if (url.substr(0, 4) != "http") {
-                                            //      url = "http://a." + url;
-                                            //  }
-                                            //  window.location.pathname = 'b?url=' + url;
                                         };
 
                                         window.onload = function() {
                                             $('node').focus();
+                                            checkError();
+                                        }
+                                    </script>
+                                    <script>
+                                        //Leads to external PM
+                                        function $(id) {
+                                            return document.getElementById(id);
+                                        }
+
+                                        $('pm').onclick = function() {
+                                            var url = $('pm').value;
+                                            var det = document.domain;
+                                            var domain = det.replace('www.', '').split(/[/?#]/)[0];
+                                            window.location.href = "https://p." + domain;
+                                            return false;
+                                        };
+
+                                        window.onload = function() {
+                                            $('pm').focus();
                                             checkError();
                                         }
                                     </script>
@@ -90,13 +105,13 @@
                 <div class="row">
                     <div class="col-md-6 item text">
                         <h3><a href="/">Ho<wbr>ly Unb<wbr>loc<wbr>ker</a></h3>
-                        <p>Made by Students, For Students.&nbsp;</p>
+                        <p>Made by Stu<wbr>dents, For Stu<wbr>dents.&nbsp;</p>
                     </div>
                     <div class="col-sm-6 col-md-3 item">
                         <h3>Services</h3>
                         <ul>
-                            <li><a href="/a.html">Alloy</a></li>
-                            <li><a href="/b.html">Node</a></li>
+                            <li><a href="/a.html">All<wbr>oy</a></li>
+                            <li><a href="/b.html">N<wbr>ode</a></li>
                             <li><a href="https://nodeclusters.com/">NodeClusters</a></li>
                         </ul>
                     </div>
