@@ -6,19 +6,6 @@ function randInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var titles = [
-    "&rlm;&lrm;",
-    "Classes",
-    "My Drive - Google Drive",
-    "Google",
-    "Home | Schoology",
-    "My Meetings - Zoom"
-]
-
-var icons = [
-
-]
-
 var psel, prss;
 
 window.addEventListener('DOMContentLoaded', function() {
