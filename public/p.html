@@ -56,19 +56,19 @@
                                 <div>
                                     <script>
                                         // Extra script if needed. Adapted from NU
-                                        //  function $(id) {
-                                        //      return document.getElementById(id);
-                                        //  };
-                                        //  $('scontainer').onsubmit = function() {
-                                        //      var url = $('url').value;
-                                        //      var det = document.domain;
-                                        //     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-                                        //     window.location.href = "https://" + domain + "/alloy?url=" + url;
-                                        //      return false;
-                                        //  };
-                                        //  window.onload = function() {
-                                        //      $('url').focus();
-                                        // }
+                                        function $(id) {
+                                            return document.getElementById(id);
+                                        };
+                                        $('scontainer').onsubmit = function() {
+                                            var url = $('url').value;
+                                            var det = document.domain;
+                                            var domain = det.replace('www.', '').split(/[/?#]/)[0];
+                                            window.location.href = "https://p." + domain + "/" + url;
+                                            return false;
+                                        };
+                                        window.onload = function() {
+                                            $('url').focus();
+                                        }
                                     </script>
                                 </div>
                                 <p style="font-size: 20px;font-family: 'Montserrat Alternates', sans-serif;">More Information:<br></p>
