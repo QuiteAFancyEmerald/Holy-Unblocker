@@ -16,12 +16,7 @@ var titles = [
 ]
 
 var icons = [
-    "./img/blank.png",
-    "https://ssl.gstatic.com/classroom/favicon.png",
-    "https://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_5.ico",
-    "https://www.google.com/favicon.ico",
-    "https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico",
-    "https://d24cgw3uvb9a9h.cloudfront.net/zoom.ico"
+
 ]
 
 var psel, prss;
