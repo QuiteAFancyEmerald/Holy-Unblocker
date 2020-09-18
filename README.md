@@ -5,11 +5,11 @@ Official Site: https://www.holyubofficial.ml/
 
 <a href="https://heroku.com/deploy?template=https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic" title="Deploy to Heroku"><img alt="Deploy to Heroku" src="https://sys32.dev/assets/src/media/heroku.svg" width="140" height="30"><img></a>
 &nbsp;
-<a href="https://azuredeploy.net/" title="Deploy to Azure"><img alt="Deploy to Azure" src="https://sys32.dev/assets/src/media/azure.svg" width="140" height="30"><img></a>
+<a href="https://azuredeploy.net/" title="Deploy to Azure"><img alt="Deploy to Azure" src="https://holyubofficial.ml/assets/img/azure.svg" width="140" height="30"><img></a>
 &nbsp;
-<a href="https://repl.it/github/QuiteAFancyEmerald/HolyUnblockerPublic/" title="Run on Repl.it"><img alt="Run on Repl.it" src="https://sys32.dev/assets/src/media/replit.svg" width="140" height="30"><img></a>
+<a href="https://repl.it/github/QuiteAFancyEmerald/HolyUnblockerPublic/" title="Run on Repl.it"><img alt="Run on Repl.it" src="https://holyubofficial.ml/assets/img/replit.svg" width="140" height="30"><img></a>
 &nbsp;
-<a href="https://glitch.com/edit/#!/import/github/QuiteAFancyEmerald/HolyUnblockerPublic/" title="Remix on glitch"><img alt="Remix on glitch" src="https://sys32.dev/assets/src/media/glitch.svg" width="140" height="30"><img></a>
+<a href="https://glitch.com/edit/#!/import/github/QuiteAFancyEmerald/HolyUnblockerPublic/" title="Remix on glitch"><img alt="Remix on glitch" src="https://holyubofficial.ml/assets/img/glitch.svg" width="140" height="30"><img></a>
 
 ## How to Install
 
