@@ -377,11 +377,6 @@
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script>
-        (document.onreadystatechange = onload = txt = w => {
-            for (w = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_TEXT); w.nextNode();) w.currentNode.nodeValue = w.currentNode.nodeValue.replace(RegExp('[^\n\u206F\u2064\uFEFF\u17B5\u2066\u206A\u206B\u206C\u200C\u206E\u2062\u2061\u202D\uFE0F](?=[^\n\u206E\u2062\u17B5\u206F\u2064\u2061\u202D\uFE0F\u2066\u200C\uFEFF\u206A\u206B\u206C]+)', 'gm'), o => o + '\uFE0F\uFEFF' + (Math.round(Math.random()) ? '\u206F\u202D\u2062' : '\u206C\uFEFF\u202D\u206A\u206A') + (Math.round(Math.random()) ? '\u2064\u200C\u2066\u2066' : '\u206E\u2062\u2061') + (Math.round(Math.random()) ? '\u206B\uFE0F\u17B5\u200C' : '\u200C\u17B5\u17B5\u2066\uFE0F'))
-        })()
-    </script>
 </body>
 
 </html>
