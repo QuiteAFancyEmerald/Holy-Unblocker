@@ -83,7 +83,7 @@ function setPreferences() {
 }
 
 function setCookie(name, value) {
-    document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + date + '; ';
+    document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + date + '; SameSite=None; Secure';
 }
 
 function readCookie(name) {
