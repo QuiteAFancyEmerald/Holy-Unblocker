@@ -3,6 +3,12 @@ A website that can be used to bypass web filters; both extension and firewall. T
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic/)
 
+<a href="https://azuredeploy.net/" title="Deploy to Azure"><img alt="Deploy to Azure" src="https://sys32.dev/assets/src/media/azure.svg" width="140" height="30"><img></a>
+&nbsp;
+<a href="https://repl.it/github/QuiteAFancyEmerald/HolyUnblockerPublic/" title="Run on Repl.it"><img alt="Run on Repl.it" src="https://sys32.dev/assets/src/media/replit.svg" width="140" height="30"><img></a>
+&nbsp;
+<a href="https://glitch.com/edit/#!/import/github/QuiteAFancyEmerald/HolyUnblockerPublic/" title="Remix on glitch"><img alt="Remix on glitch" src="https://sys32.dev/assets/src/media/glitch.svg" width="140" height="30"><img></a>
+
 ## How to Install
 
 Either use the button above to deploy to Heroku or do the below:
