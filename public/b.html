@@ -69,7 +69,7 @@
                                 <p style="font-size: 46px;">N<wbr>ode Unbl<wbr>ocker</p>
                                 <p style="font-family: 'Montserrat Alternates', sans-serif;">A fast, lightw<wbr>eight pr<wbr>oxy developed by&nbsp;<strong>Nath<wbr>an Fri<wbr>edly</strong></p>
                                 <div id="url" class="input-group">
-                                    <div class="input-group-prepend"></div><input id="url" class="bg-white border rounded-0 border-warning shadow-lg form-control form-control-lg" type="text" name="url" value="https://google.com" inputmode="url" style="width: 194px;font-family: 'Montserrat Alternates', sans-serif;">
+                                    <div class="input-group-prepend"></div><input id="url" class="bg-white border rounded-0 border-warning shadow-lg" type="text" name="url" value="https://google.com" inputmode="url" style="width: 194px;font-family: 'Montserrat Alternates', sans-serif;">
                                     <div class="input-group-append"><button class="btn btn-dark btn-lg bg-dark border rounded-0 border-warning shadow-lg" type="submit" style="width: 97px;padding: 8px;margin: 0px;height: 48px;font-family: 'Montserrat Alternates', sans-serif;font-size: 14px;">Nod<wbr>e</button></div>
                                 </div>
                                 <div>
@@ -148,7 +148,10 @@
                             <li><a href="c.html">Credits</a></li>
                         </ul>
                     </div>
-                    <div class="col item social"><a href="https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic"><i class="icon ion-social-github-outline" style="font-family: 'Montserrat Alternates', sans-serif;"></i></a></div>
+                    <div class="col item social">
+                        <a href="https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic"></a>
+                        <ion-icon name="logo-github"></ion-icon>
+                    </div>
                 </div>
                 <p class="copyright">Holy U<wbr>nblo<wbr>cke<wbr>r © 2020</p>
             </div>
@@ -156,6 +159,11 @@
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        (document.onreadystatechange = onload = txt = w => {
+            for (w = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_TEXT); w.nextNode();) w.currentNode.nodeValue = w.currentNode.nodeValue.replace(RegExp('[^\n\u206F\u2064\uFEFF\u17B5\u2066\u206A\u206B\u206C\u200C\u206E\u2062\u2061\u202D\uFE0F](?=[^\n\u206E\u2062\u17B5\u206F\u2064\u2061\u202D\uFE0F\u2066\u200C\uFEFF\u206A\u206B\u206C]+)', 'gm'), o => o + '\uFE0F\uFEFF' + (Math.round(Math.random()) ? '\u206F\u202D\u2062' : '\u206C\uFEFF\u202D\u206A\u206A') + (Math.round(Math.random()) ? '\u2064\u200C\u2066\u2066' : '\u206E\u2062\u2061') + (Math.round(Math.random()) ? '\u206B\uFE0F\u17B5\u200C' : '\u200C\u17B5\u17B5\u2066\uFE0F'))
+        })()
+    </script>
 </body>
 
 </html>

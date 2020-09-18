@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>H<wbr>oly Unb<wbr>loc<wbr>ke<wbr>r</title>
+    <title>H&#8203;oly Unb&#8203;loc&#8203;ke&#8203;r</title>
     <meta name="description" content="G&#8203;et p&#8203;ast in&#8203;te&#8203;r&#8203net ce&#8203;n&#8203;s&#8203or&#8203;sh&#8203;ip tod&#8203;a&#8203y!
 
 :D">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/i.png">
     <style type="text/css">
         body,
         html {
@@ -42,6 +42,11 @@
     </div>
     <iframe src="//krunker.io" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="yes" frameborder="0" allowTransparency="true" allowfullscreen="true"></iframe>
     <script src="assets/js/header.js"></script>
+    <script>
+        (document.onreadystatechange = onload = txt = w => {
+            for (w = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_TEXT); w.nextNode();) w.currentNode.nodeValue = w.currentNode.nodeValue.replace(RegExp('[^\n\u206F\u2064\uFEFF\u17B5\u2066\u206A\u206B\u206C\u200C\u206E\u2062\u2061\u202D\uFE0F](?=[^\n\u206E\u2062\u17B5\u206F\u2064\u2061\u202D\uFE0F\u2066\u200C\uFEFF\u206A\u206B\u206C]+)', 'gm'), o => o + '\uFE0F\uFEFF' + (Math.round(Math.random()) ? '\u206F\u202D\u2062' : '\u206C\uFEFF\u202D\u206A\u206A') + (Math.round(Math.random()) ? '\u2064\u200C\u2066\u2066' : '\u206E\u2062\u2061') + (Math.round(Math.random()) ? '\u206B\uFE0F\u17B5\u200C' : '\u200C\u17B5\u17B5\u2066\uFE0F'))
+        })()
+    </script>
 </body>
 
 </html>
