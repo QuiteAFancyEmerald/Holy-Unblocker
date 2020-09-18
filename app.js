@@ -105,7 +105,7 @@ function error(statusCode, info) {
   }
   return (fs.readFileSync('public/assets/error.html', 'utf8').toString().replace('%ERROR%', `An error has occurred!`))
 }
-
+// Post data to set URl's for reverse proxy URL's, or safer redirecting to proxied websites.
 app.post('/createSession', async (req, res) => {
    if (req.body.url.startsWith('//')) {
      req.body.url = 'http:' + req.body.url;
@@ -122,6 +122,7 @@ app.post('/createSession', async (req, res) => {
    }
 })
 
+// Custom prefix support will be in full effect soon!
 var prefix = '/fetch';
 
 app.use(prefix, async (req, res, next) => {
@@ -146,18 +147,21 @@ app.use(prefix, async (req, res, next) => {
   var httpsAgent = new https.Agent({
     keepAlive: true
   });
-   
+     
+   // We are using the clients request headers as the headers to send the request so that headers such as Authorization will be passed through in a XML or fetch() request.	
+   // The host header has to be set to the websites host and not the apps hostname so that there won't be issues.	
    var fetchHeaders = req.headers
    fetchHeaders['referer'] = location.href
    fetchHeaders['origin'] = location.origin
    fetchHeaders['host'] = location.hostname
+   // Cookie header causing issues sometimes :cursed:
    if (fetchHeaders['cookie']) {
      delete fetchHeaders['cookie']
    }
    var options = {
     method: req.method,
     headers: fetchHeaders,
-    redirect: 'manual',
+    redirect: 'manual', 
     agent: function(_parsedURL) {
       if (_parsedURL.protocol == 'http:') {
         return httpAgent;
@@ -168,7 +172,6 @@ app.use(prefix, async (req, res, next) => {
   };
   
   if (req.method == 'POST') {
-    // Have to do try catch for this POST data parser until we create our own one that won't have a syntax error sometimes.
     try {
 	  // str_body is a string containing the requests body
       options['body'] = req.str_body;
@@ -176,6 +179,7 @@ app.use(prefix, async (req, res, next) => {
       return;
     }
   }
+  // Makes sure to use the session URL that is contained so RV mode works.
   if (req.url.startsWith('/rv')) {
     location.origin_encoded = 'rv'
   }
@@ -186,6 +190,7 @@ app.use(prefix, async (req, res, next) => {
       return;
     }
     }
+  // Custom fixes for websites such as Discord and Reddit.
   if (location.href == 'https://discord.com' || location.href == 'https://discord.com/new') {
     return res.redirect(307, `/fetch/${location.origin_encoded}/login`)
   }
@@ -195,7 +200,8 @@ app.use(prefix, async (req, res, next) => {
       return res.redirect(307, '/fetch/rv' + location.path)
     }
     return res.redirect(307, '/fetch/' + base64Encode('https://old.reddit.com') + location.path)
-  }
+  } 
+  // This is where I am making the request, and getting the buffer and headers.
   const response = await fetch(location.href, options).catch(err => res.send(error('404', `"${xss(location.href)}" was not found!`)));
   if(typeof response.buffer != 'function')return;
   var resbody = await response.buffer();
@@ -209,17 +215,21 @@ app.use(prefix, async (req, res, next) => {
     Object.entries(JSON.parse(JSON.stringify(response.headers.raw())))
       .map(([key, val]) => [key, val[0]])
   );
+  // Making sure redirects are proxied.
   if (serverHeaders['location']) {
     if (req.url.startsWith('/rv') && req.session.rvURL) {
          req.session.rvURL = String(serverHeaders['location']).split('/').splice(0, 3).join('/')
          return res.redirect(307, '/fetch/rv/' + String(serverHeaders['location']).split('/').splice(3).join('/'))
     } else return res.redirect(307, '/fetch/' + rewriteURL(String(serverHeaders['location'])))
   }
+  // These headers can be conflicting.	
   delete serverHeaders['content-encoding']
   delete serverHeaders['x-frame-options']
   delete serverHeaders['strict-transport-security']
   delete serverHeaders['content-security-policy']
   delete serverHeaders['location']
+	
+ // Setting status, headers, and content-type.
   res.status(response.status)
   res.set(serverHeaders)
   res.contentType(contentType)
@@ -300,7 +310,7 @@ app.use('/alloy/url/',function (req, res, next) {
   res.redirect(307, '/fetch/' +  fullURL)
 })
 
-
+// Utils section. Where stuff such as inject scripts are found!
 app.use('/alloy/',function (req, res, next) {
 
 if (req.query.url) {
@@ -324,7 +334,6 @@ res.sendFile(__dirname + '/alloy' + req.url,  function (err) {
 })
 
 })
-
 
 app.use(function (req, res, next) { 
 res.sendFile(__dirname + '/public' + req.url,  function (err) {

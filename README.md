@@ -1,7 +1,15 @@
 # Holy Unblocker
-A website that can be used to bypass web filters; both extension and firewall. This is the public source code for Holy Unblocker.
+A website that can be used to bypass web filters; both extension and firewall. This is the public source code for Holy Unblocker. Works on a large number of sites including YouTube (Full Quality Support), Discord, CoolMathGames and more!
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic/)
+Official Site: https://www.holyubofficial.ml/
+
+<a href="https://heroku.com/deploy?template=https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic" title="Deploy to Heroku"><img alt="Deploy to Heroku" src="https://sys32.dev/assets/src/media/heroku.svg" width="140" height="30"><img></a>
+&nbsp;
+<a href="https://azuredeploy.net/" title="Deploy to Azure"><img alt="Deploy to Azure" src="https://sys32.dev/assets/src/media/azure.svg" width="140" height="30"><img></a>
+&nbsp;
+<a href="https://repl.it/github/QuiteAFancyEmerald/HolyUnblockerPublic/" title="Run on Repl.it"><img alt="Run on Repl.it" src="https://sys32.dev/assets/src/media/replit.svg" width="140" height="30"><img></a>
+&nbsp;
+<a href="https://glitch.com/edit/#!/import/github/QuiteAFancyEmerald/HolyUnblockerPublic/" title="Remix on glitch"><img alt="Remix on glitch" src="https://sys32.dev/assets/src/media/glitch.svg" width="140" height="30"><img></a>
 
 ## How to Install
 
