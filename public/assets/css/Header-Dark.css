@@ -93,8 +93,8 @@
 .header-dark .navbar .dropdown-menu .dropdown-item:focus,
 .header-dark .navbar .dropdown-menu .dropdown-item {
     line-height: 2;
-    height: 20%;
-    width: 20%;
+    height: 100%;
+    width: 100%;
     font-size: 14px;
     color: #37434d;
 }
