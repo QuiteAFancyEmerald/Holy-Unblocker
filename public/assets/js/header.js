@@ -58,11 +58,11 @@ window.addEventListener('DOMContentLoaded', function() {
 }, false);
 
 function setPreferences() {
-    if (readCookie('lemonTitle') != 'undefined') {
-        pageTitle(readCookie('lemonTitle'));
+    if (readCookie('HBTitle') != 'undefined') {
+        pageTitle(readCookie('HBTitle'));
     }
-    if (readCookie('lemonIcon') != 'undefined') {
-        pageIcon(readCookie('lemonIcon'));
+    if (readCookie('HBIcon') != 'undefined') {
+        pageIcon(readCookie('HBIcon'));
     }
 }
 
@@ -82,12 +82,12 @@ function readCookie(name) {
 
 function setTitle(value) {
     pageTitle(value);
-    setCookie('lemonTitle', value);
+    setCookie('HBTitle', value);
 }
 
 function setIcon(value) {
     pageIcon(value);
-    setCookie('lemonIcon', value);
+    setCookie('HBIcon', value);
 }
 
 function pageTitle(value) {
