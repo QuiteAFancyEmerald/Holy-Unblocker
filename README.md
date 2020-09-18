@@ -9,7 +9,7 @@ Official Site: https://www.holyubofficial.ml/
 &nbsp;
 <a href="https://repl.it/github/QuiteAFancyEmerald/HolyUnblockerPublic/" title="Run on Repl.it"><img alt="Run on Repl.it" src="https://holyubofficial.ml/assets/img/replit.svg" width="140" height="30"><img></a>
 &nbsp;
-<a href="https://glitch.com/edit/#!/import/github/QuiteAFancyEmerald/HolyUnblockerPublic/" title="Remix on glitch"><img alt="Remix on glitch" src="https://holyubofficial.ml/assets/img/glitch.svg" width="140" height="30"><img></a>
+<a href="https://glitch.com/edit/#!/import/github/QuiteAFancyEmerald/HolyUnblockerPublic/" title="Remix on glitch"><img alt="Remix on glitch" src="https://holyubofficial.ml/assets/img/remix-button.svg" width="140" height="30"><img></a>
 
 ## How to Install
 
