@@ -28,12 +28,20 @@ window.addEventListener('DOMContentLoaded', function() {
     }
     document.getElementById('titleform').addEventListener('submit', function(e) {
         e.preventDefault();
-        setTitle(this.firstChild.value);
+        if (this.firstChild.value) {
+            setTitle(this.firstChild.value);
+        } else {
+            setTitle('&rlm;&lrm;');
+        }
     }, false);
 
     document.getElementById('iconform').addEventListener('submit', function(e) {
         e.preventDefault();
-        setIcon(this.firstChild.value);
+        if (this.firstChild.value) {
+            setIcon(this.firstChild.value);
+        } else {
+            setIcon('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAC0lEQVQI12NgAAIAAAUAAeImBZsAAAAASUVORK5CYII=');
+        }
     }, false);
 
     document.getElementById('atch').addEventListener('click', autoChange, false);
