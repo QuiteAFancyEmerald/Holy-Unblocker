@@ -27,6 +27,8 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 - `b.html` : Links to a subdomain for Node Unblocker. I left it in just in case you would like to setup the site differently.
 - `p.html` : Links to a subdomain for Powermouse. I left it in just in case you would like to setup the site differently.
 - `g.html` : Games page, credits given to OlyB and Titanium Network for its assets.
+- `i.html` : Information regarding Settings Menu page. Added this in for standard users.
+- `t.html` : Terms of Services, AUP and Privacy Policy page.
 - `k.html` : An iframe version of Krunker. Can be removed if not needed.
 - `yt.html` : An iframe of Youtube running off of the locally hosted Alloy Proxy.
 
