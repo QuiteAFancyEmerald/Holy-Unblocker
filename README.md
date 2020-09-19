@@ -44,7 +44,7 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 - Cookie Authorization
 - Filters
 
-## Vauge Explanation for Beginners With External Proxies
+## Vauge Explanation for Beginners With External Proxies and Hosting
 You will first want to host your proxies locally or externally. 
 Somes good hosting options (both free and paid):
 - <a href="https://heroku.com">Heroku</a> (Free)
