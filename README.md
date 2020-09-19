@@ -57,7 +57,7 @@ Out of the list of hosting providers Heroku and NodeClusters rank first as a pre
 
 After you have selected a decent VPS, use Cloudflare for the DNS records for both the site and the subdomains for the proxies.
 
-This is an example of DNS records involving Heroku. Self-hosting wil require `A records` preferably.
+This is an example of DNS records involving Heroku. Self-hosting will require `A records` preferably.
 <img src="https://cdn.discordapp.com/attachments/725506757291671663/756659513179766844/unknown.png" width="500" height="154"></img>
 
 - `a.deepsoil.ml` is being used for Node Unblocker.
