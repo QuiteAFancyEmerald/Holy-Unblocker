@@ -44,8 +44,31 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 - Cookie Authorization
 - Filters
 
+## Vauge Explanation for Beginners With External Proxies
+You will first want to host your proxies locally or externally. 
+Somes good hosting options (both free and paid):
+- <a href="https://heroku.com">Heroku</a> (Free)
+- <a href="https://nodeclusters.com">NodeClusters</a> (Paid)
+- <a href="https://glitch.com">Glitch</a> (Free)
+- <a href="https://repl.it">Repl.it</a> (Free)
+- <a href="https://azure.microsoft.com/en-us/">Azure</a> (Free and Paid)
+
+Out of the list of hosting providers Heroku and NodeClusters rank first as a preference. You may also self-host. 
+
+After you have selected a decent VPS, use Cloudflare for the DNS records for both the site and the subdomains for the proxies.
+
+This is an example of DNS records involving Heroku. Self-hosting wil require `A records` preferably.
+<img src="https://cdn.discordapp.com/attachments/725506757291671663/756659513179766844/unknown.png"></img>
+
+`a.deepsoil.ml` is being used for Node Unblocker.
+`p.deepsoil.ml` is being used for Powermouse.
+
+As stated previously, Holy Unblocker is hosted locally with Alloy.
+## More Information
 This project uses Alloy Proxy, Node Unblocker and Powermouse which are linked below. Credits also given to Titanium Network and all its developers as this project would not be possible without them. View the official website for more detail. :)
 
 - https://github.com/titaniumnetwork-dev/
 - https://github.com/titaniumnetwork-dev/alloyproxy
 - https://github.com/nfriedly/node-unblocker
+- https://nodeclusters.com
+- https://titaniumnetwork.org/
