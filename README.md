@@ -3,6 +3,8 @@ A website that can be used to bypass web filters; both extension and firewall. T
 
 Official Site: https://www.holyubofficial.ml/
 
+Be sure to join Titanium Network's Discord for more official site links: https://discord.com/invite/tgT48PH
+
 <a href="https://heroku.com/deploy?template=https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic" title="Deploy to Heroku"><img alt="Deploy to Heroku" src="https://sys32.dev/assets/src/media/heroku.svg" width="140" height="30"><img></a>
 &nbsp;
 <a href="https://azuredeploy.net/" title="Deploy to Azure"><img alt="Deploy to Azure" src="https://holyubofficial.ml/assets/img/azure.svg" width="140" height="30"><img></a>
