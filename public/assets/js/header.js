@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     }, false);
 
-    document.getElementById('atch').addEventListener('click', autoChange, false);
+    document.getElementById('csel').addEventListener('click', autoChange, false);
 
     psel.addEventListener('click', function(e) {
         prss = Array.from(psel.children).indexOf(e.target);
