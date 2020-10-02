@@ -22,304 +22,304 @@
     <link rel="stylesheet" href="/assets/js/games.js">
 </head>
 <!-- Games CSS  -->
-     <style>
-         .gembed {
-             width: 80%;
-             height: 800%;
-             top: 0;
-             bottom: 0;
-             left: 0;
-             right: 0;
-             position: fixed;
-         }
-
-         .fbody {
-             background-color: black;
-             color: rgb(0, 0, 0);
-             font-family: sans-serif;
-         }
-
-         .glink {
-             display: block;
-             text-decoration: none;
-             color: white;
-             font: 18px;
-             border: 1px solid #007053;
-             margin-top: -1px;
-             background-color: #000000;
-             padding: 12px;
-             transition: 0.2s ease;
-         }
-
-         .glink:hover {
-             background-color: rgb(0, 0, 0);
-             text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
-         }
-
-         #gsearchbar {
-             outline: none;
-             width: 98%;
-             top: 12px;
-             font-size: 16px;
-             border: 1px solid #007053;
-             padding: 12px;
-             margin-bottom: 12px;
-             transition: 0.2s ease;
-             background: #1c2228;
-         }
-
-         #gsearchbar:focus {
-             background-color: rgb(29, 27, 27);
-             box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.4);
-         }
-
-         .container {
-             padding: 20px;
-         }
-
-         .box {
-             margin: auto;
-             background-color: wblack;
-             padding: 10px 10px 15px 10px;
-             width: 100%;
-             height: 540px;
-         }
-
-         #glist {
-             overflow-x: hidden;
-             overflow-y: scroll;
-             width: 100%;
-             height: 100%;
-             padding: 0;
-             text-align: center;
-         }
-
-         #glist h2 {
-             display: block;
-             text-decoration: none;
-             color: white;
-             font: 18px;
-             border: 1px solid #060606;
-             margin: -1px 0 0 0;
-             background-color: #060606;
-             padding: 12px;
-             font-weight: bold;
-             user-select: none;
-         }
-<body>
-    </style>
-    <!-- Important: Use <wbr> to mess with keywords. -->
-    <div>
-        <div class="header-dark" style="background-color: rgb(0,0,0);background-image: url(&quot;assets/img/black.jpg&quot;);">
-            <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
-                <div class="container"><a class="navbar-brand" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/index.html">Ho<wbr>ly Unbl<wbr>oc<wbr>ker</a>
-                    <div class="collapse navbar-collapse" id="navcol-1">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item" role="presentation"><a class="nav-link active" href="/z.html">Surf Fre<wbr>ely</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="/g.html">Ga<wbr>mes</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="/yt.html">YouT<wbr>ube</a></li>
-                            <!-- More Menu  -->
-                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">More</a>
-                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;"><a class="dropdown-item" role="presentation" href="/k.html" style="color: rgb(255,255,255);">Krunker</a><a class="dropdown-item" role="presentation" href="/c.html" style="color: rgb(255,255,255);">Cre<wbr>dits</a></div>
-                            </li>
-                            <!-- Settings Menu  -->
-                            <li id="csel" class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Settings</a>
-                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;">
-                                    <style>
-                                        .csel input[type="submit"] {
-                                            cursor: pointer;
-                                        }
-                                    </style>
-                                    <p style="font-size: 20px; font-family: 'Montserrat Alternates', sans-serif;">Tab Cloak</p>
-                                    <p style="font-size: 14px; font-family: 'Montserrat Alternates', sans-serif;">Change the Tab Title.</p>
-                                    <form id="titleform"><input class="bg-dark border rounded-0 border shadow-lg" type="text" placeholder="Tab Title" style="width: 100%; height: 40px; font-family: 'Montserrat Alternates', sans-serif;" />
-                                        <input class="btn btn-dark btn-lg bg-dark border-dark rounded-0 border shadow-lg" type="submit" value="Apply" style="width: 100%;padding: 8px;margin: 0px;height: 90%;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">
-                                    </form>
-                                    <p style="font-size: 14px; font-family: 'Montserrat Alternates', sans-serif;">Change the Tab Icon.</p>
-                                    <form id="iconform"><input class="bg-dark border rounded-0 border shadow-lg" type="url" placeholder="Icon URL" style="width: 100%; height: 40px; font-family: 'Montserrat Alternates', sans-serif;" />
-                                        <input class="btn btn-dark btn-lg bg-dark border-dark rounded-0 border shadow-lg" type="submit" value="Apply" style="width: 100%;padding: 8px;margin: 0px;height: 90%;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">
-                                        <a href="/i.html">How To Find Icon URL</a>
-                                    </form>
-                                    <script src="assets/js/header.js"></script>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <!-- Particles.js background  -->
-            <div id="particles-js" style="height: 500px;">
-                <div class="d-flex justify-content-center align-items-center" style="height: inherit;min-height: initial;width: 100%;position: absolute;left: 0;">
-                    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js "></script>
-                    <script>
-                        /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
-                        particlesJS.load('particles-js', 'particles.json', function() {
-                            console.log('particlesjs loaded.......');
-                        });
-                    </script>
-                    <!-- Games Embed  -->
-                    <div class="container">
-                        <div class="box">
-                            <div id="glist">
-                                <script>
-                                    function gsearch() {
-                                        var e, t, n, a;
-                                        for (e = document.getElementById("gsearchbar").value.toUpperCase(), t = document.getElementById("glist"), a = 0; a < t.querySelectorAll("a[href]").length; a++)(n = t.getElementsByTagName("a")[a]).innerHTML.toUpperCase().indexOf(e) > -1 ? n.style.display = "block" : n.style.display = "none"
-                                    }
-                                </script>
-                                <!-- Important: Use <wbr> to mess with keywords.  -->
-                                <input type="text" id="gsearchbar" onkeyup="gsearch()" autocomplete="off" placeholder="Search" />
-                                <h2>HTML5 Ga<wbr>mes</h2>
-<head>
 <style>
-    <!-- GAME CSS  -->
-div.gallery {
-  border: 1px solid #ccc;
-}
-
-div.gallery:hover {
-  border: 1px solid #777;
-}
-
-div.gallery img {
-  width: 100%;
-  height: auto;
-}
-
-div.desc {
-  padding: 15px;
-  text-align: center;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.responsive {
-  padding: 0 6px;
-  float: left;
-  width: 24.99999%;
-}
-
-@media only screen and (max-width: 700px) {
-  .responsive {
-    width: 49.99999%;
-    margin: 6px 0;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .responsive {
-    width: 100%;
-  }
-}
-
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+    .gembed {
+        width: 80%;
+        height: 800%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: fixed;
+    }
+    
+    .fbody {
+        background-color: black;
+        color: rgb(0, 0, 0);
+        font-family: sans-serif;
+    }
+    
+    .glink {
+        display: block;
+        text-decoration: none;
+        color: white;
+        font: 18px;
+        border: 1px solid #007053;
+        margin-top: -1px;
+        background-color: #000000;
+        padding: 12px;
+        transition: 0.2s ease;
+    }
+    
+    .glink:hover {
+        background-color: rgb(0, 0, 0);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+    }
+    
+    #gsearchbar {
+        outline: none;
+        width: 98%;
+        top: 12px;
+        font-size: 16px;
+        border: 1px solid #007053;
+        padding: 12px;
+        margin-bottom: 12px;
+        transition: 0.2s ease;
+        background: #1c2228;
+    }
+    
+    #gsearchbar:focus {
+        background-color: rgb(29, 27, 27);
+        box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.4);
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    .box {
+        margin: auto;
+        background-color: wblack;
+        padding: 10px 10px 15px 10px;
+        width: 100%;
+        height: 540px;
+    }
+    
+    #glist {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        text-align: center;
+    }
+    
+    #glist h2 {
+        display: block;
+        text-decoration: none;
+        color: white;
+        font: 18px;
+        border: 1px solid #060606;
+        margin: -1px 0 0 0;
+        background-color: #060606;
+        padding: 12px;
+        font-weight: bold;
+        user-select: none;
+    }
 </style>
-</head>
-<body>
+<div>
+    <div class="header-dark" style="background-color: rgb(0,0,0);background-image: url(&quot;assets/img/black.jpg&quot;);">
+        <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search" style="height: 100px;">
+            <div class="container"><a class="navbar-brand" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/">Holy Unblocker</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="/z.html" style="font-family: 'Montserrat Alternates', sans-serif;">Surf Freely</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="/g.html" style="font-family: 'Montserrat Alternates', sans-serif;">Games</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="/yt.html" style="font-family: 'Montserrat Alternates', sans-serif;">YouTube</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="/d.html" style="font-family: 'Montserrat Alternates', sans-serif;">Discord</a></li>
+                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;color: rgb(255,255,255);font-family: 'Montserrat Alternates', sans-serif;">More</a>
+                            <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;"><a class="dropdown-item text-left text-white-50" role="presentation" href="/k.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Krunker</a><a class="dropdown-item text-left text-white-50" role="presentation"
+                                    href="/info.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Docs</a><a class="dropdown-item text-white-50" role="presentation" href="/c.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Credits</a></div>
+                        </li>
+                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link text-white" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;font-family: 'Montserrat Alternates', sans-serif;">Options</a>
+                            <div id="csel" class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);padding: 17%;padding-top: 10%;padding-bottom: 10%;">
+                                <style>
+                                    .csel input[type="submit"] {
+                                        cursor: pointer;
+                                    }
+                                </style>
+                                <p style="font-size: 20px; font-family: 'Montserrat Alternates', sans-serif;">Tab Cloak</p>
+                                <p style="font-size: 14px; font-family: 'Montserrat Alternates', sans-serif;">Change the Tab Title.</p>
+                                <form id="titleform"><input class="bg-dark border rounded-0 border shadow-lg" type="text" placeholder="Tab Title" style="width: 100%; height: 40px; font-family: 'Montserrat Alternates', sans-serif;" />
+                                    <input class="btn btn-dark btn-lg bg-dark border-dark rounded-0 border shadow-lg" type="submit" value="Apply" style="width: 100%;padding: 8px;margin: 0px;height: 90%;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">
+                                </form>
+                                <p style="font-size: 14px; font-family: 'Montserrat Alternates', sans-serif;">Change the Tab Icon.</p>
+                                <form id="iconform"><input class="bg-dark border rounded-0 border shadow-lg" type="url" placeholder="Icon URL" style="width: 100%; height: 40px; font-family: 'Montserrat Alternates', sans-serif;" />
+                                    <input class="btn btn-dark btn-lg bg-dark border-dark rounded-0 border shadow-lg" type="submit" value="Apply" style="width: 100%;padding: 8px;margin: 0px;height: 90%;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">
+                                    <a href="/i.html">How To Find Icon URL</a>
+                                </form>
+                                <script src="assets/js/header.js"></script>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Particles.js background  -->
+        <div id="particles-js" style="height: 500px;">
+            <div class="d-flex justify-content-center align-items-center" style="height: inherit;min-height: initial;width: 100%;position: absolute;left: 0;">
+                <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js "></script>
+                <script>
+                    /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+                    particlesJS.load('particles-js', 'particles.json', function() {
+                        console.log('particlesjs loaded.......');
+                    });
+                </script>
+                <!-- Games Embed  -->
+                <div class="container">
+                    <div class="box">
+                        <div id="glist">
+                            <script>
+                                function gsearch() {
+                                    var e, t, n, a;
+                                    for (e = document.getElementById("gsearchbar").value.toUpperCase(), t = document.getElementById("glist"), a = 0; a < t.querySelectorAll("a[href]").length; a++)(n = t.getElementsByTagName("a")[a]).innerHTML.toUpperCase().indexOf(e) > -1 ? n.style.display = "block" : n.style.display = "none"
+                                }
+                            </script>
+                            <!-- Important: Use <wbr> to mess with keywords.  -->
+                            <input type="text" id="gsearchbar" onkeyup="gsearch()" autocomplete="off" placeholder="Search" />
+                            <h2>HTML5 Ga<wbr>mes</h2>
 
-<h2>Holy Unblocker Games</h2>
-<h4>The list of games you can play on here!</h4>
+                            <head>
+                                <style>
+                                    <!-- GAME CSS -->div.gallery {
+                                        border: 1px solid #ccc;
+                                    }
+                                    
+                                    div.gallery:hover {
+                                        border: 1px solid #777;
+                                    }
+                                    
+                                    div.gallery img {
+                                        width: 100%;
+                                        height: auto;
+                                    }
+                                    
+                                    div.desc {
+                                        padding: 15px;
+                                        text-align: center;
+                                    }
+                                    
+                                    * {
+                                        box-sizing: border-box;
+                                    }
+                                    
+                                    .responsive {
+                                        padding: 0 6px;
+                                        float: left;
+                                        width: 24.99999%;
+                                    }
+                                    
+                                    @media only screen and (max-width: 700px) {
+                                        .responsive {
+                                            width: 49.99999%;
+                                            margin: 6px 0;
+                                        }
+                                    }
+                                    
+                                    @media only screen and (max-width: 500px) {
+                                        .responsive {
+                                            width: 100%;
+                                        }
+                                    }
+                                    
+                                    .clearfix:after {
+                                        content: "";
+                                        display: table;
+                                        clear: both;
+                                    }
+                                </style>
+                            </head>
 
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="index.html">
-      <img src="/assets/img/2048.png" alt="2048" width="600" height="400">
-    </a>
-    <div class="desc">Use your arrow keys to move the tiles. When two tiles with the same number touch, they merge into one. Try to beat your high score!</div>
-  </div>
-</div>
+                            <body>
+
+                                <h2>Holy Unblocker Games</h2>
+                                <h4>The list of games you can play on here!</h4>
+
+                                <div class="responsive">
+                                    <div class="gallery">
+                                        <a target="_blank" href="index.html">
+                                            <img src="/assets/img/2048.png" alt="2048" width="600" height="400">
+                                        </a>
+                                        <div class="desc">Use your arrow keys to move the tiles. When two tiles with the same number touch, they merge into one. Try to beat your high score!</div>
+                                    </div>
+                                </div>
 
 
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="index.html">
-      <img src="/assets/img/astoroids.png" alt="Asteroids" width="600" height="400">
-    </a>
-    <div class="desc">Asteroids is a space-themed multidirectional shooter arcade game!</div>
-  </div>
-</div>
+                                <div class="responsive">
+                                    <div class="gallery">
+                                        <a target="_blank" href="index.html">
+                                            <img src="/assets/img/astoroids.png" alt="Asteroids" width="600" height="400">
+                                        </a>
+                                        <div class="desc">Asteroids is a space-themed multidirectional shooter arcade game!</div>
+                                    </div>
+                                </div>
 
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="img_lights.jpg">
-      <img src="img_lights.jpg" alt="GAME" width="600" height="400">
-    </a>
-    <div class="desc">Add a description</div>
-  </div>
-</div>
+                                <div class="responsive">
+                                    <div class="gallery">
+                                        <a target="_blank" href="img_lights.jpg">
+                                            <img src="img_lights.jpg" alt="GAME" width="600" height="400">
+                                        </a>
+                                        <div class="desc">Add a description</div>
+                                    </div>
+                                </div>
 
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="img_mountains.jpg">
-      <img src="img_mountains.jpg" alt="GAME" width="600" height="400">
-    </a>
-    <div class="desc">Add a description</div>
-  </div>
-</div>
+                                <div class="responsive">
+                                    <div class="gallery">
+                                        <a target="_blank" href="img_mountains.jpg">
+                                            <img src="img_mountains.jpg" alt="GAME" width="600" height="400">
+                                        </a>
+                                        <div class="desc">Add a description</div>
+                                    </div>
+                                </div>
 
-<div class="clearfix"></div>
+                                <div class="clearfix"></div>
 
-<div style="padding:6px;">
-  <p>More games coming soon!</p>
-</div>
+                                <div style="padding:6px;">
+                                    <p>More games coming soon!</p>
+                                </div>
 
-</body>
+                            </body>
+
 </html>
 
 
 
-                            </div>
-                        </div>
-                    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer-dark" style="background-color: rgb(0,0,0);">
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 item text">
+                    <h3><a href="/">Ho<wbr>ly Unb<wbr>loc<wbr>ker</a></h3>
+                    <p>Made by Stu<wbr>dents, For Stud<wbr>ents.&nbsp;</p>
+                </div>
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="//github.com/titaniumnetwork-dev/alloyproxy">Al<wbr>loy</a></li>
+                        <li><a href="//github.com/vibedivide/powermouse">PM P<wbr>ro<wbr>xy</a></li>
+                        <li><a href="https://nodeclusters.com/">No<wbr>deClu<wbr>sters</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic">G<wbr>itHub</a></li>
+                        <li><a href="t.html">Privacy and Terms of Service</a></li>
+                        <li><a href="c.html">Credits</a></li>
+                    </ul>
+                </div>
+                <!-- GitHub  -->
+                <div class="col item social">
+                    <a href="https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic">
+                        <ion-icon name="logo-github"></ion-icon>
+                    </a>
                 </div>
             </div>
+            <p class="copyright">Holy U<wbr>nblo<wbr>cke<wbr>r © 2020</p>
         </div>
-    </div>
-    </div>
-    <div class="footer-dark" style="background-color: rgb(0,0,0);">
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 item text">
-                        <h3><a href="/">Ho<wbr>ly Unb<wbr>loc<wbr>ker</a></h3>
-                        <p>Made by Stu<wbr>dents, For Stud<wbr>ents.&nbsp;</p>
-                    </div>
-                    <div class="col-sm-6 col-md-3 item">
-                        <h3>Services</h3>
-                        <ul>
-                            <li><a href="//github.com/titaniumnetwork-dev/alloyproxy">Al<wbr>loy</a></li>
-                            <li><a href="//github.com/vibedivide/powermouse">PM P<wbr>ro<wbr>xy</a></li>
-                            <li><a href="https://nodeclusters.com/">No<wbr>deClu<wbr>sters</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-md-3 item">
-                        <h3>About</h3>
-                        <ul>
-                            <li><a href="https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic">G<wbr>itHub</a></li>
-                            <li><a href="t.html">Privacy and Terms of Service</a></li>
-                            <li><a href="c.html">Credits</a></li>
-                        </ul>
-                    </div>
-                    <!-- GitHub  -->
-                    <div class="col item social">
-                        <a href="https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic">
-                            <ion-icon name="logo-github"></ion-icon>
-                        </a>
-                    </div>
-                </div>
-                <p class="copyright">Holy U<wbr>nblo<wbr>cke<wbr>r © 2020</p>
-            </div>
-        </footer>
-    </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    </footer>
+</div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </body>
 
 </html>
