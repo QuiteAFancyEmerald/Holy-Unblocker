@@ -1,5 +1,5 @@
 {
     "port": "8080",
-    "prefix": "/proxy/",
+    "prefix": "/home/",
     "ssl": false
 }
