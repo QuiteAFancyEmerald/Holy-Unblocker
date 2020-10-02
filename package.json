@@ -20,7 +20,6 @@
         "express-session": "^1.17.1",
         "node-fetch": "^2.6.1",
         "sanitizer": "^0.1.3",
-        "session": "^0.1.0",
-        "connect": "~2.12.0"
+        "session": "^0.1.0"
     }
 }
