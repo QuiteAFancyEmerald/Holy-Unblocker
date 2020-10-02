@@ -14,16 +14,16 @@ var icons = [
 
 ]
 
-var psel, prss;
+var csel, prss;
 
 window.addEventListener('DOMContentLoaded', function() {
-    psel = document.getElementById('psel');
+    csel = document.getElementById('csel');
     setPreferences();
     for (var i = 0; i < titles.length; i++) {
         if (i == 0) {
-            psel.innerHTML += '<img title="(Blank)" src="./img/x.png">'
+            csel.innerHTML += '<img title="(Blank)" src="./img/x.png">'
         } else {
-            psel.innerHTML += '<img title="' + titles[i] + '" src="' + icons[i] + '">';
+            csel.innerHTML += '<img title="' + titles[i] + '" src="' + icons[i] + '">';
         }
     }
     document.getElementById('titleform').addEventListener('submit', function(e) {
@@ -46,8 +46,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('csel').addEventListener('click', autoChange, false);
 
-    psel.addEventListener('click', function(e) {
-        prss = Array.from(psel.children).indexOf(e.target);
+    csel.addEventListener('click', function(e) {
+        prss = Array.from(csel.children).indexOf(e.target);
         if (prss != -1) {
             setTitle(titles[prss]);
             setIcon(icons[prss]);
@@ -127,7 +127,7 @@ function pageIcon(value) {
 }
 
 function autoChange() {
-    if (document.getElementById('atch').checked) {
+    if (document.getElementById('csel').checked) {
         var atci = randInt(1, 5);
         pageTitle(titles[atci]);
         pageIcon(icons[atci]);
