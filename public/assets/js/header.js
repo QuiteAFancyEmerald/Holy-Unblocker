@@ -64,11 +64,11 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     }, false);
 
-    document.getElementById('fullscreen').addEventListener('click', function(e) {
-        e.preventDefault();
-        document.getElementById('theframe').requestFullscreen()
-        return false;
-    }, false);
+    /* document.getElementById('fullscreen').addEventListener('click', function(e) {
+         e.preventDefault();
+         document.getElementById('theframe').requestFullscreen()
+         return false;
+     }, false); */
 }, false);
 
 function setPreferences() {
