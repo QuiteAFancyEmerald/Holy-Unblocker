@@ -61,6 +61,13 @@
             </nav>
             <div id="particles-js" style="height: 500px;font-family: 'Montserrat Alternates', sans-serif;font-weight: bold;">
                 <div class="d-flex justify-content-center align-items-center" style="height: inherit;min-height: initial;width: 100%;position: absolute;left: 0;background-color: rgba(1,1,,0.63);">
+                    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+                    <script>
+                        /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+                        particlesJS.load('particles-js', 'particles.json', function() {
+                            console.log('particlesjs loaded.......');
+                        });
+                    </script>
                     <div class="d-flex align-items-center order-12" style="height:200px;">
                         <div class="container text-center border rounded justify-content-center align-items-center button" style="color: rgb(255,255,255);filter: blur(0px);opacity: 0.85;">
                             <form id="unblocker-form" action="b" method="get">
@@ -119,7 +126,6 @@
         </footer>
     </div>
     <script src="assets/js/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </body>
