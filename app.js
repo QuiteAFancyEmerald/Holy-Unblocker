@@ -31,32 +31,7 @@
       server_protocol = 'http://';
   };
 
-  var connect = require('connect');
   var login = require('./auth');
-
-  var app = connect();
-
-  app.use(connect.json()); // Parse JSON request body into `request.body`
-  app.use(connect.urlencoded()); // Parse form in request body into `request.body`
-  app.use(connect.cookieParser()); // Parse cookies in the request headers into `request.cookies`
-  app.use(connect.query()); // Parse query string into `request.query`
-
-  function main(request, response, next) {
-      switch (request.method) {
-          case 'GET':
-              get(request, response);
-              break;
-          case 'POST':
-              post(request, response);
-              break;
-          case 'DELETE':
-              del(request, response);
-              break;
-          case 'PUT':
-              put(request, response);
-              break;
-      }
-  };
 
   function get(request, response) {
       var cookies = request.cookies;
