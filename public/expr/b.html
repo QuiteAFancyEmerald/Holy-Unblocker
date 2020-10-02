@@ -11,34 +11,36 @@
 :D">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/i.png">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Customizable-Background--Overlay.css">
     <link rel="stylesheet" href="assets/css/Footer-Dark.css">
     <link rel="stylesheet" href="assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
-    <!-- Important: Use <wbr> to mess with keywords. -->
+    <!--New-->
     <div>
         <div class="header-dark" style="background-color: rgb(0,0,0);background-image: url(&quot;assets/img/black.jpg&quot;);">
-            <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
-                <div class="container"><a class="navbar-brand" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/index.html">Holy Unblocker</a>
+            <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search" style="height: 100px;">
+                <div class="container"><a class="navbar-brand" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/">Holy Unblocker</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item" role="presentation"><a class="nav-link active" href="/z.html">S<wbr>urf Fre<wbr>ely</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="g.html">Ga<wbr>mes</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="/yt.html">YouTube</a></li>
-                            <!-- More Menu -->
-                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">More</a>
-                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;"><a class="dropdown-item" role="presentation" href="/k.html" style="color: rgb(255,255,255);">Krunker</a><a class="dropdown-item" role="presentation" href="/c.html" style="color: rgb(255,255,255);">Credits</a></div>
+                            <li class="nav-item" role="presentation"><a class="nav-link active" href="/z.html" style="font-family: 'Montserrat Alternates', sans-serif;">Surf Freely</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="/g.html" style="font-family: 'Montserrat Alternates', sans-serif;">Games</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="/yt.html" style="font-family: 'Montserrat Alternates', sans-serif;">YouTube</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="/d.html" style="font-family: 'Montserrat Alternates', sans-serif;">Discord</a></li>
+                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;color: rgb(255,255,255);font-family: 'Montserrat Alternates', sans-serif;">More</a>
+                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;"><a class="dropdown-item text-left text-white-50" role="presentation" href="/k.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Krunker</a><a class="dropdown-item text-left text-white-50"
+                                        role="presentation" href="/info.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Docs</a><a class="dropdown-item text-white-50" role="presentation" href="/c.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Credits</a></div>
                             </li>
-                            <!-- Settings Menu -->
-                            <li id="csel" class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Settings</a>
-                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;">
+                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link text-white" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;font-family: 'Montserrat Alternates', sans-serif;">Options</a>
+                                <div id="csel" class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);padding: 17%;padding-top: 10%;padding-bottom: 10%;">
                                     <style>
                                         .csel input[type="submit"] {
                                             cursor: pointer;
@@ -61,9 +63,8 @@
                     </div>
                 </div>
             </nav>
-            <!-- Particles.js background -->
             <div id="particles-js" style="height: 500px;font-family: 'Montserrat Alternates', sans-serif;font-weight: bold;">
-                <div class="d-flex justify-content-center align-items-center" style="height: inherit;min-height: initial;width: 100%;position: absolute;left: 0;background-color: rgba(1,1,,0.63);">
+                <div class="d-flex justify-content-center align-items-center" style="height: inherit;width: 100%;position: absolute;left: 0;background-color: rgba(1,1,,0.63);min-height: initial;">
                     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
                     <script>
                         /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
@@ -72,60 +73,42 @@
                         });
                     </script>
                     <div class="d-flex align-items-center order-12" style="height:200px;">
-                        <div class="container text-center justify-content-center align-items-center button" style="color: rgb(255,255,255);filter: blur(0px);background-color: #000000;">
-                            <!-- NU Submit -->
-                            <form id="unblocker-form">
-                                <p style="font-size: 46px;">N<wbr>ode Unbl<wbr>ocker</p>
-                                <p style="font-family: 'Montserrat Alternates', sans-serif;">A fast, lightw<wbr>eight pr<wbr>oxy developed by&nbsp;<strong>Nath<wbr>an Fri<wbr>edly</strong></p>
-                                <div id="url" class="input-group">
-                                    <div class="input-group-prepend"></div><input id="url" class="bg-white border rounded-0 border-warning shadow-lg" type="text" name="url" value="https://google.com" inputmode="url" style="width: 194px;font-family: 'Montserrat Alternates', sans-serif;">
-                                    <div class="input-group-append"><button class="btn btn-dark btn-lg bg-dark border rounded-0 border-warning shadow-lg" type="submit" style="width: 97px;padding: 8px;margin: 0px;height: 48px;font-family: 'Montserrat Alternates', sans-serif;font-size: 14px;">Nod<wbr>e</button></div>
+                        <div class="container border rounded text-center justify-content-center align-items-center button" style="color: rgb(255,255,255);filter: blur(0px); opacity: 0.95;">
+                            <form id="scontainer" action="/home/session" method="POST">
+                                <p style="font-size: 46px;">Node Unblocker</p>
+                                <p style="font-family: 'Montserrat Alternates', sans-serif;">A flexible secondary proxy compared to Alloy, PM and PD.</p>
+                                <div class="input-group" id="scontainer">
+                                    <div class="input-group-prepend"></div><input class="bg-dark border rounded-0 border-info shadow-sm form-control form-control-lg" type="text" id="url" name="url" inputmode="url" style="width: 194px;font-family: 'Montserrat Alternates', sans-serif;opacity: 0.80; color:rgb(255,255,255);"
+                                        placeholder="Insert URL">
+                                    <div class="input-group-append"><button action="session" method="GET" class="btn btn-dark btn-lg bg-dark border rounded-0 border-info shadow-lg select" data-bs-hover-animate="pulse" type="submit" style="width: 78px;padding: 8px;margin: 0px;height: 46.126px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">Go</button></div>
                                 </div>
                                 <div>
+                                    <!-- Cookie Auth-->
                                     <script>
-                                        function $(id) {
-                                            return document.getElementById(id);
+                                        function setCookie(name, value) {
+                                            document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + date + '; SameSite=None; Secure';
                                         }
 
-                                        $('unblocker-form').onsubmit = function() {
-                                            var url = $('url').value;
-                                            var det = document.domain;
-                                            var domain = det.replace('www.', '').split(/[/?#]/)[0];
-                                            window.location.href = "https://a." + domain + "/call/" + url;
-                                            return false;
-
-                                            if (url.substr(0, 4) != "http") {
-                                                url = "http://a." + url;
+                                        function readCookie(name) {
+                                            var cookie = document.cookie.split('; ');
+                                            var cookies = {};
+                                            for (var i = 0; i < cookie.length; i++) {
+                                                var cur = cookie[i].split('=');
+                                                cookies[cur[0]] = cur[1];
                                             }
-                                            window.location.pathname = 'b?url=' + url;
-                                            return false;
-                                        };
-
-                                        function checkError() {
-                                            var search = window.location.search;
-                                            var start = search.indexOf('error=');
-                                            if (start > -1) {
-                                                var stop = search.indexOf('&', start);
-                                                if (stop == -1) {
-                                                    stop = undefined;
-                                                }
-                                                // +6 for "error="
-                                                var err = search.substr(start + 6, stop);
-                                                var $error = $('error');
-                                                $error.innerText = $error.textContent = decodeURIComponent(err);
-                                                $error.style.display = "block";
-                                            }
+                                            return decodeURIComponent(cookies[name]);
                                         }
 
-                                        window.onload = function() {
-                                            $('url').focus();
-                                            checkError();
+                                        /* Login Cookie*/
+                                        function Login(value) {
+                                            User(value);
+                                            setCookie('session_id', value);
                                         }
                                     </script>
                                 </div>
-                                <p style="font-size: 20px;font-family: 'Montserrat Alternates', sans-serif;">More Information:<br></p>
-                                <p>Flex<wbr>ible proxy but A<wbr>lloy Pr<wbr>oxy is better.<br>Use if you have any iss<wbr>ues with A<wbr>lloy.</p>
-                                <p>GitHub:&nbsp;<a class="text-danger" href="#"><strong><span style="text-decoration: underline;">https://github.com/nfriedly/node-unblocker</span></strong></a><br></p>
+                                <p class="text-primary" style="font-size: 20px;font-family: 'Montserrat Alternates', sans-serif;">More Information:<br></p>
+                                <p class="text-light" style="font-family: Lato, sans-serif;">Works on Discord (QR Code Only), Youtube (Might need to reload), etc.<br><br>Many sites work with this. Explore!</p>
+                                <p class="text-primary" style="font-family: Lato, sans-serif;">GitHub:&nbsp;<a class="text-primary" href="https://github.com/nfriedly/node-unblocker"><strong>&nbsp;https://github.com/nfriedly/node-unblocker</strong></a><br><br>Created by Nathan Friedly.</p>
                             </form>
                         </div>
                     </div>
@@ -133,32 +116,35 @@
             </div>
         </div>
     </div>
+    <!--Old-->
+
+
     <div class="footer-dark" style="background-color: rgb(0,0,0);">
         <footer>
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 item text">
                         <h3><a href="/">Ho<wbr>ly Unb<wbr>loc<wbr>ker</a></h3>
-                        <p>Made by Stu<wbr>dents, For Stu<wbr>dents.&nbsp;</p>
+                        <p>Made by Students, For Students.&nbsp;</p>
                     </div>
                     <div class="col-sm-6 col-md-3 item">
                         <h3>Services</h3>
                         <ul>
-                            <li><a href="/a.html">A<wbr>lloy</a></li>
-                            <li><a href="/b.html">No<wbr>de</a></li>
-                            <li><a href="https://nodeclusters.com/">NodeClust<wbr>ers</a></li>
+                            <li><a href="//github.com/titaniumnetwork-dev/alloyproxy">Al<wbr>loy</a></li>
+                            <li><a href="//github.com/vibedivide/powermouse">PM P<wbr>ro<wbr>xy</a></li>
+                            <li><a href="https://nodeclusters.com/">No<wbr>deClu<wbr>sters</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-3 item">
                         <h3>About</h3>
                         <ul>
-                            <li><a href="https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic">GitHub</a></li>
-                            <li><a href="c.html">Support</a></li>
+                            <li><a href="https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic">G<wbr>itHub</a></li>
+                            <li><a href="t.html">Privacy and Terms of Service</a></li>
                             <li><a href="c.html">Credits</a></li>
                         </ul>
                     </div>
-                    <!-- GitHub -->
-                    <div class="col item social">
+                    <!-- GitHub  -->
+                    <div class="col item social" style="margin: 2%;">
                         <a href="https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic">
                             <ion-icon name="logo-github"></ion-icon>
                         </a>
@@ -170,6 +156,7 @@
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
 </body>
 
 </html>
