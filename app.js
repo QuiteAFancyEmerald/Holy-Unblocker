@@ -61,8 +61,7 @@
 
   app.use(session({
       secret: 'alloy',
-      SameSite = None,
-      Secure,
+      cookie: { sameSite: 'none', secure: 'true' },
       saveUninitialized: true,
       resave: true
   }));
