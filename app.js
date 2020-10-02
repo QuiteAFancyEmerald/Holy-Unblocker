@@ -57,12 +57,9 @@
       }
       if (websitePath == '/') { return `${websiteURL}`; } else return `${websiteURL}${websitePath}`;
   };
-  const uuid = require('uuid/v4')
+
   app.use(session({
       secret: 'alloy',
-      genid: (req) => {
-          return uuid() // use UUIDs for session IDs
-      },
       saveUninitialized: true,
       resave: true
   }));
