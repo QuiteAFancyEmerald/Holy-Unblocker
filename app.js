@@ -66,19 +66,7 @@
       saveUninitialized: true,
       resave: true
   }));
-  app.post('/home/session', (req, res, next) => {
-          console.log('Inside POST /home/session callback')
-          session.authenticate('local', (err, user, info) => {
-              console.log('Inside authenticate() callback');
-              console.log(`req.session: ${JSON.stringify(req.session)}`)
-              console.log(`req.user: ${JSON.stringify(req.user)}`)
-              req.login(user, (err) => {
-                  console.log('Inside req.login() callback')
-                  return res.send('You were authenticated & logged in!\n');
-              })
-          })(req, res, next);
-      })
-      // We made our own version of body-parser instead, due to issues.
+  // We made our own version of body-parser instead, due to issues.
   app.use((req, res, next) => {
       if (req.method == 'POST') {
           req.raw_body = '';
@@ -116,6 +104,7 @@
       let url = querystring.parse(req.raw_body).url;
       if (url.startsWith('//')) { url = 'http:' + url; } else if (url.startsWith('https://') || url.startsWith('http://')) { url = url } else { url = 'http://' + url };
       return res.redirect(config.prefix + rewrite_url(url));
+
   });
 
   app.use(config.prefix, async(req, res, next) => {
