@@ -23,11 +23,15 @@
       key: fs.readFileSync('./ssl/default.key'),
       cert: fs.readFileSync('./ssl/default.crt')
   }
-  if (config.ssl == true) { server = https.createServer(server_options, app);
-      server_protocol = 'https://'; } else { server = http.createServer(app);
-      server_protocol = 'http://'; };
+  if (config.ssl == true) {
+      server = https.createServer(server_options, app);
+      server_protocol = 'https://';
+  } else {
+      server = http.createServer(app);
+      server_protocol = 'http://';
+  };
 
-  var login = require('./login');
+  var login = require('./auth');
 
   console.log(`Alloy Proxy now running on ${server_protocol}0.0.0.0:${config.port}! Proxy prefix is "${config.prefix}"!`);
   server.listen(process.env.PORT || config.port);
