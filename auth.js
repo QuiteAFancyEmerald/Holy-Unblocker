@@ -4,7 +4,7 @@
 function Login() {
     // sessionId -> user map
     this.sessionMap = {
-        99999: { name: 'Foo', email: 'foo@bar.com' }
+        99999: { name: 'HolyUBUser', email: 'HolyUBPass' }
     };
 }
 /**
@@ -12,10 +12,7 @@ function Login() {
  */
 Login.prototype.hello = function(sessionId) {
     if (this.sessionMap[sessionId] == null) {
-
-        return 'Please Login.!';
-    } else {
-        return 'Hello, ' + this.sessionMap[sessionId].name;
+        return this.isLoggedIn;
     }
 };
 /**
@@ -28,10 +25,6 @@ Login.prototype.getName = function(sessionId) {
 /**
  * Get Current Session id user email 
  */
-Login.prototype.getEmail = function(sessionId) {
-    return this.sessionMap[sessionId].email;
-};
-
 
 /**
  * Check whether the given session id is valid (is in sessionMap) or not.
@@ -43,11 +36,8 @@ Login.prototype.isLoggedIn = function(sessionId) {
 /**
  * Create a new session id for the given user.
  */
-Login.prototype.login = function(_name, _email) {
+Login.prototype.login = function() {
     var sessionId = new Date().getTime();
-    this.sessionMap[sessionId] = { name: _name, email: _email }
-    console.log("inside login functionwh ich take email \n")
-    console.log('\n new session id ' + sessionId + ' for login::' + _email);
     return sessionId;
 };
 
