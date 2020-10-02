@@ -82,38 +82,24 @@
                                 </div>
                                 <div>
                                     <script>
-                                        function $(id) {
-                                            return document.getElementById(id);
+                                        function setCookie(name, value) {
+                                            document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + date + '; SameSite=None; Secure';
                                         }
 
-                                        $('unblocker-form').onsubmit = function() {
-                                            var url = $('url').value;
-                                            if (url.substr(0, 4) != "http") {
-                                                url = "http://" + url;
+                                        function readCookie(name) {
+                                            var cookie = document.cookie.split('; ');
+                                            var cookies = {};
+                                            for (var i = 0; i < cookie.length; i++) {
+                                                var cur = cookie[i].split('=');
+                                                cookies[cur[0]] = cur[1];
                                             }
-                                            window.location.pathname = 'b?url=' + url;
-                                            return false;
-                                        };
-
-                                        function checkError() {
-                                            var search = window.location.search;
-                                            var start = search.indexOf('error=');
-                                            if (start > -1) {
-                                                var stop = search.indexOf('&', start);
-                                                if (stop == -1) {
-                                                    stop = undefined;
-                                                }
-                                                // +6 for "error="
-                                                var err = search.substr(start + 6, stop);
-                                                var $error = $('error');
-                                                $error.innerText = $error.textContent = decodeURIComponent(err);
-                                                $error.style.display = "block";
-                                            }
+                                            return decodeURIComponent(cookies[name]);
                                         }
 
-                                        window.onload = function() {
-                                            $('url').focus();
-                                            checkError();
+                                        /* Login Cookie*/
+                                        function Login(value) {
+                                            User(value);
+                                            setCookie('session_id', value);
                                         }
                                     </script>
                                 </div>

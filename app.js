@@ -33,40 +33,6 @@
 
   var login = require('./auth');
 
-  function post(request, response) {
-      var name = request.body.name;
-      var email = request.body.email;
-      var newSessionId = login.login(name, email);
-      response.end("\nLogged In....\n welcome=" + name + " with email id =" + email + "\n\n New session_id=" + response.end(login.hello(newSessionId)));
-  };
-
-  function del(request, response) {
-      console.log("DELETE:: Logout from the server");
-      // Taking cookies from response	
-      var cookies = request.cookies;
-      // Get session id from cookies
-      var sessionId = cookies.session_id;
-      // Performed logout process	
-      login.logout(sessionId);
-      response.end('Logged out from the server\n');
-  };
-
-  function put(request, response) {
-      console.log("PUT:: Re-generate new seesion_id for the same user");
-      var cookies = request.cookies;
-      var sessionId = cookies.session_id;
-      // Taking data from sessionId from sessionMap	
-      var OldName = login.getName(sessionId);
-      var OldEmail = login.getEmail(sessionId);
-      console.log("PUT:: Re-generate new session_id for the same user");
-      // Generate New Session ID and store New Session ID	
-      var newSessionId = login.login(OldName, OldEmail);
-      response.setHeader('Set-Cookie', 'session_id=' + newSessionId);
-      // Remove Old Session ID from sessionMap
-      var temp = login.RefreshSession(sessionId);
-      response.end("Re-freshed session id\n");
-  };
-
   console.log(`Alloy Proxy now running on ${server_protocol}0.0.0.0:${config.port}! Proxy prefix is "${config.prefix}"!`);
   server.listen(process.env.PORT || config.port);
 
