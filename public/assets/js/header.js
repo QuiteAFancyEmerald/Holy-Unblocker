@@ -14,16 +14,16 @@ var icons = [
 
 ]
 
-var csel, prss;
+var psel, prss;
 
 window.addEventListener('DOMContentLoaded', function() {
-    csel = document.getElementById('csel');
+    psel = document.getElementById('csel');
     setPreferences();
     for (var i = 0; i < titles.length; i++) {
         if (i == 0) {
-            csel.innerHTML += '<img title="(Blank)" src="./img/x.png">'
+            psel.innerHTML += '<img title="(Blank)" src="./img/x.png">'
         } else {
-            csel.innerHTML += '<img title="' + titles[i] + '" src="' + icons[i] + '">';
+            psel.innerHTML += '<img title="' + titles[i] + '" src="' + icons[i] + '">';
         }
     }
     document.getElementById('titleform').addEventListener('submit', function(e) {
@@ -44,10 +44,8 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     }, false);
 
-    document.getElementById('csel').addEventListener('click', autoChange, false);
-
-    csel.addEventListener('click', function(e) {
-        prss = Array.from(csel.children).indexOf(e.target);
+    psel.addEventListener('click', function(e) {
+        prss = Array.from(psel.children).indexOf(e.target);
         if (prss != -1) {
             setTitle(titles[prss]);
             setIcon(icons[prss]);
