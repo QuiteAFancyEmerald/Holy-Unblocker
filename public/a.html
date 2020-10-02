@@ -37,8 +37,8 @@
                                 <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;"><a class="dropdown-item text-left text-white-50" role="presentation" href="/k.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Krunker</a><a class="dropdown-item text-left text-white-50"
                                         role="presentation" href="/info.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Docs</a><a class="dropdown-item text-white-50" role="presentation" href="/c.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Credits</a></div>
                             </li>
-                            <li id="csel" class="nav-item dropdown"><a class="dropdown-toggle nav-link text-white" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;font-family: 'Montserrat Alternates', sans-serif;">Options</a>
-                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);padding: 17%;padding-top: 10%;padding-bottom: 10%;">
+                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link text-white" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;font-family: 'Montserrat Alternates', sans-serif;">Options</a>
+                                <div id="csel" class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);padding: 17%;padding-top: 10%;padding-bottom: 10%;">
                                     <style>
                                         .csel input[type="submit"] {
                                             cursor: pointer;
@@ -62,7 +62,7 @@
                 </div>
             </nav>
             <div id="particles-js" style="height: 500px;font-family: 'Montserrat Alternates', sans-serif;font-weight: bold;">
-                <div class="d-flex justify-content-center align-items-center" style="height: inherit;min-height: initial;width: 100%;position: absolute;left: 0;background-color: rgba(1,1,,0.63);">
+                <div class="d-flex justify-content-center align-items-center" style="height: inherit;width: 100%;position: absolute;left: 0;background-color: rgba(1,1,,0.63);min-height: initial;">
                     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
                     <script>
                         /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
@@ -71,17 +71,56 @@
                         });
                     </script>
                     <div class="d-flex align-items-center order-12" style="height:200px;">
-                        <div class="container text-center border rounded justify-content-center align-items-center button" style="color: rgb(255,255,255);filter: blur(0px);opacity: 0.95;">
-                            <form id="unblocker-form" action="b" method="get">
-                                <p style="font-size: 46px;">Surf Freely</p>
-                                <p style="font-family: 'Montserrat Alternates', sans-serif;">Choose which proxy you would like to use. Below is some information.</p>
-                                <p class="text-primary" style="font-size: 20px;font-family: Lato, sans-serif;">More Information:<br></p>
-                                <p class="text-light" style="font-family: Lato, sans-serif;">Alloy: YouTube (Full), CoolMathGames, etc.<br><br>Node: Secondary proxy compared to Alloy, PM and PD.<br><br>PM Proxy: Discord, Youtube (limited), etc.<br><br>PyDodge (TBA): Alternative proxy.<br><br><strong>Many sites work with this. Explore!</strong><br><br></p>
-                                <div class="btn-group" role="group" style="background-color: #030303;margin: 2%;padding: 1px;"><a class="btn btn-primary text-info border rounded-0 border-primary" role="button" data-bs-hover-animate="pulse" style="background-color: rgb(24,26,28);font-family: 'Montserrat Alternates', sans-serif;" href="/a.html">Alloy Proxy</a>
-                                    <a class="btn btn-primary text-info border rounded-0 border-primary" role="button" data-bs-hover-animate="pulse" style="background-color: rgb(24,26,28);font-family: 'Montserrat Alternates', sans-serif;" href="/bold.html">Node Unblocker</a>
-                                    <a class="btn btn-primary text-info border rounded-0 border-primary" role="button" data-bs-hover-animate="pulse" style="background-color: rgb(24,26,28);font-family: 'Montserrat Alternates', sans-serif;" href="/bold.html">PM Proxy</a>
-                                    <a class="btn btn-primary text-info border rounded-0 border-primary" role="button" data-bs-hover-animate="pulse" style="background-color: rgb(24,26,28);font-family: 'Montserrat Alternates', sans-serif;" href="/bold.html">PyDodge Proxy</a>
+                        <div class="container text-center justify-content-center align-items-center button" style="color: rgb(255,255,255);filter: blur(0px);background-color: #000000;">
+                            <form id="scontainer" action="/home" method="POST">
+                                <p style="font-size: 46px;">Alloy Proxy</p>
+                                <p style="font-family: 'Montserrat Alternates', sans-serif;">A fast, lightweight proxy developed by Titanium Network.</p>
+                                <div class="input-group" id="scontainer">
+                                    <div class="input-group-prepend"></div><input class="bg-dark border rounded-0 border-info shadow-sm form-control form-control-lg" type="text" id="url" name="url" inputmode="url" style="width: 194px;font-family: 'Montserrat Alternates', sans-serif;opacity: 0.80;"
+                                        placeholder="Insert URL">
+                                    <div class="input-group-append"><button class="btn btn-dark btn-lg bg-dark border rounded-0 border-info shadow-lg select" data-bs-hover-animate="pulse" type="submit" style="width: 78px;padding: 8px;margin: 0px;height: 46.126px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">Go</button></div>
                                 </div>
+                                <div>
+                                    <script>
+                                        function $(id) {
+                                            return document.getElementById(id);
+                                        }
+
+                                        $('unblocker-form').onsubmit = function() {
+                                            var url = $('url').value;
+                                            if (url.substr(0, 4) != "http") {
+                                                url = "http://" + url;
+                                            }
+                                            window.location.pathname = 'b?url=' + url;
+                                            return false;
+                                        };
+
+                                        function checkError() {
+                                            var search = window.location.search;
+                                            var start = search.indexOf('error=');
+                                            if (start > -1) {
+                                                var stop = search.indexOf('&', start);
+                                                if (stop == -1) {
+                                                    stop = undefined;
+                                                }
+                                                // +6 for "error="
+                                                var err = search.substr(start + 6, stop);
+                                                var $error = $('error');
+                                                $error.innerText = $error.textContent = decodeURIComponent(err);
+                                                $error.style.display = "block";
+                                            }
+                                        }
+
+                                        window.onload = function() {
+                                            $('url').focus();
+                                            checkError();
+                                        }
+                                    </script>
+                                </div>
+                                <p class="text-primary" style="font-size: 20px;font-family: 'Montserrat Alternates', sans-serif;">More Information:<br></p>
+                                <p class="text-secondary" style="font-family: Lato, sans-serif;">Works on Discord (QR Code Only), Youtube (Might need to reload), etc.<br><br>Many sites work with this. Explore!</p>
+                                <p class="text-primary" style="font-family: Lato, sans-serif;">GitHub:&nbsp;<a class="text-primary" href="https://github.com/titaniumnetwork-dev/alloyproxy"><strong>&nbsp;https://github.com/titaniumnetwork-dev/alloyproxy</strong></a><br><br>Alloy Proxy created by SexyDuceDuce (a very
+                                    epic person) :D</p>
                             </form>
                         </div>
                     </div>
