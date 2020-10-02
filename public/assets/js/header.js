@@ -6,14 +6,17 @@ function randInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+/* Title Presets*/
 var titles = [
 
 ]
 
+/* Icon Presets*/
 var icons = [
 
 ]
 
+/* Settings Menu Variables*/
 var psel, prss;
 
 window.addEventListener('DOMContentLoaded', function() {
@@ -26,6 +29,8 @@ window.addEventListener('DOMContentLoaded', function() {
             psel.innerHTML += '<img title="' + titles[i] + '" src="' + icons[i] + '">';
         }
     }
+
+    /* Title Submit*/
     document.getElementById('titleform').addEventListener('submit', function(e) {
         e.preventDefault();
         if (this.firstChild.value) {
@@ -35,6 +40,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     }, false);
 
+    /* Icon Submit*/
     document.getElementById('iconform').addEventListener('submit', function(e) {
         e.preventDefault();
         if (this.firstChild.value) {
@@ -44,6 +50,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     }, false);
 
+    /* Settings Submit*/
     psel.addEventListener('click', function(e) {
         prss = Array.from(psel.children).indexOf(e.target);
         if (prss != -1) {
@@ -52,6 +59,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     }, false);
 
+    /* Settings Menu Event*/
     document.getElementById('csel').addEventListener('click', function(e) {
         if (this.checked) {
             window.onbeforeunload = function(e) {
@@ -64,6 +72,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     }, false);
 
+    /* Fullscreen Feature Addition*/
     /* document.getElementById('fullscreen').addEventListener('click', function(e) {
          e.preventDefault();
          document.getElementById('theframe').requestFullscreen()
@@ -71,6 +80,7 @@ window.addEventListener('DOMContentLoaded', function() {
      }, false); */
 }, false);
 
+/* Title and Icon Cookies... and yes this is cookie based*/
 function setPreferences() {
     if (readCookie('HBTitle') != 'undefined') {
         pageTitle(readCookie('HBTitle'));
@@ -80,10 +90,12 @@ function setPreferences() {
     }
 }
 
+/* Set Cookie Secure*/
 function setCookie(name, value) {
     document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + date + '; SameSite=None; Secure';
 }
 
+/* Read Cookie*/
 function readCookie(name) {
     var cookie = document.cookie.split('; ');
     var cookies = {};
@@ -94,16 +106,19 @@ function readCookie(name) {
     return decodeURIComponent(cookies[name]);
 }
 
+/* Set Title from Input Value*/
 function setTitle(value) {
     pageTitle(value);
     setCookie('HBTitle', value);
 }
 
+/* Set Icon from Input Value*/
 function setIcon(value) {
     pageIcon(value);
     setCookie('HBIcon', value);
 }
 
+/* Title Attach*/
 function pageTitle(value) {
     document.getElementsByTagName('title')[0].innerHTML = value;
     try {
@@ -111,6 +126,7 @@ function pageTitle(value) {
     } catch (e) { console.log(e); }
 }
 
+/* Icon Attach*/
 function pageIcon(value) {
     var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.rel = 'icon';
@@ -124,6 +140,7 @@ function pageIcon(value) {
     } catch (e) { console.log(e); }
 }
 
+/* Tab Cloak*/
 function autoChange() {
     if (document.getElementById('csel').checked) {
         var atci = randInt(1, 5);
