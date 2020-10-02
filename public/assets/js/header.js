@@ -52,10 +52,10 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     }, false);
 
-    document.getElementById('cwbox').addEventListener('click', function(e) {
+    document.getElementById('csel').addEventListener('click', function(e) {
         if (this.checked) {
             window.onbeforeunload = function(e) {
-                var message = 'Oopsie poopsie'
+                var message = 'Error Tab Cloak'
                 e.returnValue = message;
                 return message;
             };
