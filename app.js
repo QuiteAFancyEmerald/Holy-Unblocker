@@ -33,22 +33,6 @@
 
   var login = require('./auth');
 
-  function get(request, response) {
-      var cookies = request.cookies;
-      console.log(cookies);
-      if ('session_id' in cookies) {
-          var sid = cookies['session_id'];
-          if (login.isLoggedIn(sid)) {
-              response.setHeader('Set-Cookie', 'session_id=' + sid);
-              response.end(login.hello(sid));
-          } else {
-              response.end("Invalid session_id! Please login again\n");
-          }
-      } else {
-          response.end("Please login via HTTP POST\n");
-      }
-  };
-
   function post(request, response) {
       var name = request.body.name;
       var email = request.body.email;
@@ -149,6 +133,19 @@
   });
 
   app.post(`${config.prefix}session/`, async(req, res, next) => {
+      var cookies = request.cookies;
+      console.log(cookies);
+      if ('session_id' in cookies) {
+          var sid = cookies['session_id'];
+          if (login.isLoggedIn(sid)) {
+              response.setHeader('Set-Cookie', 'session_id=' + sid);
+              response.end(login.hello(sid));
+          } else {
+              response.end("Invalid session_id! Please login again\n");
+          }
+      } else {
+          response.end("Please login via HTTP POST\n");
+      }
       let url = querystring.parse(req.raw_body).url;
       if (url.startsWith('//')) { url = 'http:' + url; } else if (url.startsWith('https://') || url.startsWith('http://')) { url = url } else { url = 'http://' + url };
       return res.redirect(config.prefix + rewrite_url(url));
