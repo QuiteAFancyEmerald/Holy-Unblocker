@@ -163,8 +163,14 @@
                 <div class="container">
                     <div class="box">
                         <div id="glist">
+                            <script>
+                                function gsearch() {
+                                    var a, b, c, i;
+                                    for (a = document.getElementById("gsearchbar").value, b = document.getElementById("glist").getElementsByTagName("a"), i = 0; i < b.length; i++)(c = b[i]).textContent.toUpperCase().indexOf(a.toUpperCase()) > -1 ? c.style.display = "block" : c.style.display = "none";
+                                }
+                            </script>
                             <!-- Important: Use <wbr> to mess with keywords.  -->
-                            <input id="scontainer" action="/home/session" method="POST" type="submit" id="gsearchbar" autocomplete="off" placeholder="Search Alloy" />
+                            <input type="text" id="gsearchbar" autocomplete="off" onkeyup="gsearch()" placeholder="Search Games" />
                             <div>
                                 <!-- Game CSS-->
                                 <style>
