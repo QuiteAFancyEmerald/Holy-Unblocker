@@ -75,7 +75,7 @@
                     </script>
                     <div class="d-flex align-items-center order-12" style="height:200px;">
                         <div class="container border rounded text-center justify-content-center align-items-center button" style="color: rgb(255,255,255);filter: blur(0px); opacity: 0.95;">
-                            <form onkeydown="nu()">
+                            <form id="pc" onkeydown="nu()">
                                 <p style=" font-size: 46px; ">P<wbr>yDo<wbr>dge B</p>
                                 <p style="font-family: 'Montserrat Alternates', sans-serif; ">An alterna<wbr>tive pr<wbr>oxy of a modi<wbr>fied Via Pro<wbr>xy by O<wbr>lyB.</p>
                                 <div class="input-group ">
@@ -85,6 +85,13 @@
                                 0px;height: 46.126px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px; ">Go</button></div>
                                 </div>
                                 <div>
+                                    <script>
+                                        var header = document.getElementById("pc");
+                                        var btns = header.getElementsByClassName("pdprox");
+                                        for (var i = 0; i < btns.length; i++) {
+                                            btns[i].addEventListener("click", function() {});
+                                        }
+                                    </script>
                                 </div>
                                 <p class="text-primary " style="font-size: 20px;font-family: 'Montserrat Alternates', sans-serif; ">More Information:<br></p>
                                 <p class="text-light " style="font-family: Lato, sans-serif; ">Works on vari<wbr>ous sites.<br><br>Explore!</p>
@@ -138,7 +145,6 @@
     <script src="assets/bootstrap/js/bootstrap.min.js "></script>
     <script src="assets/js/bs-init.js "></script>
     <script src="expr/bp.js "></script>
-    <script src="expr/auth.js "></script>
 </body>
 
 </html>
