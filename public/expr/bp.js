@@ -42,7 +42,7 @@ if (host.length == 3) {
     auth = `${host[1]}.${host[2]}`;
 }
 
-Array.from(document.getElementsByTagName('button')).forEach(e => {
+Array.from(document.getElementsByTagName('auth')).forEach(e => {
     e.addEventListener('click', () => {
         document.cookie = 'session; max-age=259200; sameSite=lax; domain=' + auth + '; path=/; secure;';
     });
