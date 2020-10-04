@@ -1,5 +1,5 @@
-function nu() {
-    $('url').focus();
+function pd() {
+    $('pdurl').focus();
 }
 
 function on() {
