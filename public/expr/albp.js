@@ -2,8 +2,8 @@ function $(id) {
     return document.getElementById(id);
 };
 
-//NU
-$('nprox').onclick = function() {
+//AL
+$('al').onclick = function() {
     document.cookie = 'nu_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
