@@ -1,4 +1,12 @@
-function() {
+function nu() {
+    $('url').focus();
+}
+
+function pm() {
+    $('url').focus();
+}
+
+function pd() {
     $('url').focus();
 }
 
