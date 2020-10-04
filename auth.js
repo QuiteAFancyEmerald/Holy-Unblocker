@@ -1,11 +1,6 @@
 #!/usr/bin/env node
 
-const express = require('express'),
-    app = express(),
-    session = require('express-session'),
-
-
-    var crypto = require('crypto');
+var crypto = require('crypto');
 var os = require('os');
 var querystring = require('querystring');
 var url = require('url');
@@ -24,19 +19,12 @@ module.exports = function(env) {
     return module.exports;
 };
 
-app.use(session({
-    secret: 'nu_auth',
-    cookie: { sameSite: 'none', secure: 'true' },
-    saveUninitialized: true,
-    resave: true
-}));
-
 module.exports.auth = function(req, res, next) {
     // Allow using with express as well as socket.io
     next = next || res;
     var cookies = new Cookies(req);
-    var hash = cookies.get('nu_auth') ?
-        module.exports.hash(cookies.get('nu_auth')) : '';
+    var hash = cookies.get('session') ?
+        module.exports.hash(cookies.get('session')) : '';
     if (settings.hashes.indexOf(hash) >= 0) {
         next();
     } else {
@@ -47,7 +35,7 @@ module.exports.auth = function(req, res, next) {
 module.exports.sign = function(req, res, next) {
     var cookies = new Cookies(req, res);
     var query = url.parse(req.url, true).query;
-    cookies.set('nu_auth', query.key ? module.exports.hash(query.key) : null);
+    cookies.set('session', query.key ? module.exports.hash(query.key) : null);
     res.writeHead(302, { location: query.path ? query.path : settings.redirect });
     res.end();
 };
