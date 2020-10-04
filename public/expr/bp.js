@@ -50,3 +50,11 @@ Array.from(document.getElementsByTagName('button')).forEach(e => {
 window.onload = function() {
     $('url').focus();
 }
+
+window.onload = function() {
+    $('pdurl').focus();
+}
+
+window.onload = function() {
+    $('pmurl').focus();
+}
