@@ -21,6 +21,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        function() {
+            $('url').focus();
+        }
+    </script>
 </head>
 
 <body>
@@ -63,6 +68,7 @@
                     </div>
                 </div>
             </nav>
+            <iframe id="frame" src="about:blank"></iframe>
             <div id="particles-js" style="height: 500px;font-family: 'Montserrat Alternates', sans-serif;font-weight: bold;">
                 <div class="d-flex justify-content-center align-items-center" style="height: inherit;width: 100%;position: absolute;left: 0;background-color: rgba(1,1,,0.63);min-height: initial;">
                     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -78,9 +84,9 @@
                                 <p style=" font-size: 46px; ">Node Unblocker</p>
                                 <p style="font-family: 'Montserrat Alternates', sans-serif; ">A flexible secondary proxy compared to Alloy, PM and PD.</p>
                                 <div class="input-group ">
-                                    <div class="input-group-prepend"></div><input class="bg-dark border rounded-0 border-info shadow-sm form-control form-control-lg " type="text " id="nu " name="url" style="width: 194px;font-family:
+                                    <div class="input-group-prepend"></div><input id="url" class="bg-dark border rounded-0 border-info shadow-sm form-control form-control-lg " type="text" name="url" style="width: 194px;font-family:
                                 'Montserrat Alternates', sans-serif;opacity: 0.80; color:rgb(255,255,255); " placeholder="Insert URL ">
-                                    <div class="input-group-append "><button onclick="nu()" id="nprox " method="GET" class="btn btn-dark btn-lg bg-dark border rounded-0 border-info shadow-lg select " data-bs-hover-animate="pulse " type="submit " style="width: 78px;padding: 8px;margin:
+                                    <div class="input-group-append "><button id="nprox" class="btn btn-dark btn-lg bg-dark border rounded-0 border-info shadow-lg select " data-bs-hover-animate="pulse " type="submit " style="width: 78px;padding: 8px;margin:
                                 0px;height: 46.126px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px; ">Go</button></div>
                                 </div>
                                 <div>
