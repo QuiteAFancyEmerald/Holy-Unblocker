@@ -3,7 +3,7 @@ function $(id) {
 };
 
 $('pdprox').onclick = function() {
-    var url = $('pdurl').value;
+    var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     window.location.href = "https://pd." + domain + "/course/" + url;
@@ -25,5 +25,5 @@ Array.from(document.getElementsByTagName('button')).forEach(e => {
 });
 
 window.onload = function() {
-    $('pdurl').focus();
+    $('url').focus();
 }
