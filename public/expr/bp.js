@@ -29,12 +29,6 @@ $('pmprox').onclick = function() {
     return false;
 };
 
-// AL Auth
-$('al').onclick = function() {
-    document.cookie = 'al_auth=yes; expires=' + (Date.now() + 259200) + '; sameSite=none; domain=.' + auth + '; path=/; secure;';
-    return false;
-};
-
 // Cookie Auth
 var host = location.hostname.split('.');
 var auth = location.hostname;
