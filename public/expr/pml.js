@@ -1,5 +1,5 @@
 function pm() {
-    $('pmurl').focus();
+    $('url').focus();
 }
 
 function on() {
