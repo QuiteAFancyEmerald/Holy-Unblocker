@@ -7,7 +7,7 @@ $('nprox').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     window.location.href = "https://a." + domain + "/call/" + url;
-    document.cookie = '_nu_auth=yes; expires=' + (Date.now() + 259200) + '; sameSite=lax; domain=.' + auth + '; path=/; secure;';
+    document.cookie = 'nu_auth=yes; expires=' + (Date.now() + 259200) + '; sameSite=none; domain=.' + auth + '; path=/; secure;';
     return false;
 };
 
@@ -16,7 +16,7 @@ $('pdprox').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     window.location.href = "https://pd." + domain + "/course/" + url;
-    document.cookie = '_pd_auth=yes; expires=' + (Date.now() + 259200) + '; sameSite=lax; domain=.' + auth + '; path=/; secure;';
+    document.cookie = 'pd_auth=yes; expires=' + (Date.now() + 259200) + '; sameSite=none; domain=.' + auth + '; path=/; secure;';
     return false;
 };
 
@@ -25,13 +25,13 @@ $('pmprox').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     window.location.href = "https://p." + domain + "/" + url;
-    document.cookie = '_pm_auth=yes; expires=' + (Date.now() + 259200) + '; sameSite=lax; domain=.' + auth + '; path=/; secure;';
+    document.cookie = 'pm_auth=yes; expires=' + (Date.now() + 259200) + '; sameSite=none; domain=.' + auth + '; path=/; secure;';
     return false;
 };
 
 // AL Auth
 $('al').onclick = function() {
-    document.cookie = '_al_auth=yes; expires=' + (Date.now() + 259200) + '; sameSite=lax; domain=.' + auth + '; path=/; secure;';
+    document.cookie = 'al_auth=yes; expires=' + (Date.now() + 259200) + '; sameSite=none; domain=.' + auth + '; path=/; secure;';
     return false;
 };
 
