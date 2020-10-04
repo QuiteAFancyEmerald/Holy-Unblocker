@@ -1,7 +1,7 @@
 function $(id) {
     return document.getElementById(id);
 };
-
+//PD
 $('pdprox').onclick = function() {
     var url = $('url').value;
     var det = document.domain;

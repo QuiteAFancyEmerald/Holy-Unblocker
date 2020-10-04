@@ -1,4 +1,5 @@
-function pd() {
+//NU Load
+function al() {
     $('url').focus();
 }
 

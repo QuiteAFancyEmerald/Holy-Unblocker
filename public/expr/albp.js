@@ -2,11 +2,8 @@ function $(id) {
     return document.getElementById(id);
 };
 
+//NU
 $('nprox').onclick = function() {
-    var url = $('url').value;
-    var det = document.domain;
-    var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    window.location.href = "https://a." + domain + "/call/" + url;
     document.cookie = 'nu_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + auth + '; path=/; Secure;';
     return false;
 };

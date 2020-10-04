@@ -1,4 +1,5 @@
-function nu() {
+//PM Load
+function pm() {
     $('url').focus();
 }
 
