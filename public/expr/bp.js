@@ -11,12 +11,8 @@ $('nprox').onclick = function() {
     return false;
 };
 
-function $(id) {
-    return document.getElementById(id);
-};
-
 $('pdprox').onclick = function() {
-    var url = $('url').value;
+    var url = $('pdurl').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     window.location.href = "https://pd." + domain + "/course/" + url;
@@ -24,21 +20,13 @@ $('pdprox').onclick = function() {
     return false;
 };
 
-function $(id) {
-    return document.getElementById(id);
-};
-
 $('pmprox').onclick = function() {
-    var url = $('url').value;
+    var url = $('pmurl').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     window.location.href = "https://p." + domain + "/" + url;
     document.cookie = 'pm_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + auth + '; path=/; Secure;';
     return false;
-};
-
-function $(id) {
-    return document.getElementById(id);
 };
 
 $('al').onclick = function() {

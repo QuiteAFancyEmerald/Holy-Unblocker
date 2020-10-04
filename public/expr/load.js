@@ -3,11 +3,11 @@ function nu() {
 }
 
 function pm() {
-    $('url').focus();
+    $('pmurl').focus();
 }
 
 function pd() {
-    $('url').focus();
+    $('pdurl').focus();
 }
 
 function on() {
