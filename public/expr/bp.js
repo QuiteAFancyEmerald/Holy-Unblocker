@@ -11,6 +11,10 @@ $('nprox').onclick = function() {
     return false;
 };
 
+function $(id) {
+    return document.getElementById(id);
+};
+
 $('pdprox').onclick = function() {
     var url = $('url').value;
     var det = document.domain;
@@ -20,6 +24,10 @@ $('pdprox').onclick = function() {
     return false;
 };
 
+function $(id) {
+    return document.getElementById(id);
+};
+
 $('pmprox').onclick = function() {
     var url = $('url').value;
     var det = document.domain;
@@ -27,6 +35,10 @@ $('pmprox').onclick = function() {
     window.location.href = "https://p." + domain + "/" + url;
     document.cookie = 'pm_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + auth + '; path=/; Secure;';
     return false;
+};
+
+function $(id) {
+    return document.getElementById(id);
 };
 
 $('al').onclick = function() {
