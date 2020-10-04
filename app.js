@@ -66,12 +66,6 @@
       resave: true
   }));
 
-  app.use(session({
-      secret: 'nu_auth',
-      cookie: { sameSite: 'none', secure: 'true' },
-      saveUninitialized: true,
-      resave: true
-  }));
 
   // We made our own version of body-parser instead, due to issues.
   app.use((req, res, next) => {

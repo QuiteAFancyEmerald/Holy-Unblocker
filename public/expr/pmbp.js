@@ -3,7 +3,7 @@ function $(id) {
 };
 
 $('pmprox').onclick = function() {
-    var url = $('pmurl').value;
+    var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     window.location.href = "https://p." + domain + "/" + url;
@@ -26,5 +26,5 @@ Array.from(document.getElementsByTagName('button')).forEach(e => {
 });
 
 window.onload = function() {
-    $('pmurl').focus();
+    $('url').focus();
 }
