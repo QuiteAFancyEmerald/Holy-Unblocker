@@ -1,4 +1,5 @@
-function $(id) {
+function nu() {
+    $(id);
     return document.getElementById(id);
 };
 
