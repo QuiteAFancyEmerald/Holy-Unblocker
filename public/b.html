@@ -75,7 +75,7 @@
                     </script>
                     <div class="d-flex align-items-center order-12" style="height:200px;">
                         <div class="container border rounded text-center justify-content-center align-items-center button" style="color: rgb(255,255,255);filter: blur(0px); opacity: 0.95;">
-                            <form onkeydown="nu()">
+                            <form id="pc" onkeydown="nu()">
                                 <p style=" font-size: 46px; ">No&#8203;de Unbloc&#8203;ker</p>
                                 <p style="font-family: 'Montserrat Alternates', sans-serif; ">A flexib&#8203;le seco&#8203;ndary pr&#8203;oxy compared to All&#8203;oy, P&#8203;M and P&#8203;D.</p>
                                 <div class="input-group ">
@@ -85,6 +85,19 @@
                                 0px;height: 46.126px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px; ">Go</button></div>
                                 </div>
                                 <div>
+                                    <script>
+                                        var header = document.getElementById("pc");
+                                        var btns = header.getElementsByClassName("nprox");
+                                        for (var i = 0; i < btns.length; i++) {
+                                            btns[i].addEventListener("click", function() {
+                                                var current = document.getElementsByClassName("active");
+                                                if (current.length > 0) {
+                                                    current[0].className = current[0].className.replace(" active", "");
+                                                }
+                                                this.className += " active";
+                                            });
+                                        }
+                                    </script>
                                 </div>
                                 <p class="text-primary " style="font-size: 20px;font-family: 'Montserrat Alternates', sans-serif; ">More Informat&#8203;ion:<br></p>
                                 <p class="text-light " style="font-family: Lato, sans-serif; ">Works on Di&#8203;scord (QR Code Only), Yout&#8203;ube (Might need to reload), etc.<br><br>Many sites work with this. Explore!</p>

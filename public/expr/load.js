@@ -1,4 +1,4 @@
-function nu() {
+function px() {
     $('url').focus();
 }
 
