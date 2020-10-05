@@ -55,8 +55,8 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 -  `/assets/` is used for various assets for CSS, JS and Bootstrap.
 
 #### Scripts located in `/expr`
-- `[Proxy Initial]bp.js` is used for future implementation of Cookie Auth and navigation to external proxies.
-- `[Proxy Initial]load.js` is used for initializing the bp script(s).
+- `[Proxy Initial]bp.js` is used for future implementation of Cookie Auth and navigation to external proxies. Must be located in the <body> tag.
+- `[Proxy Initial]load.js` is used for initializing the bp script(s). Must be located in the <head> tag.
 
 #### Details of `auth.js`
 - Will be used for the implementation of Cookie Authorization
