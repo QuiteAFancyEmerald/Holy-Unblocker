@@ -46,6 +46,20 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 - `t.html` : Terms of Services, AUP and Privacy Policy page.
 - `k.html` : An iframe version of Krunker with keyword changes. Can be removed if not needed.
 - `yt.html` : An iframe of Youtube running off of the locally hosted Alloy Proxy.
+### Structure Information
+- `/public/` : The physical site base of Holy Unblocker goes here. Do not delete or modify `/utils` as its needed for Alloy.
+
+#### Details of `/public`
+- `/expr` is used for important proxy scripts.
+- `/archive/` and `/css` is used for game related assets and pages.
+-  `/assets/` is used for various assets for CSS, JS and Bootstrap.
+
+#### Scripts located in `/expr`
+- `[Proxy Initial]bp.js` is used for future implementation of Cookie Auth and navigation to external proxies.
+- `[Proxy Initial]load.js` is used for initializing the bp script(s).
+
+#### Details of `auth.js`
+- Will be used for the implementation of Cookie Authorization
 
 ## Future Additions
 - Cookie Authorization
