@@ -84,7 +84,8 @@ This is an example of DNS records involving Heroku. Self-hosting will require `A
 
 - `a.deepsoil.ml` is being used for Node Unblocker.
 - `p.deepsoil.ml` is being used for Powermouse.
-- `a.deepsoil.ml` is being used for PyDodge B.
+- `pd.deepsoil.ml` is being used for PyDodge B.
+- `cdn.deepsoil.ml` is being used for a private Alloy host on the official sites.
 
 As stated previously, Holy Unblocker is hosted locally with Alloy.
 ## More Information
