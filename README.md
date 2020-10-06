@@ -39,8 +39,8 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 - `p.html` : Links to a subdomain for Powermouse. I left it in just in case you would like to setup the site differently.
 - `g.html` : Games page, help from @BinBashBanana and @kinglalu.
 - `info.html` : WIP Documentation
-- `d.html` : Links to an external subdomain with proxied discord. May need to refresh.
-- `e.html` : Links to an external subdomain with PyDodge B. Created by OlyB from a modified Via Proxy.
+- `d.html` : Links to a subdomain with proxied discord. May need to refresh.
+- `e.html` : Links to a subdomain with PyDodge B. Created by OlyB from a modified Via Proxy.
 - `gold.html` : Games page for flash games, credits given to @BinBashBanana and Titanium Network for its assets.
 - `i.html` : Information regarding Settings Menu page. Added this in for standard users.
 - `t.html` : Terms of Services, AUP and Privacy Policy page.
