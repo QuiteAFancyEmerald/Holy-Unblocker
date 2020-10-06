@@ -75,16 +75,21 @@
                     </script>
                     <div class="d-flex align-items-center order-12" style="height:200px;">
                         <div class="container border rounded text-center justify-content-center align-items-center button" style="color: rgb(255,255,255);filter: blur(0px); opacity: 0.95;">
-                            <form id="scontainer" onkeydown="al()" action="/home/session" method="POST">
+                            <form id="scontainer" onkeydown=al() action="/home/session" method="POST">
                                 <p style="font-size: 46px;">Al<wbr>loy Pro<wbr>xy</p>
                                 <p style="font-family: 'Montserrat Alternates', sans-serif;">A fast, lightweight pr<wbr>oxy developed by Tita<wbr>nium N<wbr>etwork.</p>
-                                <div id="scontainer" class="input-group">
+                                <div id="scontainerb" class="input-group">
                                     <div class="input-group-prepend"></div><input id="url" class="bg-dark border rounded-0 border-info shadow-sm form-control form-control-lg" type="text" name="url" inputmode="url" style="width: 194px;font-family: 'Montserrat Alternates', sans-serif;opacity: 0.80; color:rgb(255,255,255);"
                                         placeholder="Insert URL">
                                     <div class="input-group-append"><button name="button" class="btn btn-dark btn-lg bg-dark border rounded-0 border-info shadow-lg select" data-bs-hover-animate="pulse" type="submit" style="width: 78px;padding: 8px;margin: 0px;height: 46.126px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">Go</button></div>
                                 </div>
                                 <div>
                                     <script>
+                                        var header = document.getElementById("scontainerb");
+                                        var btns = header.getElementsByClassName("button");
+                                        for (var i = 0; i < btns.length; i++) {
+                                            btns[i].addEventListener("click", function() {});
+                                        }
                                     </script>
                                 </div>
                                 <p class="text-primary" style="font-size: 20px;font-family: 'Montserrat Alternates', sans-serif;">More Inf<wbr>ormation:<br></p>
