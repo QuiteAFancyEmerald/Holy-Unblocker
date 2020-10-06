@@ -4,6 +4,8 @@ function $(id) {
 
 document.getElementById("hblink").href = "//github.com/QuiteAFancyEmerald/HolyUnblockerPublic";
 
+document.getElementById("hblink2").href = "//github.com/QuiteAFancyEmerald/HolyUnblockerPublic";
+
 document.getElementById("allink").href = "//github.com/titaniumnetwork-dev/alloyproxy";
 
 document.getElementById("tnlink").href = "https://discord.com/invite/Dw6C7p5";
