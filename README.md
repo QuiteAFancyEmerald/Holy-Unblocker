@@ -57,7 +57,7 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 
 #### Scripts located in `/expr`
 - `[Proxy Initial]bp.js` is used for future implementation of Cookie Auth and navigation to external proxies. Must be located in the <body> tag.
-- `[Proxy Initial]load.js` is used for initializing the bp script(s). Must be located in the <head> tag.
+- `[Proxy Initial]load.js` is used for initializing the bp script(s). Must be located in the `<head>` tag.
 
 #### Details of `auth.js`
 - Will be used for the implementation of Cookie Authorization
