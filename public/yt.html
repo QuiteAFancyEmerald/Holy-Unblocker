@@ -30,7 +30,7 @@
                 var det = document.domain;
                 var domain = det.replace('www.', '').split(/[/?#]/)[0];
                 const origin = btoa(yt);
-                window.location.replace("https://cdn." + domain + "/fetch/utils/?url=" + origin);
+                window.location.replace("https:/" + domain + "/home/utils/?url=" + origin);
                 document.cookie = '__alloy_cookie_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
             }
             // Cookie Auth
