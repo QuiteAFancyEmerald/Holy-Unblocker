@@ -32,7 +32,7 @@ function addGa(html) {
             "  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);",
             "})();",
             "</script>"
-            ].join("\n");
+        ].join("\n");
         html = html.replace("</body>", ga + "\n\n</body>");
     }
     return html;
@@ -53,7 +53,7 @@ function googleAnalyticsMiddleware(data) {
 }
 
 var unblockerConfig = {
-    prefix: '/proxy/',
+    prefix: '/run/',
     responseMiddleware: [
         googleAnalyticsMiddleware
     ]
@@ -65,7 +65,7 @@ var unblockerConfig = {
 app.use(unblocker(unblockerConfig));
 
 // serve up static files *after* the proxy is run
-app.use('/', express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + '/nodeub'));
 
 // this is for users who's form actually submitted due to JS being disabled or whatever
 app.get("/no-js", function(req, res) {
