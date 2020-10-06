@@ -9,6 +9,11 @@ function $(id) {
 //};
 
 $('al').onclick = function() {
+    var url = $('url').value;
+    var det = document.domain;
+    var domain = det.replace('www.', '').split(/[/?#]/)[0];
+    const origin = btoa(url)
+    window.location.href = "https://" + domain + "/air/utils/?url=" + origin;
     document.cookie = '__alloy_cookie_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
