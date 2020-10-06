@@ -6,13 +6,6 @@ Official Site: https://www.holyubofficial.ml/
 Be sure to join Titanium Network's Discord for more official site links: https://discord.com/invite/tgT48PH
 
 <a href="https://heroku.com/deploy?template=https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic" title="Deploy to Heroku"><img alt="Deploy to Heroku" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/public/assets/img/heroku.svg?raw" width="140" height="30"><img></a>
-&nbsp;
-<a href="https://azuredeploy.net/" title="Deploy to Azure"><img alt="Deploy to Azure" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/public/assets/img/azure.svg?raw" width="140" height="30"><img></a>
-&nbsp;
-<a href="https://repl.it/github/QuiteAFancyEmerald/HolyUnblockerPublic" title="Run on Repl.it"><img alt="Run on Repl.it" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/public/assets/img/replit.svg?raw" width="140" height="30"><img></a>
-&nbsp;
-<a href="https://glitch.com/edit/#!/import/github/QuiteAFancyEmerald/HolyUnblockerPublic" title="Remix on Glitch"><img alt="Remix on glitch" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/public/assets/img/glitch.svg?raw" width="140" height="30"><img></a>
-
 
 ## How to Install
 
@@ -40,26 +33,11 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 - `g.html` : Games page, help from @BinBashBanana and @kinglalu.
 - `info.html` : WIP Documentation
 - `d.html` : Links to an external subdomain with proxied discord. May need to refresh.
-- `e.html` : Links to an external subdomain with PyDodge B. Created by OlyB from a modified Via Proxy.
-- `gold.html` : Games page for flash games, credits given to @BinBashBanana and Titanium Network for its assets.
+- `gold.html` : Games page, credits given to @BinBashBanana and Titanium Network for its assets.
 - `i.html` : Information regarding Settings Menu page. Added this in for standard users.
 - `t.html` : Terms of Services, AUP and Privacy Policy page.
-- `k.html` : An iframe version of Krunker with keyword changes. Can be removed if not needed.
+- `k.html` : An iframe version of Krunker. Can be removed if not needed.
 - `yt.html` : An iframe of Youtube running off of the locally hosted Alloy Proxy.
-### Structure Information
-- `/public/` : The physical site base of Holy Unblocker goes here. Do not delete or modify `/utils` as its needed for Alloy.
-
-#### Details of `/public`
-- `/expr` is used for important proxy scripts.
-- `/archive/` and `/css` is used for game related assets and pages.
--  `/assets/` is used for various assets for CSS, JS and Bootstrap.
-
-#### Scripts located in `/expr`
-- `[Proxy Initial]bp.js` is used for future implementation of Cookie Auth and navigation to external proxies. Must be located in the <body> tag.
-- `[Proxy Initial]load.js` is used for initializing the bp script(s). Must be located in the <head> tag.
-
-#### Details of `auth.js`
-- Will be used for the implementation of Cookie Authorization
 
 ## Future Additions
 - Cookie Authorization
@@ -83,7 +61,6 @@ This is an example of DNS records involving Heroku. Self-hosting will require `A
 
 - `a.deepsoil.ml` is being used for Node Unblocker.
 - `p.deepsoil.ml` is being used for Powermouse.
-- `a.deepsoil.ml` is being used for PyDodge B.
 
 As stated previously, Holy Unblocker is hosted locally with Alloy.
 ## More Information
@@ -92,7 +69,5 @@ This project uses Alloy Proxy, Node Unblocker and Powermouse which are linked be
 - https://github.com/titaniumnetwork-dev/
 - https://github.com/titaniumnetwork-dev/alloyproxy
 - https://github.com/nfriedly/node-unblocker
-- https://github.com/vibedivide/powermouse
-- https://github.com/BinBashBanana/PyDodge
 - https://nodeclusters.com
 - https://titaniumnetwork.org/
