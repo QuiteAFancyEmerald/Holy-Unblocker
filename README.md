@@ -45,7 +45,8 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 - `i.html` : Information regarding Settings Menu page. Added this in for standard users.
 - `t.html` : Terms of Services, AUP and Privacy Policy page.
 - `k.html` : An iframe version of Krunker with keyword changes. Can be removed if not needed.
-- `yt.html` : An iframe of Youtube running off of the locally hosted Alloy Proxy.
+- `yt.html` : An proxied version of Youtube running off of the locally hosted Alloy Proxy.
+- `ytold.html` : An iframe of Youtube running off of the locally hosted Alloy Proxy.
 ### Structure Information
 - `/public/` : The physical site base of Holy Unblocker goes here. Do not delete or modify `/utils` as its needed for Alloy.
 
