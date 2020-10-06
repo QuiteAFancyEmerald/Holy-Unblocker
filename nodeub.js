@@ -65,7 +65,7 @@ var unblockerConfig = {
 app.use(unblocker(unblockerConfig));
 
 // serve up static files *after* the proxy is run
-app.use('/', express.static(__dirname + '/nodeub'));
+app.use('/', express.static(__dirname + '/public'));
 
 // this is for users who's form actually submitted due to JS being disabled or whatever
 app.get("/no-js", function(req, res) {
