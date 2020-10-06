@@ -32,6 +32,8 @@
   };
 
   var login = require('./auth');
+  var nodeub = require('./nodeub');
+  var newrelicnu = require('./newrelic');
 
   console.log(`Alloy Proxy now running on ${server_protocol}0.0.0.0:${config.port}! Proxy prefix is "${config.prefix}"!`);
   server.listen(process.env.PORT || config.port);
