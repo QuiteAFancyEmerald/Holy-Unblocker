@@ -89,7 +89,7 @@ This is an example of DNS records involving Heroku. Self-hosting will require `A
 
 As stated previously, Holy Unblocker is hosted locally with Alloy.
 ## More Information
-This project uses Alloy Proxy, Node Unblocker and Powermouse which are linked below. Credits also given to Titanium Network and all its developers as this project would not be possible without them. View the official website for more detail. :)
+This project uses Alloy Proxy, Node Unblocker and Powermouse which are linked below. Credits also given to Titanium Network and all it's developers as this project would not be possible without them. View the official website for more detail. :)
 
 - https://github.com/titaniumnetwork-dev/
 - https://github.com/titaniumnetwork-dev/alloyproxy
