@@ -1,4 +1,4 @@
-//NU Load
+//AL Load
 function al() {
     $('url').focus();
 }
