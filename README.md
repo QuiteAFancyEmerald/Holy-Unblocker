@@ -96,5 +96,6 @@ This project uses Alloy Proxy, Node Unblocker and Powermouse which are linked be
 - https://github.com/nfriedly/node-unblocker
 - https://github.com/vibedivide/powermouse
 - https://github.com/BinBashBanana/PyDodge
+- https://github.com/juchi/gameboy.js
 - https://nodeclusters.com
 - https://titaniumnetwork.org/
