@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf8" />
+    <title>Gameboy emulator</title>
+    <link rel="stylesheet" href="/assets/css/gb.css" type="text/css" />
+</head>
+
+<body>
+
+    <header>
+        <h1>Gameboy emulator</h1>
+    </header>
+
+    <div id="container">
+
+        <div class="canvas-container"><canvas id="canvas">Your browser does not seem to support canvas.</canvas></div>
+
+        <p class="commands">
+            <button onclick="g.pause(true);">Pause</button>
+            <button onclick="g.pause(false);">Run</button>
+        </p>
+        <p class="commands">
+            <label><input id="sound-enable" type="checkbox" onchange="g.setSoundEnabled(this.checked);"/> Enable sound (experimental)</label>
+        </p>
+        <p class="commands">
+            <label>
+        Screen zoom
+        <select id="screen-zoom" onchange="g.setScreenZoom(this.value);">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </label>
+        </p>
+
+        <p>
+            <span id="status"></span> <span id="game-name"></span>
+        </p>
+        <p id="error" class="hide"></p>
+
+        <div class="rom-section">
+            <div id="rom-file">
+                <label>Choose a ROM file on your computer: <input type="file" id="file"/></label>
+            </div>
+
+            <div id="rom-drop">
+                <div id="dropzone">
+                    <p>
+                        Or drop a ROM file here
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="keyboard-info">
+            <p>Current keyboard mapping:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gameboy pad</th>
+                        <th>Keyboard mapping</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>A</td>
+                        <td>G</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>START</td>
+                        <td>H</td>
+                    </tr>
+                    <tr>
+                        <td>SELECT</td>
+                        <td>N</td>
+                    </tr>
+                    <tr>
+                        <td>Directional pad</td>
+                        <td>Arrow keys</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer>by <a href="https://github.com/juchi">@Juchi</a> | Follow me on <a href="https://twitter.com/j_chichignoud">Twitter</a></footer>
+
+    </div>
+
+    <script type="text/javascript" src="/assets/js/gameboy.js"></script>
+
+    <script type="text/javascript">
+        // configuration
+        var opts = {
+            romReaders: [
+                new GameboyJS.RomFileReader(),
+                new GameboyJS.RomDropFileReader(document.getElementById('dropzone'))
+            ]
+        };
+        var g = new GameboyJS.Gameboy(document.getElementById('canvas'), opts);
+        g.setSoundEnabled(document.getElementById('sound-enable').checked);
+        g.setScreenZoom(document.getElementById('screen-zoom').value);
+    </script>
+
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-41573790-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+
+</html>
