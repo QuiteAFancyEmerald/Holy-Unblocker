@@ -76,41 +76,46 @@
                             <!-- Book<hhehe>marklets  -->
                             <h1 class="text-center d-md-flex flex-grow-1 justify-content-md-center align-items-md-center" style="color: rgb(242,245,248);font-size: 46px;font-weight: normal;font-family: 'Montserrat Alternates', sans-serif;margin: 7px;padding: 34px;width: 100%;filter: blur(0px);height: 100%;">Bookmarklets<br></h1>
                             <h4>Drag the bookmarklets below to your bookmark bar! :)</h4>
-                            <div>
+                            <div style="padding: 5%;">
                                 <br>
                                 <!-- New Inspect Element Clone-->
-                                <script>
-                                    document.write(`
+                                <div style="padding: 2%;">
+                                    <script>
+                                        document.write(`
                                 <h5>Updated Inspect Element Clone</h5>`);
-                                </script>
-                                <br>
-                                <script>
-                                    document.write(`<a class="btn btn-primary text-info border rounded-0 border-primary" style="background-color: rgb(24,26,28);font-family: 'Montserrat Alternates', sans-serif;" role="button" data-bs-hover-animate="pulse" href="javascript:(function () {var script=document.createElement('script');script.src='https://a.${document.domain}/call/https://x-ray-goggles.mouse.org/webxray.js';script.className='webxray';script.setAttribute('data-lang','en-US');script.setAttribute('data-baseuri','https://a.${document.domain}/call/https://x-ray-goggles.mouse.org');document.body.appendChild(script);}())">Drag Me</a>`);
-                                </script>
-                                <br>
+                                    </script>
+                                    <br>
+                                    <script>
+                                        document.write(`<a class="btn btn-primary text-info border rounded-0 border-primary" style="background-color: rgb(24,26,28);font-family: 'Montserrat Alternates', sans-serif;" role="button" data-bs-hover-animate="pulse" href="javascript:(function () {var script=document.createElement('script');script.src='https://a.${document.domain}/call/https://x-ray-goggles.mouse.org/webxray.js';script.className='webxray';script.setAttribute('data-lang','en-US');script.setAttribute('data-baseuri','https://a.${document.domain}/call/https://x-ray-goggles.mouse.org');document.body.appendChild(script);}())">Drag Me</a>`);
+                                    </script>
+                                </div>
                                 <!-- Universal Tab Cloak-->
-                                <script>
-                                    document.write(`
-                                <h5>Tab Cloak Universal</h5>`);
-                                </script>
-                                <br>
-                                <a class="btn btn-primary text-info border rounded-0 border-primary" style="background-color: rgb(24,26,28);font-family: 'Montserrat Alternates', sans-serif;" role="button" data-bs-hover-animate="pulse" href="(function() {    var link = document.querySelector("
-                                    link[rel*='icon' ]
-                                    ") || document.createElement('link');    link.type = 'image/x-icon';link.rel = 'shortcut icon';    link.href = 'https://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_5.ico';    document.title = 'My Drive - Google Drive';    console.log(document.title);    document.getElementsByTagName('head')[0].appendChild(link);})();">Drag Me</a>
-                                <br>
+                                <div style="padding: 2%;">
+                                    <script>
+                                        document.write(`
+                                    <h5>Tab Cloak Universal</h5>`);
+                                    </script>
+                                    <br>
+                                    <a class="btn btn-primary text-info border rounded-0 border-primary" style="background-color: rgb(24,26,28);font-family: 'Montserrat Alternates', sans-serif;" role="button" data-bs-hover-animate="pulse" href="(function() {    var link = document.querySelector("
+                                        link[rel*='icon' ]
+                                        ") || document.createElement('link');    link.type = 'image/x-icon';link.rel = 'shortcut icon';    link.href = 'https://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_5.ico';    document.title = 'My Drive - Google Drive';    console.log(document.title);    document.getElementsByTagName('head')[0].appendChild(link);})();">Drag Me</a>
+                                    <br>
+                                </div>
                                 <!-- Alt-->
-                                <script>
-                                    document.write(`
+                                <div style="padding: 2%;">
+                                    <script>
+                                        document.write(`
                                 <h5>Alternative Tab Cloak Universal</h5>`);
-                                </script>
-                                <br>
-                                <p>Alternatively, you can use this code to update the disguise every second (same setup)</p>
-                                <br>
-                                <a class="btn btn-primary text-info border rounded-0 border-primary" style="background-color: rgb(24,26,28);font-family: 'Montserrat Alternates', sans-serif;" role="button" data-bs-hover-animate="pulse" href=" javascript:function gcloak() { var link = document.querySelector("
-                                    link[rel*='icon' ] ") || document.createElement('link'); link.type = 'image/x-icon'; link.rel = 'shortcut icon'; link.href = 'https://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_5.ico';
+                                    </script>
+                                    <br>
+                                    <p>Alternatively, you can use this code to update the disguise every second (same setup)</p>
+                                    <br>
+                                    <a class="btn btn-primary text-info border rounded-0 border-primary" style="background-color: rgb(24,26,28);font-family: 'Montserrat Alternates', sans-serif;" role="button" data-bs-hover-animate="pulse" href=" javascript:function gcloak() { var link = document.querySelector("
+                                        link[rel*='icon' ] ") || document.createElement('link'); link.type = 'image/x-icon'; link.rel = 'shortcut icon'; link.href = 'https://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_5.ico';
                                 document.title = 'My Drive - Google Drive'; console.log(document.title); document.getElementsByTagName('head')[0].appendChild(link) }; gcloak();setInterval(gcloak, 1000);">Drag Me</a>
-                                <br>
-                                <p style="line-height: 100%;">The 2 scripts given use a Google Drive disguise as an example, but they can be customized:<br><br>- To change the favicon, replace the link in line 4 with your own image link<br><br> - To change the title, replace the text
+                                    <br>
+                                </div>
+                                <p style="line-height: 100%; padding: 2%;">The 2 scripts given use a Google Drive disguise as an example, but they can be customized:<br><br>- To change the favicon, replace the link in line 4 with your own image link<br><br> - To change the title, replace the text
                                     in the ''s on line 5 with your own title<br><br> - To change the timing, replace the number in line 9 with your own timing (in milliseconds) ge link.href to change the favicon/logo.</p>
                             </div>
                         </div>
