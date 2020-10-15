@@ -3,7 +3,7 @@ const css_obs = require('clean-css');
 const fs = require('fs');
 const path = require('path')
 
-const DIR_TO_OBFUSCATE = __dirname + '/../ToObfuscate/';
+const DIR_TO_OBFUSCATE = __dirname + '/public';
 
 let recursing = 0;
 let count = 0;
@@ -25,12 +25,12 @@ ReadDirectory(DIR_TO_OBFUSCATE);
 function ReadDirectory(path) {
     console.log(`Opening ${path.replace(__dirname, '')}`);
 
-    let new_dir = path.replace('ToObfuscate', 'Obfuscated');
+    let new_dir = path.replace('public');
 
-    let package_name = path.replace(__dirname + '/../ToObfuscate/', '');
+    let package_name = path.replace(__dirname + '/public', '');
     package_name = package_name.substring(0, package_name.indexOf('/'));
 
-    let ui_path = __dirname + '/../OBfuscatedUI/' + package_name + '/ui/' + path.substring(path.indexOf('/ui/') + 4, path.length);
+    let ui_path = __dirname + '/public' + package_name + '/ui/' + path.substring(path.indexOf('/ui/') + 4, path.length);
 
     if (!fs.existsSync(new_dir) && (path.indexOf('/ui/') == -1 || BLACKLISTED[package_name])) {
         fs.mkdir(new_dir);
@@ -137,12 +137,15 @@ function packhtml(theform) {
 
 function encrypt(tx) { var hex = ''; var i; for (i = 0; i < tx.length; i++) { hex += '%' + hexfromdec(tx.charCodeAt(i)) } return hex; }
 
-function hexfromdec(num) { if (num > 65535) { return ("err!") }
+function hexfromdec(num) {
+    if (num > 65535) { return ("err!") }
     first = Math.round(num / 4096 - .5);
     temp1 = num - first * 4096;
     second = Math.round(temp1 / 256 - .5);
     temp2 = temp1 - second * 256;
     third = Math.round(temp2 / 16 - .5);
-    fourth = temp2 - third * 16; return ("" + getletter(third) + getletter(fourth)); }
+    fourth = temp2 - third * 16;
+    return ("" + getletter(third) + getletter(fourth));
+}
 
 function getletter(num) { if (num < 10) { return num; } else { if (num == 10) { return "A" } if (num == 11) { return "B" } if (num == 12) { return "C" } if (num == 13) { return "D" } if (num == 14) { return "E" } if (num == 15) { return "F" } } }
