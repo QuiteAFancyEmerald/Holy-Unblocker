@@ -63,8 +63,6 @@
 
   var login = require('./auth');
 
-  var obfuscate = require('./obfuscator');
-
   app.use(session({
       secret: 'alloy',
       saveUninitialized: true,
