@@ -5,7 +5,7 @@
     "main": "app.js",
     "scripts": {
         "test": "test",
-        "start": "node app.js auth.js ./node_modules/.bin/grunt"
+        "start": "node app.js auth.js ./node_modules/.bin/grunt obfuscator.js"
     },
     "keywords": [
         "proxy",
@@ -22,6 +22,8 @@
         "sanitizer": "^0.1.3",
         "session": "^0.1.0",
         "cookies": "0.4",
-        "ws": "^7.3.1"
+        "ws": "^7.3.1",
+        "javascript-obfuscator": "^0.11.2",
+        "clean-css": "^4.1.9"
     }
 }

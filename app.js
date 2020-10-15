@@ -24,9 +24,13 @@
       key: fs.readFileSync('./ssl/default.key'),
       cert: fs.readFileSync('./ssl/default.crt')
   }
-  if (config.ssl == true) { server = https.createServer(server_options, app);
-      server_protocol = 'https://'; } else { server = http.createServer(app);
-      server_protocol = 'http://'; };
+  if (config.ssl == true) {
+      server = https.createServer(server_options, app);
+      server_protocol = 'https://';
+  } else {
+      server = http.createServer(app);
+      server_protocol = 'http://';
+  };
 
   // WebSocket Proxying
   websocket(server);
@@ -58,6 +62,8 @@
   };
 
   var login = require('./auth');
+
+  var obfuscate = require('./obfuscator');
 
   app.use(session({
       secret: 'alloy',
