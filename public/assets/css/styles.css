@@ -1,9 +1,21 @@
+.dp-base {
+    height: 100px;
+}
+
 .dp-menu {
     background-color: rgb(33,30,30);padding: 17%;padding-top: 10%;padding-bottom: 10%;
 }
 
+.dp-menu-brand {
+    font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;
+}
+
 .dp-more {
     background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;
+}
+
+.dp-menu-more {
+    opacity: 0.80;color: rgb(255,255,255);font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .dp-menu-options {
@@ -64,5 +76,5 @@
 
 
 .d-popupbg {
-    background-color: #000000; color: #FFFFFF; padding: 1%; margin: 1%;
+    border: 0.5% solid #ffffff; background-color: #000000; color: #FFFFFF; padding: 1%; margin: 1%;
 }
