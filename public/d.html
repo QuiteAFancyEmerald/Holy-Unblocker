@@ -19,6 +19,13 @@
             overflow: hidden;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script>
+            /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+            particlesJS.load('particles-js', 'particles.json', function() {
+                     console.log('particlesjs loaded.......');
+            });
+        </script>
 </head>
 
 <body>
@@ -38,7 +45,7 @@
     <div id="ac-wrapper" style='display:none'>
         <div id="popup">
             <center>
-                <h2>Use QR to log<wbr>in with Dis<wbr>cord. You will need a mobile device for this. You can also try to use t<wbr>oken l<wbr>ogin. Search up on YT on how to find your Dis<wbr>cord tok<wbr>en.</h2>
+                <h2 id="particles-js" style="background-color: #000000; color: #FFFFFF; padding: 1%; margin: 1%;">Q<wbr>R code is the most recommended method of logging in that will require a mobile device. An alternative method is tok<wbr>en login, which will require you to use your Dis<wbr>cord account token.</h2>
                 <input type="submit" name="submit" value="Got It" onClick="PopUp('hide')" />
             </center>
         </div>
