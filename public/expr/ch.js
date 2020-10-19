@@ -1,7 +1,7 @@
 window.onload = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    window.location.href = "https://c" + domain + "/app";
+    window.location.href = "https://c." + domain + "/app";
     document.cookie = '__chauth=yes; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
