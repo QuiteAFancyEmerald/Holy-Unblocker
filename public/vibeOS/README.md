@@ -1,9 +1,9 @@
 # vibeOS
 
-## GitHub Link
+### GitHub Link
 https://github.com/vibedivide/vibeOS
 
-![Screenshot](preview/readmecover.png?raw=true)
+![Screenshot](/public/vibeOS/preview/readmecover.png?raw=true)
 *Pictured: vibeOS PrD running at 1080p.*
 
 ---
