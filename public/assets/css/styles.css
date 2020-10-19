@@ -1,3 +1,68 @@
-input {
+.dp-menu {
+    background-color: rgb(33,30,30);padding: 17%;padding-top: 10%;padding-bottom: 10%;
 }
 
+.dp-more {
+    background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;
+}
+
+.dp-menu-options {
+    opacity: 0.80;font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.dp-more-items {
+    color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;
+}
+
+.tb-cloakp1 {
+    font-size: 20px; font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.tb-cloakp2 {
+    font-size: 14px; font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.tb-input {
+    width: 100%; height: 40px; font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.tb-btn {
+    width: 100%;padding: 8px;margin: 0px;height: 90%;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;
+}
+
+.ft-bg {
+    background-color: rgb(0,0,0);
+}
+
+.ft-g {
+    margin: 2%;
+}
+
+.in-bg {
+    height: 500px;font-family: 'Montserrat Alternates', sans-serif;font-weight: bold;
+}
+
+.in-flex {
+    height: inherit;min-height: initial;width: 100%;position: absolute;left: 0;
+}
+
+.in-splash {
+    height:200px;
+}
+
+.in-center {
+    color: rgb(255,255,255);
+}
+
+.in-splash-text {
+    color: rgb(242,245,248);font-size: 35px;font-weight: normal;font-family: 'Montserrat Alternates', sans-serif;margin: 7px;padding: 34px;width: 559px;
+}
+
+.in-btn-color {
+    color: #00bc8c;
+}
+
+
+.d-popupbg {
+    background-color: #000000; color: #FFFFFF; padding: 1%; margin: 1%;
+}

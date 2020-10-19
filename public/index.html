@@ -41,29 +41,32 @@
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/p.html" style="font-family: 'Montserrat Alternates', sans-serif;">Disc<wbr>ord</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/n.html" style="font-family: 'Montserrat Alternates', sans-serif;">Chatb<wbr>ox</a></li>
                             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;color: rgb(255,255,255);font-family: 'Montserrat Alternates', sans-serif;">More</a>
-                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;"><a class="dropdown-item text-left text-white-50" role="presentation" href="/k.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Krunker</a><a class="dropdown-item text-left text-white-50"
-                                        role="presentation" href="/info.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Docs</a><a class="dropdown-item text-white-50" role="presentation" href="/c.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Credits</a></div>
+                                <div class="dropdown-menu dp-more" role="menu">
+                                    <a class="dropdown-item text-left text-white-50 dp-more-items" role="presentation" href="/k.html">Krunker</a>
+                                    <a class="dropdown-item text-left text-white-50 dp-more-items" role="presentation" href="/info.html">Docs</a>
+                                    <a class="dropdown-item text-white-50 dp-more-items" role="presentation" href="/c.html">Credits</a>
+                                </div>
                             </li>
                             <!--Options Menu-->
-                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link text-white" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;font-family: 'Montserrat Alternates', sans-serif;">Options</a>
-                                <div id="csel" class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);padding: 17%;padding-top: 10%;padding-bottom: 10%;">
+                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link text-white dp-menu-options" data-toggle="dropdown" aria-expanded="false" href="#">Options</a>
+                                <div id="csel" class="dropdown-menu dp-menu" role="menu">
                                     <style>
                                         .csel input[type="submit"] {
                                             cursor: pointer;
                                         }
                                     </style>
-                                    <p style="font-size: 20px; font-family: 'Montserrat Alternates', sans-serif;">Tab Cloak</p>
-                                    <p style="font-size: 14px; font-family: 'Montserrat Alternates', sans-serif;">Change the Tab Title.</p>
-                                    <form id="titleform"><input class="bg-dark border rounded-0 border shadow-lg" type="text" placeholder="Tab Title" style="width: 100%; height: 40px; font-family: 'Montserrat Alternates', sans-serif;" />
-                                        <input class="btn btn-dark btn-lg bg-dark border-dark rounded-0 border shadow-lg" type="submit" value="Apply" style="width: 100%;padding: 8px;margin: 0px;height: 90%;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">
+                                    <p class="tb-cloakp1">Tab Cloak</p>
+                                    <p class="tb-cloakp2">Change the Tab Title.</p>
+                                    <form id="titleform"><input class="bg-dark border rounded-0 border shadow-lg" type="text" placeholder="Tab Title" class="tb-input" />
+                                        <input class="btn btn-dark btn-lg bg-dark border-dark rounded-0 border shadow-lg" type="submit" value="Apply" class="tb-btn">
                                     </form>
                                     <p style="font-size: 14px; font-family: 'Montserrat Alternates', sans-serif;">Change the Tab Icon.</p>
-                                    <form id="iconform"><input class="bg-dark border rounded-0 border shadow-lg" type="url" placeholder="Icon URL" style="width: 100%; height: 40px; font-family: 'Montserrat Alternates', sans-serif;" />
-                                        <input class="btn btn-dark btn-lg bg-dark border-dark rounded-0 border shadow-lg" type="submit" value="Apply" style="width: 100%;padding: 8px;margin: 0px;height: 90%;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">
+                                    <form id="iconform"><input class="bg-dark border rounded-0 border shadow-lg" type="url" placeholder="Icon URL" class="tb-input" />
+                                        <input class="btn btn-dark btn-lg bg-dark border-dark rounded-0 border shadow-lg" type="submit" value="Apply" class="tb-btn">
                                         <a href="/i.html">How To Find Icon URL</a>
                                     </form>
                                     <form id="toolsform">
-                                        <input class="btn btn-dark btn-lg bg-dark border-dark rounded-0 border shadow-lg" href="/x.html" type="submit" value="Bookmarklets" style="width: 100%;padding: 8px;margin: 0px;height: 90%;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">
+                                        <input class="btn btn-dark btn-lg bg-dark border-dark rounded-0 border shadow-lg" href="/x.html" type="submit" value="Bookmarklets" class="tb-btn">
                                     </form>
                                     <script src="assets/js/header.js"></script>
                                 </div>
@@ -74,8 +77,8 @@
             </nav>
             <!-- Main Body  -->
             <!-- Particles.js background  -->
-            <div id="particles-js" style="height: 500px;font-family: 'Montserrat Alternates', sans-serif;font-weight: bold;">
-                <div class="d-flex justify-content-center align-items-center" style="height: inherit;min-height: initial;width: 100%;position: absolute;left: 0;">
+            <div id="particles-js" class="in-bg">
+                <div class="d-flex justify-content-center align-items-center in-flex">
                     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
                     <script>
                         /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
@@ -84,16 +87,16 @@
                         });
                     </script>
                     <!-- Splash Text  -->
-                    <div class="d-flex align-items-center order-12" style="height:200px;">
-                        <div class="container text-center justify-content-center align-items-center" style="color: rgb(255,255,255);">
-                            <h1 class="text-center d-md-flex flex-grow-1 justify-content-md-center align-items-md-center" style="color: rgb(242,245,248);font-size: 35px;font-weight: normal;font-family: 'Montserrat Alternates', sans-serif;margin: 7px;padding: 34px;width: 559px;">End Int&#8203;ernet Censo&#8203;rship.<br>Privacy right at your fingertips.</h1><button class="button rounded" type="button" data-hover="Epic!" style="color: #00bc8c;"><span><a href="z.html">By<wbr>p<wbr><span style=display:none data-oenfewpq=hehe>Cooking at a higher temperature (500 degrees F (260 degrees C)) is the key to making this the perfect pizza. It doesn't get any easier than this folks. Brush dough with olive oil and add your favorite toppings. Enjoy! By Michele Leigh Pinette Pierce</span>a<wbr>s<wbr>s n<wbr>ow?</a></span></button></div>
+                    <div class="d-flex align-items-center order-12 in-splash">
+                        <div class="container text-center justify-content-center align-items-center in-center">
+                            <h1 class="text-center d-md-flex flex-grow-1 justify-content-md-center align-items-md-center in-splash-text">End Int&#8203;ernet Ce<wbr>nso&#8203;rship.<br>Priva&#8203;cy right at your fin&#8203;gert&#8203;ips.</h1><button class="button rounded in-btn-color" type="button" data-hover="Epic!"><span><a href="z.html">By<wbr>p<wbr><span style=display:none data-oenfewpq=hehe>Cooking at a higher temperature (500 degrees F (260 degrees C)) is the key to making this the perfect pizza. It doesn't get any easier than this folks. Brush dough with olive oil and add your favorite toppings. Enjoy! By Michele Leigh Pinette Pierce</span>a<wbr>s<wbr>s n<wbr>ow?</a></span></button></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!--Footer-->
-    <div class="footer-dark" style="background-color: rgb(0,0,0);">
+    <div class="footer-dark ft-bg">
         <footer>
             <div class="container">
                 <div class="row">
@@ -118,7 +121,7 @@
                         </ul>
                     </div>
                     <!-- GitHub  -->
-                    <div class="col item social" style="margin: 2%;">
+                    <div class="col item social ft-g">
                         <a id="hblink">
                             <ion-icon name="logo-github"></ion-icon>
                         </a>
