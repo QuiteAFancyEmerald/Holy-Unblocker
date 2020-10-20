@@ -25,18 +25,21 @@ div.desc {
     padding: 0 6px;
     float: left;
     width: 24.99999%;
+    display: flex;
 }
 
 @media only screen and (max-width: 700px) {
     .responsive {
         width: 49.99999%;
         margin: 6px 0;
+        display: flex;
     }
 }
 
 @media only screen and (max-width: 500px) {
     .responsive {
         width: 100%;
+        display: flex;
     }
 }
 

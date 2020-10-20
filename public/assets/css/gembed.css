@@ -19,7 +19,7 @@
     text-decoration: none;
     color: white;
     font: 18px;
-    border: 1px solid rgb(255, 166, 0);
+    border: 1px solid #007053;
     margin-top: -1px;
     background-color: #000000;
     padding: 12px;
@@ -33,13 +33,14 @@
 
 #gsearchbar {
     outline: none;
-    width: 374px;
+    width: 98%;
     top: 12px;
     font-size: 16px;
-    border: 1px solid rgba(255, 115, 0, 0.3);
+    border: 1px solid #007053;
     padding: 12px;
     margin-bottom: 12px;
     transition: 0.2s ease;
+    background: #1c2228;
 }
 
 #gsearchbar:focus {
@@ -55,15 +56,15 @@
     margin: auto;
     background-color: wblack;
     padding: 10px 10px 15px 10px;
-    width: 420px;
+    width: 100%;
     height: 540px;
 }
 
 #glist {
     overflow-x: hidden;
     overflow-y: scroll;
-    width: 400px;
-    height: 520px;
+    width: 100%;
+    height: 100%;
     padding: 0;
     text-align: center;
 }
