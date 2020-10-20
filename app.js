@@ -287,6 +287,14 @@
 
   app.use('/', express.static('public'));
 
+  app.get('/', async(req, res) => {
+
+      if (req.query.a) {
+          return res.send(fs.readFile('./public/e.html'))
+      }
+
+  });
+
   app.use(async(req, res, next) => {
       if (req.headers['referer']) {
 
