@@ -1,3 +1,15 @@
+@media only screen and (max-width: 100%) {
+    body {
+        min-height: 100%;
+        min-width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+    }
+}
+
 .hd-base {
     background-color: rgb(0, 0, 0);
     background-image: url(&quot;assets/img/black.jpg&quot;);
