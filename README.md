@@ -1,5 +1,7 @@
 # Holy Unblocker
-A website that can be used to bypass web filters; both extension and firewall. This is the public source code for Holy Unblocker. Works on a large number of sites including YouTube (Full Quality Support), Discord, CoolMathGames and more!
+A website that can be used to bypass web filters; both extension and firewall. This is the public source code for Holy Unblocker, a rather fancy website with some cool dynamic backgrounds while also focusing with detail put into the design and mechanics overall. Also has cool features like custom Tab Cloaks and with more to come. Works on a large number of sites including YouTube (Full Quality Support), Discord, CoolMathGames and more! Be sure to check the various branches as I update Holy Unblocker often with open access to yet to be released versions.
+
+<img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/public/assets/img/holyubpreview.png"></img>
 
 Official Site: https://www.holyubofficial.ml/
 
