@@ -1,0 +1,83 @@
+.gembed {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+}
+
+.fbody {
+    background-color: black;
+    color: rgb(0, 0, 0);
+    font-family: sans-serif;
+}
+
+.glink {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font: 18px;
+    border: 1px solid #007053;
+    margin-top: -1px;
+    background-color: #000000;
+    padding: 12px;
+    transition: 0.2s ease;
+}
+
+.glink:hover {
+    background-color: rgb(0, 0, 0);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+}
+
+#gsearchbar {
+    outline: none;
+    width: 98%;
+    top: 12px;
+    font-size: 16px;
+    border: 1px solid #007053;
+    padding: 12px;
+    margin-bottom: 12px;
+    transition: 0.2s ease;
+    background: #1c2228;
+}
+
+#gsearchbar:focus {
+    background-color: rgb(29, 27, 27);
+    box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.4);
+}
+
+.container {
+    padding: 20px;
+}
+
+.box {
+    margin: auto;
+    background-color: wblack;
+    padding: 10px 10px 15px 10px;
+    width: 100%;
+    height: 540px;
+}
+
+#glist {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    text-align: center;
+}
+
+#glist h2 {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font: 18px;
+    border: 1px solid #060606;
+    margin: -1px 0 0 0;
+    background-color: #060606;
+    padding: 12px;
+    font-weight: bold;
+    user-select: none;
+}

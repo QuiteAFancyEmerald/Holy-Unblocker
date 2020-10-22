@@ -71,6 +71,36 @@ let setattribute_rewrite = window.Element.prototype.setAttribute; window.Element
     return setattribute_rewrite.apply(this, arguments)
  } 
 
+// Rewriting all incoming websocket request.
+
+  WebSocket = new Proxy(WebSocket, {
+
+    construct(target, args_array) {
+        
+        var protocol;
+        
+        if (location.protocol == 'https:') { protocol = 'wss://' } else { protocol = 'ws://' }
+        
+        args_array[0] = protocol + location.origin.split('/').splice(2).join('/') + prefix + 'ws/' + btoa(args_array[0]);
+        
+        return new target(args_array);
+      }
+    
+    });
+  
+  // Rewriting incoming pushstate.
+
+  history.pushState = new Proxy(history.pushState, {
+
+     apply: (target, thisArg, args_array) => {
+         
+         args_array[2] = rewrite_url(args_array[2])
+
+         return target.apply(thisArg, args_array)
+     }
+
+  });
+
 var previousState = window.history.state;
 setInterval(function() {
        if (!window.location.pathname.startsWith(`${prefix}${btoa(url.origin)}/`)) {

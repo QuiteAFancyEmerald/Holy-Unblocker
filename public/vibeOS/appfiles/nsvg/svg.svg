@@ -1,0 +1,409 @@
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="600" viewBox="0 0 600 600">
+			<style>
+				@import url('https://fonts.googleapis.com/css?family=Roboto:300&amp;text=01234567890:');
+
+				.day #background {
+					filter: url(#blurlayer);
+					fill: url(#bgday);
+				}
+
+				.night #background {
+					filter: url(#blurlayer);
+					fill: url(#bgnight);
+				}
+
+				#path {
+					mask: url(#mask-container);
+				}
+
+				#gfx {
+					mask: url(#bottom);
+				}
+
+				.st2 {
+					fill: none;
+					stroke: rgba(0, 0, 0, 0.6);
+					stroke-width: 2px;
+				}
+
+				.st4 {
+					fill: none;
+					stroke: rgba(0, 0, 0, 0.6);
+					stroke-width: 4px;
+				}
+
+				.night .st2 {
+					stroke: rgba(255, 255, 255, 0.8);
+				}
+
+				.night .st4 {
+					stroke: rgba(255, 255, 255, 0.8);
+				}
+
+				.none {
+					fill: none;
+					stroke: none;
+				}
+
+				.show {
+					fill: #fff;
+					stroke: none;
+				}
+
+				.hide {
+					fill: #000;
+					stroke: none;
+				}
+
+				text {
+					font-family: Roboto, sans-serif;
+					font-weight: 300;
+					font-size: 56px;
+					pointer-events: none;
+					fill: #000;
+				}
+
+				.text_small{
+					font-size: 20px;
+				}
+
+				.night text {
+					fill: #fff;
+				}
+			</style>
+
+			<defs>
+				<filter id="blurlayer" width="110%" height="110%">
+					<feGaussianBlur stdDeviation="0" result="blur"></feGaussianBlur>
+				</filter>
+				<pattern id="bgday" height="100%" width="100%" patternContentUnits="objectBoundingBox">
+					<image width="1" height="1" preserveAspectRatio="none" xlink:href="bg_day.png"></image>
+				</pattern>
+				<pattern id="bgnight" height="100%" width="100%" patternContentUnits="objectBoundingBox">
+					<image width="1" height="1" preserveAspectRatio="none" xlink:href="bg_night.png"></image>
+				</pattern>
+				<mask id="mask-container">
+					<rect class="show" x="0" y="0" width="600" height="600"></rect>
+					<circle id="mask" class="hide" cx="0" cy="0" r="70"></circle>
+				</mask>
+				<mask id="bottom">
+					<rect class="show" x="0" y="0" width="600" height="301"></rect>
+				</mask>
+				<radialGradient id="sungradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+					<stop offset="0%" style="stop-color: #fff079; stop-opacity: 1;"></stop>
+					<stop offset="60%" style="stop-color: #fff079; stop-opacity: 1;"></stop>
+					<stop offset="100%" style="stop-color: #fff079; stop-opacity: 0;"></stop>
+				</radialGradient>
+			</defs>
+
+			<g id="container" class="day">
+				<rect id="background" width="100%" height="100%"></rect>
+				<circle id="light" cx="0" cy="0" r="0" fill="url(#sungradient)"></circle>
+				<g id="gfx" transform="translate(0 80)">
+					<line class="st2" x1="25" x2="575" y1="300" y2="300"></line>
+					<path id="path" class="st2" transform="translate(0 5)" d="M505.74,294.59A220.56,220.56,0,0,0,100,282q-2.76,6-5.15,12.1"></path>
+					<text id="dom_time" class="text" x="182" y="280"></text>
+
+					<path id="orbit" class="none" d="M59.54,295.17a222.08,222.08,0,0,1,24.19-54.54,233.83,233.83,0,0,1,37-45.71,248.51,248.51,0,0,1,48.13-36.09,259.78,259.78,0,0,1,57.86-24.52,267.73,267.73,0,0,1,131.53-4,261.45,261.45,0,0,1,59.93,21.23,251.65,251.65,0,0,1,50.46,33.25,237.27,237.27,0,0,1,40,43.49,223.76,223.76,0,0,1,27.6,52.35q2.64,7.21,4.77,14.58"></path>
+
+					<g id="moon" transform="translate(-1000 ,-1000)">
+						<g class="st4" transform="translate(-40 -40) scale(0.65)">
+							<path d="M496.27,441.75c-6.1,15.89-6.36,30.77-1.74,45.64,4.76,15.34,13.79,27.25,27.15,36.65,13.07,9.2,27.28,12.76,42.67,12.39s28.79-7.17,41.67-16.83c-6.92,28.66-35.77,50.65-65,50.72-39.18.1-61.78-20.42-71.08-49.66C458.1,483.56,477,454.16,496.27,441.75Z" transform="translate(-465.74 -440.51)"></path>
+						</g>
+					</g>
+
+					<g id="sun" transform="translate(-1000 ,-1000)">
+						<g class="st4" transform="translate(-60 -60) scale(0.5)">
+							<circle cx="118" cy="118" r="67"></circle>
+							<line x1="117.5" y1="40" x2="117.5"></line>
+							<line x1="117.5" y1="236" x2="117.5" y2="196"></line>
+							<line y1="118" x2="39" y2="118"></line>
+							<line x1="196" y1="118" x2="235" y2="118"></line>
+							<line x1="173" y1="61.5" x2="202" y2="32.5"></line>
+							<line x1="32" y1="202.5" x2="61" y2="173.5"></line>
+							<line x1="61" y1="62.04" x2="32" y2="31.96"></line>
+							<line x1="201" y1="202.04" x2="172" y2="171.96"></line>
+						</g>
+					</g>
+				</g>
+				<text id="left_label" class="text text_small" x="24" y="400"></text>
+					<text id="right_label" class="text text_small" x="492" y="400"></text>
+			</g>
+            <script type="text/javascript"><![CDATA[
+           			(function(root, factory) {
+				'use strict';
+				if (typeof define === 'function' && define.amd) {
+					define(factory);
+				} else if (typeof exports !== 'undefined') {
+					module.exports = factory();
+				} else {
+					root.svg_controller = factory();
+				}
+			}(this, function() {
+				var obj = {
+					elements: {// DOM elements
+						path: document.getElementById('orbit'),
+						mask: document.getElementById('mask'),
+						sun: document.getElementById('sun'),
+						moon: document.getElementById('moon'),
+						dom_time: document.getElementById('dom_time'),
+						bg: document.getElementById('container'),
+						left_label:document.getElementById('left_label'),
+						right_label:document.getElementById('right_label'),
+						light:document.getElementById('light'),
+
+					},
+					use_pm:true,//true - shows times in AM/PM format
+					use_seconds:false,//true - show seconds times
+					point_density: 0.3,// Distance between 2 points on motion path
+					start_time: 0, 	// Start time (second where to stat current time)
+					total_time: 24,	// Total time in seconds
+					sun_rise: 7,	// Sun rise (second when sun rises)
+					sun_set: 19, 	// Sun set (second when sun sets)
+					//==Internal vars
+					sun_cursor: 0,
+					moon_cursor: 0,
+					sun_position: 0,
+					moon_position: 0,
+					current_time: 0,
+					startTime: null,
+					points: [],
+					get_time_proc: function() {
+						if (!obj.startTime) {
+							obj.startTime = new Date();
+							obj.startTime.setSeconds(obj.startTime.getSeconds() - obj.start_time);
+							obj.startTime = new Date(obj.startTime);
+						}
+
+						var tmpTime = new Date();
+						obj.current_time = tmpTime - obj.startTime;
+						obj.current_time /= 1000;
+
+						if (obj.current_time > obj.total_time) {
+							obj.current_time = 0;
+							obj.startTime = new Date();
+						}
+
+						return obj.current_time * 100 / obj.total_time
+					},
+					init_points: function() {
+						obj.points = [];
+						for (var i = 0; i <= Math.floor(obj.elements.path.getTotalLength()); i += obj.point_density) {
+							var pt = obj.elements.path.getPointAtLength(i);
+							obj.points.push(pt);
+						}
+						return obj;
+					},
+					move_el: function(el, point) {
+						obj.elements[el].setAttribute('transform', ' translate(' + point.x + ',' + point.y + ')');
+						return obj;
+					},
+					set_sun: function() {
+						obj.get_time_proc();
+						if(obj.current_time >= obj.sun_rise && obj.current_time <= obj.sun_set) {
+							var sun_length = obj.sun_set - obj.sun_rise;
+							var sun_pos  = obj.current_time - obj.sun_rise;
+							obj.sun_position = sun_pos * 100 / sun_length;
+						} else {
+							obj.sun_position = -1;
+						}
+
+						while (obj.sun_position > 100) obj.sun_position -=100;
+
+						return obj;
+					},
+					set_moon: function() {
+						obj.get_time_proc();
+
+						if (obj.current_time >= obj.sun_rise && obj.current_time <= obj.sun_set) {
+							obj.moon_position = -1;
+						} else {
+							var moon_length = obj.total_time - obj.sun_set + obj.sun_rise;
+							var moon_pos = obj.current_time > obj.sun_set ? obj.current_time - obj.sun_set : obj.current_time + (obj.total_time - obj.sun_set);
+							obj.moon_position = moon_pos * 100 / moon_length;
+						}
+						while (obj.moon_position>100) obj.moon_position -=100;
+						return obj;
+					},
+					set_dom_labels:function(){
+						var sun_rise_proc = obj.sun_rise * 100 / obj.total_time;
+						var sun_set_proc = obj.sun_set * 100 / obj.total_time;
+						obj.elements.left_label.textContent = obj.make_time_from_seconds(Math.round(sun_rise_proc * 86400 / 100));
+						obj.elements.right_label.textContent = obj.make_time_from_seconds(Math.round(sun_set_proc * 86400 / 100));
+						/*
+							obj.elements.left_label.textContent = obj.make_time_from_seconds(obj.sun_rise);
+							obj.elements.right_label.textContent = obj.make_time_from_seconds(obj.sun_set);
+						*/
+						return obj;
+					},
+					set_dom_time: function() {
+						var display_time = obj.make_time_from_seconds(Math.round(obj.get_time_proc() * 86400 / 100));
+						obj.elements.dom_time.textContent = display_time;
+						return obj;
+					},
+					set_background: function(bg) {
+						obj.elements['bg'].className.baseVal = bg;
+						return this;
+					},
+					set_light: function(){
+						var r =(obj.sun_position === -1)?0:obj.sun_position;
+						r=(r>=50)?100-r:r;
+						if (r>0){
+							r*=2
+							r+=30
+						}
+						obj.elements.light.setAttribute('r', r);							
+					},
+					render: function(force) {
+						force = !!(force);
+						obj.set_sun().set_moon().set_dom_time().set_light();
+						var sun_cursor = obj.sun_position > 0 ? Math.floor(obj.sun_position * (obj.points.length - 1) / 100) : -1;
+						var moon_cursor = obj.moon_position > 0 ? Math.floor(obj.moon_position * (obj.points.length - 1) / 100) : -1;
+						if (obj.sun_cursor !== sun_cursor) {
+							if (obj.sun_cursor > -1 && Math.abs(obj.sun_cursor - sun_cursor) > 4) {
+								force = true;
+							}
+							if (!force) {
+								obj.sun_cursor += 1;
+
+								if (obj.sun_cursor >= obj.points.length) {
+									obj.sun_cursor = 0;
+								}
+							} else {
+								obj.sun_cursor = sun_cursor
+							}
+							if (obj.sun_cursor >= 0) {
+								obj.set_background('day');
+								obj.move_el('sun', obj.points[obj.sun_cursor]);
+								obj.move_el('mask', obj.points[obj.sun_cursor]);
+							} else {
+								obj.move_el('sun', {x: -1000, y: -1000});
+							}
+						}
+
+						if (obj.moon_cursor !== moon_cursor) {
+							if (obj.moon_cursor > -1 && Math.abs(obj.moon_cursor - moon_cursor) > 4) {
+								force = true;
+							}
+							if (!force) {
+								obj.moon_cursor += 1;
+
+								if (obj.moon_cursor >= obj.points.length) {
+									obj.moon_cursor = 0;
+								}
+							} else {
+								obj.moon_cursor = moon_cursor
+							}
+							if (obj.moon_cursor >= 0) {
+								obj.set_background('night');
+								obj.move_el('moon', obj.points[obj.moon_cursor]);
+								obj.move_el('mask', obj.points[obj.moon_cursor]);
+							} else {
+								obj.move_el('moon', {x: -1000, y: -1000});
+							}
+						}
+						return obj;
+					},
+					make_time_from_seconds:function(seconds){
+						var ret_time = new Date(seconds * 1000).toISOString().substr(11, 8).split(':');
+						var int_time = ret_time.map((num) => parseInt(num));
+						if (!obj.use_seconds) ret_time = [ret_time[0],ret_time[1]];
+						if (obj.use_pm){
+							if (int_time[0]>12){
+								ret_time[0]=("0"+(int_time[0]-12)).substr(-2);
+								ret_time[ret_time.length-1]+=" PM";
+							}else{
+								ret_time[ret_time.length-1]+=" AM";
+							}
+							if (int_time[0]===0){
+								ret_time[0]=12;
+							}
+						}
+						return 	ret_time.join(':');
+					},
+					make_seconds_from_time:function(hh_ii_ss){
+						// supports strings of formats: HH,HH:MM,HH:MM:SS
+						//console.log(hh_ii_ss)
+						var s = 0;
+						var tmp = 0;
+						var my_time = hh_ii_ss.split(':').map((num) => parseInt(num));
+						if (my_time[0]){
+							tmp = my_time[0]  * 60 *60;
+							s+=tmp;
+							//console.log('seconds from hours: '+tmp);
+						}
+						if (my_time[1]){
+							tmp = parseInt(my_time[1])  * 60;
+							s+=tmp;
+							//console.log('seconds from minutes: '+tmp);
+						}
+						if (my_time[2]){
+							tmp = parseInt(my_time[2]);
+							s+=tmp;
+							//console.log('seconds from seconds: '+tmp);
+						}
+						return s;
+					},
+					init: function(start_time, total_time, sun_rise, sun_set) {
+						if (obj.timer) clearInterval(obj.timer);
+						if (start_time || start_time === 0 ) {
+							if (obj.startTime) {
+								delete obj.startTime;
+							}
+							obj.start_time = parseFloat(start_time);
+						}
+						if (total_time) {
+							obj.total_time = parseFloat(total_time);
+						}
+						if (sun_rise || sun_rise === 0 ) {
+							obj.sun_rise = parseFloat(sun_rise)
+						} else if (!obj.sun_rise) {
+							obj.sun_rise = 0;
+						}
+						if (sun_set) {
+							obj.sun_set = parseFloat(sun_set)
+						} else if (!obj.sun_set) {
+							obj.sun_set = obj.total_time / 2;
+						}
+						obj.get_time_proc();
+						obj.init_points().render(1);
+						obj.set_dom_labels();
+						obj.timer = setInterval(function() {
+							obj.render();
+						}, 1);
+						return obj;
+					},
+					init_from_local_time:function(){
+						var dt = new Date();
+						var start_time = dt.getSeconds() + (60 * (dt.getMinutes() + (60 * dt.getHours())));
+						var total_time = obj.make_seconds_from_time("24");
+						var sun_rise = obj.make_seconds_from_time("6");
+						var sun_set = obj.make_seconds_from_time("20");
+						obj.init(start_time, total_time, sun_rise, sun_set);
+					},
+					init_from_url:function(url){
+						var xhttp = new XMLHttpRequest();
+						xhttp.onreadystatechange = function() {
+							if (this.readyState == 4 && this.status == 200) {
+								var url_data = JSON.parse(xhttp.responseText)
+								var sun_rise = (url_data.sun_rise)?obj.make_seconds_from_time(url_data.sun_rise):null;
+								var sun_set = (url_data.sun_set)?obj.make_seconds_from_time(url_data.sun_set):null;
+								var start_time = (url_data.current_time)?obj.make_seconds_from_time(url_data.current_time):null;
+								var total_time = obj.make_seconds_from_time("24");
+
+								obj.init(start_time, total_time, sun_rise, sun_set);
+							}
+							else{
+								//obj.init_from_local_time();//posible fall back
+							}
+						};
+						xhttp.open("GET", url, true);
+						xhttp.send();
+					}
+				};
+				obj.init();
+				obj.init_from_url('my_time.json');
+				return obj;
+			})); 	
+            ]]></script>    
+		</svg>

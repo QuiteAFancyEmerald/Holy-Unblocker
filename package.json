@@ -1,11 +1,11 @@
 {
     "name": "alloy-proxy",
-    "version": "2.2.0",
+    "version": "2.3.0",
     "description": "A web proxy capable of proxying websites!",
     "main": "app.js",
     "scripts": {
         "test": "test",
-        "start": "node app.js auth.js"
+        "start": "node app.js auth.js ./node_modules/.bin/grunt"
     },
     "keywords": [
         "proxy",
@@ -21,6 +21,9 @@
         "node-fetch": "^2.6.1",
         "sanitizer": "^0.1.3",
         "session": "^0.1.0",
-        "cookies": "0.4"
+        "cookies": "0.4",
+        "ws": "^7.3.1",
+        "javascript-obfuscator": "^0.11.2",
+        "clean-css": "^4.1.9"
     }
 }
