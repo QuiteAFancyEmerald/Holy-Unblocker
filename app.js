@@ -309,8 +309,6 @@
       res.send(proxy.sendResponse);
   });
 
-  app.use('/', express.static('public'));
-
   //Querystrings Here
 
   app.get('/', async (req, res) => {
@@ -432,6 +430,8 @@
       }
 
   });
+
+  app.use('/', express.static('public'));
 
   app.use(async (req, res, next) => {
       if (req.headers['referer']) {
