@@ -40,8 +40,8 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 - `b.html` : Links to a subdomain for Node Unblocker. I left it in just in case you would like to setup the site differently.
 - `p.html` : Links to a subdomain for Powermouse. I left it in just in case you would like to setup the site differently.
 - `g.html` : Games page, help from @BinBashBanana and @kinglalu.
-- `info.html` : WIP Documentation
-- `d.html` : Links to a subdomain with proxied discord. May need to refresh.
+- `info.html` : WIP Documentation.
+- `d.html` : Updated Discord proxy page.
 - `e.html` : Links to a subdomain with PyDodge B. Created by OlyB from a modified Via Proxy.
 - `gold.html` : Games page for flash games, credits given to @BinBashBanana and Titanium Network for its assets.
 - `i.html` : Information regarding Settings Menu page. Added this in for standard users.
@@ -49,7 +49,11 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 - `m.html` : Locally hosted Gameboy Emulator.
 - `k.html` : An iframe version of Krunker with keyword changes. Can be removed if not needed.
 - `yt.html` : An proxied version of Youtube running off of the locally hosted Alloy Proxy.
-- `y.html` : Updated Bookmarklets page.
+- `y.html` : Updated YouTube proxy page.
+- `yh.html` : Page linking proxied Youtube.
+- `ym.html` : Page linking to a proxied YouTube for mobile users.
+- `n.html` : Links to an externally hosted Chatbox.
+- `x.html` : Page for Bookmarklets.
 - `ytold.html` : An iframe of Youtube running off of the locally hosted Alloy Proxy.
 ### Structure Information
 - `/public/` : The physical site base of Holy Unblocker goes here. Do not delete or modify `/utils` as its needed for Alloy.
