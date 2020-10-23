@@ -107,3 +107,4 @@ This project uses Alloy Proxy, Node Unblocker and Powermouse which are linked be
 - https://github.com/juchi/gameboy.js
 - https://nodeclusters.com
 - https://titaniumnetwork.org/
+- https://github.com/vibedivide/vibeOS
