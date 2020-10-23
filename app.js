@@ -311,73 +311,7 @@
 
   //Querystrings Here
 
-  app.get('/', async (req, res) => {
-
-      if (req.query.pd) {
-          return res.send(fs.readFileSync('./public/e.html'))
-      }
-
-      if (req.query.a) {
-          return res.send(fs.readFileSync('./public/a.html'))
-      }
-
-      if (req.query.b) {
-          return res.send(fs.readFileSync('./public/b.html'))
-      }
-
-      if (req.query.p) {
-          return res.send(fs.readFileSync('./public/p.html'))
-      }
-
-      if (req.query.x) {
-          return res.send(fs.readFileSync('./public/x.html'))
-      }
-
-      if (req.query.d) {
-          return res.send(fs.readFileSync('./public/d.html'))
-      }
-
-      if (req.query.y) {
-          return res.send(fs.readFileSync('./public/y.html'))
-      }
-
-      if (req.query.yh) {
-          return res.send(fs.readFileSync('./public/yh.html'))
-      }
-
-
-      if (req.query.ym) {
-          return res.send(fs.readFileSync('./public/ym.html'))
-      }
-
-
-      if (req.query.g) {
-          return res.send(fs.readFileSync('./public/g.html'))
-      }
-
-
-      if (req.query.k) {
-          return res.send(fs.readFileSync('./public/k.html'))
-      }
-
-      if (req.query.m) {
-          return res.send(fs.readFileSync('./public/m.html'))
-      }
-
-      if (req.query.c) {
-          return res.send(fs.readFileSync('./public/c.html'))
-      }
-
-      if (req.query.z) {
-          return res.send(fs.readFileSync('./public/z.html'))
-      }
-
-      if (req.query.t) {
-          return res.send(fs.readFileSync('./public/t.html'))
-      }
-
-  });
-
+ 
   app.use('/', express.static('public'));
 
   app.use(async (req, res, next) => {
