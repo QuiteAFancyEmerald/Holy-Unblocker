@@ -9,7 +9,9 @@
       websocket = require('./ws-proxy.js'),
       fetch = require('node-fetch');
 
-  const config = JSON.parse(fs.readFileSync('./config.json', { encoding: 'utf8' }));
+  const config = JSON.parse(fs.readFileSync('./config.json', {
+      encoding: 'utf8'
+  }));
   if (!config.prefix.startsWith('/')) {
       config.prefix = `/${config.prefix}`;
   }
@@ -58,7 +60,9 @@
           websiteURL = btoa(dataURL.split('/').splice(0, 3).join('/'));
           websitePath = '/' + dataURL.split('/').splice(3).join('/');
       }
-      if (websitePath == '/') { return `${websiteURL}`; } else return `${websiteURL}${websitePath}`;
+      if (websitePath == '/') {
+          return `${websiteURL}`;
+      } else return `${websiteURL}${websitePath}`;
   };
 
   var login = require('./auth');
@@ -87,8 +91,10 @@
       } else return next();
   });
 
-  app.use(`${config.prefix}utils/`, async(req, res, next) => {
-      if (req.url.startsWith('/assets/')) { res.sendFile(__dirname + '/utils' + req.url); }
+  app.use(`${config.prefix}utils/`, async (req, res, next) => {
+      if (req.url.startsWith('/assets/')) {
+          res.sendFile(__dirname + '/utils' + req.url);
+      }
       if (req.query.url) {
           let url = atob(req.query.url);
           if (url.startsWith('https://') || url.startsWith('http://')) {
@@ -102,13 +108,19 @@
       }
   });
 
-  app.post(`${config.prefix}session/`, async(req, res, next) => {
+  app.post(`${config.prefix}session/`, async (req, res, next) => {
       let url = querystring.parse(req.raw_body).url;
-      if (url.startsWith('//')) { url = 'http:' + url; } else if (url.startsWith('https://') || url.startsWith('http://')) { url = url } else { url = 'http://' + url };
+      if (url.startsWith('//')) {
+          url = 'http:' + url;
+      } else if (url.startsWith('https://') || url.startsWith('http://')) {
+          url = url
+      } else {
+          url = 'http://' + url
+      };
       return res.redirect(config.prefix + rewrite_url(url));
   });
 
-  app.use(config.prefix, async(req, res, next) => {
+  app.use(config.prefix, async (req, res, next) => {
       var proxy = {};
       proxy.url = rewrite_url(req.url.slice(1), 'decode');
       proxy.url = {
@@ -177,13 +189,21 @@
       if (req.method == 'POST') {
           proxy.options.body = req.str_body;
       }
-      if (proxy.url.hostname == 'discord.com' && proxy.url.path == '/') { return res.redirect(307, config.prefix + rewrite_url('https://discord.com/login')); };
+      if (proxy.url.hostname == 'discord.com' && proxy.url.path == '/') {
+          return res.redirect(307, config.prefix + rewrite_url('https://discord.com/login'));
+      };
 
-      if (proxy.url.hostname == 'www.reddit.com') { return res.redirect(307, config.prefix + rewrite_url('https://old.reddit.com')); };
+      if (proxy.url.hostname == 'www.reddit.com') {
+          return res.redirect(307, config.prefix + rewrite_url('https://old.reddit.com'));
+      };
 
-      if (!req.url.slice(1).startsWith(`${proxy.url.encoded_origin}/`)) { return res.redirect(307, config.prefix + proxy.url.encoded_origin + '/'); };
+      if (!req.url.slice(1).startsWith(`${proxy.url.encoded_origin}/`)) {
+          return res.redirect(307, config.prefix + proxy.url.encoded_origin + '/');
+      };
 
-      const blocklist = JSON.parse(fs.readFileSync('./blocklist.json', { encoding: 'utf8' }));
+      const blocklist = JSON.parse(fs.readFileSync('./blocklist.json', {
+          encoding: 'utf8'
+      }));
 
       let is_blocked = false;
 
@@ -193,7 +213,9 @@
           }
       });
 
-      if (is_blocked == true) { return res.send(fs.readFileSync('./utils/error/error.html', 'utf8').toString().replace('%ERROR%', `Error 401: The website '${sanitizer.sanitize(proxy.url.hostname)}' is not permitted!`)) }
+      if (is_blocked == true) {
+          return res.send(fs.readFileSync('./utils/error/error.html', 'utf8').toString().replace('%ERROR%', `Error 401: The website '${sanitizer.sanitize(proxy.url.hostname)}' is not permitted!`))
+      }
 
       proxy.response = await fetch(proxy.url.href, proxy.options).catch(err => res.send(fs.readFileSync('./utils/error/error.html', 'utf8').toString().replace('%ERROR%', `Error 400: Could not make request to '${sanitizer.sanitize(proxy.url.href)}'!`)));
 
@@ -258,7 +280,9 @@
 
           // Temp hotfix for Youtube search bar until my script injection can fix it.
 
-          if (proxy.url.hostname == 'www.youtube.com') { proxy.sendResponse = proxy.sendResponse.replace(/\/results/gi, `${config.prefix}${proxy.url.encoded_origin}/results`); };
+          if (proxy.url.hostname == 'www.youtube.com') {
+              proxy.sendResponse = proxy.sendResponse.replace(/\/results/gi, `${config.prefix}${proxy.url.encoded_origin}/results`);
+          };
       } else if (proxy.content_type.startsWith('text/css')) {
           proxy.sendResponse = proxy.sendResponse.toString()
               .replace(/url\("\/\/(.*?)"\)/gi, `url("http://` + `$1` + `")`)
@@ -287,15 +311,129 @@
 
   app.use('/', express.static('public'));
 
-  app.get('/', async(req, res) => {
+  //Querystrings Here
 
-      if (req.query.a) {
+  app.get('/', async (req, res) => {
+
+      if (req.query.pd) {
           return res.send(fs.readFile('./public/e.html'))
       }
 
   });
 
-  app.use(async(req, res, next) => {
+  app.get('/', async (req, res) => {
+
+      if (req.query.a) {
+          return res.send(fs.readFile('./public/a.html'))
+      }
+
+  });
+
+  app.get('/', async (req, res) => {
+
+      if (req.query.b) {
+          return res.send(fs.readFile('./public/b.html'))
+      }
+
+  });
+
+  app.get('/', async (req, res) => {
+
+      if (req.query.p) {
+          return res.send(fs.readFile('./public/p.html'))
+      }
+
+  });
+
+  app.get('/', async (req, res) => {
+
+      if (req.query.x) {
+          return res.send(fs.readFile('./public/x.html'))
+      }
+
+  });
+
+  app.get('/', async (req, res) => {
+
+      if (req.query.d) {
+          return res.send(fs.readFile('./public/d.html'))
+      }
+
+  });
+
+  app.get('/', async (req, res) => {
+
+      if (req.query.y) {
+          return res.send(fs.readFile('./public/y.html'))
+      }
+
+  });
+
+  app.get('/', async (req, res) => {
+
+      if (req.query.yh) {
+          return res.send(fs.readFile('./public/yh.html'))
+      }
+
+  });
+
+  app.get('/', async (req, res) => {
+
+      if (req.query.ym) {
+          return res.send(fs.readFile('./public/ym.html'))
+      }
+
+  });
+
+  app.get('/', async (req, res) => {
+
+      if (req.query.g) {
+          return res.send(fs.readFile('./public/g.html'))
+      }
+
+  });
+
+  app.get('/', async (req, res) => {
+
+      if (req.query.k) {
+          return res.send(fs.readFile('./public/k.html'))
+      }
+
+  });
+
+  app.get('/', async (req, res) => {
+
+      if (req.query.m) {
+          return res.send(fs.readFile('./public/m.html'))
+      }
+
+  });
+
+  app.get('/', async (req, res) => {
+
+      if (req.query.c) {
+          return res.send(fs.readFile('./public/c.html'))
+      }
+
+  });
+
+  app.get('/', async (req, res) => {
+
+      if (req.query.t) {
+          return res.send(fs.readFile('./public/t.html'))
+      }
+
+  });
+
+  app.get('/', async (req, res) => {
+
+      if (req.query.z) {
+          return res.send(fs.readFile('./public/z.html'))
+      }
+
+  });
+
+  app.use(async (req, res, next) => {
       if (req.headers['referer']) {
 
           let referer = '/' + String(req.headers['referer']).split('/').splice(3).join('/');
