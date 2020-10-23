@@ -317,116 +317,63 @@
           return res.send(fs.readFile('./public/e.html'))
       }
 
-  });
-
-  app.get('/', async (req, res) => {
-
       if (req.query.a) {
           return res.send(fs.readFile('./public/a.html'))
       }
-
-  });
-
-  app.get('/', async (req, res) => {
 
       if (req.query.b) {
           return res.send(fs.readFile('./public/b.html'))
       }
 
-  });
-
-  app.get('/', async (req, res) => {
-
       if (req.query.p) {
           return res.send(fs.readFile('./public/p.html'))
       }
-
-  });
-
-  app.get('/', async (req, res) => {
 
       if (req.query.x) {
           return res.send(fs.readFile('./public/x.html'))
       }
 
-  });
-
-  app.get('/', async (req, res) => {
-
       if (req.query.d) {
           return res.send(fs.readFile('./public/d.html'))
       }
-
-  });
-
-  app.get('/', async (req, res) => {
 
       if (req.query.y) {
           return res.send(fs.readFile('./public/y.html'))
       }
 
-  });
-
-  app.get('/', async (req, res) => {
-
       if (req.query.yh) {
           return res.send(fs.readFile('./public/yh.html'))
       }
 
-  });
-
-  app.get('/', async (req, res) => {
 
       if (req.query.ym) {
           return res.send(fs.readFile('./public/ym.html'))
       }
 
-  });
-
-  app.get('/', async (req, res) => {
 
       if (req.query.g) {
           return res.send(fs.readFile('./public/g.html'))
       }
 
-  });
-
-  app.get('/', async (req, res) => {
 
       if (req.query.k) {
           return res.send(fs.readFile('./public/k.html'))
       }
 
-  });
-
-  app.get('/', async (req, res) => {
-
       if (req.query.m) {
           return res.send(fs.readFile('./public/m.html'))
       }
-
-  });
-
-  app.get('/', async (req, res) => {
 
       if (req.query.c) {
           return res.send(fs.readFile('./public/c.html'))
       }
 
-  });
-
-  app.get('/', async (req, res) => {
+      if (req.query.z) {
+          return res.send(fs.readFile('./public/z.html'))
+      }
 
       if (req.query.t) {
           return res.send(fs.readFile('./public/t.html'))
-      }
-
-  });
-
-  app.get('/', async (req, res) => {
-
-      if (req.query.z) {
-          return res.send(fs.readFile('./public/z.html'))
       }
 
   });
