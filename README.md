@@ -62,10 +62,12 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 - `/expr` is used for important proxy scripts.
 - `/archive/` and `/css` is used for game related assets and pages.
 -  `/assets/` is used for various assets for CSS, JS and Bootstrap.
+- `/vibeOS/` is used for vibeOS, an in-browser OS enviroment.
 
 #### Scripts located in `/expr`
 - `[Proxy Initial]bp.js` is used for future implementation of Cookie Auth and navigation to external proxies. Must be located in the <body> tag.
 - `[Proxy Initial]load.js` is used for initializing the bp script(s). Must be located in the `<head>` tag.
+- `d.html` is used for a locally running Discord proxy along with `dbp.js`
 
 #### Details of `auth.js`
 - Will be used for the implementation of Cookie Authorization
