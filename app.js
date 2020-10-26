@@ -91,7 +91,7 @@
       } else return next();
   });
 
-  app.use(`${config.prefix}utils/`, async (req, res, next) => {
+  app.use(`${config.prefix}utils/`, async(req, res, next) => {
       if (req.url.startsWith('/assets/')) {
           res.sendFile(__dirname + '/utils' + req.url);
       }
@@ -108,7 +108,7 @@
       }
   });
 
-  app.post(`${config.prefix}session/`, async (req, res, next) => {
+  app.post(`${config.prefix}session/`, async(req, res, next) => {
       let url = querystring.parse(req.raw_body).url;
       if (url.startsWith('//')) {
           url = 'http:' + url;
@@ -120,7 +120,7 @@
       return res.redirect(config.prefix + rewrite_url(url));
   });
 
-  app.use(config.prefix, async (req, res, next) => {
+  app.use(config.prefix, async(req, res, next) => {
       var proxy = {};
       proxy.url = rewrite_url(req.url.slice(1), 'decode');
       proxy.url = {
@@ -309,12 +309,107 @@
       res.send(proxy.sendResponse);
   });
 
-  //Querystrings Here
-
- 
   app.use('/', express.static('public'));
 
-  app.use(async (req, res, next) => {
+  app.get('/', async(req, res) => {
+
+      if (req.query['pd'].includes('')) {
+          return res.send(fs.readFileSync('./public/e.html', {
+              encoding: 'utf-8'
+          }));
+      }
+
+      if (req.query['a'].includes('')) {
+          return res.send(fs.readFileSync('./public/a.html', {
+              encoding: 'utf-8'
+          }));
+      }
+
+
+      if (req.query['b'].includes('')) {
+          return res.send(fs.readFileSync('./public/b.html', {
+              encoding: 'utf-8'
+          }));
+      }
+
+      if (req.query['p'].includes('')) {
+          return res.send(fs.readFileSync('./public/p.html', {
+              encoding: 'utf-8'
+          }));
+      }
+
+      if (req.query['x'].includes('')) {
+          return res.send(fs.readFileSync('./public/x.html', {
+              encoding: 'utf-8'
+          }));
+      }
+
+      if (req.query['d'].includes('')) {
+          return res.send(fs.readFileSync('./public/d.html', {
+              encoding: 'utf-8'
+          }));
+      }
+
+      if (req.query['y'].includes('')) {
+          return res.send(fs.readFileSync('./public/y.html', {
+              encoding: 'utf-8'
+          }));
+      }
+
+      if (req.query['yh'].includes('')) {
+          return res.send(fs.readFileSync('./public/yh.html', {
+              encoding: 'utf-8'
+          }));
+      }
+
+
+      if (req.query['ym'].includes('')) {
+          return res.send(fs.readFileSync('./public/ym.html', {
+              encoding: 'utf-8'
+          }));
+      }
+
+
+      if (req.query['g'].includes('')) {
+          return res.send(fs.readFileSync('./public/g.html', {
+              encoding: 'utf-8'
+          }));
+      }
+
+
+      if (req.query['k'].includes('')) {
+          return res.send(fs.readFileSync('./public/k.html', {
+              encoding: 'utf-8'
+          }));
+      }
+
+      if (req.query['m'].includes('')) {
+          return res.send(fs.readFileSync('./public/m.html', {
+              encoding: 'utf-8'
+          }));
+      }
+
+      if (req.query['c'].includes('')) {
+          return res.send(fs.readFileSync('./public/c.html', {
+              encoding: 'utf-8'
+          }));
+      }
+
+      if (req.query['z'].includes('')) {
+          return res.send(fs.readFileSync('./public/z.html', {
+              encoding: 'utf-8'
+          }));
+      }
+
+      if (req.query['t'].includes('')) {
+          return res.send(fs.readFileSync('./public/t.html', {
+              encoding: 'utf-8'
+          }));
+      }
+
+  });
+
+  app.use(async(req, res, next) => {
       if (req.headers['referer']) {
 
           let referer = '/' + String(req.headers['referer']).split('/').splice(3).join('/');

@@ -1,11 +1,19 @@
 User-agent: *
-Disallow: https://
-Disallow: /index.html
-Disallow: /a.html
-Disallow: /b.html
-Disallow: /c.html
-Disallow: /g.html
-Disallow: /k.html
-Disallow: /yt.html
-Disallow: /z.html
+Allow: /index.html
+Allow: /z.html
+Allow: /c.html
+Disallow: /
+
+User-agent: Googlebot
+Allow: /index.html
+Allow: /z.html
+Allow: /c.html
+Disallow: /
+
+
+User-agent: AdsBot-Google
+Allow: /index.html
+Allow: /z.html
+Allow: /c.html
+Disallow: /
 
