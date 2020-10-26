@@ -3,7 +3,7 @@ A website that can be used to bypass web filters; both extension and firewall. T
 
 <img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/public/assets/img/holyubpreviewupdated.png"></img>
 
-Official Site: https://www.holyubofficial.net/
+Official Site: https://www.holyubofficial.net
 
 Be sure to join Titanium Network's Discord for more official site links: https://discord.com/invite/tgT48PH
 
