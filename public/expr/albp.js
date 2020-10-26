@@ -13,7 +13,7 @@ $('al').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(url)
-    window.location.href = "https://" + domain + "/home/utils/?url=" + origin;
+    window.location.href = "https://" + domain + "/fetch/utils/?url=" + origin;
     document.cookie = '__alloy_cookie_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
