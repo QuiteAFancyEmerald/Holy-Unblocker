@@ -1,5 +1,7 @@
 div.gallery {
     border: 1px solid #ccc;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 div.gallery:hover {
@@ -8,11 +10,11 @@ div.gallery:hover {
 
 div.gallery img {
     width: 100%;
-    height: auto;
+    height: 60%;
 }
 
 div.desc {
-    padding: 15px;
+    padding: 10px;
     text-align: center;
     height: 150px;
 }
