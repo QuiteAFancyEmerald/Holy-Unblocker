@@ -18,8 +18,6 @@ Be sure to join Titanium Network's Discord for more official site links: https:/
 ## Table of contents:
 
 - [Setup](#how-to-install)
-	- [Goals of this project](#goals-of-this-project)
-	- [Current features and limitations](#current-features-and-limitations)
 - [Structure](#structure)
 	- [Structure Information](#structure-information)
     - [Static Files](#details-of-public)
