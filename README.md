@@ -32,7 +32,7 @@ Be sure to join Titanium Network's Discord for more official site links: https:/
 	  - [Workspace Configurations](#workspace-configurations)
 	- [More Information](#more-information)
 
-## How to Install
+## How to Setup
 
 Either use the button above to deploy to Heroku or do the below:
 
