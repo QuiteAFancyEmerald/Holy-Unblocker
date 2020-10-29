@@ -15,18 +15,38 @@ Be sure to join Titanium Network's Discord for more official site links: https:/
 &nbsp;
 <a href="https://glitch.com/edit/#!/import/github/QuiteAFancyEmerald/HolyUnblockerPublic" title="Remix on Glitch"><img alt="Remix on glitch" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/public/assets/img/glitch.svg?raw" width="140" height="30"><img></a>
 
+## Table of contents:
+
+- [Setup](##how-to-install)
+	- [Goals of this project](#goals-of-this-project)
+	- [Current features and limitations](#current-features-and-limitations)
+- [Structure](##structure)
+	- [Structure Information](###structure-information)
+    - [Static Files](####details-of-`/public`)
+    - [Proxy Scripts](####scripts-located-in-`/expr`)
+    - [Cookie Auth](####details-of-`auth.js`) ## Future Additions
+- [Future Additions](##future-additions)
+- [Beginner's Explanation](##vauge-explanation-for-beginners-with-external-proxies-and-hosting)
+  - [Hosting Providers](####list-of-some-good-hosting-options:)
+  - [Heroku Setup](####heroku-steps)
+  - [Domain Setup](####freenom/domain-steps)
+  - [Cloudflare Setup](####cloudflare-steps)
+  - [Workspace Configurations](####workspace-configurations)
+- [More Information](##more-information)
 
 ## How to Install
 
 Either use the button above to deploy to Heroku or do the below:
 
-`git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git`
+```
+git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git
 
-`cd HolyUnblockerPublic`
+cd HolyUnblockerPublic
 
-`npm install`
+npm install
 
-`npm start`
+npm start
+```
 
 The default place for the proxy when its started is `http://localhost:8081` but you can change it if needed in config.json
 
@@ -136,11 +156,13 @@ Preferably if you have your own device use Visual Studio Code. Pretty much the b
 
 Not going to go too in depth with this part but first fork this repository. The clone it locally through a Terminal of some sort depending on what OS you are on. Make sure you navigate to the folder you want to set this up in.
 
-`git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git`
+```
+git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git
 
-`cd HolyUnblockerPublic`
+cd HolyUnblockerPublic
 
-`npm install`
+npm install
+```
 
 Now simply add the folder you cloned this repo in in VSC. Then run `npm install`. I recommend that if you are releasing this publically on GitHub that you add a `.gitignore` in your root directory with the following exclusions:
 
