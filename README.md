@@ -17,22 +17,22 @@ Be sure to join Titanium Network's Discord for more official site links: https:/
 
 ## Table of contents:
 
-- [Setup](##how-to-install)
+- [Setup](#how-to-install)
 	- [Goals of this project](#goals-of-this-project)
 	- [Current features and limitations](#current-features-and-limitations)
-- [Structure](##structure)
-	- [Structure Information](###structure-information)
-    - [Static Files](####details-of-`/public`)
-    - [Proxy Scripts](####scripts-located-in-`/expr`)
-    - [Cookie Auth](####details-of-`auth.js`) ## Future Additions
-- [Future Additions](##future-additions)
-- [Beginner's Explanation](##vauge-explanation-for-beginners-with-external-proxies-and-hosting)
-  - [Hosting Providers](####list-of-some-good-hosting-options:)
-  - [Heroku Setup](####heroku-steps)
-  - [Domain Setup](####freenom/domain-steps)
-  - [Cloudflare Setup](####cloudflare-steps)
-  - [Workspace Configurations](####workspace-configurations)
-- [More Information](##more-information)
+- [Structure](#structure)
+	- [Structure Information](#structure-information)
+    - [Static Files](#details-of-public)
+    - [Proxy Scripts](#scripts-located-in-expr)
+    - [Cookie Auth](#details-of-authjs)
+- [Future Additions](#future-additions)
+- [Beginner's Explanation](#vauge-explanation-for-beginners-with-external-proxies-and-hosting)
+  - [Hosting Providers](#list-of-some-good-hosting-options)
+  - [Heroku Setup](#heroku-steps)
+  - [Domain Setup](#freenom/domain-steps)
+  - [Cloudflare Setup](#cloudflare-steps)
+  - [Workspace Configurations](#workspace-configurations)
+- [More Information](#more-information)
 
 ## How to Install
 
