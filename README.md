@@ -27,7 +27,7 @@ Be sure to join Titanium Network's Discord for more official site links: https:/
 	- [Beginner's Explanation](#vauge-explanation-for-beginners-with-external-proxies-and-hosting)
 	  - [Hosting Providers](#list-of-some-good-hosting-options)
 	  - [Heroku Setup](#heroku-steps)
-	  - [Domain Setup](#freenom/domain-steps)
+	  - [Domain Setup](#freenomdomain-steps)
 	  - [Cloudflare Setup](#cloudflare-steps)
 	  - [Workspace Configurations](#workspace-configurations)
 	- [More Information](#more-information)
