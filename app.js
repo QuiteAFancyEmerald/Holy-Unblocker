@@ -7,7 +7,8 @@
       session = require('express-session'),
       sanitizer = require('sanitizer'),
       websocket = require('./ws-proxy.js'),
-      fetch = require('node-fetch');
+      fetch = require('node-fetch'),
+      path = require("path");
 
   const config = JSON.parse(fs.readFileSync('./config.json', {
       encoding: 'utf8'
@@ -65,19 +66,21 @@
       } else return `${websiteURL}${websitePath}`;
   };
 
-  var login = require('./auth');
-
   app.use(session({
       secret: 'alloy',
       saveUninitialized: true,
-      resave: true
+      resave: true,
+      cookieName: '__alloy_cookie_auth=yes',
+      duration: 30 * 60 * 1000,
+      activeDuration: 5 * 60 * 1000
   }));
+
   // We made our own version of body-parser instead, due to issues.
   app.use((req, res, next) => {
       if (req.method == 'POST') {
           req.raw_body = '';
           req.on('data', chunk => {
-              req.raw_body += chunk.toString(); // convert Buffer to string
+              req.raw_body += chunk.toString(); // convert buffer to string
           });
           req.on('end', () => {
               req.str_body = req.raw_body;
@@ -91,7 +94,7 @@
       } else return next();
   });
 
-  app.use(`${config.prefix}utils/`, async(req, res, next) => {
+  app.use(`${config.prefix}utils/`, async (req, res, next) => {
       if (req.url.startsWith('/assets/')) {
           res.sendFile(__dirname + '/utils' + req.url);
       }
@@ -108,7 +111,65 @@
       }
   });
 
-  app.post(`${config.prefix}session/`, async(req, res, next) => {
+  /*
+  //Cookie Auth
+
+   app.use(checkAuth);
+
+   app.use(auth);
+
+  function auth(req, res, next) {
+
+  let user = new User({
+     cookieName: '__alloy_cookie_auth=yes'
+   });
+
+   if (!req.signedCookies.user) {
+      var authHeader = req.headers.authorization;
+     if (!authHeader) {
+         var err = new Error('You are not authenticated!');
+          err.status = 401;
+          next(err);
+          return;
+      }
+      var auth = new Buffer(authHeader.split(' ')[1], 'base64').toString().split(':');
+      var pass = auth[1];
+      if (user == '__alloy_cookie_auth=yes') {
+          res.cookie('user', 'admin', {
+              signed: true
+          });
+          next(); // authorized
+      } else {
+          var err = new Error('You are not authenticated!');
+          err.status = 401;
+         next(err);
+      }
+    } else {
+        if (req.signedCookies.user === 'admin') {
+          next();
+        } else {
+             var err = new Error('You are not authenticated!');
+   err.status = 401;
+           next(err);
+       }
+    }
+   };
+
+  // Check the auth of the routes => middleware functions
+  function checkAuth(req, res, next) {
+    console.log('checkAuth ' + req.url);
+  // don 't serve /secure to those not logged in => /secure if for those who are logged in
+  // you should add to this list, for each and every secure url
+      if (req.url.indexOf(`${config.prefix}session/`) === 0 && (!req.session || !req.session.authenticated)) {
+        res.render(fs.readFileSync('./utils/error/error.html', 'utf8').toString().replace('%ERROR%', `Error 401: The website '${sanitizer.sanitize(proxy.url.hostname)}' is not permitted!`), {
+            status: 403
+        });
+        return;
+     }
+     xt();
+   } */
+
+  app.post(`${config.prefix}session/`, async (req, res, next) => {
       let url = querystring.parse(req.raw_body).url;
       if (url.startsWith('//')) {
           url = 'http:' + url;
@@ -117,10 +178,27 @@
       } else {
           url = 'http://' + url
       };
-      return res.redirect(config.prefix + rewrite_url(url));
+
+      /* let cookies = {};
+       if (request.headers.cookie !== undefined) {
+          cookies = cookie.parse(request.headers.cookie);
+      }
+
+      console.log(cookies);
+      response.writeHead(200, {
+         'SET-Cookie': ['__alloy_cookie_auth=yes',
+           `Permanent=Cookies; Max-Age=${60*60*24*30}`,
+            'Secure=Secure; Secure',
+           'HttpOnly=HttpOnly; HttpOnly',
+           'Path=Path; Path=/cookie'
+        ]
+       })
+       response.end('Coookie!!'); */
+
+      req.session.authenticated = true;
   });
 
-  app.use(config.prefix, async(req, res, next) => {
+  app.use(config.prefix, async (req, res, next) => {
       var proxy = {};
       proxy.url = rewrite_url(req.url.slice(1), 'decode');
       proxy.url = {
@@ -309,107 +387,162 @@
       res.send(proxy.sendResponse);
   });
 
-  app.use('/', express.static('public'));
+  //Querystrings
+  app.get('/', async (req, res) => {
 
-  app.get('/', async(req, res) => {
 
-      if (req.query['pd'].includes('')) {
-          return res.send(fs.readFileSync('./public/e.html', {
-              encoding: 'utf-8'
+      /*  
+        const path = require("path"); //Use this for path.
+        
+        fs.readFileSync( path, options );
+
+        Use this for improved navigation. Massive help from MikeLime and Duce. 
+
+        if (req.url == '/?querystringhere') {
+           return res.send(fs.readFileSync(path.resolve() + 'filepath', {
+             encoding: 'utf8'
+           }));
+        }
+    */
+
+
+      if (req.url == '/') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/index.html', {
+              encoding: 'utf8'
           }));
       }
 
-      if (req.query['a'].includes('')) {
-          return res.send(fs.readFileSync('./public/a.html', {
-              encoding: 'utf-8'
+      if (req.url == '/?z') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/z.html', {
+              encoding: 'utf8'
           }));
       }
 
-
-      if (req.query['b'].includes('')) {
-          return res.send(fs.readFileSync('./public/b.html', {
-              encoding: 'utf-8'
+      if (req.url == '/?a') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/a.html', {
+              encoding: 'utf8'
           }));
       }
 
-      if (req.query['p'].includes('')) {
-          return res.send(fs.readFileSync('./public/p.html', {
-              encoding: 'utf-8'
+      if (req.url == '/?dd') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/expr/d.html', {
+              encoding: 'utf8'
           }));
       }
 
-      if (req.query['x'].includes('')) {
-          return res.send(fs.readFileSync('./public/x.html', {
-              encoding: 'utf-8'
+      if (req.url == '/?b') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/b.html', {
+              encoding: 'utf8'
           }));
       }
 
-      if (req.query['d'].includes('')) {
-          return res.send(fs.readFileSync('./public/d.html', {
-              encoding: 'utf-8'
+      if (req.url == '/?y') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/y.html', {
+              encoding: 'utf8'
           }));
       }
 
-      if (req.query['y'].includes('')) {
-          return res.send(fs.readFileSync('./public/y.html', {
-              encoding: 'utf-8'
+      if (req.url == '/?e') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/e.html', {
+              encoding: 'utf8'
           }));
       }
 
-      if (req.query['yh'].includes('')) {
-          return res.send(fs.readFileSync('./public/yh.html', {
-              encoding: 'utf-8'
+      if (req.url == '/?d') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/d.html', {
+              encoding: 'utf8'
           }));
       }
 
-
-      if (req.query['ym'].includes('')) {
-          return res.send(fs.readFileSync('./public/ym.html', {
-              encoding: 'utf-8'
+      if (req.url == '/?c') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/c.html', {
+              encoding: 'utf8'
           }));
       }
 
-
-      if (req.query['g'].includes('')) {
-          return res.send(fs.readFileSync('./public/g.html', {
-              encoding: 'utf-8'
+      if (req.url == '/?f') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/f.html', {
+              encoding: 'utf8'
           }));
       }
 
-
-      if (req.query['k'].includes('')) {
-          return res.send(fs.readFileSync('./public/k.html', {
-              encoding: 'utf-8'
+      if (req.url == '/?g') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/g.html', {
+              encoding: 'utf8'
           }));
       }
 
-      if (req.query['m'].includes('')) {
-          return res.send(fs.readFileSync('./public/m.html', {
-              encoding: 'utf-8'
+      if (req.url == '/?h') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/h.html', {
+              encoding: 'utf8'
           }));
       }
 
-      if (req.query['c'].includes('')) {
-          return res.send(fs.readFileSync('./public/c.html', {
-              encoding: 'utf-8'
+      if (req.url == '/?i') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/i.html', {
+              encoding: 'utf8'
           }));
       }
 
-      if (req.query['z'].includes('')) {
-          return res.send(fs.readFileSync('./public/z.html', {
-              encoding: 'utf-8'
+      if (req.url == '/?in') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/info.html', {
+              encoding: 'utf8'
           }));
       }
 
-      if (req.query['t'].includes('')) {
-          return res.send(fs.readFileSync('./public/t.html', {
-              encoding: 'utf-8'
+      if (req.url == '/?k') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/k.html', {
+              encoding: 'utf8'
+          }));
+      }
+
+      if (req.url == '/?m') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/m.html', {
+              encoding: 'utf8'
+          }));
+      }
+
+      if (req.url == '/?n') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/n.html', {
+              encoding: 'utf8'
+          }));
+      }
+
+      if (req.url == '/?p') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/p.html', {
+              encoding: 'utf8'
+          }));
+      }
+
+      if (req.url == '/?t') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/t.html', {
+              encoding: 'utf8'
+          }));
+      }
+
+      if (req.url == '/?x') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/x.html', {
+              encoding: 'utf8'
+          }));
+      }
+
+      if (req.url == '/?yh') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/yh.html', {
+              encoding: 'utf8'
+          }));
+      }
+
+      if (req.url == '/?ym') {
+          return res.send(fs.readFileSync(path.resolve() + '/public/ym.html', {
+              encoding: 'utf8'
           }));
       }
 
   });
 
-  app.use(async(req, res, next) => {
+  app.use('/', express.static('public'));
+
+  app.use(async (req, res, next) => {
       if (req.headers['referer']) {
 
           let referer = '/' + String(req.headers['referer']).split('/').splice(3).join('/');
