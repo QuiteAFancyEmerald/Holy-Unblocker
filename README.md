@@ -129,7 +129,7 @@ For beginners, Freenom is a good provider for obtaining domains for free. Howeve
 
 - Get some Freenom domains then add them to your Heroku instance (Personal > [App Name] > Settings > Domains)
 Add a domain for both `www.youdomainhere.cf` and `yourdomainhere.cf` with .cf being interchangeable with other Freedom domain names.
-- If you prefer to obtain premium domains (TLDs) then use <a href="https://porkbun.com">Porkbun</a>, which offers domains for amazing prices. Literally a `.net` domain cost around $10. Here for the first year it costs $3 so its definitely a deal.
+- If you prefer to obtain premium domains (TLDs) then use <a href="https://porkbun.com">Porkbun</a>, which offers domains for amazing prices. Literally a `.net` domain normally costs around $10. On Porkbun for the first year it costs $3 so its definitely a deal.
 
 #### Cloudflare Steps
 - Use Cloudflare (make an account), add your site (Freenom Domain or Domain) and then add your various DNS targets to Cloudflare. Make sure you add Cloudflare's Nameservers which will be specified more when you are adding your site. 
