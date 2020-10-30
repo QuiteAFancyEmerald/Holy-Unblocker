@@ -6,8 +6,8 @@ $('pdprox').onclick = function() {
     var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    window.location.href = "https://pd." + domain + "/course/" + url;
-    document.cookie = 'pd_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + auth + '; path=/; Secure;';
+    window.location.href = "https://c." + domain + "/" + url;
+    document.cookie = 'oldsmobile=owo; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
 
