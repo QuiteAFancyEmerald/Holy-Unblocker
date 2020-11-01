@@ -1,23 +1,3 @@
-function $(id) {
-    return document.getElementById(id);
-};
+$=e=>document.getElementById(e)||[];
 
-document.getElementById("hblink").href = "https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic";
-
-document.getElementById("hblink2").href = "https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic";
-
-document.getElementById("allink").href = "https://github.com/titaniumnetwork-dev/alloyproxy";
-
-document.getElementById("plink").href = "https://github.com/vibedivide/powermouse";
-
-document.getElementById("tnlink").href = "https://discord.com/invite/Dw6C7p5";
-
-document.getElementById("pmlink").href = "https://github.com/vibedivide/powermouse";
-
-document.getElementById("qrlink").href = "https://support.discord.com/hc/en-us/articles/360039213771-QR-Code-Login-FAQ";
-
-document.getElementById("nulink").href = "https://github.com/nfriedly/node-unblocker";
-
-document.getElementById("pylink").href = "https://github.com/BinBashBanana/PyDodge";
-
-document.getElementById("nclink").href = "https://nodeclusters.com";
+$("hblink").href="https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic";$("hblink2").href="https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic";$("allink").href="https://github.com/titaniumnetwork-dev/alloyproxy";$("tnlink").href="https://discord.com/invite/Dw6C7p5";$("pmlink").href="https://github.com/vibedivide/powermouse";$("qrlink").href="https://support.discord.com/hc/en-us/articles/360039213771-QR-Code-Login-FAQ";$("nulink").href="https://github.com/nfriedly/node-unblocker";$("pylink").href="https://github.com/BinBashBanana/PyDodge"
