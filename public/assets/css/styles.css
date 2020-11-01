@@ -10,6 +10,7 @@
     }
 }
 
+
 /*IFrame CSS*/
 
 section {
@@ -19,7 +20,9 @@ section {
     overflow: hidden;
 }
 
+
 /*Styles CSS*/
+
 *,
 *:before,
 *:after {
@@ -132,7 +135,6 @@ section {
     background-color: white;
 }
 
-
 .in-bg {
     height: 500px;
     font-family: 'Montserrat Alternates', sans-serif;
@@ -169,7 +171,6 @@ section {
     color: #00bc8c;
 }
 
-
 .d-popupbg {
     border: 3px solid #ffffff;
     background-color: #000000;
@@ -178,6 +179,7 @@ section {
     padding: 1%;
     margin: 1%;
 }
+
 
 /*Navigation CSS */
 
@@ -359,7 +361,6 @@ section {
 }
 
 
-
 /* Header CSS */
 
 .header-dark {
@@ -535,6 +536,7 @@ section {
     background-color: #666;
 }
 
+
 /* Footer CSS*/
 
 .footer-dark {
@@ -626,6 +628,7 @@ section {
     font-size: 13px;
     margin-bottom: 0;
 }
+
 
 /* Games CSS */
 
