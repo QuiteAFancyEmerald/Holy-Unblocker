@@ -14,30 +14,19 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/Button-Change-Text-on-Hover.css">
     <link rel="stylesheet" href="assets/css/Customizable-Background--Overlay.css">
-    <link rel="stylesheet" href="assets/css/FD.css">
-    <link rel="stylesheet" href="assets/css/IF.css">
-    <link rel="stylesheet" href="assets/css/HD.css">
-    <link rel="stylesheet" href="assets/css/hp.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
     <script src="assets/js/header.js"></script>
-    <script src="assets/js/im-runtime.js"></script>
 </head>
 
 <body>
-
-    <!-- 
-        Important: Use <wbr> and &#8203; to mess with keywords. 
-
-        Clo<wbr>ak:
-        <iframe id="page-holder" src="/?j" style="display: block;"></iframe>
-        <noscript>You must enable javascript in your browser to view this webpage.</noscript>
-    -->
-
+    <!-- Important: Use <wbr> to mess with keywords. -->
     <div>
-        <div class="header-dark hd-base">
+        <div class="header-dark" style="background-color: rgb(0,0,0);background-image: url(&quot;assets/img/black.jpg&quot;);">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search" style="height: 100px;">
                 <div class="container"><a class="navbar-brand" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/">Ho&#8203;ly Unb&#8203;lock&#8203;er</a><button data-toggle="collapse" class="navbar-toggler"
                         data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -80,11 +69,9 @@
                     </div>
                 </div>
             </nav>
-            <span style=display:none data-cooking=chem></span>
-            <!-- Main Body  -->
-            <!-- Particles.js background  -->
-            <div id="particles-js" class="in-bg">
-                <div class="d-flex justify-content-center align-items-center in-flex">
+            <!-- Particles.js background -->
+            <div id="particles-js" style="background-image: url(&quot;assets/img/black.jpg&quot;);height: 100%;background-position: center;background-size: cover;background-repeat: no-repeat;background-color: #000000;font-family: 'Montserrat Alternates', sans-serif;font-weight: bold;">
+                <div class="d-flex justify-content-center align-items-center" style="height: 100%;min-height: initial;width: 100%;position: absolute;left: 0;">
                     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
                     <script>
                         /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
@@ -92,19 +79,32 @@
                             console.log('particlesjs loaded.......');
                         });
                     </script>
-                    <!-- Splash Text  -->
-                    <div class="d-flex align-items-center order-12 in-splash">
-                        <div class="container text-center justify-content-center align-items-center in-center">
-                            <h1 class="text-center d-md-flex flex-grow-1 justify-content-md-center align-items-md-center in-center in-splash-text">End Int&#8203;ernet Censo&#8203;rship.<br>Priva&#8203;cy right at your fingertips.</h1>
-                            <button class="button rounded in-btn-color" type="button" data-hover="Epic!"><span><a href="/?z">By<wbr>p<wbr><span style=display:none data-oenfewpq=hehe>Cooking at a higher temperature (500 degrees F (260 degrees C)) is the key to making this the perfect pizza. It doesn't get any easier than this folks. Brush dough with olive oil and add your favorite toppings. Enjoy! By Michele Leigh Pinette Pierce</span>a<wbr>s<wbr>s n<wbr>ow?</a></span></button>
+                    <div class="text-center d-flex align-items-center order-12" style="height: 80%;width: 80%;">
+                        <div class="container text-center justify-content-center align-items-center" style="color: rgb(255,255,255);">
+                            <!-- Credits  -->
+                            <h1 class="text-center d-md-flex flex-grow-1 justify-content-md-center align-items-md-center" style="color: rgb(242,245,248);font-size: 46px;font-weight: normal;font-family: 'Montserrat Alternates', sans-serif;margin: 7px;padding: 34px;width: 100%;filter: blur(0px);height: 100%;">Icon Information<br></h1>
+                            <script>
+                                document.write(`
+                            <h3>How to find the Icon URL of a Site</h3>
+                            
+                            <p>Go to the website you want an icon from. Then do Ctrl+U to view the source code. Near the top you will need to look for something that looks like:</p>
+                            <br><p> < link rel = "icon" href= " http://example.com/favicon.png ". </p>
+                            <p>It can be in many forms. (.ico also works)"</p><br>
+                            <p>Copy the URL inside the parenthesis of href="". Then go back to HB and enter in the URL for the Icon URL in Settings. Enjoy. </p>
+                            <p>DM on Discord if you have any questions: Quite A Fancy Emerald#0001</p>
+
+                            <p>An Example:</p>
+                            <br><img src="/assets/img/iconexample.png"></img>
+                            
+                            `);
+                            </script>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--Footer-->
-    <div class="footer-dark ft-bg">
+    <div class="footer-dark" style="background-color: rgb(0,0,0);">
         <footer>
             <div class="container">
                 <div class="row">
@@ -129,7 +129,7 @@
                         </ul>
                     </div>
                     <!-- GitHub  -->
-                    <div class="col item social ft-g">
+                    <div class="col item social" style="margin: 2%;">
                         <a id="hblink2">
                             <ion-icon name="logo-github"></ion-icon>
                         </a>
@@ -139,7 +139,6 @@
             </div>
         </footer>
     </div>
-    <!-- Assets  -->
     <script src="assets/js/links.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

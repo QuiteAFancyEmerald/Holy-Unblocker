@@ -11,36 +11,27 @@
 :D">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/i.png">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/Button-Change-Text-on-Hover.css">
     <link rel="stylesheet" href="assets/css/Customizable-Background--Overlay.css">
-    <link rel="stylesheet" href="assets/css/FD.css">
-    <link rel="stylesheet" href="assets/css/IF.css">
-    <link rel="stylesheet" href="assets/css/HD.css">
-    <link rel="stylesheet" href="assets/css/hp.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <!--Icons-->
     <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
+    <script src="expr/pdload.js"></script>
     <script src="assets/js/header.js"></script>
-    <script src="assets/js/im-runtime.js"></script>
 </head>
 
 <body>
-
-    <!-- 
-        Important: Use <wbr> and &#8203; to mess with keywords. 
-
-        Clo<wbr>ak:
-        <iframe id="page-holder" src="/?j" style="display: block;"></iframe>
-        <noscript>You must enable javascript in your browser to view this webpage.</noscript>
-    -->
-
     <div>
-        <div class="header-dark hd-base">
+        <div class="header-dark" style="background-color: rgb(0,0,0);background-image: url(&quot;assets/img/black.jpg&quot;);">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search" style="height: 100px;">
-                <div class="container"><a class="navbar-brand" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/">Ho&#8203;ly Unb&#8203;lock&#8203;er</a><button data-toggle="collapse" class="navbar-toggler"
-                        data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="container"><a class="navbar-brand" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/">Ho&#8203;ly Unb&#8203;lock&#8203;er</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav ml-auto">
                             <!--Nav-->
@@ -50,8 +41,7 @@
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/?d" style="font-family: 'Montserrat Alternates', sans-serif;">D&#8203;isc&#8203;ord</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/?n" style="font-family: 'Montserrat Alternates', sans-serif;">Cha&#8203;tbox</a></li>
                             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;color: rgb(255,255,255);font-family: 'Montserrat Alternates', sans-serif;">More</a>
-                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;"><a class="dropdown-item text-left text-white-50" role="presentation" href="/?k" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Kru&#8203;nk&#8203;er</a><a class="dropdown-item text-left text-white-50"
-                                        role="presentation" href="/?in" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Docs</a><a class="dropdown-item text-white-50" role="presentation" href="/?c" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Cre&#8203;dits</a></div>
+                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;"><a class="dropdown-item text-left text-white-50" role="presentation" href="/?k" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Kru&#8203;nk&#8203;er</a><a class="dropdown-item text-left text-white-50" role="presentation" href="/?in" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Docs</a><a class="dropdown-item text-white-50" role="presentation" href="/?c" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Cre&#8203;dits</a></div>
                             </li>
                             <!--Options Menu-->
                             <li id="csel" class="nav-item dropdown"><a class="dropdown-toggle nav-link text-white" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;font-family: 'Montserrat Alternates', sans-serif;">Options</a>
@@ -80,11 +70,9 @@
                     </div>
                 </div>
             </nav>
-            <span style=display:none data-cooking=chem></span>
-            <!-- Main Body  -->
-            <!-- Particles.js background  -->
-            <div id="particles-js" class="in-bg">
-                <div class="d-flex justify-content-center align-items-center in-flex">
+            <!--Body-->
+            <div id="particles-js" style="height: 500px;font-family: 'Montserrat Alternates', sans-serif;font-weight: bold;">
+                <div class="d-flex justify-content-center align-items-center" style="height: inherit;width: 100%;position: absolute;left: 0;background-color: rgba(1,1,,0.63);min-height: initial;">
                     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
                     <script>
                         /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
@@ -92,11 +80,31 @@
                             console.log('particlesjs loaded.......');
                         });
                     </script>
-                    <!-- Splash Text  -->
-                    <div class="d-flex align-items-center order-12 in-splash">
-                        <div class="container text-center justify-content-center align-items-center in-center">
-                            <h1 class="text-center d-md-flex flex-grow-1 justify-content-md-center align-items-md-center in-center in-splash-text">End Int&#8203;ernet Censo&#8203;rship.<br>Priva&#8203;cy right at your fingertips.</h1>
-                            <button class="button rounded in-btn-color" type="button" data-hover="Epic!"><span><a href="/?z">By<wbr>p<wbr><span style=display:none data-oenfewpq=hehe>Cooking at a higher temperature (500 degrees F (260 degrees C)) is the key to making this the perfect pizza. It doesn't get any easier than this folks. Brush dough with olive oil and add your favorite toppings. Enjoy! By Michele Leigh Pinette Pierce</span>a<wbr>s<wbr>s n<wbr>ow?</a></span></button>
+                    <div class="d-flex align-items-center order-12" style="height:200px;">
+                        <div class="container border rounded text-center justify-content-center align-items-center button" style="color: rgb(255,255,255);filter: blur(0px); opacity: 0.95;">
+                            <!--PD-->
+                            <form id="pd" onkeydown="pd()">
+                                <p style=" font-size: 46px; ">P<wbr>yDo<wbr>dge B</p>
+                                <p style="font-family: 'Montserrat Alternates', sans-serif; ">An alterna<wbr>tive pr<wbr>oxy of a modi<wbr>fied V<wbr>ia Pro<wbr>xy by O<wbr>lyB.</p>
+                                <div class="input-group ">
+                                    <div class="input-group-prepend"></div><input id="url" class="bg-dark border rounded-0 border-info shadow-sm form-control form-control-lg " type="text" name="url" style="width: 194px;font-family:
+                                'Montserrat Alternates', sans-serif;opacity: 0.80; color:rgb(255,255,255); " placeholder="Insert URL ">
+                                    <div class="input-group-append "><button id="pdprox" class="btn btn-dark btn-lg bg-dark border rounded-0 border-info shadow-lg select " data-bs-hover-animate="pulse " name="button" type="submit" style="width: 78px;padding: 8px;margin:
+                                0px;height: 46.126px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px; ">Go</button></div>
+                                </div>
+                                <div>
+                                    <script>
+                                        var header = document.getElementById("pd");
+                                        var btns = header.getElementsByClassName("pdprox");
+                                        for (var i = 0; i < btns.length; i++) {
+                                            btns[i].addEventListener("click", function() {});
+                                        }
+                                    </script>
+                                </div>
+                                <p class="text-primary " style="font-size: 20px;font-family: 'Montserrat Alternates', sans-serif; ">More Information:<br></p>
+                                <p class="text-light " style="font-family: Lato, sans-serif; ">Works on vari<wbr>ous sites.<br><br>Explore!</p>
+                                <p class="text-primary " style="font-family: Lato, sans-serif; ">GitH<wbr>ub:&nbsp;<a class="text-primary " id="pylink"><strong>&nbsp;https://github.com/BinBashBa&#8203;nana/PyD&#8203;odge</strong></a><br><br>Crea<wbr>ted by Ol<wbr>yB.</p>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -104,7 +112,7 @@
         </div>
     </div>
     <!--Footer-->
-    <div class="footer-dark ft-bg">
+    <div class="footer-dark" style="background-color: rgb(0,0,0);">
         <footer>
             <div class="container">
                 <div class="row">
@@ -116,20 +124,20 @@
                         <h3>Services</h3>
                         <ul>
                             <li><a id="allink">Al<wbr>loy</a></li>
-                            <li><a id="plink">PM P<wbr>ro<wbr>xy</a></li>
-                            <li><a id="nclink">No<wbr>deClu<wbr>sters</a></li>
+                            <li><a id="pmlink">PM P<wbr>ro<wbr>xy</a></li>
+                            <li><a href="https://nodeclusters.com/">No<wbr>deClu<wbr>sters</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-3 item">
                         <h3>About</h3>
                         <ul>
                             <li><a id="hblink">G<wbr>itHub</a></li>
-                            <li><a href="/?t">Privacy and Terms of Service</a></li>
-                            <li><a href="/?c">Credits</a></li>
+                            <li><a href="t.html">Privacy and Terms of Service</a></li>
+                            <li><a href="c.html">Credits</a></li>
                         </ul>
                     </div>
                     <!-- GitHub  -->
-                    <div class="col item social ft-g">
+                    <div class="col item social" style="margin: 2%;">
                         <a id="hblink2">
                             <ion-icon name="logo-github"></ion-icon>
                         </a>
@@ -139,10 +147,12 @@
             </div>
         </footer>
     </div>
-    <!-- Assets  -->
+    <!--Scripts-->
     <script src="assets/js/links.js"></script>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.min.js "></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js "></script>
+    <script src="assets/js/bs-init.js "></script>
+    <script src="expr/pdbp.js "></script>
 </body>
 
 </html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- Important: Use &#8203; to mess with keywords.  -->
+    <title>H&#8203;oly Unb&#8203;loc&#8203;ke&#8203;r</title>
+    <meta name="description" content="G&#8203;et p&#8203;ast in&#8203;te&#8203;r&#8203;net ce&#8203;n&#8203;s&#8203;or&#8203;sh&#8203;ip tod&#8203;a&#8203;y!
+:D">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/i.png">
+    <link rel="stylesheet" href="/assets/css/gb.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Gam&#8203;eboy Emul&#8203;ator</h1>
+    </header>
+
+    <div id="container">
+
+        <div class="canvas-container"><canvas id="canvas">Your browser does not seem to support canvas.</canvas></div>
+
+        <p class="commands">
+            <button onclick="g.pause(true);">Pause</button>
+            <button onclick="g.pause(false);">Run</button>
+        </p>
+        <p class="commands">
+            <label><input id="sound-enable" type="checkbox" onchange="g.setSoundEnabled(this.checked);" /> Enable sound (experimental)</label>
+        </p>
+        <p class="commands">
+            <label>
+                Screen zoom
+                <select id="screen-zoom" onchange="g.setScreenZoom(this.value);">
+                    <option value="1">Small</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Large</option>
+                </select>
+            </label>
+        </p>
+
+        <p>
+            <span id="status"></span> <span id="game-name"></span>
+        </p>
+        <p id="error" class="hide"></p>
+
+        <div class="rom-section">
+            <div id="rom-file">
+                <label>Choose a R&#8203;M file on your computer: <input type="file" id="file" /></label>
+            </div>
+
+            <div id="rom-drop">
+                <div id="dropzone">
+                    <p>
+                        Or drop a R&#8203;OM file here
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="keyboard-info">
+            <p>Current keyboard mapping:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gam&#8203;eboy Pad</th>
+                        <th>Keyboard Mapping</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>A</td>
+                        <td>G</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>START</td>
+                        <td>H</td>
+                    </tr>
+                    <tr>
+                        <td>SELECT</td>
+                        <td>N</td>
+                    </tr>
+                    <tr>
+                        <td>Directional pad</td>
+                        <td>Arrow keys</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer>Crea&#8203;ted by <a href="https://github.com/juchi">@Juc&#8203;hi</a></footer>
+
+    </div>
+
+    <script type="text/javascript" src="/assets/js/gb.js"></script>
+
+    <script type="text/javascript" src="/assets/js/config.js"></script>
+</body>
+
+</html>
