@@ -1,4 +1,6 @@
-const { checkServerIdentity } = require('tls');
+const {
+    checkServerIdentity
+} = require('tls');
 
 const express = require('express'),
     app = express(),
@@ -72,9 +74,9 @@ app.use(session({
     secret: 'alloy',
     saveUninitialized: true,
     resave: true,
-    cookieName: '__alloy_cookie_auth=yes',
+    /*cookieName: '__alloy_cookie_auth=yes',
     duration: 30 * 60 * 1000,
-    activeDuration: 5 * 60 * 1000
+    activeDuration: 5 * 60 * 1000   */
 }));
 
 // We made our own version of body-parser instead, due to issues.
@@ -96,7 +98,7 @@ app.use((req, res, next) => {
     } else return next();
 });
 
-app.use(`${config.prefix}utils/`, async(req, res, next) => {
+app.use(`${config.prefix}utils/`, async (req, res, next) => {
     if (req.url.startsWith('/assets/')) {
         res.sendFile(__dirname + '/utils' + req.url);
     }
@@ -171,7 +173,7 @@ function checkAuth(req, res, next) {
    xt();
  } */
 
-app.post(`${config.prefix}session/`, async(req, res, next) => {
+app.post(`${config.prefix}session/`, async (req, res, next) => {
     let url = querystring.parse(req.raw_body).url;
     if (url.startsWith('//')) {
         url = 'http:' + url;
@@ -200,7 +202,7 @@ app.post(`${config.prefix}session/`, async(req, res, next) => {
     req.session.authenticated = true;
 });
 
-app.use(config.prefix, async(req, res, next) => {
+app.use(config.prefix, async (req, res, next) => {
     var proxy = {};
     proxy.url = rewrite_url(req.url.slice(1), 'decode');
     proxy.url = {
@@ -390,7 +392,7 @@ app.use(config.prefix, async(req, res, next) => {
 });
 
 //Querystrings
-app.get('/', async(req, res) => {
+app.get('/', async (req, res) => {
 
 
     /*  
@@ -532,7 +534,7 @@ app.get('/', async(req, res) => {
 
 app.use('/', express.static('public'));
 
-app.use(async(req, res, next) => {
+app.use(async (req, res, next) => {
     if (req.headers['referer']) {
 
         let referer = '/' + String(req.headers['referer']).split('/').splice(3).join('/');
