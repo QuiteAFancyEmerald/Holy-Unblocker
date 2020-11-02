@@ -19,8 +19,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <!-- Assets  -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
     <script src="assets/js/header.js"></script>
@@ -33,8 +31,7 @@
     <div>
         <div class="header-dark" style="background-color: rgb(0,0,0);background-image: url(&quot;assets/img/black.jpg&quot;);">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search" style="height: 100px;">
-                <div class="container"><a class="navbar-brand" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/">Ho&#8203;ly Unb&#8203;lock&#8203;er</a><button data-toggle="collapse" class="navbar-toggler"
-                        data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="container"><a class="navbar-brand" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/">Ho&#8203;ly Unb&#8203;lock&#8203;er</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav ml-auto">
                             <!--Nav-->
@@ -44,12 +41,11 @@
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/?d" style="font-family: 'Montserrat Alternates', sans-serif;">D&#8203;isc&#8203;ord</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/?n" style="font-family: 'Montserrat Alternates', sans-serif;">Cha&#8203;tbox</a></li>
                             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;color: rgb(255,255,255);font-family: 'Montserrat Alternates', sans-serif;">More</a>
-                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;"><a class="dropdown-item text-left text-white-50" role="presentation" href="/?k" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Kru&#8203;nk&#8203;er</a><a class="dropdown-item text-left text-white-50"
-                                        role="presentation" href="/?in" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Docs</a><a class="dropdown-item text-white-50" role="presentation" href="/?c" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Cre&#8203;dits</a></div>
+                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;"><a class="dropdown-item text-left text-white-50" role="presentation" href="/?k" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Kru&#8203;nk&#8203;er</a><a class="dropdown-item text-left text-white-50" role="presentation" href="/?in" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Docs</a><a class="dropdown-item text-white-50" role="presentation" href="/?c" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Cre&#8203;dits</a></div>
                             </li>
                             <!--Options Menu-->
-                            <li id="csel" class="nav-item dropdown"><a class="dropdown-toggle nav-link text-white" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;font-family: 'Montserrat Alternates', sans-serif;">Options</a>
-                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);padding: 17%;padding-top: 10%;padding-bottom: 10%;">
+                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link text-white" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;font-family: 'Montserrat Alternates', sans-serif;">Options</a>
+                                <div id="csel" class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);padding: 17%;padding-top: 10%;padding-bottom: 10%;">
                                     <style>
                                         .csel input[type="submit"] {
                                             cursor: pointer;
@@ -87,20 +83,20 @@
                     <div class="text-center d-flex align-items-center order-12" style="height: 80%;width: 80%;">
                         <div class="container text-center justify-content-center align-items-center" style="color: rgb(255,255,255);">
                             <!-- Credits  -->
-                            <span style=display:none data-cooking=cooks>Cooking started 1.9 million years ago. Therefore, cooking is not something new to humans.  Cooking started over a fire with no pots and pans or cooking utensils and now we have microwaves and stoves and special brushes to wipe on a marinade which was not  even able to be comprehended 1.9 years ago.  In between that time was the middle ages which had many advancements. Life was very different before cooking and has been very different since the beginning of cooking.
+                            <span style=display:none data-cooking=cooks>Cooking started 1.9 million years ago. Therefore, cooking is not something new to humans. Cooking started over a fire with no pots and pans or cooking utensils and now we have microwaves and stoves and special brushes to wipe on a marinade which was not even able to be comprehended 1.9 years ago. In between that time was the middle ages which had many advancements. Life was very different before cooking and has been very different since the beginning of cooking.
 
                                 1.9 million years ago, given humans average sizes, had to spend forty eight percent of their life time in the “feeding process.” The feeding process does not include cooking. Cooking narrowed the time that humans had to spend in the feeding process to five percent. This change made it to where humans could spend less time in the feeding process and could do more valuable things with their time such as go out and hunt to grow bigger societies and other pursuits which ultimately lead to the beginning to the path of our modern brain. Cooking made food a lot easier to chew and digest. As a result of that we got more calorie benefit and a smaller digestive tract. All of this made cooking a vital part of human adaptation. The changes in human teeth happened so much faster than anything in the human body that scientists have come to the conclusion that this means that cooking was and has been passed down from generations and generations. Also, the oppressed women theory has been going on since the beginning of cooking when men went out and hunted and sought new things. Women at this time had to cook and do the gathering because of their lack of physically strength. So ever since cooking, even 1.9 million years ago, the roles of men and women have been a natural thing of life...
-                                
-                                
-                                
+
+
+
                                 ... middle of paper ...
-                                
-                                
-                                
-                                ...still be spending too much time eating and cooking. Different things in nature such as wood, spices,  iron and chemicals that make up fire, which are just a few, helped start and continue cooking down the path that it’s going down.  I think that cooking will continue to expand as technology advances. I am not sure how it will advance and change but I am sure we will have better more efficient stove tops and ovens.
-                                
-                                In conclusion, cooking has evolved as technology has developed. But in the grand scheme of things we still have the same methods. Cooking helped the advancement of the human brain and the advancement of human teeth and our digestive tracts.  Today we have restaurants, grocery stores, microwaves, and ovens. And all we started off with was a fire and a piece of meat with a stick stuck through it. Cooking was, is, and will be a vital part of the human life.
-                                </span>
+
+
+
+                                ...still be spending too much time eating and cooking. Different things in nature such as wood, spices, iron and chemicals that make up fire, which are just a few, helped start and continue cooking down the path that it’s going down. I think that cooking will continue to expand as technology advances. I am not sure how it will advance and change but I am sure we will have better more efficient stove tops and ovens.
+
+                                In conclusion, cooking has evolved as technology has developed. But in the grand scheme of things we still have the same methods. Cooking helped the advancement of the human brain and the advancement of human teeth and our digestive tracts. Today we have restaurants, grocery stores, microwaves, and ovens. And all we started off with was a fire and a piece of meat with a stick stuck through it. Cooking was, is, and will be a vital part of the human life.
+                            </span>
                             <h1 class="text-center d-md-flex flex-grow-1 justify-content-md-center align-items-md-center" style="color: rgb(242,245,248);font-size: 46px;font-weight: normal;font-family: 'Montserrat Alternates', sans-serif;margin: 7px;padding: 34px;width: 100%;filter: blur(0px);height: 100%;">Icon Information<br></h1>
                             <script>
                                 document.write(`
