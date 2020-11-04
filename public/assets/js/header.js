@@ -13,30 +13,56 @@ addEventListener('DOMContentLoaded', p => {
     p.onclick = (e, s) => (s = Array.from(p.children).indexOf(e.target)) + 1 && setTitle(titles[s], setIcon(icons[s]));
 
     /*Settings Menu*/
-    (i => i.onclick = e => { onbeforeunload = e => { if (i.checked) return e.returnValue = 'Error Tab Cloak' } })($('csel'));
+    (i => i.onclick = e => {
+        onbeforeunload = e => {
+            if (i.checked) return e.returnValue = 'Error Tab Cloak'
+        }
+    })($('csel'));
 
     /*Unimplemented Fullscreen*/
     //$('fullscreen').onclick=e=>e.preventDefault()||$('theframe').requestFullscreen()
 }, 0);
 
 /*Cookie Storage*/
-(d => { d.setMonth(d.getMonth() + 12);
-    setCookie = (n, v) => { document.cookie = n + `=${([]+v).replace(/.|\n/g,p=>{try{return/[\w\d-.!~*'()]/.test(p)?'%'+p.charCodeAt().toString(16).toUpperCase():encodeURIComponent(p)}catch{return p}})};expires=${d.toUTCString()};SameSite=None;Secure` } })(new Date());
+(d => {
+    d.setMonth(d.getMonth() + 12);
+    setCookie = (n, v) => {
+        document.cookie = n + `=${([]+v).replace(/.|\n/g,p=>{try{return/[\w\d-.!~*'()]/.test(p)?'%'+p.charCodeAt().toString(16).toUpperCase():encodeURIComponent(p)}catch{return p}})};expires=${d.toUTCString()};SameSite=None;Secure`
+    }
+})(new Date());
 
 /*Read Cookie*/
-readCookie = n => ([] + document.cookie.split('; ').filter(e => e.startsWith(n + '='))[0]).slice(([] + n).length + 1).replace(/(%[A-z\d]{2})+/g, decodeURIComponent);
+readCookie = n => (document.cookie.split('; ').filter(e => e.startsWith(n + '=')).join([])).slice(([] + n).length + 1).replace(/(%[A-z\d]{2})+/g, decodeURIComponent);
 
 /*Set Title & Icon*/
-pageTitle = v => { document.title = v; try { parent.document.title = v } catch (e) { console.log(e) } };
-pageIcon = (v, l, e) => { document.head.appendChild(((l = document.querySelector(e = 'link[rel*=icon]') || document.createElement('link')).rel = 'icon', l.href = v, l)); try { parent.document.head.appendChild(((l = parent.document.querySelector(e) || document.createElement('link')).rel = 'icon', l.href = v, l)) } catch (e) { console.log(e) } };
+pageTitle = v => {
+    document.title = v;
+    try {
+        parent.document.title = v
+    } catch (e) {
+        console.log(e)
+    }
+};
+pageIcon = (v, l, e) => {
+    document.head.appendChild(((l = document.querySelector(e = 'link[rel*=icon]') || document.createElement('link')).rel = 'icon', l.href = v, l));
+    try {
+        parent.document.head.appendChild(((l = parent.document.querySelector(e) || document.createElement('link')).rel = 'icon', l.href = v, l))
+    } catch (e) {
+        console.log(e)
+    }
+};
 
 /*Store Title & Icon*/
 setTitle = v => pageTitle(v) || setCookie('HBTitle', v);
 setIcon = v => pageIcon(v) || setCookie('HBIcon', v);
 
 /*Set Stored Title & Icon*/
-setPreferences = (e, i, a) => { readCookie(e = 'HBTitle') == (a = [] + void[]) || pageTitle(readCookie(e));
-    readCookie(i = 'HBIcon') == a || pageIcon(readCookie(i)) };
+setPreferences = (e, i) => {
+    readCookie(e = 'HBTitle') && pageTitle(readCookie(e));
+    readCookie(i = 'HBIcon') && pageIcon(readCookie(i))
+};
 
 /*Sift Tabs*/
-autoChange = (e, r) => { $('csel').checked ? pageTitle(titles[e = (r = (a, b) => Math.floor(Math.random() * (b - a + 1)) + a)(1, 5)], pageIcon(icons[e]), setTimeout(autoChange, r(1e4, 6e4))) : setPreferences() }
+autoChange = (e, r) => {
+    $('csel').checked ? pageTitle(titles[e = (r = (a, b) => Math.floor(Math.random() * (b - a + 1)) + a)(1, 5)], pageIcon(icons[e]), setTimeout(autoChange, r(1e4, 6e4))) : setPreferences()
+}
