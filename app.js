@@ -485,7 +485,7 @@ app.get('/', async (req, res) => {
 
     switch (req.url == '/?k') {
         case '/?k':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'bppages', 'frames', 'krunker.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'frames', 'krunker.html'), 'utf8'));
     }
 
     switch (req.url) {
