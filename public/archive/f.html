@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Flash Game</title>
+    <title>Flash Games</title>
     <link rel="stylesheet" href="/assets/css/gembed.css">
     <script>
         function loadswf() {
@@ -10,9 +10,20 @@
             a = "https://cdn.jsdelivr.net/gh/BinBashBanana/gstore/";
             b = window.location.hash.substring(1) + ".swf";
             c = document.body;
-            c.innerHTML = '<object class="gembed" data="' + a + b + '" type="application/x-shockwave-flash"><param name="wmode" value="direct" /></object>';
+            c.innerHTML = '<object class="gembed" data="' + a + b + '" type="application/x-shockwave-flash"><param name="wmode" value="direct"/></object>';
         };
     </script>
+    <style>
+        body {
+            min-height: 100%;
+            min-width: 100%;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
 </head>
 
 <body onload="loadswf();" class="gbody"></body>

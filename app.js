@@ -523,6 +523,16 @@ app.get('/', async (req, res) => {
             return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'redirects', 'ytmobile.html'), 'utf8'));
     }
 
+    switch (req.url) {
+        case '/?fg':
+            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'archive', 'f.html'), 'utf8'));
+    }
+
+    switch (req.url) {
+        case '/?rr':
+            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'archive', 'run.html'), 'utf8'));
+    }
+
     // Frames Page
 
     switch (req.url) {
