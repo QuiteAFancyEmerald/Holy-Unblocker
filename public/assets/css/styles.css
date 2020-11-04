@@ -240,7 +240,7 @@ a:hover {
 }
 
 .in-bg {
-    height: 500px;
+    height: 600px;
     font-family: 'Montserrat Alternates', sans-serif;
     font-weight: bold;
 }
@@ -276,14 +276,88 @@ a:hover {
 }
 
 .d-popupbg {
-    border: 3px solid #ffffff;
+    border: 2px solid #ffffff;
+    height: 20px;
     background-color: #000000;
+    font-size: 15px;
     font-family: 'Montserrat Alternates', sans-serif;
     color: #FFFFFF;
     padding: 1%;
-    margin: 1%;
+    padding-bottom: 2%;
 }
 
+
+.text-hb {
+    color: rgb(35, 255, 200)
+}
+
+.text-hb-link {
+    color: rgb(0, 141, 106)
+}
+
+.text-hb-light {
+    color: #00bc8c;
+}
+
+.hb-border-color {
+    border-radius: 5px;
+    border: 0.5px outset #00ffbf;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #007D5E, #003D2E, #00BC8C, #00C997, #00ffd5, #00C997);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
 
 /* Surf Texts*/
 
