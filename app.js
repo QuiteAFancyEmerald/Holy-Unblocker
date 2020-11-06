@@ -490,7 +490,7 @@ app.get('/', async (req, res, t) => res.send(fs.readFileSync(path.join(__dirname
             return res.send(fs.readFileSync(path.join(__dirname, 'public', 'info.html'), 'utf8'));
     }
 
-    switch (req.url == '/?k') {
+    switch (req.url) {
         case '/?k':
             return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'frames', 'krunker.html'), 'utf8'));
     }
