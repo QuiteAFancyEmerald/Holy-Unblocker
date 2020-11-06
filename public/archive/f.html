@@ -3,7 +3,6 @@
 
 <head>
     <title>Flash Games</title>
-    <link rel="stylesheet" href="/assets/css/gembed.css">
     <script>
         function loadswf() {
             var a, b, c;
@@ -14,7 +13,7 @@
         };
     </script>
     <style>
-        body {
+        .gembed {
             min-height: 100%;
             min-width: 100%;
             top: 0;
@@ -22,6 +21,13 @@
             bottom: 0;
             left: 0;
             z-index: -1;
+            position: fixed;
+        }
+
+        .fbody {
+            background-color: black;
+            color: white;
+            font-family: sans-serif;
         }
     </style>
 </head>
