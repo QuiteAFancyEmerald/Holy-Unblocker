@@ -28,6 +28,7 @@
 </head>
 
 <body>
+    <iframe id="frame" style="display:block; visibility: hidden;"></iframe>
     <div>
         <div class="header-dark" style="background-color: rgb(0,0,0);background-image: url(&quot;assets/img/black.jpg&quot;);">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search" style="height: 100px;">
@@ -83,21 +84,15 @@
                     <div class="d-flex align-items-center order-12" style="height:200px;">
                         <div class="container border rounded text-center justify-content-center align-items-center button" style="color: rgb(255,255,255);filter: blur(0px); opacity: 0.95; padding-left: 50px; padding-right: 50px;">
                             <!--AL-->
-                            <form id="scontainer" onkeydown=al() action="/home/session" method="POST">
+                            <form id="scontainer" action="/fetch/session" method="POST">
                                 <p class="s-text-header" style="font-size: 46px;">Al<wbr>loy Pro<wbr>xy</p>
                                 <p class="s-text-p1" style="font-family: 'Montserrat Alternates', sans-serif;">A fast, lightweight pr<wbr>oxy developed by Tita<wbr>nium N<wbr>etwork.</p>
                                 <div id="scontainerb" class="input-group">
-                                    <div class="input-group-prepend"></div><input id="url" class="bg-dark rounded-0 hb-border-color shadow-sm form-control form-control-lg" type="text" name="url" inputmode="url" autocomplete="off" style="width: 194px;font-family: 'Montserrat Alternates', sans-serif;opacity: 0.80; color:rgb(255,255,255);" placeholder="Insert URL">
-                                    <div class="input-group-append"><button id="al" class="glow-on-hover btn-dark btn-lg bg-dark text-hb rounded-0 hb-border-color shadow-lg select" data-bs-hover-animate="pulse" name="button" type="submit" style="width: 78px;padding: 8px; margin: 0px;height: 46.126px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">Go</button></div>
-                                </div>
-                                <div>
-                                    <script>
-                                        var header = document.getElementById("scontainerb");
-                                        var btns = header.getElementsByClassName("button");
-                                        for (var i = 0; i < btns.length; i++) {
-                                            btns[i].addEventListener("click", function() {});
-                                        }
-                                    </script>
+                                    <div class="input-group-prepend"></div><input id="url" class="bg-dark rounded-0 hb-border-color shadow-sm form-control form-control-lg" type="text" name="url" inputmode="url" autocomplete="off" style="width: 230px;font-family: 'Montserrat Alternates', sans-serif;opacity: 0.80; color:rgb(255,255,255);" placeholder="Insert URL">
+                                    <div class="input-group-append">
+                                        <button id="albp" class="glow-on-hover btn-dark btn-lg bg-dark text-hb rounded-0 hb-border-color shadow-lg select" data-bs-hover-animate="pulse" name="button" type="submit" style="width: 85px;padding: 2px; margin: 0px;height: 46.126px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">Classic</button>
+                                        <button id="al" class="glow-on-hover btn-dark text-center btn-lg bg-dark text-hb rounded-0 hb-border-color shadow-lg select" data-bs-hover-animate="pulse" name="button" type="submit" style="width: 85px;padding: 2px; margin: 0px;height: 46.126px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">Stealth</button>
+                                    </div>
                                 </div>
                                 <p class="text-white" style="font-size: 20px; padding-top: 5px; font-family: 'Montserrat Alternates', sans-serif;">More Inf<wbr>ormation:<br></p>
                                 <p class="text-hb s-text-p2" style="font-family: Lato, sans-serif;">Works on Di<wbr>scord (QR Code Only), Yout<wbr>ube (Might need to rel<wbr>oad), etc.<br><br>Many si<wbr>tes work with this. Ex<wbr>plore!</p>
@@ -166,7 +161,7 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
-    <script src="expr/albp.js"></script>
+    <script src="expr/surf.js"></script>
 </body>
 
 </html>

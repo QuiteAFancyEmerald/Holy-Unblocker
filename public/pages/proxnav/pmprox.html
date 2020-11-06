@@ -28,8 +28,11 @@
 </head>
 
 <body>
+    <iframe id="frame" style="visibility: hidden;"></iframe>
+    <noscript>You must enable javascript in your browser to view this webpage.</noscript>
     <!--New-->
     <div>
+        <iframe id="frame" style="display:block; visibility: hidden;"></iframe>
         <div class="header-dark" style="background-color: rgb(0,0,0);background-image: url(&quot;assets/img/black.jpg&quot;);">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search" style="height: 100px;">
                 <div class="container"><a class="navbar-brand" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/">Ho&#8203;ly Unb&#8203;lock&#8203;er</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -84,7 +87,7 @@
                     <div class="d-flex align-items-center order-12" style="height:200px;">
                         <div class="container border rounded text-center justify-content-center align-items-center button" style="color: rgb(255,255,255);filter: blur(0px); opacity: 0.95;">
                             <!--PM-->
-                            <form id="pm" onkeydown="pm()">
+                            <form id="pm">
                                 <p class="s-text-header" style="font-size: 46px;">Powerm<wbr>ouse Pr<wbr>oxy</p>
                                 <p class="s-text-p1" style="font-family: 'Montserrat Alternates', sans-serif;">A fle&#8203;xible secondary pr&#8203;oxy compared to A&#8203;lloy with support for D&#8203;isco&#8203;rd.</p>
                                 <div class="input-group ">
@@ -92,15 +95,6 @@
                                 'Montserrat Alternates', sans-serif;opacity: 0.80; color:rgb(255,255,255); " placeholder="Insert URL ">
                                     <div class="input-group-append "><button id="pmprox" class="glow-on-hover btn-dark btn-lg bg-dark text-hb rounded-0 hb-border-color shadow-lg select" data-bs-hover-animate="pulse " name="button" type="submit " style="width: 78px;padding: 8px;margin:
                                 0px;height: 46.126px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px; ">Go</button></div>
-                                </div>
-                                <div>
-                                    <script>
-                                        var header = document.getElementById("pm");
-                                        var btns = header.getElementsByClassName("pmprox");
-                                        for (var i = 0; i < btns.length; i++) {
-                                            btns[i].addEventListener("click", function() {});
-                                        }
-                                    </script>
                                 </div>
                                 <p class="text-white " style="font-size: 20px;font-family: 'Montserrat Alternates', sans-serif; ">More Information:<br></p>
                                 <p class="text-hb-light s-text-p2" style="font-family: Lato, sans-serif;">Wor&#8203;ks on Disc&#8203;ord (QR Code Only), etc. For Disc&#8203;ord you will need to lo&#8203;gin v&#8203;ia Q&#8203;R Code. Normal login will not work (Search up on YT on how to find your Discord Token). Token login
@@ -174,7 +168,7 @@
     <script src="assets/js/jquery.min.js "></script>
     <script src="assets/bootstrap/js/bootstrap.min.js "></script>
     <script src="assets/js/bs-init.js "></script>
-    <script src="expr/pmbp.js "></script>
+    <script src="expr/surf.js"></script>
 </body>
 
 </html>

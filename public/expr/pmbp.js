@@ -6,11 +6,11 @@ $('pmprox').onclick = function() {
     var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    window.location.href = "https://c." + domain + "/prox?url=" + url;
+    document.getElementById("frame").src = "https://c." + domain + "/prox?url=" + url;
     document.cookie = 'oldsmobile=1; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    document.getElementById("frame").style.visiblity = "visible";
     return false;
 };
-
 
 // Cookie Auth
 var host = location.hostname.split('.');
@@ -21,4 +21,6 @@ if (host.length == 3) {
 
 window.onload = function() {
     $('url').focus();
+}
+$('url').focus();
 }

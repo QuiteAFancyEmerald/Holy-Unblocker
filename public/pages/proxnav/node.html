@@ -28,6 +28,7 @@
 </head>
 
 <body>
+    <iframe id="frame" style="display:block; visibility: hidden;"></iframe>
     <div>
         <div class="header-dark" style="background-color: rgb(0,0,0);background-image: url(&quot;assets/img/black.jpg&quot;);">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search" style="height: 100px;">
@@ -83,7 +84,7 @@
                     <div class="d-flex align-items-center order-12" style="height:200px;">
                         <div class="container border rounded text-center justify-content-center align-items-center button" style="color: rgb(255,255,255);filter: blur(0px); opacity: 0.95; padding-left: 50px; padding-right: 50px;">
                             <!--NU-->
-                            <form id="pc" onkeydown="nu()">
+                            <form>
                                 <p class="s-text-header" style=" font-size: 46px; ">No&#8203;de Unbloc&#8203;ker</p>
                                 <p class="s-text-p1" style="font-family: 'Montserrat Alternates', sans-serif; ">A flexib&#8203;le seco&#8203;ndary pr&#8203;oxy compared to All&#8203;oy, P&#8203;M and P&#8203;D.</p>
                                 <div class="input-group ">
@@ -91,15 +92,6 @@
                                 'Montserrat Alternates', sans-serif;opacity: 0.80; color:rgb(255,255,255); " placeholder="Insert URL ">
                                     <div class="input-group-append "><button id="nprox" class="glow-on-hover btn-dark btn-lg bg-dark text-hb rounded-0 hb-border-color shadow-lg select" data-bs-hover-animate="pulse " name="button" type="submit " style="width: 78px;padding: 8px;margin:
                                 0px;height: 46.126px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px; ">Go</button></div>
-                                </div>
-                                <div>
-                                    <script>
-                                        var header = document.getElementById("pc");
-                                        var btns = header.getElementsByClassName("nprox");
-                                        for (var i = 0; i < btns.length; i++) {
-                                            btns[i].addEventListener("click", function() {});
-                                        }
-                                    </script>
                                 </div>
                                 <p class="text-white" style="font-size: 20px; padding-top: 5px; font-family: 'Montserrat Alternates', sans-serif; ">More Informat&#8203;ion:<br></p>
                                 <p class="text-hb s-text-p2" style="font-family: Lato, sans-serif;">Works on Di&#8203;scord (QR Code Only), Yout&#8203;ube (Might need to reload), etc.<br><br>Many sites work with this. Explore!</p>
@@ -167,7 +159,7 @@
     <script src="assets/js/jquery.min.js "></script>
     <script src="assets/bootstrap/js/bootstrap.min.js "></script>
     <script src="assets/js/bs-init.js "></script>
-    <script src="expr/nubp.js "></script>
+    <script src="expr/surf.js"></script>
 </body>
 
 </html>
