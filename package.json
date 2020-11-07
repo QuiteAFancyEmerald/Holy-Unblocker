@@ -4,7 +4,7 @@
     "description": "A web proxy capable of proxying websites!",
     "main": "app.js",
     "scripts": {
-        "test": "node app.js",
+        "test": "express",
         "start": "node app.js ./node_modules/.bin/grunt"
     },
     "keywords": [
