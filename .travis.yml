@@ -14,5 +14,8 @@ jobs:
         firefox: latest
   fast_finish: true
 
+after_script:
+  - npm run coverage
+
 notifications:
   email: false
