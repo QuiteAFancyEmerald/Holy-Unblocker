@@ -23,7 +23,6 @@
     <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
     <script src="assets/js/header.js"></script>
     <!--<script src="assets/js/im-runtime.js"></script>-->
-    <script src="expr/pdload.js"></script>
     <script async src="https://arc.io/widget.js#2BzvQ1em"></script>
 </head>
 
@@ -40,7 +39,7 @@
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/?g" style="font-family: 'Montserrat Alternates', sans-serif;">Ga&#8203;mes</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/?y" style="font-family: 'Montserrat Alternates', sans-serif;">YouTu&#8203;be</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/?d" style="font-family: 'Montserrat Alternates', sans-serif;">D&#8203;isc&#8203;ord</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="/?n" style="font-family: 'Montserrat Alternates', sans-serif;">Cha&#8203;tbox</a></li>
+                            <li id="ch" class="nav-item" role="presentation"><a class="nav-link" href="/?n" style="font-family: 'Montserrat Alternates', sans-serif;">Cha&#8203;tbox</a></li>
                             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;color: rgb(255,255,255);font-family: 'Montserrat Alternates', sans-serif;">More</a>
                                 <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;"><a class="dropdown-item text-left text-white-50" role="presentation" href="/?k" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Kru&#8203;nk&#8203;er</a><a class="dropdown-item text-left text-white-50" role="presentation" href="/?in" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Docs</a><a class="dropdown-item text-white-50" role="presentation" href="/?c" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Cre&#8203;dits</a></div>
                             </li>
@@ -88,10 +87,12 @@
                                 <p class="s-text-header" style=" font-size: 46px; ">P<wbr>yDo<wbr>dge</p>
                                 <p class="s-text-p1" style="font-family: 'Montserrat Alternates', sans-serif; ">An alterna<wbr>tive pr<wbr>oxy of a modi<wbr>fied V<wbr>ia Pro<wbr>xy.</p>
                                 <div class="input-group ">
-                                    <div class="input-group-prepend"></div><input id="url" class="bg-dark hb-border-color rounded-0 border-info shadow-sm form-control form-control-lg " type="text" name="url" autocomplete="off" style="width: 194px;font-family:
+                                    <div class="input-group-prepend"></div><input id="url" class="bg-dark hb-border-color rounded-0 border-info shadow-sm form-control form-control-lg " type="text" name="url" autocomplete="off" style="width: 270px;font-family:
                                 'Montserrat Alternates', sans-serif;opacity: 0.80; color:rgb(255,255,255); " placeholder="Insert URL ">
-                                    <div class="input-group-append "><button id="pdprox" class="glow-on-hover btn-dark btn-lg bg-dark text-hb rounded-0 hb-border-color shadow-lg select" data-bs-hover-animate="pulse " name="button" type="submit" style="width: 78px;padding: 8px;margin:
-                                0px;height: 46.126px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px; ">Go</button></div>
+                                    <div class="input-group-append ">
+                                        <button id="pdproxbp" class="glow-on-hover btn-dark btn-lg bg-dark text-hb rounded-0 hb-border-color shadow-lg select" data-bs-hover-animate="pulse" name="button" type="submit" style="width: 85px;padding: 2px; margin: 0px;height: 46.126px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">Classic</button>
+                                        <button id="pdprox" class="glow-on-hover btn-dark text-center btn-lg bg-dark text-hb rounded-0 hb-border-color shadow-lg select" data-bs-hover-animate="pulse" name="button" type="submit" style="width: 85px;padding: 2px; margin: 0px;height: 46.126px;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">Stealth</button>
+                                    </div>
                                 </div>
                                 <span style=display:none data-cooking=cooks>Cooking started 1.9 million years ago. Therefore, cooking is not something new to humans. Cooking started over a fire with no pots and pans or cooking utensils and now we have microwaves and stoves and special brushes to wipe on a marinade which was not even able to be comprehended 1.9 years ago. In between that time was the middle ages which had many advancements. Life was very different before cooking and has been very different since the beginning of cooking.
 
@@ -109,7 +110,6 @@
                                 </span>
                                 <p class="text-white" style="padding-top: 5px; font-size: 20px;font-family: 'Montserrat Alternates', sans-serif; ">More Information:<br></p>
                                 <p class="text-hb-light s-text-p2" style="font-family: Lato, sans-serif; ">Works on vari<wbr>ous sites.<br><br>Explore!</p>
-                                <p class="text-hb-light s-text-p2" style="font-family: Lato, sans-serif; ">GitH<wbr>ub:&nbsp;<a class="text-hb-link " id="pylink"><strong>&nbsp;https://github.com/BinBashBa&#8203;nana/PyD&#8203;odge</strong></a><br><br>Crea<wbr>ted by Ol<wbr>yB.</p>
                             </form>
                         </div>
                     </div>
