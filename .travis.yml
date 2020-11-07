@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - '4'
+  - '12'
 before_install:
   # Update the npm client. Older clients cannot, e.g., handle scoped modules.
   - npm update -g npm
