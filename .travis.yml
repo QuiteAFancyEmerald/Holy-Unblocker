@@ -2,8 +2,7 @@ if: NOT (commit_message =~ /^\[docs\]/)
 
 language: node_js
 os: linux
-node_js:
-  - 4.2
+node_js: latest
 before_script:
   - npm install
   - npm start
