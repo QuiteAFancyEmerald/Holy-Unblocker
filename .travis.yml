@@ -3,6 +3,8 @@ node_js:
   - "stable"
 install:
   - npm install
+script:
+  - "start": "node app.js ./node_modules/.bin/grunt"
 cache:
   directories:
     - "node_modules"
