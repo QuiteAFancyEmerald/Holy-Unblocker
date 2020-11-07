@@ -7,7 +7,7 @@ Official Site: https://www.holyubofficial.net
 
 Site Documentation: <a href="https://www.holyubofficial.net/?in">Documentation</a>
 
-Instance Status: <a href="https://status.holyubofficial.net/?in">Status</a>
+Instance Status: <a href="https://status.holyubofficial.net/?update">Status</a>
 
 Be sure to join Titanium Network's Discord for more official site links: https://discord.com/invite/tgT48PH
 
