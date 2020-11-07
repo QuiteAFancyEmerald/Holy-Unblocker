@@ -5,9 +5,9 @@ A website that can be used to bypass web filters; both extension and firewall. T
 
 Official Site: https://www.holyubofficial.net
 
-<a href="https://www.holyubofficial.net/?in">Official Documentation</a>
+Site Documentation<a href="https://www.holyubofficial.net/?in">Documentation</a>
 
-<a href="https://status.holyubofficial.net/?in">Instance Status</a>
+Instance Status<a href="https://status.holyubofficial.net/?in">Status</a>
 
 Be sure to join Titanium Network's Discord for more official site links: https://discord.com/invite/tgT48PH
 
