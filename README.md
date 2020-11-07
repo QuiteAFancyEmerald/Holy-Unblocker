@@ -5,6 +5,10 @@ A website that can be used to bypass web filters; both extension and firewall. T
 
 Official Site: https://www.holyubofficial.net
 
+<a href="https://www.holyubofficial.net/?in">Official Documentation</a>
+
+<a href="https://status.holyubofficial.net/?in">Instance Status</a>
+
 Be sure to join Titanium Network's Discord for more official site links: https://discord.com/invite/tgT48PH
 
 <a href="https://heroku.com/deploy?template=https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic" title="Deploy to Heroku"><img alt="Deploy to Heroku" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/public/assets/img/heroku.svg?raw" width="140" height="30"><img></a>
