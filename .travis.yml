@@ -1,10 +1,11 @@
+sudo: false
 language: node_js
-node_js: 
+node_js:
   - "stable"
-install:
-  - npm install
-script:
-  - "node app.js ./node_modules/.bin/grunt"
+
 cache:
   directories:
-    - "node_modules"
+    - node_modules
+
+install:
+  - npm install
