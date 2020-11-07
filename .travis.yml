@@ -4,7 +4,7 @@ node_js:
 install:
   - npm install
 script:
-  - "start": "node app.js ./node_modules/.bin/grunt"
+  - "node app.js ./node_modules/.bin/grunt"
 cache:
   directories:
     - "node_modules"
