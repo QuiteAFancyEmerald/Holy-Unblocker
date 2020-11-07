@@ -1,0 +1,19 @@
+if: NOT (commit_message =~ /^\[docs\]/)
+
+language: node_js
+os: linux
+dist: "debian"
+node_js:
+  - 4.2
+before_script:
+  - npm install
+  - npm start
+jobs:
+  include:
+      addons:
+        chrome:  stable
+        firefox: latest
+  fast_finish: true
+
+notifications:
+  email: false
