@@ -392,11 +392,39 @@ app.use(config.prefix, async (req, res, next) => {
 });
 
 app.post('/', async (req, res) => {
+
     switch (req.url) {
         case '/':
             return res.send(fs.readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf8'));
     }
 });
+
+/* app.get('/'), async (req, res) => {
+    charInsert = str => {
+            var output = '';
+
+            str.split(' ').forEach((word, word_index) => (word.split('').forEach((chr, chr_index) => output += (!chr_index || chr_index == word.length) ? '<span style="white-space: nowrap">&#' + chr.charCodeAt() + '</span>' : '<span style="white-space: nowrap">&#8203;<span style="display:none;font-size:0px;">&#8203;...</span>&#' + chr.charCodeAt() + '&#8203;</span>'), output += word_index != str.split(' ').length - 1 ? ' ' : ''));
+
+            return output
+        },
+        result = fs.readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf8').replace(/charinsert{([\s\S]*?)}/g, (match, str) => charInsert(str));
+
+    fs.writeFileSync(path.join(__dirname, 'public', 'page.html'), result);
+}
+
+
+app.get('/'), async (req, res) => {
+    charInsert = str => {
+            var output = '';
+
+            str.split(' ').forEach((word, word_index) => (word.split('').forEach((chr, chr_index) => output += (!chr_index || chr_index == word.length) ? '<span style="white-space: nowrap">&#' + chr.charCodeAt() + '</span>' : '<span style="white-space: nowrap">&#8203;<span style="display:none;font-size:0px;">&#8203;...</span>&#' + chr.charCodeAt() + '&#8203;</span>'), output += word_index != str.split(' ').length - 1 ? ' ' : ''));
+
+            return output
+        },
+        result = fs.readFileSync(path.join(__dirname, 'public', 'page.html'), 'utf8').replace(/charinsert{([\s\S]*?)}/g, (match, str) => charInsert(str));
+
+    fs.writeFileSync(path.join(__dirname, 'public', 'index.html'), result);
+} */
 
 //Querystrings
 app.get('/', async (req, res, t) => res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages,index.html,info.html,archive,archive,hidden.html'.split(',')['/,/?in,/?fg,/?rr,/?j'.split(',').indexOf(req.url) + 1], ',surf.html,f.html,run.html,frames,redirects3,proxnav5,nav7'.replace(/,[^,]+/g, e => ([] + e.match(/\D+/)).repeat(+e.match(/\d+/) + 1)).split(',')[t = 'z,fg,rr,k,dd,n,yh,ym,a,b,y,e,d,p,c,f,g,h,i,m,t,x'.split(',').indexOf(req.url.slice(2)) + 1], (t = ',,,,krunker,discordprox,chatbox,ythub,ytmobile,alloy,node,youtube,pydodge,discordhub,pmprox,credits,flash,gtools,games5,icons,gba,terms,bookmarklets'.split(',')[t]) && t + '.html'), 'utf8')));
