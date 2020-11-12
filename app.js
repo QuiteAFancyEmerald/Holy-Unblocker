@@ -3,8 +3,33 @@
 /* MIT license: http://opensource.org/licenses/MIT
 /* ----------------------------------------------- */
 
-const
-    express = require('express'),
+ const[express,alloy,http,fs,path,char_insert]=[require('express'),require('alloyproxy'),require('http'),require('fs'),require('path'),require('./src/charinsert.js')],[app,config]=[express(),JSON.parse(fs.readFileSync('./config.json',{encoding:'utf8'}))],server=http.createServer(app),localprox=new alloy({prefix:'/fetch/',request:[],response:[],injection:!0});
+
+app.use(localprox.app);    
+
+localprox.ws(server);
+
+//Cloudflare Attack Mode Fix
+
+app.post('/', async(req, res) => {
+    switch (req.url) {
+        case '/':
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'index.html'), 'utf8'));
+    }
+});
+
+//Querystring Navigation
+
+app.get('/', async(req, res, t) => res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages,index.html,info.html,archive,archive,hidden.html'.split(',')['/,/?in,/?fg,/?rr,/?j'.split(',').indexOf(req.url) + 1], ',surf.html,f.html,run.html,frames,redirects3,proxnav5,nav7'.replace(/,[^,]+/g, e => ([] + e.match(/\D+/)).repeat(+e.match(/\d+/) + 1)).split(',')[t = 'z,fg,rr,k,dd,n,yh,ym,a,b,y,e,d,p,c,f,g,h,i,m,t,x'.split(',').indexOf(req.url.slice(2)) + 1], (t = ',,,,krunker,discordprox,chatbox,ythub,ytmobile,alloy,node,youtube,pydodge,discordhub,pmprox,credits,flash,gtools,games5,icons,gba,terms,bookmarklets'.split(',')[t]) && t + '.html'), 'utf8')));
+
+app.use(char_insert.static(path.join(__dirname, 'views')));
+
+server.listen(process.env.PORT || config.port);
+
+/* 
+// Easier to read version of app.js. Remove this if you would like an optimized version
+
+ const express = require('express'),
     alloy = require('alloyproxy'),
     app = express(),
     http = require('http'),
@@ -19,30 +44,15 @@ const config = JSON.parse(fs.readFileSync('./config.json', {
 const server = http.createServer(app);   
 
 //Local Alloy Proxy
-const unblocker = new alloy({
+
+const localprox = new alloy({
     prefix: '/fetch/',
+    error: (proxy) => { return proxy.res.send(fs.readFileSync(path.join(__dirname, 'views', 'error.html'), 'utf8'));},
     request: [],
     response: [],
-    injection: true,
+    injection: true
 });    
 
-app.use(unblocker.app);    
-
-unblocker.ws(server);   
-
-//Cloudflare Attack Mode Fix
-
-app.post('/', async(req, res) => {
-    switch (req.url) {
-        case '/':
-            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'index.html'), 'utf8'));
-    }
-});
-
-//Querystrings
-app.get('/', async(req, res, t) => res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages,index.html,info.html,archive,archive,hidden.html'.split(',')['/,/?in,/?fg,/?rr,/?j'.split(',').indexOf(req.url) + 1], ',surf.html,f.html,run.html,frames,redirects3,proxnav5,nav7'.replace(/,[^,]+/g, e => ([] + e.match(/\D+/)).repeat(+e.match(/\d+/) + 1)).split(',')[t = 'z,fg,rr,k,dd,n,yh,ym,a,b,y,e,d,p,c,f,g,h,i,m,t,x'.split(',').indexOf(req.url.slice(2)) + 1], (t = ',,,,krunker,discordprox,chatbox,ythub,ytmobile,alloy,node,youtube,pydodge,discordhub,pmprox,credits,flash,gtools,games5,icons,gba,terms,bookmarklets'.split(',')[t]) && t + '.html'), 'utf8')));
-
-/*
 app.get('/', async (req, res) => {
  
         const path = require("path"); //Use this for path.
@@ -197,6 +207,3 @@ app.get('/', async (req, res) => {
     }
 
 }); */
-app.use(char_insert.static(path.join(__dirname, 'views')));
-
-server.listen(process.env.PORT || config.port);
