@@ -3,7 +3,7 @@
 /* MIT license: http://opensource.org/licenses/MIT
 /* ----------------------------------------------- */
 
- const[express,alloy,http,fs,path,char_insert]=[require('express'),require('alloyproxy'),require('http'),require('fs'),require('path'),require('./src/charinsert.js')],[app,config]=[express(),JSON.parse(fs.readFileSync('./config.json',{encoding:'utf8'}))],server=http.createServer(app),localprox=new alloy({prefix:'/fetch/',request:[],response:[],injection:!0});
+const[express,alloy,http,fs,path,char_insert]=[require('express'),require('alloyproxy'),require('http'),require('fs'),require('path'),require('./src/charinsert.js')],[app,config]=[express(),JSON.parse(fs.readFileSync('./config.json',{encoding:'utf8'}))],server=http.createServer(app),localprox=new alloy({prefix:'/fetch/',error: (proxy) => { return proxy.res.send(fs.readFileSync(path.join(__dirname, 'views', 'error.html'), 'utf8'));},request:[],response:[],injection:!0});
 
 app.use(localprox.app);    
 
