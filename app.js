@@ -10,7 +10,7 @@ const
     http = require('http'),
     fs = require('fs'),
     path = require('path'),
-    char_insert = require('./charinsert.js');
+    char_insert = require('./src/charinsert.js');
 
 const config = JSON.parse(fs.readFileSync('./config.json', {
     encoding: 'utf8'
@@ -28,7 +28,9 @@ const unblocker = new alloy({
 
 app.use(unblocker.app);    
 
-unblocker.ws(server);    
+unblocker.ws(server);   
+
+//Cloudflare Attack Mode Fix
 
 app.post('/', async(req, res) => {
     switch (req.url) {
