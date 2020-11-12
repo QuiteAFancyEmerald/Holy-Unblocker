@@ -1,3 +1,8 @@
+/* -----------------------------------------------
+/* MIT license: http://opensource.org/licenses/MIT
+/* How to use? : Check the documentation. Button ID attributes are used for the script below.
+/* v2.0.0
+/* ----------------------------------------------- */
 $ = e => document.getElementById(e) || [];
 
 //AL
@@ -125,15 +130,6 @@ $('ytbp').onclick = function() {
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(yt)
     window.location.href = "https://cdn." + domain + "/fetch/utils/?url=" + origin;
-    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
-    return false;
-};
-$('chat').onclick = function() {
-    var frame = document.getElementById("frame");
-    var det = document.domain;
-    var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    frame.src = "https://c." + domain + "/app";
-    frame.style['visibility'] = "visible";
     document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };

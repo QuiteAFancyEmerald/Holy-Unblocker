@@ -1,3 +1,10 @@
+/* -----------------------------------------------
+/* Authors: YÖCTDÖNALD'S and OlyB
+/* MIT license: http://opensource.org/licenses/MIT
+/* Tab Cloak - Script
+/* v1.5.0
+/* ----------------------------------------------- */
+
 /*Title & Icon Presets*/
 let titles = icons = [];
 

@@ -1,3 +1,8 @@
+/* -----------------------------------------------
+/* Author: Divide
+/* MIT license: http://opensource.org/licenses/MIT
+/* Cloak
+/* ----------------------------------------------- */
 document.onkeydown = (function(e) {
     e.preventDefault();
     if (e.which == 17) cip = true;

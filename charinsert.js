@@ -1,3 +1,8 @@
+/* -----------------------------------------------
+/* Author : Divide
+/* MIT license: http://opensource.org/licenses/MIT
+/* ----------------------------------------------- */
+
 var fs = require('fs'),
     path = require('path'),
     mime = require('mime-types'),

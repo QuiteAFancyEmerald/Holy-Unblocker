@@ -1,3 +1,8 @@
+/* -----------------------------------------------
+/* Author : QuiteAFancyEmerald and YÖCTDÖNALD'S with help from MikeLime and SexyDuceDuce
+/* MIT license: http://opensource.org/licenses/MIT
+/* ----------------------------------------------- */
+
 const
     express = require('express'),
     app = express(),

@@ -117,8 +117,8 @@ This is an example of DNS records involving Heroku. Self-hosting will require `A
 <img src="https://cdn.discordapp.com/attachments/725506757291671663/756659513179766844/unknown.png" width="500" height="154"></img>
 
 - `a.deepsoil.ml` is being used for Node Unblocker.
-- `c.deepsoil.ml` is being used for Powermouse.
-- `cdn.deepsoil.ml` is being used for Via.
+- `p.deepsoil.ml` is being used for Powermouse.
+- `pd.deepsoil.ml` is being used for PyDodge B.
 - `cdn.deepsoil.ml` is being used for a private Alloy host on the official sites.
 
 As stated previously, Holy Unblocker is hosted locally with Alloy.

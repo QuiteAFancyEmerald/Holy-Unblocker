@@ -2,31 +2,3 @@ User-agent: *
 Allow: /
 Sitemap: https://quiteafancyemerald.com
 Sitemap: https://holyubofficial.net
-
-User-agent: Googlebot
-Allow: /
-Sitemap: https://quiteafancyemerald.com
-Sitemap: https://holyubofficial.net
-
-User-agent: DuckDuckBot
-Allow: /
-Sitemap: https://quiteafancyemerald.com
-Sitemap: https://holyubofficial.net
-
-User-agent: Bingbot
-Allow: /
-Sitemap: https://quiteafancyemerald.com
-Sitemap: https://holyubofficial.net
-
-User-agent: Slurp
-Allow: /
-Sitemap: https://quiteafancyemerald.com
-Sitemap: https://holyubofficial.net
-
-User-agent: Baiduspider
-Allow: /
-Sitemap: https://quiteafancyemerald.com
-Sitemap: https://holyubofficial.net
-
-
-
