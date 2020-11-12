@@ -1,7 +1,7 @@
 /* -----------------------------------------------
 /* Authors: OlyB
 /* MIT license: http://opensource.org/licenses/MIT
-/* GFiles - Edited
+/* gfiles - Edited
 /* ----------------------------------------------- */
 function gsearch() {
     var e, t, n, a;

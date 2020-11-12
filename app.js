@@ -1,5 +1,5 @@
 /* -----------------------------------------------
-/* Author : QuiteAFancyEmerald and YÖCTDÖNALD'S with help from MikeLime and SexyDuceDuce
+/* Author : QuiteAFancyEmerald and YÖCTDÖNALD'S with help from MikeLime, SexyDuceDuce and Divide
 /* MIT license: http://opensource.org/licenses/MIT
 /* ----------------------------------------------- */
 

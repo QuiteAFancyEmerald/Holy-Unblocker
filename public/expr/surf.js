@@ -27,16 +27,6 @@ $('albp').onclick = function() {
     document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
-//CH
-$('ch').onclick = function() {
-    var frame = document.getElementById("frame");
-    var det = document.domain;
-    var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    frame.src = "https://c." + domain + "/app";
-    frame.style['visibility'] = "visible";
-    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
-    return false;
-};
 //NU
 $('nprox').onclick = function() {
     var frame = document.getElementById("frame");
@@ -48,7 +38,6 @@ $('nprox').onclick = function() {
     document.cookie = 'nu_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
-
 $('nproxbp').onclick = function() {
     var frame = document.getElementById("frame");
     var url = $('url').value;
@@ -155,7 +144,17 @@ $('dbp').onclick = function() {
     document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
-
+//CH
+$('ch').onclick = function() {
+    var frame = document.getElementById("frame");
+    var url = $('url').value;
+    var det = document.domain;
+    var domain = det.replace('www.', '').split(/[/?#]/)[0];
+    frame.src = "https://c." + domain + "/app";
+    frame.style['visibility'] = "visible";
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    return false;
+};
 
 // Cookie Auth
 var host = location.hostname.split('.');

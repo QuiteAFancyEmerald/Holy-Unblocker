@@ -1,3 +1,8 @@
+/* -----------------------------------------------
+/* Authors: YÖCTDÖNALD'S and QuiteAFancyEmerald with help from MikeLime
+/* MIT license: http://opensource.org/licenses/MIT
+/* Hidden Links
+/* ----------------------------------------------- */
 $ = e => document.getElementById(e) || [];
 
 $("hblink").href = "https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic";
