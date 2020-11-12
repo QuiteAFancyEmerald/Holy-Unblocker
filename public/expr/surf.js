@@ -7,9 +7,9 @@ $('al').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(url)
-    frame.src = "https://" + domain + "/fetch/utils/?url=" + origin;
+    frame.src = "https://cdn." + domain + "/fetch/utils/?url=" + origin;
     frame.style['visibility'] = "visible";
-    document.cookie = '__alloy_cookie_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
 $('albp').onclick = function() {
@@ -18,8 +18,8 @@ $('albp').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(url)
-    window.location.href = "https://" + domain + "/fetch/utils/?url=" + origin;
-    document.cookie = '__alloy_cookie_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    window.location.href = "https://cdn." + domain + "/fetch/utils/?url=" + origin;
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
 //CH
@@ -29,7 +29,7 @@ $('ch').onclick = function() {
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     frame.src = "https://c." + domain + "/app";
     frame.style['visibility'] = "visible";
-    document.cookie = '__alloy_cookie_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
 //NU
@@ -61,7 +61,7 @@ $('pdprox').onclick = function() {
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     frame.src = "https://cdn." + domain + "/" + url;
     frame.style['visibility'] = "visible";
-    document.cookie = 'wowow; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
 $('pdproxbp').onclick = function() {
@@ -70,7 +70,7 @@ $('pdproxbp').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     window.location.href = "https://cdn." + domain + "/" + url;
-    document.cookie = 'wowo; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
 //PM Load
@@ -102,9 +102,9 @@ $('ytbtn').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(yt)
-    frame.src = "https://" + domain + "/fetch/utils/?url=" + origin;
+    frame.src = "https://cdn." + domain + "/fetch/utils/?url=" + origin;
     frame.style['visibility'] = "visible";
-    document.cookie = '__alloy_cookie_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
 $('ytbtnm').onclick = function() {
@@ -113,9 +113,9 @@ $('ytbtnm').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(yt)
-    frame.src = "https://" + domain + "/fetch/utils/?url=" + origin;
+    frame.src = "https://cdn." + domain + "/fetch/utils/?url=" + origin;
     frame.style['visibility'] = "visible";
-    document.cookie = '__alloy_cookie_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
 $('ytbp').onclick = function() {
@@ -124,8 +124,17 @@ $('ytbp').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(yt)
-    window.location.href = "https://" + domain + "/fetch/utils/?url=" + origin;
-    document.cookie = '__alloy_cookie_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    window.location.href = "https://cdn." + domain + "/fetch/utils/?url=" + origin;
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    return false;
+};
+$('chat').onclick = function() {
+    var frame = document.getElementById("frame");
+    var det = document.domain;
+    var domain = det.replace('www.', '').split(/[/?#]/)[0];
+    frame.src = "https://c." + domain + "/app";
+    frame.style['visibility'] = "visible";
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
 //D
@@ -135,9 +144,9 @@ $('dbtn').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(d)
-    frame.src = "https://" + domain + "/fetch/utils/?url=" + origin;
+    frame.src = "https://cdn." + domain + "/fetch/utils/?url=" + origin;
     frame.style['visibility'] = "visible";
-    document.cookie = '__alloy_cookie_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
 $('dbp').onclick = function() {
@@ -146,8 +155,8 @@ $('dbp').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(d)
-    window.location.href = "https://" + domain + "/fetch/utils/?url=" + origin;
-    document.cookie = '__alloy_cookie_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    window.location.href = "https://cdn." + domain + "/fetch/utils/?url=" + origin;
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
 

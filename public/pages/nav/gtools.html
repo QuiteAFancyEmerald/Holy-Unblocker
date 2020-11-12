@@ -28,11 +28,13 @@
 </head>
 
 <body>
+    <iframe id="frame" style="display:block; visibility: hidden;"></iframe>
     <!--New-->
     <div>
         <div class="header-dark" style="background-color: rgb(0,0,0);background-image: url(&quot;assets/img/black.jpg&quot;);">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search" style="height: 100px;">
-                <div class="container"><a class="navbar-brand" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/">Ho&#8203;ly Unb&#8203;lock&#8203;er</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="container"><a class="navbar-brand" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/">Ho&#8203;ly Unb&#8203;lock&#8203;er</a><button data-toggle="collapse" class="navbar-toggler"
+                        data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav ml-auto">
                             <!--Nav-->
@@ -42,7 +44,8 @@
                             <li class="nav-item" role="presentation"><a class="nav-link" href="/?d" style="font-family: 'Montserrat Alternates', sans-serif;">D&#8203;isc&#8203;ord</a></li>
                             <li id="ch" class="nav-item" role="presentation"><a class="nav-link" href="/?n" style="font-family: 'Montserrat Alternates', sans-serif;">Cha&#8203;tbox</a></li>
                             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;color: rgb(255,255,255);font-family: 'Montserrat Alternates', sans-serif;">More</a>
-                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;"><a class="dropdown-item text-left text-white-50" role="presentation" href="/?k" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Kru&#8203;nk&#8203;er</a><a class="dropdown-item text-left text-white-50" role="presentation" href="/?in" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Docs</a><a class="dropdown-item text-white-50" role="presentation" href="/?c" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Cre&#8203;dits</a></div>
+                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;"><a class="dropdown-item text-left text-white-50" role="presentation" href="/?k" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Kru&#8203;nk&#8203;er</a><a class="dropdown-item text-left text-white-50"
+                                        role="presentation" href="/?in" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Docs</a><a class="dropdown-item text-white-50" role="presentation" href="/?c" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Cre&#8203;dits</a></div>
                             </li>
                             <!--Options Menu-->
                             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link text-white" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;font-family: 'Montserrat Alternates', sans-serif;">Options</a>
@@ -100,12 +103,13 @@
                         <div class="container text-center border rounded justify-content-center align-items-center button" style="color: rgb(255,255,255); filter: blur(0px); opacity: 0.95; padding-left: 50px; padding-right: 50px;">
                             <form class="hb-form-padding" id="unblocker-form" action="b" method="get">
                                 <p class="s-text-header" style="font-size: 46px;">GTo&#8203;ols Directory</p>
-                                <p style="font-family: 'Montserrat Alternates', sans-serif;">Choose where you would like to go. Below is some information.</p>
+                                <p style="font-family: 'Montserrat Alternates', sans-serif;">Choose where you would like to go. Below is some information.<br>P&#8203;lease no&#8203;te that thi&#8203;s pa&#8203;ge and its library is a WI&#8203;P.</p>
                                 <p class="text-white" style="font-size: 20px;font-family: Lato, sans-serif;">Information:<br></p>
                                 <p class="text-hb-light" style="font-family: Lato, sans-serif;">Here you can find cool stuff like emula&#8203;tors and gam&#8203;es!</p>
                                 <p class="text-hb-light" style="font-family: Lato, sans-serif;">Emu&#8203;lat&#8203;ors Featured: G&#8203;B, G&#8203;BA, N&#8203;ES, SN&#8203;ES (N&#8203;64 soon)</p>
                                 <p class="text-hb-light" style="font-family: Lato, sans-serif;">T&#8203;ools Featured: Javascript Ter&#8203;minals, Virt&#8203;ual Mach&#8203;ines and more.</p>
                                 <p class="text-hb-light" style="font-family: Lato, sans-serif;">Ga&#8203;mes Featured: Self explanatory. Fla&#8203;sh will soon be unsupported.</p>
+                                <p class="text-white" style="font-family: Lato, sans-serif;">Most of the ga&#8203;mes here should hopefully be updated.</p>
                                 <div style="margin-top: 2%;">
                                     <a class="btn btn-group text-hb hb-border-color glow-on-hover" role="button" data-bs-hover-animate="pulse" style="background-color: rgb(24,26,28);font-family: 'Montserrat Alternates', sans-serif;" href="/?h">Em&#8203;ulat&#8203;ors</a>
                                     <a class="btn btn-group text-hb hb-border-color glow-on-hover" role="button" data-bs-hover-animate="pulse" style="background-color: rgb(24,26,28);font-family: 'Montserrat Alternates', sans-serif;" href="/?h">To&#8203;ols</a>
@@ -113,7 +117,6 @@
                                     <a class="btn btn-group text-hb hb-border-color glow-on-hover" role="button" data-bs-hover-animate="pulse" style="background-color: rgb(24,26,28);font-family: 'Montserrat Alternates', sans-serif;" href="/?h">.&#8203;I&#8203;O Gam&#8203;es</a>
                                     <a class="btn btn-group text-hb hb-border-color glow-on-hover" role="button" data-bs-hover-animate="pulse" style="background-color: rgb(24,26,28);font-family: 'Montserrat Alternates', sans-serif;" href="/?f">F&#8203;la&#8203;sh G&#8203;am&#8203;es</a>
                                 </div>
-                                <p class="text-white" style="font-family: Lato, sans-serif;">Most of the ga&#8203;mes here should hopefully be updated.</p>
                             </form>
                         </div>
                     </div>
@@ -164,6 +167,7 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
+    <script src="expr/surf.js"></script>
 </body>
 
 </html>
