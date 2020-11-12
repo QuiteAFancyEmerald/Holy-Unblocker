@@ -80,24 +80,20 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 ### Structure Information
 - `/public/` : The physical site base of Holy Unblocker goes here. Do not delete or modify `/utils` as its needed for Alloy.
 
-#### Details of `/public`
+#### Details of `/views/`
 - `/pages/` is used for important pages for the site.
 - `/expr/` is used for important proxy scripts.
-- `/archive/` and `/css` is used for game related assets and pages.
+- `/archive/` is used for game related assets and pages.
 -  `/assets/` is used for various assets for CSS, JS and Bootstrap.
 - `/vibeOS/` is used for vibeOS, an in-browser OS enviroment.
 
 #### Scripts located in `/expr`
-- `[Proxy Initial]bp.js` is used for future implementation of Cookie Auth and navigation to external proxies. Must be located in the <body> tag.
-- `[Proxy Initial]load.js` is used for initializing the bp script(s). Must be located in the `<head>` tag.
-- `d.html` is used for a locally running Discord proxy along with `dbp.js`
-
-#### Details of `auth.js`
-- Will be used for the implementation of Cookie Authorization
+- `surf.js` is used for proxy navigation; both stealth mode and classic mode.
+- `load.js` is used for initializing the surf script. Must be located in the `<head>` tag.
 
 ## Future Additions
-- Cookie Authorization
-- Filters
+- Expansive game library
+- Various parity changes.
 
 ## Vauge Explanation for Beginners With External Proxies and Hosting
 You will first want to host your proxies locally or externally. 
@@ -120,6 +116,12 @@ This is an example of DNS records involving Heroku. Self-hosting will require `A
 - `p.deepsoil.ml` is being used for Powermouse.
 - `pd.deepsoil.ml` is being used for PyDodge B.
 - `cdn.deepsoil.ml` is being used for a private Alloy host on the official sites.
+
+Update, the new configuration is:
+
+- `a.deepsoil.ml` is being used for Node Unblocker.
+- `c.deepsoil.ml` is being used for Powermouse and the Chatbox.
+- `cdn.deepsoil.ml` is being used for a private Alloy and Via host on the official sites.
 
 As stated previously, Holy Unblocker is hosted locally with Alloy.
 
