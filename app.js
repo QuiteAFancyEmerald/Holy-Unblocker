@@ -62,138 +62,138 @@ app.get('/', async (req, res) => {
 
     switch (req.url) {
         case '/':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'index.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?z':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'surf.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'surf.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?a':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'proxnav', 'alloy.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'proxnav', 'alloy.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?dd':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'redirects', 'discordprox.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'redirects', 'discordprox.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?b':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'proxnav', 'node.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'proxnav', 'node.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?y':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'proxnav', 'youtube.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'proxnav', 'youtube.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?e':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'proxnav', 'pydodge.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'proxnav', 'pydodge.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?d':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'proxnav', 'discordhub.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'proxnav', 'discordhub.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?c':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'nav', 'credits.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'nav', 'credits.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?f':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'nav', 'flash.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'nav', 'flash.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?g':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'nav', 'gtools.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'nav', 'gtools.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?h':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'nav', 'games5.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'nav', 'games5.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?i':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'nav', 'icons.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'nav', 'icons.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?in':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'info.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'info.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?v':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'redirect.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'redirect.html'), 'utf8'));
     }
 
     switch (req.url == '/?k') {
         case '/?k':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'frames', 'krunker.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'frames', 'krunker.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?m':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'nav', 'gba.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'nav', 'gba.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?n':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'redirects', 'chatbox.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'redirects', 'chatbox.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?update':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'update.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'update.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?p':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'proxnav', 'pmprox.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'proxnav', 'pmprox.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?t':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'nav', 'terms.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'nav', 'terms.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?x':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'nav', 'bookmarklets.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'nav', 'bookmarklets.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?yh':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'redirects', 'ythub.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'redirects', 'ythub.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?ym':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'pages', 'redirects', 'ytmobile.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages', 'redirects', 'ytmobile.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?fg':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'archive', 'f.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'archive', 'f.html'), 'utf8'));
     }
 
     switch (req.url) {
         case '/?rr':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'archive', 'run.html'), 'utf8'));
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'archive', 'run.html'), 'utf8'));
     }
 
 
     switch (req.url) {
         case '/?j':
-            return res.send(fs.readFileSync(path.join(__dirname, 'public', 'hidden.html'), 'utf8'))
+            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'hidden.html'), 'utf8'))
     }
 
 }); */
