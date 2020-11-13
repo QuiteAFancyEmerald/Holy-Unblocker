@@ -1,13 +1,123 @@
 /* -----------------------------------------------
-/* Author : QuiteAFancyEmerald and YÖCTDÖNALD'S with help from MikeLime, SexyDuceDuce and Divide
+/* Author : QuiteAFancyEmerald, YÖCTDÖNALD'S and SexyDuceDuce with help from Divide
 /* MIT license: http://opensource.org/licenses/MIT
 /* ----------------------------------------------- */
 
-const[express,alloy,http,fs,path,char_insert]=[require('express'),require('alloyproxy'),require('http'),require('fs'),require('path'),require('./src/charinsert.js')],[app,config]=[express(),JSON.parse(fs.readFileSync('./config.json',{encoding:'utf8'}))],server=http.createServer(app),localprox=new alloy({prefix:'/fetch/',error: (proxy) => { return proxy.res.send(fs.readFileSync(path.join(__dirname, 'views', 'error.html'), 'utf8'));},request:[],response:[],injection:!0});
+const alloy = require('alloyproxy'),
+    rewrite = require('alloyproxy/libs/rewriting.js'),
+    char_insert = require('./src/charinsert.js'),
+    path = require('path'),
+    config = require('./config.json'),
+    fs = require('fs'),
+    http = require('http'),
+    https = require('https'),
+    querystring = require('querystring'),
+    express = require('express'),
+    app = express();
 
-app.use(localprox.app);    
+if (!config.prefix.startsWith('/')) config.prefix = '/' + config.prefix;
 
-localprox.ws(server);
+if (!config.prefix.endsWith('/')) config.prefix = config.prefix + '/';
+
+var server, protocol = 'http://';
+
+server = http.createServer(app);
+
+btoa = (str) => {
+	str = new Buffer.from(str).toString('base64');
+	return str;
+};
+
+atob = (str) => {
+    str = new Buffer.from(str, 'base64').toString('utf-8');
+	return str;
+};
+
+const localprox = new alloy({
+    prefix: config.prefix,
+    error: (proxy) => { proxy.res.send(fs.readFileSync('./error.html', { encoding: 'utf8' }).replace('%ERR%', proxy.error.info.message.replace(/</gi, '<&zwnj;').replace(/>/gi, '>&zwnj;'))); }, // Doing replace functions on "<" and ">" to prevent XSS.
+    request: [],
+    response: [],
+    injection: true,
+});    
+ 
+// The main part of the proxy. 
+
+app.use(config.prefix, (req, res, next) => {
+
+    req.url = config.prefix + req.url.slice(1);
+
+    if (config.cookie_auth) {
+
+        if (req.headers['cookie'] && req.headers['cookie'].match(config.cookie_auth)) return localprox.app(req, res, next);
+    
+        res.send(fs.readFileSync('./views/error.html', { encoding: 'utf8' }).replace('%ERR%', 'Authorization required.<br>Go back to the main page.<br>-Bot Protection-'));
+
+        res.statusCode = 400;
+
+    } else localprox.app(req, res, next);
+    
+});
+
+app.get(config.prefix, (req, res, next) => {
+
+    if (req.query.url) {
+
+        var url = atob(req.query.url);
+
+        if (url.startsWith('//')) url = 'http:' + url;
+
+        if (url.startsWith('https://') || url.startsWith('http://')) { return res.redirect(config.prefix + rewrite.url(url)) }
+
+        else return res.redirect(config.prefix + rewrite.url('http://' + url))
+
+    } else return next();
+
+});
+
+//Cookie Auth
+
+app.post(`/session/`, async(req, res, next) => {
+
+    req.body = await new Promise(resolve => {
+ 
+        var body = '';
+
+        req.on('data', chunk => body += chunk).on('end', () => {
+
+            try {
+
+                if (body.startsWith('{') && body.endsWith('}')) { resolve(JSON.parse(body)) }
+
+                else {
+
+            resolve(querystring.parse(body));
+
+          };
+
+        } catch(err) { resolve({}) }  
+
+
+        });
+
+      });
+
+    if (req.body.url) {
+
+        if (req.body.url.startsWith('//')) { req.body.url = 'http:' + req.body.url; } else if (req.body.url.startsWith('https://') || req.body.url.startsWith('http://')) { req.body.url = req.body.url } else { req.body.url = 'http://' + req.body.url};
+
+        if (config.cookie_auth) {
+
+            res.set('Set-Cookie', config.cookie_auth + `; path=${config.prefix};`);
+
+        };
+
+        return res.redirect(config.prefix + rewrite.url(req.body.url));
+
+    } else next();
+
+
+});
 
 //Cloudflare Attack Mode Fix
 
@@ -19,10 +129,11 @@ app.post('/', async(req, res) => {
 });
 
 //Querystring Navigation
-
 app.get('/', async(req, res, t) => res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages,index.html,info.html,archive,archive,hidden.html'.split(',')['/,/?in,/?fg,/?rr,/?j'.split(',').indexOf(req.url) + 1], ',surf.html,f.html,run.html,frames,redirects3,proxnav5,nav7'.replace(/,[^,]+/g, e => ([] + e.match(/\D+/)).repeat(+e.match(/\d+/) + 1)).split(',')[t = 'z,fg,rr,k,dd,n,yh,ym,a,b,y,e,d,p,c,f,g,h,i,m,t,x'.split(',').indexOf(req.url.slice(2)) + 1], (t = ',,,,krunker,discordprox,chatbox,ythub,ytmobile,alloy,node,youtube,pydodge,discordhub,pmprox,credits,flash,gtools,games5,icons,gba,terms,bookmarklets'.split(',')[t]) && t + '.html'), 'utf8')));
 
 app.use(char_insert.static(path.join(__dirname, 'views')));
+
+localprox.ws(server);
 
 server.listen(process.env.PORT || config.port);
 
