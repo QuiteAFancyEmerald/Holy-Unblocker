@@ -125,7 +125,7 @@ $('ytbp').onclick = function() {
 //D
 $('dbtn').onclick = function() {
     var frame = document.getElementById("frame");
-    var d = `https://discord.com/login`;
+    var d = `https://discord.com/app`;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(d)
@@ -136,7 +136,7 @@ $('dbtn').onclick = function() {
 };
 $('dbp').onclick = function() {
     var frame = document.getElementById("frame");
-    var d = `https://discord.com/login`;
+    var d = `https://discord.com/app`;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(d)
