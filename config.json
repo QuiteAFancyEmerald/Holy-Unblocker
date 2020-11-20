@@ -1,5 +1,3 @@
 {
-    "prefix": "/fetch/",
-    "port": "8080",
-    "cookie_auth": "oldsmobile=badcar"
+    "port": "8080"
 }
