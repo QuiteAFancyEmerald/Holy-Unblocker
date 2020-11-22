@@ -9,6 +9,22 @@ A website that can be used to bypass web filters; both extension and firewall. T
 - Surviv.io
 - And more!
 
+#### Discord Proxy Disclaimer
+Make sure you are using Alloy + QR Code or Token Login for Discord.
+Also, search up on YT on How to find your Discord Token when using Token Login.
+
+**If the page appears gray on the first load, reload/spam reload the page a bunch.**
+
+- Alloy works for only QR code logins. Alloy is currently the best for Discord support.
+
+- QR Logins on both Alloy or PM Proxy which will require a mobile device.
+
+QR Code Information: https://support.discord.com/hc/en-us/articles/360039213771-QR-Code-Login-FAQ
+
+Use the above through one of the proxies to read if you can't. ^^
+**You cannot login normally into Discord. Read the above. QR and Token login only.**
+
+
 <img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/hbpreview.png?raw"></img>
 
 Official Site: https://www.holyubofficial.net
