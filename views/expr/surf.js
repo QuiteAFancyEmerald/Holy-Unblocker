@@ -16,7 +16,7 @@ $('buttonstealth').onclick = function() {
         url = btoa('http://' + url[0] + '/' + url.slice(1).join('/'));
         console.log(url);
     } else url = btoa(url)
-    frame.src = "https://" + domain + "/fetch/" + url;
+    frame.src = "https://subdomain." + domain + "/path/" + url;
     frame.style['visibility'] = "visible";
     document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     document.getElementById('frame').contentWindow.focus();
@@ -31,7 +31,7 @@ $('buttonclassic').onclick = function() {
         url = btoa('http://' + url[0] + '/' + url.slice(1).join('/'));
         console.log(url);
     } else url = btoa(url)
-    window.location.href = "https://" + domain + "/fetch/" + url;
+    window.location.href = "https://subdomain." + domain + "/path/" + url;
     document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
