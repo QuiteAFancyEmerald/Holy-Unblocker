@@ -118,7 +118,11 @@ $('pmprox').onclick = function() {
     var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    document.getElementById("frame").src = "https://c." + domain + "/prox?url=" + url;
+    if (!url.startsWith('http') || !url.startsWith('https://')) {
+        url = url.split('/');
+        url = ('http://' + url[0] + '/' + url.slice(1).join('/'));
+    }
+    document.getElementById("frame").src = "https://c." + domain + "/" + url;
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
@@ -130,7 +134,11 @@ $('pmproxbp').onclick = function() {
     var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    window.location.href = "https://c." + domain + "/prox?url=" + url;
+    if (!url.startsWith('http') || !url.startsWith('https://')) {
+        url = url.split('/');
+        url = ('http://' + url[0] + '/' + url.slice(1).join('/'));
+    }
+    window.location.href = "https://c." + domain + "/" + url;
     document.cookie = 'oldsmobile=1; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     document.getElementById("frame").style.visiblity = "visible";
     return false;
