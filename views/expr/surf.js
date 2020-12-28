@@ -1,7 +1,7 @@
 /* -----------------------------------------------
 /* MIT license: http://opensource.org/licenses/MIT
 /* How to use? : Check the documentation. Button ID attributes are used for the script below.
-/* v2.0.3
+/* v2.0.4
 /* ----------------------------------------------- */
 $ = e => document.getElementById(e) || [];
 
@@ -122,7 +122,7 @@ $('pmprox').onclick = function() {
         url = url.split('/');
         url = ('http://' + url[0] + '/' + url.slice(1).join('/'));
     }
-    document.getElementById("frame").src = "https://c." + domain + "/" + url;
+    document.getElementById("frame").src = "https://c." + domain + "/prox?url=" + url;
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
@@ -138,7 +138,7 @@ $('pmproxbp').onclick = function() {
         url = url.split('/');
         url = ('http://' + url[0] + '/' + url.slice(1).join('/'));
     }
-    window.location.href = "https://c." + domain + "/" + url;
+    window.location.href = "https://c." + domain + "/prox?url=" + url;
     document.cookie = 'oldsmobile=1; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     document.getElementById("frame").style.visiblity = "visible";
     return false;
