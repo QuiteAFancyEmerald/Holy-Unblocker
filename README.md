@@ -222,7 +222,7 @@ Once again do the same steps above:
 - Reloading the page normally when the error above happens should load the video
 - Or right-clicking the page and doing Reload Frame if you are using some form of Stealth Mode.
 
-Make sure you are also doing the steps correctly. Simply view below for extended Discord proxy information/steps.
+Make sure you are also doing the steps correctly. Simply view link above for extended Discord proxy information/steps.
 
 **I am getting 502 errors. What do I do?**
 
