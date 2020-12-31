@@ -13,24 +13,6 @@ Be sure to check the various branches as I update Holy Unblocker often with open
 - Surviv.io
 - And more!
 
-#### Detailed FAQ
-A detailed FAQ with common issues and solutions can be found <a href="https://holyubofficial.net/?faq">here</a> or on any official HU site on the FAQ page.
-
-#### Discord Proxy Disclaimer
-Make sure you are using Alloy + QR Code login for Discord.
-
-**If the page appears gray on the first load, reload or spam reload the page a bunch.**
-
-- Alloy works for only QR code logins. Alloy is currently the best for Discord support.
-
-- QR Logins on both Alloy.
-
-QR Code Information: https://support.discord.com/hc/en-us/articles/360039213771-QR-Code-Login-FAQ
-
-Use the link above through one of the proxies to read if you can't.
-
-**You cannot login normally into Discord. Read the above. QR code login only.**
-
 <img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/hbpreview.png?raw"></img>
 
 Official Site: https://www.holyubofficial.net
@@ -64,6 +46,7 @@ Be sure to join Titanium Network's Discord for more official site links: https:/
 	  - [Domain Setup](#freenomdomain-steps)
 	  - [Cloudflare Setup](#cloudflare-steps)
 	  - [Workspace Configurations](#workspace-configurations)
+	- [Detailed FAQ](#detailed-faq)
 	- [More Information](#more-information)
 
 ## How to Setup
@@ -210,6 +193,41 @@ For an online IDE that you can use on your school computer and/or chromebook use
 - Fork this repo and enter in this URL to setup your workspace: `https://gitpod.io#https://github.com/YourNameHere/HolyUnblockerPublic/`
 
 Use the same steps above by running `npm install` in your repository and adding a `.gitignore` in your root directory specifying to exclude `node_modules`.
+
+## Detailed FAQ
+A detailed FAQ with common issues and solutions can be found <a href="https://holyubofficial.net/?faq">here</a> or on any official HU site on the FAQ page.
+
+**Why is the site I am on not working correctly or having CAPTCHA errors?**
+
+Captcha support is currently not available on all of the current proxies sadly. Therefore some sites may not work with any of the sites. Read below for issues with links on sites.
+
+**Why are some page links not working or leading to 404 pages?**
+
+This is an issue with the latest release of Alloy proxy but it may also occur with other proxies.
+
+In this case manually entering the URL of the page you would like to view can solve this or try navigating using the home button. (Reddit, Twitter) The next release of Alloy may fix this also.
+
+**When using YouTube on any of the proxy sites, why does the page not load fully or the video is just white?**
+
+There are two methods for fixing this:
+
+- Reloading the page normally when the error above happens should load the video.
+- Or right-clicking the page and doing Reload Frame if you are using some form of Stealth Mode.
+
+**When using Discord under Alloy or Powermouse, why does the page stay gray/white or the QR code not load?**
+
+Once again do the same steps above:
+- Reloading the page normally when the error above happens should load the video
+- Or right-clicking the page and doing Reload Frame if you are using some form of Stealth Mode.
+
+Make sure you are also doing the steps correctly. Simply view below for extended Discord proxy information/steps.
+
+**I am getting 502 errors. What do I do?**
+
+When this happens you may either switch sites to fix the error or wait a bit. Sometimes clearing your cache can help.
+
+If you still have any questions feel free to ask them in the discord linked here.
+
 
 ## More Information
 This project uses Alloy Proxy, Node Unblocker, Powermouse and PyDodge which are linked below. Credits also given to Titanium Network and all it's developers as this project would not be possible without them. View the official website for more detail. :)
