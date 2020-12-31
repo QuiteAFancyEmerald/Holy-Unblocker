@@ -1,6 +1,10 @@
 # Holy Unblocker <img align="left" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/i.png"></img>
 
-A website that can be used to bypass web filters; both extension and firewall. This is the public source code for Holy Unblocker, a rather fancy website with some cool dynamic backgrounds while also focusing with detail put into the design and mechanics overall. Also has cool features like custom Tab Cloaks and with more to come. Works on a large number of sites including YouTube (Full Quality Support), Discord and more! Be sure to check the various branches as I update Holy Unblocker often with open access to yet to be released versions.
+A website that can be used to bypass web filters; both extension and firewall. This is the public source code for Holy Unblocker, a rather fancy website with some cool dynamic backgrounds while also focusing with detail put into the design, mechanics and features overall like custom Tab Cloaks with more to come in the future. 
+
+Works with a large number of sites including YouTube (Full Quality Support), Discord and more! 
+
+Be sure to check the various branches as I update Holy Unblocker often with open access to yet to be released versions.
 
 #### Supports
 - Youtube.com
@@ -9,10 +13,13 @@ A website that can be used to bypass web filters; both extension and firewall. T
 - Surviv.io
 - And more!
 
+#### Detailed FAQ
+A detailed FAQ with common issues and solutions can be found <a href="https://holyubofficial.net/?faq">here</a> or on any official HU site on the FAQ page.
+
 #### Discord Proxy Disclaimer
 Make sure you are using Alloy + QR Code login for Discord.
 
-**If the page appears gray on the first load, reload/spam reload the page a bunch.**
+**If the page appears gray on the first load, reload or spam reload the page a bunch.**
 
 - Alloy works for only QR code logins. Alloy is currently the best for Discord support.
 
@@ -20,9 +27,9 @@ Make sure you are using Alloy + QR Code login for Discord.
 
 QR Code Information: https://support.discord.com/hc/en-us/articles/360039213771-QR-Code-Login-FAQ
 
-Use the above through one of the proxies to read if you can't. ^^
-**You cannot login normally into Discord. Read the above. QR code login only.**
+Use the link above through one of the proxies to read if you can't.
 
+**You cannot login normally into Discord. Read the above. QR code login only.**
 
 <img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/hbpreview.png?raw"></img>
 
