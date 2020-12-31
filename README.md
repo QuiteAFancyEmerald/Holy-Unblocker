@@ -232,7 +232,9 @@ If you still have any questions feel free to ask them in the discord linked here
 
 
 ## More Information
-This project uses Alloy Proxy, Node Unblocker, Powermouse and PyDodge which are linked below. Credits also given to Titanium Network and all it's developers as this project would not be possible without them. View the official website for more detail. :)
+This project uses Alloy Proxy, Node Unblocker, Powermouse and PyDodge which are linked below. 
+
+View the official website for more detail and credits.
 
 - https://github.com/titaniumnetwork-dev/
 - https://github.com/titaniumnetwork-dev/alloyproxy
@@ -243,5 +245,7 @@ This project uses Alloy Proxy, Node Unblocker, Powermouse and PyDodge which are 
 - https://nodeclusters.com
 - https://titaniumnetwork.org/
 - https://github.com/vibedivide/vibeOS
+
+This project is maintained by QuiteAFancyEmerald and collaborative with Titanium Network.
 
 Thanks.
