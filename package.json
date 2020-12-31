@@ -1,6 +1,6 @@
 {
     "name": "holyub",
-    "version": "4.0.0",
+    "version": "4.2.3",
     "repository": "https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic",
     "description": "A pretty fancy website.",
     "main": "app.js",
