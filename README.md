@@ -25,6 +25,8 @@ Instance Status: <a href="https://status.holyubofficial.net/?update">Status</a>
 
 Be sure to join Titanium Network's Discord for more official site links: https://discord.com/invite/tgT48PH
 
+Simply do `%proxy hu` for more Holy Unblocker links on the TN Discord server.
+
 <a href="https://heroku.com/deploy?template=https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic" title="Deploy to Heroku"><img alt="Deploy to Heroku" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/heroku.svg?raw" width="140" height="30"><img></a>
 &nbsp;
 <a href="https://azuredeploy.net/" title="Deploy to Azure"><img alt="Deploy to Azure" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/azure.svg?raw" width="140" height="30"><img></a>
