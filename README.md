@@ -39,7 +39,7 @@ Simply do `%proxy hu` for more Holy Unblocker links on the TN Discord server.
 
 - [Setup](#how-to-install)
 	- [Structure](#structure)
-		- [Structure Information](#structure-information)
+		- [Structure Information](#structure)
 	    - [Static Files](#details-of-public)
 	    - [Proxy Scripts](#scripts-located-in-expr)
 	    - [Cookie Auth](#details-of-authjs)
