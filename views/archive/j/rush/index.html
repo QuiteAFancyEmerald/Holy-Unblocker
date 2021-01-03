@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <title>Rush Game</title>
+  <link rel="stylesheet" href="css/rush-game.css">
+</head>
+<body>
+  <header>
+    <h1>Rush</h1>
+  </header>
+  <div id='game'>
+    <canvas id='game-canvas' width='480' height='320'></canvas>
+    <div id='score'>0</div>
+    <div id='menu' class='scene hidden'>
+      <a id='start-btn' href='#'></a>
+    </div>
+    <div id='gameover' class='scene hidden'>
+      <div id='your-game-score'>Your Score is 100</div>
+      <div id='top-scores'></div>
+      <a id='restart-btn' href='#'></a>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='half'>
+      <h2>How to Play?</h2>
+      <ul class='how-to-play'>
+        <li>Press the screen to jump.</li>
+        <li>Avoid the obstacles.</li>
+        <li>Collect the game coins.</li>
+      </ul>
+    </div>
+    <div class='half'>
+      <h2>Top Scores</h2>
+      <div id='top-scores-board'></div>
+    </div>
+  </div>
+
+  <div class='row hr'>
+    <hr>
+  </div>
+
+  <footer>
+    <p><a href='http://twitter.com/makzan'>@makzan</a></p>
+    <p>handmade in Macao.</p>
+  </footer>
+
+  <!-- The scripts should be concatenate and minify before deploy to production -->
+  <script type="text/javascript" src='vendors/easeljs-0.7.1.min.js'></script>
+  <script type="text/javascript" src='js/game.js'></script>
+  <script type="text/javascript" src='js/rush-preloader.js'></script>
+  <script type="text/javascript" src='js/rush-common-shapes.js'></script>
+  <script type="text/javascript" src='js/rush-gameobject.js'></script>
+  <script type="text/javascript" src='js/rush-movable-gameobject.js'></script>
+  <script type="text/javascript" src='js/rush-platform.js'></script>
+  <script type="text/javascript" src='js/rush-obstacle.js'></script>
+  <script type="text/javascript" src='js/rush-coin.js'></script>
+  <script type="text/javascript" src='js/rush-hero.js'></script>
+  <script type="text/javascript" src='js/rush-topscores.js'></script>
+  <script type="text/javascript" src='js/rush-game.js'></script>
+
+</body>
+</html>

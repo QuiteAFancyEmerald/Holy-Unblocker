@@ -1,0 +1,38 @@
+.debug (@color: red) {
+  border: 1px solid @color;
+}
+
+html, body {
+  margin: 0;
+}
+
+
+#game-canvas {
+  background: #333;
+  width: 320px;
+  margin-top: 20px;
+}
+
+#ui {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #efefef;
+
+  a {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    color: #000;
+  }
+}
+
+#fps {
+  position: fixed;
+  left: 0;
+  top: 20px;
+  background: rgba(0,0,0,0.8);
+  color: #ffffff;
+  padding: 5px;
+  border-bottom-right-radius: 3px;
+}

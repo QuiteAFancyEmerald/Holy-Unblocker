@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>HTML5 Audio Game</title>
+	<link rel="stylesheet" href="css/audiogame.css" />
+</head>
+<body>
+	<div id="game">
+		<section id="menu-scene" class="scene">
+			<a href="#game"><span>Play</span></a>
+		</section>
+		
+		<section id="game-scene" class="scene">
+			<canvas id="game-background-canvas" width="768" height="440">
+				Sorry, your web browser does not support canvas content.
+			</canvas>
+			<canvas id="game-canvas" width="768" height="440">
+				Sorry, your web browser does not support canvas content.
+			</canvas>
+			<div id="hit-line-1" class="hit-line hide"></div>	
+			<div id="hit-line-2" class="hit-line hide"></div>	
+			<div id="hit-line-3" class="hit-line hide"></div>
+		</section>
+	</div>
+	
+	<audio id="buttonover">
+		<source src="media/button_over.wav" />
+		<source src="media/button_over.ogg" />
+	</audio>
+	<audio id="buttonactive">
+		<source src="media/button_active.mp3" />
+		<source src="media/button_active.ogg" />
+	</audio>
+	
+	<audio id="melody">
+		<source src="media/minuet_in_g_melody.mp3" />
+		<source src="media/minuet_in_g_melody.ogg" />
+	</audio>
+	
+	<audio id="base">
+		<source src="media/minuet_in_g.mp3" />
+		<source src="media/minuet_in_g.ogg" />	
+	</audio>
+	
+	<footer>
+		<p>This is an example of making audio game in HTML5. Press J, K, L to play.</p>
+	</footer>
+
+<script src="js/jquery-1.6.min.js"></script>
+<script src="js/html5games.audio.js"></script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+/*!
+ * CSS3 Card Games Example
+ * http://gamedesign.cc/html5games/CSS3-matching-game/
+ * 
+ * This is an example game for the book HTML5 Games Development: A Beginning Guide.
+ * 
+ * Copyright 2010, Thomas Seng Hin Mak
+ * makzan@gmail.com
+ *   
+ * All Right Reserved.
+ */
+ 
+body {
+	text-align: center;	
+	font-family: 'Droid Serif', arial, serif;
+	background: #a46740 url(../images/bg.jpg);
+	color: #ccc;
+	text-shadow: 0 1px 0 #222;
+}
+
+h1 {
+	font-weight: bold;
+	text-shadow: 0 2px 0 #222;
+}
+
+a, a:visited {
+	color: #aea;
+	text-decoration: none;	
+	-webkit-transition: all .3s;
+	padding: 5px;
+}
+
+a:hover {
+	color: #000;
+	background: #aea;
+	text-shadow: none;
+}
+ 
+#game {
+	border-radius: 10px;
+	border: 1px solid #666;
+	-webkit-box-shadow: 0 -1px 0 #999, 0 1px 0 #999, inset 0 1px 6px #000;
+	
+	position: relative;
+	background: #232 url(../images/table.jpg);
+	width: 500px;
+	height: 460px;
+	margin: 0 auto;
+	
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	
+	display: -moz-box;
+	-moz-box-pack: center;
+	-moz-box-align: center;	
+}
+
+#cards {
+	position: relative;	
+	width: 380px;
+	height: 400px;
+}
+
+.card {
+	-webkit-perspective: 600;
+	width: 80px;
+	height: 120px;
+	
+	/* changed	*/
+	position: absolute;
+	
+	-moz-transition: all .3s;
+	-webkit-transition: all .3s;
+	transition: all .3s;
+}
+
+.face {
+	border-radius: 10px;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	
+	-moz-transition-property: opacity, -moz-transform, -moz-box-shadow;
+	-moz-transition-duration: .3s;
+	-webkit-transition-property: opacity, -webkit-transform, -webkit-box-shadow;
+	-webkit-transition-duration: .3s;
+	transition-property: opacity, transform, box-shadow;
+	transition-duration: .3s;
+	
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	
+}
+
+.front {	
+	background: #999 url(../images/deck.png) 0 -480px;
+	z-index: 10;
+}
+
+.back {
+	background: #efefef url(../images/deck.png);
+	
+	-moz-transform: rotate3d(0,1,0,-180deg);
+	-webkit-transform: rotate3d(0,1,0,-180deg);
+	transform: rotate3d(0,1,0,-180deg);
+	
+	z-index: 8;
+}
+
+.card:hover .face{
+	-webkit-box-shadow: 0 0 20px #aaa;
+	box-shadow: 0 0 10px #aaa;
+}
+
+.card-flipped .face{
+	-webkit-box-shadow: 0 0 20px #aaa;
+	box-shadow: 0 0 10px #aaa;		
+}
+	.card-flipped .front {
+		-moz-transform: rotate3d(0,1,0,180deg);
+		-webkit-transform: rotate3d(0,1,0,180deg);
+		transform: rotate3d(0,1,0,180deg);
+		
+		/* ensure the front face is below the back face */
+		z-index: 8;
+	}
+	
+	.card-flipped .back {
+		-moz-transform: rotate3d(0,1,0,0deg);
+		-webkit-transform: rotate3d(0,1,0,0deg);
+		transform: rotate3d(0,1,0,0deg);
+		
+		/* ensure the back face is on top of the front face */		
+		z-index: 10;
+	}
+
+.card-removed {
+	opacity: 0;
+}
+
+
+/* define the face graphics of the card deck*/
+/* cardAA stands for Spade A */
+/* cardA10 stands for Spade 10 */
+/* cardAK stands for Spade K */
+/* cardB_ stands for Heart _ */
+/* cardC_ stands for Club _ */
+/* cardD_ stands for Diamond _ */
+
+.cardAJ {background-position: -800px 0;}
+.cardAQ {background-position: -880px 0;}
+.cardAK {background-position: -960px 0;}
+.cardBJ {background-position: -800px -120px;}
+.cardBQ {background-position: -880px -120px;}
+.cardBK {background-position: -960px -120px;}
+.cardCJ {background-position: -800px -240px;}
+.cardCQ {background-position: -880px -240px;}
+.cardCK {background-position: -960px -240px;}
+.cardDJ {background-position: -800px -360px;}
+.cardDQ {background-position: -880px -360px;}
+.cardDK {background-position: -960px -360px;}
+
+
+
+
+/* Styles for game over popup */
+#popup {
+	font-family: 'Orbitron', serif;
+	font-size: 28px;
+	font-weight: 700;	  
+	text-shadow: 0px 1px 2px #fff;
+	
+	color: #222;
+	
+	position: absolute;	  
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	
+	background: rgba(0,0,0,.5);
+	
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;			
+	
+	-webkit-transition: all .5s ease-in;
+}
+
+#popup h1 {
+	font-weight: 400;
+}
+
+#popup-box {
+	width: 400px;
+	height: 300px;
+	background: #ccc url(../images/popup_bg.jpg);
+	
+	border-radius: 10px;
+	
+	position: relative;
+	
+	-webkit-box-shadow: 0 5px 5px #333;
+	
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	
+	-webkit-transition: all .5s ease-in;
+}
+
+#popup-box small {
+	font-size: .6em;
+}
+
+/**
+ * Styles to hide the popup box
+ */
+#popup.hide {
+	background: rgba(0,0,0,0);
+	visibility: hidden;		
+}
+#popup.hide #popup-box{
+	margin-top: -800px;
+}
+
+
+/**
+ * Styles for the ribbon
+ */
+ .ribbon.hide {
+ 	display: none;
+ }
+ 
+.ribbon {
+	float: left;
+	position: absolute;
+	
+	left: -7px;
+	top: 165px;	
+	
+	z-index: 0;
+
+	font-size: .5em;
+	text-transform: uppercase;
+	text-align: right;
+}
+
+.ribbon-body {
+	height: 14px;
+	background: #ca3d33;
+	padding: 6px;
+	z-index: 100;
+	-webkit-box-shadow: 2px 2px 0 rgba(150,120,70,.4);
+	border-radius: 0 5px 5px 0;
+	
+	color: #fff;
+	text-shadow: 0px 1px 1px rgba(0,0,0,.3);
+}
+
+.triangle{
+	position: relative;
+	height: 0px;
+	width: 0;
+	left: -5px;
+	top: -32px;
+	border-style: solid;
+	border-width: 6px;
+	border-color: transparent #882011 transparent transparent;
+	z-index: -1;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Shoot the ball</title>
+  <link rel="stylesheet" href="styles/game.css">
+
+</head>
+<body>
+  <section id="game" class="row">
+    <canvas id="debug-canvas" width="480" height="360"></canvas>
+    <canvas id="canvas" width="480" height="360"></canvas>
+  </section>
+  <header>
+    <div class="row">
+      <h1>Shoot the ball</h1>
+    </div>
+  </header>
+  <section class="how-to-play row">
+    <h2>How to Play?</h2>
+
+  </section>
+  <footer>
+    <div class="row">
+      <p>This is a game example for my HTML5 game develapment book.</p>
+    </div>
+  </footer>
+
+  <!-- Having all the javascirpts separated here for readability. Please merge them into one file in production. -->
+  <script src="vendors/easeljs-0.7.1.min.js"></script>
+  <script src="vendors/tweenjs-0.5.1.min.js"></script>
+  <script src="vendors/movieclip-0.7.1.min.js"></script>
+  <script src="vendors/preloadjs-0.4.1.min.js"></script>
+  <script src="vendors/Box2dWeb-2.1.a.3.min.js"></script>
+  <script src="scripts/assets.js"></script>
+  <script src="scripts/level.js"></script>
+  <script src="scripts/physics.js"></script>
+  <script src="scripts/view.js"></script>
+  <script src="scripts/game.js"></script>
+
+  <!-- made by makzan, 2014.
+                        __
+                       /\ \
+      ___ ___      __  \ \ \/'\   ____      __      ___
+    /' __` __`\  /'__`\ \ \ , <  /\_ ,`\  /'__`\  /' _ `\
+    /\ \/\ \/\ \/\ \L\.\_\ \ \\`\\/_/  /_/\ \L\.\_/\ \/\ \
+    \ \_\ \_\ \_\ \__/.\_\\ \_\ \_\/\____\ \__/.\_\ \_\ \_\
+     \/_/\/_/\/_/\/__/\/_/ \/_/\/_/\/____/\/__/\/_/\/_/\/_/
+  -->
+</body>
+</html>
