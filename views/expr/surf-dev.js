@@ -1,42 +1,12 @@
 /* -----------------------------------------------
+/* Developer version of surf.js
+/* Mostly just use this for ease when updating official Holy Unblocker sites.
 /* MIT license: http://opensource.org/licenses/MIT
 /* How to use? : Check the documentation. Button ID attributes are used for the script below.
-/* v2.0.4
+/* v2.0.5
 /* ----------------------------------------------- */
 $ = e => document.getElementById(e) || [];
 
-//Example Navigation
-$('buttonstealth').onclick = function() {
-    var frame = document.getElementById("frame");
-    var url = $('url').value;
-    var det = document.domain;
-    var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    if (!url.startsWith('http') || !url.startsWith('https://')) {
-        url = url.split('/');
-        url = btoa('http://' + url[0] + '/' + url.slice(1).join('/'));
-        console.log(url);
-    } else url = btoa(url)
-    frame.src = "https://subdomain." + domain + "/path/" + url;
-    frame.style['visibility'] = "visible";
-    frame.setAttribute('allow', 'fullscreen');
-    frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
-    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
-    document.getElementById('frame').contentWindow.focus();
-    return false;
-};
-$('buttonclassic').onclick = function() {
-    var url = $('url').value;
-    var det = document.domain;
-    var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    if (!url.startsWith('http') || !url.startsWith('https://')) {
-        url = url.split('/');
-        url = btoa('http://' + url[0] + '/' + url.slice(1).join('/'));
-        console.log(url);
-    } else url = btoa(url)
-    window.location.href = "https://subdomain." + domain + "/path/" + url;
-    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
-    return false;
-};
 //AL
 $('al').onclick = function() {
     var frame = document.getElementById("frame");
@@ -48,7 +18,7 @@ $('al').onclick = function() {
         url = btoa('http://' + url[0] + '/' + url.slice(1).join('/'));
         console.log(url);
     } else url = btoa(url)
-    frame.src = "https://" + domain + "/fetch/" + url;
+    frame.src = "https://cdn." + domain + "/fetch/" + url;
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
@@ -65,7 +35,7 @@ $('albp').onclick = function() {
         url = btoa('http://' + url[0] + '/' + url.slice(1).join('/'));
         console.log(url);
     } else url = btoa(url)
-    window.location.href = "https://" + domain + "/fetch/" + url;
+    window.location.href = "https://cdn." + domain + "/fetch/" + url;
     document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
@@ -150,7 +120,7 @@ $('ytbtn').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(yt)
-    frame.src = "https://" + domain + "/fetch/" + origin;
+    frame.src = "https://cdn." + domain + "/fetch/" + origin;
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
@@ -163,7 +133,7 @@ $('ytbtnm').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(yt)
-    frame.src = "https://" + domain + "/fetch/" + origin;
+    frame.src = "https://cdn." + domain + "/fetch/" + origin;
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
@@ -176,7 +146,7 @@ $('ytbp').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(yt)
-    window.location.href = "https://" + domain + "/fetch/" + origin;
+    window.location.href = "https://cdn." + domain + "/fetch/" + origin;
     document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
@@ -187,8 +157,10 @@ $('dbtn').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(d)
-    frame.src = "https://" + domain + "/fetch/" + origin + "/login";
+    frame.src = "https://cdn." + domain + "/fetch/" + origin + "/login";
     frame.style['visibility'] = "visible";
+    frame.setAttribute('allow', 'fullscreen');
+    frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
     document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
@@ -206,7 +178,7 @@ $('dbp').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(d)
-    window.location.href = "https://" + domain + "/fetch/" + origin + "/login";
+    window.location.href = "https://cdn." + domain + "/fetch/" + origin + "/login";
     document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };

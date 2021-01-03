@@ -291,10 +291,11 @@ a:hover {
 }
 
 .d-popupbg {
-    border: 2px solid #ffffff;
-    height: 20px;
+    text-align: center;
+    border: 1px solid #ffffff;
+    height: 8px;
     background-color: #000000;
-    font-size: 15px;
+    font-size: 14px;
     font-family: 'Montserrat Alternates', sans-serif;
     color: #FFFFFF;
     padding: 1%;
