@@ -17,3 +17,5 @@ $("nclink").href = "https://nodeclusters.com";
 $("qrlink").href = "https://support.discord.com/hc/en-us/articles/360039213771-QR-Code-Login-FAQ";
 $("nulink").href = "https://github.com/nfriedly/node-unblocker";
 $("pylink").href = "https://github.com/BinBashBanana/PyDodge"
+
+// Add game page links here
