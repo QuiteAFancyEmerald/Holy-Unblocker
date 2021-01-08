@@ -23,7 +23,7 @@ Site Documentation: <a href="https://www.holyubofficial.net/?in">Documentation</
 
 Instance Status: <a href="https://status.holyubofficial.net/?update">Status</a>
 
-Be sure to join Titanium Network's Discord for more official site links: https://discord.com/invite/tgT48PH
+Be sure to join Titanium Network's Discord for more official site links: https://discord.gg/V768D4VhUh
 
 Simply do `%proxy hu` for more Holy Unblocker links on the TN Discord server.
 
