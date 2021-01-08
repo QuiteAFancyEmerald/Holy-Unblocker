@@ -2,7 +2,7 @@
 
 A website that can be used to bypass web filters; both extension and firewall. This is the public source code for Holy Unblocker, a rather fancy website with some cool dynamic backgrounds while also focusing with detail put into the design, mechanics and features overall like custom Tab Cloaks with more to come in the future. 
 
-Works with a large number of sites including YouTube, Discord and more! 
+Works with a large number of sites including YouTube, Discord and more! Be sure to read below for information if the official site is blocked or for obtaining more links.
 
 YouTube has specialized support with the ablity to view steams, comments, bypass restricted mode, and have full quality on videos.
 
