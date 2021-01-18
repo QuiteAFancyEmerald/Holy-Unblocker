@@ -67,7 +67,7 @@ npm install
 npm start
 ```
 
-The default place for the proxy when its started is `http://localhost:8081` but you can change it if needed in config.json
+The default place for the proxy when its started is `http://localhost:8080` but you can change it if needed in config.json
 
 This website has been hosted locally on Alloy Proxy. More more information go to the Alloy Proxy repo below.
 
