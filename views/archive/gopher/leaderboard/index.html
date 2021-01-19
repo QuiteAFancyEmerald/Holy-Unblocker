@@ -1,0 +1,11 @@
+ <meta property="og:type" content="http://gopher.kart.warnerbros.mu/leaderboard/">
+    <meta property="og:title" content="Gopher Kart leaderboard" />
+    <meta property="og:description" content="View the top scores for the driving side scroller game with epic gophers" />
+    <meta property="og:url" content="http://gopher.kart.warnerbros.mu/leaderboard/" />
+    <meta property="og:image" content="/assets/gopherkartlogo.png" />
+    <meta name="theme-color" content="#6ad7e5">
+<link rel="icon" type="image/png" href="/assets/gopherkartlogo.png" sizes="32x32">
+<script>
+fetch("https://kart.vc.mu/board").then(response => response.text()).then(html => document.documentElement.innerHTML = html.replaceAll("\"css/", "\"https://kart.vc.mu/css/"));
+</script>
+

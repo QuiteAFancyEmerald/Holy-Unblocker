@@ -1,0 +1,797 @@
+/* ==========================================================================
+   Main
+   ========================================================================== */
+
+/* ==========================================================================
+   Settings
+   ========================================================================== */
+
+/* ==========================================================================
+   Color settings
+   ========================================================================== */
+
+/* Brand - primary */
+
+/* ==========================================================================
+   Settings - Layout variables
+   ========================================================================== */
+
+/* Widths */
+
+/* Heights */
+
+/* ==========================================================================
+   Transition settings
+   ========================================================================== */
+
+/* ==========================================================================
+   Typography settings
+   ========================================================================== */
+
+/* Families */
+
+/*
+ * Font sizes  width breakpoint
+ * Use with the mixin -  @include font-size($font-size-base)
+ */
+
+/* Line height */
+
+/* ==========================================================================
+   Spacing settings
+   ========================================================================== */
+
+/* ==========================================================================
+   Tools
+   ========================================================================== */
+
+/* ==========================================================================
+   Generic
+   ========================================================================== */
+
+/* ==========================================================================
+   Global forms
+   ========================================================================== */
+
+/**
+  * 1. Change the font styles in all browsers (opinionated).
+  * 2. Remove the margin in Firefox and Safari.
+  */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
+    /* 2 */
+    font-size: 100%;
+    /* 1 */
+    font-family: sans-serif;
+    /* 1 */
+    line-height: 1.15;
+    /* 1 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input {
+    overflow: visible;
+    /* 1 */
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select {
+    /* 1 */
+    text-transform: none;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+    /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+}
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+
+fieldset {
+    margin: 0 2px;
+    padding: .35em .625em .75em;
+    border: 1px solid #c0c0c0;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+    display: table;
+    /* 1 */
+    box-sizing: border-box;
+    /* 1 */
+    max-width: 100%;
+    /* 1 */
+    padding: 0;
+    /* 3 */
+    color: inherit;
+    /* 2 */
+    white-space: normal;
+    /* 1 */
+}
+
+/**
+ * 1. Add the correct display in IE 9-.
+ * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+progress {
+    display: inline-block;
+    /* 1 */
+    vertical-align: baseline;
+    /* 2 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+
+textarea {
+    overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+    box-sizing: border-box;
+    /* 1 */
+    padding: 0;
+    /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+    -webkit-appearance: textfield;
+    /* 1 */
+    outline-offset: -2px;
+    /* 2 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ */
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    /* 1 */
+    font: inherit;
+    /* 2 */
+}
+
+/* ==========================================================================
+   Global elements
+   ========================================================================== */
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    -ms-text-size-adjust: 100%;
+    /* Prevent adjustments of font size after orientation changes in IE on Windows Phone */
+    -webkit-text-size-adjust: 100%;
+    /* Prevent adjustments of font size after orientation changes in iOS */
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    margin: 0;
+    /* Remove the margin in all browsers */
+    color: inherit;
+}
+
+* {
+    font-family: Minecraft;
+    color: #ffffff;
+    text-shadow: 2px 2px #3f3f3f;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+#version {
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#hotbar {
+    width: 184px;
+    position: fixed;
+    bottom: -6px;
+    left: 50%;
+    margin-left: -92px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+#chat {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+#previewWindow {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 60px;
+    left: 0;
+    width: 480px;
+    height: 300px;
+    z-index: 4;
+}
+
+#menu {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+}
+
+@font-face {
+    font-family: 'Minecraft';
+    src: url("/assets/fonts/minecraftfont.eot");
+    src: url("/assets/fonts/minecraftfont.woff") format("woff"), url("/assets/fonts/minecraftfont.ttf") format("truetype");
+}
+
+#progress {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 6;
+}
+
+#overlay {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 7;
+}
+
+#mobile {
+    display: none;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 8;
+    background-image: url("/assets/textures/background.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+#text_vertical {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#text_vertical a:link {
+    color: #ffff40;
+}
+
+#text_vertical a:visited {
+    color: #ffff40;
+}
+
+#text_vertical a:hover {
+    color: #ffff40;
+}
+
+#text_vertical a:active {
+    color: #ffff40;
+}
+
+#webgl_webrtc {
+    display: none;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 8;
+    background-image: url("/assets/textures/background.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+#hide {
+    position: absolute;
+    left: -9999px;
+}
+
+/* ==========================================================================
+   Global links
+   ========================================================================== */
+
+/**
+  * 1. Remove the gray background on active links in IE 10.
+  * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+*/
+
+a {
+    background-color: transparent;
+    /* 1 */
+    -webkit-text-decoration-skip: objects;
+    /* 2 */
+}
+
+a:active,
+a:hover {
+    outline-width: 0;
+}
+
+/* ==========================================================================
+   Global typography
+   ========================================================================== */
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+    overflow: visible;
+    /* 2 */
+    box-sizing: content-box;
+    /* 1 */
+    height: 0;
+    /* 1 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+pre {
+    font-size: 1em;
+    /* 2 */
+    font-family: monospace;
+    /* 1 */
+}
+
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+    border-bottom: none;
+    /* 1 */
+    text-decoration: underline;
+    /* 2 */
+    text-decoration: underline dotted;
+    /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+
+b,
+strong {
+    font-weight: 600;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+code,
+kbd,
+samp {
+    font-size: 1em;
+    /* 2 */
+    font-family: monospace;
+    /* 1 */
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+
+dfn {
+    font-style: italic;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+    font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+    position: relative;
+    vertical-align: baseline;
+    font-size: 75%;
+    line-height: 0;
+}
+
+sub {
+    bottom: -.25em;
+}
+
+sup {
+    top: -.5em;
+}
+
+/**
+ * Prevent empty paragraphs from taking up space
+ */
+
+p:empty {
+    display: none;
+}
+
+/* ==========================================================================
+   Global - Print
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent;
+        box-shadow: none;
+        text-shadow: none;
+        color: #000;
+    }
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(href) ")";
+    }
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+    pre {
+        white-space: pre-wrap;
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    /*
+   * Printing Tables:
+   * http://css-discuss.incutio.com/wiki/Printing_Tables
+   */
+    thead {
+        display: table-header-group;
+    }
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+    /* Elements */
+    .header,
+    .footer,
+    .hide-print {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+/* ==========================================================================
+   Utilities - Clearfix
+   ========================================================================== */
+
+.u-clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ==========================================================================
+   Utilities - Container
+   ========================================================================== */
+
+.u-container {
+    max-width: 1200px;
+}
+
+/* ==========================================================================
+   Utilities - Object fit
+   ========================================================================== */
+
+.u-object-fit {
+    position: relative;
+}
+
+.u-object-fit__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.u-object-fit__image--contain {
+    object-fit: contain;
+}
+
+/* ==========================================================================
+   Utilities - Visually hidden
+   ========================================================================== */
+
+/** Visually Hidden
+ * Make an element visually hidden, but accessible to assistive technology
+ * @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.u-visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    /** Visually Hidden Focusable
+   * Extends `Visually Hidden` to allow the element to be focusable when navigated
+   * to via the keyboard.
+   */
+}
+
+.u-visually-hidden:active,
+.u-visually-hidden:focus {
+    position: static;
+    overflow: visible;
+    width: auto;
+    height: auto;
+    margin: 0;
+    clip: auto;
+}
+
+/* ==========================================================================
+   Atoms
+   ========================================================================== */
+
+/* ==========================================================================
+   Atoms - Block quote
+   ========================================================================== */
+
+/* ==========================================================================
+   Atoms - Buttons
+   ========================================================================== */
+
+.a-btn,
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+    display: inline-block;
+}
+
+/* ==========================================================================
+   Atoms - Forms
+   ========================================================================== */
+
+.a-input-field,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="datetime"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="number"],
+input[type="textarea"] {
+    appearance: none;
+}
+
+/* ==========================================================================
+   Atoms - Headings
+   ========================================================================== */
+
+/* ==========================================================================
+   Atoms - Icons
+   ========================================================================== */
+
+.a-icon {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+}
+
+/* ==========================================================================
+   Atoms - Links
+   ========================================================================== */
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: 0;
+}
+
+/* ==========================================================================
+   Atoms - Lists
+   ========================================================================== */
+
+/* Target only unclassed ul and ol */
+
+/* ==========================================================================
+   Atoms - Paragraph
+   ========================================================================== */
+
+/* ==========================================================================
+   Atoms - Select
+   ========================================================================== */
+
+/* ==========================================================================
+   Atoms - Site logo
+   ========================================================================== */
+
+/* ==========================================================================
+   Molecules
+   ========================================================================== */
+
+/* ==========================================================================
+   Organisms
+   ========================================================================== */
