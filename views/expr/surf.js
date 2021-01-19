@@ -1,7 +1,7 @@
 /* -----------------------------------------------
 /* MIT license: http://opensource.org/licenses/MIT
 /* How to use? : Check the documentation. Button ID attributes are used for the script below.
-/* v2.0.4
+/* v2.0.5
 /* ----------------------------------------------- */
 $ = e => document.getElementById(e) || [];
 
@@ -217,6 +217,19 @@ $('ch').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     frame.src = "https://c." + domain + "/app";
+    frame.style['visibility'] = "visible";
+    frame.setAttribute('allow', 'fullscreen');
+    frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    return false;
+};
+//GP (Developmental Addition)
+$('gp').onclick = function() {
+    var frame = document.getElementById("frame");
+    var url = $('url').value;
+    var det = document.domain;
+    var domain = det.replace('www.', '').split(/[/?#]/)[0];
+    frame.src = "https://" + domain + "/?g";
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
