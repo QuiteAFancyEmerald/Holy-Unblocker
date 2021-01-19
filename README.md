@@ -94,7 +94,7 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 - `chatbox.html` : Links to an externally hosted Chatbox.
 - `bookmarklets.html` : Page for Bookmarklets.
 ### Structure Information
-- `/views/` : The physical site base of Holy Unblocker goes here.
+- `/views/` : The physical site base of Holy Unblocker goes here where static assets are served.
 - `/src/` : For future implementation of obfuscation and keyword removing features.
 
 #### Details of `/views/`
