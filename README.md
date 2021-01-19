@@ -21,9 +21,9 @@ Official Site: https://www.holyubofficial.net
 
 Site Documentation: <a href="https://www.holyubofficial.net/?in">Documentation</a>
 
-Instance Status: <a href="https://status.holyubofficial.net/?update">Status</a>
+Instance Status: <a href="https://www.holyubofficial.net/?status">Status</a>
 
-Be sure to join Titanium Network's Discord for more official site links: https://discord.gg/V768D4VhUh
+Be sure to join Titanium Network's Discord for more official site links: https://discord.gg/unblock
 
 Simply do `%proxy hu` for more Holy Unblocker links on the TN Discord server.
 
@@ -69,7 +69,7 @@ npm start
 
 The default place for the proxy when its started is `http://localhost:8080` but you can change it if needed in config.json
 
-This website has been hosted locally on Alloy Proxy. More more information go to the Alloy Proxy repo below.
+This website has been hosted locally on Alloy Proxy. More more information go to the Alloy Proxy repository below.
 
 
 ## Structure
@@ -94,7 +94,7 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 - `chatbox.html` : Links to an externally hosted Chatbox.
 - `bookmarklets.html` : Page for Bookmarklets.
 ### Structure Information
-- `/views/` : The physical site base of Holy Unblocker goes here.
+- `/views/` : The physical site base of Holy Unblocker goes here where static assets are served.
 - `/src/` : For future implementation of obfuscation and keyword removing features.
 
 #### Details of `/views/`
@@ -136,9 +136,10 @@ This is an example of DNS records involving Heroku. Self-hosting will require `A
 
 Update, the new configuration is:
 
-- `a.deepsoil.ml` is being used for Node Unblocker.
-- `c.deepsoil.ml` is being used for Powermouse and the Chatbox.
-- `cdn.deepsoil.ml` is being used for a private Alloy and Via host on the official sites.
+- `a.example.com` is being used for Node Unblocker.
+- `d.example.com` is being used for Ocean proxy.
+- `c.example.com` is being used for Powermouse and the Chatbox.
+- `cdn.example.com` is being used for a private Alloy and Via which is hosted on the official sites.
 
 As stated previously, Holy Unblocker is hosted locally with Alloy.
 
