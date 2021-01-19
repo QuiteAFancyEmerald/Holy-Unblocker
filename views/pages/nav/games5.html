@@ -39,7 +39,7 @@
     <!--Display Frame-->
     <iframe id="frame" style="display:block; visibility: hidden;"></iframe>
     <div class="header-dark" style="background-color: rgb(0,0,0);background-image: url(&quot;assets/img/black.jpg&quot;);">
-        <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search" style="height: 100px;">
+        <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search" style="height: 100px; z-index: 1;">
                 <div class="container"><a class="navbar-brand" data-bs-hover-animate="pulse" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/">Ho&#8203;ly Unb&#8203;lock&#8203;er</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav ml-auto">
@@ -97,27 +97,19 @@
                     });
                 </script>
                 <!-- G Embed  -->
-                <div class="container">
+                <div>
                     <div class="box">
                         <div id="glist">
                             <!--GPage-->
                             <div>
-                                <h4>The list of ga&#8203;mes you can play on here!</h4>
+                                <h2 style="padding: 1%;">HTML5 Games and more!</h2>
+                                <h5 style="padding: 3%;">The list of ga&#8203;mes you can play on here!</h5>
                                 <div class="responsive">
                                     <div class="gallery">
-                                        <a target="_blank" href="/vibeOS/index.html">
+                                        <a id="vos" href="#">
                                             <img src="/assets/img/flash.png" alt="vi&#8203;beOS">
                                         </a>
                                         <div class="desc">vib&#8203;eOS is a Jav&#8203;aScript based Desk&#8203;top Envior&#8203;nment that runs in your brow&#8203;ser.</div>
-                                    </div>
-                                </div>
-                                <div class="responsive">
-                                    <div class="gallery">
-                                        <a target="_blank" href="./archive/g/krunker/index.html">
-                                            <img src="/assets/img/krunker.png" alt="Krun&#8203;ker">
-                                        </a>
-                                        <div class="desc">Krun<wbr>ker.io is a fast-paced pixelated first-pe<wbr>rson shoo<wbr>ter. In this ga<wbr>me, pla<wbr>yers drop into a pixelated world and fight against other pla<wbr>yers from around the world. This g<wbr>ame can
-                                            be played casually to pass the time, or seriously in compe<wbr>tition against other die-ha<wbr>rds.</div>
                                     </div>
                                 </div>
                                 <div class="responsive">
@@ -287,6 +279,14 @@
                                             <img src="/assets/img/pushback.png" alt="Pushba&#8203;ck">
                                         </a>
                                         <div class="desc">A cool physics ga<wbr>m<wbr>e!</div>
+                                    </div>
+                                </div>
+                                <div class="responsive">
+                                    <div class="gallery">
+                                        <a target="_blank" href="./archive/g/krunker/index.html">
+                                            <img src="/assets/img/krunker.png" alt="Krun&#8203;ker">
+                                        </a>
+                                        <div class="desc">Krun<wbr>ker.io is a fast-paced pixelated first-pe<wbr>rson shoo<wbr>ter.</div>
                                     </div>
                                 </div>
                                 <!-- No image or game. Don't add Radiusraid.-->
@@ -467,6 +467,7 @@
     <!--Scripts-->
     <script src="assets/js/links.js"></script>
     <script src="expr/surf.js"></script>
+    <script src="expr/h5-nav.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>

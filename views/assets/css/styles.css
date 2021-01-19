@@ -908,12 +908,11 @@ a:hover {
     background-color: wblack;
     padding: 10px 10px 15px 10px;
     width: 100%;
-    height: 540px;
+    height: 580px;
 }
 
 #glist {
     overflow-x: hidden;
-    overflow-y: scroll;
     width: 100%;
     height: 100%;
     padding: 0;
@@ -936,7 +935,7 @@ a:hover {
 div.gallery {
     border: 1px solid #ccc;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 div.gallery:hover {
@@ -945,13 +944,14 @@ div.gallery:hover {
 
 div.gallery img {
     width: 100%;
-    height: 60%;
+    height: 220px;
+    padding: 10%;
 }
 
 div.desc {
-    padding: 10px;
+    padding: 5px;
     text-align: center;
-    height: 150px;
+    height: 160px;
 }
 
 * {
@@ -961,22 +961,19 @@ div.desc {
 .responsive {
     padding: 0 6px;
     float: left;
-    width: 24.99999%;
-    display: flex;
+    width: 20%;
 }
 
 @media only screen and (max-width: 700px) {
     .responsive {
-        width: 49.99999%;
+        width: 50%;
         margin: 6px 0;
-        display: flex;
     }
 }
 
 @media only screen and (max-width: 500px) {
     .responsive {
         width: 100%;
-        display: flex;
     }
 }
 
