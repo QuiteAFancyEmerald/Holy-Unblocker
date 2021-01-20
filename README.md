@@ -252,6 +252,7 @@ View the official website for more detail and credits.
 - https://nodeclusters.com
 - https://titaniumnetwork.org/
 - https://github.com/vibedivide/vibeOS
+- https://github.com/binary-person/womginx
 
 This project is maintained by QuiteAFancyEmerald and collaborative with Titanium Network.
 
