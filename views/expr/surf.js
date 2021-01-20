@@ -1,7 +1,7 @@
 /* -----------------------------------------------
 /* MIT license: http://opensource.org/licenses/MIT
 /* How to use? : Check the documentation. Button ID attributes are used for the script below.
-/* v2.0.5
+/* v2.0.7
 /* ----------------------------------------------- */
 $ = e => document.getElementById(e) || [];
 
@@ -141,6 +141,28 @@ $('pmproxbp').onclick = function() {
     window.location.href = "https://c." + domain + "/prox?url=" + url;
     document.cookie = 'oldsmobile=1; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     document.getElementById("frame").style.visiblity = "visible";
+    return false;
+};
+//D-W
+$('wndp').onclick = function() {
+    var frame = document.getElementById("frame");
+    var origin = `https://discord.com/login`;
+    var det = document.domain;
+    var domain = det.replace('www.', '').split(/[/?#]/)[0];
+    frame.src = "https://a." + domain + "/main/" + origin;
+    frame.style['visibility'] = "visible";
+    frame.setAttribute('allow', 'fullscreen');
+    frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    return false;
+};
+$('wndpbp').onclick = function() {
+    var frame = document.getElementById("frame");
+    var origin = `https://discord.com/login`;
+    var det = document.domain;
+    var domain = det.replace('www.', '').split(/[/?#]/)[0];
+    window.location.href = "https://a." + domain + "/main/" + origin;
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
 //YT
