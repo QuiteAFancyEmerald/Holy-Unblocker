@@ -70,25 +70,25 @@ $('albp').onclick = function() {
     return false;
 };
 //NU
-$('nprox').onclick = function() {
+$('wn').onclick = function() {
     var frame = document.getElementById("frame");
     var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    frame.src = "https://a." + domain + "/call/" + url;
+    frame.src = "https://a." + domain + "/main/" + url;
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
-    document.cookie = 'nu_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + auth + '; path=/; Secure;';
+    document.cookie = 'wnauth=a; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
-$('nproxbp').onclick = function() {
+$('wnbp').onclick = function() {
     var frame = document.getElementById("frame");
     var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    window.location.href = "https://a." + domain + "/call/" + url;
-    document.cookie = 'nu_auth=yes; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + auth + '; path=/; Secure;';
+    window.location.href = "https://a." + domain + "/main/" + url;
+    document.cookie = 'wnauth=a; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
 //PD
