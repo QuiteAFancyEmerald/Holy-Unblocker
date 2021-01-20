@@ -1,4 +1,4 @@
-# Holy Unblocker <img align="left" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/i.png"></img>
+# Holy Unblocker <img align="left" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/Icon.png"></img>
 
 A website that can be used to bypass web filters; both extension and firewall. This is the public source code for Holy Unblocker, a rather fancy website with some cool dynamic backgrounds while also focusing with detail put into the design, mechanics and features overall like custom Tab Cloaks with more to come in the future. 
 
@@ -8,12 +8,15 @@ YouTube has specialized support with the ablity to view steams, comments, bypass
 
 Be sure to check the various branches as I update Holy Unblocker often with open access to yet to be released versions.
 
+Also has a good amount of locally hosted games featured on the site.
+
 #### Supports
 - Youtube.com
 - Discord.com
 - Google.com
-- Surviv.io
-- And more!
+- Reddit.com
+- Bing.com
+- And more sites!
 
 <img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/hbpreview.png?raw"></img>
 
@@ -144,7 +147,8 @@ Update, the new configuration is:
 As stated previously, Holy Unblocker is hosted locally with Alloy.
 
 #### Heroku Steps
-**So use Heroku to host. I personally favor it as a free choice.** 
+So use Heroku to host. I personally favor it as a free choice.
+
 - First obtain a card; (Prepaid, Debit, and Credit Cards work). You need this to add custom domains to your Heroku instance.
 
 Make sure you connect your Heroku app to your GitHub and enable automatic deploys. Will make things easier. :) 
