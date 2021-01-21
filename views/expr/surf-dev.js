@@ -62,10 +62,10 @@ $('albp').onclick = function() {
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     if (!url.startsWith('http') || !url.startsWith('https://')) {
         url = url.split('/');
-        url = btoa('http://cdn.' + url[0] + '/' + url.slice(1).join('/'));
+        url = btoa('http://' + url[0] + '/' + url.slice(1).join('/'));
         console.log(url);
     } else url = btoa(url)
-    window.location.href = "https://" + domain + "/fetch/" + url;
+    window.location.href = "https://cdn." + domain + "/fetch/" + url;
     document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
