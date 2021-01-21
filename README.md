@@ -208,7 +208,9 @@ A detailed FAQ with common issues and solutions can be found <a href="https://ho
 
 **Why is the site I am on not working correctly or having CAPTCHA errors?**
 
-Captcha support is currently not available on all of the current proxies sadly. Therefore some sites may not work with any of the sites. Read below for issues with links on sites.
+Captcha support is currently not available on some of the older proxies sadly. Therefore some sites may not work with any of the sites. Read below for issues with links on sites.
+
+However Womginx has captcha support now!
 
 **Why are some page links not working or leading to 404 pages?**
 
@@ -230,6 +232,8 @@ Once again do the same steps above:
 - Or right-clicking the page and doing Reload Frame if you are using some form of Stealth Mode.
 
 Make sure you are also doing the steps correctly. Simply view link above for extended Discord proxy information/steps.
+
+Note that this is for the older discord proxy steps with Alloy and Powermouse. Womginx now support logging in normally!
 
 **I am getting 502 errors. What do I do?**
 
