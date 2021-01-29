@@ -1,5 +1,4 @@
 node_modules
-.gitpod.yml
 package-lock.json
 .vscode
 .gitattributes
