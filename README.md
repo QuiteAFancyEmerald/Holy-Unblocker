@@ -38,6 +38,8 @@ Simply do `%proxy hu` for more Holy Unblocker links on the TN Discord server.
 &nbsp;
 <a href="https://glitch.com/edit/#!/import/github/QuiteAFancyEmerald/HolyUnblockerPublic" title="Remix on Glitch"><img alt="Remix on glitch" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/glitch.svg?raw" width="140" height="30"><img></a>
 
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/titaniumnetwork-dev/alloyproxy)
+
 ## Table of contents:
 
 - [Setup](#how-to-install)
