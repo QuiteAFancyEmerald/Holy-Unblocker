@@ -14,12 +14,7 @@ app.use(localprox.app);
 
 //Cloudflare Attack Mode Fix
 
-app.post('/', async(req, res) => {
-    switch (req.url) {
-        case '/':
-            return res.send(fs.readFileSync(path.join(__dirname, 'views', 'index.html'), 'utf8'));
-    }
-});
+app.post('/', async(req, res) => res.send(fs.readFileSync(path.join(__dirname, 'views', 'index.html'), 'utf8')));
 
 //Querystring Navigation
 
