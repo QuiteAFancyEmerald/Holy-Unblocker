@@ -196,7 +196,7 @@ Make sure HTTPS is forced and have SSL set to Flexible for Heroku. Otherwise you
 #### Workspace Configurations 
 Preferably if you have your own device use Visual Studio Code. Pretty much the best option you can get but obviously this is an opinion. Also make sure you have <a href="https://nodejs.org/">Node.JS</a> installed on your machine.
 
-Not going to go too in depth with this part but first fork this repository. The clone it locally through a Terminal of some sort depending on what OS you are on. Make sure you navigate to the folder you want to set this up in.
+Not going to go too in depth with this part but first fork this repository. Then clone it locally through a terminal of some sort depending on what OS you are on. Make sure you navigate to the folder you want to set this up in.
 
 ```
 git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git
@@ -206,7 +206,7 @@ cd HolyUnblockerPublic
 npm install
 ```
 
-Now simply add the folder you cloned this repo in in VSC. Then run `npm install`. I recommend that if you are releasing this publically on GitHub that you add a `.gitignore` in your root directory with the following exclusions:
+Now simply add the folder you cloned in VSC. Then run `npm install`. I recommend that if you are releasing this publically on GitHub that you add a `.gitignore` in your root directory with the following exclusions:
 
 `node_modules`
 
