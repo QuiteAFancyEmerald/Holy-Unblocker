@@ -17,7 +17,7 @@ Also has a good amount of locally hosted games featured on the site.
 - Google.com
 - Reddit.com
 - Bing.com
-- And more sites!
+- And more!
 
 <img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/hbpreview.png?raw"></img>
 
@@ -44,9 +44,8 @@ Simply do `%proxy hu` for more Holy Unblocker links on the TN Discord server.
 - [Setup](#how-to-install)
 	- [Structure](#structure)
 		- [Structure Information](#structure)
-	    - [Static Files](#details-of-public)
+	    - [Static Files](#details-of-views)
 	    - [Proxy Scripts](#scripts-located-in-expr)
-	    - [Cookie Auth](#details-of-authjs)
 	- [Future Additions](#future-additions)
 	- [Beginner's Explanation](#vauge-explanation-for-beginners-with-external-proxies-and-hosting)
 	  - [Hosting Providers](#list-of-some-good-hosting-options)
@@ -78,25 +77,31 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 
 ## Structure
 - `index.html` : The official homepage of the site.
-- `surf.html` : Surf Freely page, page offers to be redirected to any proxies you would like to add. In this case Alloy, Powermouse, Via and Node Unblocker.
-- `alloy.html` : Alloy Proxy page, configured as recommended with Alloy Proxy.
-- `node.html` : Links to a subdomain for Node Unblocker. I left it in just in case you would like to setup the site differently.
-- `pmprox.html` : Links to a subdomain for Powermouse. I left it in just in case you would like to setup the site differently.
-- `pydodge.html` : Links to a subdomain with PyDodge B or Via.
-- `youtube.html` : An proxied version of Youtube running off of the locally hosted Alloy Proxy. I left it in just in case you would like to setup the site differently as surf.js can be used instead.
+- `surf.html` : Web Proxies page, page offers to be redirected to any proxies you would like to add. In this case Alloy, Womginx, Powermouse and Via Unblocker.
+- `alloy.html` : Official Alloy Proxy page which features Alloy hosted locally but can be configured to redirect to an external instance.
+- `womginx.html` : Womginx Proxy page. Script links to a subdomain for Womginx, a highly fast proxy with captcha support.
+- `pmprox.html` : Powermouse Proxy pagge. Script links to a subdomain for Powermouse, a flexible secondary proxy compared to Alloy with support for Discord.
+- `pydodge.html` : Via Unblocker page. Links to a subdomain with PyDodge or Via, a proxy which successes Node Unblocker
+- `youtube.html` : An proxied version of Youtube running off of the locally hosted Alloy Proxy.
+- `discordhub.html` : Hub for the Discord proxy and its links using a mixture of Alloy, Womginx and Ocean Proxy.
+- `gtools.html` : Games page, help from @BinBashBanana and @kinglalu.
+- `flash.html` : Games page for flash games, credits given to @BinBashBanana and Titanium Network for its assets.
+- `emulators.html` : Emulator navigation page, hosted locally on Holy Unblocker.
+- `bookmarklets.html` : Bookmarklets page to be worked on more in the future.
+- `icons.html` : Information regarding Settings Menu page. Added this in for standard users.
+- `info.html` : Official Documentation page. To be worked on.
+- `terms.html` : Terms of Services, AUP and Privacy Policy page.
+
+#### Deprecated
+I left all of these just in case you would like to setup the site differently as surf.js can be used instead.
+
 - `ythub.html` : Page linking proxied Youtube.
 - `ytmobile.html` : Page linking to a proxied YouTube for mobile users.
-- `discordhub.html` : Hub for the discord proxy and its links.
-- `discordprox.html` : Links to a discord proxied through Alloy. I left it in just in case you would like to setup the site differently as surf.js can be used instead.
-- `gtools.html` : Games page, help from @BinBashBanana and @kinglalu.
-- `info.html` : WIP Documentation.
-- `flash.html` : Games page for flash games, credits given to @BinBashBanana and Titanium Network for its assets.
-- `icons.html` : Information regarding Settings Menu page. Added this in for standard users.
-- `terms.html` : Terms of Services, AUP and Privacy Policy page.
+- `discordprox.html` : Links to a discord proxied through Alloy.
 - `gba.html` : Locally hosted Gameboy Emulator.
-- `krunker.html` : An iframe version of Krunker with keyword changes. Can be removed if not needed.
 - `chatbox.html` : Links to an externally hosted Chatbox.
-- `bookmarklets.html` : Page for Bookmarklets.
+- `krunker.html` : An iframe version of Krunker with keyword changes. Can be removed if not needed.
+
 ### Structure Information
 - `/views/` : The physical site base of Holy Unblocker goes here where static assets are served.
 - `/src/` : For future implementation of obfuscation and keyword removing features.
@@ -109,24 +114,29 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 - `/vibeOS/` is used for vibeOS, an in-browser OS enviroment.
 
 #### Scripts located in `/expr`
-- `surf.js` is used for proxy navigation; both stealth mode and classic mode.
-- `load.js` is used for initializing the surf script. Must be located in the `<head>` tag.
+- `surf.js` is used for proxy navigation; both Stealth mode and Classic mode.
+- `h5-nav.js` is used for navigation on the games page, Stealth mode only.
+- `surf-dev.js` is used for proxy navigation on the official sites.
+- `load.js` is used for initializing the surf script. Must be located in the `<head>` tag. To be removed.
 
 ## Future Additions
-- Expansive game library
-- Various parity changes.
+- Expand the game library.
+- Go through various parity changes.
+- Cleanup the source a bit.
+- Add more locally hosted proxies possibly.
 
 ## Vauge Explanation for Beginners With External Proxies and Hosting
 You will first want to host your proxies locally or externally. 
 
 #### List of some good hosting options:
+- <a href="https://dedipath.com">Dedipath</a> (Paid and Dedicated)
 - <a href="https://heroku.com">Heroku</a> (Free)
 - <a href="https://nodeclusters.com">NodeClusters</a> (Paid)
 - <a href="https://glitch.com">Glitch</a> (Free)
 - <a href="https://repl.it">Repl.it</a> (Free)
 - <a href="https://azure.microsoft.com/en-us/">Azure</a> (Free and Paid)
 
-Out of the list of hosting providers Heroku and NodeClusters rank first as a preference. You may also self-host. Currently at this time Azure is used to host the official Holy Unblocker sites.
+Out of the list of hosting providers Heroku and Dedipath rank first as a preference. You may also self-host. Currently at this time Dedipath is used to host the official Holy Unblocker sites.
 
 After you have selected a decent VPS, use Cloudflare for the DNS records for both the site and the subdomains for the proxies.
 
@@ -138,12 +148,13 @@ This is an example of DNS records involving Heroku. Self-hosting will require `A
 - `pd.deepsoil.ml` is being used for PyDodge B.
 - `cdn.deepsoil.ml` is being used for a private Alloy host on the official sites.
 
-Update, the new configuration is:
+Update, the new configuration is (for the official sites):
 
-- `a.example.com` is being used for Node Unblocker.
-- `d.example.com` is being used for Ocean proxy.
+- `a.example.com` is being used for Womginx.
+- `d.example.com` is being used for Ocean proxy, to be removed.
 - `c.example.com` is being used for Powermouse and the Chatbox.
-- `cdn.example.com` is being used for a private Alloy and Via which is hosted on the official sites.
+- `cdna.example.com` is being used for an older version of Alloy with YouTube support and Via which is hosted on the official sites.
+- `cdn.example.com` is being used for a private Alloy instance and Via which is hosted on the official sites.
 
 As stated previously, Holy Unblocker is hosted locally with Alloy.
 
@@ -164,25 +175,28 @@ Add a domain for both `www.youdomainhere.cf` and `yourdomainhere.cf` with .cf be
 #### Cloudflare Steps
 - Use Cloudflare (make an account), add your site (Freenom Domain or Domain) and then add your various DNS targets to Cloudflare. Make sure you add Cloudflare's Nameservers which will be specified more when you are adding your site. 
 
-Make sure they are CNAME although A records also work and try to follow this structure:
+Lastly for targets make sure they are either a CNAME, AAAA or A records and try to follow this structure:
 
 **Type | Name | Target**
 
-`CNAME | www | yourherokutargethere.herokudns.com `
-`CNAME | @ | yourherokudnstargethere.herokudns.com`
+`CNAME | @ | yourherokudnstargethere.herokudns.com` or `CNAME | @ | example.com`
+
+`CNAME | www | yourherokutargethere.herokudns.com ` or `CNAME | www | example.com`
 
 **Below are if you want external proxies also with your site:**
 
-`CNAME | a | yournodeinstance.herokudns.com`
-`CNAME | pd | yourpydodgebinstancehere.herokudns.com`
-`CNAME | p | yourpowermouseinstancehere.herokudns.com`
+`CNAME | a | yourwomginxinstance.herokudns.com` or `CNAME | a | example.com`
 
-Make sure HTTPS is forced and have SSL set to Flexible for Heroku. Otherwise you can have SSL set to Full.
+`CNAME | c | yourpowermouseinstancehere.herokudns.com` or `CNAME | c | example.com`
+
+(You get the idea.)
+
+Make sure HTTPS is forced and have SSL set to Flexible for Heroku. Otherwise you can have SSL set to Full. Use LetsEncrypt for SSL certificates or Cloudflare.
 
 #### Workspace Configurations 
 Preferably if you have your own device use Visual Studio Code. Pretty much the best option you can get but obviously this is an opinion. Also make sure you have <a href="https://nodejs.org/">Node.JS</a> installed on your machine.
 
-Not going to go too in depth with this part but first fork this repository. The clone it locally through a Terminal of some sort depending on what OS you are on. Make sure you navigate to the folder you want to set this up in.
+Not going to go too in depth with this part but first fork this repository. Then clone it locally through a terminal of some sort depending on what OS you are on. Make sure you navigate to the folder you want to set this up in.
 
 ```
 git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git
@@ -192,7 +206,7 @@ cd HolyUnblockerPublic
 npm install
 ```
 
-Now simply add the folder you cloned this repo in in VSC. Then run `npm install`. I recommend that if you are releasing this publically on GitHub that you add a `.gitignore` in your root directory with the following exclusions:
+Now simply add the folder you cloned in VSC. Then run `npm install`. I recommend that if you are releasing this publically on GitHub that you add a `.gitignore` in your root directory with the following exclusions:
 
 `node_modules`
 

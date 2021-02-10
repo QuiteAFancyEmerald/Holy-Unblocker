@@ -23,7 +23,7 @@ app.get('/', async(req, res, t) => res.send(fs.readFileSync(path.join(__dirname,
 app.use(char_insert.static(path.join(__dirname, 'views')));
 
 app.use(function(req, res) {
-    res.send(fs.readFileSync(path.join(__dirname, 'views', 'error.html'), 'utf8'), 404);
+    res.status(404, res.send(fs.readFileSync(path.join(__dirname, 'views', 'error.html'), 'utf8')));
 });
 
 localprox.ws(server);
