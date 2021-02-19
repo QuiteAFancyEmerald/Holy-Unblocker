@@ -1,3 +1,15 @@
 User-agent: *
 Allow: /
+
+User-agent: Googlebot
+Allow: /
+Allow: /?z
+Allow: /?y
+Allow: /?d
+Allow: /?g
+Allow: /?c
+Allow: /?in
+Allow: /?faq
+Disallow: /archive/
+
 Sitemap: https://quiteafancyemerald.com
