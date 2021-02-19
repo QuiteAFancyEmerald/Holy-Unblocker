@@ -290,6 +290,7 @@ a:hover {
     color: #00bc8c;
 }
 
+/*
 .d-popupbg {
     text-align: center;
     border: 1px solid #ffffff;
@@ -301,6 +302,7 @@ a:hover {
     padding: 1%;
     padding-bottom: 2%;
 }
+*/
 
 
 .text-hb {
@@ -905,14 +907,13 @@ a:hover {
 
 .box {
     margin: auto;
-    background-color: wblack;
     padding: 10px 10px 15px 10px;
     width: 100%;
-    height: 580px;
+    height: 600px;
 }
 
 #glist {
-    overflow-x: hidden;
+    overflow-x: scroll;
     width: 100%;
     height: 100%;
     padding: 0;
