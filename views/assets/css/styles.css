@@ -290,19 +290,21 @@ a:hover {
     color: #00bc8c;
 }
 
-/*
 .d-popupbg {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid #ffffff;
-    height: 8px;
-    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.d-popupbg p {
+    height: 5px;
     font-size: 14px;
     font-family: 'Montserrat Alternates', sans-serif;
-    color: #FFFFFF;
-    padding: 1%;
-    padding-bottom: 2%;
+    padding: 15px;
+    padding-inline: 10px;
 }
-*/
 
 
 .text-hb {
