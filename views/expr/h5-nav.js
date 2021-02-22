@@ -193,7 +193,7 @@ $('pk').onclick = function() {
     var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    frame.src = "https://" + domain + "/archive/pacman/index.html";
+    frame.src = "https://" + domain + "/archive/g/pacman/index.html";
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
@@ -206,7 +206,7 @@ $('thepond').onclick = function() {
     var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    frame.src = "https://" + domain + "/archive/thepond/index.html";
+    frame.src = "https://" + domain + "/archive/g/thepond/index.html";
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
@@ -219,7 +219,7 @@ $('gameoff').onclick = function() {
     var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    frame.src = "https://" + domain + "/archive/gameoff/index.html";
+    frame.src = "https://" + domain + "/archive/g/gameoff/index.html";
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
@@ -305,25 +305,12 @@ $('ches').onclick = function() {
     document.getElementById('frame').contentWindow.focus();
     return false;
 };
-$('ches').onclick = function() {
-    var frame = document.getElementById("frame");
-    var url = $('url').value;
-    var det = document.domain;
-    var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    frame.src = "https://" + domain + "/archive/g/chess/index.html";
-    frame.style['visibility'] = "visible";
-    frame.setAttribute('allow', 'fullscreen');
-    frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
-    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
-    document.getElementById('frame').contentWindow.focus();
-    return false;
-};
 $('nsshaft').onclick = function() {
     var frame = document.getElementById("frame");
     var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    frame.src = "https://" + domain + "/archive/nsshaft/index.html";
+    frame.src = "https://" + domain + "/archive/g/nsshaft/index.html";
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
@@ -362,7 +349,7 @@ $('partclick').onclick = function() {
     var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    frame.src = "https://" + domain + "/archive/particle-clicker/index.html";
+    frame.src = "https://" + domain + "/archive/g/particle-clicker/index.html";
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
