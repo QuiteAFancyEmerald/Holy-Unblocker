@@ -1,0 +1,69 @@
+body {
+	background-color: black;
+	color: white;
+	font-family: sans-serif;
+}
+
+.container {
+	padding: 20px;
+}
+
+.box {
+	margin: auto;
+	background-color: white;
+	padding: 10px;
+	width: 400px;
+}
+
+#glist {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	width: 400px;
+	height: 520px;
+	padding: 0;
+	text-align: center;
+}
+
+#gsearchbar {
+	outline: none;
+	width: 374px;
+	font-size: 16px;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	padding: 12px;
+	margin-bottom: 10px;
+	transition: 0.2s ease;
+}
+
+#gsearchbar:focus {
+	background-color: #eee;
+	box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.4);
+}
+
+#glist h2 {
+	display: block;
+	color: white;
+	font: 18px;
+	border: 1px solid #060606;
+	margin: -1px 0 0 0;
+	background-color: #060606;
+	padding: 12px;
+	font-weight: bold;
+	user-select: none;
+}
+
+#glist a {
+	display: block;
+	text-decoration: inherit;
+	color: black;
+	font-size: 18px;
+	border: 1px solid #dddddd;
+	margin-top: -1px;
+	background-color: #f6f6f6;
+	padding: 12px;
+	transition: 0.2s ease;
+}
+
+#glist a:hover {
+	background-color: #eeeeee;
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
