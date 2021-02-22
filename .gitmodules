@@ -1,0 +1,27 @@
+[submodule "views/archive/g/house"]
+	path = views/archive/g/house
+	url = https://github.com/razh/game-off-2013
+
+[submodule "views/archive/gfiles"]
+	path = views/archive/gfiles
+	url = https://github.com/BinBashBanana/gfiles
+
+[submodule "views/archive/g/househorror"]
+	path = views/archive/g/househorror
+	url = https://github.com/arturkot/the-house-game
+
+[submodule "views/archive/g/pond"]
+	path = views/archive/g/pond
+	url = https://github.com/Zolmeister/pond
+  
+[submodule "views/archive/g/pacman"]
+	path = views/archive/g/pacman
+	url = https://github.com/luciopanepinto/pacman
+  
+[submodule "views/archive/g/particle-clicker"]
+	path = views/archive/g/particle-clicker
+	url = https://github.com/particle-clicker/particle-clicker
+
+[submodule "views/archive/g/nsshaft"]
+	path = views/archive/g/nsshaft
+	url = https://github.com/iPel/NS-SHAFT
