@@ -4,7 +4,7 @@
 
 <img src="https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic/blob/master/views/assets/img/nodeclusters.png?raw" width="500px"></img>
 
-A website that can be used to bypass web filters; both extension and firewall. This is the public source code for Holy Unblocker, a rather fancy website with some cool dynamic backgrounds while also focusing with detail put into the design, mechanics and features overall like custom Tab Cloaks with more to come in the future. 
+Holy Unblocker, a website that can be used to bypass web filters; both extension and firewall. This is the public source code for Holy Unblocker, a rather fancy website with some cool dynamic backgrounds while also focusing with detail put into the design, mechanics and features overall like custom Tab Cloaks with more to come in the future. 
 
 Works with a large number of sites including YouTube, Discord and more! Be sure to read below for information if the official site is blocked or for obtaining more links.
 
@@ -22,17 +22,15 @@ Also has a good amount of locally hosted games featured on the site.
 - Bing.com
 - And more!
 
-<img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/hbpreview.png?raw"></img>
+Be sure to join Titanium Network's Discord for more official site links: https://discord.gg/unblock
+
+Simply do `%proxy hu` for more Holy Unblocker links on the Titanium Network Discord server.
 
 Official Site: https://www.holyubofficial.net
 
 Site Documentation: <a href="https://www.holyubofficial.net/?in">Documentation</a>
 
-Instance Status: <a href="https://www.holyubofficial.net/?status">Status</a>
-
-Be sure to join Titanium Network's Discord for more official site links: https://discord.gg/unblock
-
-Simply do `%proxy hu` for more Holy Unblocker links on the TN Discord server.
+<img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/hbpreview.png?raw"></img>
 
 <a href="https://heroku.com/deploy?template=https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic" title="Deploy to Heroku"><img alt="Deploy to Heroku" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/heroku.svg?raw" width="140" height="30"><img></a>
 &nbsp;
