@@ -14,7 +14,7 @@ $("allink").href = "https://github.com/titaniumnetwork-dev/alloyproxy";
 $("tnlink").href = "https://discord.gg/hcUUceSCtj";
 $("plink").href = "https://github.com/vibedivide/powermouse";
 $("wnlink").href = "https://github.com/binary-person/womginx";
-$("nclink").href = "https://nodeclusters.com";
+$("nclink").href = "https://nodeclusters.com/billing/link.php?id=9";
 $("qrlink").href = "https://support.discord.com/hc/en-us/articles/360039213771-QR-Code-Login-FAQ";
 $("nulink").href = "https://github.com/nfriedly/node-unblocker";
 $("pylink").href = "https://github.com/BinBashBanana/PyDodge";
