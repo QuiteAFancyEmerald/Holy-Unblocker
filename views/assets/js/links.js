@@ -12,7 +12,7 @@ $("universaltb2").href = "WIP";
 $("hblink2").href = "https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic";
 $("allink").href = "https://github.com/titaniumnetwork-dev/alloyproxy";
 $("tnlink").href = "https://discord.gg/hcUUceSCtj";
-$("plink").href = "https://github.com/vibedivide/powermouse";
+$("plink").href = "https://github.com/sysce/proxy";
 $("wnlink").href = "https://github.com/binary-person/womginx";
 $("nclink").href = "https://nodeclusters.com/billing/link.php?id=9";
 $("qrlink").href = "https://support.discord.com/hc/en-us/articles/360039213771-QR-Code-Login-FAQ";

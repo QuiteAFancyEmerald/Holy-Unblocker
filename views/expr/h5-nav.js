@@ -50,7 +50,7 @@ $('mc').onclick = function() {
     var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    frame.src = "https://" + domain + "/archive/mc/index.html";
+    frame.src = "https://" + domain + "/archive/g/mcjs.html";
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
