@@ -46,7 +46,7 @@ $('al').onclick = function() {
     if (url.startsWith('https://') || url.startsWith('http://')) url = url;
     else if (url.startsWith('//')) url = 'http:' + url;
     else url = 'http://' + url;
-    frame.src = "https://" + domain + "/fetch/" + url;
+    frame.src = "https://" + domain + "/fetch/" + btoa(url);
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
@@ -61,7 +61,7 @@ $('albp').onclick = function() {
     if (url.startsWith('https://') || url.startsWith('http://')) url = url;
     else if (url.startsWith('//')) url = 'http:' + url;
     else url = 'http://' + url;
-    window.location.href = "https://" + domain + "/fetch/" + url;
+    window.location.href = "https://" + domain + "/fetch/" + btoa(url);
     document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
