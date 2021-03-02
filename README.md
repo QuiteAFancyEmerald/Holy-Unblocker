@@ -2,7 +2,7 @@
 
 #### Titanium Network is sponsored by:
 
-<img src="https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic/blob/master/views/assets/img/nodeclusters.png?raw" width="500px"></img>
+<img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/fa858c0e429d73324bffc045bd2a3217064fb1e5/views/assets/img/nodeclusters.png?raw" width="500px"></img>
 
 Holy Unblocker, a website that can be used to bypass web filters; both extension and firewall. This is the public source code for Holy Unblocker, a rather fancy website with some cool dynamic backgrounds while also focusing with detail put into the design, mechanics and features overall like custom Tab Cloaks with more to come in the future. 
 
@@ -62,14 +62,16 @@ Site Documentation: <a href="https://www.holyubofficial.net/?in">Documentation</
 Either use the button above to deploy to Heroku or do the below:
 
 ```
-git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git
-
-cd HolyUnblockerPublic
-
-npm install
-
-npm start
+$ git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git
+$ cd HolyUnblockerPublic
+$ npm install
 ```
+
+Afterwards run:
+```
+$ npm start
+```
+For more detailed documentation on workspace setup please view <a href="#workspace-configurations">this</a>.
 
 The default place for the proxy when its started is `http://localhost:8080` but you can change it if needed in config.json
 
@@ -200,13 +202,29 @@ Preferably if you have your own device use Visual Studio Code. Pretty much the b
 Not going to go too in depth with this part but first fork this repository. Then clone it locally through a terminal of some sort depending on what OS you are on. Make sure you navigate to the folder you want to set this up in.
 
 ```
-git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git
-
-cd HolyUnblockerPublic
-
-npm install
+$ git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git
+$ cd HolyUnblockerPublic
+$ npm install
 ```
 
+##### Setup pm2 (Optional - Node.js Process Manager)
+```
+$ npm install pm2@latest -g
+$ pm2 start app.js
+```
+**Useful pm2 Flags**
+```
+# Specify an app name
+--name <app_name>
+
+# Watch and Restart app when files change
+--watch
+
+# Set memory threshold for app reload
+--max-memory-restart <200MB>
+```
+For more information view the official pm2 documentation <a href="https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/">here</a>.
+##### Workspace Setup (continued)
 Now simply add the folder you cloned in VSC. Then run `npm install`. I recommend that if you are releasing this publically on GitHub that you add a `.gitignore` in your root directory with the following exclusions:
 
 `node_modules`

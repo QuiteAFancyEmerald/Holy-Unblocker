@@ -1,0 +1,56 @@
+{
+  "_from": "alloyproxy@^1.1.0",
+  "_id": "alloyproxy@1.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-AlLoWex3qx2dWRO+3HovFjUWoRx4Lq9hEeyH5soIvJ0Y18VP2kgd8nuGirLJgJiVkoZyZJ31qzYK5q+vRsAebA==",
+  "_location": "/alloyproxy",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "alloyproxy@^1.1.0",
+    "name": "alloyproxy",
+    "escapedName": "alloyproxy",
+    "rawSpec": "^1.1.0",
+    "saveSpec": null,
+    "fetchSpec": "^1.1.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/alloyproxy/-/alloyproxy-1.1.0.tgz",
+  "_shasum": "95d4064bd691a0f949e1a66de9bd966e1c0fff7f",
+  "_spec": "alloyproxy@^1.1.0",
+  "_where": "C:\\Users\\Not A Porxy\\Documents\\HolyUnblockerWorkspace\\HolyUB",
+  "author": {
+    "name": "Titanium Network"
+  },
+  "bugs": {
+    "url": "https://github.com/titaniumnetwork-dev/alloyproxy/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "ws": "^7.4.0"
+  },
+  "deprecated": false,
+  "description": "Proxy library to unblock the web!",
+  "homepage": "https://github.com/titaniumnetwork-dev/alloyproxy#readme",
+  "keywords": [
+    "proxy",
+    "unblocker",
+    "web",
+    "proxy"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "alloyproxy",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/titaniumnetwork-dev/alloyproxy.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.1.0"
+}

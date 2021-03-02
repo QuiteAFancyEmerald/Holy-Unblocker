@@ -2,7 +2,7 @@
 /* Author : QuiteAFancyEmerald, YÖCTDÖNALD'S and SexyDuceDuce with help from Divide
 /* MIT license: http://opensource.org/licenses/MIT
 /* ----------------------------------------------- */
-const [express, alloy, http, fs, path, char_insert] = [require('express'), require('alloyproxy'), require('http'), require('fs'), require('path'), require('./src/charinsert.js')], [app, config] = [express(), JSON.parse(fs.readFileSync('./config.json', { encoding: 'utf8' }))], server = http.createServer(app), localprox = new alloy({
+const [express, alloy, http, fs, path, char_insert] = [require('express'), require('./src/alloyproxy'), require('http'), require('fs'), require('path'), require('./src/charinsert.js')], [app, config] = [express(), JSON.parse(fs.readFileSync('./config.json', { encoding: 'utf8' }))], server = http.createServer(app), localprox = new alloy({
     prefix: '/fetch/',
     error: (proxy) => { proxy.res.send(fs.readFileSync('./views/error.html', { encoding: 'utf8' }).replace('%ERR%', proxy.error.info.message.replace(/</gi, '<&zwnj;').replace(/>/gi, '>&zwnj;'))); }, // Doing replace functions on "<" and ">" to prevent XSS.
     request: [],

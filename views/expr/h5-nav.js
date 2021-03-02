@@ -488,6 +488,56 @@ $('faball').onclick = function() {
     return false;
 };
 
+//Emulators
+$('gba').onclick = function() {
+   var frame = document.getElementById("frame");
+   var background = document.getElementById("particles-js");
+   var url = $('url').value;
+   var det = document.domain;
+   var domain = det.replace('www.', '').split(/[/?#]/)[0];
+   frame.src = "https://" + domain + "/gba/index.html";
+   frame.style['visibility'] = "visible";
+   frame.setAttribute('allow', 'fullscreen');
+   frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
+   //performance fix
+   background.style['visibility'] = "hidden";
+   document.getElementById('frame').contentWindow.focus();
+   return false;
+};
+
+$('nes').onclick = function() {
+   var frame = document.getElementById("frame");
+   var background = document.getElementById("particles-js");
+   var url = $('url').value;
+   var det = document.domain;
+   var domain = det.replace('www.', '').split(/[/?#]/)[0];
+   frame.src = "https://" + domain + "/nes/index.html";
+   frame.style['visibility'] = "visible";
+   frame.setAttribute('allow', 'fullscreen');
+   frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
+   //performance fix
+   background.style['visibility'] = "hidden";
+   document.getElementById('frame').contentWindow.focus();
+   return false;
+};
+
+$('snes').onclick = function() {
+   var frame = document.getElementById("frame");
+   var background = document.getElementById("particles-js");
+   var url = $('url').value;
+   var det = document.domain;
+   var domain = det.replace('www.', '').split(/[/?#]/)[0];
+   frame.src = "https://" + domain + "/nes/index.html";
+   frame.style['visibility'] = "visible";
+   frame.setAttribute('allow', 'fullscreen');
+   frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
+   //performance fix
+   background.style['visibility'] = "hidden";
+   document.getElementById('frame').contentWindow.focus();
+   return false;
+};
+
+
 // Cookie Auth
 var host = location.hostname.split('.');
 var auth = location.hostname;

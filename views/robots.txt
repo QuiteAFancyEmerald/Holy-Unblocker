@@ -1,5 +1,5 @@
 User-agent: *
-Allow: /
+Disallow: /
 
 User-agent: Googlebot
 Allow: /
@@ -10,6 +10,55 @@ Allow: /?g
 Allow: /?c
 Allow: /?in
 Allow: /?faq
-Disallow: /archive/
 
-Sitemap: https://quiteafancyemerald.com
+User-agent: Bingbot
+Allow: /
+Allow: /?z
+Allow: /?y
+Allow: /?d
+Allow: /?g
+Allow: /?c
+Allow: /?in
+Allow: /?faq
+
+User-agent: Slurp
+Allow: /
+Allow: /?z
+Allow: /?y
+Allow: /?d
+Allow: /?g
+Allow: /?c
+Allow: /?in
+Allow: /?faq
+
+User-agent: DuckDuckBot
+Allow: /
+Allow: /?z
+Allow: /?y
+Allow: /?d
+Allow: /?g
+Allow: /?c
+Allow: /?in
+Allow: /?faq
+
+User-agent: Baiduspider
+Allow: /
+Allow: /?z
+Allow: /?y
+Allow: /?d
+Allow: /?g
+Allow: /?c
+Allow: /?in
+Allow: /?faq
+
+User-agent: YandexBot
+Allow: /
+Allow: /?z
+Allow: /?y
+Allow: /?d
+Allow: /?g
+Allow: /?c
+Allow: /?in
+Allow: /?faq
+
+Sitemap: https://holyuboffical.net
