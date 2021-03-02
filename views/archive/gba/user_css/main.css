@@ -39,7 +39,6 @@ ul{
     left: 0px;
     right: 0px;
     bottom: 0px;
-	background-color: black;
 }
 
 /*
@@ -57,7 +56,8 @@ canvas {
     margin: auto;
     display: block;
     padding: 0px;
-    background-color: black;
+    background-color: rgb(248, 248, 248);
+    cursor: none;
 }
 
 canvas.textureSmooth {
@@ -104,117 +104,71 @@ canvas.texturePixelated {
 
 /* top level menu */
 div#menu {
-	display: none !important;
-	width: 0px;
-	height: 0px;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 0px;
 }
-
-ul{
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-
 .menu {
-	position: fixed;
-	display: flex;
-	flex-wrap: wrap;
-	background: #fff;
-	transition: .3s ease;
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    transition: .3s ease;
 	cursor: pointer;
-	font-family: sans-serif;
-	z-index: 1;
-	opacity: 0;
-	height: 42px;
 }
 
-.menu:hover{opacity: 0.9;}
+/* auto hide menu while playing */
+.playing .menu{opacity: 0;}
+.playing .menu:hover{opacity: 0.9;}
 
+/* sub level menu */
 .menu ul{
-	visibility: hidden;
-	opacity: 0;
-	position: absolute;
-	top:100%;
-	left:0;
-	background-color: rgb(245, 245, 245);
-	box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);
-	transition: .3s ease;
-	z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top:100%;
+    left:0;
+    background-color: rgb(245, 245, 245);
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);
+    transition: .3s ease;
+    z-index: 1;
+}
+
+li.hide {
+    display: none !important;
+}
+
+/* bottom level nav */
+.menu ul ul{
+    top:0;
+    left: 100%;
+}
+
+#menu_top li {
+    padding: .7em 1em;
 }
 
 .menu ul li {
-	padding: .3em 1em !important;
+    padding: .3em 1em !important;
 }
 
 .menu li{
-	white-space: nowrap;
-	position: relative;
-	cursor:pointer;
-	padding: .7em 1em;
+    white-space: nowrap;
+    position: relative;
+    cursor:pointer;
 }
 
-.menu li:hover {
-	background: rgba(0,0,0,.1);
+.menu li:hover{
+    background: rgba(0,0,0,.1);
 }
 
+/* show sub nav on hover */
 .menu li:hover > ul{
-	visibility: visible;
-	opacity: 1;
-}
-
-li #smooth {
-	transform: scale(1.5);
-	margin: 0px 13px 0px 0px;
-}
-
-#import {
-	display: none;
-}
-
-#import + label {
-	border: 1px solid rgb(118, 118, 118);
-	border-radius: 2px;
-	padding: 4px;
-	margin: 2px;
-	font-size: 13px;
-}
-
-#export {
-	color: black;
-	text-decoration: none;
-}
-
-#ffd {
-	z-index: 5;
-	height: 200px;
-	width: 400px;
-	position: absolute;
-	background: #ddd;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	text-align: center;
-	font-family: sans-serif;
-	border-radius: 2px;
-}
-
-#upload {
-	display: none;
-}
-
-#upload + label {
-	border: 1px solid rgb(118, 118, 118);
-	border-radius: 2px;
-	padding: 4px;
-	margin: 10px;
-	font-size: 13px;
-	background-color: white;
-	display: inline-block;
-	transition: ease .1s;
-}
-
-#upload + label:hover {
-	background-color: #eee;
+    visibility: visible;
+    opacity: 1;
 }
 
 /*

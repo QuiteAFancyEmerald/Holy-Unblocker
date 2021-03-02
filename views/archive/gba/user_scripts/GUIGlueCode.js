@@ -38,6 +38,12 @@ function registerGUIEvents() {
         setValue("skipBoot", !!this.checked);
         IodineGUI.Iodine.toggleSkipBootROM(this.checked);
     });
+    addEvent("click", document.getElementById("toggleSmoothScaling"), function () {
+        setValue("toggleSmoothScaling", !!this.checked);
+        if (IodineGUI.Blitter) {
+            IodineGUI.Blitter.setSmoothScaling(this.checked);
+        }
+    });
     addEvent("click", document.getElementById("toggleDynamicSpeed"), function () {
         setValue("toggleDynamicSpeed", !!this.checked);
         IodineGUI.Iodine.toggleDynamicSpeed(this.checked);
@@ -308,8 +314,7 @@ function registerDefaultSettings() {
     else {
         IodineGUI.defaults.toggleOffthreadCPU = !!findValue("toggleOffthreadCPU");
     }
-	// Why is this even a thing???
-    /*if (findValue("key_a") === null) {
+    if (findValue("key_a") === null) {
         setValue("key_a", IodineGUI.defaults.keyZonesGBA[0] | 0);
     }
     else {
@@ -368,7 +373,7 @@ function registerDefaultSettings() {
     }
     else {
         IodineGUI.defaults.keyZonesGBA[9] = findValue("key_l");
-    }*/
+    }
     if (findValue("key_volumedown") === null) {
         setValue("key_volumedown", IodineGUI.defaults.keyZonesControl[0] | 0);
     }
@@ -531,13 +536,12 @@ function speedChangeFunc() {
     IodineGUI.Iodine.setSpeed(+speed);
 }
 function writeRedTemporaryText(textString) {
-    //lol
-	/*if (IodineGUI.GUITimerID) {
+    if (IodineGUI.GUITimerID) {
         clearTimeout(IodineGUI.GUITimerID);
     }
     document.getElementById("tempMessage").style.display = "block";
     document.getElementById("tempMessage").textContent = textString;
-    IodineGUI.GUITimerID = setTimeout(clearTempString, 5000);*/
+    IodineGUI.GUITimerID = setTimeout(clearTempString, 5000);
 }
 function clearTempString() {
     document.getElementById("tempMessage").style.display = "none";
@@ -657,11 +661,4 @@ function removeEvent(sEvent, oElement, fListener) {
     catch (error) {
         oElement.detachEvent("on" + sEvent, fListener);    //Pity for IE.
     }
-}
-
-function setSmooth(){
-	var chekd = document.getElementById("smooth").checked;setValue("toggleSmoothScaling", !!chekd);
-        if (IodineGUI.Blitter) {
-            IodineGUI.Blitter.setSmoothScaling(chekd);
-        }
 }

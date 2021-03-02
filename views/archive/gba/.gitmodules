@@ -1,0 +1,3 @@
+[submodule "user_scripts/XAudioJS"]
+	path = user_scripts/XAudioJS
+	url = https://github.com/taisel/XAudioJS.git
