@@ -495,7 +495,7 @@ $('gba').onclick = function() {
    var url = $('url').value;
    var det = document.domain;
    var domain = det.replace('www.', '').split(/[/?#]/)[0];
-   frame.src = "https://" + domain + "/gba/index.html";
+   frame.src = "https://" + domain + "/archive/gba/index.html";
    frame.style['visibility'] = "visible";
    frame.setAttribute('allow', 'fullscreen');
    frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
@@ -511,7 +511,7 @@ $('nes').onclick = function() {
    var url = $('url').value;
    var det = document.domain;
    var domain = det.replace('www.', '').split(/[/?#]/)[0];
-   frame.src = "https://" + domain + "/nes/index.html";
+   frame.src = "https://" + domain + "/archive/nes/index.html";
    frame.style['visibility'] = "visible";
    frame.setAttribute('allow', 'fullscreen');
    frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');
@@ -527,7 +527,7 @@ $('snes').onclick = function() {
    var url = $('url').value;
    var det = document.domain;
    var domain = det.replace('www.', '').split(/[/?#]/)[0];
-   frame.src = "https://" + domain + "/nes/index.html";
+   frame.src = "https://" + domain + "/archive/nes/index.html";
    frame.style['visibility'] = "visible";
    frame.setAttribute('allow', 'fullscreen');
    frame.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-popups allow-forms');

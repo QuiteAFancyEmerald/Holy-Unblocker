@@ -90,7 +90,7 @@ $('wn').onclick = function() {
     var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    frame.src = "https://a." + domain + "/main/" + url;
+    frame.src = "https://a." + domain + "/go/" + url;
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     document.cookie = 'wgauth=yes; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + auth + '; path=/; Secure;';
@@ -101,7 +101,7 @@ $('wnbp').onclick = function() {
     var url = $('url').value;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    window.location.href = "https://a." + domain + "/main/" + url;
+    window.location.href = "https://a." + domain + "/go/" + url;
     document.cookie = 'wgauth=yes; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
@@ -161,7 +161,7 @@ $('wndp').onclick = function() {
     var origin = `https://discord.com/login`;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    frame.src = "https://a." + domain + "/main/" + origin;
+    frame.src = "https://a." + domain + "/go/" + origin;
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
     document.cookie = 'wgauth=yes; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
@@ -172,45 +172,34 @@ $('wndpbp').onclick = function() {
     var origin = `https://discord.com/login`;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    window.location.href = "https://a." + domain + "/main/" + origin;
+    window.location.href = "https://a." + domain + "/go/" + origin;
     document.cookie = 'wgauth=yes; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
 //YT
 $('ytbtn').onclick = function() {
     var frame = document.getElementById("frame");
-    var yt = `https://youtube.com`;
+    var yt = `https://youtube.com/`;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(yt)
-    frame.src = "https://cdn." + domain + "/session/?url=" + origin;
+    frame.src = "https://cdna." + domain + "/fetch/" + "_" + origin + "_";
     frame.style['visibility'] = "visible";
     frame.setAttribute('allow', 'fullscreen');
-    document.cookie = '_incog_prox=alloy; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
-    document.getElementById('frame').contentWindow.focus();
-    return false;
-};
-$('ytbtnm').onclick = function() {
-    var frame = document.getElementById("frame");
-    var yt = `https://m.youtube.com`;
-    var det = document.domain;
-    var domain = det.replace('www.', '').split(/[/?#]/)[0];
-    const origin = btoa(yt)
-    frame.src = "https://cdn." + domain + "/session/?url=" + origin;
-    frame.style['visibility'] = "visible";
-    frame.setAttribute('allow', 'fullscreen');
-    document.cookie = '_incog_prox=alloy; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    //document.cookie = '_incog_prox=alloy; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     document.getElementById('frame').contentWindow.focus();
     return false;
 };
 $('ytbp').onclick = function() {
     var frame = document.getElementById("frame");
-    var yt = `https://youtube.com`;
+    var yt = `https://youtube.com/`;
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(yt)
-    window.location.href = "https://cdn." + domain + "/session/?url=" + origin;
-    document.cookie = '_incog_prox=alloy; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    window.location.href = "https://cdna." + domain + "/fetch/" + "_" + origin + "_";
+    document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
+    //document.cookie = '_incog_prox=alloy; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;
 };
 //D
@@ -220,7 +209,7 @@ $('dbtn').onclick = function() {
     var det = document.domain;
     var domain = det.replace('www.', '').split(/[/?#]/)[0];
     const origin = btoa(d)
-    frame.src = "https://cdn." + domain + "/session/?url=" + origin;
+    frame.src = "https://cdn." + domain + "/web/" + "_" + origin + "_";
     frame.style['visibility'] = "visible";
     document.cookie = '_incog_prox=alloy; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + auth + '; path=/; Secure;';
     return false;

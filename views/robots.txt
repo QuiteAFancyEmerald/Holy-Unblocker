@@ -61,4 +61,4 @@ Allow: /?c
 Allow: /?in
 Allow: /?faq
 
-Sitemap: https://holyuboffical.net
+Sitemap: https://holyuboffical.net/sitemap.xml
