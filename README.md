@@ -274,15 +274,17 @@ When this happens you may either switch sites to fix the error or wait a bit. So
 
 ## More Information
 
-This project is maintained by Quite A Fancy Emerald and a flagship Titanium Network proxy site.
+This project is maintained by Quite A Fancy Emerald and is an official flagship Titanium Network proxy site.
 
 - https://titaniumnetwork.org/
 - https://github.com/titaniumnetwork-dev/
 
-View the official website for more detail and credits.
+View the official website for more details or credits.
 
-Proxy Sources:
+**Proxy Sources:**
+
 This project uses Alloy Proxy, Womginx, SysYA Proxy and Via Unblocker which are linked below. 
+
 - https://github.com/titaniumnetwork-dev/alloy (Alloy)*
 - https://github.com/binary-person/womginx (Womginx)
 - https://github.com/sysce/proxy (SysYA Proxy)
@@ -290,10 +292,11 @@ This project uses Alloy Proxy, Womginx, SysYA Proxy and Via Unblocker which are 
 - https://github.com/BinBashBanana/PyDodge (PyDodge)**
 - https://github.com/nfriedly/node-unblocker (Node Unblocker)***
 
-Notable Mentions:
-- https://dedipath.com (Hosting)
+**Notable Mentions:**
 
-Footnotes:
+- https://dedipath.com (Hosting Provider)
+
+**Footnotes:**
 
 - This distribution of Holy Unblocker uses an older version of Alloy Proxy.
 - The official Holy Unblocker sites used a private, modified version of Via and also goes under the name PyDodge for any modified version of it.
