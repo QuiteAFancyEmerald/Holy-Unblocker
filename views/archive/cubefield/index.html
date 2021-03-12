@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Cubefield in JS</title>
+		<link rel="stylesheet" href="assets/styles/main.css">
+    <!-- THREE.JS -->
+		<script src="assets/three.min.js"></script>
+    <!-- CLASSES -->
+		<script src="cube.min.js"></script>
+</head>
+<body>
+  <button class="newGame" id="newGame" type="button" onclick="gameReset()">New Game</button>
+  <div class="score" id="score">0.0</div>
+  <div class="highscore">Highscore:<br><span id="highScore">15.0</span></div>
+  <div class="instr">Use the left and right arrow keys to dodge the cubes.<br>See how far you can get without hitting any cubes.<br>Press P to pause.</div>
+  <div class="info" id="info">
+      <h2>Cubefield in JS</h2>
+      <br>a hobby project to learn WebGL<br><br>Powered by Three.JS (Credit to Mr. Doob)<br>Credit to Cubefield creator, Max Abernethy of flecko.net
+  </div>
+  <div class="settings settingsVis" id="settings">
+    <div style="margin:0 auto;height:150px;width:100%;max-width:1398px">
+        <div class="group" id="difficulty">
+            <h3>Difficulty</h3>
+            <div class="select focus" onmousedown="updateDiff(0)" style="background-color:rgb(64, 167, 175)">Rookie</div>
+            <div class="select" onmousedown="updateDiff(1)" style="background-color:rgb(118, 57, 170)">Skilled</div>
+            <div class="select" onmousedown="updateDiff(2)" style="background-color:rgb(159, 40, 90)">Master</div>
+        </div>
+        <div class="group" id="camera">
+            <h3>Camera</h3>
+            <div class="select focus" onmousedown="updateCam(0)" style="background-color:rgb(64, 167, 175)">Hawk</div>
+            <div class="select" onmousedown="updateCam(1)" style="background-color:rgb(118, 57, 170)">Chase</div>
+            <div class="select" onmousedown="updateCam(2)" style="background-color:rgb(159, 40, 90)">1st person</div>
+        </div>
+        <div class="group" id="block">
+            <h3>Blocks</h3>
+            <div class="select focus" onmousedown="updateBlock(0)" style="background-color:rgb(64, 167, 175)">Normal</div>
+            <div class="select" onmousedown="updateBlock(1)" style="background-color:rgb(118, 57, 170)">Falling</div>
+            <div class="select" onmousedown="updateBlock(2)" style="background-color:rgb(159, 40, 90)">Pop up</div>
+        </div>
+        <div class="group" id="bounce">
+            <h3>Bounce</h3>
+            <div class="select focus" onmousedown="updateBounce(0)" style="background-color:rgb(64, 167, 175)">None</div>
+            <div class="select" onmousedown="updateBounce(1)" style="background-color:rgb(118, 57, 170)">Some</div>
+            <div class="select" onmousedown="updateBounce(2)" style="background-color:rgb(159, 40, 90)">Too Much</div>
+        </div>
+    </div>
+  </div>
+  <div class="pause" id="pause">
+      <h3>PAUSE</h3>
+      <div class="menu" onmousedown="returnToMenu()">Return to Menu</div>
+      <div class="unpause" onmousedown="pauseGameScreen()">Resume</div>
+  </div>
+  <!-- js code -->
+  <script src="main.min.js"></script>
+</body>
+</html>
