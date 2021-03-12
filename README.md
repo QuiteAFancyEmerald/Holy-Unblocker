@@ -4,7 +4,7 @@
 
 <img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/fa858c0e429d73324bffc045bd2a3217064fb1e5/views/assets/img/nodeclusters.png?raw" width="500px"></img>
 
-Holy Unblocker, a website that can be used to bypass web filters; both extension and firewall. This is the public source code for Holy Unblocker, a rather fancy website with some cool dynamic backgrounds while also focusing with detail put into the design, mechanics and features overall like custom Tab Cloaks with more to come in the future. 
+Holy Unblocker, an official flagship Titanium Network site is a website that can be used to bypass web filters; both extension and firewall. This is the public source code for Holy Unblocker, a rather fancy website with some cool dynamic backgrounds while also focusing with detail put into the design, mechanics and features overall like custom Tab Cloaks with more to come in the future. 
 
 Works with a large number of sites including YouTube, Discord and more! Be sure to read below for information if the official site is blocked or for obtaining more links.
 
@@ -129,7 +129,14 @@ I left all of these just in case you would like to setup the site differently as
 - Add more locally hosted proxies possibly.
 
 ## Vauge Explanation for Beginners With External Proxies and Hosting
-You will first want to host your proxies locally or externally. 
+You will first want to host your proxies locally or externally. Note that an older version of Alloy proxy is the only proxy that is hosted locally with this distribution of Holy Unblocker.
+
+Proxies which you will need for a full setup for Holy Unblocker:
+
+(Womginx) - https://github.com/binary-person/womginx
+(SysYA Proxy) - https://github.com/sysce/proxy
+(Via Unblocker/PyDodge: The source used for this proxy on the official sites is not public sadly.) - https://github.com/BinBashBanana/PyDodge or 
+(Alloy Proxy: Latest version) - https://github.com/titaniumnetwork-dev/alloy
 
 #### List of some good hosting options:
 - <a href="https://dedipath.com">Dedipath</a> (Paid and Dedicated)
@@ -144,22 +151,13 @@ Out of the list of hosting providers Heroku and Dedipath rank first as a prefere
 After you have selected a decent VPS, use Cloudflare for the DNS records for both the site and the subdomains for the proxies.
 
 This is an example of DNS records involving Heroku. Self-hosting will require `A records` preferably.
-<img src="https://cdn.discordapp.com/attachments/725506757291671663/756659513179766844/unknown.png" width="500" height="154"></img>
+<img src="https://cdn.discordapp.com/attachments/681203088862085168/820048397662158858/unknown.png" width="500"></img>
 
-- `a.deepsoil.ml` is being used for Node Unblocker.
-- `p.deepsoil.ml` is being used for Powermouse.
-- `pd.deepsoil.ml` is being used for PyDodge B.
-- `cdn.deepsoil.ml` is being used for a private Alloy host on the official sites.
-
-Update, the new configuration is (for the official sites):
+The configuration being used on the official sites currently are the below:
 
 - `a.example.com` is being used for Womginx.
-- `d.example.com` is being used for Ocean proxy, to be removed.
-- `c.example.com` is being used for Powermouse and the Chatbox.
-- `cdna.example.com` is being used for an older version of Alloy with YouTube support and Via which is hosted on the official sites.
-- `cdn.example.com` is being used for a private Alloy instance and Via which is hosted on the official sites.
-
-As stated previously, Holy Unblocker is hosted locally with Alloy.
+- `c.example.com` is being used for SysYA Proxy, Via Unblocker and the Chatbox.
+- `cdn.example.com` is being used for a private, updated Alloy instance.
 
 #### Heroku Steps
 So use Heroku to host. I personally favor it as a free choice.
@@ -238,19 +236,23 @@ For an online IDE that you can use on your school computer and/or chromebook use
 Use the same steps above by running `npm install` in your repository and adding a `.gitignore` in your root directory specifying to exclude `node_modules`.
 
 ## Detailed FAQ
-A detailed FAQ with common issues and solutions can be found <a href="https://holyubofficial.net/?faq">here</a> or on any official HU site on the FAQ page.
+A detailed FAQ with common issues and solutions can be found at <a href="https://holyubofficial.net/?faq">here</a> or on any official HU site on the FAQ page.
+
+**Why are YouTube videos not working?**
+
+If you are having persistent issues even after doing the steps above there is a chance that the instance is down temporarily, especially if large groups of people are also having the issue. The latest release of Alloy currently does not have support for YouTube. However manually putting in full links like `https://www.youtube.com/watch?v=mauV2NdCs60` will work. You may also try doing a Hard Reload (Ctrl+Shift+R)
+
+A later release of Alloy may fix this issue. Sorry.
+
+
 
 **Why is the site I am on not working correctly or having CAPTCHA errors?**
 
-Captcha support is currently not available on some of the older proxies sadly. Therefore some sites may not work with any of the sites. Read below for issues with links on sites.
+Captcha has limited support on Womginx. However support is not available on some of the older proxies sadly. Therefore some sites may not work with any of the sites. Read below for issues with links on sites.
 
-However Womginx has captcha support now!
+**Why are page links not working or leading to 404 pages?**
 
-**Why are some page links not working or leading to 404 pages?**
-
-This is an issue with the latest release of Alloy proxy but it may also occur with other proxies.
-
-In this case manually entering the URL of the page you would like to view can solve this or try navigating using the home button. (Reddit, Twitter) The next release of Alloy may fix this also.
+This is an issue with the latest release of Alloy proxy but it may also occur with other proxies. In this case manually entering the URL of the page you would like to view can solve this or try navigating using the home button. (Reddit, Twitter) The next release of Alloy may fix this also.
 
 **When using YouTube on any of the proxy sites, why does the page not load fully or the video is just white?**
 
@@ -260,38 +262,41 @@ There are two methods for fixing this:
 - Or right-clicking the page and doing Reload Frame if you are using some form of Stealth Mode.
 
 **When using Discord under Alloy or Powermouse, why does the page stay gray/white or the QR code not load?**
+Womginx now support logging in normally for Discord. However here are the steps related to Alloy troubleshooting.
 
-Once again do the same steps above:
-- Reloading the page normally when the error above happens should load the video
-- Or right-clicking the page and doing Reload Frame if you are using some form of Stealth Mode.
+Note that this is for the older discord proxy steps with Alloy and Powermouse.
 
-Make sure you are also doing the steps correctly. Simply view link above for extended Discord proxy information/steps.
+**On the official sites, I am getting 502 errors. What do I do?**
 
-Note that this is for the older discord proxy steps with Alloy and Powermouse. Womginx now support logging in normally!
+The proxy may be down, being worked on or is under high load.
 
-**I am getting 502 errors. What do I do?**
-
-When this happens you may either switch sites to fix the error or wait a bit. Sometimes clearing your cache can help.
-
-If you still have any questions feel free to ask them in the discord linked here.
-
+When this happens you may either switch sites to fix the error or wait a bit. Sometimes clearing your cache can help by doing Ctrl+Shift+R or reloading the page normally. (Hard Reload which purges cache.)
 
 ## More Information
-This project uses Alloy Proxy, Node Unblocker, Powermouse and PyDodge which are linked below. 
+
+This project is maintained by Quite A Fancy Emerald and a flagship Titanium Network proxy site.
+
+- https://titaniumnetwork.org/
+- https://github.com/titaniumnetwork-dev/
 
 View the official website for more detail and credits.
 
-- https://github.com/titaniumnetwork-dev/
-- https://github.com/titaniumnetwork-dev/alloyproxy
-- https://github.com/nfriedly/node-unblocker
-- https://github.com/vibedivide/powermouse
-- https://github.com/BinBashBanana/PyDodge
-- https://github.com/juchi/gameboy.js
-- https://nodeclusters.com
-- https://titaniumnetwork.org/
-- https://github.com/vibedivide/vibeOS
-- https://github.com/binary-person/womginx
+Proxy Sources:
+This project uses Alloy Proxy, Womginx, SysYA Proxy and Via Unblocker which are linked below. 
+- https://github.com/titaniumnetwork-dev/alloy (Alloy)*
+- https://github.com/binary-person/womginx (Womginx)
+- https://github.com/sysce/proxy (SysYA Proxy)
+- https://github.com/hypothesis/via (Via)**
+- https://github.com/BinBashBanana/PyDodge (PyDodge)**
+- https://github.com/nfriedly/node-unblocker (Node Unblocker)***
 
-This project is maintained by QuiteAFancyEmerald and collaborative with Titanium Network.
+Notable Mentions:
+- https://dedipath.com (Hosting)
+
+Footnotes:
+
+- This distribution of Holy Unblocker uses an older version of Alloy Proxy.
+- The official Holy Unblocker sites used a private, modified version of Via and also goes under the name PyDodge for any modified version of it.
+- Node Unblocker is no longer used on any of the official Titanium Network flagship sites.
 
 Thanks.
