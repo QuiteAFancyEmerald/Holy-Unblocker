@@ -1,8 +1,9 @@
-# Holy Unblocker <img align="left" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/Icon.png"></img>
+<img align="left" width="70px" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/icon.png"></img>
+# Holy Unblocker
 
 #### Titanium Network is sponsored by:
 
-<img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/fa858c0e429d73324bffc045bd2a3217064fb1e5/views/assets/img/nodeclusters.png?raw" width="500px"></img>
+<img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/fa858c0e429d73324bffc045bd2a3217064fb1e5/views/assets/img/nodeclusters.png?raw" width="500px"><a href="https://nodeclusters.com"></a></img>
 
 Holy Unblocker, an official flagship Titanium Network site is a website that can be used to bypass web filters regardless if its an extension or network based. This is the public source code for Holy Unblocker, a rather fancy website with some cool dynamic backgrounds while also focusing with detail put into the design, mechanics and features overall like custom Tab Cloaks with more to come in the future. 
 
@@ -22,7 +23,7 @@ Also has a good amount of locally hosted games featured on the site.
 - Bing.com
 - And more!
 
-Be sure to join Titanium Network's Discord for more official site links: https://discord.gg/unblock
+Be sure to join Titanium Network's Discord for more official site links: https://discord.gg/hcUUceSCtj
 
 Simply do `%proxy hu` for more Holy Unblocker links on the Titanium Network Discord server.
 
