@@ -779,20 +779,24 @@ div.desc {
 
 .responsive {
     padding: 0 6px;
-    float: left;
-    width: 20%;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
 }
+
 @media only screen and (max-width: 700px) {
     .responsive {
-        width: 50%;
+        width: 200px;
         margin: 6px 0;
     }
 }
 @media only screen and (max-width: 500px) {
     .responsive {
-        width: 100%;
+        width: 100px;
     }
 }
+
 .clearfix:after {
     content: "";
     display: table;

@@ -4,61 +4,61 @@ Disallow: /
 User-agent: Googlebot
 Allow: /
 Allow: /?z
+Allow: /?faq
 Allow: /?y
 Allow: /?d
 Allow: /?g
 Allow: /?c
 Allow: /?in
-Allow: /?faq
 
 User-agent: Bingbot
 Allow: /
 Allow: /?z
+Allow: /?faq
 Allow: /?y
 Allow: /?d
 Allow: /?g
 Allow: /?c
 Allow: /?in
-Allow: /?faq
 
 User-agent: Slurp
 Allow: /
 Allow: /?z
+Allow: /?faq
 Allow: /?y
 Allow: /?d
 Allow: /?g
 Allow: /?c
 Allow: /?in
-Allow: /?faq
 
 User-agent: DuckDuckBot
 Allow: /
 Allow: /?z
+Allow: /?faq
 Allow: /?y
 Allow: /?d
 Allow: /?g
 Allow: /?c
 Allow: /?in
-Allow: /?faq
 
 User-agent: Baiduspider
 Allow: /
 Allow: /?z
+Allow: /?faq
 Allow: /?y
 Allow: /?d
 Allow: /?g
 Allow: /?c
 Allow: /?in
-Allow: /?faq
 
 User-agent: YandexBot
 Allow: /
 Allow: /?z
+Allow: /?faq
 Allow: /?y
 Allow: /?d
 Allow: /?g
 Allow: /?c
 Allow: /?in
-Allow: /?faq
 
 Sitemap: https://holyuboffical.net/sitemap.xml

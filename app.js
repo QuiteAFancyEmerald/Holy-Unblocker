@@ -18,7 +18,7 @@ app.post('/', async(req, res) => res.send(fs.readFileSync(path.join(__dirname, '
 
 //Querystring Navigation
 
-app.get('/', async(req, res, t) => res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages,index.html,info.html,faq.html,status.html,archive,archive,hidden.html'.split(',')['/,/?in,/?faq,/?status,/?fg,/?rr,/?j'.split(',').indexOf(req.url) + 1], ',surf.html,f.html,run.html,frames,redirects3,proxnav5,nav7'.replace(/,[^,]+/g, e => ([] + e.match(/\D+/)).repeat(+e.match(/\d+/) + 1)).split(',')[t = 'z,fg,rr,k,dd,n,yh,ym,a,w,y,e,d,p,c,f,g,h,el,i,m,t,x'.split(',').indexOf(req.url.slice(2)) + 1], (t = ',,,,krunker,discordprox,chatbox,ythub,ytmobile,alloy,womginx,youtube,pydodge,discordhub,pmprox,credits,flash,gtools,games5,emulators,icons,gba,terms,bookmarklets'.split(',')[t]) && t + '.html'), 'utf8')));
+app.get('/', async(req, res, t) => res.send(fs.readFileSync(path.join(__dirname, 'views', 'pages,index.html,info.html,faq.html,status.html,archive,archive,hidden.html'.split(',')['/,/?in,/?faq,/?status,/?fg,/?rr,/?j'.split(',').indexOf(req.url) + 1], ',surf.html,f.html,run.html,frames,redirects3,proxnav5,nav7'.replace(/,[^,]+/g, e => ([] + e.match(/\D+/)).repeat(+e.match(/\d+/) + 1)).split(',')[t = 'z,fg,rr,k,dd,n,yh,ym,a,w,y,e,d,p,c,f,g,h,el,i,m,t,x,au'.split(',').indexOf(req.url.slice(2)) + 1], (t = ',,,,krunker,discordprox,chatbox,ythub,ytmobile,alloy,womginx,youtube,pydodge,discordhub,pmprox,credits,flash,gtools,games5,emulators,icons,gba,terms,bookmarklets,aurora'.split(',')[t]) && t + '.html'), 'utf8')));
 
 app.use(char_insert.static(path.join(__dirname, 'views')));
 
