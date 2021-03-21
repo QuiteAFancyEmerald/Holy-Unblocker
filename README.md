@@ -84,10 +84,10 @@ This website has been hosted locally on Alloy Proxy. More more information go to
 - `surf.html` : Web Proxies page, page offers to be redirected to any proxies you would like to add. In this case Alloy, Womginx, Powermouse and Via Unblocker.
 - `alloy.html` : Official Alloy Proxy page which features Alloy hosted locally but can be configured to redirect to an external instance.
 - `womginx.html` : Womginx Proxy page. Script links to a subdomain for Womginx, a highly fast proxy with captcha support.
-- `pmprox.html` : Powermouse Proxy pagge. Script links to a subdomain for Powermouse, a flexible secondary proxy compared to Alloy with support for Discord.
+- `pmprox.html` : SysYA Proxy page. Script links to a subdomain for SysYA Proxy, a flexible secondary proxy compared to Alloy with support for Discord.
 - `pydodge.html` : Via Unblocker page. Links to a subdomain with PyDodge or Via, a proxy which successes Node Unblocker
 - `youtube.html` : An proxied version of Youtube running off of the locally hosted Alloy Proxy.
-- `discordhub.html` : Hub for the Discord proxy and its links using a mixture of Alloy, Womginx and Ocean Proxy.
+- `discordhub.html` : Hub for the Discord proxy and its links using a mixture of Alloy and Womginx.
 - `gtools.html` : Games page, help from @BinBashBanana and @kinglalu.
 - `flash.html` : Games page for flash games, credits given to @BinBashBanana and Titanium Network for its assets.
 - `emulators.html` : Emulator navigation page, hosted locally on Holy Unblocker.
@@ -135,8 +135,11 @@ You will first want to host your proxies locally or externally. Note that an old
 Proxies which you will need for a full setup for Holy Unblocker:
 
 (Womginx) - https://github.com/binary-person/womginx
+
 (SysYA Proxy) - https://github.com/sysce/proxy
-(Via Unblocker/PyDodge: The source used for this proxy on the official sites is not public sadly.) - https://github.com/BinBashBanana/PyDodge or 
+
+(Via Unblocker/PyDodge: The source used for this proxy on the official sites is not public sadly.) - https://github.com/BinBashBanana/PyDodge
+
 (Alloy Proxy: Latest version) - https://github.com/titaniumnetwork-dev/alloy
 
 #### List of some good hosting options:
