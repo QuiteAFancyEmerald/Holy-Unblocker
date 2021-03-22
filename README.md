@@ -15,9 +15,9 @@ Read below for information if the official site is blocked or for obtaining more
 - Youtube.com
 - Discord.com
 - Google.com
-Reddit.com
-Bing.com
-And more!
+- Reddit.com
+- Bing.com
+- And more!
 
 #### Features:
 - Tab customization using the Options menu for improved stealth 
