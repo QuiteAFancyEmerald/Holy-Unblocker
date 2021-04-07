@@ -78,47 +78,49 @@ The default place for the proxy when it started is `http://localhost:8080`, but 
 This website has been hosted locally on Alloy Proxy. For more information, head over to the Alloy Proxy repository below.
 
 ## Structure
-- `index.html`: The official homepage of the site.
-- `surf.html`: Web Proxies page, the page offers to be redirected to any proxies you would like to add. In this case, Alloy, Womginx, Powermouse, and Via Unblocker.
-- `alloy.html`: Official Alloy Proxy page, which features Alloy hosted locally but can be configured to redirect to an external instance.
-- `womginx.html`: Womginx Proxy page. Script links to a subdomain for Womginx, a highly fast proxy with captcha support.
-- `pmprox.html`: SysYA Proxy page. Script links to a subdomain for SysYA Proxy, a flexible secondary proxy compared to Alloy with Discord support.
-- `pydodge.html`: Via Unblocker page. Links to a subdomain with PyDodge or Via, a proxy which successes Node Unblocker
-- `youtube.html`: An proxied version of Youtube running off of the locally hosted Alloy Proxy.
-- `discordhub.html`: Hub for the Discord proxy and its links using a mixture of Alloy and Womginx.
-- `gtools.html`: Games page, help from @BinBashBanana and @kinglalu.
-- `flash.html`: Games page for flash games, credits are given to @BinBashBanana and Titanium Network for its assets.
-- `emulators.html`: Emulator navigation page, hosted locally on Holy Unblocker.
-- `bookmarklets.html`: Bookmarklets page to be worked on more in the future.
-- `icons.html`: Information regarding Options Menu. 
-- `info.html`: Official Documentation page.
-- `terms.html`: Terms of Services, AUP, and Privacy Policy page.
-## Deprecated
-Left all of these just if you would like to set up the site differently as surf.js can be used instead.
-- `ythub.html`: Page linking proxied Youtube.
-- `ytmobile.html`: Page linking to a proxied YouTube for mobile users
-- `discordprox.html`: Links to a discord proxied through Alloy.
-- `gba.html`: Locally hosted Gameboy Emulator.
-- `chatbox.html`: Links to an externally hosted Chatbox.
-- `krunker.html`: An iframe version of Krunker with keyword changes. It can be removed if not needed.
+- `index.html` : The official homepage of the site.
+- `404.html` : The 404 page.
+- `error.html` : Other misc errors that are not 404.
+- `info.html` : Documentation (This page!)
+- `faq.html` : Frequently asked questions page.
+- `status.html` : Has 3 backup Holy Unblocker links.
+- `hidden.html` : Fake "Site not Found" page (unused)
+- `frame.html` : Handles any pages under stealth.
+- `surf.html` : Web Proxies page, page offers to be redirected to any proxies you would like to add. In this case Alloy, Womginx, SysYa and Via Unblocker.
+- `credits.html` : List of all contributors to the site.
+- `bookmarklets.html` : Bookmarklets page to be worked on more in the future.
+- `icons.html` : Information regarding Settings Menu page. Added this in for standard users.
+- `terms.html` : Terms of Services, AUP and Privacy Policy page.
+- `gtools.html` : Games page, help from @BinBashBanana and @kinglalu.
+- `games5.html` : HTML5 game navigation page.
+- `emulators.html` : Emulator navigation page, using [webretro](https://github.com/BinBashBanana/webretro)</a>.
+- `flash.html` : Games page for flash games, credits given to @BinBashBanana and Titanium Network for its assets.
+- `alloy.html` : Official Alloy Proxy page which features Alloy hosted locally but can be configured to redirect to an external instance.
+- `womginx.html` : Womginx Proxy page. Script links to a subdomain for Womginx, a highly fast proxy with reCaptcha and discord support.
+- `pmprox.html` : SysYa Proxy page. Script links to a subdomain for SysYa, a flexible secondary proxy.
+- `pydodge.html` : Via Unblocker page. Links to a subdomain with PyDodge or Via.
+- `youtube.html` : An proxied version of Youtube running off of the locally hosted Alloy Proxy.
+- `discordhub.html` : Hub for the Discord proxy (Currently Womginx only).
 ### Structure Information
-- `/views/`: The physical site base of Holy Unblocker goes here where static assets are served.
-- `/src/`: For future implementation of obfuscation and keyword removing features.
-#### Details of /views/
+- `/views/` : The physical site base of Holy Unblocker goes here where static assets are served.
+- `/src/` : For future implementation of obfuscation and keyword removing features.
+
+#### Details of `/views/`
 - `/pages/` is used for important pages for the site.
 - `/expr/` is used for important proxy scripts.
 - `/archive/` is used for game related assets and pages.
-- `/assets/` is used for various assets for CSS, JS and Bootstrap.
+-  `/assets/` is used for various assets for CSS, JS and Bootstrap.
 - `/vibeOS/` is used for vibeOS, an in-browser OS enviroment.
-#### Scripts located in /expr
-- `surf.js` is used for proxy navigation, both Stealth mode and Classic mode.
-- `h5-nav.js` is used for navigation on the games page, Stealth mode only.
-- `surf-dev.js` is used for proxy navigation on the official sites.
+
+#### Scripts located in `/expr`
+- `common.js` is used on all of the pages for common useful functions.
+- `surf.js` is used for proxy navigation; both stealth mode and classic mode.
+- `h5-nav.js`, `emu-nav.js`, `flash-nav.js` are used for navigation on the games pages.
+
 ## Future Additions
-- Expand the game library
-- Go through various parity changes.
-- Clean up the source a bit
-A- dd more locally hosted proxies possibly.
+- Expansive game library
+- Various parity changes.
+
 ## An explanation for Beginners With External Proxies and Hosting
 You will first want to host your proxies locally or externally. Note that an older version of Alloy proxy is the only proxy hosted locally with this distribution of Holy Unblocker.
 
@@ -255,7 +257,7 @@ There are two methods for fixing this:
 - Reloading the page usually when the error above happens should load the video.
 - Alternatively, right-clicking the page and doing Reload Frame if you are using some form of Stealth Mode may work.
 
-**When using Discord under Alloy or Powermouse, why does the page stay gray/white, or the QR code not loading? **
+**When using Discord under Alloy or SysYa, why does the page stay gray/white, or the QR code not loading? **
 
 Womginx now supports logging in, usually for Discord. However, here are the steps related to Alloy troubleshooting.
 Note that this is for the older discord proxy steps with Alloy and SysYA Proxy.

@@ -3,23 +3,29 @@
 /* MIT license: http://opensource.org/licenses/MIT
 /* Hidden Links
 /* ----------------------------------------------- */
-$ = e => document.getElementById(e) || [];
 
-$("hblink").href = "https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic";
-$("inspectel").href = 'javascript:(function(){var script=document.createElement("script");script.src="https://x-ray-goggles.mouse.org/webxray.js";script.className="webxray";script.setAttribute("data-lang","en-US");script.setAttribute("data-baseuri","https://x-ray-goggles.mouse.org");document.body.appendChild(script)}());';
-$("portasite").href = 'javascript:((function(){var a,b,c;c="https://example.com",b=document.createElement("iframe"),b.setAttribute("src",c),b.setAttribute("id","cloak-page"),b.setAttribute("style","position: fixed; width: 100%; height: 100%; top: 0; left: 0; right: 0; bottom: 0; z-index: 99999999999; background-color: #fff;"),a=document.getElementsByTagName("body")[0],a.appendChild(b)})).call(this);';
-$("universaltb").href = "WIP";
-$("universaltb2").href = "WIP";
-$("hblink2").href = "https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic";
-$("allink").href = "https://github.com/titaniumnetwork-dev/alloyproxy";
-$("aulink").href ="https://github.com/titaniumnetwork-dev/Aurora";
-$("tnlink").href = "https://discord.gg/hcUUceSCtj";
-$("plink").href = "https://github.com/sysce/proxy";
-$("wnlink").href = "https://github.com/binary-person/womginx";
-$("nclink").href = "https://nodeclusters.com/billing/link.php?id=9";
-$("qrlink").href = "https://support.discord.com/hc/en-us/articles/360039213771-QR-Code-Login-FAQ";
-$("nulink").href = "https://github.com/nfriedly/node-unblocker";
-$("pylink").href = "https://github.com/BinBashBanana/PyDodge";
-$("temp1").href = "https://petty.gq";
-$("temp2").href = "https://precede.design";
-$("temp3").href = "https://duketrack.me"
+var hulinks = {
+	"hblink": "https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic",
+	"inspectel": 'javascript:(function(){var a=document.createElement("script");a.src="https://x-ray-goggles.mouse.org/webxray.js";a.className="webxray";a.setAttribute("data-lang","en-US");a.setAttribute("data-baseuri","https://x-ray-goggles.mouse.org");document.body.appendChild(a);}());',
+	"portasite": 'javascript:(function(){var a=document.getElementById("rusic-modal")||document.createElement("iframe");a.setAttribute("allow","fullscreen");a.src="https://example.com";a.id="rusic-modal";a.style="position:fixed;width:100vw;height:100vh;top:0px;left:0px;right:0px;bottom:0px;z-index:2147483647;background-color:white;border:none;";document.body.appendChild(a);}());',
+	"universaltb": "WIP",
+	"universaltb2": "WIP",
+	"hblink2": "https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic",
+	"allink": "https://github.com/titaniumnetwork-dev/alloy",
+	"plink": "https://github.com/sysce/proxy",
+	"wnlink": "https://github.com/binary-person/womginx",
+	"pylink": "https://github.com/BinBashBanana/PyDodge",
+	"nulink": "https://github.com/nfriedly/node-unblocker",
+	"tnlink": "https://discord.gg/hcUUceSCtj",
+	"nclink": "https://nodeclusters.com",
+	"qrlink": "https://support.discord.com/hc/en-us/articles/360039213771-QR-Code-Login-FAQ",
+	"temp1": "https://petty.gq",
+	"temp2": "https://precede.design",
+	"temp3": "https://duketrack.me"
+};
+
+hulinks_array = Object.keys(hulinks);
+
+for (let i = 0; i < hulinks_array.length; i++) {
+	tryGetElement(hulinks_array[i]).href = hulinks[hulinks_array[i]];
+}

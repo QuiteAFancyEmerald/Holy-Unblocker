@@ -1,6 +1,6 @@
 var SPRITES = {
   PALM_TREE:              { x:    5, y:    5, w:  215, h:  540 },
-  BILLBOARD08:            { x:  230, y:    5, w:  385, h:  265 },
+  BILLBOARD08:            { x:  230, y:    5, w:  385, h:  241 },
   TREE1:                  { x:  625, y:    5, w:  360, h:  360 },
   DEAD_TREE1:             { x:    5, y:  555, w:  135, h:  332 },
   BILLBOARD09:            { x:  150, y:  555, w:  328, h:  282 },

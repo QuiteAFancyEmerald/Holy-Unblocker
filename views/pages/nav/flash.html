@@ -23,14 +23,11 @@
     <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
     <script src="assets/js/header.js"></script>
     <!--<script src="assets/js/im-runtime.js"></script>-->
-    <link rel="application/javascript" href="/assets/js/games.js">
     <script async src="https://arc.io/widget.min.js#2BzvQ1em"></script>
 </head>
 
 <body>
-    <span style=display:none data-cooking=cooks>Methods Heat can transform the flavor and texture of ingredients. Browning meat and other ingredients, for example, involves complex chemical reactions. Fruits and vegetables contain sugars that caramelize when browned. The reaction in browning proteins, such as those in meat and poultry, is called the Maillard reaction after Louis Camille Maillard, the French chemist who discovered it. The Maillard reaction produces many new chemical compounds. These compounds give the food new flavors and aromas. The browned bits of food that stick to a pan are called fond, a French word meaning bottom. Many sauces make use of the rich, complex flavors of fond. Browning can only occur at temperatures above the boiling point of water, which is 212 °F (100 °C) at sea level. For this reason, moisture around the exterior of food must evaporate before the food can brown. Air and fat, as well as the metal surfaces of pans, can reach extremely high temperatures in browning. But cooking ingredients at high temperature for too long removes moisture, turning food dry and chewy. Skilled cooks will therefore carefully control both heat and moisture when cooking. Cooking with dry heat involves exposing food to hot air. As the air moves around the food’s surface, its heat is transferred to the cooler food. Roasting traditionally involved cooking large pieces of meat—or even a whole animal, such as a pig or a lamb—over an open fire. But today, roasting generally refers to cooking food in a hot oven. Roasting meat or vegetables in a high temperature oven—above 400 °F (205 °C)—causes the food to brown quickly. But high temperatures can also dry out food. Cooks thus sometimes brown meat and then finish it in a lower temperature oven to keep it moist inside. Cooks often roast ingredients on a rack above a roasting pan, enabling hot air to reach all sides of the food.</span>
-    <!--Display Frame-->
-    <iframe id="frame" style="display:block; visibility: hidden;"></iframe>
+    <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <!-- Important: Use <wbr> to mess with keywords. -->
     <div>
         <div class="header-dark">
@@ -47,7 +44,6 @@
                             <li id="ch" data-bs-hover-animate="pulse" class="nav-item" role="presentation"><a class="nav-link" href="/?n" style="font-family: 'Montserrat Alternates', sans-serif;">Cha&#8203;tbox</a></li>
                             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-bs-hover-animate="pulse" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;color: rgb(255,255,255);font-family: 'Montserrat Alternates', sans-serif;">More</a>
                                 <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;">
-                                    <a class="dropdown-item text-left text-white-50" role="presentation" href="/?k" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Kru&#8203;nk&#8203;er</a>
                                     <a class="dropdown-item text-left text-white-50" role="presentation" href="/?in" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Docs</a>
                                     <a class="dropdown-item text-left text-white-50" role="presentation" href="/?faq" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">FAQ</a>
                                     <a class="dropdown-item text-white-50" role="presentation" href="/?c" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Cre&#8203;dits</a>
@@ -83,7 +79,7 @@
             </nav>
             <!-- Particles.js background  -->
             <div id="particles-js" style="height: 500px;">
-                <div class="d-flex justify-content-center align-items-center" style="height: inherit;min-height: initial;width: 100%;position: absolute;left: 0;">
+                <div class="d-flex justify-content-center" style="position:absolute;width:100%;">
                     <script src="particles.js"></script>
                     <script>
                         /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
@@ -94,150 +90,145 @@
                     <!-- Games Embed  -->
                     <div class="container">
                         <div class="box">
-                            <div id="glist" style="padding-top: 2%;">
-                                <script>
-                                    function gsearch() {
-                                        var e, t, n, a;
-                                        for (e = document.getElementById("gsearchbar").value.toUpperCase(), t = document.getElementById("glist"), a = 0; a < t.querySelectorAll("a[href]").length; a++)(n = t.getElementsByTagName("a")[a]).innerHTML.toUpperCase().indexOf(e) > -1 ? n.style.display = "block" : n.style.display = "none"
-                                    }
-                                </script>
+                            <div id="glist">
                                 <!-- Important: Use <wbr> to mess with keywords.  -->
-                                <input type="text" id="gsearchbar" onkeyup="gsearch()" autocomplete="off" placeholder="Search" />
+                                <input type="text" id="gsearchbar" onkeyup="var a=document.querySelectorAll('#glist a[href]');for(var i=0;i<a.length;i++)a[i].style.display=a[i].textContent.toUpperCase().indexOf(this.value.toUpperCase())!=-1?'block':'none'" autocomplete="off" placeholder="Search" />
                                 <h2>Fl<wbr>ash Ga<wbr>mes</h2>
-                                <a class="glink" href="?fg#1on1soccer">1<wbr>on1<wbr>soccer</a>
-                                <a class="glink" href="?fgl#3dtanks">3dta<wbr>nks</a>
-                                <a class="glink" href="?fg#abobosbigadventure">Abobosb<wbr>igadve<wbr>nture</a>
-                                <a class="glink" href="?fg#achievementunlocked">Achi<wbr>evementu<wbr>nlocked</a>
-                                <a class="glink" href="?fg#achievementunlocked2">Achi<wbr>evementunlo<wbr>cked2</a>
-                                <a class="glink" href="?fg#achievementunlocked3">Achievementunl<wbr>ocked3</a>
-                                <a class="glink" href="?fg#actionturnip">Actiont<wbr>urnip</a>
-                                <a class="glink" href="?fg#adaran">Ada<wbr>ran</a>
-                                <a class="glink" href="?fg#adrenaline">Adren<wbr>aline</a>
-                                <a class="glink" href="?fg#americanracing1">Americ<wbr>anrac<wbr>ing1</a>
-                                <a class="glink" href="?fg#americanracing2">Americanracing2</a>
-                                <a class="glink" href="?fg#arkandianrevenant">Arka<wbr>ndianrev<wbr>enant</a>
-                                <a class="glink" href="?fg#awesomecars">Aweso<wbr>mecars</a>
-                                <a class="glink" href="?fg#awesomeplanes">Aweso<wbr>meplanes</a>
-                                <a class="glink" href="?fg#bloonsplayerpack2">Bloo<wbr>nspla<wbr>yerpack2</a>
-                                <a class="glink" href="?fg#bloonsplayerpack3">Bloon<wbr>splayerpack3</a>
-                                <a class="glink" href=".?fg#bloonsplayerpack4">Bloonsplay<wbr>erpack4</a>
-                                <a class="glink" href="?fg#bloonsplayerpack5">Blo<wbr>onspla<wbr>yerpack5</a>
-                                <a class="glink" href="?fg#bloonstd1">Bloo<wbr>nstd1</a>
-                                <a class="glink" href="?fg#bloonstd3">Bloo<wbr>nstd3</a>
-                                <a class="glink" href="?fg#bloonstd4">Blo<wbr>onstd4</a>
-                                <a class="glink" href="?fgl#bloonstd5">Bl<wbr>oonstd5</a>
-                                <a class="glink" href="?fg#bobtherobber">Bobthe<wbr>rob<wbr>ber</a>
-                                <a class="glink" href="?fg#boombot2">Boom<wbr>bot2</a>
-                                <a class="glink" href="?fg#boxhead2play">Boxh<wbr>ead2pl<wbr>ay</a>
-                                <a class="glink" href="?fg#bubbletanks2">Bubb<wbr>letanks2</a>
-                                <a class="glink" href="?fg#bulletbill">Bulle<wbr>tbill</a>
-                                <a class="glink" href="?fg#cactusmccoy">Cact<wbr>usmccoy</a>
-                                <a class="glink" href="?fg#cactusmccoy2">Cac<wbr>tusmccoy2</a>
-                                <a class="glink" href="?fg#cargobridge">Carg<wbr>obridge</a>
-                                <a class="glink" href="?fg#causality">Caus<wbr>ality</a>
-                                <a class="glink" href="?fg#computerbashing">Com<wbr>puterbashing</a>
-                                <a class="glink" href="?fg#crushthecastle">Cru<wbr>shthecastle</a>
-                                <a class="glink" href="?fg#cubefield">Cube<wbr>field</a>
-                                <a class="glink" href="?fg#cyclomaniacs2">Cyc<wbr>lomaniacs2</a>
-                                <a class="glink" href="?fg#diggy">Di<wbr>ggy</a>
-                                <a class="glink" href="?fg#donkeykong">Don<wbr>keykong</a>
-                                <a class="glink" href="?fg#dontshootthepuppy">Dont<wbr>shoott<wbr>hepuppy</a>
-                                <a class="glink" href="?fg#doodledefender">Doodl<wbr>ede<wbr>fender</a>
-                                <a class="glink" href="?fg#doom">Do<wbr>om</a>
-                                <a class="glink" href="?fg#ducklife">Duc<wbr>klife</a>
-                                <a class="glink" href="?fg#ducklife2">Duckl<wbr>ife2</a>
-                                <a class="glink" href="?fg#ducklife3">Du<wbr>cklife3</a>
-                                <a class="glink" href="?fg#ducklife4">Duckl<wbr>ife4</a>
-                                <a class="glink" href="?fg#earntodiesuperwheel">Earnt<wbr>odi<wbr>esuperwheel</a>
-                                <a class="glink" href="?fg#electricman2">Electri<wbr>cman2</a>
-                                <a class="glink" href="?fg#elephantquest">Elephantq<wbr>uest</a>
-                                <a class="glink" href="?fg#epicbattlefantasy3">Epicb<wbr>attlefantasy3</a>
-                                <a class="glink" href="?fg#epiccomboredux">Epicco<wbr>mboredux</a>
-                                <a class="glink" href="?fg#exitpath">Exit<wbr>path</a>
-                                <a class="glink" href="?fg#factoryballs">Factory<wbr>balls</a>
-                                <a class="glink" href="?fg#factoryballs2">Fact<wbr>oryballs2</a>
-                                <a class="glink" href="?fg#factoryballs3">Factorybal<wbr>ls3</a>
-                                <a class="glink" href="?fg#factoryballs4">Fa<wbr>ctoryballs4</a>
-                                <a class="glink" href="?fg#flashflightsimulator">Flash<wbr>flightsim<wbr>ula<wbr>tor</a>
-                                <a class="glink" href="?fg#flight">Fl<wbr>ight</a>
-                                <a class="glink" href="?fg#happywheels">Hap<wbr>pywhee<wbr>ls</a>
-                                <a class="glink" href="?fg#hobo">Ho<wbr>bo</a>
-                                <a class="glink" href="?fg#hobo2">Ho<wbr>bo2</a>
-                                <a class="glink" href="?fg#hobo3">H<wbr>obo3</a>
-                                <a class="glink" href="?fg#hobo4">H<wbr>obo4</a>
-                                <a class="glink" href="?fg#hobo5">H<wbr>obo5</a>
-                                <a class="glink" href="?fg#hobo6">Ho<wbr>bo6</a>
-                                <a class="glink" href="?fg#hobo7">Hob<wbr>o7</a>
-                                <a class="glink" href="?fg#interactivebuddy">Int<wbr>eractivebuddy</a>
-                                <a class="glink" href="?fg#jacksmith">Jacksm<wbr>ith</a>
-                                <a class="glink" href="?fg#jellytruck">Jell<wbr>ytruck</a>
-                                <a class="glink" href="?fg#johnnyupgrade">John<wbr>nyupgrade</a>
-                                <a class="glink" href="?fg#jumpix2">Jum<wbr>pix2</a>
-                                <a class="glink" href="?fg#learn2fly">Lear<wbr>n2fly</a>
-                                <a class="glink" href="?fg#magnetface">Mag<wbr>netface</a>
-                                <a class="glink" href="?fg#marioracingtournament">Mari<wbr>oracingto<wbr>urnament</a>
-                                <a class="glink" href="?fg#megamanprojectx">Mega<wbr>manprojectx</a>
-                                <a class="glink" href="?fg#metroidelements">Metroid<wbr>elements</a>
-                                <a class="glink" href="?fg#mineblocks">Minebl<wbr>ocks</a>
-                                <a class="glink" href="?fg#minesweeper">Min<wbr>esweeper</a>
-                                <a class="glink" href="?fg#mirrorsedge">Mirr<wbr>orsedge</a>
-                                <a class="glink" href="?fg#motherload">Moth<wbr>erload</a>
-                                <a class="glink" href="?fg#multitask">Mu<wbr>ltitask</a>
-                                <a class="glink" href="?fg#mutilateadoll2">Muti<wbr>lateadoll2</a>
-                                <a class="glink" href="?fg#myangel">My<wbr>angel</a>
-                                <a class="glink" href="?fg#nanotube">Nano<wbr>tube</a>
-                                <a class="glink" href="?fg#ngame">Ng<wbr>ame</a>
-                                <a class="glink" href="?fg#nucleus">Nu<wbr>cleus</a>
-                                <a class="glink" href="?fg#nyancatlostinspace">Nyanca<wbr>tlosti<wbr>nspace</a>
-                                <a class="glink" href="?fg#onemanarmy2">One<wbr>manarmy2</a>
-                                <a class="glink" href="?fg#pacman">Pac<wbr>man</a>
-                                <a class="glink" href="?fg#pandemic">Pand<wbr>emic</a>
-                                <a class="glink" href="?fg#pandemic2">Pa<wbr>ndemic2</a>
-                                <a class="glink" href="?fg#papalouie">Pap<wbr>alouie</a>
-                                <a class="glink" href="?fg#papalouie2">Pa<wbr>palouie2</a>
-                                <a class="glink" href="?fg#papalouie3">Pap<wbr>alouie3</a>
-                                <a class="glink" href="?fg#portal">Port<wbr>al</a>
-                                <a class="glink" href="?fg#portal2d">Por<wbr>tal2d</a>
-                                <a class="glink" href="?fg#qwop">Q<wbr>wop</a>
-                                <a class="glink" href="?fg#raftwars">Raftw<wbr>ars</a>
-                                <a class="glink" href="?fg#raftwars2">Raf<wbr>twars2</a>
-                                <a class="glink" href="?fg#raze">R<wbr>aze</a>
-                                <a class="glink" href="?fg#redshift">Red<wbr>shift</a>
-                                <a class="glink" href="?fg#revenant2">Rev<wbr>enant2</a>
-                                <a class="glink" href="?fg#run2">R<wbr>un2</a>
-                                <a class="glink" href="?fg#run3">Ru<wbr>n3</a>
-                                <a class="glink" href="?fg#saszombieassault3">Saszombie<wbr>assault3</a>
-                                <a class="glink" href="?fg#shoppingcarthero3">Sh<wbr>oppingcarthero3</a>
-                                <a class="glink" href="?fg#siftheads">Sifthe<wbr>ads</a>
-                                <a class="glink" href="?fg#siftheads2">Si<wbr>ftheads2</a>
-                                <a class="glink" href="?fg#siftheads3">Sif<wbr>theads3</a>
-                                <a class="glink" href="?fg#siftheads4">Sifthe<wbr>ads4</a>
-                                <a class="glink" href="?fg#siftheads5">Sif<wbr>theads5</a>
-                                <a class="glink" href="?fg#sniperassassin4">Snipera<wbr>ssassin4</a>
-                                <a class="glink" href="?fg#sportsheadsfootball">Sportsh<wbr>eadsfo<wbr>otball</a>
-                                <a class="glink" href="?fg#stickrpg">Stic<wbr>krpg</a>
-                                <a class="glink" href="?fg#stickrun2">St<wbr>ickrun2</a>
-                                <a class="glink" href="?fg#stickwar">Sti<wbr>ckwar</a>
-                                <a class="glink" href="?fg#strikeforceheroes2">Strikeforce<wbr>heroes2</a>
-                                <a class="glink" href="?fg#strikeforcekittylaststand">Strikefor<wbr>cekittylast<wbr>stand</a>
-                                <a class="glink" href="?fg#sugarsugar">Su<wbr>gars<wbr>ugar</a>
-                                <a class="glink" href="?fg#sugarsugar2">Sug<wbr>arsug<wbr>ar2</a>
-                                <a class="glink" href="?fg#sugarsugar3">Sugarsu<wbr>gar3</a>
-                                <a class="glink" href="?fg#superd">S<wbr>uperd</a>
-                                <a class="glink" href="?fg#superfighters">Su<wbr>perfig<wbr>hters</a>
-                                <a class="glink" href="?fg#supermario63">Superm<wbr>ario63</a>
-                                <a class="glink" href="?fg#supermarioflash">Superma<wbr>rioflash</a>
-                                <a class="glink" href="?fg#swordsandsandals2">Swordsand<wbr>sandals2</a>
-                                <a class="glink" href="?fg#tacticalassassin">Tac<wbr>ticalassa<wbr>ssin</a>
-                                <a class="glink" href="?fg#tanks">Ta<wbr>nks</a>
-                                <a class="glink" href="?fg#tanktrouble">Tanktroub<wbr>le</a>
-                                <a class="glink" href="?fg#tetris">Te<wbr>tris</a>
-                                <a class="glink" href="?fg#thebindingofisaac">Thebin<wbr>ding<wbr>ofis<wbr>aac</a>
-                                <a class="glink" href="?fg#theimpossiblequiz2">Theimpossi<wbr>blequiz2</a>
-                                <a class="glink" href="?fg#theworldshardestgame2">Thew<wbr>orldshar<wbr>destgame2</a>
-                                <a class="glink" href="?fg#thingthingarena">Thingth<wbr>inga<wbr>rena</a>
-                                <a class="glink" href="?fg#tosstheturtle">Tosst<wbr>he<wbr>turtle</a>
-                                <a class="glink" href="?fg#ultimateflashsonic">Ultima<wbr>tefl<wbr>ashso<wbr>nic</a>
+                                <a class="glink" href="#">1<wbr>on1<wbr>soccer</a>
+                                <a class="glink" href="#">3dta<wbr>nks</a>
+                                <a class="glink" href="#">Abobosb<wbr>igadve<wbr>nture</a>
+                                <a class="glink" href="#">Achi<wbr>evementu<wbr>nlocked</a>
+                                <a class="glink" href="#">Achi<wbr>evementunlo<wbr>cked2</a>
+                                <a class="glink" href="#">Achievementunl<wbr>ocked3</a>
+                                <a class="glink" href="#">Actiont<wbr>urnip</a>
+                                <a class="glink" href="#">Ada<wbr>ran</a>
+                                <a class="glink" href="#">Adren<wbr>aline</a>
+                                <a class="glink" href="#">Americ<wbr>anrac<wbr>ing1</a>
+                                <a class="glink" href="#">Americanracing2</a>
+                                <a class="glink" href="#">Arka<wbr>ndianrev<wbr>enant</a>
+                                <a class="glink" href="#">Aweso<wbr>mecars</a>
+                                <a class="glink" href="#">Aweso<wbr>meplanes</a>
+                                <a class="glink" href="#">Bloo<wbr>nspla<wbr>yerpack2</a>
+                                <a class="glink" href="#">Bloon<wbr>splayerpack3</a>
+                                <a class="glink" href="#">Bloonsplay<wbr>erpack4</a>
+                                <a class="glink" href="#">Blo<wbr>onspla<wbr>yerpack5</a>
+                                <a class="glink" href="#">Bloo<wbr>nstd1</a>
+                                <a class="glink" href="#">Bloo<wbr>nstd3</a>
+                                <a class="glink" href="#">Blo<wbr>onstd4</a>
+                                <a class="glink" href="#">Bl<wbr>oonstd5</a>
+                                <a class="glink" href="#">Bobthe<wbr>rob<wbr>ber</a>
+                                <a class="glink" href="#">Boom<wbr>bot2</a>
+                                <a class="glink" href="#">Boxh<wbr>ead2pl<wbr>ay</a>
+                                <a class="glink" href="#">Bubb<wbr>letanks2</a>
+                                <a class="glink" href="#">Bulle<wbr>tbill</a>
+                                <a class="glink" href="#">Cact<wbr>usmccoy</a>
+                                <a class="glink" href="#">Cac<wbr>tusmccoy2</a>
+                                <a class="glink" href="#">Carg<wbr>obridge</a>
+                                <a class="glink" href="#">Caus<wbr>ality</a>
+                                <a class="glink" href="#">Com<wbr>puterbashing</a>
+                                <a class="glink" href="#">Cru<wbr>shthecastle</a>
+                                <a class="glink" href="#">Cube<wbr>field</a>
+                                <a class="glink" href="#">Cyc<wbr>lomaniacs2</a>
+                                <a class="glink" href="#">Di<wbr>ggy</a>
+                                <a class="glink" href="#">Don<wbr>keykong</a>
+                                <a class="glink" href="#">Dont<wbr>shoott<wbr>hepuppy</a>
+                                <a class="glink" href="#">Doodl<wbr>ede<wbr>fender</a>
+                                <a class="glink" href="#">Do<wbr>om</a>
+                                <a class="glink" href="#">Duc<wbr>klife</a>
+                                <a class="glink" href="#">Duckl<wbr>ife2</a>
+                                <a class="glink" href="#">Du<wbr>cklife3</a>
+                                <a class="glink" href="#">Duckl<wbr>ife4</a>
+                                <a class="glink" href="#">Earnt<wbr>odi<wbr>esuperwheel</a>
+                                <a class="glink" href="#">Electri<wbr>cman2</a>
+                                <a class="glink" href="#">Elephantq<wbr>uest</a>
+                                <a class="glink" href="#">Epicb<wbr>attlefantasy3</a>
+                                <a class="glink" href="#">Epicco<wbr>mboredux</a>
+                                <a class="glink" href="#">Exit<wbr>path</a>
+                                <a class="glink" href="#">Factory<wbr>balls</a>
+                                <a class="glink" href="#">Fact<wbr>oryballs2</a>
+                                <a class="glink" href="#">Factorybal<wbr>ls3</a>
+                                <a class="glink" href="#">Fa<wbr>ctoryballs4</a>
+                                <a class="glink" href="#">Flash<wbr>flightsim<wbr>ula<wbr>tor</a>
+                                <a class="glink" href="#">Fl<wbr>ight</a>
+                                <a class="glink" href="#">Hap<wbr>pywhee<wbr>ls</a>
+                                <a class="glink" href="#">Ho<wbr>bo</a>
+                                <a class="glink" href="#">Ho<wbr>bo2</a>
+                                <a class="glink" href="#">H<wbr>obo3</a>
+                                <a class="glink" href="#">H<wbr>obo4</a>
+                                <a class="glink" href="#">H<wbr>obo5</a>
+                                <a class="glink" href="#">Ho<wbr>bo6</a>
+                                <a class="glink" href="#">Hob<wbr>o7</a>
+								<a class="glink" href="#">Hou<wbr>seofwolves</a>
+                                <a class="glink" href="#">Int<wbr>eractivebuddy</a>
+                                <a class="glink" href="#">Jacksm<wbr>ith</a>
+                                <a class="glink" href="#">Jell<wbr>ytruck</a>
+                                <a class="glink" href="#">John<wbr>nyupgrade</a>
+                                <a class="glink" href="#">Jum<wbr>pix2</a>
+                                <a class="glink" href="#">Lear<wbr>n2fly</a>
+                                <a class="glink" href="#">Mag<wbr>netface</a>
+                                <a class="glink" href="#">Mari<wbr>oracingto<wbr>urnament</a>
+                                <a class="glink" href="#">Mega<wbr>manprojectx</a>
+                                <a class="glink" href="#">Metroid<wbr>elements</a>
+                                <a class="glink" href="#">Minebl<wbr>ocks</a>
+                                <a class="glink" href="#">Min<wbr>esweeper</a>
+                                <a class="glink" href="#">Mirr<wbr>orsedge</a>
+                                <a class="glink" href="#">Moth<wbr>erload</a>
+                                <a class="glink" href="#">Mu<wbr>ltitask</a>
+                                <a class="glink" href="#">Muti<wbr>lateadoll2</a>
+                                <a class="glink" href="#">My<wbr>angel</a>
+                                <a class="glink" href="#">Nano<wbr>tube</a>
+                                <a class="glink" href="#">Ng<wbr>ame</a>
+                                <a class="glink" href="#">Nu<wbr>cleus</a>
+                                <a class="glink" href="#">Nyanca<wbr>tlosti<wbr>nspace</a>
+                                <a class="glink" href="#">One<wbr>manarmy2</a>
+                                <a class="glink" href="#">Pac<wbr>man</a>
+                                <a class="glink" href="#">Pand<wbr>emic</a>
+                                <a class="glink" href="#">Pa<wbr>ndemic2</a>
+                                <a class="glink" href="#">Pap<wbr>alouie</a>
+                                <a class="glink" href="#">Pa<wbr>palouie2</a>
+                                <a class="glink" href="#">Pap<wbr>alouie3</a>
+                                <a class="glink" href="#">Port<wbr>al</a>
+                                <a class="glink" href="#">Por<wbr>tal2d</a>
+                                <a class="glink" href="#">Q<wbr>wop</a>
+                                <a class="glink" href="#">Raftw<wbr>ars</a>
+                                <a class="glink" href="#">Raf<wbr>twars2</a>
+                                <a class="glink" href="#">R<wbr>aze</a>
+                                <a class="glink" href="#">Red<wbr>shift</a>
+                                <a class="glink" href="#">Rev<wbr>enant2</a>
+                                <a class="glink" href="#">R<wbr>un2</a>
+                                <a class="glink" href="#">Ru<wbr>n3</a>
+                                <a class="glink" href="#">Saszombie<wbr>assault3</a>
+                                <a class="glink" href="#">Sh<wbr>oppingcarthero3</a>
+                                <a class="glink" href="#">Sifthe<wbr>ads</a>
+                                <a class="glink" href="#">Si<wbr>ftheads2</a>
+                                <a class="glink" href="#">Sif<wbr>theads3</a>
+                                <a class="glink" href="#">Sifthe<wbr>ads4</a>
+                                <a class="glink" href="#">Sif<wbr>theads5</a>
+                                <a class="glink" href="#">Snipera<wbr>ssassin4</a>
+                                <a class="glink" href="#">Sportsh<wbr>eadsfo<wbr>otball</a>
+                                <a class="glink" href="#">Stic<wbr>krpg</a>
+                                <a class="glink" href="#">St<wbr>ickrun2</a>
+                                <a class="glink" href="#">Sti<wbr>ckwar</a>
+                                <a class="glink" href="#">Strikeforce<wbr>heroes2</a>
+                                <a class="glink" href="#">Strikefor<wbr>cekittylast<wbr>stand</a>
+                                <a class="glink" href="#">Su<wbr>gars<wbr>ugar</a>
+                                <a class="glink" href="#">Sug<wbr>arsug<wbr>ar2</a>
+                                <a class="glink" href="#">Sugarsu<wbr>gar3</a>
+                                <a class="glink" href="#">S<wbr>uperd</a>
+                                <a class="glink" href="#">Su<wbr>perfig<wbr>hters</a>
+                                <a class="glink" href="#">Superm<wbr>ario63</a>
+                                <a class="glink" href="#">Superma<wbr>rioflash</a>
+                                <a class="glink" href="#">Swordsand<wbr>sandals2</a>
+                                <a class="glink" href="#">Tac<wbr>ticalassa<wbr>ssin</a>
+                                <a class="glink" href="#">Ta<wbr>nks</a>
+                                <a class="glink" href="#">Tanktroub<wbr>le</a>
+                                <a class="glink" href="#">Te<wbr>tris</a>
+                                <a class="glink" href="#">Thebin<wbr>ding<wbr>ofis<wbr>aac</a>
+                                <a class="glink" href="#">Theimpossi<wbr>blequiz2</a>
+                                <a class="glink" href="#">Thew<wbr>orldshar<wbr>destgame2</a>
+                                <a class="glink" href="#">Thingth<wbr>inga<wbr>rena</a>
+                                <a class="glink" href="#">Tosst<wbr>he<wbr>turtle</a>
+                                <a class="glink" href="#">Ultima<wbr>tefl<wbr>ashso<wbr>nic</a>
                             </div>
                         </div>
                     </div>
@@ -283,8 +274,10 @@
         </footer>
     </div>
     <!--Scripts-->
+	<script src="expr/common.js"></script>
     <script src="assets/js/links.js"></script>
     <script src="expr/surf.js"></script>
+	<script src="expr/flash-nav.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>

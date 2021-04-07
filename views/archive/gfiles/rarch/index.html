@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- https://github.com/BinBashBanana/webretro -->
+<html>
+	<head>
+		<!-- HU Querystring fix -->
+		<base href="/archive/gfiles/rarch/">
+		
+		<title>Emulator</title>
+		<link rel="stylesheet" href="assets/base.css">
+	</head>
+	<body>
+		<div class="main" id="mainarea">
+			<ul id="menu">
+				<div id="menuindicator">
+					<h1>&uarr;</h1>
+					<h2>Menu</h2>
+				</div>
+				<li>Controls
+					<ul>
+						<li>Start: Enter</li>
+						<li>Select: Space</li>
+						<li>L/R Triggers: RO</li>
+						<li>L/R Shoulders: EP</li>
+						<li>ABXY Buttons: HGYT</li>
+						<li>DPad: Arrow keys</li>
+						<li>Left joy/thumb: WASDX</li>
+						<li>Right joy/thumb: IJKL,</li>
+						<li><a target="_blank" title="Opens in new tab" href="assets/controller_layout.png">Controller Layout</a></li>
+						<li><a href="" title="Opens in new tab" onclick="window.open(window.URL.createObjectURL(new Blob([decodeURIComponent(atob('JTNDIURPQ1RZUEUlMjBodG1sJTNFJTNDaHRtbCUzRSUzQ2hlYWQlM0UlM0NtZXRhJTIwaHR0cC1lcXVpdiUzRCUyMnJlZnJlc2glMjIlMjBjb250ZW50JTNEJTIyMiUzQlVSTCUzRGh0dHBzJTNBJTJGJTJGcmV0cm9waWUub3JnLnVrJTJGZG9jcyUyRlJldHJvQXJjaC1Db25maWd1cmF0aW9uJTJGJTIzZGVmYXVsdC1jb3JlLWNvbnRyb2xzLWZvci1hbGwtZW11bGF0b3JzJTIyJTNFJTNDdGl0bGUlM0VSZWRpcmVjdGluZyUzQyUyRnRpdGxlJTNFJTNDJTJGaGVhZCUzRSUzQ2JvZHklM0UlM0NoMiUzRVJlZGlyZWN0aW5nLi4uJTNDJTJGaDIlM0UlM0MlMkZib2R5JTNFJTNDJTJGaHRtbCUzRQ=='))], {type: 'text/html'})));return false;">More Help</a></li>
+						<!-- Toggle menu: F1, Save state: F2, Load state: F3 -->
+					</ul>
+				</li>
+				<li>Saves
+					<ul>
+						<li class="pointer disabled" id="savegame">Save Game</li>
+						<li class="pointer disabled" id="exportsave">Export SRAM</li>
+						<li class="pointer disabled" id="importsave">Import SRAM</li>
+						<li class="disabled"><input type="checkbox" id="autosave" checked disabled>Autosave (5m)</li>
+					</ul>
+				</li>
+				<li>States
+					<ul>
+						<li class="pointer disabled" id="savestate" title="F2">Save State</li>
+						<li class="pointer disabled" id="loadstate" title="F3">Load State</li>
+						<li class="pointer disabled" id="undosavestate">Undo Save State</li>
+						<li class="pointer disabled" id="undoloadstate">Undo Load State</li>
+						<li class="pointer disabled" id="exportstate">Export State</li>
+						<li class="pointer disabled" id="importstate">Import State</li>
+					</ul>
+				</li>
+				<li>Graphics
+					<ul>
+						<li class="disabled"><input type="checkbox" id="smooth" disabled>Smooth Pixels</li>
+						<li class="disabled" title="Warning: this will make the cursor position innacurate. You probably won't notice it unless you are using the menu."><input type="checkbox" id="doubleres" disabled>Double Resolution</li>
+					</ul>
+				</li>
+				<li id="consolebutton">
+					Console
+				</li>
+				<li id="menubutton" class="disabled" title="F1">
+					Menu
+				</li>
+				<li id="pause" class="disabled">
+					Pause
+				</li>
+			</ul>
+			<div id="ffd" style="display: none;">
+				<h2>Upload <span id="systemname">[System]</span> ROM</h2>
+				<input type="file" id="upload">
+				<label for="upload">Choose File</label>
+				<div class="source">
+					<a href="https://github.com/BinBashBanana/webretro" target="_blank">Page Source</a>
+					<a href="https://github.com/libretro/" target="_blank">Emulator Source</a>
+					<a href="https://emscripten.org/" target="_blank">Emscripten</a>
+					<span>v6.0</span>
+				</div>
+			</div>
+			<canvas id="canvas" class="texturePixelated"></canvas>
+			<div id="canvasmask">
+				<div id="resume">
+					<div>
+						<h1>Paused</h1>
+						<h3>Click to resume</h3>
+					</div>
+				</div>
+				<div id="sidealertholder"></div>
+			</div>
+		</div>
+		<script type="text/javascript" src="assets/window.js"></script>
+		<script type="text/javascript" src="assets/base.js"></script>
+	</body>
+</html>

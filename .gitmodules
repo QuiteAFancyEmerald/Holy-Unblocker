@@ -2,10 +2,6 @@
 	path = views/archive/g/house
 	url = https://github.com/razh/game-off-2013
 
-[submodule "views/archive/gfiles"]
-	path = views/archive/gfiles
-	url = https://github.com/BinBashBanana/gfiles
-
 [submodule "views/archive/g/househorror"]
 	path = views/archive/g/househorror
 	url = https://github.com/arturkot/the-house-game
@@ -26,3 +22,6 @@
 	path = views/archive/g/nsshaft
 	url = https://github.com/iPel/NS-SHAFT
 
+[submodule "views/archive/g/adarkroom"]
+	path = views/archive/g/adarkroom
+	url = https://github.com/doublespeakgames/adarkroom

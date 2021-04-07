@@ -23,14 +23,11 @@
     <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
     <script src="assets/js/header.js"></script>
     <!--Game CSS-->
-    <link rel="application/javascript" href="/assets/js/games.js">
     <script async src="https://arc.io/widget.min.js#2BzvQ1em"></script>
 </head>
 
 <body>
-    <span style=display:none data-cooking=cooks>Methods Heat can transform the flavor and texture of ingredients. Browning meat and other ingredients, for example, involves complex chemical reactions. Fruits and vegetables contain sugars that caramelize when browned. The reaction in browning proteins, such as those in meat and poultry, is called the Maillard reaction after Louis Camille Maillard, the French chemist who discovered it. The Maillard reaction produces many new chemical compounds. These compounds give the food new flavors and aromas. The browned bits of food that stick to a pan are called fond, a French word meaning bottom. Many sauces make use of the rich, complex flavors of fond. Browning can only occur at temperatures above the boiling point of water, which is 212 °F (100 °C) at sea level. For this reason, moisture around the exterior of food must evaporate before the food can brown. Air and fat, as well as the metal surfaces of pans, can reach extremely high temperatures in browning. But cooking ingredients at high temperature for too long removes moisture, turning food dry and chewy. Skilled cooks will therefore carefully control both heat and moisture when cooking. Cooking with dry heat involves exposing food to hot air. As the air moves around the food’s surface, its heat is transferred to the cooler food. Roasting traditionally involved cooking large pieces of meat—or even a whole animal, such as a pig or a lamb—over an open fire. But today, roasting generally refers to cooking food in a hot oven. Roasting meat or vegetables in a high temperature oven—above 400 °F (205 °C)—causes the food to brown quickly. But high temperatures can also dry out food. Cooks thus sometimes brown meat and then finish it in a lower temperature oven to keep it moist inside. Cooks often roast ingredients on a rack above a roasting pan, enabling hot air to reach all sides of the food.</span>
-    <!--Display Frame-->
-    <iframe id="frame" style="display:block; visibility: hidden;"></iframe>
+    <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <div class="header-dark">
         <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search" style="height: 100px; z-index: 1;">
             <div class="container"><a class="navbar-brand" data-bs-hover-animate="pulse" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/">Ho&#8203;ly Unb&#8203;lock&#8203;er</a><button data-toggle="collapse"
@@ -45,7 +42,6 @@
                         <li id="ch" data-bs-hover-animate="pulse" class="nav-item" role="presentation"><a class="nav-link" href="/?n" style="font-family: 'Montserrat Alternates', sans-serif;">Cha&#8203;tbox</a></li>
                         <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-bs-hover-animate="pulse" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;color: rgb(255,255,255);font-family: 'Montserrat Alternates', sans-serif;">More</a>
                             <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;">
-                                <a class="dropdown-item text-left text-white-50" role="presentation" href="/?k" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Kru&#8203;nk&#8203;er</a>
                                 <a class="dropdown-item text-left text-white-50" role="presentation" href="/?in" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Docs</a>
                                 <a class="dropdown-item text-left text-white-50" role="presentation" href="/?faq" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">FAQ</a>
                                 <a class="dropdown-item text-white-50" role="presentation" href="/?c" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Cre&#8203;dits</a>
@@ -82,7 +78,7 @@
 
         <!-- Particles.js background  -->
         <div id="particles-js" style="height: 500px;">
-            <div class="d-flex justify-content-center align-items-center" style="height: inherit;min-height: initial;width: 100%;position: absolute;left: 0;">
+            <div class="d-flex justify-content-center" style="position:absolute;width:100%;">
                 <script src="particles.js"></script>
                 <script>
                     /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
@@ -91,11 +87,11 @@
                     });
                 </script>
                 <!-- G Embed  -->
-                <div style="padding: 2%; margin-top: 2%;">
+                <div style="padding: 0px 2%;">
                     <div class="box">
                         <div id="glist">
                             <!--GPage-->
-                            <div>
+                            <div class="d-flex flex-wrap justify-content-center">
                                 <div class="responsive">
                                     <div class="gallery">
                                         <a id="mc" href="#">
@@ -103,6 +99,16 @@
                                         </a>
                                         <div class="desc">
                                             <p style="font-weight: bold;">Min&#8203;ecr&#8203;aft J&#8203;S</p><br>Min&#8203;ecra&#8203;ft but made in Javascript.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="responsive">
+                                    <div class="gallery">
+                                        <a id="droom" href="#">
+                                            <img src="/assets/img/darkroom.png" alt="A Dark Room">
+                                        </a>
+                                        <div class="desc">
+                                            <p style="font-weight: bold;">A Da&#8203;rk Roo&#8203;m</p><br>A pl&#8203;ayer lig&#8203;hts a fir&#8203;e in a da&#8203;rk ro&#8203;om.
                                         </div>
                                     </div>
                                 </div>
@@ -199,10 +205,10 @@
                                 <div class="responsive">
                                     <div class="gallery">
                                         <a id="bobb" href="#">
-                                            <img src="/assets/img/bounceback.png" alt="Und&#8203;errun">
+                                            <img src="/assets/img/bounceback.png" alt="Bounc&#8203;eback">
                                         </a>
                                         <div class="desc">
-                                            <p style="font-weight: bold;">Und&#8203;err&#8203;un</p><br>A charming and addictive little Zelda inspired roguelike adventure game.
+                                            <p style="font-weight: bold;">Boun&#8203;ce&#8203;back</p><br>A charming and addictive little Zelda inspired roguelike adventure game.
                                         </div>
                                     </div>
                                 </div>
@@ -398,7 +404,7 @@
                                 </div>
                                 <div class="responsive">
                                     <div class="gallery">
-                                        <a target="kon" href="#">
+                                        <a id="kon" href="#">
                                             <img src="/assets/img/konnekt.png" alt="Konn&#8203;ekt">
                                         </a>
                                         <div class="desc">
@@ -419,10 +425,10 @@
                                 <div class="responsive">
                                     <div class="gallery">
                                         <a id="unr" href="#">
-                                            <img src="/assets/img/underrun.png" alt="Bounc&#8203;eback">
+                                            <img src="/assets/img/underrun.png" alt="Unde&#8203;rrun">
                                         </a>
                                         <div class="desc">
-                                            <p style="font-weight: bold;">Bou&#8203;nceb&#8203;ac&#8203;k</p><br>Explore deep underground in this doo<wbr>m-like ga<wbr>me. Kill enemies, explore and progress. Use W<wbr>ASD to move and Mouse1 to sh<wbr>oot.
+                                            <p style="font-weight: bold;">Und&#8203;er&#8203;ru&#8203;n</p><br>Explore deep underground in this doo<wbr>m-like ga<wbr>me. Kill enemies, explore and progress. Use W<wbr>ASD to move and Mouse1 to sh<wbr>oot.
                                         </div>
                                     </div>
                                 </div>
@@ -442,7 +448,7 @@
                                             <img src="/assets/img/142.png" alt="xx142-b2e&#8203;xe">
                                         </a>
                                         <div class="desc">
-                                            <p style="font-weight: bold;">xx&#8203;142-b2&#8203;ex&#8203;e</p><br>Aliens have enslaved humanity and its the year 2043.
+                                            <p style="font-weight: bold;">xx&#8203;142-b2&#8203;ex&#8203;e</p><br>It's the year 2413, and aliens have enslaved humanity.
                                         </div>
                                     </div>
                                 </div>
@@ -457,11 +463,11 @@
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
-                                <div style="padding:6px;">
-                                    <p>Have a ga<wbr>me request? Contact us on
-                                        <a id="tnlink"></a> or make a <a id="hblink">pu<wbr>ll requ<wbr>est or iss<wbr>ue</a>!</p>
-                                    <p>More ga<wbr>mes com<wbr>ing soon!</p>
-                                </div>
+                            </div>
+							<div style="padding:6px;">
+                                <p>Have a ga<wbr>me request? Contact us on
+                                    <a id="tnlink"></a> or make a <a id="hblink">pu<wbr>ll requ<wbr>est or iss<wbr>ue</a>!</p>
+                                <p>More ga<wbr>mes com<wbr>ing soon!</p>
                             </div>
                         </div>
                     </div>
@@ -506,6 +512,7 @@
         </footer>
     </div>
     <!--Scripts-->
+	<script src="expr/common.js"></script>
     <script src="assets/js/links.js"></script>
     <script src="expr/surf.js"></script>
     <script src="expr/h5-nav.js"></script>
