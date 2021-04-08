@@ -237,8 +237,8 @@ Use the same steps above by running npm install in your repository and adding a 
 
 ## Detailed FAQ
 A detailed FAQ with common issues and solutions can be found here or on any official HU site on the FAQ page.
-**
-Why are YouTube videos not working?**
+
+**Why are YouTube videos not working?**
 
 If you have persistent issues even after doing the steps above, the instance is down temporarily, especially if large groups of people are also having the issue. The latest release of Alloy currently does not have support for YouTube. However, manually putting in full links like `https://www.youtube.com/watch?v=mauV2NdCs60` will work. You may also try doing a Hard Reload (Ctrl+Shift+R)
 A later release of Alloy may fix this issue. Sorry.
@@ -267,12 +267,12 @@ Note that this is for the older discord proxy steps with Alloy and SysYA Proxy.
 The proxy may be down, being worked on, or is under high load.
 When this happens, you may either switch sites to fix the error or wait a bit. Sometimes clearing your cache can help by doing Ctrl+Shift+R or reloading the page usually. (Hard Reload, which purges cache.)
 
-##More Information
-This project is maintained by Quite A Fancy Emerald and is an official flagship Titanium Network proxy site.
+## More Information
+This project is maintained by Quite A Fancy Emerald with massive help from BinBashBanana (OlyB) and is an official flagship Titanium Network proxy site.
 
 - https://titaniumnetwork.org/
 - https://github.com/titaniumnetwork-dev/
-- 
+
 View the official website for more details or credits.
 
 ### Proxy Sources:
