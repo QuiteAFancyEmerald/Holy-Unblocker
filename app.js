@@ -1,5 +1,5 @@
 /* -----------------------------------------------
- * Authors: QuiteAFancyEmerald, YÖCTDÖNALD'S, SexyDuceDuce, BinBashBanana (OlyB)
+ * Authors: QuiteAFancyEmerald, YÖCTDÖNALD'S, BinBashBanana (OlyB), SexyDuceDuce
  * Additional help from Divide
  * MIT license: http://opensource.org/licenses/MIT
  * ----------------------------------------------- */
@@ -24,32 +24,25 @@ atob = (str) => {
 	return new Buffer.from(str, 'base64').toString('utf-8');
 }
 
-let text404 = fs.readFileSync(path.normalize(__dirname + '/views/404.html'), 'utf8');
-
-// List of the querystring pages
-let siteIndex = 'index.html';
-
-let pages = {
+const text404 = fs.readFileSync(path.normalize(__dirname + '/views/404.html'), 'utf8'), 
+	siteIndex = 'index.html',
+	pages = {
 	// Main
 	'in': 'info.html',
 	'faq': 'faq.html',
 	'status': 'status.html',
 	'j': 'hidden.html',
-	
 	's': 'pages/frame.html',
 	'z': 'pages/surf.html',
-	
 	'c': 'pages/nav/credits.html',
 	'x': 'pages/nav/bookmarklets.html',
 	'i': 'pages/nav/icons.html',
 	't': 'pages/nav/terms.html',
-	
 	// Games
 	'g': 'pages/nav/gtools.html',
 	'h': 'pages/nav/games5.html',
 	'el': 'pages/nav/emulators.html',
 	'f': 'pages/nav/flash.html',
-	
 	// Proxies
 	'a': 'pages/proxnav/alloy.html',
 	'w': 'pages/proxnav/womginx.html',
@@ -57,53 +50,56 @@ let pages = {
 	'e': 'pages/proxnav/pydodge.html',
 	'y': 'pages/proxnav/youtube.html',
 	'd': 'pages/proxnav/discordhub.html',
-	
 	// Ruffle and Webretro
 	'fg': 'archive/gfiles/flash/index.html',
 	'eg': 'archive/gfiles/rarch/index.html'
-};
-
-// List of random cooking-related strings to mess with web filters
-var cookingInserts = [
-	"Boost your confidence in the kitchen with our trusted tips, tricks and expert advice to master the basics and build upon your existing cooking skills and knowledge.",
-	"Methods Heat can transform the flavor and texture of ingredients. Browning meat and other ingredients, for example, involves complex chemical reactions. Fruits and vegetables contain sugars that caramelize when browned. The reaction in browning proteins, such as those in meat and poultry, is called the Maillard reaction after Louis Camille Maillard, the French chemist who discovered it. The Maillard reaction produces many new chemical compounds. These compounds give the food new flavors and aromas. The browned bits of food that stick to a pan are called fond, a French word meaning bottom. Many sauces make use of the rich, complex flavors of fond. Browning can only occur at temperatures above the boiling point of water, which is 212 °F (100 °C) at sea level. For this reason, moisture around the exterior of food must evaporate before the food can brown. Air and fat, as well as the metal surfaces of pans, can reach extremely high temperatures in browning. But cooking ingredients at high temperature for too long removes moisture, turning food dry and chewy. Skilled cooks will therefore carefully control both heat and moisture when cooking. Cooking with dry heat involves exposing food to hot air. As the air moves around the food’s surface, its heat is transferred to the cooler food. Roasting traditionally involved cooking large pieces of meat—or even a whole animal, such as a pig or a lamb—over an open fire. But today, roasting generally refers to cooking food in a hot oven. Roasting meat or vegetables in a high temperature oven—above 400 °F (205 °C)—causes the food to brown quickly. But high temperatures can also dry out food.",
-	"Cuisines Often, a certain combination of ingredients forms the foundation of a particular cuisine. For example, Cantonese cuisine, based in southern China, makes much use of scallions, garlic, and ginger. Greek dishes often include garlic, olive oil, and oregano. Cuisines are often based on locally available ingredients. In the coastal city of Boston, for example, traditional favorites include such seafood dishes as clam chowder and lobster. Many cuisines reflect the variety of cultures in an area. In Louisiana, for example, such dishes as gumbo (a spicy stew) combine African American, Native American, and French cooking traditions. Preparation of ingredients Many ingredients must be prepared before cooking. Some fruits and vegetables must be peeled. Cooks may remove the skin, bones, and fat from meat or the shells from seafood. Cooks may also cut ingredients in a variety of ways, including dicing (cutting into small cubes) and mincing (chopping extremely fine). The size of the pieces helps determine how fast they cook, as well as the texture of the finished dish. Many cooks season food with salt, spices, and herbs before cooking. Ingredients must be prepared with safety in mind. Fruits and vegetables should generally be rinsed to remove any residues from agricultural chemicals. In addition, raw meats may contain disease-causing organisms. Proper cooking usually kills such organisms. But anything the meat touches can also become contaminated. Cooks must thus be careful when handling raw meat. They can help prevent food-borne illness by using soap and hot water to wash their hands, along with any surface that has touched raw meat.",
-	"The key to good salmon is not overthinking it. Today, all we’re doing is rubbing the fillets with a little oil and sprinkling them with salt and pepper before popping them in the oven. Even thick fillets of salmon will cook very quickly so don’t wander too far from the oven. Aim for four to six minutes per half-inch of thickness. Since most fillets are about one inch thick in the thickest part, start checking around eight minutes. When the fish starts to flake easily with a fork and the flesh looks opaque, it’s time for dinner!",
-	"Rice is a staple in any kitchen, and with so many different types, it lends itself to a limitless number of recipes. Before you add the same type of rice to every recipe you prepare, however, think twice. Substituting one type of rice for another can really alter the result of a recipe. Each type of rice has its own taste, texture, and unique properties that work well with different cooking applications. So how do you know which one is the best type of rice to use? This guide examines factors that differentiate types of rice, from nutty basmati to fragrant jasmine and more!",
-	"Healthy oatmeal recipes I really enjoy the taste of plain oatmeal with simple brown sugar and nothing else. It’s my comfort zone. But I also like to vary up my oatmeal and use it as my base to enjoy some fresh fruit for the day. I like to have fun with some healthy oatmeal recipes that take the simple humble bowl of oats and make them an extraordinary superfood breakfast bowl. Here are 3 of my favorite recipes: Maple Brown Sugar: This is a classic flavor most oatmeal packets come in. But the homemade maple brown sugar is so much better. I make it with brown sugar, maple syrup, pecans and cinnamon. How to make oatmeal - maple brown sugar variation Banana Nut: This is another one of the classic oatmeal flavors that comes in a packet, so I love recreating it with actual fresh bananas (not the taste of bananas). I usually slice half a banana and add walnuts, ground flaxseeds and cinnamon. How to make oatmeal - banana nut variation Strawberry & Cream: This is such a dreamy yummy combination. Just add fresh sliced strawberries, a splash of half and half or coconut cream or any non-dairy creamer, along with some honey and a touch of vanilla extract.",
-	"Working one ball of dough at a time, take one ball of dough and flatten it with your hands on a lightly floured work surface. Starting at the center and working outwards, use your fingertips to press the dough to 1/2-inch thick. Turn and stretch the dough until it will not stretch further. Let the dough relax 5 minutes and then continue to stretch it until it reaches the desired diameter - 10 to 12 inches. Treat the dough gently! You can also hold up the edges of the dough with your fingers, letting the dough hang and stretch, while working around the edges of the dough. If a hole appears in your dough, place the dough on a floured surface and push the dough back together to seal the hole. Use your palm to flatten the edge of the dough where it is thicker. Pinch the edges if you want to form a lip.",
-	"Add the beef to a large skillet over medium-high heat. Break the meat apart with a wooden spoon. Add the chili powder, cumin, salt, oregano, garlic powder, and pepper to the meat. Stir well. Cook until the meat is cooked through, about 6-8 minutes, stirring occasionally. Reduce the heat to medium. Add the tomato sauce and water. Stir to combine. Cook, stirring occasionally, for 7-8 minutes, until some of the liquid evaporates but the meat mixture is still a little saucy. Remove from the heat. Warm the taco shells according to their package directions. Fill the taco shells with 2 heaping tablespoons of taco meat. Top with desired taco toppings: shredded cheese, shredded lettuce, chopped tomatoes, diced red onion, taco sauce, sour cream, guacamole, etc.",
-	"Warm and inviting, home cooking has resurfaced with all the kudos it deserves. Diana's menu reflects some of the most sought after recipes there are. They call it comfort food for a reason! Mac and Cheese with Butternut Squash, Chicken Pot Pie, Pork Ragu over Easy Creamy Polenta, Beef and Bacon Meatloaf with Garlic Mashed Potatoes, Boston Cream...",
-	"Sous Vide is a cooking method that came from a French term that means under pressure. In the process, food is sealed in an airtight bag made from plastic material. The food is then cooked in the water longer than the usual cooking time. This can be done in meats and vegetables through precisely regulated temperature, which is much lower than usually used for cooking. The temperature normally ranges from 120 deg to 160 deg depending of desired doneness. This method is intentionally done so that meats and vegetables are cooked evenly without overcooking the outside portion while keeping the food's inside portion properly done as well as keeping its juiciness. There are several ways how the Sous Vide method can be used in our property whether or not using a Sous Vide machine. The Sous Vide method is a practice that has been used in many fine-dining restaurants with famous chefs. However, this kind of cooking method is now being used for home cooking because available solutions are now increasing its availability in the market."
-];
-
-var vegetables = ['Beet', 'Radish', 'Potato', 'Yam', 'Carrot', 'Garlic', 'Onion', 'Asparagus', 'Rhubarb', 'Celery', 'Lettuce', 'Spinach', 'Kale', 'Cabbage', 'Arugula', 'Broccoli', 'Artichoke', 'Cauliflower', 'Tomato', 'Avocado', 'Pepper', 'Squash', 'Pumpkin', 'Zucchini'];
+	},
+	cookingInserts = [
+		"Cooking is something that most of people are doing it or try to do it. Some do it as a profession, some do it for fun, and some do it because they have to do it. People are going to cooking, because some food is raw that people cannot eat it, because it is not tasty.",
+		"Olive Garden opened in 1982 specializing in Italian based food. They have pasta, breadsticks, and soup. Zuppa Toscana is a soup that is one of their most popular soups. It’s spicy kick, and creamy tasting is the best part about it. This recipe is very easy to make, but is the best at Olive Garden.",
+		"Homemade chicken avocadoes lime soup, doesn’t that sound Delicious! This simple, yet filling dish can serve a family of six. The preparation time takes roughly fifteen minutes and cook time is approximately twenty minutes.",
+		"Let’s discuss their Food Quality. Their very well known for their wide mixture of pizzas from pepperoni, pepperoni and sausage, Colby classic, and bourbon street.",
+		"The dinner menu I will be preparing to celebrate a special occasion will include: a nice juicy steak, fresh corn on the cob, hash brown with bacon casserole, and for the dessert peanut butter pie.",
+		"Enter the spice aisle and grab one bottle of onion powder and one of... hamburger seasoning. Also, go to the vegetable area and pick up one regular onion. Then, walk back to the meat section and pick up a package of ground meat. Go to the bread aisle and grab a pack of the original Hawaiian sub-rolls and a pan that the rolls will fit into. Everybody knows that cheese is what tops off a good cheeseburger slider, so go pick up a pack of the favorite type of.",
+		"Entertaining for Thanksgiving can be very rewarding, and very exhausting. Over the years I have found that planning and preparing for the big day is essential. I love to cook. I enjoy preparing a wonderful Thanksgiving meal for my loved ones.",
+		"Peel tomatoes with ease! Cut an X in the top, and then simmer in a pot of hot water for 15 to 30 seconds. Cool down and the skin will fall right off.",
+		"To create an egg wash, whisk together a large egg with one tablespoon of water until smooth. Use as a glue to seal pastries, then brush on top for a glossy appearance.",
+		"Embrace salt. Don’t be afraid to use salt; it pulls the flavors out of your dishes. Cook with kosher salt and season with sea salt.",
+		"For a great hardboiled egg every time, bring your pot to a boil and then turn off the heat. Let your eggs sit in the heated pot for 12 minutes and then transfer to cold water."
+	],
+	vegetables = ['Beet', 'Radish', 'Potato', 'Yam', 'Carrot', 'Garlic', 'Onion', 'Asparagus', 'Rhubarb', 'Celery', 'Lettuce', 'Spinach', 'Kale', 'Cabbage', 'Arugula', 'Broccoli', 'Artichoke', 'Cauliflower', 'Tomato', 'Avocado', 'Pepper', 'Squash', 'Pumpkin', 'Zucchini'],
+	charrandom = ['&#x206F;', '&#x2064;', '&#173;','&#x17B5;', '&#x2066;', '&#x206A;', '&#x206b;', '&#8300;', '&#x200C;', '&#x206E;', '&#x2062;', '&#x2061;', '&#x202D;', '&#xFE0F;'];
 
 function randomListItem(lis) {
 	return lis[Math.floor(Math.random() * lis.length)];
 }
 
+function insertCharset(str) {
+	return str.replace(/&#173;|&#8203;|<wbr>/g, randomListItem(charrandom));
+}
+
 function insertCooking(str) {
-	return str.replace(/<!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->/g, function() { return '<span style="display: none;" data-cooking="' + randomListItem(vegetables) + '" data-ingredients="' + randomListItem(vegetables) + '">' + randomListItem(cookingInserts) + '</span>'; });
+	return str.replace(/<!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->/g, '<span style="display: none;" data-cooking="' + randomListItem(vegetables) + '" data-ingredients="' + randomListItem(vegetables) + '">' + randomListItem(cookingInserts) + '</span>');
 }
 
 function tryReadFile(file) {
 	return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : text404;
 }
 
-// Local alloy proxy
+// Local Alloy Proxy
 const localAlloy = new alloy({
 	prefix: '/fetch/',
-	error: (proxy) => { proxy.res.send(tryReadFile(path.normalize(__dirname + '/views/error.html')).replace('%ERR%', proxy.error.info.message.replace(/<|>/g, ''))); }, // Doing replace functions on "<" and ">" to prevent XSS.
+	error: (proxy) => { proxy.res.send(tryReadFile(path.normalize(__dirname + '/views/error.html')).replace('%ERR%', proxy.error.info.message.replace(/<|>/g, ''))); },
 	request: [],
 	response: [],
 	injection: true
 });
+
 app.use(localAlloy.app);
 localAlloy.ws(server);
 
 // Querystring navigation
-app.get('/', async(req, res) => res.send(insertCooking(tryReadFile(path.normalize(__dirname + '/views/' + (['/', '/?'].includes(req.url) ? siteIndex : pages[Object.keys(req.query)[0]]))))));
+app.get('/', async(req, res) => res.send(insertCooking(insertCharset(tryReadFile(path.normalize(__dirname + '/views/' + (['/', '/?'].includes(req.url) ? siteIndex : pages[Object.keys(req.query)[0]])))))));
 
 // Static files served
 app.use(char_insert.static(path.normalize(__dirname + '/views')));
@@ -111,6 +107,5 @@ app.use(char_insert.static(path.normalize(__dirname + '/views')));
 // 404 Page
 app.use((req, res) => res.status(404, res.send(insertCooking(text404))));
 
-// Start
 server.listen(port);
 console.log('Listening on port ' + port + '!');
