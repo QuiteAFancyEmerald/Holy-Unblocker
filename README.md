@@ -1,15 +1,14 @@
-<img align="left" width="70px" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/icon.png"></img>
-# Holy Unblocker
+# Holy Unblocker <img align="left" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/Icon.png"></img>
 
-#### Titanium Network is sponsored by:
+A website that can be used to bypass web filters; both extension and firewall. This is the public source code for Holy Unblocker, a rather fancy website with some cool dynamic backgrounds while also focusing with detail put into the design, mechanics and features overall like custom Tab Cloaks with more to come in the future. 
 
-<img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/fa858c0e429d73324bffc045bd2a3217064fb1e5/views/assets/img/nodeclusters.png?raw" width="500px"><a href="https://nodeclusters.com"></a></img>
+Works with a large number of sites including YouTube, Discord and more! Be sure to read below for information if the official site is blocked or for obtaining more links.
 
-Holy Unblocker, an official flagship Titanium Network site, can bypass web filters regardless of whether it is an extension or network-based. Being a secure web proxy service, it supports numerous sites while being updated frequently and concentrating on detail with design, mechanics, and features.
+YouTube has specialized support with the ablity to view steams, comments, bypass restricted mode, and have full quality on videos.
 
-Works with a large number of sites, including YouTube, Discord, and more! 
+Be sure to check the various branches as I update Holy Unblocker often with open access to yet to be released versions.
 
-Read below for information if the official site is blocked or for obtaining more links.
+Also has a good amount of locally hosted games featured on the site.
 
 #### Supports
 - Youtube.com
@@ -17,23 +16,19 @@ Read below for information if the official site is blocked or for obtaining more
 - Google.com
 - Reddit.com
 - Bing.com
-- And more!
-
-#### Features:
-- Tab customization using the Options menu for improved stealth 
-- Considerable variety with the open selection of proxy types 
-- Game library with moderately decent titles like A Dark Room 
-- Has frequent support articles for issues relating to the various proxy instances
-
-Be sure to join Titanium Network's Discord for more official site links: https://discord.gg/hcUUceSCtj
-
-Do %proxy hu for more Holy Unblocker links on the Titanium Network Discord server.
-
-**Official Site:** https://www.holyubofficial.net
-
-**Site Documentation:** Documentation
+- And more sites!
 
 <img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/hbpreview.png?raw"></img>
+
+Official Site: https://www.holyubofficial.net
+
+Site Documentation: <a href="https://www.holyubofficial.net/?in">Documentation</a>
+
+Instance Status: <a href="https://www.holyubofficial.net/?status">Status</a>
+
+Be sure to join Titanium Network's Discord for more official site links: https://discord.gg/unblock
+
+Simply do `%proxy hu` for more Holy Unblocker links on the TN Discord server.
 
 <a href="https://heroku.com/deploy?template=https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic" title="Deploy to Heroku"><img alt="Deploy to Heroku" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/heroku.svg?raw" width="140" height="30"><img></a>
 &nbsp;
@@ -42,14 +37,15 @@ Do %proxy hu for more Holy Unblocker links on the Titanium Network Discord serve
 <a href="https://repl.it/github/QuiteAFancyEmerald/HolyUnblockerPublic" title="Run on Repl.it"><img alt="Run on Repl.it" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/replit.svg?raw" width="140" height="30"><img></a>
 &nbsp;
 <a href="https://glitch.com/edit/#!/import/github/QuiteAFancyEmerald/HolyUnblockerPublic" title="Remix on Glitch"><img alt="Remix on glitch" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/HolyUnblockerPublic/master/views/assets/img/glitch.svg?raw" width="140" height="30"><img></a>
-         
+
 ## Table of contents:
 
 - [Setup](#how-to-install)
 	- [Structure](#structure)
 		- [Structure Information](#structure)
-	    - [Static Files](#details-of-views)
+	    - [Static Files](#details-of-public)
 	    - [Proxy Scripts](#scripts-located-in-expr)
+	    - [Cookie Auth](#details-of-authjs)
 	- [Future Additions](#future-additions)
 	- [Beginner's Explanation](#vauge-explanation-for-beginners-with-external-proxies-and-hosting)
 	  - [Hosting Providers](#list-of-some-good-hosting-options)
@@ -61,21 +57,23 @@ Do %proxy hu for more Holy Unblocker links on the Titanium Network Discord serve
 	- [More Information](#more-information)
 
 ## How to Setup
+
 Either use the button above to deploy to Heroku or do the below:
-```
-$ git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git
-$ cd HolyUnblockerPublic
-$ npm install
-```
-Afterward, run:
-```
-$ npm start
-```
-For more detailed documentation on workspace setup, please view <a href="https://holyubofficial.net/?faq">this</a>.
 
-The default place for the proxy when it started is `http://localhost:8080`, but it can be changed if needed in config.json
+```
+git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git
 
-This website has been hosted locally on Alloy Proxy. For more information, head over to the Alloy Proxy repository below.
+cd HolyUnblockerPublic
+
+npm install
+
+npm start
+```
+
+The default place for the proxy when its started is `http://localhost:8080` but you can change it if needed in config.json
+
+This website has been hosted locally on Alloy Proxy. More more information go to the Alloy Proxy repository below.
+
 
 ## Structure
 - `index.html` : The official homepage of the site.
@@ -121,176 +119,144 @@ This website has been hosted locally on Alloy Proxy. For more information, head 
 - Expansive game library
 - Various parity changes.
 
-## An explanation for Beginners With External Proxies and Hosting
-You will first want to host your proxies locally or externally. Note that an older version of Alloy proxy is the only proxy hosted locally with this distribution of Holy Unblocker.
+## Vauge Explanation for Beginners With External Proxies and Hosting
+You will first want to host your proxies locally or externally. 
 
-**Proxies that you will need for a complete setup for Holy Unblocker:**
+#### List of some good hosting options:
+- <a href="https://heroku.com">Heroku</a> (Free)
+- <a href="https://nodeclusters.com">NodeClusters</a> (Paid)
+- <a href="https://glitch.com">Glitch</a> (Free)
+- <a href="https://repl.it">Repl.it</a> (Free)
+- <a href="https://azure.microsoft.com/en-us/">Azure</a> (Free and Paid)
 
-Womginx - https://github.com/binary-person/womginx
+Out of the list of hosting providers Heroku and NodeClusters rank first as a preference. You may also self-host. Currently at this time Azure is used to host the official Holy Unblocker sites.
 
-SysYA Proxy - https://github.com/sysce/proxy
+After you have selected a decent VPS, use Cloudflare for the DNS records for both the site and the subdomains for the proxies.
 
-Via Unblocker/PyDodge -https://github.com/BinBashBanana/PyDodge
+This is an example of DNS records involving Heroku. Self-hosting will require `A records` preferably.
+<img src="https://cdn.discordapp.com/attachments/725506757291671663/756659513179766844/unknown.png" width="500" height="154"></img>
 
-Alloy Proxy - https://github.com/titaniumnetwork-dev/alloy
+- `a.deepsoil.ml` is being used for Node Unblocker.
+- `p.deepsoil.ml` is being used for SysYa Proxy.
+- `pd.deepsoil.ml` is being used for PyDodge B.
+- `cdn.deepsoil.ml` is being used for a private Alloy host on the official sites.
 
-The source used for Via Unblocker on the official sites is not public.
+Update, the new configuration is:
 
-**List of some good hosting options:**
+- `a.example.com` is being used for Node Unblocker.
+- `d.example.com` is being used for Ocean proxy.
+- `c.example.com` is being used for SysYa and the Chatbox.
+- `cdn.example.com` is being used for a private Alloy and Via which is hosted on the official sites.
 
-- Dedipath (Paid and Dedicated)
-- Heroku (Free)
-- NodeClusters (Paid)
-- Glitch (Free)
-- Repl.it (Free)
-- Azure (Free and Paid)
-- 
-Out of the list of hosting providers Heroku and Dedipath rank first as a preference. 
+As stated previously, Holy Unblocker is hosted locally with Alloy.
 
-You may also self-host. Currently, at this time, Dedipath is used to host the official Holy Unblocker sites.
+#### Heroku Steps
+So use Heroku to host. I personally favor it as a free choice.
 
-After you have selected a decent VPS, use Cloudflare for DNS records for both the site and the subdomains for the proxies.
-The image below is an example of DNS records involving Heroku. Self-hosting will require A records, preferably. 
+- First obtain a card; (Prepaid, Debit, and Credit Cards work). You need this to add custom domains to your Heroku instance.
 
-<img src="https://cdn.discordapp.com/attachments/681203088862085168/820048397662158858/unknown.png" width="500"></img>
+Make sure you connect your Heroku app to your GitHub and enable automatic deploys. Will make things easier. :) 
 
-**The configuration being used on the official sites currently are the below:**
+#### Freenom/Domain Steps
+For beginners, Freenom is a good provider for obtaining domains for free. However the catch is that you can only use properly "Freenom" domains for free being .cf, .ml, .gq, ga and .tk. However these can be blocked rather easily.
 
-- `a.example.com` is used for Womginx.
-- `c.example.com` is used for SysYA Proxy, Via Unblocker, and the Chatbox.
-- `cdn.example.com` is used for a private, updated Alloy instance.
-### Heroku Steps
-So use Heroku to host. I favor it as a free choice.
+- Get some Freenom domains then add them to your Heroku instance (Personal > [App Name] > Settings > Domains)
+Add a domain for both `www.youdomainhere.cf` and `yourdomainhere.cf` with .cf being interchangeable with other Freedom domain names.
+- If you prefer to obtain premium domains (TLDs) then use <a href="https://porkbun.com">Porkbun</a>, which offers domains for amazing prices. Literally a `.net` domain normally costs around $10. On Porkbun for the first year it costs $3 so its definitely a deal.
 
-- First, obtain a card; (Prepaid, Debit, and Credit Cards work). It would be best if you had this to add custom domains to your Heroku instance.
-- Make sure you connect your Heroku app to your GitHub and enable automatic deploys. It will make things easier. :)
+#### Cloudflare Steps
+- Use Cloudflare (make an account), add your site (Freenom Domain or Domain) and then add your various DNS targets to Cloudflare. Make sure you add Cloudflare's Nameservers which will be specified more when you are adding your site. 
 
-### Freenom/Domain Steps
-For beginners, Freenom is a good provider for obtaining domains for free. However, the catch is that you can only use properly "Freenom" domains for free, being .cf, .ml, .gq, ga, and .tk. However, these can be blocked relatively easily.
+Make sure they are CNAME although A records also work and try to follow this structure:
 
-- Get some Freenom domains, then add them to your Heroku instance (Personal > [App Name] > Settings > Domains). 
-- Add a domain for both www.youdomainhere.cf and yourdomainhere.cf with .cf being interchangeable with other Freedom domain names.
+**Type | Name | Target**
 
-If you prefer to obtain premium domains (TLDs), then use Porkbun, which offers domains for excellent prices. A .net domain typically costs around $10. On Porkbun for the first year, it costs $3, so it is a deal.
+`CNAME | www | yourherokutargethere.herokudns.com `
+`CNAME | @ | yourherokudnstargethere.herokudns.com`
 
-### Cloudflare Steps
-Use Cloudflare (make an account), add your site (Freenom Domain or Domain), and then add your various DNS targets to Cloudflare. Make sure you add Cloudflare's Nameservers which will be specified more when you are adding your site.
+**Below are if you want external proxies also with your site:**
 
-Lastly, for targets, make sure they are either a CNAME, AAAA, or A records and try to follow this structure:
+`CNAME | a | yournodeinstance.herokudns.com`
+`CNAME | pd | yourpydodgebinstancehere.herokudns.com`
+`CNAME | p | yoursysyainstancehere.herokudns.com`
 
-Type | Name | Target
+Make sure HTTPS is forced and have SSL set to Flexible for Heroku. Otherwise you can have SSL set to Full.
 
-`CNAME | @ | yourherokudnstargethere.herokudns.com` or `CNAME | @ | example.com`
+#### Workspace Configurations 
+Preferably if you have your own device use Visual Studio Code. Pretty much the best option you can get but obviously this is an opinion. Also make sure you have <a href="https://nodejs.org/">Node.JS</a> installed on your machine.
 
-`CNAME | www | yourherokutargethere.herokudns.com` or `CNAME | www | example.com`
+Not going to go too in depth with this part but first fork this repository. The clone it locally through a Terminal of some sort depending on what OS you are on. Make sure you navigate to the folder you want to set this up in.
 
-Below are if you want external proxies also with your site:
-
-`CNAME | a | yourwomginxinstance.herokudns.com` or `CNAME | a | example.com`
-`CNAME | c | yoursysyaproxyinstancehere.herokudns.com` or `CNAME | c | example.com`
-
-(You get the idea.)
-
-Make sure HTTPS is forced and have SSL set to Flexible for Heroku. Otherwise, you may have SSL set to Full. Use LetsEncrypt for SSL certificates or Cloudflare.
-
-## Workspace Configurations
-Preferably use Visual Studio Code for an IDE. Pretty much the best option you can get, but obviously, this is an opinion. Also, make sure you have Node.JS installed on your machine.
-
-Not going to go too in-depth with this part but first, fork or clone this repository. Clone it locally through a terminal of some sort, depending on what OS you are on.
-
-Make sure you navigate to the folder you want to set this up in.
 ```
-$ git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git
-$ cd HolyUnblockerPublic
-$ npm install
-```
-Setup pm2 (Optional - Node.js Process Manager)
-```
-$ npm install pm2@latest -g
-$ pm2 start app.js
-```
-Useful pm2 Flags
-```
-# Specify an app name
---name <app_name>
+git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git
 
-# Watch and Restart app when files change
---watch
+cd HolyUnblockerPublic
 
-# Set memory threshold for app reload
---max-memory-restart <200MB>
+npm install
 ```
-For more information, view the official pm2 documentation here.
 
-#### Workspace Setup (continued)
-Now add the folder you cloned in VSC. Then run npm install. It is recommended that if you are releasing this publically on GitHub that you add a .gitignore in your root directory with the following exclusions:
+Now simply add the folder you cloned this repo in in VSC. Then run `npm install`. I recommend that if you are releasing this publically on GitHub that you add a `.gitignore` in your root directory with the following exclusions:
 
 `node_modules`
 
-Now you have your following workspace environment setup. To deploy the following workspace you just created, you will need to lookup depending on your hosting provider.
+Now you have your following workspace environment setup. To deploy the following workspace you just created you will need to look up depending on your hosting provider.
 
-- For an online IDE that you can use on your school computer or Chromebook, use GitPod. The equivalent of Visual Studio Code but with in-browser support.
-- Make an account: https://gitpod.io/.
-- Fork this repo and enter in this URL to set up your workspace: `https://gitpod.io#https://github.com/YourNameHere/HolyUnblockerPublic/`
+For an online IDE that you can use on your school computer and/or chromebook use GitPod. Basically the equivalent of Visual Studio Code but with in-browser support.
+- Make an account: `https://gitpod.io/`
+- Fork this repo and enter in this URL to setup your workspace: `https://gitpod.io#https://github.com/YourNameHere/HolyUnblockerPublic/`
 
-Use the same steps above by running npm install in your repository and adding a .gitignore in your root directory specifying to exclude `node_modules`.
+Use the same steps above by running `npm install` in your repository and adding a `.gitignore` in your root directory specifying to exclude `node_modules`.
 
 ## Detailed FAQ
-A detailed FAQ with common issues and solutions can be found here or on any official HU site on the FAQ page.
-
-**Why are YouTube videos not working?**
-
-If you have persistent issues even after doing the steps above, the instance is down temporarily, especially if large groups of people are also having the issue. The latest release of Alloy currently does not have support for YouTube. However, manually putting in full links like `https://www.youtube.com/watch?v=mauV2NdCs60` will work. You may also try doing a Hard Reload (Ctrl+Shift+R)
-A later release of Alloy may fix this issue. Sorry.
+A detailed FAQ with common issues and solutions can be found <a href="https://holyubofficial.net/?faq">here</a> or on any official HU site on the FAQ page.
 
 **Why is the site I am on not working correctly or having CAPTCHA errors?**
 
-Captcha has limited support on Womginx. However, support is not available on some of the older proxies, sadly. Therefore some sites may not work with any of the sites. Read below for issues with links on sites.
+Captcha support is currently not available on all of the current proxies sadly. Therefore some sites may not work with any of the sites. Read below for issues with links on sites.
 
-**Why are page links not working or leading to 404 pages?**
+**Why are some page links not working or leading to 404 pages?**
 
-This is an issue with Alloy proxy's latest release, but it may also occur with other proxies. In this case, manually entering the URL of the page you would like to view can solve this, or try navigating using the home button. (Reddit, Twitter) The next release of Alloy may fix this also.
+This is an issue with the latest release of Alloy proxy but it may also occur with other proxies.
 
-**When using YouTube on any of the proxy sites, why does the page not load entirely, or the video just white?**
+In this case manually entering the URL of the page you would like to view can solve this or try navigating using the home button. (Reddit, Twitter) The next release of Alloy may fix this also.
+
+**When using YouTube on any of the proxy sites, why does the page not load fully or the video is just white?**
 
 There are two methods for fixing this:
-- Reloading the page usually when the error above happens should load the video.
-- Alternatively, right-clicking the page and doing Reload Frame if you are using some form of Stealth Mode may work.
 
-**When using Discord under Alloy or SysYa, why does the page stay gray/white, or the QR code not loading? **
+- Reloading the page normally when the error above happens should load the video.
+- Or right-clicking the page and doing Reload Frame if you are using some form of Stealth Mode.
 
-Womginx now supports logging in, usually for Discord. However, here are the steps related to Alloy troubleshooting.
-Note that this is for the older discord proxy steps with Alloy and SysYA Proxy.
+**When using Discord under Alloy or SysYa, why does the page stay gray/white or the QR code not load?**
 
-**On the official sites, I am getting 502 errors. What do I do?**
+Once again do the same steps above:
+- Reloading the page normally when the error above happens should load the video
+- Or right-clicking the page and doing Reload Frame if you are using some form of Stealth Mode.
 
-The proxy may be down, being worked on, or is under high load.
-When this happens, you may either switch sites to fix the error or wait a bit. Sometimes clearing your cache can help by doing Ctrl+Shift+R or reloading the page usually. (Hard Reload, which purges cache.)
+Make sure you are also doing the steps correctly. Simply view link above for extended Discord proxy information/steps.
+
+**I am getting 502 errors. What do I do?**
+
+When this happens you may either switch sites to fix the error or wait a bit. Sometimes clearing your cache can help.
+
+If you still have any questions feel free to ask them in the discord linked here.
+
 
 ## More Information
-This project is maintained by Quite A Fancy Emerald with massive help from BinBashBanana (OlyB) and is an official flagship Titanium Network proxy site.
+This project uses Alloy Proxy, Node Unblocker, SysYa and PyDodge which are linked below. 
 
-- https://titaniumnetwork.org/
+View the official website for more detail and credits.
+
 - https://github.com/titaniumnetwork-dev/
+- https://github.com/titaniumnetwork-dev/alloy
+- https://github.com/binary-person/womginx
+- https://github.com/sysce/proxy
+- https://github.com/BinBashBanana/PyDodge
+- https://github.com/nfriedly/node-unblocker
+- https://nodeclusters.com
+- https://titaniumnetwork.org/
+- https://github.com/vibedivide/vibeOS
 
-View the official website for more details or credits.
+This project is maintained by QuiteAFancyEmerald and collaborative with Titanium Network.
 
-### Proxy Sources:
-This project uses Alloy Proxy, Womginx, SysYA Proxy, and Via Unblocker, linked below.
-
-- https://github.com/titaniumnetwork-dev/alloy (Alloy)*
-- https://github.com/binary-person/womginx (Womginx)
-- https://github.com/sysce/proxy (SysYA Proxy)
-- https://github.com/hypothesis/via (Via)**
-- https://github.com/BinBashBanana/PyDodge (PyDodge)**
-- https://github.com/nfriedly/node-unblocker (Node Unblocker)***
-
-### Notable Mentions:
-- https://dedipath.com (Hosting Provider)
-
-### Footnotes:
-- This distribution of Holy Unblocker uses an older version of Alloy Proxy.
-- The official Holy Unblocker sites use a private, modified version of Via and goes under the name PyDodge for any modified version.
-- Node Unblocker is no longer used on any of the official Titanium Network flagship sites.
-
-Thanks. :D
+Thanks.

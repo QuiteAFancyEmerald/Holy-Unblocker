@@ -42,6 +42,41 @@ tryGetElement('pmproxbp').onclick = function(e) {
     if (url.value) goProx.sysya(url.value);
 }
 
+tryGetElement('lasttrain').onclick = function(e) {
+    e.preventDefault();
+    goProx.train(true);
+}
+
+tryGetElement('village').onclick = function(e) {
+    e.preventDefault();
+    goProx.village(true);
+}
+
+tryGetElement('prison').onclick = function(e) {
+    e.preventDefault();
+    goProx.prison(true);
+}
+
+tryGetElement('rp').onclick = function(e) {
+    e.preventDefault();
+    goProx.rpg(true);
+}
+
+tryGetElement('os').onclick = function(e) {
+    e.preventDefault();
+    goProx.osu(true);
+}
+
+tryGetElement('speed').onclick = function(e) {
+    e.preventDefault();
+    goProx.speed(true);
+}
+
+tryGetElement('heli').onclick = function(e) {
+    e.preventDefault();
+    goProx.heli(true);
+}
+
 // Pydodge
 tryGetElement('pdprox').onclick = function(e) {
     e.preventDefault();

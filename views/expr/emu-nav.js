@@ -4,7 +4,8 @@ var emugms = {
 	"nes": "?eg&core=nestopia",
 	"snes": "?eg&core=snes9x",
 	"genesis": "?eg&core=genesis_plus_gx",
-	"n64": "?eg&core=mupen64plus_next"
+	"n64": "?eg&core=mupen64plus_next",
+	"femblem": "?eg&core=mgba&roms=fire_emblem.gba"
 };
 
 emugms_array = Object.keys(emugms);

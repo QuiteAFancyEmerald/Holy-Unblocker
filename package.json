@@ -1,23 +1,21 @@
 {
-	"name": "holyub",
-	"version": "4.5.0",
-	"repository": "https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic",
-	"description": "A pretty fancy website.",
-	"main": "app.js",
-	"scripts": {
-		"start": "node app.js"
-	},
-	"keywords": [
-		"proxy",
-		"node.js",
-		"unblocker"
-	],
-	"author": "Titanium Network",
-	"license": "MIT",
-	"dependencies": {
-		"express": "^4.17.1",
-		"express-session": "^1.17.1",
-		"mime-types": "^2.1.27",
-		"pm2": "^4.5.5"
-	}
+    "name": "holyub",
+    "version": "4.5.0",
+    "repository": "https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic",
+    "description": "A pretty fancy website.",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "keywords": [
+        "proxy",
+        "node.js",
+        "unblocker"
+    ],
+    "author": "Titanium Network",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.17.1",
+        "mime-types": "^2.1.27"
+    }
 }
