@@ -6,14 +6,15 @@ function getDomain() {
     return document.domain.replace(/^(www|edu|cooking)\./, "");
 }
 
-function goFrame(url) {
+// nolag = no external js (arc widget, an-lytics, etc.
+function goFrame(url, nolag) {
     localStorage.setItem("huframesrc", url);
-    window.location.href = "?s";
+    window.location.href = nolag ? "?s&nolag" : "?s";
 }
 
-function goToUrl(url, stealth) {
+function goToUrl(url, stealth, nolag) {
     if (stealth) {
-        goFrame(url);
+        goFrame(url, nolag);
     } else {
         window.location.href = url;
     }

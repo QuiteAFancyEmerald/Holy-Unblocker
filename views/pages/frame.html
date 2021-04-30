@@ -8,14 +8,29 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon.png">
     <link rel="stylesheet" href="assets/css/styles.min.css">
     <script src="assets/js/header.js"></script>
-    <script async src="https://arc.io/widget.min.js#2BzvQ1em"></script>
+    <!-- Arc widget causes lag on some gams, so it is created by js below if &nolag isn't specified in the querystring -->
 </head>
 
 <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <iframe id="frame" allow="fullscreen" autofocus></iframe>
     <script>
+		var search = decodeURIComponent(window.location.search).substring(1).split("&");
+		var queries = {};
+		for (var i = 0; i < search.length; i++) {
+			var p = search[i].split("=");
+			queries[p[0]] = p[1];
+		}
+		
         document.getElementById("frame").src = localStorage.getItem("huframesrc");
+		
+		// make arc widget if nolag isn't specified
+		if (!queries.hasOwnProperty("nolag")) {
+			var arcw = document.createElement("script");
+			arcw.setAttribute("async", "");
+			arcw.src = "https://arc.io/widget.min.js#2BzvQ1em";
+			document.head.appendChild(arcw);
+		}
     </script>
 </body>
 

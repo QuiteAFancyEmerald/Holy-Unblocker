@@ -35,7 +35,10 @@ var h5gms = {
     "unr": "/archive/g/underrun/index.html",
     "race": "/archive/g/racer/index.html",
     "x142": "/archive/g/xx142-b2exe/index.html",
-    "faball": "/archive/g/factoryballsforever/index.html"
+    "faball": "/archive/g/factoryballsforever/index.html",
+    "trimps": "/archive/g/trimps/index.html",
+    "sm64": "/archive/g/sm64/index.html#nolag",
+    "zork": "/archive/g/zork1/index.html"
 };
 
 h5gms_array = Object.keys(h5gms);
@@ -43,6 +46,6 @@ h5gms_array = Object.keys(h5gms);
 for (let i = 0; i < h5gms_array.length; i++) {
     tryGetElement(h5gms_array[i]).parentElement.onclick = function(e) {
         e.preventDefault();
-        goFrame(h5gms[h5gms_array[i]]);
+        goFrame(h5gms[h5gms_array[i]], h5gms[h5gms_array[i]].split("#").slice(-1)[0] == "nolag");
     }
 }
