@@ -4,8 +4,7 @@
  * MIT license: http://opensource.org/licenses/MIT
  * ----------------------------------------------- */
 const
-    char_insert = require('./src/charinsert.js'),
-	alloy = require('./src/alloyproxy'),
+    alloy = require('./src/alloyproxy'),
     path = require('path'),
     config = require('./config.json'),
     fs = require('fs'),
@@ -126,11 +125,11 @@ function tryReadFile(file) {
 
 // Local alloy proxy
 const localAlloy = new alloy({
-	prefix: '/fetch/',
-	error: (proxy) => { proxy.res.send(tryReadFile(path.normalize(__dirname + '/views/error.html')).replace('%ERR%', proxy.error.info.message.replace(/<|>/g, ''))); }, // Doing replace functions on "<" and ">" to prevent XSS.
-	request: [],
-	response: [],
-	injection: true
+    prefix: '/fetch/',
+    error: (proxy) => { proxy.res.send(tryReadFile(path.normalize(__dirname + '/views/error.html')).replace('%ERR%', proxy.error.info.message.replace(/<|>/g, ''))); }, // Doing replace functions on "<" and ">" to prevent XSS.
+    request: [],
+    response: [],
+    injection: true
 });
 app.use(localAlloy.app);
 localAlloy.ws(server);
