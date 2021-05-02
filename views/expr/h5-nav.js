@@ -1,5 +1,6 @@
 var h5gms = {
     "dino": "/archive/dino/index.html",
+    "thebunker": "/archive/bunker/index.html",
     "droom": "/archive/g/adarkroom/index.html",
     "gopher": "/archive/gopher/index.html",
     "mc": "/archive/g/mcjs.html",

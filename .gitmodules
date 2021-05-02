@@ -25,3 +25,7 @@
 [submodule "views/archive/g/adarkroom"]
 	path = views/archive/g/adarkroom
 	url = https://github.com/doublespeakgames/adarkroom
+
+[submodule "views/archive/bunker"]
+	path = views/archive/bunker
+	url = https://github.com/stewpidtnlvr/The-Bunker-Offline
