@@ -285,6 +285,7 @@ This project uses Alloy Proxy, Womginx, SysYA Proxy, and Via Unblocker, linked b
 - https://github.com/hypothesis/via (Via)**
 - https://github.com/BinBashBanana/PyDodge (PyDodge)**
 - https://github.com/nfriedly/node-unblocker (Node Unblocker)***
+- https://github.com/BlaNKtext/web-osu (webosu or owu!)
 
 ### Notable Mentions:
 - https://dedipath.com (Hosting Provider)
