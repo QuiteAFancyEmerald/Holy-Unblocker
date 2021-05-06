@@ -4,7 +4,7 @@ body {
 }
 
 #mainarea {
-	background: black;
+	background-color: black;
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -185,7 +185,7 @@ ul {
 #menu {
 	position: fixed;
 	display: none;
-	background: #ffffff;
+	background-color: #ffffff;
 	transition: opacity 0.3s ease;
 	z-index: 20;
 	opacity: 0;
@@ -227,10 +227,15 @@ ul {
 	padding: 12px 16px;
 	cursor: pointer;
 	display: inline-block;
+	float: left;
 }
 
-#menu li:not(.disabled):hover {
-	background: rgba(0, 0, 0, .1);
+#menu li:not(.disabled, .menu-nohover):hover {
+	background-color: rgba(0, 0, 0, .1);
+}
+
+#menu .menu-long {
+	white-space: normal;
 }
 
 #menu li input {
@@ -274,8 +279,16 @@ ul {
 	cursor: not-allowed !important;
 }
 
+#menu ul.disabled li:hover, #menu ul.menu-nohover li:hover {
+	background-color: rgb(245, 245, 245);
+}
+
 input[disabled] {
 	cursor: not-allowed !important;
+}
+
+#menu ul.xlmenu li {
+	max-width: none;
 }
 
 #ffd {
@@ -297,7 +310,7 @@ input[disabled] {
 	width: 100%;
 	height: 0px;
 	background-color: #333333;
-	content: "Drop File Here";
+	content: "Drop File";
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -320,10 +333,6 @@ input[disabled] {
 	background-color: #333333;
 }
 
-#ffd ul {
-	margin: 10px;
-}
-
 #ffd ul li {
 	margin-bottom: 3px;
 }
@@ -337,27 +346,41 @@ input[type="file"] {
 	display: none;
 }
 
-#upload+label {
-	border: 1px solid rgb(118, 118, 118);
-	border-radius: 2px;
-	padding: 4px;
-	margin: 10px;
-	font-size: 13px;
-	background-color: white;
+.uploadbutton {
+	margin: 8px 10px;
 	display: inline-block;
-	transition: ease .1s;
 	user-select: none;
 	cursor: pointer;
 }
 
-#upload+label:hover {
+.upload+.uploadlabel {
+	border: 1px solid rgb(118, 118, 118);
+	border-radius: 2px;
+	padding: 4px;
+	font-size: 13px;
+	background-color: white;
+	transition: ease .1s;
+}
+
+.upload+.uploadlabel:hover {
 	background-color: #eee;
 }
 
+.uploadimage {
+	width: 20px;
+	vertical-align: middle;
+}
+
+#ffdcontent {
+	height: calc(100% - 45px);
+	padding: 10px;
+	overflow: auto;
+}
+
 #ffd .source {
-	position: absolute;
-	bottom: 0px;
-	width: 100%;
+	width: calc(100% - 10px);
+	height: 15px;
+	padding: 5px;
 }
 
 #ffd .source * {
@@ -366,12 +389,19 @@ input[type="file"] {
 	font-size: 10px;
 	margin: 0px 5px;
 	vertical-align: top;
+	display: inline-block;
+	height: 15px;
+	line-height: 15px;
 }
 
 #ffd .source span {
+	font-weight: bold;
 	position: absolute;
 	right: 5px;
-	font-weight: bold;
+}
+
+.greyer {
+	color: #404040 !important;
 }
 
 #resume {
@@ -413,7 +443,7 @@ body.paused #resume {
 
 #sidealertholder {
 	position: absolute;
-	right: 0px;
+	right: 10px;
 	bottom: 0px;
 	width: 200px;
 	display: flex;
@@ -424,13 +454,30 @@ body.paused #resume {
 .sidealert {
 	background-color: rgb(49, 113, 152);
 	color: white;
-	margin: 0px 10px 10px 10px;
+	user-select: none;
+	cursor: default;
+	margin: 0px;
 	padding: 5px 8px;
 	opacity: 0;
-	transition: opacity 0.1s ease-in;
+	transition: all 0.1s ease-in;
 	position: relative;
 }
 
 .sidealert.on {
 	opacity: 1;
+	margin-bottom: 10px;
+}
+
+#startbutton {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 40px;
+	padding: 10px 20px;
+	z-index: 100;
+	outline: none;
+	border-radius: 4px;
+	cursor: pointer;
+	display: none;
 }

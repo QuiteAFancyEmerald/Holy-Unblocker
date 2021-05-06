@@ -5,8 +5,9 @@
 		<!-- HU Querystring fix -->
 		<base href="/archive/gfiles/rarch/">
 		
-		<title>Emulator</title>
-		<link rel="stylesheet" href="assets/base.css">
+		<meta charset="UTF-8">
+		<title>webretro</title>
+		<link rel="stylesheet" href="assets/base.css?v=6.1">
 	</head>
 	<body>
 		<div class="main" id="mainarea">
@@ -28,6 +29,7 @@
 						<li><a target="_blank" title="Opens in new tab" href="assets/controller_layout.png">Controller Layout</a></li>
 						<li><a href="" title="Opens in new tab" onclick="window.open(window.URL.createObjectURL(new Blob([decodeURIComponent(atob('JTNDIURPQ1RZUEUlMjBodG1sJTNFJTNDaHRtbCUzRSUzQ2hlYWQlM0UlM0NtZXRhJTIwaHR0cC1lcXVpdiUzRCUyMnJlZnJlc2glMjIlMjBjb250ZW50JTNEJTIyMiUzQlVSTCUzRGh0dHBzJTNBJTJGJTJGcmV0cm9waWUub3JnLnVrJTJGZG9jcyUyRlJldHJvQXJjaC1Db25maWd1cmF0aW9uJTJGJTIzZGVmYXVsdC1jb3JlLWNvbnRyb2xzLWZvci1hbGwtZW11bGF0b3JzJTIyJTNFJTNDdGl0bGUlM0VSZWRpcmVjdGluZyUzQyUyRnRpdGxlJTNFJTNDJTJGaGVhZCUzRSUzQ2JvZHklM0UlM0NoMiUzRVJlZGlyZWN0aW5nLi4uJTNDJTJGaDIlM0UlM0MlMkZib2R5JTNFJTNDJTJGaHRtbCUzRQ=='))], {type: 'text/html'})));return false;">More Help</a></li>
 						<!-- Toggle menu: F1, Save state: F2, Load state: F3 -->
+						<li class="menu-long menu-nohover">Please note that these are just the bindings that are set, but actual keybindings may vary.</li>
 					</ul>
 				</li>
 				<li>Saves
@@ -40,8 +42,8 @@
 				</li>
 				<li>States
 					<ul>
-						<li class="pointer disabled" id="savestate" title="F2">Save State</li>
-						<li class="pointer disabled" id="loadstate" title="F3">Load State</li>
+						<li class="pointer disabled" id="savestate" title="F2">Save State (F2)</li>
+						<li class="pointer disabled" id="loadstate" title="F3">Load State (F3)</li>
 						<li class="pointer disabled" id="undosavestate">Undo Save State</li>
 						<li class="pointer disabled" id="undoloadstate">Undo Load State</li>
 						<li class="pointer disabled" id="exportstate">Export State</li>
@@ -52,6 +54,23 @@
 					<ul>
 						<li class="disabled"><input type="checkbox" id="smooth" disabled>Smooth Pixels</li>
 						<li class="disabled" title="Warning: this will make the cursor position innacurate. You probably won't notice it unless you are using the menu."><input type="checkbox" id="doubleres" disabled>Double Resolution</li>
+					</ul>
+				</li>
+				<li>Cheats
+					<ul class="xlmenu">
+						<li>How to apply a cheat code</li>
+						<li>1. Open the Menu</li>
+						<li>2. Scroll down</li>
+						<li>3. Click "Cheats"</li>
+						<li>4. Click "Add new cheat to bottom/top"</li>
+						<li>5. Click the new cheat that you just created</li>
+						<li>6. Click "Code"</li>
+						<li>7. Enter/paste the cheat code</li>
+						<li>8. When you are done, press enter</li>
+						<li>9. Click "Enabled" (Set to ON)</li>
+						<li>10. Go back to Cheats by clicking the bar on the top</li>
+						<li>11. Click "Apply Changes"</li>
+						<li>12. Exit the menu</li>
 					</ul>
 				</li>
 				<li id="consolebutton">
@@ -65,17 +84,25 @@
 				</li>
 			</ul>
 			<div id="ffd" style="display: none;">
-				<h2>Upload <span id="systemname">[System]</span> ROM</h2>
-				<input type="file" id="upload">
-				<label for="upload">Choose File</label>
+				<div id="ffdcontent">
+					<h2>Upload <span id="systemname"></span> ROM</h2>
+					<input type="file" class="upload" id="upload">
+					<label for="upload" class="uploadbutton uploadlabel">Choose File</label>
+					<br>
+					<img id="googledriveupload" class="uploadbutton uploadimage" title="Google Drive Upload" src="assets/googledrive.png">
+					<img id="dropboxupload" class="uploadbutton uploadimage" title="Dropbox Upload" src="assets/dropbox.png">
+					<img id="onedriveupload" class="uploadbutton uploadimage" title="OneDrive Upload" src="assets/onedrive.png">
+				</div>
 				<div class="source">
 					<a href="https://github.com/BinBashBanana/webretro" target="_blank">Page Source</a>
-					<a href="https://github.com/libretro/" target="_blank">Emulator Source</a>
-					<a href="https://emscripten.org/" target="_blank">Emscripten</a>
-					<span>v6.0</span>
+					<a href="https://github.com/libretro" target="_blank">Emulator Source</a>
+					<a href="info/" target="_blank">Info</a>
+					<a href="https://emscripten.org" target="_blank">Emscripten</a>
+					<span>v6.1</span>
 				</div>
 			</div>
 			<canvas id="canvas" class="texturePixelated"></canvas>
+			<input type="button" id="startbutton" value="Start">
 			<div id="canvasmask">
 				<div id="resume">
 					<div>
@@ -86,7 +113,11 @@
 				<div id="sidealertholder"></div>
 			</div>
 		</div>
+		<script type="text/javascript" src="assets/zip-2.2.26.min.js"></script>
+		<script type="text/javascript" src="assets/md5.min.js"></script>
+		<script type="text/javascript" src="uauth/uauth.js"></script>
 		<script type="text/javascript" src="assets/window.js"></script>
-		<script type="text/javascript" src="assets/base.js"></script>
+		<script type="text/javascript" src="assets/charToCodeMap.js"></script>
+		<script type="text/javascript" src="assets/base.js?v=6.1"></script>
 	</body>
 </html>
