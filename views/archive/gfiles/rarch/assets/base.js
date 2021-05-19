@@ -1,3 +1,4 @@
+// Source Code: https://github.com/BinBashBanana/webretro
 // please dont use IE
 var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 if (!window.fetch || !indexedDB) {
@@ -5,12 +6,15 @@ if (!window.fetch || !indexedDB) {
 	throw "Update your browser!";
 }
 
-var fsBundleDirs, fsBundleFiles, loadStatus, romName, stateReadersReady, stateReaders2Ready, saveReadersReady, isPaused, wasmReady, bundleReady, romMode, core, wIdb, romUploadCallback;
+var fsBundleDirs, fsBundleFiles, loadStatus, romName, stateReadersReady, stateReaders2Ready, saveReadersReady, isPaused, wasmReady, bundleReady, romMode, core, wIdb, romUploadCallback, latestVersion;
 var bundleCdn = "https://cdn.jsdelivr.net/gh/BinBashBanana/webretro/";
 var keybinds = 'input_player1_start = "enter"\ninput_player1_select = "space"\ninput_player1_l = "e"\ninput_player1_l2 = "r"\ninput_player1_r = "p"\ninput_player1_r2 = "o"\ninput_player1_a = "h"\ninput_player1_b = "g"\ninput_player1_x = "y"\ninput_player1_y = "t"\ninput_player1_up = "up"\ninput_player1_left = "left"\ninput_player1_down = "down"\ninput_player1_right = "right"\ninput_player1_l_x_minus = "a"\ninput_player1_l_x_plus = "d"\ninput_player1_l_y_minus = "w"\ninput_player1_l_y_plus = "s"\ninput_player1_l3_btn = "x"\ninput_player1_r_x_minus = "j"\ninput_player1_r_x_plus = "l"\ninput_player1_r_y_minus = "i"\ninput_player1_r_y_plus = "k"\ninput_player1_r3_btn = "comma"\ninput_menu_toggle = "f1"\ninput_save_state = "f2"\ninput_load_state = "f3"\n';
 var nulKeys = 'input_ai_service = "nul"\ninput_ai_service_axis = "nul"\ninput_ai_service_btn = "nul"\ninput_ai_service_mbtn = "nul"\ninput_audio_mute = "nul"\ninput_audio_mute_axis = "nul"\ninput_audio_mute_btn = "nul"\ninput_audio_mute_mbtn = "nul"\ninput_cheat_index_minus = "nul"\ninput_cheat_index_minus_axis = "nul"\ninput_cheat_index_minus_btn = "nul"\ninput_cheat_index_minus_mbtn = "nul"\ninput_cheat_index_plus = "nul"\ninput_cheat_index_plus_axis = "nul"\ninput_cheat_index_plus_btn = "nul"\ninput_cheat_index_plus_mbtn = "nul"\ninput_cheat_toggle = "nul"\ninput_cheat_toggle_axis = "nul"\ninput_cheat_toggle_btn = "nul"\ninput_cheat_toggle_mbtn = "nul"\ninput_desktop_menu_toggle = "nul"\ninput_desktop_menu_toggle_axis = "nul"\ninput_desktop_menu_toggle_btn = "nul"\ninput_desktop_menu_toggle_mbtn = "nul"\ninput_disk_eject_toggle = "nul"\ninput_disk_eject_toggle_axis = "nul"\ninput_disk_eject_toggle_btn = "nul"\ninput_disk_eject_toggle_mbtn = "nul"\ninput_disk_next = "nul"\ninput_disk_next_axis = "nul"\ninput_disk_next_btn = "nul"\ninput_disk_next_mbtn = "nul"\ninput_disk_prev = "nul"\ninput_disk_prev_axis = "nul"\ninput_disk_prev_btn = "nul"\ninput_disk_prev_mbtn = "nul"\ninput_duty_cycle = "nul"\ninput_enable_hotkey = "nul"\ninput_enable_hotkey_axis = "nul"\ninput_enable_hotkey_btn = "nul"\ninput_enable_hotkey_mbtn = "nul"\ninput_exit_emulator = "nul"\ninput_exit_emulator_axis = "nul"\ninput_exit_emulator_btn = "nul"\ninput_exit_emulator_mbtn = "nul"\ninput_fps_toggle = "nul"\ninput_fps_toggle_axis = "nul"\ninput_fps_toggle_btn = "nul"\ninput_fps_toggle_mbtn = "nul"\ninput_frame_advance = "nul"\ninput_frame_advance_axis = "nul"\ninput_frame_advance_btn = "nul"\ninput_frame_advance_mbtn = "nul"\ninput_game_focus_toggle = "nul"\ninput_game_focus_toggle_axis = "nul"\ninput_game_focus_toggle_btn = "nul"\ninput_game_focus_toggle_mbtn = "nul"\ninput_grab_mouse_toggle = "nul"\ninput_grab_mouse_toggle_axis = "nul"\ninput_grab_mouse_toggle_btn = "nul"\ninput_grab_mouse_toggle_mbtn = "nul"\ninput_hold_fast_forward = "nul"\ninput_hold_fast_forward_axis = "nul"\ninput_hold_fast_forward_btn = "nul"\ninput_hold_fast_forward_mbtn = "nul"\ninput_hold_slowmotion = "nul"\ninput_slowmotion = "nul"\ninput_hold_slowmotion_axis = "nul"\ninput_hold_slowmotion_btn = "nul"\ninput_hold_slowmotion_mbtn = "nul"\ninput_hotkey_block_delay = "nul"\ninput_load_state_axis = "nul"\ninput_load_state_btn = "nul"\ninput_load_state_mbtn = "nul"\ninput_menu_toggle_axis = "nul"\ninput_menu_toggle_btn = "nul"\ninput_menu_toggle_mbtn = "nul"\ninput_movie_record_toggle = "nul"\ninput_movie_record_toggle_axis = "nul"\ninput_movie_record_toggle_btn = "nul"\ninput_movie_record_toggle_mbtn = "nul"\ninput_netplay_game_watch = "nul"\ninput_netplay_game_watch_axis = "nul"\ninput_netplay_game_watch_btn = "nul"\ninput_netplay_game_watch_mbtn = "nul"\ninput_netplay_host_toggle = "nul"\ninput_netplay_host_toggle_axis = "nul"\ninput_netplay_host_toggle_btn = "nul"\ninput_netplay_host_toggle_mbtn = "nul"\ninput_osk_toggle = "nul"\ninput_osk_toggle_axis = "nul"\ninput_osk_toggle_btn = "nul"\ninput_osk_toggle_mbtn = "nul"\ninput_overlay_next = "nul"\ninput_overlay_next_axis = "nul"\ninput_overlay_next_btn = "nul"\ninput_overlay_next_mbtn = "nul"\ninput_pause_toggle = "nul"\ninput_pause_toggle_axis = "nul"\ninput_pause_toggle_btn = "nul"\ninput_pause_toggle_mbtn = "nul"\ninput_player1_a_axis = "nul"\ninput_player1_a_btn = "nul"\ninput_player1_a_mbtn = "nul"\ninput_player1_b_axis = "nul"\ninput_player1_b_btn = "nul"\ninput_player1_b_mbtn = "nul"\ninput_player1_down_axis = "nul"\ninput_player1_down_btn = "nul"\ninput_player1_down_mbtn = "nul"\ninput_player1_gun_aux_a = "nul"\ninput_player1_gun_aux_a_axis = "nul"\ninput_player1_gun_aux_a_btn = "nul"\ninput_player1_gun_aux_a_mbtn = "nul"\ninput_player1_gun_aux_b = "nul"\ninput_player1_gun_aux_b_axis = "nul"\ninput_player1_gun_aux_b_btn = "nul"\ninput_player1_gun_aux_b_mbtn = "nul"\ninput_player1_gun_aux_c = "nul"\ninput_player1_gun_aux_c_axis = "nul"\ninput_player1_gun_aux_c_btn = "nul"\ninput_player1_gun_aux_c_mbtn = "nul"\ninput_player1_gun_dpad_down = "nul"\ninput_player1_gun_dpad_down_axis = "nul"\ninput_player1_gun_dpad_down_btn = "nul"\ninput_player1_gun_dpad_down_mbtn = "nul"\ninput_player1_gun_dpad_left = "nul"\ninput_player1_gun_dpad_left_axis = "nul"\ninput_player1_gun_dpad_left_btn = "nul"\ninput_player1_gun_dpad_left_mbtn = "nul"\ninput_player1_gun_dpad_right = "nul"\ninput_player1_gun_dpad_right_axis = "nul"\ninput_player1_gun_dpad_right_btn = "nul"\ninput_player1_gun_dpad_right_mbtn = "nul"\ninput_player1_gun_dpad_up = "nul"\ninput_player1_gun_dpad_up_axis = "nul"\ninput_player1_gun_dpad_up_btn = "nul"\ninput_player1_gun_dpad_up_mbtn = "nul"\ninput_player1_gun_offscreen_shot = "nul"\ninput_player1_gun_offscreen_shot_axis = "nul"\ninput_player1_gun_offscreen_shot_btn = "nul"\ninput_player1_gun_offscreen_shot_mbtn = "nul"\ninput_player1_gun_select = "nul"\ninput_player1_gun_select_axis = "nul"\ninput_player1_gun_select_btn = "nul"\ninput_player1_gun_select_mbtn = "nul"\ninput_player1_gun_start = "nul"\ninput_player1_gun_start_axis = "nul"\ninput_player1_gun_start_btn = "nul"\ninput_player1_gun_start_mbtn = "nul"\ninput_player1_gun_trigger = "nul"\ninput_player1_gun_trigger_axis = "nul"\ninput_player1_gun_trigger_btn = "nul"\ninput_player1_gun_trigger_mbtn = "nul"\ninput_player1_l2_axis = "nul"\ninput_player1_l2_btn = "nul"\ninput_player1_l2_mbtn = "nul"\ninput_player1_l3 = "nul"\ninput_player1_l3_axis = "nul"\ninput_player1_l3_mbtn = "nul"\ninput_player1_l_axis = "nul"\ninput_player1_l_btn = "nul"\ninput_player1_l_mbtn = "nul"\ninput_player1_l_x_minus_axis = "nul"\ninput_player1_l_x_minus_btn = "nul"\ninput_player1_l_x_minus_mbtn = "nul"\ninput_player1_l_x_plus_axis = "nul"\ninput_player1_l_x_plus_btn = "nul"\ninput_player1_l_x_plus_mbtn = "nul"\ninput_player1_l_y_minus_axis = "nul"\ninput_player1_l_y_minus_btn = "nul"\ninput_player1_l_y_minus_mbtn = "nul"\ninput_player1_l_y_plus_axis = "nul"\ninput_player1_l_y_plus_btn = "nul"\ninput_player1_l_y_plus_mbtn = "nul"\ninput_player1_left_axis = "nul"\ninput_player1_left_mbtn = "nul"\ninput_player1_r2_axis = "nul"\ninput_player1_r2_btn = "nul"\ninput_player1_r2_mbtn = "nul"\ninput_player1_r3 = "nul"\ninput_player1_r3_axis = "nul"\ninput_player1_r3_mbtn = "nul"\ninput_player1_r_axis = "nul"\ninput_player1_r_btn = "nul"\ninput_player1_r_mbtn = "nul"\ninput_player1_r_x_minus_axis = "nul"\ninput_player1_r_x_minus_btn = "nul"\ninput_player1_r_x_minus_mbtn = "nul"\ninput_player1_r_x_plus_axis = "nul"\ninput_player1_r_x_plus_btn = "nul"\ninput_player1_r_x_plus_mbtn = "nul"\ninput_player1_r_y_minus_axis = "nul"\ninput_player1_r_y_minus_btn = "nul"\ninput_player1_r_y_minus_mbtn = "nul"\ninput_player1_r_y_plus_axis = "nul"\ninput_player1_r_y_plus_btn = "nul"\ninput_player1_r_y_plus_mbtn = "nul"\ninput_player1_right_axis = "nul"\ninput_player1_right_mbtn = "nul"\ninput_player1_select_axis = "nul"\ninput_player1_select_btn = "nul"\ninput_player1_select_mbtn = "nul"\ninput_player1_start_axis = "nul"\ninput_player1_start_btn = "nul"\ninput_player1_start_mbtn = "nul"\ninput_player1_turbo = "nul"\ninput_player1_turbo_axis = "nul"\ninput_player1_turbo_btn = "nul"\ninput_player1_turbo_mbtn = "nul"\ninput_player1_up_axis = "nul"\ninput_player1_up_btn = "nul"\ninput_player1_up_mbtn = "nul"\ninput_player1_x_axis = "nul"\ninput_player1_x_btn = "nul"\ninput_player1_x_mbtn = "nul"\ninput_player1_y_axis = "nul"\ninput_player1_y_btn = "nul"\ninput_player1_y_mbtn = "nul"\ninput_poll_type_behavior = "nul"\ninput_recording_toggle = "nul"\ninput_recording_toggle_axis = "nul"\ninput_recording_toggle_btn = "nul"\ninput_recording_toggle_mbtn = "nul"\ninput_reset = "nul"\ninput_reset_axis = "nul"\ninput_reset_btn = "nul"\ninput_reset_mbtn = "nul"\ninput_rewind = "nul"\ninput_rewind_axis = "nul"\ninput_rewind_btn = "nul"\ninput_rewind_mbtn = "nul"\ninput_save_state_axis = "nul"\ninput_save_state_btn = "nul"\ninput_save_state_mbtn = "nul"\ninput_screenshot = "nul"\ninput_screenshot_axis = "nul"\ninput_screenshot_btn = "nul"\ninput_screenshot_mbtn = "nul"\ninput_send_debug_info = "nul"\ninput_send_debug_info_axis = "nul"\ninput_send_debug_info_btn = "nul"\ninput_send_debug_info_mbtn = "nul"\ninput_shader_next = "nul"\ninput_shader_next_axis = "nul"\ninput_shader_next_btn = "nul"\ninput_shader_next_mbtn = "nul"\ninput_shader_prev = "nul"\ninput_shader_prev_axis = "nul"\ninput_shader_prev_btn = "nul"\ninput_shader_prev_mbtn = "nul"\ninput_state_slot_decrease = "nul"\ninput_state_slot_decrease_axis = "nul"\ninput_state_slot_decrease_btn = "nul"\ninput_state_slot_decrease_mbtn = "nul"\ninput_state_slot_increase = "nul"\ninput_state_slot_increase_axis = "nul"\ninput_state_slot_increase_btn = "nul"\ninput_state_slot_increase_mbtn = "nul"\ninput_streaming_toggle = "nul"\ninput_streaming_toggle_axis = "nul"\ninput_streaming_toggle_btn = "nul"\ninput_streaming_toggle_mbtn = "nul"\ninput_toggle_fast_forward = "nul"\ninput_toggle_fast_forward_axis = "nul"\ninput_toggle_fast_forward_btn = "nul"\ninput_toggle_fast_forward_mbtn = "nul"\ninput_toggle_fullscreen = "nul"\ninput_toggle_fullscreen_axis = "nul"\ninput_toggle_fullscreen_btn = "nul"\ninput_toggle_fullscreen_mbtn = "nul"\ninput_toggle_slowmotion = "nul"\ninput_toggle_slowmotion_axis = "nul"\ninput_toggle_slowmotion_btn = "nul"\ninput_toggle_slowmotion_mbtn = "nul"\ninput_turbo_default_button = "nul"\ninput_turbo_mode = "nul"\ninput_turbo_period = "nul"\ninput_volume_down = "nul"\ninput_volume_down_axis = "nul"\ninput_volume_down_btn = "nul"\ninput_volume_down_mbtn = "nul"\ninput_volume_up = "nul"\ninput_volume_up_axis = "nul"\ninput_volume_up_btn = "nul"\ninput_volume_up_mbtn = "nul"\n';
 var extraConfig = 'rgui_show_start_screen = "false"\n';
 var pdKeys = [8, 9, 13, 19, 27, 32, 33, 34, 35, 36, 42, 44, 45, 91, 92, 93, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135];
+var webretroVersion = 6.2;
+var updateNotice = document.getElementById("updatenotice");
+var versionIndicator = document.getElementById("versionindicator");
 var upload = document.getElementById("upload");
 var googleDriveUpload = document.getElementById("googledriveupload");
 var dropboxUpload = document.getElementById("dropboxupload");
@@ -45,12 +49,12 @@ var hoverMenu = document.getElementById("menu");
 var hoverMenuIndicator = document.getElementById("menuindicator");
 var search = decodeURIComponent(window.location.search).substring(1).split("&");
 var systems = {"beetle_psx": "PS1", "citra": "Nintendo 3DS", "desmume": "Nintendo DS", "dolphin": "GC/Wii", "genesis_plus_gx": "Genesis", "mgba": "GBA", "mupen64plus_next": "Nintendo 64", "nestopia": "NES", "parallel_n64": "Nintendo 64", "ppsspp": "PSP", "snes9x": "SNES"};
-var visibleCores = ["genesis_plus_gx", "mgba", "mupen64plus_next", "nestopia", "snes9x"];
+var installedCores = ["genesis_plus_gx", "mgba", "mupen64plus_next", "nestopia", "snes9x"];
 var fileExts = {"GBA": ".gb, .gbc, .gba", "GC/Wii": ".iso, .gcm, .dol, .tgc, .wbfs, .ciso, .gcz, .wad", "Genesis": ".mdx, .md, .smd, .gen, .sms, .gg, .sg, .68k, .chd", "NES": ".nes, .fds, .unf, .unif", "Nintendo 64": ".n64, .v64, .z64, .u1, .ndd", "Nintendo 3DS": ".3ds, .3dsx, .cci, .cxi", "Nintendo DS": ".nds, .srl", "PS1": ".ccd, .iso", "PSP": ".cso, .pbp", "SNES": ".smc, .sfc, .swc, .fig, .bs, .st"};
 var allFileExts = Object.values(fileExts).join(", ");
 var allValidFileExts = [];
-for (var i = 0; i < visibleCores.length; i++) {
-	allValidFileExts.push(fileExts[systems[visibleCores[i]]]);
+for (var i = 0; i < installedCores.length; i++) {
+	allValidFileExts.push(fileExts[systems[installedCores[i]]]);
 }
 allValidFileExts = allValidFileExts.join(", ");
 var baseFsBundleDir = "/home/web_user/retroarch/bundle";
@@ -61,8 +65,8 @@ var smasBrickFix = {"16a160ddd431a3db6fcd7453ffae9c4c": [80,65,84,67,72,0,127,16
 
 // make core lists
 var aCoreList = '<li><b>Select a Core</b></li><li><a href="?core=autodetect" class="greyer">AutoDetect (Slower to load)</a></li>';
-for (var i = 0; i < visibleCores.length; i++) {
-	aCoreList += '<li><a href="?core=' + visibleCores[i] + '">' + visibleCores[i] + ' (' + systems[visibleCores[i]] + ')</a></li>';
+for (var i = 0; i < installedCores.length; i++) {
+	aCoreList += '<li><a href="?core=' + installedCores[i] + '">' + installedCores[i] + ' (' + systems[installedCores[i]] + ')</a></li>';
 }
 
 // query string into object
@@ -232,9 +236,9 @@ function grab(url, type, success, fail) {
 	req.responseType = type;
 	req.onload = function() {
 		if (req.status >= "400") {
-			fail(req.status);
+			if (fail) fail(req.status);
 		} else {
-			success(this.response);
+			if (success) success(this.response);
 		}
 	}
 	req.send();
@@ -288,6 +292,25 @@ function getScript(url, callback, err) {
 
 function getCore(name, callback, err) {
 	getScript("./" + name + "_libretro.js", callback, err);
+}
+
+// check for updates
+function checkForUpdates() {
+	grab("https://cdn.jsdelivr.net/gh/BinBashBanana/webretro@latest/assets/info.json", "text", function(text) {
+		try {
+			var updateObj = JSON.parse(text);
+			if (updateObj.webretro) {
+				latestVersion = updateObj.webretro;
+				if (updateObj.versions[webretroVersion.toString()]) versionIndicator.title = "New features in this version:\n\n- " + updateObj.versions[webretroVersion.toString()].changeList.join("\n- ");
+				if (latestVersion > webretroVersion && updateObj.versions[latestVersion.toString()]) {
+					updateNotice.textContent = "New webretro version available: v" + latestVersion.toString() + ". Features:\n\n- " + updateObj.versions[latestVersion.toString()].changeList.join("\n- ") + "\n\nThe site owner(s) can apply the update.";
+					updateNotice.style.display = "initial";
+				}
+			}
+		} catch (e) {
+			log(e);
+		}
+	});
 }
 
 // unzip file
@@ -369,8 +392,8 @@ function readyRomUploads(exts) {
 
 // rom fetch
 function readyRomFetch() {
-	var romloc = /^(http:\/\/|https:\/\/|\/\/)/i.test(queries["rom"]) ? queries["rom"] : "roms/" + queries["rom"];
-	var romFilename = queries["rom"].split("/").slice(-1)[0];
+	var romloc = /^(http:\/\/|https:\/\/|\/\/)/i.test(queries.rom) ? queries.rom : "roms/" + queries.rom;
+	var romFilename = queries.rom.split("/").slice(-1)[0];
 	grab(romloc, "arraybuffer", function(data) {
 		log("Succesfully fetched ROM from " + romloc);
 		romMode = "querystring";
@@ -420,53 +443,70 @@ consoleButton.onclick = function() {
 if (queries.hasOwnProperty("console")) conw.open({width: 450, height: 250, left: 100, top: 50});
 
 // ---------- START LOAD ----------
-
-if (queries["core"]) {
-	if (!window.navigator.userAgent.toLowerCase().includes("chrom")) alert("Best performance on Chrome!");
-	
-	// show hover menu
-	hoverMenu.style.display = "block";
-	
-	if (queries["core"] == "autodetect") {
-		romUploadCallback = autodetectCoreHandler;
-		systemName.textContent = "";
-		readyRomUploads(".zip, " + allFileExts);
-	} else {
-		romUploadCallback = initFromFile;
-		core = queries["core"];
-		
-		setStatus("Getting core");
-		if (core == "desmume") sramExt = ".dsv";
-		// detect system for ROM upload
-		systemName.textContent = systems[core] || "";
-		
-		getCore(core, function() {
-			removeStatus("Getting core");
-			log("Got core: " + core);
-			if (romMode != "querystring") document.title = core + " | webretro";
-			
-			readyRomUploads(".zip, .bin, " + fileExts[systems[core]]);
-		}, function() {
-			// core loading error
-			alert('Could not load specified core "' + core + '". Here is a list of available cores.');
-			ffdContent.innerHTML = "<ul>" + aCoreList + "</ul>";
-			ffd.style.display = "block";
-		});
+(function() {
+	// ?system query
+	if (!queries.core && queries.system) {
+		var detectedCore = Object.keys(systems).find(k => systems[k].toLowerCase() == queries.system.toLowerCase());
+		if (installedCores.includes(detectedCore)) {
+			queries.core = detectedCore;
+		} else if (queries.system.toLowerCase() == "autodetect") {
+			queries.core = "autodetect";
+		} else {
+			alert("Invalid core (" + detectedCore + ")");
+		}
 	}
-	// load rom if specified
-	if (queries["rom"]) {
-		readyRomFetch();
+	
+	// ?core query
+	if (queries.core) {
+		if (!window.navigator.userAgent.toLowerCase().includes("chrom")) alert("Best performance on Chrome!");
+		
+		// show hover menu
+		hoverMenu.style.display = "block";
+		
+		versionIndicator.textContent = "v" + webretroVersion.toString();
+		checkForUpdates();
+		
+		if (queries.core.toLowerCase() == "autodetect") {
+			romUploadCallback = autodetectCoreHandler;
+			systemName.textContent = "";
+			readyRomUploads(".zip, " + allFileExts);
+		} else {
+			romUploadCallback = initFromFile;
+			core = queries.core;
+			
+			setStatus("Getting core");
+			if (core == "desmume") sramExt = ".dsv";
+			// detect system for ROM upload
+			systemName.textContent = systems[core] || "";
+			
+			getCore(core, function() {
+				removeStatus("Getting core");
+				log("Got core: " + core);
+				if (romMode != "querystring") document.title = core + " | webretro";
+				
+				readyRomUploads(".zip, .bin, " + fileExts[systems[core]]);
+			}, function() {
+				// core loading error
+				alert('Could not load specified core "' + core + '". Here is a list of available cores.');
+				ffdContent.innerHTML = "<ul>" + aCoreList + "</ul>";
+				ffd.style.display = "block";
+			});
+		}
+		
+		// ?rom query
+		if (queries.rom) {
+			readyRomFetch();
+		} else {
+			// prompt user to upload ROM file
+			romMode = "upload";
+			ffd.style.display = "block";
+		}
 	} else {
-		// prompt user to upload ROM file
-		romMode = "upload";
+		// no core specified
+		ffdContent.innerHTML = "<ul>" + aCoreList + "</ul>";
 		ffd.style.display = "block";
 	}
-} else {
-	// no core specified
-	ffdContent.innerHTML = "<ul>" + aCoreList + "</ul>";
-	ffd.style.display = "block";
-}
-
+})();
 // ----------- END LOAD -----------
 
 // start emulator from file name and data
@@ -804,8 +844,8 @@ function afterStart() {
 	// ctrl+v inside canvas
 	document.addEventListener("keydown", function(e) {
 		if (e.ctrlKey && e.key == "v") {
-			fakeKeyPress({code: "Backspace"});
 			navigator.clipboard.readText().then(function(text) {
+				fakeKeyPress({code: "Backspace"});
 				sendText(text);
 			});
 		}
@@ -819,6 +859,7 @@ function initFromData(data) {
 		if (wasmReady && bundleReady) {
 			setStatus("Waiting for emulator");
 			log("Initializing with " + data.byteLength + " bytes of data");
+			updateNotice.style.display = "none";
 			canvas.addEventListener("contextmenu", function(e) {
 				e.preventDefault();
 			}, false);
@@ -870,7 +911,7 @@ function initFromData(data) {
 			FS.writeFile("/home/web_user/retroarch/userdata/retroarch.cfg", nulKeys + keybinds + extraConfig);
 			
 			// start
-			Module["callMain"](Module["arguments"]);
+			Module.callMain(Module.arguments);
 			adjustCanvasSize();
 			
 			window.setTimeout(afterStart, 2000);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- https://github.com/BinBashBanana/webretro -->
+<!-- Source Code: https://github.com/BinBashBanana/webretro -->
 <html>
 	<head>
 		<!-- HU Querystring fix -->
@@ -7,7 +7,8 @@
 		
 		<meta charset="UTF-8">
 		<title>webretro</title>
-		<link rel="stylesheet" href="assets/base.css?v=6.1">
+		<link rel="stylesheet" href="assets/base.css?v=6.2">
+		<link rel="stylesheet" href="assets/jswindow.css">
 	</head>
 	<body>
 		<div class="main" id="mainarea">
@@ -98,9 +99,10 @@
 					<a href="https://github.com/libretro" target="_blank">Emulator Source</a>
 					<a href="info/" target="_blank">Info</a>
 					<a href="https://emscripten.org" target="_blank">Emscripten</a>
-					<span>v6.1</span>
+					<span id="versionindicator"></span>
 				</div>
 			</div>
+			<p id="updatenotice"></p>
 			<canvas id="canvas" class="texturePixelated"></canvas>
 			<input type="button" id="startbutton" value="Start">
 			<div id="canvasmask">
@@ -116,8 +118,8 @@
 		<script type="text/javascript" src="assets/zip-2.2.26.min.js"></script>
 		<script type="text/javascript" src="assets/md5.min.js"></script>
 		<script type="text/javascript" src="uauth/uauth.js"></script>
-		<script type="text/javascript" src="assets/window.js"></script>
+		<script type="text/javascript" src="assets/jswindow.js"></script>
 		<script type="text/javascript" src="assets/charToCodeMap.js"></script>
-		<script type="text/javascript" src="assets/base.js?v=6.1"></script>
+		<script type="text/javascript" src="assets/base.js?v=6.2"></script>
 	</body>
 </html>
