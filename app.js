@@ -42,6 +42,7 @@ const text404 = fs.readFileSync(path.normalize(__dirname + '/views/404.html'), '
         'f': 'pages/nav/flash.html',
         'm': 'pages/nav/emulibrary.html',
         /* Proxies */
+        'q': 'pages/proxnav/corrosion.html',
         'a': 'pages/proxnav/alloy.html',
         'w': 'pages/proxnav/womginx.html',
         'p': 'pages/proxnav/pmprox.html',
