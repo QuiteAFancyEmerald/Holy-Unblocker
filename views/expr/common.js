@@ -24,14 +24,14 @@ function goToUrl(url, stealth, nolag) {
  * goProx.proxy(url-string, stealth-boolean-optional)
  *
  * Examples:
- * goProx.alloy("https://google.com")
+ * goProx.corrosion("https://google.com")
  * goProx.womginx("discord.com", true)
  */
 
 goProx = {
-    alloy: function(url, stealth) {
+    corrosion: function(url, stealth) {
         document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + getDomain() + '; path=/; Secure;';
-        goToUrl("https://" + getDomain() + "/fetch/" + btoa(url.substring(0, 4) == "http" ? url : "https://" + url), stealth);
+        goToUrl("https://" + getDomain() + "/fetch/" + url, stealth);
     },
     womginx: function(url, stealth) {
         document.cookie = 'wgauth=yes; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + getDomain() + '; path=/; Secure;';

@@ -4,7 +4,7 @@
  * MIT license: http://opensource.org/licenses/MIT
  * ----------------------------------------------- */
 const
-    alloy = require('./src/alloyproxy'),
+    corrosion = require('./src/Corrosion'),
     path = require('path'),
     config = require('./config.json'),
     fs = require('fs'),
@@ -108,23 +108,19 @@ function tryReadFile(file) {
     return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : text404;
 }
 
-// Local alloy proxy
-const localAlloy = new alloy({
-    prefix: '/fetch/',
-    error: (proxy) => { proxy.res.send(tryReadFile(path.normalize(__dirname + '/views/error.html')).replace('%ERR%', proxy.error.info.message.replace(/<|>/g, ''))); }, // Doing replace functions on "<" and ">" to prevent XSS.
-    request: [],
-    response: [],
-    injection: true
+// Local corrosion proxy
+const localCorrosion = new corrosion({
+	prefix: '/fetch/',
+	ws: true,
+	codec: 'plain'
 });
-app.use(localAlloy.app);
-localAlloy.ws(server);
 
 /* Querystring Navigation */
 app.get('/', async(req, res) => res.send(insertAll(tryReadFile(path.normalize(__dirname + '/views/' + (['/', '/?'].includes(req.url) ? siteIndex : pages[Object.keys(req.query)[0]]))))));
 
 /* Static Files Served */
 app.use(express.static(path.normalize(__dirname + '/views')));
-app.use((req, res) => res.status(404, res.send(insertAll(text404))));
+app.use((req, res) => {if (req.url.startsWith(localCorrosion.prefix)) return localCorrosion.request(req, res); res.status(404, res.send(insertAll(text404)))});
 
 server.listen(port);
 console.log('Holy Unblocker is listening on port ' + port + '. This is simply a public for Holy Unblocker. Certain functions may not work properly.');

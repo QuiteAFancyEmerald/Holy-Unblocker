@@ -12,14 +12,14 @@ try {
     console.log("No url box: " + e);
 }
 
-// Alloy
+// Corrosion
 tryGetElement('al').onclick = function(e) {
     e.preventDefault();
-    if (url.value) goProx.alloy(url.value, true);
+    if (url.value) goProx.corrosion(url.value, true);
 }
 tryGetElement('albp').onclick = function(e) {
     e.preventDefault();
-    if (url.value) goProx.alloy(url.value);
+    if (url.value) goProx.corrosion(url.value);
 }
 
 // Womginx
