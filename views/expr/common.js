@@ -28,10 +28,14 @@ function goToUrl(url, stealth, nolag) {
  * goProx.womginx("discord.com", true)
  */
 
+xor = (str) => {
+    return encodeURIComponent(str.toString().split('').map((char, ind) => ind % 2 ? String.fromCharCode(char.charCodeAt() ^ 2) : char).join(''));
+}
+
 goProx = {
     corrosion: function(url, stealth) {
         document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + getDomain() + '; path=/; Secure;';
-        goToUrl("https://" + getDomain() + "/fetch/" + url, stealth);
+        goToUrl("https://" + getDomain() + "/fetch/" + xor(url), stealth);
     },
     womginx: function(url, stealth) {
         document.cookie = 'wgauth=yes; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + getDomain() + '; path=/; Secure;';
