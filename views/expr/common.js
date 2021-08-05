@@ -34,8 +34,17 @@ xor = (str) => {
 
 goProx = {
     corrosion: function(url, stealth) {
+<<<<<<< HEAD
         document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + getDomain() + '; path=/; Secure;';
         goToUrl("https://" + getDomain() + "/fetch/" + xor(url), stealth);
+=======
+        document.cookie = '__cor_auth=1; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + getDomain() + '; path=/; Secure;';
+        goToUrl("https://" + getDomain() + "/search/gateway?url=" + url, stealth);
+    },
+    alloy: function(url, stealth) {
+        document.cookie = '__incog_prox=1; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + getDomain() + '; path=/; Secure;';
+        goToUrl("https://cdn." + getDomain() + "/fetch/" + url, stealth);
+>>>>>>> fa9fd4bc41ab174f8cd2e113a026440b12326b40
     },
     womginx: function(url, stealth) {
         document.cookie = 'wgauth=yes; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + getDomain() + '; path=/; Secure;';
