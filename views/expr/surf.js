@@ -13,13 +13,23 @@ try {
 }
 
 // Corrosion
-tryGetElement('al').onclick = function(e) {
+tryGetElement('q').onclick = function(e) {
     e.preventDefault();
     if (url.value) goProx.corrosion(url.value, true);
 }
-tryGetElement('albp').onclick = function(e) {
+tryGetElement('qbp').onclick = function(e) {
     e.preventDefault();
     if (url.value) goProx.corrosion(url.value);
+}
+
+// Alloy
+tryGetElement('al').onclick = function(e) {
+    e.preventDefault();
+    if (url.value) goProx.alloy(url.value, true);
+}
+tryGetElement('albp').onclick = function(e) {
+    e.preventDefault();
+    if (url.value) goProx.alloy(url.value);
 }
 
 // Womginx
@@ -102,13 +112,17 @@ tryGetElement('wndpbp').onclick = function(e) {
     e.preventDefault();
     goProx.womginx("https://discord.com/app");
 }
+tryGetElement('qdp').onclick = function(e) {
+    e.preventDefault();
+    goProx.corrosion("https://discord.com/app", true);
+}
 
-// Links - YouTube (Broken until new pydodge is implemented :trol:)
+// Links - YouTube 
 tryGetElement('ytbtn').onclick = function(e) {
     e.preventDefault();
-    // goProx.pydodge("https://youtube.com", true);
+    goProx.corrosion("https://youtube.com", true);
 }
 tryGetElement('ytbp').onclick = function(e) {
     e.preventDefault();
-    // goProx.pydodge("https://youtube.com");
+    goProx.corrosion("https://youtube.com");
 }

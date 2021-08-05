@@ -30,8 +30,12 @@ function goToUrl(url, stealth, nolag) {
 
 goProx = {
     corrosion: function(url, stealth) {
-        document.cookie = 'oldsmobile=badcar; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + getDomain() + '; path=/; Secure;';
-        goToUrl("https://" + getDomain() + "/fetch/" + url, stealth);
+        document.cookie = '__cor_auth=1; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + getDomain() + '; path=/; Secure;';
+        goToUrl("https://" + getDomain() + "/search/gateway?url=" + url, stealth);
+    },
+    alloy: function(url, stealth) {
+        document.cookie = '__incog_prox=1; expires=' + (Date.now() + 259200) + '; SameSite=Lax; domain=.' + getDomain() + '; path=/; Secure;';
+        goToUrl("https://cdn." + getDomain() + "/fetch/" + url, stealth);
     },
     womginx: function(url, stealth) {
         document.cookie = 'wgauth=yes; expires=' + (Date.now() + 259200) + '; SameSite=None; domain=.' + getDomain() + '; path=/; Secure;';
