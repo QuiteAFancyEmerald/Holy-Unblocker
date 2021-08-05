@@ -4,7 +4,7 @@
  * MIT license: http://opensource.org/licenses/MIT
  * ----------------------------------------------- */
 const
-    corrosion = require('./src/Corrosion'),
+    corrosion = require('corrosion'),
     path = require('path'),
     config = require('./config.json'),
     fs = require('fs'),
@@ -108,19 +108,31 @@ function tryReadFile(file) {
     return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : text404;
 }
 
-// Local corrosion proxy
-const localCorrosion = new corrosion({
-	prefix: '/fetch/',
-	ws: true,
-	codec: 'plain'
+// Local Corrosion Proxy
+
+const proxy = new corrosion({
+    prefix: '/search/',
+    title: 'Untitled Document',
+    ws: true,
+    codec: 'xor',
+    requestMiddleware: [
+        corrosion.middleware.blacklist([
+            'accounts.google.com',
+        ], 'Page is blocked'),
+    ],
 });
+
+proxy.bundleScripts();
 
 /* Querystring Navigation */
 app.get('/', async(req, res) => res.send(insertAll(tryReadFile(path.normalize(__dirname + '/views/' + (['/', '/?'].includes(req.url) ? siteIndex : pages[Object.keys(req.query)[0]]))))));
 
 /* Static Files Served */
 app.use(express.static(path.normalize(__dirname + '/views')));
-app.use((req, res) => {if (req.url.startsWith(localCorrosion.prefix)) return localCorrosion.request(req, res); res.status(404, res.send(insertAll(text404)))});
+app.use((req, res) => {
+    if (req.url.startsWith(proxy.prefix)) return proxy.request(req, res);
+    res.status(404, res.send(insertAll(text404)))
+});
 
 server.listen(port);
 console.log('Holy Unblocker is listening on port ' + port + '. This is simply a public for Holy Unblocker. Certain functions may not work properly.');
