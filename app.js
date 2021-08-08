@@ -4,7 +4,7 @@
  * MIT license: http://opensource.org/licenses/MIT
  * ----------------------------------------------- */
 const
-    corrosion = require('corrosion'),
+    corrosion = require('./src/Corrosion'),
     path = require('path'),
     config = require('./config.json'),
     fs = require('fs'),

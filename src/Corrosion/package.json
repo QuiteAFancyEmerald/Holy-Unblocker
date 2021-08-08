@@ -1,0 +1,47 @@
+{
+  "_from": "corrosion",
+  "_id": "corrosion@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-jRKoOTWBmpylgOARW6vsVE4DaSsg9Qnt0E7c7Rp5q2kFAlYrr8KrhjUWJrKmlHL8wbLi8EUdlNId4vvL0PHGdA==",
+  "_location": "/corrosion",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "corrosion",
+    "name": "corrosion",
+    "escapedName": "corrosion",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/corrosion/-/corrosion-1.0.0.tgz",
+  "_shasum": "22aa376a6bd72720f3994f8e091b880b87c02cc4",
+  "_spec": "corrosion",
+  "_where": "C:\\Users\\Not A Porxy\\Documents\\HolyUnblockerWorkspace\\HolyUB",
+  "author": "",
+  "bundleDependencies": false,
+  "dependencies": {
+    "acorn-hammerhead": "^0.5.0",
+    "css-tree": "^1.1.3",
+    "esotope-hammerhead": "^0.6.1",
+    "parse5": "^6.0.1",
+    "webpack": "^5.46.0"
+  },
+  "deprecated": false,
+  "description": "Titanium Networks main web proxy.\r Successor to [Alloy](https://github.com/titaniumnetwork-dev/alloy)\r # Installation:\r ```\r npm i corrosion\r ```",
+  "directories": {
+    "lib": "lib"
+  },
+  "license": "ISC",
+  "main": "lib/server/index.js",
+  "name": "corrosion",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}
