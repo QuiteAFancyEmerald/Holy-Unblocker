@@ -75,7 +75,7 @@ For more detailed documentation on workspace setup, please view <a href="https:/
 
 The default place for the proxy when it started is `http://localhost:8080`, but it can be changed if needed in config.json
 
-This website has been hosted locally on Alloy Proxy. For more information, head over to the Alloy Proxy repository below.
+This website has been hosted locally with Corrosion, a powerful web proxy made by Titanium Network. For more information, head over to the Corrosion repository below.
 
 ## Structure
 - `index.html` : The official homepage of the site.
@@ -133,7 +133,7 @@ SysYA Proxy - https://github.com/sysce/proxy
 
 Via Unblocker/PyDodge -https://github.com/BinBashBanana/PyDodge
 
-Alloy Proxy - https://github.com/titaniumnetwork-dev/alloy
+Corrosion - https://github.com/titaniumnetwork-dev/Corrosion
 
 The source used for Via Unblocker on the official sites is not public.
 
@@ -280,6 +280,7 @@ View the official website for more details or credits.
 This project uses Alloy Proxy, Womginx, SysYA Proxy, and Via Unblocker, linked below.
 
 - https://github.com/titaniumnetwork-dev/alloy (Alloy)*
+- https://github.com/titaniumnetwork-dev/Corrosion (Corrosion)
 - https://github.com/binary-person/womginx (Womginx)
 - https://github.com/sysce/proxy (SysYA Proxy)
 - https://github.com/hypothesis/via (Via)**
@@ -291,8 +292,8 @@ This project uses Alloy Proxy, Womginx, SysYA Proxy, and Via Unblocker, linked b
 - https://dedipath.com (Hosting Provider)
 
 ### Footnotes:
-- This distribution of Holy Unblocker uses an older version of Alloy Proxy.
+- Older distributions of Holy Unblocker uses an older version of Alloy Proxy.
 - The official Holy Unblocker sites use a private, modified version of Via and goes under the name PyDodge for any modified version.
 - Node Unblocker is no longer used on any of the official Titanium Network flagship sites.
 
-Thanks. :D
+Thanks :D
