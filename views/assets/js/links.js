@@ -16,7 +16,7 @@ var hulinks = {
     "wnlink": "https://github.com/binary-person/womginx",
     "pylink": "https://github.com/BinBashBanana/PyDodge",
     "nulink": "https://github.com/nfriedly/node-unblocker",
-    "tnlink": "https://discord.gg/hcUUceSCtj",
+    "tnlink": "https://discord.gg/unblock",
     "nclink": "https://nodeclusters.com",
     "qrlink": "https://support.discord.com/hc/en-us/articles/360039213771-QR-Code-Login-FAQ",
     "ilink": "https://itch.io",
