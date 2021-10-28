@@ -25,7 +25,7 @@ Read below for information if the official site is blocked or for obtaining more
 - Game library with moderately decent titles like A Dark Room 
 - Has frequent support articles for issues relating to the various proxy instances
 
-Be sure to join Titanium Network's Discord for more official site links: https://discord.gg/hcUUceSCtj
+Be sure to join Titanium Network's Discord for more official site links: https://discord.gg/unblock
 
 Do %proxy hu for more Holy Unblocker links on the Titanium Network Discord server.
 
