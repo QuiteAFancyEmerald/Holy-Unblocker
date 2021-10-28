@@ -39,7 +39,8 @@ var h5gms = {
     "faball": "/archive/g/factoryballsforever/index.html",
     "trimps": "/archive/g/trimps/index.html",
     "sm64": "/archive/g/sm64/index.html#nolag",
-    "zork": "/archive/g/zork1/index.html"
+    "zork": "/archive/g/zork1/index.html",
+    "obstacle-cube": "/archive/g/obstacle-cube/index.html"
 };
 
 h5gms_array = Object.keys(h5gms);
