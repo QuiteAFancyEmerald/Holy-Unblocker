@@ -25,7 +25,7 @@ Read below for information if the official site is blocked or for obtaining more
 - Game library with moderately decent titles like A Dark Room 
 - Has frequent support articles for issues relating to the various proxy instances
 
-Be sure to join Titanium Network's Discord for more official site links: https://discord.gg/hcUUceSCtj
+Be sure to join Titanium Network's Discord for more official site links: https://discord.gg/unblock
 
 Do %proxy hu for more Holy Unblocker links on the Titanium Network Discord server.
 
@@ -86,7 +86,7 @@ This website has been hosted locally with Corrosion, a powerful web proxy made b
 - `status.html` : Has 3 backup Holy Unblocker links.
 - `hidden.html` : Fake "Site not Found" page (unused)
 - `frame.html` : Handles any pages under stealth.
-- `surf.html` : Web Proxies page, page offers to be redirected to any proxies you would like to add. In this case Alloy, Womginx, SysYa and Via Unblocker.
+- `surf.html` : Web Proxies page, page offers to be redirected to any proxies you would like to add. In this case Corrosion, Womginx, and PyDodgeB.
 - `credits.html` : List of all contributors to the site.
 - `bookmarklets.html` : Bookmarklets page to be worked on more in the future.
 - `icons.html` : Information regarding Settings Menu page. Added this in for standard users.
@@ -95,11 +95,11 @@ This website has been hosted locally with Corrosion, a powerful web proxy made b
 - `games5.html` : HTML5 game navigation page.
 - `emulators.html` : Emulator navigation page, using [webretro](https://github.com/BinBashBanana/webretro)</a>.
 - `flash.html` : Games page for flash games, credits given to @BinBashBanana and Titanium Network for its assets.
-- `alloy.html` : Official Alloy Proxy page which features Alloy hosted locally but can be configured to redirect to an external instance.
+- `corrosion.html` : Official page for Corrosion.
 - `womginx.html` : Womginx Proxy page. Script links to a subdomain for Womginx, a highly fast proxy with reCaptcha and discord support.
 - `pmprox.html` : SysYa Proxy page. Script links to a subdomain for SysYa, a flexible secondary proxy.
 - `pydodge.html` : Via Unblocker page. Links to a subdomain with PyDodge or Via.
-- `youtube.html` : An proxied version of Youtube running off of the locally hosted Alloy Proxy.
+- `youtube.html` : An proxied version of Youtube running off of the locally hosted Corrosion Proxy.
 - `discordhub.html` : Hub for the Discord proxy (Currently Womginx only).
 ### Structure Information
 - `/views/` : The physical site base of Holy Unblocker goes here where static assets are served.
@@ -123,13 +123,11 @@ This website has been hosted locally with Corrosion, a powerful web proxy made b
 - Various parity changes.
 
 ## An explanation for Beginners With External Proxies and Hosting
-You will first want to host your proxies locally or externally. Note that an older version of Alloy proxy is the only proxy hosted locally with this distribution of Holy Unblocker.
+You will first want to host your proxies locally or externally. 
 
 **Proxies that you will need for a complete setup for Holy Unblocker:**
 
 Womginx - https://github.com/binary-person/womginx
-
-SysYA Proxy - https://github.com/sysce/proxy
 
 Via Unblocker/PyDodge -https://github.com/BinBashBanana/PyDodge
 
@@ -159,7 +157,7 @@ The image below is an example of DNS records involving Heroku. Self-hosting will
 
 - `a.example.com` is used for Womginx.
 - `c.example.com` is used for SysYA Proxy, Via Unblocker, and the Chatbox.
-- `cdn.example.com` is used for a private, updated Alloy instance.
+- `cdn.example.com` is used for a private, updated Corrosion instance.
 ### Heroku Steps
 So use Heroku to host. I favor it as a free choice.
 
@@ -241,27 +239,17 @@ A detailed FAQ with common issues and solutions can be found here or on any offi
 
 **Why are YouTube videos not working?**
 
-If you have persistent issues even after doing the steps above, the instance is down temporarily, especially if large groups of people are also having the issue. The latest release of Alloy currently does not have support for YouTube. However, manually putting in full links like `https://www.youtube.com/watch?v=mauV2NdCs60` will work. You may also try doing a Hard Reload (Ctrl+Shift+R)
-A later release of Alloy may fix this issue. Sorry.
+If you have persistent issues even after doing the steps above, the instance is down temporarily, especially if large groups of people are also having the issue. The latest release of Corrosion does have support for YouTube. You may want to try doing a Hard Reload (Ctrl+Shift+R)
 
 **Why is the site I am on not working correctly or having CAPTCHA errors?**
 
 Captcha has limited support on Womginx. However, support is not available on some of the older proxies, sadly. Therefore some sites may not work with any of the sites. Read below for issues with links on sites.
-
-**Why are page links not working or leading to 404 pages?**
-
-This is an issue with Alloy proxy's latest release, but it may also occur with other proxies. In this case, manually entering the URL of the page you would like to view can solve this, or try navigating using the home button. (Reddit, Twitter) The next release of Alloy may fix this also.
 
 **When using YouTube on any of the proxy sites, why does the page not load entirely, or the video just white?**
 
 There are two methods for fixing this:
 - Reloading the page usually when the error above happens should load the video.
 - Alternatively, right-clicking the page and doing Reload Frame if you are using some form of Stealth Mode may work.
-
-**When using Discord under Alloy or SysYa, why does the page stay gray/white, or the QR code not loading? **
-
-Womginx now supports logging in, usually for Discord. However, here are the steps related to Alloy troubleshooting.
-Note that this is for the older discord proxy steps with Alloy and SysYA Proxy.
 
 **On the official sites, I am getting 502 errors. What do I do?**
 
@@ -277,22 +265,17 @@ This project is maintained by Quite A Fancy Emerald with massive help from BinBa
 View the official website for more details or credits.
 
 ### Proxy Sources:
-This project uses Alloy Proxy, Womginx, SysYA Proxy, and Via Unblocker, linked below.
+This project currently uses Corrosion, Womginx, and PyDodgeB, linked below.
 
-- https://github.com/titaniumnetwork-dev/alloy (Alloy)*
 - https://github.com/titaniumnetwork-dev/Corrosion (Corrosion)
 - https://github.com/binary-person/womginx (Womginx)
-- https://github.com/sysce/proxy (SysYA Proxy)
-- https://github.com/hypothesis/via (Via)**
 - https://github.com/BinBashBanana/PyDodge (PyDodge)**
-- https://github.com/nfriedly/node-unblocker (Node Unblocker)***
 - https://github.com/BlaNKtext/web-osu (webosu or owu!)
 
 ### Notable Mentions:
 - https://dedipath.com (Hosting Provider)
 
 ### Footnotes:
-- Older distributions of Holy Unblocker uses an older version of Alloy Proxy.
 - The official Holy Unblocker sites use a private, modified version of Via and goes under the name PyDodge for any modified version.
 - Node Unblocker is no longer used on any of the official Titanium Network flagship sites.
 
