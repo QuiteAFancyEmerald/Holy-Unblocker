@@ -3,6 +3,7 @@ var h5gms = {
     "thebunker": "/archive/bunker/index.html",
     "droom": "/archive/g/adarkroom/index.html",
     "gopher": "/archive/gopher/index.html",
+    "retrobowl": "/archive/g/retrobowl/index.html"
     "mc": "/archive/g/mcjs.html",
     "sna": "/archive/g/snake/index.html",
     "retro": "/archive/g/retrohaunt/index.html",
