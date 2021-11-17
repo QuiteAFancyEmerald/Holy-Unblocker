@@ -25,9 +25,6 @@ var hulinks = {
     "ilink4": "https://itch.io",
     "ilink6": "https://itch.io",
     "ilink5": "https://itch.io",
-    "temp1": "https://petty.gq",
-    "temp2": "https://precede.design",
-    "temp3": "https://duketrack.me"
 };
 
 hulinks_array = Object.keys(hulinks);
