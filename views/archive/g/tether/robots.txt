@@ -1,0 +1,29 @@
+# Group 1
+User-agent: Googlebot
+Disallow: /.github
+Disallow: /fonts
+Disallow: /icons
+Disallow: /libs
+Disallow: /public
+Disallow: /source
+Disallow: /splashscreens
+Disallow: /bgm.mp3
+Disallow: /CODE_OF_CONDUCT.md
+Disallow: /LICENSE
+Disallow: /README.md
+
+# Group 2
+User-agent: *
+Disallow: /.github
+Disallow: /fonts
+Disallow: /icons
+Disallow: /libs
+Disallow: /public
+Disallow: /source
+Disallow: /splashscreens
+Disallow: /bgm.mp3
+Disallow: /CODE_OF_CONDUCT.md
+Disallow: /LICENSE
+Disallow: /README.md
+
+Sitemap: http://tether.rayhanadev.repl.co/sitemap.xml
