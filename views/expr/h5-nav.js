@@ -6,6 +6,7 @@ var h5gms = {
     "mc": "/archive/g/mcjs.html",
     "sna": "/archive/g/snake/index.html",
     "retrobowl": "/archive/g/retrobowl/index.html",
+    "tether": "/archive/g/tether/index.html",
     "retro": "/archive/g/retrohaunt/index.html",
     "cookiec": "/archive/g/cookieclicker/index.html",
     "evilg": "/archive/g/evilglitch/index.html",
