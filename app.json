@@ -1,7 +1,7 @@
 {
     "name": "Holy Unblocker",
-    "description": "A website that can be used to bypass web filters; both extension and firewall. Alloy Proxy hosted locally. (Can be used as a template.)",
-    "repository": "https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic/",
-    "logo": "https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic/blob/master/views/assets/img/i.png?raw=true",
-    "keywords": ["node", "proxy", "unblocker", "webproxy", "games", "holyunblocker", "alloy"]
+    "description": "Holy Unblocker is a secure web proxy service supporting numerous sites while concentrating on detail with design, mechanics, and features. Bypass web filters regardless of whether it is an extension or network-based.",
+    "repository": "https://github.com/titaniumnetwork-dev/Holy-Unblocker",
+    "logo": "https://github.com/titaniumnetwork-dev/Holy-Unblocker/blob/master/views/assets/img/i.png?raw=true",
+    "keywords": ["holyunblocker", "womginx", "corrosion", "titaniumnetwork", "node", "proxy", "unblocker", "webproxy", "games"]
 }
