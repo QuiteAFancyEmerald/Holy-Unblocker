@@ -43,11 +43,7 @@ const text404 = fs.readFileSync(path.normalize(__dirname + '/views/404.html'), '
         'm': 'pages/nav/emulibrary.html',
         /* Proxies */
         'q': 'pages/proxnav/corrosion.html',
-        'a': 'pages/proxnav/alloy.html',
         'w': 'pages/proxnav/womginx.html',
-        'p': 'pages/proxnav/pmprox.html',
-        'e': 'pages/proxnav/pyb.html',
-        'o': 'pages/proxnav/pydodge.html',
         'y': 'pages/proxnav/youtube.html',
         'd': 'pages/proxnav/discordhub.html',
         /* Ruffle and Webretro */
