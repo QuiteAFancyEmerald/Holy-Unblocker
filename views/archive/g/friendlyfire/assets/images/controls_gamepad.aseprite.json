@@ -1,0 +1,38 @@
+{ "frames": {
+   "0": {
+    "frame": { "x": 0, "y": 0, "w": 69, "h": 136 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 69, "h": 136 },
+    "sourceSize": { "w": 69, "h": 136 },
+    "duration": 100
+   },
+   "1": {
+    "frame": { "x": 69, "y": 0, "w": 69, "h": 136 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 69, "h": 136 },
+    "sourceSize": { "w": 69, "h": 136 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.21-x64",
+  "image": "controls_gamepad.png",
+  "format": "RGBA8888",
+  "size": { "w": 138, "h": 136 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "xbox", "from": 0, "to": 0, "direction": "forward" },
+   { "name": "playstation", "from": 1, "to": 1, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "base", "opacity": 255, "blendMode": "normal" },
+   { "name": "special", "opacity": 255, "blendMode": "normal" },
+   { "name": "buttons", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

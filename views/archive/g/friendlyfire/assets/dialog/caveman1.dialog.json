@@ -1,0 +1,31 @@
+{
+    "entry": [
+        "Holy macaroni, another human!",
+        "[$ismale] I thought I'd never see another dude anytime soon.",
+        "[not $ismale] I thought I'd never see a woman ever again.",
+        "Did you stone-skip-jump your way across the river as well?",
+        "►Yes! @stuck"
+    ],
+    "stuck": [
+        "Well, then make yourself comfortable.",
+        "At least I'm not stuck here alone anymore.",
+        "►What? Can't we just exit the cave?",
+        "The platforms on the way up are too high…",
+        "►[$hasDoubleJump]But I can double jump! @doublejump",
+        "►[not $hasDoubleJump]F…",
+        "Game over, man!",
+        "GAME OVER! !endgameC !end"
+    ],
+    "doublejump": [
+        "What?",
+        "How?",
+        "Why?",
+        "►That's a long story.",
+        "I'm at a loss of words… can you help me get out?",
+        "►I wouldn't know how.",
+        "Damn… !end @end"
+    ],
+    "end": [
+        "Please let me be… I really hoped you could help me. !end @end"
+    ]
+}

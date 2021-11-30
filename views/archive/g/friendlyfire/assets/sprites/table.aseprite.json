@@ -1,0 +1,50 @@
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 0, "y": 0, "w": 48, "h": 37 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 11, "w": 48, "h": 37 },
+    "sourceSize": { "w": 48, "h": 48 },
+    "duration": 175
+   },
+   {
+    "filename": "1",
+    "frame": { "x": 48, "y": 0, "w": 48, "h": 37 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 11, "w": 48, "h": 37 },
+    "sourceSize": { "w": 48, "h": 48 },
+    "duration": 175
+   },
+   {
+    "filename": "2",
+    "frame": { "x": 0, "y": 37, "w": 48, "h": 37 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 11, "w": 48, "h": 37 },
+    "sourceSize": { "w": 48, "h": 48 },
+    "duration": 175
+   },
+   {
+    "filename": "3",
+    "frame": { "x": 48, "y": 37, "w": 48, "h": 37 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 11, "w": 48, "h": 37 },
+    "sourceSize": { "w": 48, "h": 48 },
+    "duration": 175
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.21-x64",
+  "image": "table.png",
+  "format": "RGBA8888",
+  "size": { "w": 96, "h": 74 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 3, "direction": "pingpong" }
+  ]
+ }
+}

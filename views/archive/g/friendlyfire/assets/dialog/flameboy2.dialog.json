@@ -1,0 +1,70 @@
+{
+    "entry": [
+        "Hello humble adventurer, welcome to my sacred hut, yadda yadda. What do you need?",
+        "►What's with that attitude? @attitude",
+        "►I'm just here for some answers. @answers"
+    ],
+    "answers": [
+        "Answers? What? Do I look like some kind of prophet to you?",
+        "►The stone from the mountain told me I should come here for answers.",
+        "Ohhh, that guy. I bet he told you to throw him into the river.",
+        "The fact that he floats should tell you everything about him. He's a real airhead.",
+        "►So, no answers? I need to get a seed to grow.",
+        "Not my problem. I'm only here to give away power-ups.",
+        "►Power-ups? I'm interested @powerup"
+    ],
+    "attitude": [
+        "I've just had the worst day. Lost my job to some fancy pants high framerate fire jerk and was put here to give away free power-ups.",
+        "►The other fire across the river? @otherfire",
+        "►I don't care. I need answers! @answers",
+        "►You said something about power-ups? @powerup"
+    ],
+    "otherfire": [
+        "Yeah, that jiggly eyed bastard!",
+        "►He seemed pretty helpless to me.",
+        "►I still don't care. I need answers! @answers",
+        "►You said something about power-ups? @powerup",
+        "Hah! That's just fantastic! Do whatever you like, just leave me out of it. And don't come back complaining after you get scorched.",
+        "►Whatever. I need answers! @answers",
+        "►OK… You said something about power-ups? @powerup"
+    ],
+    "powerup": [
+        "Yeah, I'm assigned to distribute the flying ability. It's popular amongst school children… and birds.",
+        "►Nice, flying!",
+        "Don't expect too much. It's more of a multi-jump if you ask me. But you know… marketing.",
+        "►I'll take one.",
+        "Sure, here you go. !multijump",
+        "No refunds!",
+        "Also, I'm obligated to tell you, that you should visit the cloud world.",
+        "I personally wouldn't go there. The people there are really annoying.",
+        "But that's just my opinion… @visited !end"
+    ],
+    "visited": [
+        "Sorry, we have a strict no return policy!",
+        "►[$metcaveman]Did you know there's someone living in the caves? @caveman",
+        "►I just wanted to talk some more. @more",
+        "►Damn…",
+        "Come on man! You didn't even pay anything. @finished !end"
+    ],
+    "more": [
+        "I already have a headache, thanks. Can't you just do like a bird… and multi-jump out of here? @finished !end"
+    ],
+    "finished": [
+        "Just let me do my job in peace. Go irritate the cloud people. They love that.",
+        "►[$metcaveman] Did you know there's someone living in the caves? @caveman",
+        "►Fine. @finished !end"
+    ],
+    "caveman": [
+        "Yeah, the best kind of neighbor: Quiet and seclusive.",
+        "►Can't you just give him a free flying power-up?",
+        "No, that's not how this works. He broke the sequence and messed up some triggers.",
+        "That's irreversible, but not my problem.",
+        "►Sequence? Triggers? What does all that mean?",
+        "Whoops, don't mind me. Just giving away power-ups here.",
+        "►But…",
+        "Bye! @nodialog !end"
+    ],
+    "nodialog": [
+        "I really don't want to talk to you anymore. !end"
+    ]
+}

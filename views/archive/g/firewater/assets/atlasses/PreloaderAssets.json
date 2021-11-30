@@ -1,0 +1,35 @@
+{"frames": [
+
+{
+	"filename": "LoaderBar0000",
+	"frame": {"x":0,"y":0,"w":200,"h":20},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":20},
+	"sourceSize": {"w":200,"h":20}
+}
+,{
+	"filename": "LoaderHolder0000",
+	"frame": {"x":204,"y":0,"w":222,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":222,"h":40},
+	"sourceSize": {"w":222,"h":40}
+}
+,{
+	"filename": "LoaderTitle0000",
+	"frame": {"x":0,"y":44,"w":497,"h":73},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":497,"h":73},
+	"sourceSize": {"w":497,"h":73}
+}],
+"meta": {
+	"app": "Adobe Flash CS6",
+	"version": "12.0.0.481",
+	"image": "PreloaderAssets.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":128},
+	"scale": "1"
+}
+}

@@ -1,0 +1,40 @@
+{ "frames": {
+   "0": {
+    "frame": { "x": 13, "y": 0, "w": 20, "h": 21 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 34, "w": 20, "h": 21 },
+    "sourceSize": { "w": 26, "h": 56 },
+    "duration": 100
+   },
+   "1": {
+    "frame": { "x": 13, "y": 21, "w": 16, "h": 13 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 4, "y": 43, "w": 16, "h": 13 },
+    "sourceSize": { "w": 26, "h": 56 },
+    "duration": 100
+   },
+   "2": {
+    "frame": { "x": 0, "y": 0, "w": 13, "h": 55 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 8, "y": 1, "w": 13, "h": 55 },
+    "sourceSize": { "w": 26, "h": 56 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.19.2",
+  "image": "seed.png",
+  "format": "I8",
+  "size": { "w": 33, "h": 55 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "free", "from": 0, "to": 0, "direction": "forward" },
+   { "name": "planted", "from": 1, "to": 1, "direction": "forward" },
+   { "name": "grown", "from": 2, "to": 2, "direction": "forward" }
+  ]
+ }
+}

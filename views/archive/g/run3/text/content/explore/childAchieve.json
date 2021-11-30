@@ -1,0 +1,19 @@
+[{
+	"id":500,
+	"name":"The Conscious Ninja",
+	"image":"achievement/TheConsciousNinja.png",
+	"description":"Beat Plan A plan 2 without knocking out any cracked tiles.",
+	"payout":50,
+	"levelID":156,
+	"conditions":[7,0],
+	"requiredLevel":347
+},
+{
+	"id":501,
+	"name":"The Unconscious Ninja",
+	"description":"Beat Plan A plan 2 with knocking out ALL the cracked tiles!",
+	"payout":50,
+	"levelID":156,
+	"conditions":[9,100,0],
+	"requiredAchievement":25
+}]

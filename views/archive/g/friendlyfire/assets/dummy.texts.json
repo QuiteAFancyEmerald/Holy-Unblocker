@@ -1,0 +1,83 @@
+{
+    "greetings": {
+        "start":  [
+            "Hi?",
+            "Hoi\nWaddup?",
+            "Hey!\nYou!\nOver here…"
+        ],
+        "finished": [
+            "Bye",
+            "Nice Job"
+        ]
+    },
+    "dialogs": {
+        "start": {
+            "text": "This is the start of the game!",
+            "options": [
+                {
+                    "text": "You are dumb!",
+                    "actions": [
+                        "camera zoomin",
+                        "face worried",
+                        "dialog dumb"
+                    ]
+                },
+                {
+                    "text": "End this now!",
+                    "actions": [
+                        "camera zoomout",
+                        "face angry",
+                        "state finish",
+                        "dialog done"
+                    ]
+                },{
+                    "text": "Bye."
+                }
+            ],
+            "dialogs": {
+                "dumb": {
+                    "text": "HOW DARE YOU TALK TO ME LIKE THAT",
+                    "options": [
+                        {
+                            "text": "Like that: you dumb",
+                            "actions": [
+                                "camera zoomin",
+                                "face amused",
+                                "dialog dumber"
+                            ]
+                        },
+                        {
+                            "text": "Im so sorry",
+                            "actions": [
+                                "face amused",
+                                "dialog OK"
+                            ]
+                        }
+                    ],
+                    "dialogs": {
+                        "ok": {
+                            "text": "i forgive you"
+                        },
+                        "dumber": {
+                            "text": "You seem to be confused…"
+                        }
+                    }
+                },
+                "done": {
+                    "text": "It is done. Hope you are happy",
+                    "options": {
+                        "text": "i will be when you are dead",
+                        "actions": [
+                            "face worried"
+                        ]
+                    }
+                }
+
+            }
+
+        },
+        "finished": {
+            "text": "I have nothing to say to you"
+        }
+    }
+}

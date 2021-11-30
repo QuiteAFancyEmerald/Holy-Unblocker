@@ -1,0 +1,16 @@
+{
+    "entry": [
+        "Oh come on… ",
+        "I can't believe this… !angry",
+        "Don't bring that stupid grey guy to this side of river. !angry",
+        "How did you even get over here?",
+        "I can't help you like this. Go back und do it properly!",
+        "Does nobody here care for a proper order of events?",
+        "►Whoops, I'll be on my way.",
+        "Yes! @visited !end"
+    ],
+    "visited": [
+        "No! Don't talk to me while carrying that stupid stone!",
+        "►On my way!. @visited !end"
+    ]
+}

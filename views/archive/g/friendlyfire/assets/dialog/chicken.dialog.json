@@ -1,0 +1,33 @@
+{
+    "entry": [
+        "What?",
+        "[not met]Never seen a glowing chicken before? !set met true",
+        "►[not livingDialog]Are you living here? @living",
+        "►[not touchDialog]What happens when I touch you? @touch",
+        "►So you're not the social type… @social"
+    ],
+    "social": [
+        "Exactly. !end @entry"
+    ],
+    "touch": [
+        "Firstly, I'll fill up you health bar by five points. !set touchDialog true",
+        "Secondly, I'm gonna reward you with salmonella.",
+        "So, go right ahead.",
+        "►I'm good, thanks.",
+        "[$ismale] Good boy. @entry !end",
+        "[not $ismale] Clever girl. @entry !end"
+    ],
+    "living": [
+        "Apparently. Living the life to it's fullest. !set livingDialog true",
+        "I spent enough time just slaving my life away, being burried inside walls…",
+        "…waiting for someone to accidentally free me from my prison.",
+        "Just to be consumed for a cheap health buff.",
+        "Used and forgotten.",
+        "►Woah, that's kinda dark.",
+        "It is. But we power-ups can live in peace here…",
+        "The people tend to lack health bars, so I'm off the wanted list.",
+        "But apparently I seem to be on the “being asked stupid questions” list.",
+        "►I get the hint.",
+        "Good. @entry !end"
+    ]
+}

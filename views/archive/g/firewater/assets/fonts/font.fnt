@@ -1,0 +1,446 @@
+<font>
+  <info face="font" size="54" bold="0" italic="0" charset="" unicode="" stretchH="100" smooth="1" aa="1" padding="4,4,4,4" spacing="0,0" outline="0"/>
+  <common lineHeight="64" base="42" scaleW="1636" scaleH="512" pages="1" packed="0"/>
+  <pages>
+    <page id="0" file="font.png"/>
+  </pages>
+  <chars count="90">
+    <char id="97" x="4" y="4" width="90" height="88" xoffset="-16" yoffset="18" xadvance="56" page="0" chnl="15"/>
+    <char id="98" x="4" y="96" width="71" height="86" xoffset="-7" yoffset="20" xadvance="55" page="0" chnl="15"/>
+    <char id="99" x="4" y="186" width="82" height="88" xoffset="-9" yoffset="18" xadvance="64" page="0" chnl="15"/>
+    <char id="100" x="4" y="278" width="89" height="87" xoffset="-7" yoffset="20" xadvance="73" page="0" chnl="15"/>
+    <char id="101" x="4" y="369" width="65" height="87" xoffset="-7" yoffset="19" xadvance="50" page="0" chnl="15"/>
+    <char id="102" x="73" y="369" width="64" height="87" xoffset="-7" yoffset="19" xadvance="48" page="0" chnl="15"/>
+    <char id="103" x="90" y="96" width="87" height="88" xoffset="-9" yoffset="18" xadvance="68" page="0" chnl="15"/>
+    <char id="104" x="90" y="188" width="91" height="86" xoffset="-7" yoffset="20" xadvance="76" page="0" chnl="15"/>
+    <char id="105" x="97" y="278" width="49" height="86" xoffset="-6" yoffset="20" xadvance="35" page="0" chnl="15"/>
+    <char id="106" x="141" y="368" width="52" height="105" xoffset="-11" yoffset="20" xadvance="33" page="0" chnl="15"/>
+    <char id="107" x="150" y="278" width="87" height="86" xoffset="-7" yoffset="20" xadvance="60" page="0" chnl="15"/>
+    <char id="108" x="98" y="4" width="67" height="86" xoffset="-7" yoffset="20" xadvance="48" page="0" chnl="15"/>
+    <char id="109" x="169" y="4" width="107" height="87" xoffset="-10" yoffset="18" xadvance="83" page="0" chnl="15"/>
+    <char id="110" x="181" y="95" width="92" height="88" xoffset="-8" yoffset="18" xadvance="75" page="0" chnl="15"/>
+    <char id="111" x="197" y="368" width="91" height="88" xoffset="-9" yoffset="18" xadvance="73" page="0" chnl="15"/>
+    <char id="112" x="185" y="187" width="69" height="86" xoffset="-7" yoffset="20" xadvance="53" page="0" chnl="15"/>
+    <char id="113" x="258" y="187" width="144" height="103" xoffset="-9" yoffset="18" xadvance="73" page="0" chnl="15"/>
+    <char id="114" x="277" y="95" width="88" height="86" xoffset="-7" yoffset="20" xadvance="60" page="0" chnl="15"/>
+    <char id="115" x="369" y="4" width="61" height="88" xoffset="-8" yoffset="18" xadvance="47" page="0" chnl="15"/>
+    <char id="116" x="280" y="4" width="79" height="87" xoffset="-12" yoffset="18" xadvance="55" page="0" chnl="15"/>
+    <char id="117" x="369" y="96" width="88" height="87" xoffset="-11" yoffset="20" xadvance="66" page="0" chnl="15"/>
+    <char id="118" x="434" y="4" width="91" height="87" xoffset="-16" yoffset="20" xadvance="59" page="0" chnl="15"/>
+    <char id="119" x="292" y="294" width="118" height="87" xoffset="-15" yoffset="20" xadvance="87" page="0" chnl="15"/>
+    <char id="120" x="406" y="187" width="84" height="86" xoffset="-14" yoffset="20" xadvance="55" page="0" chnl="15"/>
+    <char id="121" x="461" y="95" width="86" height="86" xoffset="-16" yoffset="20" xadvance="52" page="0" chnl="15"/>
+    <char id="122" x="529" y="4" width="74" height="87" xoffset="-8" yoffset="19" xadvance="55" page="0" chnl="15"/>
+    <char id="65" x="292" y="385" width="97" height="98" xoffset="-16" yoffset="8" xadvance="63" page="0" chnl="15"/>
+    <char id="66" x="393" y="385" width="75" height="97" xoffset="-6" yoffset="9" xadvance="62" page="0" chnl="15"/>
+    <char id="67" x="414" y="277" width="89" height="99" xoffset="-8" yoffset="8" xadvance="72" page="0" chnl="15"/>
+    <char id="68" x="472" y="380" width="97" height="97" xoffset="-6" yoffset="9" xadvance="83" page="0" chnl="15"/>
+    <char id="69" x="507" y="185" width="68" height="97" xoffset="-6" yoffset="9" xadvance="55" page="0" chnl="15"/>
+    <char id="70" x="573" y="286" width="68" height="97" xoffset="-6" yoffset="9" xadvance="53" page="0" chnl="15"/>
+    <char id="71" x="573" y="387" width="95" height="99" xoffset="-8" yoffset="8" xadvance="78" page="0" chnl="15"/>
+    <char id="72" x="579" y="95" width="99" height="96" xoffset="-6" yoffset="9" xadvance="86" page="0" chnl="15"/>
+    <char id="73" x="645" y="195" width="51" height="96" xoffset="-5" yoffset="9" xadvance="40" page="0" chnl="15"/>
+    <char id="74" x="682" y="4" width="55" height="119" xoffset="-11" yoffset="9" xadvance="37" page="0" chnl="15"/>
+    <char id="75" x="672" y="295" width="95" height="96" xoffset="-6" yoffset="9" xadvance="68" page="0" chnl="15"/>
+    <char id="76" x="672" y="395" width="71" height="97" xoffset="-6" yoffset="9" xadvance="53" page="0" chnl="15"/>
+    <char id="77" x="747" y="395" width="118" height="98" xoffset="-10" yoffset="8" xadvance="95" page="0" chnl="15"/>
+    <char id="78" x="700" y="127" width="101" height="98" xoffset="-8" yoffset="8" xadvance="85" page="0" chnl="15"/>
+    <char id="79" x="741" y="4" width="99" height="99" xoffset="-8" yoffset="8" xadvance="82" page="0" chnl="15"/>
+    <char id="80" x="771" y="229" width="73" height="96" xoffset="-6" yoffset="9" xadvance="58" page="0" chnl="15"/>
+    <char id="81" x="805" y="107" width="159" height="116" xoffset="-8" yoffset="8" xadvance="83" page="0" chnl="15"/>
+    <char id="82" x="844" y="4" width="96" height="96" xoffset="-6" yoffset="9" xadvance="68" page="0" chnl="15"/>
+    <char id="83" x="944" y="4" width="63" height="99" xoffset="-5" yoffset="8" xadvance="51" page="0" chnl="15"/>
+    <char id="84" x="848" y="227" width="85" height="98" xoffset="-12" yoffset="8" xadvance="62" page="0" chnl="15"/>
+    <char id="85" x="869" y="329" width="96" height="98" xoffset="-11" yoffset="9" xadvance="75" page="0" chnl="15"/>
+    <char id="86" x="937" y="227" width="100" height="98" xoffset="-16" yoffset="9" xadvance="67" page="0" chnl="15"/>
+    <char id="87" x="968" y="107" width="130" height="98" xoffset="-15" yoffset="9" xadvance="99" page="0" chnl="15"/>
+    <char id="88" x="1011" y="4" width="91" height="96" xoffset="-14" yoffset="9" xadvance="62" page="0" chnl="15"/>
+    <char id="89" x="969" y="329" width="93" height="96" xoffset="-17" yoffset="9" xadvance="59" page="0" chnl="15"/>
+    <char id="90" x="1041" y="209" width="80" height="97" xoffset="-7" yoffset="9" xadvance="62" page="0" chnl="15"/>
+    <char id="48" x="1102" y="104" width="72" height="99" xoffset="-10" yoffset="8" xadvance="51" page="0" chnl="15"/>
+    <char id="49" x="1066" y="310" width="60" height="98" xoffset="-4" yoffset="8" xadvance="51" page="0" chnl="15"/>
+    <char id="50" x="1125" y="207" width="72" height="97" xoffset="-11" yoffset="8" xadvance="51" page="0" chnl="15"/>
+    <char id="51" x="1178" y="4" width="68" height="99" xoffset="-8" yoffset="8" xadvance="51" page="0" chnl="15"/>
+    <char id="52" x="1130" y="308" width="76" height="98" xoffset="-13" yoffset="8" xadvance="51" page="0" chnl="15"/>
+    <char id="53" x="1130" y="410" width="66" height="98" xoffset="-7" yoffset="9" xadvance="51" page="0" chnl="15"/>
+    <char id="54" x="1201" y="107" width="72" height="99" xoffset="-10" yoffset="8" xadvance="51" page="0" chnl="15"/>
+    <char id="55" x="1200" y="410" width="70" height="98" xoffset="-7" yoffset="9" xadvance="51" page="0" chnl="15"/>
+    <char id="56" x="1250" y="4" width="70" height="99" xoffset="-9" yoffset="8" xadvance="51" page="0" chnl="15"/>
+    <char id="57" x="1210" y="210" width="70" height="100" xoffset="-10" yoffset="8" xadvance="51" page="0" chnl="15"/>
+    <char id="33" x="1277" y="107" width="38" height="99" xoffset="-4" yoffset="8" xadvance="29" page="0" chnl="15"/>
+    <char id="186" x="700" y="229" width="64" height="61" xoffset="-12" yoffset="8" xadvance="39" page="0" chnl="15"/>
+    <char id="59" x="579" y="195" width="38" height="80" xoffset="-8" yoffset="34" xadvance="23" page="0" chnl="15"/>
+    <char id="37" x="1274" y="314" width="98" height="99" xoffset="-10" yoffset="8" xadvance="78" page="0" chnl="15"/>
+    <char id="58" x="241" y="294" width="38" height="69" xoffset="-8" yoffset="34" xadvance="23" page="0" chnl="15"/>
+    <char id="63" x="1284" y="210" width="61" height="99" xoffset="-8" yoffset="8" xadvance="44" page="0" chnl="15"/>
+    <char id="42" x="1210" y="314" width="54" height="55" xoffset="-11" yoffset="4" xadvance="32" page="0" chnl="15"/>
+    <char id="40" x="1324" y="4" width="49" height="106" xoffset="-8" yoffset="10" xadvance="32" page="0" chnl="15"/>
+    <char id="41" x="1349" y="114" width="49" height="106" xoffset="-7" yoffset="10" xadvance="32" page="0" chnl="15"/>
+    <char id="95" x="197" y="460" width="73" height="33" xoffset="-14" yoffset="84" xadvance="45" page="0" chnl="15"/>
+    <char id="43" x="1106" y="4" width="67" height="67" xoffset="-10" yoffset="34" xadvance="46" page="0" chnl="15"/>
+    <char id="45" x="1066" y="412" width="56" height="35" xoffset="-11" yoffset="49" xadvance="35" page="0" chnl="15"/>
+    <char id="61" x="607" y="4" width="67" height="49" xoffset="-10" yoffset="43" xadvance="46" page="0" chnl="15"/>
+    <char id="46" x="4" y="460" width="38" height="38" xoffset="-8" yoffset="67" xadvance="23" page="0" chnl="15"/>
+    <char id="44" x="46" y="460" width="37" height="48" xoffset="-7" yoffset="66" xadvance="23" page="0" chnl="15"/>
+    <char id="47" x="1377" y="4" width="74" height="98" xoffset="-12" yoffset="8" xadvance="50" page="0" chnl="15"/>
+    <char id="124" x="1376" y="224" width="33" height="118" xoffset="7" yoffset="10" xadvance="46" page="0" chnl="15"/>
+    <char id="34" x="869" y="451" width="47" height="50" xoffset="-9" yoffset="9" xadvance="29" page="0" chnl="15"/>
+    <char id="39" x="920" y="451" width="36" height="50" xoffset="-9" yoffset="9" xadvance="18" page="0" chnl="15"/>
+    <char id="64" x="1402" y="106" width="98" height="99" xoffset="-8" yoffset="16" xadvance="82" page="0" chnl="15"/>
+    <char id="35" x="1455" y="4" width="74" height="96" xoffset="-11" yoffset="9" xadvance="51" page="0" chnl="15"/>
+    <char id="36" x="1376" y="346" width="65" height="113" xoffset="-6" yoffset="0" xadvance="51" page="0" chnl="15"/>
+    <char id="94" x="960" y="431" width="69" height="67" xoffset="-11" yoffset="10" xadvance="46" page="0" chnl="15"/>
+    <char id="38" x="1413" y="209" width="102" height="99" xoffset="-10" yoffset="8" xadvance="70" page="0" chnl="15"/>
+    <char id="123" x="1445" y="312" width="50" height="106" xoffset="-9" yoffset="10" xadvance="32" page="0" chnl="15"/>
+    <char id="125" x="1499" y="312" width="50" height="106" xoffset="-9" yoffset="10" xadvance="32" page="0" chnl="15"/>
+    <char id="91" x="1519" y="104" width="46" height="106" xoffset="-5" yoffset="10" xadvance="32" page="0" chnl="15"/>
+    <char id="8364" x="1553" y="214" width="79" height="99" xoffset="-15" yoffset="8" xadvance="51" page="0" chnl="15"/>
+    <char id="32" x="0" y="0" width="0" height="0" xoffset="-15" yoffset="8" xadvance="29" page="0" chnl="15"/>
+  </chars>
+  <kernings count="344">
+    <kerning first="40" second="118" amount="2"/>
+    <kerning first="40" second="119" amount="1"/>
+    <kerning first="40" second="121" amount="3"/>
+    <kerning first="65" second="77" amount="2"/>
+    <kerning first="65" second="83" amount="1"/>
+    <kerning first="65" second="84" amount="-6"/>
+    <kerning first="65" second="86" amount="-7"/>
+    <kerning first="65" second="87" amount="-4"/>
+    <kerning first="65" second="88" amount="1"/>
+    <kerning first="65" second="89" amount="-4"/>
+    <kerning first="65" second="109" amount="2"/>
+    <kerning first="65" second="115" amount="1"/>
+    <kerning first="65" second="116" amount="-6"/>
+    <kerning first="65" second="118" amount="-7"/>
+    <kerning first="65" second="119" amount="-4"/>
+    <kerning first="65" second="120" amount="1"/>
+    <kerning first="65" second="121" amount="-4"/>
+    <kerning first="66" second="65" amount="0"/>
+    <kerning first="66" second="66" amount="-1"/>
+    <kerning first="66" second="86" amount="-3"/>
+    <kerning first="66" second="87" amount="-1"/>
+    <kerning first="66" second="89" amount="-3"/>
+    <kerning first="66" second="97" amount="-1"/>
+    <kerning first="66" second="98" amount="-1"/>
+    <kerning first="66" second="118" amount="-3"/>
+    <kerning first="66" second="119" amount="-1"/>
+    <kerning first="66" second="121" amount="-3"/>
+    <kerning first="67" second="67" amount="-1"/>
+    <kerning first="67" second="79" amount="-1"/>
+    <kerning first="67" second="81" amount="-1"/>
+    <kerning first="67" second="84" amount="0"/>
+    <kerning first="67" second="89" amount="1"/>
+    <kerning first="67" second="99" amount="-1"/>
+    <kerning first="67" second="116" amount="-1"/>
+    <kerning first="67" second="121" amount="1"/>
+    <kerning first="68" second="65" amount="-1"/>
+    <kerning first="68" second="66" amount="-1"/>
+    <kerning first="68" second="74" amount="-1"/>
+    <kerning first="68" second="77" amount="0"/>
+    <kerning first="68" second="97" amount="-1"/>
+    <kerning first="68" second="98" amount="-1"/>
+    <kerning first="68" second="106" amount="-1"/>
+    <kerning first="68" second="109" amount="-1"/>
+    <kerning first="69" second="86" amount="2"/>
+    <kerning first="69" second="87" amount="3"/>
+    <kerning first="69" second="88" amount="3"/>
+    <kerning first="69" second="89" amount="2"/>
+    <kerning first="69" second="118" amount="3"/>
+    <kerning first="69" second="119" amount="3"/>
+    <kerning first="69" second="120" amount="3"/>
+    <kerning first="69" second="121" amount="3"/>
+    <kerning first="70" second="44" amount="-9"/>
+    <kerning first="70" second="65" amount="-3"/>
+    <kerning first="70" second="89" amount="2"/>
+    <kerning first="70" second="97" amount="-3"/>
+    <kerning first="70" second="121" amount="2"/>
+    <kerning first="72" second="67" amount="-1"/>
+    <kerning first="72" second="71" amount="-1"/>
+    <kerning first="72" second="79" amount="-2"/>
+    <kerning first="72" second="81" amount="-2"/>
+    <kerning first="72" second="99" amount="-1"/>
+    <kerning first="74" second="79" amount="-1"/>
+    <kerning first="74" second="99" amount="-1"/>
+    <kerning first="75" second="65" amount="0"/>
+    <kerning first="75" second="67" amount="0"/>
+    <kerning first="75" second="71" amount="0"/>
+    <kerning first="75" second="79" amount="0"/>
+    <kerning first="75" second="81" amount="0"/>
+    <kerning first="75" second="83" amount="0"/>
+    <kerning first="75" second="97" amount="-1"/>
+    <kerning first="75" second="99" amount="0"/>
+    <kerning first="75" second="115" amount="1"/>
+    <kerning first="76" second="65" amount="1"/>
+    <kerning first="76" second="67" amount="-2"/>
+    <kerning first="76" second="71" amount="-2"/>
+    <kerning first="76" second="77" amount="0"/>
+    <kerning first="76" second="79" amount="-2"/>
+    <kerning first="76" second="84" amount="-5"/>
+    <kerning first="76" second="85" amount="-1"/>
+    <kerning first="76" second="86" amount="-4"/>
+    <kerning first="76" second="87" amount="-2"/>
+    <kerning first="76" second="89" amount="-3"/>
+    <kerning first="76" second="97" amount="1"/>
+    <kerning first="76" second="99" amount="-2"/>
+    <kerning first="76" second="109" amount="-1"/>
+    <kerning first="76" second="116" amount="-6"/>
+    <kerning first="76" second="117" amount="-1"/>
+    <kerning first="76" second="118" amount="-4"/>
+    <kerning first="76" second="119" amount="-3"/>
+    <kerning first="76" second="121" amount="-4"/>
+    <kerning first="77" second="65" amount="2"/>
+    <kerning first="77" second="84" amount="-2"/>
+    <kerning first="77" second="85" amount="0"/>
+    <kerning first="77" second="87" amount="-1"/>
+    <kerning first="77" second="89" amount="-1"/>
+    <kerning first="77" second="97" amount="2"/>
+    <kerning first="77" second="116" amount="-2"/>
+    <kerning first="77" second="117" amount="0"/>
+    <kerning first="77" second="119" amount="-1"/>
+    <kerning first="77" second="121" amount="-1"/>
+    <kerning first="79" second="65" amount="-2"/>
+    <kerning first="79" second="66" amount="-3"/>
+    <kerning first="79" second="74" amount="-2"/>
+    <kerning first="79" second="77" amount="-1"/>
+    <kerning first="79" second="84" amount="-2"/>
+    <kerning first="79" second="86" amount="-1"/>
+    <kerning first="79" second="87" amount="0"/>
+    <kerning first="79" second="88" amount="-2"/>
+    <kerning first="79" second="89" amount="-1"/>
+    <kerning first="79" second="97" amount="-2"/>
+    <kerning first="79" second="98" amount="-3"/>
+    <kerning first="79" second="106" amount="-2"/>
+    <kerning first="79" second="109" amount="-1"/>
+    <kerning first="79" second="116" amount="-3"/>
+    <kerning first="79" second="118" amount="-1"/>
+    <kerning first="79" second="119" amount="-1"/>
+    <kerning first="79" second="120" amount="-3"/>
+    <kerning first="79" second="121" amount="-1"/>
+    <kerning first="80" second="44" amount="-14"/>
+    <kerning first="80" second="65" amount="-4"/>
+    <kerning first="80" second="66" amount="-1"/>
+    <kerning first="80" second="83" amount="0"/>
+    <kerning first="80" second="97" amount="-4"/>
+    <kerning first="80" second="98" amount="-1"/>
+    <kerning first="80" second="115" amount="1"/>
+    <kerning first="81" second="41" amount="3"/>
+    <kerning first="81" second="66" amount="-2"/>
+    <kerning first="81" second="98" amount="-3"/>
+    <kerning first="82" second="65" amount="0"/>
+    <kerning first="82" second="67" amount="1"/>
+    <kerning first="82" second="71" amount="1"/>
+    <kerning first="82" second="79" amount="1"/>
+    <kerning first="82" second="81" amount="1"/>
+    <kerning first="82" second="83" amount="-1"/>
+    <kerning first="82" second="84" amount="-4"/>
+    <kerning first="82" second="86" amount="-2"/>
+    <kerning first="82" second="87" amount="0"/>
+    <kerning first="82" second="88" amount="0"/>
+    <kerning first="82" second="89" amount="-2"/>
+    <kerning first="82" second="97" amount="1"/>
+    <kerning first="82" second="99" amount="1"/>
+    <kerning first="82" second="115" amount="-1"/>
+    <kerning first="82" second="116" amount="-5"/>
+    <kerning first="82" second="118" amount="-3"/>
+    <kerning first="82" second="119" amount="0"/>
+    <kerning first="82" second="120" amount="-1"/>
+    <kerning first="82" second="121" amount="-2"/>
+    <kerning first="83" second="77" amount="-1"/>
+    <kerning first="83" second="86" amount="0"/>
+    <kerning first="83" second="109" amount="-1"/>
+    <kerning first="83" second="118" amount="0"/>
+    <kerning first="84" second="44" amount="-10"/>
+    <kerning first="84" second="45" amount="-3"/>
+    <kerning first="84" second="58" amount="-3"/>
+    <kerning first="84" second="65" amount="-4"/>
+    <kerning first="84" second="67" amount="-2"/>
+    <kerning first="84" second="71" amount="-2"/>
+    <kerning first="84" second="77" amount="-1"/>
+    <kerning first="84" second="79" amount="-3"/>
+    <kerning first="84" second="83" amount="-1"/>
+    <kerning first="84" second="84" amount="1"/>
+    <kerning first="84" second="87" amount="1"/>
+    <kerning first="84" second="88" amount="2"/>
+    <kerning first="84" second="89" amount="2"/>
+    <kerning first="84" second="97" amount="-6"/>
+    <kerning first="84" second="98" amount="-2"/>
+    <kerning first="84" second="99" amount="-3"/>
+    <kerning first="84" second="109" amount="-1"/>
+    <kerning first="84" second="115" amount="-4"/>
+    <kerning first="84" second="116" amount="1"/>
+    <kerning first="84" second="119" amount="1"/>
+    <kerning first="84" second="120" amount="2"/>
+    <kerning first="84" second="121" amount="2"/>
+    <kerning first="85" second="65" amount="-2"/>
+    <kerning first="85" second="77" amount="-1"/>
+    <kerning first="85" second="97" amount="-2"/>
+    <kerning first="85" second="98" amount="-3"/>
+    <kerning first="85" second="109" amount="-2"/>
+    <kerning first="86" second="41" amount="2"/>
+    <kerning first="86" second="44" amount="-13"/>
+    <kerning first="86" second="45" amount="-2"/>
+    <kerning first="86" second="65" amount="-7"/>
+    <kerning first="86" second="79" amount="0"/>
+    <kerning first="86" second="89" amount="1"/>
+    <kerning first="86" second="97" amount="-7"/>
+    <kerning first="86" second="99" amount="-1"/>
+    <kerning first="86" second="121" amount="1"/>
+    <kerning first="87" second="41" amount="1"/>
+    <kerning first="87" second="44" amount="-10"/>
+    <kerning first="87" second="58" amount="1"/>
+    <kerning first="87" second="65" amount="-5"/>
+    <kerning first="87" second="77" amount="-2"/>
+    <kerning first="87" second="84" amount="-2"/>
+    <kerning first="87" second="89" amount="1"/>
+    <kerning first="87" second="97" amount="-5"/>
+    <kerning first="87" second="109" amount="-3"/>
+    <kerning first="87" second="116" amount="-2"/>
+    <kerning first="87" second="121" amount="1"/>
+    <kerning first="88" second="65" amount="-2"/>
+    <kerning first="88" second="67" amount="-2"/>
+    <kerning first="88" second="71" amount="-2"/>
+    <kerning first="88" second="79" amount="-2"/>
+    <kerning first="88" second="81" amount="-2"/>
+    <kerning first="88" second="84" amount="-2"/>
+    <kerning first="88" second="87" amount="1"/>
+    <kerning first="88" second="88" amount="1"/>
+    <kerning first="88" second="89" amount="1"/>
+    <kerning first="88" second="97" amount="-2"/>
+    <kerning first="88" second="99" amount="-2"/>
+    <kerning first="88" second="116" amount="-3"/>
+    <kerning first="88" second="119" amount="1"/>
+    <kerning first="88" second="120" amount="1"/>
+    <kerning first="88" second="121" amount="1"/>
+    <kerning first="89" second="41" amount="3"/>
+    <kerning first="89" second="44" amount="-9"/>
+    <kerning first="89" second="45" amount="-3"/>
+    <kerning first="89" second="65" amount="-4"/>
+    <kerning first="89" second="67" amount="-1"/>
+    <kerning first="89" second="71" amount="-1"/>
+    <kerning first="89" second="77" amount="-1"/>
+    <kerning first="89" second="79" amount="-2"/>
+    <kerning first="89" second="84" amount="0"/>
+    <kerning first="89" second="86" amount="2"/>
+    <kerning first="89" second="87" amount="2"/>
+    <kerning first="89" second="88" amount="1"/>
+    <kerning first="89" second="97" amount="-4"/>
+    <kerning first="89" second="99" amount="-4"/>
+    <kerning first="89" second="109" amount="-1"/>
+    <kerning first="89" second="116" amount="1"/>
+    <kerning first="89" second="118" amount="2"/>
+    <kerning first="89" second="119" amount="3"/>
+    <kerning first="89" second="120" amount="1"/>
+    <kerning first="90" second="65" amount="-1"/>
+    <kerning first="90" second="79" amount="-3"/>
+    <kerning first="90" second="97" amount="-1"/>
+    <kerning first="90" second="99" amount="-3"/>
+    <kerning first="98" second="97" amount="0"/>
+    <kerning first="98" second="98" amount="-3"/>
+    <kerning first="98" second="118" amount="-3"/>
+    <kerning first="98" second="119" amount="-1"/>
+    <kerning first="98" second="121" amount="-2"/>
+    <kerning first="99" second="99" amount="-1"/>
+    <kerning first="99" second="116" amount="0"/>
+    <kerning first="99" second="121" amount="1"/>
+    <kerning first="100" second="97" amount="-1"/>
+    <kerning first="100" second="98" amount="-1"/>
+    <kerning first="100" second="106" amount="-1"/>
+    <kerning first="100" second="109" amount="0"/>
+    <kerning first="101" second="118" amount="2"/>
+    <kerning first="101" second="119" amount="2"/>
+    <kerning first="101" second="120" amount="3"/>
+    <kerning first="101" second="121" amount="2"/>
+    <kerning first="102" second="44" amount="-8"/>
+    <kerning first="102" second="97" amount="-2"/>
+    <kerning first="102" second="121" amount="2"/>
+    <kerning first="104" second="98" amount="-2"/>
+    <kerning first="104" second="99" amount="-1"/>
+    <kerning first="106" second="99" amount="-1"/>
+    <kerning first="107" second="97" amount="0"/>
+    <kerning first="107" second="99" amount="0"/>
+    <kerning first="107" second="115" amount="0"/>
+    <kerning first="108" second="97" amount="1"/>
+    <kerning first="108" second="99" amount="-2"/>
+    <kerning first="108" second="109" amount="0"/>
+    <kerning first="108" second="116" amount="-5"/>
+    <kerning first="108" second="117" amount="0"/>
+    <kerning first="108" second="118" amount="-4"/>
+    <kerning first="108" second="119" amount="-2"/>
+    <kerning first="108" second="121" amount="-3"/>
+    <kerning first="109" second="97" amount="2"/>
+    <kerning first="109" second="116" amount="-2"/>
+    <kerning first="109" second="117" amount="0"/>
+    <kerning first="109" second="119" amount="-1"/>
+    <kerning first="109" second="121" amount="-1"/>
+    <kerning first="111" second="97" amount="-2"/>
+    <kerning first="111" second="98" amount="-2"/>
+    <kerning first="111" second="106" amount="-2"/>
+    <kerning first="111" second="109" amount="-1"/>
+    <kerning first="111" second="116" amount="-2"/>
+    <kerning first="111" second="118" amount="-1"/>
+    <kerning first="111" second="119" amount="0"/>
+    <kerning first="111" second="120" amount="-2"/>
+    <kerning first="111" second="121" amount="-1"/>
+    <kerning first="112" second="44" amount="-13"/>
+    <kerning first="112" second="97" amount="-4"/>
+    <kerning first="112" second="98" amount="-1"/>
+    <kerning first="112" second="115" amount="0"/>
+    <kerning first="113" second="41" amount="2"/>
+    <kerning first="113" second="98" amount="-2"/>
+    <kerning first="114" second="97" amount="0"/>
+    <kerning first="114" second="99" amount="1"/>
+    <kerning first="114" second="115" amount="-1"/>
+    <kerning first="114" second="116" amount="-4"/>
+    <kerning first="114" second="118" amount="-2"/>
+    <kerning first="114" second="119" amount="0"/>
+    <kerning first="114" second="120" amount="0"/>
+    <kerning first="114" second="121" amount="-2"/>
+    <kerning first="115" second="98" amount="-2"/>
+    <kerning first="115" second="109" amount="-1"/>
+    <kerning first="115" second="118" amount="0"/>
+    <kerning first="116" second="44" amount="-9"/>
+    <kerning first="116" second="45" amount="-2"/>
+    <kerning first="116" second="58" amount="-2"/>
+    <kerning first="116" second="97" amount="-4"/>
+    <kerning first="116" second="99" amount="-2"/>
+    <kerning first="116" second="109" amount="-1"/>
+    <kerning first="116" second="115" amount="-1"/>
+    <kerning first="116" second="116" amount="1"/>
+    <kerning first="116" second="119" amount="0"/>
+    <kerning first="116" second="120" amount="1"/>
+    <kerning first="116" second="121" amount="2"/>
+    <kerning first="117" second="97" amount="-1"/>
+    <kerning first="117" second="109" amount="-1"/>
+    <kerning first="118" second="41" amount="2"/>
+    <kerning first="118" second="44" amount="-12"/>
+    <kerning first="118" second="45" amount="-2"/>
+    <kerning first="118" second="97" amount="-6"/>
+    <kerning first="118" second="99" amount="0"/>
+    <kerning first="118" second="121" amount="1"/>
+    <kerning first="119" second="41" amount="1"/>
+    <kerning first="119" second="44" amount="-9"/>
+    <kerning first="119" second="58" amount="1"/>
+    <kerning first="119" second="97" amount="-4"/>
+    <kerning first="119" second="109" amount="-2"/>
+    <kerning first="119" second="116" amount="-2"/>
+    <kerning first="119" second="121" amount="1"/>
+    <kerning first="120" second="97" amount="-2"/>
+    <kerning first="120" second="99" amount="-2"/>
+    <kerning first="120" second="116" amount="-2"/>
+    <kerning first="120" second="119" amount="1"/>
+    <kerning first="120" second="120" amount="1"/>
+    <kerning first="120" second="121" amount="1"/>
+    <kerning first="121" second="41" amount="3"/>
+    <kerning first="121" second="44" amount="-8"/>
+    <kerning first="121" second="45" amount="-2"/>
+    <kerning first="121" second="97" amount="-4"/>
+    <kerning first="121" second="99" amount="-1"/>
+    <kerning first="121" second="109" amount="-1"/>
+    <kerning first="121" second="116" amount="0"/>
+    <kerning first="121" second="118" amount="2"/>
+    <kerning first="121" second="119" amount="2"/>
+    <kerning first="121" second="120" amount="1"/>
+    <kerning first="122" second="97" amount="-1"/>
+    <kerning first="122" second="99" amount="-2"/>
+  </kernings>
+</font>

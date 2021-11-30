@@ -1,0 +1,162 @@
+{
+    "image": "credits.png",
+    "characterMapping": [
+        {
+            "char": "A",
+            "width": 5
+        },
+        {
+            "char": "B",
+            "width": 5
+        },
+        {
+            "char": "C",
+            "width": 5
+        },
+        {
+            "char": "D",
+            "width": 5
+        },
+        {
+            "char": "E",
+            "width": 5
+        },
+        {
+            "char": "F",
+            "width": 5
+        },
+        {
+            "char": "G",
+            "width": 5
+        },
+        {
+            "char": "H",
+            "width": 5
+        },
+        {
+            "char": "I",
+            "width": 1
+        },
+        {
+            "char": "J",
+            "width": 5
+        },
+        {
+            "char": "K",
+            "width": 5
+        },
+        {
+            "char": "L",
+            "width": 5
+        },
+        {
+            "char": "M",
+            "width": 7
+        },
+        {
+            "char": "N",
+            "width": 5
+        },
+        {
+            "char": "O",
+            "width": 5
+        },
+        {
+            "char": "P",
+            "width": 5
+        },
+        {
+            "char": "Q",
+            "width": 5
+        },
+        {
+            "char": "R",
+            "width": 5
+        },
+        {
+            "char": "S",
+            "width": 5
+        },
+        {
+            "char": "T",
+            "width": 5
+        },
+        {
+            "char": "U",
+            "width": 5
+        },
+        {
+            "char": "V",
+            "width": 5
+        },
+        {
+            "char": "W",
+            "width": 7
+        },
+        {
+            "char": "X",
+            "width": 5
+        },
+        {
+            "char": "Y",
+            "width": 5
+        },
+        {
+            "char": "Z",
+            "width": 5
+        },
+        {
+            "char": " ",
+            "width": 3
+        },
+        {
+            "char": "&",
+            "width": 5
+        },
+        {
+            "char": "0",
+            "width": 5
+        },
+        {
+            "char": "1",
+            "width": 3
+        },
+        {
+            "char": "2",
+            "width": 5
+        },
+        {
+            "char": "3",
+            "width": 5
+        },
+        {
+            "char": "4",
+            "width": 5
+        },
+        {
+            "char": "5",
+            "width": 5
+        },
+        {
+            "char": "6",
+            "width": 5
+        },
+        {
+            "char": "7",
+            "width": 5
+        },
+        {
+            "char": "8",
+            "width": 5
+        },
+        {
+            "char": "9",
+            "width": 5
+        }
+    ],
+    "margin": 1,
+    "colors": {
+        "white": "#ffffff",
+        "black": "#000000"
+    }
+}

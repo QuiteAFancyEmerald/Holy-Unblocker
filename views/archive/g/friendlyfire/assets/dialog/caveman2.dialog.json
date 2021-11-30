@@ -1,0 +1,106 @@
+{
+    "entry": [
+        "Holy macaroni, another human! !set $metcaveman",
+        "[$ismale] I thought I'd never see another dude anytime soon.",
+        "[not $ismale] I thought I'd never see a woman ever again.",
+        "Did you stone-skip-jump your way across the river as well?",
+        "►[$hasDoubleJump]No, I come here regulary. @regulary",
+        "►[$hasDoubleJump]What's a stone-skip-jump? @skipjump",
+        "►[not $hasDoubleJump]Yes! @stuck"
+    ],
+    "stuck": [
+        "Well, then make yourself comfortable.",
+        "At least I'm not stuck here alone anymore.",
+        "►What? Can't we just exit the cave?",
+        "The platforms on the way up are too high…",
+        "►F…",
+        "Game over, man!",
+        "GAME OVER! !endgameC !end"
+    ],
+    "visitedEntry": [
+        "[$ismale]Hey pal!",
+        "[not $ismale]Greetings my lady.",
+        "►Can I ask you some questions? @questions",
+        "►I'm on my way. @visitedEntry !end"
+    ],
+    "regulary": [
+        "So there is a regular way to cross the river? !set visited",
+        "►Yeah, it's a long story.",
+        "I couldn't cross the broken bridge after falling down from the sky.",
+        "I tried many times but I couldn't jump far enough.",
+        "Since there wasn't anything better to do, I found out about the skip-jump by accident and ended up on this side of the river. @skipjump"
+    ],
+    "skipjump": [
+        "It's a secret jumping technique I mastered. !set visited",
+        "Just at the moment of impact, I was able to jump on the water and cross the river this way!",
+        "Just like a stone skips on water when you throw it at the right angle. Hence the name.",
+        "Patent pending.",
+        "And now I'm stuck here… @bug"
+    ],
+    "bug": [
+        "The fire up top wasn't very helpful.",
+        "And after I entered the cave, I couldn't get back out.",
+        "The platforms are to high for me to jump up.",
+        "►The power-up fire? He gave me the ability to fly. @powerup",
+        "►Keep going. @strange"
+    ],
+    "powerup": [
+        "Oh really? You can actually fly now?",
+        "He was just repeating lines and blabbing about broken sequences.",
+        "Maybe you can go talk to him?",
+        "►If I have the time. Continue.",
+        "Where was I? Ah! @strange"
+    ],
+    "strange": [
+        "But that's not all.",
+        "There is something very strange going on here.",
+        "►What do you mean?",
+        "Don't you see it? The strange shrine in the clouds and the very supspicious fire people?",
+        "How did we get here in the first place?",
+        "It's like a feverish nightmare from which you can't wake up.",
+        "I conducted some experiments down here and the results are alarming. @questions"
+    ],
+    "questions": [
+        "What do you want to know about?",
+        "►How did you get here? @memories",
+        "►Anything interesting about this cave? @cave",
+        "►Why the open fire in the cave? @fire",
+        "►Nevermind. @visitedEntry !end"
+    ],
+    "fire": [
+        "Good question! First of all, carbon monoxide poisoning is not something that happens here.",
+        "Death in general seems to be impossible. Trust me, I tried.",
+        "But the fire itself is very interesting.",
+        "I made a lot of camp fires since I came here and they all look alike.",
+        "I mean, practically identical. And not only that, they even resemble the fire in the entrance.",
+        "Isn't that strange? It's like someone got really lazy and just made everything from the same template.",
+        "►You're right, but the fire in the beginning looked different.",
+        "Yeah, I remember. It looked fake.",
+        "►I have other questions. @questions"
+    ],
+    "cave": [
+        "Yes! This cave is strange as well.",
+        "It's the only cave I've seen so far that has nothing of interest in it.",
+        "Very suspicious if you ask me.",
+        "►Well, you are here.",
+        "I don't like the tone of that…",
+        "I'm a living person and not some kind of pawn that only exists to chat with anyone who enters this cave.",
+        "As soon as I have the means to leave, I will.",
+        "►We will see. I have other questions. @questions"
+    ],
+    "memories": [
+        "My memories are very hazy, I can't remember anything from before my arrival here.",
+        "What about you?",
+        "►No, it's all blank.",
+        "Thought so… There's something sinister going on here behind the curtains.",
+        "There's always a lingering feeling of being watched from the shadows.",
+        "►Yeah, I met that guy under the bridge. @shadows",
+        "►Creepy. I got other questions. @questions"
+    ],
+    "shadows": [
+        "What guy?",
+        "►The shadow person. He taught me how to run.",
+        "You seem to have had a very different experience than I did…",
+        "►Apparently. I got other questions. @questions"
+    ]
+}

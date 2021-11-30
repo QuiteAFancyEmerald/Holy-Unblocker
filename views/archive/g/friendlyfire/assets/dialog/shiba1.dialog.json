@@ -1,0 +1,77 @@
+{
+    "entry": [
+        "Hello! Friend!",
+        "You smell nice.",
+        "Are you here to play???",
+        "►A talking dog, I'm not surprised.",
+        "Yes. Talking!",
+        "Mother taught me to speak.",
+        "♪ Bark!",
+        "I mean… ♪ Chirp. @met"
+    ],
+    "met": [
+        "Play???",
+        "►[not inTree]Why are you in a tree? @tree",
+        "►[inTree]Can you tell me about your brother again? @reminder",
+        "►We'll play another time.",
+        "►(Pet the dog already!) !petDoggo !end @met",
+        "♪ OK friend. !end @met"
+    ],
+    "met2": [
+        "Did you find my brother?",
+        "Also… Play???",
+        "►[$metPowerShiba]I found your brother… @found",
+        "►[inTree]Can you tell me about your brother again? @reminder",
+        "►We'll play another time.",
+        "►(Pet the dog already!) !petDoggo !end @met2",
+        "♪ OK friend. !end @met2"
+    ],
+    "tree": [
+        "I fell from the sky. !set inTree",
+        "Bird mother brought me here, gave me food.",
+        "Brother is still missing… We separated.",
+        "►There is another dog?",
+        "Yes, in the clouds. I fell.",
+        "Can you find brother? You can fly! !set $metShiba",
+        "►[not $metPowerShiba]Sure, I can take a look. @search",
+        "►[$metPowerShiba]I already found him. @found"
+    ],
+    "reminder": [
+        "Yes! Brother!",
+        "I fell from the sky, my brother stayed.",
+        "I howl every night, but no response.",
+        "Please find brother!",
+        "►I'll see what I can find in the clouds. @met2"
+    ],
+    "search": [
+        "Wow! Thanks!",
+        "I want to smell brother!",
+        "►I'll see what I can find in the clouds. @met2 !end"
+    ],
+    "found": [
+        "Wow! Really? !set $gotBoneQuest",
+        "How does he smell?",
+        "►Really nice… That's not the issue though.",
+        "Did you bring him? Where is he?",
+        "►He doesn't remember you…",
+        "What??? Oh no… why?",
+        "►It's complicated. Any ideas how to make him remember?",
+        "Mmmh…",
+        "Yes… the bone! ♪",
+        "We had a bone… when we were with human.",
+        "In a cave, when we came to the clouds.",
+        "It's the favorite bone. He must remember the bone!",
+        "Can you bring favorite bone?",
+        "►The bone in the portal room… I remember that.",
+        "Can you bring???",
+        "►This might be tricky. The throw power-up seemed to know a lot about items.",
+        "Please bring… @boneReminder !end"
+    ],
+    "boneReminder": [
+        "Hello friend!",
+        "Can you bring favorite bone?",
+        "it's in the cloud cave. You can fly!",
+        "►Can't get items through doors… Gotta talk to the throw power-up @boneReminder !end",
+        "►(Pet the dog already!) !petDoggo !end @boneReminder"
+    ]
+}

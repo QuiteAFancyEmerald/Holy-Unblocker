@@ -1,0 +1,19 @@
+{
+  "short_name": "Fireboy & Watergirl",
+  "name": "Fireboy & Watergirl: Elements",
+  "icons": [
+    {
+      "src": "icon-60x60.png",
+      "type": "image/png",
+      "sizes": "60x60"
+    },
+    {
+      "src": "icon-120x120.png",
+      "type": "image/png",
+      "sizes": "120x120"
+    }
+  ],
+  "start_url": "/index.html",
+  "display": "fullscreen",
+  "orientation": "landscape"
+}

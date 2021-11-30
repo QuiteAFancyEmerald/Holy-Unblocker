@@ -1,0 +1,8 @@
+{
+    "entry": [
+        "(The blinds on this window are only half closed.)",
+        "(It is possible to take a look through the window.)",
+        "►Take a look !end @entry !lookThroughWindow",
+        "►Step back !end @entry"
+    ]
+}

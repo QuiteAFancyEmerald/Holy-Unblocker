@@ -1,12 +1,17 @@
 var h5gms = {
     "dino": "/archive/dino/index.html",
-    "thebunker": "/archive/bunker/index.html",
     "droom": "/archive/g/adarkroom/index.html",
+    "doodle": "/archive/g/doodle-jump/index.html",
+    "ducklife": "/archive/g/ducklife/index.html",
+    "ducklife2": "/archive/g/ducklife2/index.html",
+    "ducklife3": "/archive/g/ducklife3/index.html",
+    "ducklife4": "/archive/g/ducklife4/index.html",
+    "firewater": "/archive/g/firewater/index.html",
+    "friendlyfire": "/archive/g/friendlyfire/index.html",
+    "slope": "/archive/g/slope/index.html",
     "gopher": "/archive/gopher/index.html",
     "mc": "/archive/g/mcjs.html",
     "sna": "/archive/g/snake/index.html",
-    "retrobowl": "/archive/g/retrobowl/index.html",
-    "tether": "/archive/g/tether/index.html",
     "retro": "/archive/g/retrohaunt/index.html",
     "cookiec": "/archive/g/cookieclicker/index.html",
     "evilg": "/archive/g/evilglitch/index.html",
@@ -41,8 +46,7 @@ var h5gms = {
     "faball": "/archive/g/factoryballsforever/index.html",
     "trimps": "/archive/g/trimps/index.html",
     "sm64": "/archive/g/sm64/index.html#nolag",
-    "zork": "/archive/g/zork1/index.html",
-    "obstacle-cube": "/archive/g/obstacle-cube/index.html"
+    "zork": "/archive/g/zork1/index.html"
 };
 
 h5gms_array = Object.keys(h5gms);

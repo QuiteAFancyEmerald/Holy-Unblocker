@@ -26,7 +26,7 @@
     <!--<script src="assets/js/im-runtime.js"></script>-->
     <script src="/expr/alload.js"></script>
     <script src="assets/js/part-bg.js"></script>
-    <script async src="https://arc.io/widget.min.js#2BzvQ1em"></script>
+
 </head>
 
 <body>
@@ -49,88 +49,68 @@
                             <li class="nav-item" data-bs-hover-animate="pulse"><a class="nav-link" href="/?d" style="font-family: 'Montserrat Alternates', sans-serif;">D&#173;isc&#173;or&#173;d</a></li>
                             <li class="nav-item" id="ch" data-bs-hover-animate="pulse"><a class="nav-link" href="/?n" style="font-family: 'Montserrat Alternates', sans-serif;">Ch&#173;a&#173;tbo&#173;x</a></li>
                             <li class="nav-item dropdown">
-                                <a class="dropdown-toggle nav-link" data-bs-hover-animate="pulse" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;color: #fff;font-family: 'Montserrat Alternates', sans-serif;">M&#173;or&#173;e</a>
-                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;">
-                                    <a class="dropdown-item text-left text-white-50" role="presentation" href="/?in" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">D&#173;oc&#173;s</a>
-                                    <a class="dropdown-item text-left text-white-50" role="presentation" href="/?faq" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">FA&#173;Q</a>
-                                    <a class="dropdown-item text-white-50" role="presentation" href="/?c" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Cre&#173;d&#173;its</a>
+                                <a class="nav-link" data-bs-hover-animate="pulse" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;color: #fff;font-family: 'Montserrat Alternates', sans-serif;">M&#173;or&#173;e
+                                    <i class="ion-md-more" style="margin: 5px;"></i></a>
+                                <div class="dropdown-menu ion-md-menu" role="menu" style="background-color: #151618;opacity: 0.95;font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;">
+                                    <a id="menuitem" class="dropdown-item text-left" role="presentation" href="/?in" style="color: #d8dee9;opacity: 0.80;padding: 0%;font-family: Lato, sans-serif;">D&#173;oc&#173;s</a>
+                                    <a id="menuitem" class="dropdown-item text-left" role="presentation" href="/?faq" style="color: #d8dee9;opacity: 0.80;padding: 0%;font-family: Lato, sans-serif;">FA&#173;Q</a>
+                                    <a id="menuitem" class="dropdown-item" role="presentation" href="/?c" style="color: #d8dee9;opacity: 0.80;padding: 0%;font-family: Lato, sans-serif;">Cre&#173;d&#173;its</a>
                                 </div>
                             </li>
                             <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
                             <li class="nav-item dropdown">
-                                <a class="dropdown-mod nav-link" style="font-size: 18px" data-animate="pulse" data-toggle="dropdown" aria-expanded="false" href="#">
-                                    <ion-icon name="options"></ion-icon>
+                                <a class="nav-link" style="margin-left: 15px;font-family: 'Montserrat Alternates', sans-serif;font-size: 15px;" data-bs-hover-animate="pulse" data-toggle="dropdown" aria-expanded="false" href="#">Settings
+                                    <i class="ion-md-barcode" style="margin: 5px;"></i>
                                 </a>
-                                <div id="csel" class="dropdown-menu">
-                                    <p class="csel-l">T&#173;ab Cl&#173;oak</p>
+                                <div id="csel" class="dropdown-menu" role="menu">
+                                    <p class="csel-l" style="color: #d8dee9">T&#173;ab Cl&#173;oak</p>
                                     <p class="csel-p">Ch&#173;a&#173;nge t&#173;he Tit&#173;le.</p>
-                                    <form id="titleform">
-                                        <input class="bg-dark border rounded-0 border shadow-lg" type="text" placeholder="Tab Title">
-                                        <input class="btn btn-dark btn-sm bg-dark border-dark rounded-1 shadow-lg" style="margin-top: 5px;" data-bs-hover-animate="pulse" onsubmit="" type="submit" value="A&#173;pp&#173;ly">
-                                    </form>
+                                    <form id="titleform"><input class="bg-dark border rounded-0 border shadow-lg" type="text" placeholder="Tab Title"><input class="btn btn-dark btn-sm bg-dark border-dark rounded-1 shadow-lg" style="margin-top: 5px;" data-bs-hover-animate="pulse"
+                                            type="submit" value="Ap&#173;ply"></form>
                                     <p class="csel-p" style="margin-top: 5px;">C&#173;han&#173;ge t&#173;he <a href="/?i">Ic&#173;on</a>.</p>
-                                    <form id="iconform">
-                                        <input class="bg-dark border rounded-0 border shadow-lg" type="url" placeholder="Icon URL">
-                                        <input class="btn btn-dark btn-sm bg-dark border-dark rounded-1 shadow-lg" style="margin-top: 5px;" data-bs-hover-animate="pulse" type="submit" value="Ap&#173;ply">
-                                    </form>
-                                    <form id="toolsform" style="margin-top: 10px;">
-                                        <a class="btn btn-dark btn-lg bg-dark border-dark rounded-1 border shadow-lg" data-bs-hover-animate="pulse" href="/?x" type="button" class="tb-btn">Book&#173;mar&#173;kl&#173;et&#173;s</a>
-                                    </form>
+                                    <form id="iconform"><input class="bg-dark border rounded-0 border shadow-lg" type="url" placeholder="Icon URL"><input class="btn btn-dark btn-sm bg-dark border-dark rounded-1 shadow-lg" style="margin-top: 5px;" data-bs-hover-animate="pulse"
+                                            type="submit" value="Ap&#173;ply"></form>
+                                    <form id="toolsform" style="margin-top: 10px;"><a class="btn btn-dark btn-lg bg-dark border-dark rounded-1 border shadow-lg" data-bs-hover-animate="pulse" href="/?x" type="button" class="tb-btn">Book&#173;mar&#173;kl&#173;et&#173;s</a></form>
                                 </div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-            <!-- Particles.js background -->
-            <script id="particles-js" class="in-bg"> document.write(`
-            <div style="margin: 2%;">
-                <h1 class="text-center">Privacy Policy</h1>
+            <script id="particles-js" class="in-bg">
+                document.write(`<div style="margin: 2%;">
+                <div class="text-center"><h1>Privacy Policy</h1>
+                    <h4>Ho&#173;ly Unbl&#173;ocker, a priv&#173;ate w&#173;eb pro&#173;xy serv&#173;ice.</h4></div>
 
-                <p><strong>Effective Date: 02-07-2021</strong></p>
-                <h3>Your privacy is important to us</h3>
+                <p><strong>Effective Date: 07-16-2021</strong></p>
 
                 <h4>What is H<wbr>oly Unb<wbr>lock&#173;er?</h4>
                 <p>H&#173;oly U&#173;nblo<wbr>cker, an off&#173;ici&#173;al flagship Tita<wbr>nium Netw<wbr>ork site, can b&#173;ypa&#173;ss we&#173;b filt&#173;er&#173;s regardless of whether it is an ext&#173;ens&#173;ion or net&#173;work-base&#173;d.
                     <br>Being a secure w&#173;eb pro<wbr>xy ser&#173;vi&#173;ce, it supports numerous sites while being updated frequently and concentra&#173;ting on detail with design, mechanics, and features.</p>
                 <h4>What is T<wbr>itan<wbr>ium Net<wbr>wor<wbr>k about?</h4>
                 <p>Tita<wbr>ni&#173;um Ne&#173;w<wbr>ork is an orga&#173;nizat&#173;ion dedicated to providing pri&#173;vate inter&#173;net acces&#173;s by bypa<wbr>ssing the <wbr>ove<wbr>r-res<wbr>tri<wbr>cti<wbr>ve fil<wbr>te<wbr>rs employed by insti<wbr>tution<wbr>s like scho<wbr>ols or workpl<wbr>aces.</p>
-                <br>--
+                <h4>Is any da&#8203;ta being collected?</h4>
+                <p>Nope! No da&#8203;ta is logged or collected by any of our w&#8203;eb pr&#8203;ox&#8203;es featured. Ho&#8203;ly Unb&#8203;locke&#8203;r values its statement of end&#8203;ing inte&#8203;net cen&#8203;sor&#8203;ship along with valuing u&#8203;ser pri&#8203;vacy.<br><br>If you wish to make a privacy statement or request please contact us via Dis&#8203;co&#8203;rd or our business email listed below:</p>
+                <p>Ema&#8203;il: em&#8203;eral&#8203;d@tit&#8203;an&#8203;iumn&#8203;etwor&#8203;k.org</p>
 
-                <p>It is Ho<wbr>ly Unb<wbr>lo<wbr>cker's policy to respect your privacy regarding any information we may collect while operating our website. This Privacy Policy applies to ${document.domain}</a> (hereinafter, "us", "we", or "${document.domain}").
-                    We respect your privacy and are committed to protecting personally identifiable information you may provide us through the Website. We do not log or record unnecessary information, as indicated later in this Privacy Policy. We have
-                    adopted this privacy policy ("Privacy Policy") to explain what information may be collected on our Website, how we use this information or Other information, and under what circumstances we may disclose the information to third parties.
-                    This Privacy Policy applies only to information we collect through the Website and does not apply to our collection of information from other sources such as sites accessed through our service.</p>
-                <p>This Privacy Policy, together with the Terms of service posted on our Website, set forth the general rules and policies governing your use of our Website. Depending on your activities when visiting our Website, you may be required to agree
-                    to additional terms of service.<br><br></p>
-                <p>The following are some examples of Other Information:</p>
-                <p>- device ID, including IP address;</p>
-                <p>- browser and device information, including operating system;</p>
-                <p>- other information collected through technologies described in more detail later in this Privacy Policy.</p>
-                <p>Any user information recorded is cleared after 30 days.
-                    <h2 id="Security">1. Security</h2>
-                    <p>H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er highly values the terms of security using the latest security practices while guaranteeing secure connections over SSL and respecting user privacy. The security of your Personal Information is important to us, but remember
-                        that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Information, we cannot guarantee its absolute security.<br></p>
-                    <h2 id="ExternalLinks">2. Links To External Sites</h2>
-                    <p>Our Service may contain links to external sites that are not operated by us. If you click on a third party link, you will be directed to that third party's site via any of the Web Proxies. We strongly advise you to review the Privacy
-                        Policy and terms of service of every site you visit if the matter concerns you.</p>
-                    <p>We have no control over, and assume no responsibility for the content, privacy policies or practices of any third party sites, products or services.</p>
-                    <h2 id="Cookies">3. Cookies</h2>
-                    <p>To enrich and perfect your online experience, Hol<wbr>y Unbl<wbr>ocker uses "Cookies", similar technologies and services provided by others to display personalized content and store your preferences on your computer.</p>
-                    <p>A cookie is a string of information that a website stores on a visitor's computer, and that the visitor's browser provides to the website each time the visitor returns. H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er uses cookies to help H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er with security
-                        on ${document.domain} and its p<wbr>ro<wbr>xy instances, and lastly for user preferences. H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er visitors who do not wish to have cookies placed on their computers should set their browsers to refuse cookies before using
-                        Ho<wbr>ly Unblo<wbr>cker's websites, with the drawback that certain features of H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er's websites may not function properly without the aid of cookies.</p>
-                    <p>By continuing to navigate our website without changing your cookie settings, you hereby acknowledge and agree to H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er's use of cookies.</p>
-                    <h2 id="Cookies">4. Arc</h2>
-                    <p>H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er uses Arc, a peer-to-peer Content Delivery Network (CDN) used as an alternative for ads. Arc earnings are used to maintain HU and improve its services. Users who wish to opt-out from Arc may do so.More information about Arc can be found at https://arc.io.</p>
-                    <h2 id="Changes">5. Privacy Policy Changes</h2>
-                    <p>Although most changes are likely to be minor, H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er may change its Privacy Policy from time to time, and in H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er's sole discretion. H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er encourages visitors to frequently check this page for any changes
-                        to its Privacy Policy. Your continued use of this site after any change in this Privacy Policy will constitute your acceptance of such change.</p>
-                    <h2 id="Credit">6. Contact Information &amp; Credit</h2>
-                    <p>This privacy policy was created at <a style="color:inherit;text-decoration:none;" href="https://privacyterms.io/privacy-policy-generator/" title="Privacy policy generator" target="_blank">privacyterms.io privacy policy generator</a>.
-                        If you have any questions about our Privacy Policy, please contact us via <a href="mailto:quiteafancyemerald@gmail.com">email</a> or through Discord.<br><br>Discord:&nbsp;Qui&#8203;te A &#8203;Fancy Emera&#8203;ld#0&#8203;001<br></p>
-                    <p>Email: qui&#8203;teafa&#8203;ncy&#8203;eme&#8203;ra&#8203;ld@g&#8203;mai&#8203;l.com</p>
-            </div>`);
+                <h4 id="Security">Security</h4>
+                <p>H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er highly values the terms of security using the latest security practices while guaranteeing secure connections over SSL and respecting user privacy entirely.<br></p>
+                
+                <h4 id="Cookies">Cookie Usage</h4>
+                <p>Hol<wbr>y Unbl<wbr>ocker uses "Cookies" and similar technologies to maintain a user session (described more below) and store your preferences on your computer. All of this information is completely private being only local content with no analytical purposes.</p>
+                <p>A cookie is a string of information that a website stores on a visitor's computer, and that the visitor's browser provides to the website each time the visitor returns. H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er uses cookies to help H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er with security
+                    on ${document.domain} and its p<wbr>ro<wbr>xy instances, and lastly for user preferences. Users who do not wish to have cookies placed on their computers should set their browsers to refuse cookies before using
+                    Ho<wbr>ly Unblo<wbr>cker's websites, with the drawback that certain features of H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er may not function properly without the aid of cookies.</p>
+                <p>By continuing to navigate our website without changing your cookie settings, you hereby acknowledge and agree to H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er's use of cookies.</p>
+                <h4 id="Cookies">Regarding Ar&#8203;c</h4>
+                <p>H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er uses A&#8203;rc, a peer-to-peer Content Delivery Network (CDN) used as an alternative for ads. Arc earnings are used to maintain HU and improve its services. Users who wish to opt-out from Arc may do so. More information about Arc can be found at https://arc.io.</p>
+                <h4 id="Changes">Ending Note</h4>
+                <p>Although most changes are likely to be minor, H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er may change its Privacy Policy from time to time, and in H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er's sole discretion. H&#8203;ol&#8203;y Unb&#8203;lock&#8203;er encourages visitors to frequently check this page for any changes
+                    to its Privacy Policy. Your continued use of this site after any change in this Privacy Policy will constitute your acceptance of such change.</p>
+                <h4 id="Credit">Contact Information &amp; Credit</h4>
+                <p>If you have any questions about our Privacy Policy, please contact us via <a href="mailto:emerald@titaniumnetwork.org">email</a> or through Di&#8203;scord.<br><br>Di&#8203;scord:&nbsp;Qui&#8203;te A &#8203;Fancy Emera&#8203;ld#0&#8203;001<br></p>
+                <p>Ema&#8203;il: em&#8203;eral&#8203;d@tit&#8203;an&#8203;iumn&#8203;etwor&#8203;k.org</p>
+        </div>`);
             </script>
         </div>
     </div>
@@ -146,7 +126,8 @@
                     <div class="col-sm-6 col-md-3 item">
                         <h3>Services</h3>
                         <ul>
-                            <li><a id="clink">Corrosi<wbr>on</a></li>
+                            <li><a id="allink">Al<wbr>loy</a></li>
+                            <li><a id="plink">PM P<wbr>ro<wbr>xy</a></li>
                             <li><a id="nclink">No<wbr>deClu<wbr>sters</a></li>
                         </ul>
                     </div>
@@ -170,7 +151,7 @@
         </footer>
     </div>
     <!--Scripts-->
-	<script src="expr/common.js"></script>
+    <script src="expr/common.js"></script>
     <script src="assets/js/links.js"></script>
     <script src="expr/surf.js"></script>
     <script src="assets/js/jquery.min.js"></script>

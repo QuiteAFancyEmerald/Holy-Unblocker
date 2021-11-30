@@ -1,0 +1,147 @@
+{
+    "entry": [
+        "[not met]I am the wise stone. Hard, but fair. !talkedToStone",
+        "[not met]I oversee the sacred garden up that hill. What wisdom do you seek? !set met",
+        "[met]Welcome back young human. What wisdom do you seek?",
+        "►[not $seedplanted]I need to plant a seed. Any tips? @tips",
+        "►[$seedplanted]I planted the seed but nothing happened… @introduction",
+        "►Nevermind. @entry !end"
+    ],
+    "tips": [
+        "You can use the sacred garden of course. Just throw the seed directly onto the soil.",
+        "The item will be absorbed by the blessed and fertile ground to help create new life.",
+        "What a miracle!",
+        "►It's just a gardening…",
+        "►Will do.",
+        "Good luck! @entry !end"
+    ],
+    "visitedentry": [
+        "I see that you still struggle with your task.",
+        "►Yeah, kind of. @introduction"
+    ],
+    "introduction": [
+        "Well, if you are willing to listen, I would be willing to teach you the ways of the sacred soil.",
+        "►I do not need a teacher. @noteacher",
+        "►Sure, whatever will help me finally get this done. @getthisdone",
+        "►Seriously, can everything talk here? @getthisdone",
+        "►I can do this on my own, thanks. @onmyown"
+    ],
+    "noteacher": [
+        "Without my teachings your little tree will remain but a sad seed in the sand.",
+        "Return to me when you've grown some wisdom! @visitedentry !end"
+    ],
+    "ionlymaster": [
+        "Fool! Out of my sight! @visitedentry !end"
+    ],
+    "getthisdone": [
+        "[$ismale]A bit more respect, young boy. Start by calling me master!",
+        "[not $ismale]A bit more respect, young girl. Start by calling me master!",
+        "►I am the only master I acknowledge! @ionlymaster",
+        "►Fine, what can you teach me… master? @yesmaster",
+        "►Forgive me, master. I am willing to learn. @yesmaster",
+        "►[$ismale]When do you beings stop calling me “boy” for once?!",
+        "►[not $ismale]When do you beings stop calling me “girl” for once?!",
+        "[$ismale]What are you saying, boy?",
+        "[not $ismale]What are you saying, girl?",
+        "►[$ismale]I'm a girl! @genderswap",
+        "►[not $ismale]I'm a woman! @woman",
+        "►[$ismale]I'm a man! @man",
+        "►[not $ismale]I'm a man! @genderswap",
+        "►I'm a human, leave me alone with your gender talk! @human"
+    ],
+    "woman": [
+        "Great for you. @getthisdone"
+    ],
+    "man": [
+        "Ohohoh. Have you looked in a mirror? You have less facial hair than a stone.",
+        "►You're right, master. @yesmaster",
+        "►Touché! @touche",
+        "►A man is defined by his actions, not by his beard.",
+        "And for now you have neither. But I reckon this may change today.",
+        "►You're right, master. @yesmaster",
+        "►But I have accomplished so much!",
+        "►Are you saying I'll grow a beard today? @beard",
+        "So what, you talked to a fire, bounced off a mushroom and stuck a pine cone into the mud.",
+        "Mediocre!",
+        "But I'll lead you to greatness once you've accepted your current lack thereof.",
+        "►Please do, master. @yesmaster",
+        "►Just get to the point already.",
+        "So impatient. I'll bless you with my teachings once you've demonstrated your willingness to accept them!",
+        "►OK, master, you win. @yesmaster",
+        "►Just tell me!",
+        "Well, let me help you help yourself then…",
+        "►Master master master master!",
+        "See, easy! @yesmaster"
+    ],
+    "beard": [
+        "Well that's a miracle for another game. Your fate in this world is a different one, one of carrying and dancing, I presume.",
+        "►OK, master. @yesmaster",
+        "►But I want a beard!",
+        "Are you sure this is what you desire?",
+        "►No, master. But I'm ready for your teachings. @yesmaster",
+        "►Sure!",
+        "Aren't there more important things right now?",
+        "►Yes, master. Let's discuss those instead. @yesmaster",
+        "►No, I really want a beard!",
+        "Well… I guess I could lend you a piece of mine. But please call me master first.",
+        "►Master master master!",
+        "Here you go. !givebeard",
+        "But don't complain! I can only do white ones. This is your life now.",
+        "►Thank you, master. Now back to your teachings. @yesmaster",
+        "►Mphffpfhffhfpf.",
+        "Takes some getting used to. But, where were we… right. @yesmaster"
+    ],
+    "genderswap": [
+        "Well I guess even my immense wisdom has its limits.",
+        "Maybe you should switch up your appearance next time…",
+        "►All righty. Maybe I'll do that.",
+        "Where were we? Ah yes! @getthisdone"
+    ],
+    "touche": [
+        "…",
+        "►…touché, master. @yesmaster"
+    ],
+    "human": [
+        "This… exceeds my expertise. Umm. Where were we. Ah, yes. @yesmaster"
+    ],
+    "onmyown": [
+        "Good luck, fool. @visitedentry !end"
+    ],
+    "yesmaster": [
+        "So, let an old and wise stone tell you: Basic gardening requires water. So…",
+        "►Sooo…? @soo",
+        "►I think I need a drink… a hard one. @drink",
+        "►Wait… I want to talk about something else first. @introduction"
+    ],
+    "soo": [
+        "This is harder than I thought. @rain"
+    ],
+    "drink": [
+        "Me too, although I am hard enough already, hahahahaha. @rain"
+    ],
+    "rain": [
+        "[$ismale]You need some rain of course, you foolish man. Magical rain from the clouds above!",
+        "[not $ismale]You need some rain of course, you foolish woman. Magical rain from the clouds above!",
+        "You need to grow as person to get access to the cloud world. Not literally, but metaphorically.",
+        "Though… literally might also work, but I digress.",
+        "As a part of this trial, you have to bring me down to the river and toss me in. !riverzoom",
+        "I will grant you incredible strength so you are able to carry me down the mountain.",
+        "Beyond the river, you will find the answer to your quest in a sacred cave.",
+        "►I am not sure if I really want to touch you… @nottouchyou",
+        "►[$ismale]By the power of Grayskull! @lift",
+        "►[not $ismale]For the honor of Greyskull! @lift",
+        "►Yes, master. @lift",
+        "►On second thought, I don't like this… at all.",
+        "What a hard disappointment… @visitedentry !end"
+    ],
+    "nottouchyou": [
+        "This is the beauty about power, and now lift me up!",
+        "►I… need… to… lift… my… master… @lift"
+    ],
+    "lift": [
+        "You are wooooorthy! @remember !pickupstone !end"
+    ],
+    "remember": [
+        "There you are again, my padawan. @remember !end"
+    ]
+}

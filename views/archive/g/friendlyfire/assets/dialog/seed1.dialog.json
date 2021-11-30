@@ -1,0 +1,18 @@
+{
+    "entry": [
+        "I have been born. I am alive!",
+        "I thank you for bestowing the miracle of life onto me.",
+        "My father will hear of this. Please speak to him to receive a proper reward.",
+        "►I will, but please stop the creepy talk.",
+        "I will not comply to this demand. Farewell! @visit !end"
+    ],
+    "visit": [
+        "I will drown in a very short amount of time. Can you stop the unending rush of fluids?",
+        "►I guess there is no dry-dance, sorry.",
+        "Oh father, why have you forsaken me?",
+        "►Gotta go, fast! @final !end"
+    ],
+    "final": [
+        "My life was in vain… Avenge me! !end"
+    ]
+}

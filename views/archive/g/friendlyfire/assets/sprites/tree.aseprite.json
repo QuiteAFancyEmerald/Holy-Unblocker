@@ -1,0 +1,32 @@
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 0, "y": 0, "w": 77, "h": 142 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 1, "y": 0, "w": 77, "h": 142 },
+    "sourceSize": { "w": 82, "h": 142 },
+    "duration": 300
+   },
+   {
+    "filename": "1",
+    "frame": { "x": 77, "y": 0, "w": 77, "h": 142 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 0, "w": 77, "h": 142 },
+    "sourceSize": { "w": 82, "h": 142 },
+    "duration": 300
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.19.2",
+  "image": "tree.png",
+  "format": "I8",
+  "size": { "w": 154, "h": 142 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 1, "direction": "forward" }
+  ]
+ }
+}

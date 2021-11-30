@@ -1,0 +1,67 @@
+{ "frames": {
+   "0": {
+    "frame": { "x": 0, "y": 0, "w": 14, "h": 14 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 14 },
+    "sourceSize": { "w": 14, "h": 14 },
+    "duration": 100
+   },
+   "1": {
+    "frame": { "x": 14, "y": 0, "w": 14, "h": 14 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 14 },
+    "sourceSize": { "w": 14, "h": 14 },
+    "duration": 1
+   },
+   "2": {
+    "frame": { "x": 28, "y": 0, "w": 14, "h": 14 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 14 },
+    "sourceSize": { "w": 14, "h": 14 },
+    "duration": 1
+   },
+   "3": {
+    "frame": { "x": 42, "y": 0, "w": 14, "h": 14 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 14 },
+    "sourceSize": { "w": 14, "h": 14 },
+    "duration": 1
+   },
+   "4": {
+    "frame": { "x": 56, "y": 0, "w": 14, "h": 14 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 14 },
+    "sourceSize": { "w": 14, "h": 14 },
+    "duration": 1
+   },
+   "5": {
+    "frame": { "x": 70, "y": 0, "w": 14, "h": 14 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 14, "h": 14 },
+    "sourceSize": { "w": 14, "h": 14 },
+    "duration": 1
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.21-x64",
+  "image": "buttons_keyboard.png",
+  "format": "RGBA8888",
+  "size": { "w": 84, "h": 14 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "interact", "from": 0, "to": 0, "direction": "forward" },
+   { "name": "up", "from": 1, "to": 1, "direction": "forward" },
+   { "name": "action", "from": 2, "to": 2, "direction": "forward" },
+   { "name": "back", "from": 3, "to": 3, "direction": "forward" },
+   { "name": "jump", "from": 4, "to": 4, "direction": "forward" },
+   { "name": "confirm", "from": 5, "to": 5, "direction": "forward" }
+  ]
+ }
+}
