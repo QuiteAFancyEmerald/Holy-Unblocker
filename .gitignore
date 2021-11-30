@@ -5,3 +5,4 @@ node_modules
 .well-known
 package-lock.json
 /views/archive/gfiles/rarch/roms
+/views/archive/g
