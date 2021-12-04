@@ -103,6 +103,7 @@ fetch("https://blocklistproject.github.io/Lists/alt-version/everything-nl.txt").
 const proxy = new corrosion({
     title: config.title,
     prefix: config.prefix || '/search/',
+    forceHttps: true,
     codec: config.codec || 'xor',
     ws: config.ws,
     requestMiddleware: [
