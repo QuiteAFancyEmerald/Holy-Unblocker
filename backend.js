@@ -106,7 +106,6 @@ const proxy = new corrosion({
     forceHttps: true,
     codec: config.codec || 'xor',
     ws: config.ws,
-    forceHttps: true,
     requestMiddleware: [
         corrosion.middleware.blacklist(blacklist, 'Service not allowed due to bot protection! Make sure you are not trying to verify on a proxy.'),
     ],
