@@ -63,7 +63,7 @@ Do %proxy hu for more Holy Unblocker links on the Titanium Network Discord serve
 ## How to Setup
 Either use the button above to deploy to Heroku or do the below:
 ```
-$ git clone https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic.git
+$ git clone https://github.com/titaniumnetwork-dev/Holy-Unblocker.git
 $ cd HolyUnblockerPublic
 $ npm install
 ```
