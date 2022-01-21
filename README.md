@@ -41,7 +41,7 @@ Do %proxy hu for more Holy Unblocker links on the Titanium Network Discord serve
 &nbsp;
 <a href="https://repl.it/github/QuiteAFancyEmerald/HolyUnblockerPublic" title="Run on Repl.it"><img alt="Run on Repl.it" src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/ecdd1986ad20a151f24ed9eb709bc03bbdf757ce/views/assets/img/replit.svg?raw" width="140" height="30"><img></a>
 &nbsp;
-<a href="https://glitch.com/edit/#!/import/github/QuiteAFancyEmerald/HolyUnblockerPublic" title="Remix on Glitch"><img alt="Remix on glitch" src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/ecdd1986ad20a151f24ed9eb709bc03bbdf757ce/views/assets/img/glitch.svg?raw" width="150" height="40"><img></a>
+<a href="https://glitch.com/edit/#!/import/github/QuiteAFancyEmerald/HolyUnblockerPublic" title="Remix on Glitch"><img alt="Remix on glitch" src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/ecdd1986ad20a151f24ed9eb709bc03bbdf757ce/views/assets/img/glitch.svg?raw" width="140" height="30"><img></a>
          
 ## Table of contents:
 
