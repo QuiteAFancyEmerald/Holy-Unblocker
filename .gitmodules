@@ -1,0 +1,3 @@
+[submodule "views/archive"]
+	path = views/archive
+	url = https://github.com/QuiteAFancyEmerald/HU-Archive
