@@ -1,0 +1,87 @@
+{ "frames": {
+   "0": {
+    "frame": { "x": 46, "y": 46, "w": 23, "h": 44 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 2, "w": 23, "h": 44 },
+    "sourceSize": { "w": 24, "h": 46 },
+    "duration": 100
+   },
+   "1": {
+    "frame": { "x": 0, "y": 46, "w": 23, "h": 45 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 1, "w": 23, "h": 45 },
+    "sourceSize": { "w": 24, "h": 46 },
+    "duration": 100
+   },
+   "2": {
+    "frame": { "x": 23, "y": 91, "w": 23, "h": 40 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 6, "w": 23, "h": 40 },
+    "sourceSize": { "w": 24, "h": 46 },
+    "duration": 100
+   },
+   "3": {
+    "frame": { "x": 0, "y": 91, "w": 23, "h": 42 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 4, "w": 23, "h": 42 },
+    "sourceSize": { "w": 24, "h": 46 },
+    "duration": 100
+   },
+   "4": {
+    "frame": { "x": 46, "y": 90, "w": 23, "h": 44 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 2, "w": 23, "h": 44 },
+    "sourceSize": { "w": 24, "h": 46 },
+    "duration": 100
+   },
+   "5": {
+    "frame": { "x": 23, "y": 46, "w": 23, "h": 45 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 1, "w": 23, "h": 45 },
+    "sourceSize": { "w": 24, "h": 46 },
+    "duration": 100
+   },
+   "6": {
+    "frame": { "x": 0, "y": 0, "w": 24, "h": 46 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 46 },
+    "sourceSize": { "w": 24, "h": 46 },
+    "duration": 100
+   },
+   "7": {
+    "frame": { "x": 24, "y": 0, "w": 24, "h": 46 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 46 },
+    "sourceSize": { "w": 24, "h": 46 },
+    "duration": 100
+   },
+   "8": {
+    "frame": { "x": 48, "y": 0, "w": 24, "h": 46 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 46 },
+    "sourceSize": { "w": 24, "h": 46 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.19.2",
+  "image": "flameboy.png",
+  "format": "RGBA8888",
+  "size": { "w": 72, "h": 134 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 5, "direction": "forward" },
+   { "name": "corrupt", "from": 6, "to": 8, "direction": "forward" }
+  ]
+ }
+}

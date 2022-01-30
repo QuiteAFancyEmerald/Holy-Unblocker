@@ -1,0 +1,102 @@
+/*******************************/
+/* global document body styles */
+/*******************************/
+
+body {
+        font: 12pt Arial, Helvetica, sans-serif;
+     padding: 0;
+      margin: 0;
+  background: url(images/paving.jpg);
+}
+
+/**************************/
+/* unique id-based styles */
+/**************************/
+
+#breakout {
+  position: relative;
+}
+
+#canvas {
+  -webkit-transform: translateZ(0); /* force hardware acceleration in chrome */
+}
+
+#levels {
+     position: absolute;
+         left: 10px;
+          top: 10px;
+        color: #666;
+  line-height: 20px;
+}
+
+#levels #next  { position: absolute;            }
+#levels #prev  { position: absolute; top: 14px; }
+#levels #label { padding-left: 20px; }
+#levels #level { font-size: 14pt; padding-left: 5px; font-weight: bold; color: black; }
+
+#levels img                 { cursor: pointer; }
+#levels img.disabled        { opacity: 0.3; cursor: default; }
+#levels img:active          { margin-top: 1px; margin-left: 1px; }
+#levels img.disabled:active { margin-top: 0; margin-left: 0; }
+
+#instructions {
+  background: #DDD;
+      border: 2px solid #333;
+       color: #555;
+     padding: 0.5em 1em;
+ white-space: nowrap;
+  text-align: center;
+       width: 18em;
+      margin: 0 auto;
+    position: relative;
+         top: -16em;
+}
+#instructions b { color: black; }
+
+#instructions       .keyboard { display: block; }
+#instructions       .touch    { display: none;  }
+#instructions.touch .keyboard { display: none;  }
+#instructions.touch .touch    { display: block; }
+
+#controls {
+  position: absolute;
+    bottom: 0.5em;
+      left: 0.5em;
+}
+#controls input,
+#controls label { vertical-align: middle; }
+
+/********************************/
+/* re-usable class-based styles */
+/********************************/
+
+.unsupported {
+            border: 1px solid yellow;
+             color: black;
+  background-color: #FFFFAD;
+           padding: 2em;
+            margin: 5em;
+           display: inline-block;
+}
+
+/*****************************/
+/* @media query based layout */
+/*****************************/
+
+@media screen and (min-width: 0px) {
+  #breakout     { display: block; width: 640px; height: 480px; margin: 1em auto; border: 1px solid #AAA; }
+  #canvas       { display: block; width: 640px; height: 480px; }
+  #instructions { font-size: 8pt; }
+}
+
+@media screen and (min-width: 1200px) {
+  #breakout     { width: 800px; height: 600px; }
+  #canvas       { width: 800px; height: 600px; }
+  #instructions { font-size: 10pt; }
+}
+
+@media screen and (min-width: 1600px) {
+  #breakout     { width: 1024px; height: 768px; }
+  #canvas       { width: 1024px; height: 768px; }
+  #instructions { font-size: 11pt; }
+}

@@ -1,0 +1,66 @@
+<!doctype html>
+<!--
+    Bounce Back ~ A boomerang roguelike for JS13k
+    Copyright (C) 2019 Frank Force
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details. 
+-->    
+<!--
+    When life gets you down, 
+    it's never too late to...
+
+    B O U N C E B A C K
+
+    A JS13k 2019 Game
+    By Frank Force
+
+    WASD = Move
+    Mouse = Aim
+    Click = Throw
+    Space = Dash
+
+    Hints
+    - You will keep money after you die!
+    - You won't take damage while dashing.
+    - There are 10 levels.
+    - Sand slows down you and enemies.
+    - Yellow boormang can grab pickups.
+    - Blue boomerang does double damage.
+    - Beat the game to unlock speed run mode.
+-->
+
+<html>
+<head>
+<title>Bounce Back</title>
+<style>
+body
+{
+background:#000;
+overflow:hidden;
+margin:0;
+}
+canvas
+{
+width:100%;
+height:100%;
+image-rendering:-moz-crisp-edges;
+image-rendering:pixelated;
+}
+</style>
+</head>
+<body>
+<canvas id=c1></canvas>
+<canvas id=c2 style=visibility:hidden></canvas>
+<script src='gameEngine.js'></script>
+<script src='gameEngineDebug.js'></script>
+<script src='game.js'></script>
+</body>
+</html>

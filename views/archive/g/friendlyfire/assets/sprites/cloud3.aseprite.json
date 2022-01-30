@@ -1,0 +1,41 @@
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 0, "y": 0, "w": 77, "h": 24 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 77, "h": 24 },
+    "sourceSize": { "w": 82, "h": 24 },
+    "duration": 200
+   },
+   {
+    "filename": "1",
+    "frame": { "x": 77, "y": 0, "w": 75, "h": 24 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 75, "h": 24 },
+    "sourceSize": { "w": 82, "h": 24 },
+    "duration": 200
+   },
+   {
+    "filename": "2",
+    "frame": { "x": 0, "y": 24, "w": 72, "h": 24 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 0, "w": 72, "h": 24 },
+    "sourceSize": { "w": 82, "h": 24 },
+    "duration": 200
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.19.2",
+  "image": "cloud3.png",
+  "format": "I8",
+  "size": { "w": 152, "h": 48 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 2, "direction": "forward" }
+  ]
+ }
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=0, initial-scale=1,minimum-scale=1, maximum-scale=1, width=device-width, minimal-ui=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta property="og:type" content="http://gopher.kart.warnerbros.mu/">
+    <meta property="og:title" content="Gopher Kart!" />
+    <meta property="og:description" content="Fun driving side scroller game with epic gophers" />
+    <meta property="og:url" content="http://gopher.kart.warnerbros.mu/" />
+    <meta property="og:image" content="/assets/gopherkartlogo.png" />
+    <meta name="theme-color" content="#6ad7e5">
+    <title>Gopher Kart</title>
+    <link rel="icon" type="image/png" href="/assets/gopherkartlogo.png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="css/milligram/dist/milligram.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
+  </head>
+  <script async src="https://arc.io/widget.min.js#2BzvQ1em"></script>
+  <body class="game-page">
+    <div class="wrapper">
+      <div id="phaser-wrapper">
+          <div class="mobile-wrapper">
+              <img class="mobile-title" src="assets/mobile-text.png" alt="MOBILE UNDER CONSTRUCTION"/>
+              <img class="mobile-info" src="assets/mobile-text-small.png" alt="DESKTOP REQUIRED TO PLAY"/>
+              <img class="mobile-gopher" src="assets/stop.gif" alt="Under Construction"/>
+            </div><!-- mobile-wrapper-->
+                   <p align="left">
+       
+  <a href="https://gopher.kart.warnerbros.mu/leaderboard"><span class='start-btn' onclick="open()">Leaderboard</span></a>
+
+</p>
+      </div><!-- phaser-wrapper -->
+      <div class="push"></div>
+      <a class="ardan-sticker" href="https://www.ardanlabs.com/" target="_blank"></a>
+      <a class="github-sticker" href="https://github.com/jmzelaya" target="_blank"></a>
+    </div><!-- wrapper -->
+    <footer>
+      <div class="container">
+        <h1>Special thanks</h1>
+        <ul>
+          <li class="jami"><a href="https://twitter.com/jamiletmzelaya" target="_blank">Jamilet Zelaya</a> | Lead Engineer</li>
+          <li class="renee"><a href="http://reneefrench.blogspot.ca/" target="_blank">Renee French</a> | The original designer of Go gopher.</li>
+        </ul>
+        <p class="ardan">In collaboration with <a href="https://www.ardanlabs.com/" target="_blank">Ardan Labs</a> Copyrights © 2018</p>
+      </div>
+    </footer>
+    <script src="js/phaser.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/stateMain.js"></script>
+    <script src="js/stateTitle.js"></script>
+    <script src="js/stateChoice.js"></script>
+    <script src="js/stateTutorial.js"></script>
+    <script src="js/stateOver.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-57684627-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+
+{
+    "entry": [
+        "Oh, you did it! That's the real deal. !amused !talkedToFireWithWood",
+        "Good job on scalping that piece of junk.",
+        "Just take the wood and throw it into my fire, just as we agreed.",
+        "►Got it.",
+        "►I have second thoughts… @secondthoughts",
+        "Just do it! @holdup !end"
+    ],
+    "holdup": [
+        "What's the holdup? !angry",
+        "Just take the wood and throw it into me! Seriously…",
+        "►Got it. @holdup !end"
+    ],
+    "secondthoughts": [
+        "You can't be serious. Are you numb? !angry",
+        "Take the WOOD and THROW it into ME, you understand? !angry",
+        "Don't make me wait!",
+        "►Wow, calm down.",
+        "You calm down! Just give me the wood already! !angry @holdup !end"
+    ]
+}

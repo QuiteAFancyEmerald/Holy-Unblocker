@@ -1,0 +1,31 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+#background {
+    background-color: #202020;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#gameCanvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: block;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+#gameCanvas:focus {
+    outline: 0;
+}

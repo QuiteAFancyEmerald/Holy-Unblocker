@@ -1,0 +1,178 @@
+
+#kitchen_kitchen_true {
+	width: 1049px;
+	height: 917px;
+	background:url(../images/kitchen_kitchen_true.jpg) no-repeat;
+	position:absolute;
+	top: -33px;
+	left: -11px;
+	z-index:100;
+	opacity:0;
+	.transition(opacity, .1s, ease-out);
+}
+
+#kitchen {
+	position:absolute;
+	width: 996px;
+	height: 870px;
+	cursor:move;
+	background:url(../images/kitchen.jpg) no-repeat;
+
+	/*player sprite*/
+	#sprite {
+		background: url(../images/room_player.png) no-repeat 0 0
+	}
+	
+	#shadow  {
+		width: 198px;
+		height: 144px;
+		background: url(../images/room_shadow.png) no-repeat;
+		left: -126px;
+		top: -27px
+	}
+	
+	#floor {
+		position:absolute;
+		left:11px;
+		bottom:15px; 
+		width: 970px;
+		height: 560px
+	}
+	
+	#glow {
+		width:587px;
+		height:562px;
+		position:absolute;
+		left: 316px;
+		top: -241px;
+		z-index:999;
+		background:url(../images/room_glow.png) no-repeat
+	} 
+	
+	#door_kitchen {
+		.invisible_door(49px, 735px);
+	}
+	
+	#chair {
+		.item(
+			672px,
+			130px,
+			145,
+			
+			71px,
+			164px,
+			
+			e(" url(../images/kitchen_chair.png) ")
+		)
+	}
+	
+	#cupboard {
+		.item(
+			72px,
+			-181px,
+			1,
+			
+			421px,
+			561px,
+			
+			e(" url(../images/kitchen_cupboard.png) ")
+		);
+		background-position:0 0
+	}
+	
+	#cupboard_mask {
+		.item(
+			493px,
+			-181px,
+			40,
+			
+			138px,
+			561px,
+			
+			e(" url(../images/kitchen_cupboard.png) ")
+		)
+	}
+	
+	#table {
+		.item(
+			624px,
+			175px,
+			166,
+			
+			106px,
+			206px,
+			
+			e(" url(../images/kitchen_table.png) ")
+		)
+	}
+	
+	#table_mask {
+		.item(
+			486px,
+			175px,
+			134,
+			
+			138px,
+			206px,
+			
+			e(" url(../images/kitchen_table.png) ")
+		);
+		background-position:0 0
+	}
+	
+	#fridge {
+		.item(
+			822px,
+			-60px,
+			135,
+			140px,
+			287px,
+			e(" url(../images/kitchen_fridge.png) ")
+		)
+	}
+	
+	#window {
+		.isometric_left;
+		width: 184px;
+		height: 135px;
+		position:absolute;
+		left: 720px;
+		top: 83px;
+		z-index:2000;
+		cursor:pointer
+	}
+
+	#kitchen_use_1,
+	#kitchen_use_2 {
+		.isometric_right;
+		position: absolute;
+		z-index:2000;
+		cursor:pointer;
+	}
+
+	#kitchen_use_1 {
+		width: 561px;
+		height: 79px;
+		top: 596px;
+		left: 152px;
+	}
+
+	#kitchen_use_2 {
+		width: 240px;
+		height: 79px;
+		top: 265px;
+		left: 412px;
+	}
+
+	#kitchen_use_3 {
+		.isometric_top;
+		width: 560px;
+		height: 84px;
+		position: absolute;
+		top: 549px;
+		left: 83px;
+		z-index: 2000;
+		cursor:pointer;
+	}
+
+}

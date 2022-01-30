@@ -1,0 +1,75 @@
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 10, "y": 31, "w": 10, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 8, "y": 12, "w": 10, "h": 32 },
+    "sourceSize": { "w": 26, "h": 44 },
+    "duration": 800
+   },
+   {
+    "filename": "1",
+    "frame": { "x": 26, "y": 0, "w": 10, "h": 33 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 8, "y": 11, "w": 10, "h": 33 },
+    "sourceSize": { "w": 26, "h": 44 },
+    "duration": 600
+   },
+   {
+    "filename": "2",
+    "frame": { "x": 0, "y": 31, "w": 10, "h": 33 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 8, "y": 11, "w": 10, "h": 33 },
+    "sourceSize": { "w": 26, "h": 44 },
+    "duration": 100
+   },
+   {
+    "filename": "3",
+    "frame": { "x": 0, "y": 0, "w": 14, "h": 31 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 6, "y": 13, "w": 14, "h": 31 },
+    "sourceSize": { "w": 26, "h": 44 },
+    "duration": 150
+   },
+   {
+    "filename": "4",
+    "frame": { "x": 20, "y": 33, "w": 9, "h": 32 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 9, "y": 12, "w": 9, "h": 32 },
+    "sourceSize": { "w": 26, "h": 44 },
+    "duration": 150
+   },
+   {
+    "filename": "5",
+    "frame": { "x": 14, "y": 0, "w": 12, "h": 31 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 7, "y": 13, "w": 12, "h": 31 },
+    "sourceSize": { "w": 26, "h": 44 },
+    "duration": 150
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.25-x64",
+  "image": "patient.png",
+  "format": "I8",
+  "size": { "w": 36, "h": 65 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 2, "direction": "forward" },
+   { "name": "walk", "from": 3, "to": 5, "direction": "pingpong" }
+  ],
+  "layers": [
+   { "name": "Stroke", "opacity": 255, "blendMode": "normal" },
+   { "name": "Legs", "opacity": 255, "blendMode": "normal" },
+   { "name": "Body", "opacity": 255, "blendMode": "normal" },
+   { "name": "Head", "opacity": 255, "blendMode": "normal" }
+  ]
+ }
+}

@@ -1,0 +1,64 @@
+
+#picture_snow {
+position:absolute;
+width: 795px;
+height: 798px;
+cursor:move;
+background:url(../images/picture_snow.jpg) no-repeat;
+
+	#sprite {
+		background: url(../images/picture_player.png) no-repeat 0 0
+	}
+
+	#shadow  {
+		width: 198px;
+		height: 144px;
+		background: url(../images/picture_shadow.png) no-repeat;
+		left: -126px;
+		top: -47px;
+	}
+
+	#floor {
+		left: 8px;
+		top: 283px;
+		position: absolute;
+	}
+
+	#twig {
+		.item(
+			401px,
+			116px,
+			1,
+			
+			31px,
+			48px,
+			
+			e(" url(../images/picture_snow_twig.png) ")
+		);
+		cursor:pointer;
+	}
+
+	#teleport,
+	#teleport div {
+		border-color:#fefefe;
+	}
+
+	#teleport {
+		left: 260px;
+		top: 316px;
+	}
+
+	#teleport .core {
+		background:#76b6e3;
+		border:0 none;
+		padding:1px;
+		opacity:.6;
+		box-shadow:0 0 10px #76b6e3;
+	}
+
+	#exit {
+		.exit_teleport;
+		top: 318px;
+		left: 349px;
+	}
+}

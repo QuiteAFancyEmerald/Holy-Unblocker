@@ -1,0 +1,113 @@
+.customControlsDiv
+{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.controlsArea
+{
+    padding: 5px;
+    width: 580;
+    position: relative;
+}
+
+.controlsUnit
+{
+    margin: 10px 5px;
+    font-size: 16px;
+    font-family: VT323;
+    color: #008000;
+    background-color: #000d00;
+    border: 1px solid #008000;
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 200px;
+}
+
+.controlsUnit:hover
+{
+    cursor: pointer;
+    background-color: #008000;
+    color: #000d00;
+}
+
+.controlsUnitPending
+{
+    cursor: pointer;
+    background-color: #008000;
+    color: #000d00;
+    font-weight: bold;
+}
+
+.enableCustomDiv
+{
+    margin: 10px 5px;
+    font-size: 16px;
+    font-family: VT323;
+    color: #008000;
+    background-color: #000d00;
+    border: 1px solid #008000;
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 300px;
+    height: 245px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.controlsValue
+{
+    float: right;
+}
+
+.noDisplay
+{
+    display: none;
+}
+
+.withDisplay
+{
+    display: inline;
+}
+
+.autoRepeatDiv
+{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.thresholdDiv
+{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 150px;
+}
+
+.autoRepeatArea
+{
+    margin: 10px 5px;
+    font-size: 16px;
+    font-family: VT323;
+    color: #008000;
+    background-color: #000d00;
+    border: 1px solid #008000;
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 560px;
+    height: 50px;
+    position: absolute;
+    top: 265px;
+    left: 0px;
+}
+
+.autoRepeatForm
+{
+    width: 350px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}

@@ -1,0 +1,82 @@
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 0, "y": 0, "w": 9, "h": 4 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 12, "y": 8, "w": 9, "h": 4 },
+    "sourceSize": { "w": 32, "h": 20 },
+    "duration": 2000
+   },
+   {
+    "filename": "1",
+    "frame": { "x": 9, "y": 0, "w": 9, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 12, "y": 11, "w": 9, "h": 1 },
+    "sourceSize": { "w": 32, "h": 20 },
+    "duration": 100
+   },
+   {
+    "filename": "2",
+    "frame": { "x": 18, "y": 0, "w": 9, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 12, "y": 11, "w": 9, "h": 1 },
+    "sourceSize": { "w": 32, "h": 20 },
+    "duration": 100
+   },
+   {
+    "filename": "3",
+    "frame": { "x": 27, "y": 0, "w": 9, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 12, "y": 9, "w": 9, "h": 3 },
+    "sourceSize": { "w": 32, "h": 20 },
+    "duration": 100
+   },
+   {
+    "filename": "4",
+    "frame": { "x": 36, "y": 0, "w": 9, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 12, "y": 10, "w": 9, "h": 1 },
+    "sourceSize": { "w": 32, "h": 20 },
+    "duration": 100
+   },
+   {
+    "filename": "5",
+    "frame": { "x": 45, "y": 0, "w": 11, "h": 6 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 11, "y": 8, "w": 11, "h": 6 },
+    "sourceSize": { "w": 32, "h": 20 },
+    "duration": 100
+   },
+   {
+    "filename": "6",
+    "frame": { "x": 56, "y": 0, "w": 9, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 12, "y": 9, "w": 9, "h": 3 },
+    "sourceSize": { "w": 32, "h": 20 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.25-x64",
+  "image": "flameboy2.png",
+  "format": "RGBA8888",
+  "size": { "w": 65, "h": 6 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "neutral", "from": 0, "to": 1, "direction": "forward" },
+   { "name": "blink", "from": 2, "to": 2, "direction": "forward" },
+   { "name": "angry", "from": 3, "to": 3, "direction": "forward" },
+   { "name": "bored", "from": 4, "to": 4, "direction": "forward" },
+   { "name": "amused", "from": 5, "to": 5, "direction": "forward" },
+   { "name": "sad", "from": 6, "to": 6, "direction": "forward" }
+  ]
+ }
+}

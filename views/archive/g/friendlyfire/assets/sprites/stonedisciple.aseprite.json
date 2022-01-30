@@ -1,0 +1,23 @@
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 0, "y": 0, "w": 31, "h": 25 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 1, "w": 31, "h": 25 },
+    "sourceSize": { "w": 32, "h": 26 },
+    "duration": 80
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.21-x64",
+  "image": "stonedisciple.png",
+  "format": "I8",
+  "size": { "w": 31, "h": 25 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 0, "direction": "pingpong" }
+  ]
+ }
+}

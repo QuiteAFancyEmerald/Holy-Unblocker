@@ -1,0 +1,295 @@
+[{
+	"id":18,
+	"name":"Keep It Simple",
+	"description":"Simplify Level 17 by removing the crumbling tiles.",
+	"payout":50,
+	"levelID":16,
+	"conditions":[9,100,0,0]
+},
+{
+	"id":19,
+	"name":"Memory Test",
+	"description":"Don't jump in part 5 of the Low-Power Tunnel.",
+	"payout":100,
+	"levelID":198,
+	"character":11,
+	"characterOptional":true,
+	"conditions":[5,0,0,0]
+},
+{
+	"id":12,
+	"name":"Coming Full Circle",
+	"description":"As the Runner, travel all the way around Level 35.",
+	"payout":250,
+	"levelID":50,
+	"character":0,
+	"characterOptional":true,
+	"conditions":[100,1,3,0]
+},
+{
+	"id":20,
+	"name":"Planning Makes Perfect",
+	"description":"Finish part 4 of the River without jumping and without using any tunnel-powered abilities. (For instance, the Skater's skates are allowed, but the Duplicator's duplicates are not.)",
+	"payout":250,
+	"levelID":257,
+	"character":1,
+	"characterOptional":true,
+	"conditions":[5,0,15,0,0,0]
+},
+{
+	"id":13,
+	"name":"Just Being Thorough",
+	"description":"Dislodge all the crumbling tiles in Level B-3.",
+	"payout":150,
+	"levelID":90,
+	"conditions":[9,100,0,0]
+},
+{
+	"id":14,
+	"name":"Living Superball",
+	"description":"Complete Level A-6 without pressing the jump button.",
+	"payout":150,
+	"levelID":138,
+	"character":10,
+	"characterOptional":true,
+	"conditions":[106,0,0]
+},
+{
+	"id":15,
+	"name":"The Lazy Way",
+	"description":"Finish Level L-2 without jumping.",
+	"payout":100,
+	"levelID":83,
+	"character":4,
+	"characterOptional":true,
+	"conditions":[5,0,0]
+},
+{
+	"id":11,
+	"name":"The Conscientious Lizard",
+	"description":"Complete Level 40 without dislodging any tiles. (Using the Child doesn't count.)",
+	"payout":150,
+	"levelID":37,
+	"conditions":[7,0,0,0,2,11,2,15]
+},
+{
+	"id":24,
+	"name":"Narrow Focus",
+	"description":"Finish part 10 of the Box Storage Area without moving sideways.",
+	"payout":100,
+	"levelID":231,
+	"character":1,
+	"characterOptional":true,
+	"conditions":[104,0,105,0,0]
+},
+{
+	"id":25,
+	"name":"Dodge the Squares",
+	"description":"As the Runner, complete Level 4 without jumping or dislodging tiles.",
+	"payout":100,
+	"levelID":4,
+	"character":0,
+	"conditions":[5,0,7,0,0]
+},
+{
+	"id":26,
+	"name":"The Conscientious Lagomorph",
+	"description":"As the Bunny, complete Level 25 without pressing the jump button or dislodging tiles.",
+	"payout":100,
+	"levelID":22,
+	"character":10,
+	"conditions":[106,0,7,0,0]
+},
+{
+	"id":27,
+	"name":"Ramping Up",
+	"description":"Beat part 16 of the Winter Games without jumping. (Hint: ice skates may help!)",
+	"payout":100,
+	"levelID":115,
+	"conditions":[5,0,0]
+},
+{
+	"id":28,
+	"name":"Straight Forward",
+	"description":"Don't change gravity (even a little) during Level U-6.",
+	"payout":100,
+	"levelID":159,
+	"conditions":[102,0,0]
+},
+{
+	"id":29,
+	"name":"Clever Bunny",
+	"description":"As the Bunny, don't change gravity during Level T-1.",
+	"payout":100,
+	"levelID":165,
+	"conditions":[102,0,0,0,1,10]
+},
+{
+	"id":30,
+	"name":"Hat Trick",
+	"description":"As the Gentleman, beat Level 2 with only the jump button.",
+	"payout":75,
+	"levelID":1,
+	"character":5,
+	"conditions":[104,0,105,0,0]
+},
+{
+	"id":32,
+	"name":"Isn't That Cheating?",
+	"description":"Beat Level 8 without pressing anything during the second half of the level.",
+	"payout":100,
+	"levelID":7,
+	"conditions":[10,50,104,0,105,0,106,0,0]
+},
+{
+	"id":33,
+	"name":"This Side Up",
+	"description":"Use the Skater to beat Level G-10 without ever rotating the tunnel.",
+	"payout":250,
+	"levelID":263,
+	"character":1,
+	"conditions":[102,0,10,99]
+},
+{
+	"id":31,
+	"name":"Figure Skater",
+	"description":"As the Ice Skater, beat part 12 of the Winter Games in only three jumps.",
+	"payout":500,
+	"levelID":111,
+	"character":16,
+	"conditions":[6,3,0,0]
+},
+{
+	"id":34,
+	"name":"Follow the Gray Brick Road",
+	"description":"Use the Child to beat Level M-4 in only one jump. (Disclaimer: the tiles are not actually bricks.)",
+	"payout":200,
+	"levelID":57,
+	"character":11,
+	"characterOptional":true,
+	"conditions":[6,1,0,0,3,11]
+},
+{
+	"id":35,
+	"name":"A Bumpy Ride",
+	"description":"Dislodge at least 40 tiles in Level 53.",
+	"payout":150,
+	"levelID":72,
+	"conditions":[8,40]
+},
+{
+	"id":36,
+	"name":"We Will Survive",
+	"description":"As the Duplicator, finish part 16 of the Low-Power Tunnel without losing a single duplicate.",
+	"payout":400,
+	"levelID":204,
+	"character":8,
+	"conditions":[17,0,0,0]
+},
+{
+	"id":37,
+	"name":"Topaz Snake",
+	"description":"Finish part 1 of the Crystal Gallery (Level D-1) without jumping.",
+	"payout":50,
+	"levelID":240,
+	"conditions":[5,0,0,0]
+},
+{
+	"id":38,
+	"name":"Topaz Bridge",
+	"description":"After the first three tiles of part 2 of the Crystal Gallery (Level D-2), don't press any buttons.",
+	"payout":100,
+	"levelID":245,
+	"character":12,
+	"conditions":[10,10,104,0,105,0,106,0,0,0]
+},
+{
+	"id":39,
+	"name":"Stick the Landing",
+	"description":"Use the Gentleman's magnet at least once on Level 10, then beat the level without dislodging the tiles.",
+	"payout":100,
+	"levelID":11,
+	"character":5,
+	"conditions":[16,1,19,1,7,0,0]
+},
+{
+	"id":40,
+	"name":"Too Lazy to Aim",
+	"description":"Only touch crumbling tiles in Level G-8. (The first few tiles don't count.)",
+	"payout":100,
+	"levelID":267,
+	"conditions":[10,5,110,0,0]
+},
+{
+	"id":42,
+	"name":"Three Spooky Jumps",
+	"description":"As the Child, beat part 1 of the Low-Power Tunnel in only three jumps.",
+	"payout":300,
+	"levelID":191,
+	"character":11,
+	"characterOptional":true,
+	"conditions":[6,3,0,0,3,11]
+},
+{
+	"id":43,
+	"name":"River Rapids",
+	"description":"Don't touch the boxes in part 5 of the River.",
+	"payout":100,
+	"levelID":258,
+	"conditions":[110,4,10,99]
+},
+{
+	"id":44,
+	"name":"There's No Right Way",
+	"description":"Don't move right in part 18 of the Winter Games. (Hint: when you pass through the third ring, aim for the right edge of the platform.)",
+	"payout":250,
+	"levelID":117,
+	"character":16,
+	"characterOptional":true,
+	"conditions":[105,0,0]
+},
+{
+	"id":45,
+	"name":"Angry Green Thing",
+	"description":"As the Lizard, dislodge all the crumbling tiles in Level 63.",
+	"payout":50,
+	"levelID":239,
+	"character":4,
+	"conditions":[9,100]
+},
+{
+	"id":46,
+	"name":"Grinding the Tunnel (Into Dust)",
+	"description":"As the Skater, dislodge all the crumbling tiles in Level 59.",
+	"payout":100,
+	"levelID":78,
+	"character":1,
+	"conditions":[9,100]
+},
+{
+	"id":47,
+	"name":"Sleep-Skating",
+	"description":"As the Skater, beat Level 7 without moving sideways or jumping. (There is a trick to this; it isn't random.)",
+	"payout":100,
+	"levelID":6,
+	"character":1,
+	"clickable":false,
+	"conditions":[104,0,105,0,106,0,0]
+},
+{
+	"id":48,
+	"name":"Straight to the End",
+	"description":"Beat Level B-13 without changing gravity.",
+	"payout":150,
+	"levelID":88,
+	"conditions":[102,0,10,99]
+},
+{
+	"id":49,
+	"name":"Not a Gymnast",
+	"description":"As the Student, beat part 1 of the Box Storage Area without moving sideways.",
+	"payout":50,
+	"levelID":229,
+	"character":2,
+	"conditions":[104,0,105,0,0]
+}]

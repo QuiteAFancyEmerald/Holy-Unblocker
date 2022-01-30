@@ -1,0 +1,5 @@
+.settings
+  each setting in [ 'background', 'explosions', 'glow', 'gradients', 'trail' ]
+    .setting
+      label(for=setting) #{setting}
+      input.setting-input(type='checkbox', id=setting)

@@ -1,0 +1,53 @@
+{
+    "entry": [
+        "Thanks for the wood…",
+        "But weren't you supposed to bring it somewhere else?",
+        "►I just wanted to try this out first. @tryOut",
+        "►I don't trust the other fire. @trust",
+        "►Whoops, you're right. Can I have the wood back? @back"
+    ],
+    "tryOut": [
+        "Interesting. So no moral motivation? You're just driven by curiosity?",
+        "Well, I take what I can get. At least you didn't just blindly follow the order of a psychotic flame.",
+        "The others weren't so smart. @first"
+    ],
+    "trust": [
+        "Good call. I did tell you that this thing was nothing but trouble.",
+        "Nice to see that you aren't as dense as the others. @first"
+    ],
+    "back": [
+        "No no! Don't you understand?",
+        "You did good. Even if it was just by chance.",
+        "I'll take what I can get. @first"
+    ],
+    "first": [
+        "You're actually the first one in a couple hundered years to break the cycle. !amused",
+        "I'm proud of you. You can pat yourself on the back. !amused",
+        "I would do so myself, but I don't have any arms in this form.",
+        "►I don't understand anything… @meaning",
+        "►What does this all mean?  @meaning"
+    ],
+    "meaning": [
+        "That's nothing that you should think too much about.",
+        "Even a glimpse of the truth would instantaniously turn your sanity inside out.",
+        "Let's just say this was all a dream, how about that?",
+        "If you're lucky, you'll even forget that this happened at all.",
+        "►What happens now? @next"
+    ],
+    "next": [
+        "Like I said, you can leave. I'll activate the portal here.",
+        "Just go through and you're out of here.",
+        "Don't dilly-dally for too long. I have a lot of paper work waiting for me.",
+        "►Thanks… I guess.",
+        "Yes yes. I have to thank you as well. You spared me a lot of work here. !amused",
+        "The damage the fire would've done to this place, would you have fed the wood to it, is a pain to fix.",
+        "I might even get some long overdue vacation time out of this. !amused",
+        "So, see you around… or not. !activatefireportal !end @idle"
+    ],
+    "idle": [
+        "Still around?",
+        "There isn't really much you can do here now.",
+        "Just hop in the portal and off you go!",
+        "►O-Okay… !end @idle"
+    ]
+}

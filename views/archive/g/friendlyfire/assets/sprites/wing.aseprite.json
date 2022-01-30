@@ -1,0 +1,41 @@
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 0, "y": 0, "w": 21, "h": 21 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 1, "y": 2, "w": 21, "h": 21 },
+    "sourceSize": { "w": 24, "h": 24 },
+    "duration": 150
+   },
+   {
+    "filename": "1",
+    "frame": { "x": 21, "y": 0, "w": 21, "h": 21 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 1, "y": 2, "w": 21, "h": 21 },
+    "sourceSize": { "w": 24, "h": 24 },
+    "duration": 150
+   },
+   {
+    "filename": "2",
+    "frame": { "x": 0, "y": 21, "w": 21, "h": 21 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 1, "y": 2, "w": 21, "h": 21 },
+    "sourceSize": { "w": 24, "h": 24 },
+    "duration": 150
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.19.2",
+  "image": "wing.png",
+  "format": "I8",
+  "size": { "w": 42, "h": 42 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 2, "direction": "pingpong" }
+  ]
+ }
+}

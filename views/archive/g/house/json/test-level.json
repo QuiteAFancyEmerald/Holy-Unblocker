@@ -1,0 +1,10 @@
+{
+  "name": "Test Level",
+  "physicsEntities": [
+    {
+      "shape": "polygon",
+      "type": "vector",
+      "data": []
+    }
+  ]
+}

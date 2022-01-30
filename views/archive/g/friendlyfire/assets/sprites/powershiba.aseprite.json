@@ -1,0 +1,50 @@
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 0, "y": 0, "w": 19, "h": 21 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 1, "w": 19, "h": 21 },
+    "sourceSize": { "w": 22, "h": 22 },
+    "duration": 150
+   },
+   {
+    "filename": "1",
+    "frame": { "x": 19, "y": 0, "w": 19, "h": 21 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 1, "w": 19, "h": 21 },
+    "sourceSize": { "w": 22, "h": 22 },
+    "duration": 150
+   },
+   {
+    "filename": "2",
+    "frame": { "x": 0, "y": 21, "w": 19, "h": 21 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 1, "w": 19, "h": 21 },
+    "sourceSize": { "w": 22, "h": 22 },
+    "duration": 150
+   },
+   {
+    "filename": "3",
+    "frame": { "x": 19, "y": 21, "w": 19, "h": 21 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 1, "w": 19, "h": 21 },
+    "sourceSize": { "w": 22, "h": 22 },
+    "duration": 150
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.21-x64",
+  "image": "powershiba.png",
+  "format": "RGBA8888",
+  "size": { "w": 38, "h": 42 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 3, "direction": "pingpong" }
+  ]
+ }
+}

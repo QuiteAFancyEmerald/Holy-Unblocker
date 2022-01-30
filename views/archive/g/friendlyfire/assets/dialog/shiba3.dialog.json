@@ -1,0 +1,39 @@
+{
+    "entry": [
+        "How was it? Did you give bone?",
+        "►Yeah, your brother remembered you after all!",
+        "Wow! I'm happy. Best day. @main"
+    ],
+    "main": [
+        "You are the best!",
+        "►[$gotPowerShibaQuest]Do you want to meet your brother? @meet @entry",
+        "►Have a nice day! !end @main"
+    ],
+    "meet": [
+        "Yes!!!",
+        "Can he come?",
+        "►No, that won't be possible…",
+        "Awww…",
+        "►But you can go to him. @go",
+        "►There's nothing I can do. @main !end"
+    ],
+    "go": [
+        "How???",
+        "►In theory, I could give you the power to go to him.",
+        "I can fly?",
+        "►Yes… you can now! @giveaway",
+        "►On second thought… nevermind @nevermind"
+    ],
+    "nevermind": [
+        "What??? Nooo… !end @main"
+    ],
+    "giveaway": [
+        "I can feel it. Thank you!",
+        "No time wasting!",
+        "I will go get brother.",
+        "Find us on the mountain. I will wait at bird feeding spot.",
+        "►At the bird feeding spot… check!",
+        "You are best friend!",
+        "See you there. !shibaNextState !end"
+    ]
+}

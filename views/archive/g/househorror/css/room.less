@@ -1,0 +1,244 @@
+
+#room {
+	position:absolute;
+	width: 1136px;
+	height: 951px;
+	cursor:move;
+	background:url(../images/room.jpg) no-repeat;
+
+	#sprite {
+		background: url(../images/room_player.png) no-repeat 0 0
+	}
+	
+	#shadow  {
+		width: 198px;
+		height: 144px;
+		background: url(../images/room_shadow.png) no-repeat;
+		left: -126px;
+		top: -27px
+	}
+
+	#door_exit {
+		.invisible_door(117px, 775px);
+	}
+
+	#floor {
+		width: 1108px;
+		height: 640px;
+		position:absolute;
+		right:15px;
+		bottom:15px;
+	}
+	
+	#glow {
+		width:587px;
+		height:562px;
+		position:absolute;
+		left: 427px;
+		top: -194px;
+		z-index:999;
+		background:url(../images/room_glow.png) no-repeat
+	}  
+
+	/* ITEMS */
+	#chair {
+		.item(
+			555px,
+			200px,
+			149,
+			
+			71px,
+			160px,
+			
+			e(" url(../images/room_chair.png) ")
+		)
+	}
+
+	#desk {
+		.item(
+			727px,
+			280px,
+			242,
+			
+			139px,
+			201px,
+			
+			e(" url(../images/room_desk.png) ")
+		)
+	}
+
+	#desk_mask {
+		.item_mask(
+			727px,
+			280px,
+			229,
+			
+			201px,
+			
+			e(" url(../images/room_desk.png) ")
+		)
+	}
+	
+	#note {
+		cursor:pointer;
+		.item(
+			
+			709px,
+			333px,
+			2000,
+			
+			58px,
+			34px,
+			
+			e(" url(../images/room_note.png) ")
+		)
+	}
+
+	#plant {
+		.item(
+			901px,
+			149px,
+			192,
+			
+			122px,
+			126px,
+			
+			e(" url(../images/room_plant.png) ")
+		);
+
+		&.small {
+			background:url(../images/room_plant_small.png) no-repeat right;
+		}
+	}
+
+	#plant_check {
+		.isometric_top;
+		width: 60px;
+		height: 60px;
+		border-radius: 60px;
+		position: absolute;
+		left: 932px;
+		top: 504px;
+		z-index: 2000;
+		cursor: help;
+	}
+
+	#aquarium {
+		.item(
+			177px,
+			183px,
+			47,
+			
+			57px,
+			93px,
+			
+			e(" url(../images/room_aquarium.png) ")
+		)
+	}
+
+	#bubbles {
+		width:57px;
+		height:93px;
+		position:absolute;
+		left:177px;
+		top:183px;
+		z-index:47;
+		background:url(../images/room_bubbles.png);
+		opacity:.3;
+	}
+
+	#shelf {
+		.item(
+			172px,
+			46px,
+			47,
+			
+			69px,
+			314px,
+			
+			e(" url(../images/room_shelf.png) ")
+		)
+	}
+	
+	#shelf_mask {
+		.item_mask(
+			172px,
+			46px,
+			30,
+			
+			314px,
+			
+			e(" url(../images/room_shelf.png) ") 
+		)
+	}
+
+	#bed {
+		.item(
+			380px,
+			20px,
+			46,
+			
+			245px,
+			241px,
+			
+			e(" url(../images/room_bed.png) ")
+		)
+	}
+	
+	#bed_mask { 
+		.item_mask(
+			380px,
+			20px,
+			18,
+			
+			241px,
+			
+			e(" url(../images/room_bed.png) ")
+		)
+	}
+
+	#window {
+		.isometric_left;
+		width: 183px;
+		height: 131px;
+		position:absolute;
+		left: 825px;
+		top: 145px;
+		z-index:2000;
+		cursor:pointer;
+	}
+	
+	#picture,
+	#picture_winter {
+		.isometric_right;
+		width: 147px;
+		height: 106px;
+		position: absolute;
+	}
+
+	#picture_winter {
+		left: 350px;
+		top: -58px;
+		background:url(../images/room_picture_snow.png);
+	}
+
+	#picture {
+		left: 363px;
+		top: 238px;
+		z-index:2000;
+		cursor:pointer;
+		background:none;
+	}
+
+	#water {
+		.isometric_right;
+		width: 67px;
+		height: 72px;
+		position:absolute;
+		left: 190px;
+		top: 498px;
+		z-index:2000;
+		cursor:pointer
+	}
+
+}

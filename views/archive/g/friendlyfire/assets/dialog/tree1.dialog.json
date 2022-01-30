@@ -1,0 +1,121 @@
+{
+    "entry": [
+        "You are the dancing tree,\nOld and rough. !amused !talkedtotree",
+        "One hundred and seventeen,\ndancing tree. !amused",
+        "Feel the beat from the tree topsee, oh yeah! !amused",
+        "►Hello?",
+        "►Wait… what?",
+        "You can dance\nYou can grow. !amused",
+        "Having the root of your life. !amused",
+        "►Can you hear me?",
+        "►What is this?",
+        "►I know that song!",
+        "Ooh, see that birch\nWatch that tribe. !amused",
+        "Digging the dancing tree. !amused",
+        "►Are you done yet?",
+        "Rude! !angry",
+        "I'll talk to you after you prove you're worthy.",
+        "[$ismale]Show me your moves, boy!",
+        "[not $ismale]Show me your moves, girl!",
+        "Follow the beat! Get ready! @danced !end !dance 1"
+    ],
+    "danced": [
+        "Your little dance amuses me. You're keeping the beat alive! !amused",
+        "►Thanks for the compliment! @smile",
+        "►There is nothing like putting a smile on a tree's face. How are you? @smile ",
+        "►How dare you?! @dare"
+    ],
+    "dare": [
+        "Oh you pesky human! Can't even take a compliment! @request !end"
+    ],
+    "nothelpful": [
+        "Oh you gnarly individual. I should have never trusted you in the first place… @request !end"
+    ],
+    "smile": [
+        "You seem like a decent lad! Maybe you can help me out with something.",
+        "►Actually, I was about to ask you for something.",
+        "Huh? You came here just for me? How nice! @request"
+    ],
+    "request": [
+        "What is it that made you come all this way?",
+        "►I'd like to humbly ask you for a piece of your wood. @wood",
+        "►I'm gonna cut you down.",
+        "You… and what army?! !angry",
+        "►Haha, it's just a prank bro! @prank",
+        "►You're right, stupid idea. @request",
+        "►Maybe we can help each other out.",
+        "How? Why are you here?",
+        "►I need a piece of you. @wood"
+    ],
+    "prank": [
+        "Go prank somebody else. I'm too old for this. @sure !end"
+    ],
+    "wood": [
+        "Sure sure. I can spare some. If you help me, you shall have your wood.",
+        "►Awesome! @sure",
+        "►What can I do for you? @sure"
+    ],
+    "sure": [
+        "I'm an old tree. I don't have any children.",
+        "My pine cones never amount to anything…",
+        "I could really need your help. With procreation.",
+        "►I'd love that! @lovethat",
+        "►Isn't that a little… weird? @weird",
+        "►Oh no! What happens to your pine cones? @pinecones",
+        "►Nah I'm not really the helpful kind. @nothelpful"
+    ],
+    "pinecones": [
+        "Well that's a super long story.",
+        "But I'll gladly tell you, little one.",
+        "►Um, nevermind. @nevermind",
+        "►Cool! @cool"
+    ],
+    "lovethat": [
+        "I figured it all out.",
+        "The only way I can get a son is if you plant one of my pine cones on the mountain in the west. !mountainzoom",
+        "Would you do that for me?",
+        "►Definitely! @definitely",
+        "►Ain't nobody got time for that! @notime"
+    ],
+    "weird": [
+        "Oh you judgemental humanoid! Show some empathy! @request !end"
+    ],
+    "notime": [
+        "Oh you are not a very helpful life-form! @request !end"
+    ],
+    "nevermind": [
+        "Oh you rude leafless imposter! Won't even listen to my sad, sad story. @request !end"
+    ],
+    "definitely": [
+        "Awesome. @missinggear"
+    ],
+    "missinggear": [
+        "Oh, and I almost forgot!",
+        "You will need some special gear to be able to climb that mountain. I hereby grant my personal pair of double jump boots!",
+        "►Awesome, thanks! !doublejump",
+        "I'll drop the seed for you now. Good luck on your journey! !spawnseed @reminder !end"
+    ],
+    "cool": [
+        "So the thing with pine cones, you see, is they need very special fertile ground to grow.",
+        "Have you looked down? The soil here is rubbish. Nothing can grow here. No nutrients!",
+        "Which, ironically, is why I'm too weak to throw my pine cones far enough onto better grounds.",
+        "A vicious circle of non-procreation!",
+        "So I need somebody to carry my pine cone to the best possible place in the area.",
+        "I just want my child to have it easier than me, you know?",
+        "►Definitely! @lovethat",
+        "►Ain't nobody got time for that! @notime"
+    ],
+    "reminder": [
+        "You know, you wanted to help me procreate. Bring my cone to the highest place in this area.",
+        "►Got it! @reminder !end",
+        "►[not $seedplanted]Sorry, I lost your cone!",
+        "►[$seedplanted]I planted the seed. How about the reward? @reward",
+        "You did… what? Thank god I have an unlimited supply of them. @reminder !spawnseed !end"
+    ],
+    "reward": [
+        "You will get a reward when my offspring sprouts. That was the deal.",
+        "►But... that might take forever!",
+        "Ho ho, maybe you can go the extra mile and make the little cone grow faster?",
+        "►I'll try... There might be some trick to it. !end @reminder"
+    ]
+}

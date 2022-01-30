@@ -6,13 +6,14 @@ if (!window.fetch || !indexedDB) {
 	throw "Update your browser!";
 }
 
-var fsBundleDirs, fsBundleFiles, loadStatus, romName, stateReadersReady, stateReaders2Ready, saveReadersReady, isPaused, wasmReady, bundleReady, romMode, core, wIdb, romUploadCallback, latestVersion;
+var fsBundleDirs, fsBundleFiles, loadStatus, romName, stateReadersReady, stateReaders2Ready, saveReadersReady, isPaused, wasmReady, bundleReady, romMode, core, wIdb, romUploadCallback, latestVersion, emulatorStarted, currentManager, romUploadsReady;
 var bundleCdn = "https://cdn.jsdelivr.net/gh/BinBashBanana/webretro/";
-var keybinds = 'input_player1_start = "enter"\ninput_player1_select = "space"\ninput_player1_l = "e"\ninput_player1_l2 = "r"\ninput_player1_r = "p"\ninput_player1_r2 = "o"\ninput_player1_a = "h"\ninput_player1_b = "g"\ninput_player1_x = "y"\ninput_player1_y = "t"\ninput_player1_up = "up"\ninput_player1_left = "left"\ninput_player1_down = "down"\ninput_player1_right = "right"\ninput_player1_l_x_minus = "a"\ninput_player1_l_x_plus = "d"\ninput_player1_l_y_minus = "w"\ninput_player1_l_y_plus = "s"\ninput_player1_l3_btn = "x"\ninput_player1_r_x_minus = "j"\ninput_player1_r_x_plus = "l"\ninput_player1_r_y_minus = "i"\ninput_player1_r_y_plus = "k"\ninput_player1_r3_btn = "comma"\ninput_menu_toggle = "f1"\ninput_save_state = "f2"\ninput_load_state = "f3"\n';
-var nulKeys = 'input_ai_service = "nul"\ninput_ai_service_axis = "nul"\ninput_ai_service_btn = "nul"\ninput_ai_service_mbtn = "nul"\ninput_audio_mute = "nul"\ninput_audio_mute_axis = "nul"\ninput_audio_mute_btn = "nul"\ninput_audio_mute_mbtn = "nul"\ninput_cheat_index_minus = "nul"\ninput_cheat_index_minus_axis = "nul"\ninput_cheat_index_minus_btn = "nul"\ninput_cheat_index_minus_mbtn = "nul"\ninput_cheat_index_plus = "nul"\ninput_cheat_index_plus_axis = "nul"\ninput_cheat_index_plus_btn = "nul"\ninput_cheat_index_plus_mbtn = "nul"\ninput_cheat_toggle = "nul"\ninput_cheat_toggle_axis = "nul"\ninput_cheat_toggle_btn = "nul"\ninput_cheat_toggle_mbtn = "nul"\ninput_desktop_menu_toggle = "nul"\ninput_desktop_menu_toggle_axis = "nul"\ninput_desktop_menu_toggle_btn = "nul"\ninput_desktop_menu_toggle_mbtn = "nul"\ninput_disk_eject_toggle = "nul"\ninput_disk_eject_toggle_axis = "nul"\ninput_disk_eject_toggle_btn = "nul"\ninput_disk_eject_toggle_mbtn = "nul"\ninput_disk_next = "nul"\ninput_disk_next_axis = "nul"\ninput_disk_next_btn = "nul"\ninput_disk_next_mbtn = "nul"\ninput_disk_prev = "nul"\ninput_disk_prev_axis = "nul"\ninput_disk_prev_btn = "nul"\ninput_disk_prev_mbtn = "nul"\ninput_duty_cycle = "nul"\ninput_enable_hotkey = "nul"\ninput_enable_hotkey_axis = "nul"\ninput_enable_hotkey_btn = "nul"\ninput_enable_hotkey_mbtn = "nul"\ninput_exit_emulator = "nul"\ninput_exit_emulator_axis = "nul"\ninput_exit_emulator_btn = "nul"\ninput_exit_emulator_mbtn = "nul"\ninput_fps_toggle = "nul"\ninput_fps_toggle_axis = "nul"\ninput_fps_toggle_btn = "nul"\ninput_fps_toggle_mbtn = "nul"\ninput_frame_advance = "nul"\ninput_frame_advance_axis = "nul"\ninput_frame_advance_btn = "nul"\ninput_frame_advance_mbtn = "nul"\ninput_game_focus_toggle = "nul"\ninput_game_focus_toggle_axis = "nul"\ninput_game_focus_toggle_btn = "nul"\ninput_game_focus_toggle_mbtn = "nul"\ninput_grab_mouse_toggle = "nul"\ninput_grab_mouse_toggle_axis = "nul"\ninput_grab_mouse_toggle_btn = "nul"\ninput_grab_mouse_toggle_mbtn = "nul"\ninput_hold_fast_forward = "nul"\ninput_hold_fast_forward_axis = "nul"\ninput_hold_fast_forward_btn = "nul"\ninput_hold_fast_forward_mbtn = "nul"\ninput_hold_slowmotion = "nul"\ninput_slowmotion = "nul"\ninput_hold_slowmotion_axis = "nul"\ninput_hold_slowmotion_btn = "nul"\ninput_hold_slowmotion_mbtn = "nul"\ninput_hotkey_block_delay = "nul"\ninput_load_state_axis = "nul"\ninput_load_state_btn = "nul"\ninput_load_state_mbtn = "nul"\ninput_menu_toggle_axis = "nul"\ninput_menu_toggle_btn = "nul"\ninput_menu_toggle_mbtn = "nul"\ninput_movie_record_toggle = "nul"\ninput_movie_record_toggle_axis = "nul"\ninput_movie_record_toggle_btn = "nul"\ninput_movie_record_toggle_mbtn = "nul"\ninput_netplay_game_watch = "nul"\ninput_netplay_game_watch_axis = "nul"\ninput_netplay_game_watch_btn = "nul"\ninput_netplay_game_watch_mbtn = "nul"\ninput_netplay_host_toggle = "nul"\ninput_netplay_host_toggle_axis = "nul"\ninput_netplay_host_toggle_btn = "nul"\ninput_netplay_host_toggle_mbtn = "nul"\ninput_osk_toggle = "nul"\ninput_osk_toggle_axis = "nul"\ninput_osk_toggle_btn = "nul"\ninput_osk_toggle_mbtn = "nul"\ninput_overlay_next = "nul"\ninput_overlay_next_axis = "nul"\ninput_overlay_next_btn = "nul"\ninput_overlay_next_mbtn = "nul"\ninput_pause_toggle = "nul"\ninput_pause_toggle_axis = "nul"\ninput_pause_toggle_btn = "nul"\ninput_pause_toggle_mbtn = "nul"\ninput_player1_a_axis = "nul"\ninput_player1_a_btn = "nul"\ninput_player1_a_mbtn = "nul"\ninput_player1_b_axis = "nul"\ninput_player1_b_btn = "nul"\ninput_player1_b_mbtn = "nul"\ninput_player1_down_axis = "nul"\ninput_player1_down_btn = "nul"\ninput_player1_down_mbtn = "nul"\ninput_player1_gun_aux_a = "nul"\ninput_player1_gun_aux_a_axis = "nul"\ninput_player1_gun_aux_a_btn = "nul"\ninput_player1_gun_aux_a_mbtn = "nul"\ninput_player1_gun_aux_b = "nul"\ninput_player1_gun_aux_b_axis = "nul"\ninput_player1_gun_aux_b_btn = "nul"\ninput_player1_gun_aux_b_mbtn = "nul"\ninput_player1_gun_aux_c = "nul"\ninput_player1_gun_aux_c_axis = "nul"\ninput_player1_gun_aux_c_btn = "nul"\ninput_player1_gun_aux_c_mbtn = "nul"\ninput_player1_gun_dpad_down = "nul"\ninput_player1_gun_dpad_down_axis = "nul"\ninput_player1_gun_dpad_down_btn = "nul"\ninput_player1_gun_dpad_down_mbtn = "nul"\ninput_player1_gun_dpad_left = "nul"\ninput_player1_gun_dpad_left_axis = "nul"\ninput_player1_gun_dpad_left_btn = "nul"\ninput_player1_gun_dpad_left_mbtn = "nul"\ninput_player1_gun_dpad_right = "nul"\ninput_player1_gun_dpad_right_axis = "nul"\ninput_player1_gun_dpad_right_btn = "nul"\ninput_player1_gun_dpad_right_mbtn = "nul"\ninput_player1_gun_dpad_up = "nul"\ninput_player1_gun_dpad_up_axis = "nul"\ninput_player1_gun_dpad_up_btn = "nul"\ninput_player1_gun_dpad_up_mbtn = "nul"\ninput_player1_gun_offscreen_shot = "nul"\ninput_player1_gun_offscreen_shot_axis = "nul"\ninput_player1_gun_offscreen_shot_btn = "nul"\ninput_player1_gun_offscreen_shot_mbtn = "nul"\ninput_player1_gun_select = "nul"\ninput_player1_gun_select_axis = "nul"\ninput_player1_gun_select_btn = "nul"\ninput_player1_gun_select_mbtn = "nul"\ninput_player1_gun_start = "nul"\ninput_player1_gun_start_axis = "nul"\ninput_player1_gun_start_btn = "nul"\ninput_player1_gun_start_mbtn = "nul"\ninput_player1_gun_trigger = "nul"\ninput_player1_gun_trigger_axis = "nul"\ninput_player1_gun_trigger_btn = "nul"\ninput_player1_gun_trigger_mbtn = "nul"\ninput_player1_l2_axis = "nul"\ninput_player1_l2_btn = "nul"\ninput_player1_l2_mbtn = "nul"\ninput_player1_l3 = "nul"\ninput_player1_l3_axis = "nul"\ninput_player1_l3_mbtn = "nul"\ninput_player1_l_axis = "nul"\ninput_player1_l_btn = "nul"\ninput_player1_l_mbtn = "nul"\ninput_player1_l_x_minus_axis = "nul"\ninput_player1_l_x_minus_btn = "nul"\ninput_player1_l_x_minus_mbtn = "nul"\ninput_player1_l_x_plus_axis = "nul"\ninput_player1_l_x_plus_btn = "nul"\ninput_player1_l_x_plus_mbtn = "nul"\ninput_player1_l_y_minus_axis = "nul"\ninput_player1_l_y_minus_btn = "nul"\ninput_player1_l_y_minus_mbtn = "nul"\ninput_player1_l_y_plus_axis = "nul"\ninput_player1_l_y_plus_btn = "nul"\ninput_player1_l_y_plus_mbtn = "nul"\ninput_player1_left_axis = "nul"\ninput_player1_left_mbtn = "nul"\ninput_player1_r2_axis = "nul"\ninput_player1_r2_btn = "nul"\ninput_player1_r2_mbtn = "nul"\ninput_player1_r3 = "nul"\ninput_player1_r3_axis = "nul"\ninput_player1_r3_mbtn = "nul"\ninput_player1_r_axis = "nul"\ninput_player1_r_btn = "nul"\ninput_player1_r_mbtn = "nul"\ninput_player1_r_x_minus_axis = "nul"\ninput_player1_r_x_minus_btn = "nul"\ninput_player1_r_x_minus_mbtn = "nul"\ninput_player1_r_x_plus_axis = "nul"\ninput_player1_r_x_plus_btn = "nul"\ninput_player1_r_x_plus_mbtn = "nul"\ninput_player1_r_y_minus_axis = "nul"\ninput_player1_r_y_minus_btn = "nul"\ninput_player1_r_y_minus_mbtn = "nul"\ninput_player1_r_y_plus_axis = "nul"\ninput_player1_r_y_plus_btn = "nul"\ninput_player1_r_y_plus_mbtn = "nul"\ninput_player1_right_axis = "nul"\ninput_player1_right_mbtn = "nul"\ninput_player1_select_axis = "nul"\ninput_player1_select_btn = "nul"\ninput_player1_select_mbtn = "nul"\ninput_player1_start_axis = "nul"\ninput_player1_start_btn = "nul"\ninput_player1_start_mbtn = "nul"\ninput_player1_turbo = "nul"\ninput_player1_turbo_axis = "nul"\ninput_player1_turbo_btn = "nul"\ninput_player1_turbo_mbtn = "nul"\ninput_player1_up_axis = "nul"\ninput_player1_up_btn = "nul"\ninput_player1_up_mbtn = "nul"\ninput_player1_x_axis = "nul"\ninput_player1_x_btn = "nul"\ninput_player1_x_mbtn = "nul"\ninput_player1_y_axis = "nul"\ninput_player1_y_btn = "nul"\ninput_player1_y_mbtn = "nul"\ninput_poll_type_behavior = "nul"\ninput_recording_toggle = "nul"\ninput_recording_toggle_axis = "nul"\ninput_recording_toggle_btn = "nul"\ninput_recording_toggle_mbtn = "nul"\ninput_reset = "nul"\ninput_reset_axis = "nul"\ninput_reset_btn = "nul"\ninput_reset_mbtn = "nul"\ninput_rewind = "nul"\ninput_rewind_axis = "nul"\ninput_rewind_btn = "nul"\ninput_rewind_mbtn = "nul"\ninput_save_state_axis = "nul"\ninput_save_state_btn = "nul"\ninput_save_state_mbtn = "nul"\ninput_screenshot = "nul"\ninput_screenshot_axis = "nul"\ninput_screenshot_btn = "nul"\ninput_screenshot_mbtn = "nul"\ninput_send_debug_info = "nul"\ninput_send_debug_info_axis = "nul"\ninput_send_debug_info_btn = "nul"\ninput_send_debug_info_mbtn = "nul"\ninput_shader_next = "nul"\ninput_shader_next_axis = "nul"\ninput_shader_next_btn = "nul"\ninput_shader_next_mbtn = "nul"\ninput_shader_prev = "nul"\ninput_shader_prev_axis = "nul"\ninput_shader_prev_btn = "nul"\ninput_shader_prev_mbtn = "nul"\ninput_state_slot_decrease = "nul"\ninput_state_slot_decrease_axis = "nul"\ninput_state_slot_decrease_btn = "nul"\ninput_state_slot_decrease_mbtn = "nul"\ninput_state_slot_increase = "nul"\ninput_state_slot_increase_axis = "nul"\ninput_state_slot_increase_btn = "nul"\ninput_state_slot_increase_mbtn = "nul"\ninput_streaming_toggle = "nul"\ninput_streaming_toggle_axis = "nul"\ninput_streaming_toggle_btn = "nul"\ninput_streaming_toggle_mbtn = "nul"\ninput_toggle_fast_forward = "nul"\ninput_toggle_fast_forward_axis = "nul"\ninput_toggle_fast_forward_btn = "nul"\ninput_toggle_fast_forward_mbtn = "nul"\ninput_toggle_fullscreen = "nul"\ninput_toggle_fullscreen_axis = "nul"\ninput_toggle_fullscreen_btn = "nul"\ninput_toggle_fullscreen_mbtn = "nul"\ninput_toggle_slowmotion = "nul"\ninput_toggle_slowmotion_axis = "nul"\ninput_toggle_slowmotion_btn = "nul"\ninput_toggle_slowmotion_mbtn = "nul"\ninput_turbo_default_button = "nul"\ninput_turbo_mode = "nul"\ninput_turbo_period = "nul"\ninput_volume_down = "nul"\ninput_volume_down_axis = "nul"\ninput_volume_down_btn = "nul"\ninput_volume_down_mbtn = "nul"\ninput_volume_up = "nul"\ninput_volume_up_axis = "nul"\ninput_volume_up_btn = "nul"\ninput_volume_up_mbtn = "nul"\n';
+var bundleCdnLatest = "https://cdn.jsdelivr.net/gh/BinBashBanana/webretro@latest/";
+var defaultKeybinds = 'input_player1_start = "enter"\ninput_player1_select = "space"\ninput_player1_l = "e"\ninput_player1_l2 = "r"\ninput_player1_r = "p"\ninput_player1_r2 = "o"\ninput_player1_a = "h"\ninput_player1_b = "g"\ninput_player1_x = "y"\ninput_player1_y = "t"\ninput_player1_up = "up"\ninput_player1_left = "left"\ninput_player1_down = "down"\ninput_player1_right = "right"\ninput_player1_l_x_minus = "a"\ninput_player1_l_x_plus = "d"\ninput_player1_l_y_minus = "w"\ninput_player1_l_y_plus = "s"\ninput_player1_l3_btn = "x"\ninput_player1_r_x_minus = "j"\ninput_player1_r_x_plus = "l"\ninput_player1_r_y_minus = "i"\ninput_player1_r_y_plus = "k"\ninput_player1_r3_btn = "comma"\ninput_menu_toggle = "f1"\ninput_save_state = "f2"\ninput_load_state = "f3"\ninput_screenshot = "f4"\ninput_hold_fast_forward = "nul"\ninput_toggle_fast_forward = "nul"\n';
+var nulKeys = 'input_ai_service = "nul"\ninput_ai_service_axis = "nul"\ninput_ai_service_btn = "nul"\ninput_ai_service_mbtn = "nul"\ninput_audio_mute = "nul"\ninput_audio_mute_axis = "nul"\ninput_audio_mute_btn = "nul"\ninput_audio_mute_mbtn = "nul"\ninput_cheat_index_minus = "nul"\ninput_cheat_index_minus_axis = "nul"\ninput_cheat_index_minus_btn = "nul"\ninput_cheat_index_minus_mbtn = "nul"\ninput_cheat_index_plus = "nul"\ninput_cheat_index_plus_axis = "nul"\ninput_cheat_index_plus_btn = "nul"\ninput_cheat_index_plus_mbtn = "nul"\ninput_cheat_toggle = "nul"\ninput_cheat_toggle_axis = "nul"\ninput_cheat_toggle_btn = "nul"\ninput_cheat_toggle_mbtn = "nul"\ninput_desktop_menu_toggle = "nul"\ninput_desktop_menu_toggle_axis = "nul"\ninput_desktop_menu_toggle_btn = "nul"\ninput_desktop_menu_toggle_mbtn = "nul"\ninput_disk_eject_toggle = "nul"\ninput_disk_eject_toggle_axis = "nul"\ninput_disk_eject_toggle_btn = "nul"\ninput_disk_eject_toggle_mbtn = "nul"\ninput_disk_next = "nul"\ninput_disk_next_axis = "nul"\ninput_disk_next_btn = "nul"\ninput_disk_next_mbtn = "nul"\ninput_disk_prev = "nul"\ninput_disk_prev_axis = "nul"\ninput_disk_prev_btn = "nul"\ninput_disk_prev_mbtn = "nul"\ninput_duty_cycle = "nul"\ninput_enable_hotkey = "nul"\ninput_enable_hotkey_axis = "nul"\ninput_enable_hotkey_btn = "nul"\ninput_enable_hotkey_mbtn = "nul"\ninput_exit_emulator = "nul"\ninput_exit_emulator_axis = "nul"\ninput_exit_emulator_btn = "nul"\ninput_exit_emulator_mbtn = "nul"\ninput_fps_toggle = "nul"\ninput_fps_toggle_axis = "nul"\ninput_fps_toggle_btn = "nul"\ninput_fps_toggle_mbtn = "nul"\ninput_frame_advance = "nul"\ninput_frame_advance_axis = "nul"\ninput_frame_advance_btn = "nul"\ninput_frame_advance_mbtn = "nul"\ninput_game_focus_toggle = "nul"\ninput_game_focus_toggle_axis = "nul"\ninput_game_focus_toggle_btn = "nul"\ninput_game_focus_toggle_mbtn = "nul"\ninput_grab_mouse_toggle = "nul"\ninput_grab_mouse_toggle_axis = "nul"\ninput_grab_mouse_toggle_btn = "nul"\ninput_grab_mouse_toggle_mbtn = "nul"\ninput_hold_fast_forward_axis = "nul"\ninput_hold_fast_forward_btn = "nul"\ninput_hold_fast_forward_mbtn = "nul"\ninput_hold_slowmotion = "nul"\ninput_slowmotion = "nul"\ninput_hold_slowmotion_axis = "nul"\ninput_hold_slowmotion_btn = "nul"\ninput_hold_slowmotion_mbtn = "nul"\ninput_hotkey_block_delay = "nul"\ninput_load_state_axis = "nul"\ninput_load_state_btn = "nul"\ninput_load_state_mbtn = "nul"\ninput_menu_toggle_axis = "nul"\ninput_menu_toggle_btn = "nul"\ninput_menu_toggle_mbtn = "nul"\ninput_movie_record_toggle = "nul"\ninput_movie_record_toggle_axis = "nul"\ninput_movie_record_toggle_btn = "nul"\ninput_movie_record_toggle_mbtn = "nul"\ninput_netplay_game_watch = "nul"\ninput_netplay_game_watch_axis = "nul"\ninput_netplay_game_watch_btn = "nul"\ninput_netplay_game_watch_mbtn = "nul"\ninput_netplay_host_toggle = "nul"\ninput_netplay_host_toggle_axis = "nul"\ninput_netplay_host_toggle_btn = "nul"\ninput_netplay_host_toggle_mbtn = "nul"\ninput_osk_toggle = "nul"\ninput_osk_toggle_axis = "nul"\ninput_osk_toggle_btn = "nul"\ninput_osk_toggle_mbtn = "nul"\ninput_overlay_next = "nul"\ninput_overlay_next_axis = "nul"\ninput_overlay_next_btn = "nul"\ninput_overlay_next_mbtn = "nul"\ninput_pause_toggle = "nul"\ninput_pause_toggle_axis = "nul"\ninput_pause_toggle_btn = "nul"\ninput_pause_toggle_mbtn = "nul"\ninput_player1_a_axis = "nul"\ninput_player1_a_btn = "nul"\ninput_player1_a_mbtn = "nul"\ninput_player1_b_axis = "nul"\ninput_player1_b_btn = "nul"\ninput_player1_b_mbtn = "nul"\ninput_player1_down_axis = "nul"\ninput_player1_down_btn = "nul"\ninput_player1_down_mbtn = "nul"\ninput_player1_gun_aux_a = "nul"\ninput_player1_gun_aux_a_axis = "nul"\ninput_player1_gun_aux_a_btn = "nul"\ninput_player1_gun_aux_a_mbtn = "nul"\ninput_player1_gun_aux_b = "nul"\ninput_player1_gun_aux_b_axis = "nul"\ninput_player1_gun_aux_b_btn = "nul"\ninput_player1_gun_aux_b_mbtn = "nul"\ninput_player1_gun_aux_c = "nul"\ninput_player1_gun_aux_c_axis = "nul"\ninput_player1_gun_aux_c_btn = "nul"\ninput_player1_gun_aux_c_mbtn = "nul"\ninput_player1_gun_dpad_down = "nul"\ninput_player1_gun_dpad_down_axis = "nul"\ninput_player1_gun_dpad_down_btn = "nul"\ninput_player1_gun_dpad_down_mbtn = "nul"\ninput_player1_gun_dpad_left = "nul"\ninput_player1_gun_dpad_left_axis = "nul"\ninput_player1_gun_dpad_left_btn = "nul"\ninput_player1_gun_dpad_left_mbtn = "nul"\ninput_player1_gun_dpad_right = "nul"\ninput_player1_gun_dpad_right_axis = "nul"\ninput_player1_gun_dpad_right_btn = "nul"\ninput_player1_gun_dpad_right_mbtn = "nul"\ninput_player1_gun_dpad_up = "nul"\ninput_player1_gun_dpad_up_axis = "nul"\ninput_player1_gun_dpad_up_btn = "nul"\ninput_player1_gun_dpad_up_mbtn = "nul"\ninput_player1_gun_offscreen_shot = "nul"\ninput_player1_gun_offscreen_shot_axis = "nul"\ninput_player1_gun_offscreen_shot_btn = "nul"\ninput_player1_gun_offscreen_shot_mbtn = "nul"\ninput_player1_gun_select = "nul"\ninput_player1_gun_select_axis = "nul"\ninput_player1_gun_select_btn = "nul"\ninput_player1_gun_select_mbtn = "nul"\ninput_player1_gun_start = "nul"\ninput_player1_gun_start_axis = "nul"\ninput_player1_gun_start_btn = "nul"\ninput_player1_gun_start_mbtn = "nul"\ninput_player1_gun_trigger = "nul"\ninput_player1_gun_trigger_axis = "nul"\ninput_player1_gun_trigger_btn = "nul"\ninput_player1_gun_trigger_mbtn = "nul"\ninput_player1_l2_axis = "nul"\ninput_player1_l2_btn = "nul"\ninput_player1_l2_mbtn = "nul"\ninput_player1_l3 = "nul"\ninput_player1_l3_axis = "nul"\ninput_player1_l3_mbtn = "nul"\ninput_player1_l_axis = "nul"\ninput_player1_l_btn = "nul"\ninput_player1_l_mbtn = "nul"\ninput_player1_l_x_minus_axis = "nul"\ninput_player1_l_x_minus_btn = "nul"\ninput_player1_l_x_minus_mbtn = "nul"\ninput_player1_l_x_plus_axis = "nul"\ninput_player1_l_x_plus_btn = "nul"\ninput_player1_l_x_plus_mbtn = "nul"\ninput_player1_l_y_minus_axis = "nul"\ninput_player1_l_y_minus_btn = "nul"\ninput_player1_l_y_minus_mbtn = "nul"\ninput_player1_l_y_plus_axis = "nul"\ninput_player1_l_y_plus_btn = "nul"\ninput_player1_l_y_plus_mbtn = "nul"\ninput_player1_left_axis = "nul"\ninput_player1_left_mbtn = "nul"\ninput_player1_r2_axis = "nul"\ninput_player1_r2_btn = "nul"\ninput_player1_r2_mbtn = "nul"\ninput_player1_r3 = "nul"\ninput_player1_r3_axis = "nul"\ninput_player1_r3_mbtn = "nul"\ninput_player1_r_axis = "nul"\ninput_player1_r_btn = "nul"\ninput_player1_r_mbtn = "nul"\ninput_player1_r_x_minus_axis = "nul"\ninput_player1_r_x_minus_btn = "nul"\ninput_player1_r_x_minus_mbtn = "nul"\ninput_player1_r_x_plus_axis = "nul"\ninput_player1_r_x_plus_btn = "nul"\ninput_player1_r_x_plus_mbtn = "nul"\ninput_player1_r_y_minus_axis = "nul"\ninput_player1_r_y_minus_btn = "nul"\ninput_player1_r_y_minus_mbtn = "nul"\ninput_player1_r_y_plus_axis = "nul"\ninput_player1_r_y_plus_btn = "nul"\ninput_player1_r_y_plus_mbtn = "nul"\ninput_player1_right_axis = "nul"\ninput_player1_right_mbtn = "nul"\ninput_player1_select_axis = "nul"\ninput_player1_select_btn = "nul"\ninput_player1_select_mbtn = "nul"\ninput_player1_start_axis = "nul"\ninput_player1_start_btn = "nul"\ninput_player1_start_mbtn = "nul"\ninput_player1_turbo = "nul"\ninput_player1_turbo_axis = "nul"\ninput_player1_turbo_btn = "nul"\ninput_player1_turbo_mbtn = "nul"\ninput_player1_up_axis = "nul"\ninput_player1_up_btn = "nul"\ninput_player1_up_mbtn = "nul"\ninput_player1_x_axis = "nul"\ninput_player1_x_btn = "nul"\ninput_player1_x_mbtn = "nul"\ninput_player1_y_axis = "nul"\ninput_player1_y_btn = "nul"\ninput_player1_y_mbtn = "nul"\ninput_poll_type_behavior = "nul"\ninput_recording_toggle = "nul"\ninput_recording_toggle_axis = "nul"\ninput_recording_toggle_btn = "nul"\ninput_recording_toggle_mbtn = "nul"\ninput_reset = "nul"\ninput_reset_axis = "nul"\ninput_reset_btn = "nul"\ninput_reset_mbtn = "nul"\ninput_rewind = "nul"\ninput_rewind_axis = "nul"\ninput_rewind_btn = "nul"\ninput_rewind_mbtn = "nul"\ninput_save_state_axis = "nul"\ninput_save_state_btn = "nul"\ninput_save_state_mbtn = "nul"\ninput_screenshot_axis = "nul"\ninput_screenshot_btn = "nul"\ninput_screenshot_mbtn = "nul"\ninput_send_debug_info = "nul"\ninput_send_debug_info_axis = "nul"\ninput_send_debug_info_btn = "nul"\ninput_send_debug_info_mbtn = "nul"\ninput_shader_next = "nul"\ninput_shader_next_axis = "nul"\ninput_shader_next_btn = "nul"\ninput_shader_next_mbtn = "nul"\ninput_shader_prev = "nul"\ninput_shader_prev_axis = "nul"\ninput_shader_prev_btn = "nul"\ninput_shader_prev_mbtn = "nul"\ninput_state_slot_decrease = "nul"\ninput_state_slot_decrease_axis = "nul"\ninput_state_slot_decrease_btn = "nul"\ninput_state_slot_decrease_mbtn = "nul"\ninput_state_slot_increase = "nul"\ninput_state_slot_increase_axis = "nul"\ninput_state_slot_increase_btn = "nul"\ninput_state_slot_increase_mbtn = "nul"\ninput_streaming_toggle = "nul"\ninput_streaming_toggle_axis = "nul"\ninput_streaming_toggle_btn = "nul"\ninput_streaming_toggle_mbtn = "nul"\ninput_toggle_fast_forward_axis = "nul"\ninput_toggle_fast_forward_btn = "nul"\ninput_toggle_fast_forward_mbtn = "nul"\ninput_toggle_fullscreen = "nul"\ninput_toggle_fullscreen_axis = "nul"\ninput_toggle_fullscreen_btn = "nul"\ninput_toggle_fullscreen_mbtn = "nul"\ninput_toggle_slowmotion = "nul"\ninput_toggle_slowmotion_axis = "nul"\ninput_toggle_slowmotion_btn = "nul"\ninput_toggle_slowmotion_mbtn = "nul"\ninput_turbo_default_button = "nul"\ninput_turbo_mode = "nul"\ninput_turbo_period = "nul"\ninput_volume_down = "nul"\ninput_volume_down_axis = "nul"\ninput_volume_down_btn = "nul"\ninput_volume_down_mbtn = "nul"\ninput_volume_up = "nul"\ninput_volume_up_axis = "nul"\ninput_volume_up_btn = "nul"\ninput_volume_up_mbtn = "nul"\n';
 var extraConfig = 'rgui_show_start_screen = "false"\n';
 var pdKeys = [8, 9, 13, 19, 27, 32, 33, 34, 35, 36, 42, 44, 45, 91, 92, 93, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135];
-var webretroVersion = 6.3;
+var webretroVersion = 6.4;
 var updateNotice = document.getElementById("updatenotice");
 var versionIndicator = document.getElementById("versionindicator");
 var upload = document.getElementById("upload");
@@ -25,7 +26,6 @@ var doubleRes = document.getElementById("doubleres");
 var resModifier = 1;
 var canvas = document.getElementById("canvas");
 var canvasMask = document.getElementById("canvasmask");
-var dateTime = new Date();
 var saveState = document.getElementById("savestate");
 var loadState = document.getElementById("loadstate");
 var undoSaveState = document.getElementById("undosavestate");
@@ -47,8 +47,31 @@ var autosave = document.getElementById("autosave");
 var mainArea = document.getElementById("mainarea");
 var hoverMenu = document.getElementById("menu");
 var hoverMenuIndicator = document.getElementById("menuindicator");
+var takeScreenshot = document.getElementById("takescreenshot");
+var modals = document.getElementById("modals");
+var keybindTable = document.getElementById("keybindtable");
+var saveKeybinds = document.getElementById("savekeybinds");
+var resetKeybinds = document.getElementById("resetkeybinds");
+var keybindsButton = document.getElementById("keybindsbutton");
+var screenshotsButton = document.getElementById("screenshotsbutton");
+var savesButton = document.getElementById("savesbutton");
+var statesButton = document.getElementById("statesbutton");
+var downloadAllScreenshots = document.getElementById("downloadallscreenshots");
+var screenshotsDiv = document.getElementById("screenshotsdiv");
+var saveTable = document.getElementById("savetable");
+var managers = {};
+managers.keybind = document.getElementById("keybindmanager");
+managers.screenshot = document.getElementById("screenshotmanager");
+managers.save = document.getElementById("savemanager");
+var managerNames = {"save": "Saves & States"};
+var managerTitle = document.getElementById("managertitle");
+var managerClose = document.getElementById("managerclose");
+var screenshotDatas = [];
+var screenshotObjUrls = [];
+var saveIDs = [];
+var quotaText = document.getElementById("quotatext");
 var search = decodeURIComponent(window.location.search).substring(1).split("&");
-var systems = {"beetle_psx": "PS1", "citra": "Nintendo 3DS", "desmume": "Nintendo DS", "dolphin": "GC/Wii", "genesis_plus_gx": "Genesis", "mgba": "GBA", "mupen64plus_next": "Nintendo 64", "nestopia": "NES", "parallel_n64": "Nintendo 64", "ppsspp": "PSP", "snes9x": "SNES"};
+var systems = {"citra": "Nintendo 3DS", "desmume": "Nintendo DS", "dolphin": "GC/Wii", "genesis_plus_gx": "Genesis", "mednafen_psx": "PS1", "mgba": "GBA", "mupen64plus_next": "Nintendo 64", "nestopia": "NES", "parallel_n64": "Nintendo 64", "ppsspp": "PSP", "snes9x": "SNES"};
 var installedCores = ["genesis_plus_gx", "mgba", "mupen64plus_next", "nestopia", "snes9x"];
 var fileExts = {"GBA": ".gb, .gbc, .gba", "GC/Wii": ".iso, .gcm, .dol, .tgc, .wbfs, .ciso, .gcz, .wad", "Genesis": ".mdx, .md, .smd, .gen, .sms, .gg, .sg, .68k, .chd", "NES": ".nes, .fds, .unf, .unif", "Nintendo 64": ".n64, .v64, .z64, .u1, .ndd", "Nintendo 3DS": ".3ds, .3dsx, .cci, .cxi", "Nintendo DS": ".nds, .srl", "PS1": ".ccd, .iso", "PSP": ".cso, .pbp", "SNES": ".smc, .sfc, .swc, .fig, .bs, .st"};
 var allFileExts = Object.values(fileExts).join(", ");
@@ -62,6 +85,8 @@ var awaitLogQueue = {};
 var bundleErrors = 0;
 var sramExt = ".srm";
 var smasBrickFix = {"16a160ddd431a3db6fcd7453ffae9c4c": [80,65,84,67,72,0,127,160,0,8,169,1,133,160,141,0,22,107,1,191,182,0,4,34,160,255,0,6,189,164,0,4,34,160,255,0,69,79,70], "e87d43969bdf563d1148e3b35e8b5360": [80,65,84,67,72,0,129,160,0,8,169,1,133,160,141,0,22,107,1,193,182,0,4,34,160,255,0,6,191,164,0,4,34,160,255,0,69,79,70], "2071b049a463cefd7a0b7aeab8037ca0": [80,65,84,67,72,0,127,160,0,8,169,1,133,160,141,0,22,107,1,191,190,0,4,34,160,255,0,6,189,164,0,4,34,160,255,0,69,79,70]}; // Couldn't find SMAS+W SMC ROM [80,65,84,67,72,0,129,160,0,8,169,1,133,160,141,0,22,107,1,193,190,0,4,34,160,255,0,6,191,164,0,4,34,160,255,0,69,79,70]
+// disable webcam for gameboy camera
+var disableWebCam = true;
 
 // make core lists
 var aCoreList = '<li><b>Select a Core</b></li><li><a href="?core=autodetect" class="greyer">AutoDetect (Slower to load)</a></li>';
@@ -86,6 +111,28 @@ function avShift(array, shift) {
 		array[i] += shift;
 	}
 	return array;
+}
+
+// date time
+function getTime() {
+	var dateTime = new Date();
+	return dateTime.getFullYear().toString()+"-"+(dateTime.getMonth()+1).toString()+"-"+dateTime.getDate().toString()+"-"+dateTime.getHours().toString()+"-"+dateTime.getMinutes().toString();
+}
+
+// bytes to human-readable string
+function bytesToHumanReadable(bytes) {
+	bytes = bytes || 0;
+	var extension = -1;
+	while (bytes >= 1000) {
+		bytes /= 1000;
+		extension++;
+	}
+	return bytes.toFixed(2) + " " + "KMGTPEZY".charAt(extension) + "B";
+}
+
+// js has no built-in capitalization function
+function capitalize(str) {
+	return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 // key press stuff
@@ -139,11 +186,23 @@ function getIdbItem(key) {
 	});
 }
 
+function getAllIdbItems() {
+	return new Promise(function(resolve) {
+		wIdb.transaction("main", "readwrite").objectStore("main").getAll().onsuccess = function(e) {
+			resolve(e.target.result ? e.target.result : null);
+		}
+	});
+}
+
+function removeIdbItem(key) {
+	wIdb.transaction("main", "readwrite").objectStore("main").delete(key);
+}
+
 // localStorage to indexedDB
 async function tryLsToIdb() {
 	var ls = Object.keys(window.localStorage);
 	for (var i = 0; i < ls.length; i++) {
-		if (ls[i].startsWith("RetroArch_")) {
+		if (ls[i].startsWith("RetroArch_saves_")) {
 			setIdbItem(ls[i], new Uint8Array(JSON.parse(window.localStorage.getItem(ls[i]))));
 			window.localStorage.removeItem(ls[i]);
 		}
@@ -260,10 +319,10 @@ function readFile(file, callback) {
 	reader.readAsArrayBuffer(file);
 }
 
-function downloadFile(data, name) {
+function downloadFile(data, name, mime) {
 	var a = document.createElement("a");
 	a.download = name;
-	a.href = URL.createObjectURL(new Blob([data], {type: "application/octet-stream"}));
+	a.href = URL.createObjectURL(new Blob([data], {type: mime || "application/octet-stream"}));
 	a.click();
 	window.setTimeout(function() {
 		URL.revokeObjectURL(a.href);
@@ -275,8 +334,9 @@ function uploadFile(accept, callback) {
 	input.type = "file";
 	input.accept = accept;
 	input.onchange = function() {
-		readFile(this.files[0], function(data) {
-			callback(data);
+		let file = this.files[0];
+		readFile(file, function(data) {
+			callback({name: file.name, data: data});
 		});
 	}
 	input.click();
@@ -338,6 +398,18 @@ function unzipFile(data, exts, callback, empty, notfound) {
 	});
 }
 
+// zip files
+async function zipFiles(files, callback, replaceName) {
+	var u8aWriter = new zip.Uint8ArrayWriter("application/zip");
+	var writer = new zip.ZipWriter(u8aWriter);
+	for (var i = 0; i < files.length; i++) {
+		await writer.add(replaceName ? files[i].name.replace("rom", romName) : files[i].name, new zip.Uint8ArrayReader(files[i].data));
+	}
+	await writer.close();
+	var zipped = await u8aWriter.getData();
+	callback(zipped);
+}
+
 // uauth uploads
 function handleWebFile(data) {
 	if (data.message == "success") {
@@ -354,15 +426,14 @@ function uploadWebFile(type, exts) {
 
 // rom upload
 function readyRomUploads(exts) {
-	upload.setAttribute("accept", exts);
+	romUploadsReady = true;
 	
-	// when a rom is uploaded
-	upload.onchange = function() {
-		ffd.style.display = "none";
-		let file = this.files[0];
-		readFile(file, function(data) {
+	// when a rom file is chosen
+	upload.onclick = function() {
+		uploadFile(exts, function(file) {
+			ffd.style.display = "none";
 			log('Succesfully read ROM file "' + file.name + '"');
-			romUploadCallback(file.name, data);
+			romUploadCallback(file.name, file.data);
 		});
 	}
 	
@@ -377,14 +448,14 @@ function readyRomUploads(exts) {
 		uploadWebFile("onedrive", exts);
 	}
 	
-	// file drop
-	document.ondragenter = function(e) {
+	// file drop (we need these to be global so they can be removed later)
+	window.fileDragEnter = function(e) {
 		if (e.dataTransfer.types.includes("Files")) ffd.classList.add("filehover");
 	}
-	document.ondragover = function(e) {
+	window.fileDragOver = function(e) {
 		e.preventDefault();
 	}
-	document.ondrop = function(e) {
+	window.fileDropped = function(e) {
 		if (e.dataTransfer.types.includes("Files")) {
 			e.preventDefault();
 			ffd.style.display = "none";
@@ -395,11 +466,14 @@ function readyRomUploads(exts) {
 			});
 		}
 	}
+	document.addEventListener("dragenter", fileDragEnter, false);
+	document.addEventListener("dragover", fileDragOver, false);
+	document.addEventListener("drop", fileDropped, false);
 }
 
 // rom fetch
 function readyRomFetch() {
-	var romloc = /^(http:\/\/|https:\/\/|\/\/)/i.test(queries.rom) ? queries.rom : "roms/" + queries.rom;
+	var romloc = (/^(http:\/\/|https:\/\/|\/\/)/i).test(queries.rom) ? queries.rom : "roms/" + queries.rom;
 	var romFilename = queries.rom.split("/").slice(-1)[0];
 	grab(romloc, "arraybuffer", function(data) {
 		log("Succesfully fetched ROM from " + romloc);
@@ -449,8 +523,284 @@ consoleButton.onclick = function() {
 
 if (queries.hasOwnProperty("console")) conw.open({width: 450, height: 250, left: 100, top: 50});
 
+// modal windows (managers)
+function openManager(type) {
+	if (managers[type]) {
+		if (managerClosed[currentManager]) managerClosed[currentManager]();
+		currentManager = type;
+		if (managerOpened[type]) managerOpened[type]();
+		managerTitle.textContent = managerNames[type] || type + "s";
+		clearManagers();
+		managers[type].style.display = "block";
+		modals.style.display = "block";
+	}
+}
+
+function clearManagers() {
+	Object.values(managers).forEach(function(e) {
+		e.style.display = "none";
+	});
+}
+
+managerClose.onclick = function() {
+	modals.style.display = "none";
+	clearManagers();
+	managerTitle.textContent = "";
+	if (managerClosed[currentManager]) managerClosed[currentManager]();
+	currentManager = undefined;
+}
+
+// --- code for the keybind manager ---
+
+// convert between config strings and objects
+function configStrToObj(str) {
+	var convert1 = str.slice(0, -1).split("\n");
+	var convert2 = {};
+	for (var i = 0; i < convert1.length; i++) {
+		var convert3 = convert1[i].split(" = ");
+		convert2[convert3[0]] = convert3[1].slice(1, -1);
+	}
+	return convert2;
+}
+
+function configObjToStr(obj) {
+	var convert1 = Object.keys(obj);
+	var convert2 = "";
+	for (var i = 0; i < convert1.length; i++) {
+		convert2 += convert1[i] + ' = "' + obj[convert1[i]] + '"\n';
+	}
+	return convert2;
+}
+
+// load config saved in localStorage
+var defaultKeybindsObj = configStrToObj(defaultKeybinds);
+var savedKeybindsObj = window.localStorage.getItem("RetroArch_settings_keybinds") ? configStrToObj(window.localStorage.getItem("RetroArch_settings_keybinds")) : Object.assign({}, defaultKeybindsObj);
+var keybindsObj = Object.assign({}, savedKeybindsObj);
+
+var validKeybinds = Object.keys(defaultKeybindsObj);
+
+// update the config list
+function createConfigList() {
+	keybindTable.innerHTML = "";
+	// make the list
+	for (var i = 0; i < validKeybinds.length; i++) {
+		keybindTable.innerHTML += "<tr><td>" + validKeybinds[i] + "</td><td>" + keybindsObj[validKeybinds[i]] + "</td></tr>";
+	}
+	// highlight conflicting keys
+	var keysList = Object.values(keybindsObj);
+	for (var i = 0; i < validKeybinds.length; i++) {
+		var matches = keysList.filter(v => v == keybindsObj[validKeybinds[i]]);
+		if (matches.length > 1 && !(matches[0] == "nul")) keybindTable.children[i].lastElementChild.classList.add("conflict");
+	}
+}
+
+// rebinding a key
+keybindTable.onclick = function(e) {
+	if (e.target.tagName == "TD" && !e.target.nextElementSibling) {
+		let valueElement = e.target;
+		let keyNo = Array.from(keybindTable.children).indexOf(e.target.parentElement);
+		valueElement.classList.remove("conflict");
+		valueElement.textContent = "press a key (escape to unbind)";
+		
+		function newKeyHandler(e) {
+			if (e.code == "Escape") {
+				keybindsObj[validKeybinds[keyNo]] = "nul";
+				createConfigList();
+			} else {
+				keybindsObj[validKeybinds[keyNo]] = codeToConfigIDMap[e.code] || "nul";
+				createConfigList();
+			}
+			finishKeybindInput();
+		}
+		function cancelKeybindInput() {
+			finishKeybindInput();
+			createConfigList();
+		}
+		function finishKeybindInput() {
+			document.removeEventListener("keydown", newKeyHandler);
+			document.removeEventListener("mousedown", cancelKeybindInput);
+		}
+		document.addEventListener("keydown", newKeyHandler, false);
+		document.addEventListener("mousedown", cancelKeybindInput, false);
+	}
+}
+
+function tryApplyConfig() {
+	if (emulatorStarted) {
+		FS.writeFile("/home/web_user/retroarch/userdata/retroarch.cfg", nulKeys + configObjToStr(savedKeybindsObj) + extraConfig);
+		Module._cmd_reload_config();
+	}
+}
+
+// save the keybinds to localStorage, and apply them
+saveKeybinds.onclick = function() {
+	savedKeybindsObj = Object.assign({}, keybindsObj);
+	window.localStorage.setItem("RetroArch_settings_keybinds", configObjToStr(savedKeybindsObj));
+	tryApplyConfig();
+	alert("Saved!");
+}
+
+resetKeybinds.onclick = function() {
+	if (confirm("Are you sure you want to reset all of the keybinds to their default values?")) {
+		savedKeybindsObj = Object.assign({}, defaultKeybindsObj);
+		keybindsObj = Object.assign({}, savedKeybindsObj);
+		window.localStorage.removeItem("RetroArch_settings_keybinds");
+		createConfigList();
+		tryApplyConfig();
+	}
+}
+
+// --- code for the screenshot manager ---
+
+// zip and download all of the screenshots in the list
+downloadAllScreenshots.onclick = function() {
+	if (screenshotDatas.length) {
+		zipFiles(screenshotDatas, function(zd) {
+			downloadFile(zd, "screenshots-" + getTime() + ".zip", "application/zip");
+		}, true);
+	} else {
+		alert("There are no screenshots to download!");
+	}
+}
+
+// update the screenshot list
+function createScreenshotList() {
+	var screenshots = FS.analyzePath("/home/web_user/retroarch/userdata/screenshots/").exists ? FS.readdir("/home/web_user/retroarch/userdata/screenshots/").filter(k => ![".", ".."].includes(k)) : [];
+	screenshotsDiv.innerHTML = "";
+	
+	for (var i = 0; i < screenshots.length; i++) {
+		var screenshotData = FS.readFile("/home/web_user/retroarch/userdata/screenshots/" + screenshots[i]);
+		var blobUrl = window.URL.createObjectURL(new Blob([screenshotData], {type: "image/png"}));
+		screenshotDatas[i] = {name: screenshots[i], data: screenshotData};
+		screenshotObjUrls[i] = blobUrl;
+		screenshotsDiv.innerHTML += '<div class="screenshot"><img src="' + blobUrl + '"><input type="button" data-action="download" value="Download"><input type="button" data-action="delete" value="Delete">' + "</div>";
+	}
+}
+
+// why I didn't just use the DOM? I don't know
+screenshotsDiv.onclick = function(e) {
+	if (e.target.tagName == "INPUT") {
+		var screenshotNo = Array.from(screenshotsDiv.children).indexOf(e.target.parentElement);
+		switch(e.target.dataset.action) {
+			case "download":
+				downloadFile(screenshotDatas[screenshotNo].data, screenshotDatas[screenshotNo].name.replace("rom", romName), "image/png");
+				break;
+			case "delete":
+				if (confirm("Are you sure you want to delete this screenshot?")) {
+					// doing all this is probably more efficient then reloading all of the screenshots
+					window.URL.revokeObjectURL(screenshotObjUrls[screenshotNo]);
+					FS.unlink("/home/web_user/retroarch/userdata/screenshots/" + screenshotDatas[screenshotNo].name);
+					screenshotObjUrls.splice(screenshotNo, 1);
+					screenshotDatas.splice(screenshotNo, 1);
+					e.target.parentElement.remove();
+				}
+				break;
+		}
+	}
+}
+
+// --- code for the save/state manager ---
+
+function updateQuotaDisplay() {
+	navigator.storage.estimate().then(function(info) {
+		quotaText.textContent = "Storage used (estimate): " + bytesToHumanReadable(info.usage) + " / " + bytesToHumanReadable(info.quota) + " (" + (info.usage / info.quota).toFixed(2) + "%)";
+	});
+}
+
+// update the save list
+function createSaveList() {
+	updateQuotaDisplay();
+	getAllIdbItems().then(function(items) {
+		saveTable.innerHTML = "";
+		// make the list
+		for (var i = 0; i < items.length; i++) {
+			if ((/^RetroArch_(saves|states)_/).test(items[i].key)) {
+				var sName = items[i].key.replace(/^RetroArch_(saves|states)_/, "");
+				var sType = (/^RetroArch_saves_/).test(items[i].key) ? "save" : "state";
+				saveIDs.push({id: items[i].key, name: sName, type: sType});
+				saveTable.innerHTML += "<tr><td>" + capitalize(sType) + ": " + sName + '</td><td><span data-action="download">Download</span><span data-action="delete">Delete</span></td></tr>';
+			}
+		}
+	});
+}
+
+saveTable.onclick = function(e) {
+	if (e.target.tagName == "SPAN") {
+		let saveNo = Array.from(saveTable.children).indexOf(e.target.parentElement.parentElement);
+		switch(e.target.dataset.action) {
+			case "download":
+				getIdbItem(saveIDs[saveNo].id).then(function(data) {
+					downloadFile(data, "game-" + saveIDs[saveNo].type + "-" + saveIDs[saveNo].name + "-" + getTime() + (saveIDs[saveNo].type == "save" ? ".srm" : ".state"));
+				});
+				break;
+			case "delete":
+				if (confirm("Are you sure you want to delete this " + saveIDs[saveNo].type + ' for "' + saveIDs[saveNo].name + '"?') && confirm("Really really sure?")) {
+					removeIdbItem(saveIDs[saveNo].id);
+					saveIDs.splice(saveNo, 1);
+					e.target.parentElement.parentElement.remove();
+					updateQuotaDisplay();
+				}
+				break;
+		}
+	}
+}
+
+// --- end manager-specific code ---
+
+var managerOpened = {
+	"keybind": function() {
+		createConfigList();
+	},
+	"screenshot": function() {
+		createScreenshotList();
+	},
+	"save": function() {
+		createSaveList();
+	}
+};
+
+var managerClosed = {
+	"keybind": function() {
+		keybindsObj = Object.assign({}, savedKeybindsObj);
+	},
+	"screenshot": function() {
+		// clear the blob: urls used for the screenshots
+		for (var i = 0; i < screenshotObjUrls.length; i++) {
+			window.URL.revokeObjectURL(screenshotObjUrls[i]);
+		}
+		screenshotObjUrls = [];
+		screenshotDatas = [];
+	},
+	"save": function() {
+		saveIDs = [];
+	}
+};
+
+// opening the managers
+
+keybindsButton.onclick = function(e) {
+	e.preventDefault();
+	openManager("keybind");
+}
+
+screenshotsButton.onclick = function() {
+	openManager("screenshot");
+}
+
+savesButton.onclick = function(e) {
+	e.preventDefault();
+	openManager("save");
+}
+
+statesButton.onclick = function(e) {
+	e.preventDefault();
+	openManager("save");
+};
+
 // ---------- START LOAD ----------
 (function() {
+	checkForUpdates();
+	
 	// ?system query
 	if (!queries.core && queries.system) {
 		var detectedCore = Object.keys(systems).find(k => systems[k].toLowerCase() == queries.system.toLowerCase());
@@ -471,7 +821,6 @@ if (queries.hasOwnProperty("console")) conw.open({width: 450, height: 250, left:
 		hoverMenu.style.display = "block";
 		
 		versionIndicator.textContent = "v" + webretroVersion.toString();
-		checkForUpdates();
 		
 		if (queries.core.toLowerCase() == "autodetect") {
 			romUploadCallback = autodetectCoreHandler;
@@ -590,10 +939,17 @@ function autodetectCore(name, data) {
 function readyForInit(data) {
 	document.title = romName + " | webretro";
 	
-	// do I want to put this in the docs?
 	if (queries.romshift) data = avShift(data, parseInt(queries.romshift));
 	
+	// remove the file drop listeners
+	if (romUploadsReady) {
+		document.removeEventListener("dragenter", fileDragEnter);
+		document.removeEventListener("dragover", fileDragOver);
+		document.removeEventListener("drop", fileDropped);
+	}
+	
 	if (romMode == "querystring") {
+		// start button (don't delete this section, audio contexts are not allowed to start until a user gesture on the page, in this case, clicking the start button)
 		startButton.style.display = "initial";
 		startButton.onclick = function() {
 			startButton.style.display = "none";
@@ -609,14 +965,19 @@ function prepareBundle() {
 	setStatus("Getting assets");
 	log("Starting bundle fetch");
 	let bundleSTime = performance.now();
-	fsBundleDirs = [['', 'assets'], ['/assets', 'menu_widgets'], ['/assets', 'ozone'], ['/assets/ozone', 'png'], ['/assets/ozone/png', 'dark'], ['/assets/ozone/png', 'sidebar'], ['/assets', 'xmb'], ['/assets/xmb', 'monochrome'], ['/assets/xmb/monochrome', 'png']]
-	FS.createPath("/", "home/web_user/retroarch/bundle", true, true);
-	for (var i = 0; i < fsBundleDirs.length; i++) {
-		FS.createPath(baseFsBundleDir + fsBundleDirs[i][0], fsBundleDirs[i][1], true, true);
-	}
 	
-	grab(bundleCdn + "bundle/indexedfiles.txt", "text", function(data) {
-		fsBundleFiles = data.split("\n");
+	grab(bundleCdnLatest + "bundle/indexedfiles-v2.txt", "text", function(data) {
+		var splitData = data.split(",,,\n");
+		fsBundleDirs = JSON.parse(splitData[0]);
+		fsBundleFiles = splitData[1].split("\n");
+		
+		// make the paths
+		FS.createPath("/", "home/web_user/retroarch/bundle", true, true);
+		for (var i = 0; i < fsBundleDirs.length; i++) {
+			FS.createPath(baseFsBundleDir + fsBundleDirs[i][0], fsBundleDirs[i][1], true, true);
+		}
+		
+		// make the files
 		for (let i = 0; i < fsBundleFiles.length; i++) {
 			grab(bundleCdn + "bundle" + fsBundleFiles[i], "arraybuffer", function(data) {
 				FS.writeFile(baseFsBundleDir + fsBundleFiles[i], new Uint8Array(data));
@@ -702,14 +1063,14 @@ function readyStateReaders() {
 			readyStateReaders2();
 		}
 		exportState.onclick = function() {
-			downloadFile(FS.readFile("/home/web_user/retroarch/userdata/states/rom.state"), "game-state-"+romName+"-"+dateTime.getFullYear().toString()+"-"+(dateTime.getMonth()+1).toString()+"-"+dateTime.getDate().toString()+"-"+dateTime.getHours().toString()+"-"+dateTime.getMinutes().toString() + ".state");
+			downloadFile(FS.readFile("/home/web_user/retroarch/userdata/states/rom.state"), "game-state-" + romName + "-" + getTime() + ".state");
 		}
 		undoSaveState.onclick = function() {
 			Module._cmd_undo_save_state();
 		}
-		// also allow statereaders2 on F3 press
+		// also allow statereaders2 on load state press
 		document.addEventListener("keydown", function(e) {
-			if (e.key == "F3") readyStateReaders2();
+			if (!stateReaders2Ready && (e.code == Object.keys(codeToConfigIDMap).find(k => codeToConfigIDMap[k] == savedKeybindsObj.input_load_state))) readyStateReaders2();
 		}, false);
 	}
 }
@@ -734,13 +1095,15 @@ function readySaveReaders() {
 		exportSave.classList.remove("disabled");
 		
 		exportSave.onclick = function() {
-			downloadFile(FS.readFile("/home/web_user/retroarch/userdata/saves/rom" + sramExt), "game-sram-"+romName+"-"+dateTime.getFullYear().toString()+"-"+(dateTime.getMonth()+1).toString()+"-"+dateTime.getDate().toString()+"-"+dateTime.getHours().toString()+"-"+dateTime.getMinutes().toString() + sramExt);
+			downloadFile(FS.readFile("/home/web_user/retroarch/userdata/saves/rom" + sramExt), "game-sram-" + romName + "-" + getTime() + sramExt);
 		}
 	}
 }
 
 // runs after emulator starts
 function afterStart() {
+	emulatorStarted = true;
+	
 	// remove loading text
 	canvas.style.background = "none";
 	
@@ -759,10 +1122,10 @@ function afterStart() {
 		readyStateReaders();
 	}
 	importState.onclick = function() {
-		uploadFile(".bin, .state, .save, .dat, .gam, .sav, application/*", function(data) {
-			setIdbItem("RetroArch_states_" + romName, new Uint8Array(data));
-			FS.writeFile("/home/web_user/retroarch/userdata/states/rom.state", new Uint8Array(data));
-			new sideAlert("Imported state", 3000);
+		uploadFile(".bin, .state, .save, .dat, .gam, .sav, application/*", function(file) {
+			setIdbItem("RetroArch_states_" + romName, new Uint8Array(file.data));
+			FS.writeFile("/home/web_user/retroarch/userdata/states/rom.state", new Uint8Array(file.data));
+			new sideAlert("Imported state (Now press load state)", 3000);
 			readyStateReaders();
 		});
 	}
@@ -772,9 +1135,9 @@ function afterStart() {
 		saveSRAM();
 	}
 	importSave.onclick = function() {
-		uploadFile(".bin, .srm, .sram, .ram, .gam, .sav, .dsv, application/*", function(data) {
+		uploadFile(".bin, .srm, .sram, .ram, .gam, .sav, .dsv, application/*", function(file) {
 			autosave.checked = false;
-			setIdbItem("RetroArch_saves_" + romName, new Uint8Array(data));
+			setIdbItem("RetroArch_saves_" + romName, new Uint8Array(file.data));
 			if (confirm("Save imported. Reloading now for changes to take effect.")) {
 				window.onbeforeunload = function() {}
 				window.location.reload();
@@ -782,9 +1145,9 @@ function afterStart() {
 		});
 	}
 	
-	// also allow state readers on F2 press
+	// also allow state readers on save state press
 	document.addEventListener("keydown", function(e) {
-		if (e.key == "F2") readyStateReaders();
+		if (!stateReadersReady && (e.code == Object.keys(codeToConfigIDMap).find(k => codeToConfigIDMap[k] == savedKeybindsObj.input_save_state))) readyStateReaders();
 	}, false);
 	
 	// start autosave loop
@@ -841,6 +1204,12 @@ function afterStart() {
 		Module._cmd_toggle_menu();
 	}
 	
+	// screenshot button
+	takeScreenshot.classList.remove("disabled");
+	takeScreenshot.onclick = function() {
+		Module._cmd_take_screenshot();
+	}
+	
 	// flash the menu on first use
 	if (!window.localStorage.getItem("webretro_settings_pastFirstStart")) {
 		hoverMenu.classList.add("show");
@@ -855,8 +1224,8 @@ function afterStart() {
 	// ctrl+v inside canvas
 	document.addEventListener("keydown", function(e) {
 		if (e.ctrlKey && e.key == "v") {
+			fakeKeyPress({code: "Backspace"});
 			navigator.clipboard.readText().then(function(text) {
-				fakeKeyPress({code: "Backspace"});
 				sendText(text);
 			});
 		}
@@ -919,7 +1288,7 @@ function initFromData(data) {
 			
 			// config
 			FS.createPath("/", "home/web_user/retroarch/userdata", true, true);
-			FS.writeFile("/home/web_user/retroarch/userdata/retroarch.cfg", nulKeys + keybinds + extraConfig);
+			FS.writeFile("/home/web_user/retroarch/userdata/retroarch.cfg", nulKeys + configObjToStr(savedKeybindsObj) + extraConfig);
 			
 			// start
 			Module.callMain(Module.arguments);
@@ -939,7 +1308,7 @@ var Module = {
 	arguments: ["/rom.bin", "--verbose"],
 	onRuntimeInitialized: function() {
 		wasmReady = true;
-		log("WASM compiled");
+		log("WASM ready");
 		
 		// fetch asset bundle
 		if (queries.hasOwnProperty("nobundle")) {

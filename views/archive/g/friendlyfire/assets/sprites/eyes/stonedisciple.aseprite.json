@@ -1,0 +1,60 @@
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 36, "y": 0, "w": 18, "h": 9 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 11, "y": 13, "w": 18, "h": 9 },
+    "sourceSize": { "w": 32, "h": 26 },
+    "duration": 2000
+   },
+   {
+    "filename": "1",
+    "frame": { "x": 36, "y": 9, "w": 18, "h": 8 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 11, "y": 14, "w": 18, "h": 8 },
+    "sourceSize": { "w": 32, "h": 26 },
+    "duration": 80
+   },
+   {
+    "filename": "2",
+    "frame": { "x": 18, "y": 11, "w": 18, "h": 7 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 11, "y": 15, "w": 18, "h": 7 },
+    "sourceSize": { "w": 32, "h": 26 },
+    "duration": 80
+   },
+   {
+    "filename": "3",
+    "frame": { "x": 18, "y": 0, "w": 18, "h": 11 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 11, "y": 13, "w": 18, "h": 11 },
+    "sourceSize": { "w": 32, "h": 26 },
+    "duration": 150
+   },
+   {
+    "filename": "4",
+    "frame": { "x": 0, "y": 0, "w": 18, "h": 12 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 11, "y": 12, "w": 18, "h": 12 },
+    "sourceSize": { "w": 32, "h": 26 },
+    "duration": 150
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.21-x64",
+  "image": "stonedisciple.png",
+  "format": "I8",
+  "size": { "w": 54, "h": 18 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "neutral", "from": 0, "to": 2, "direction": "pingpong" },
+   { "name": "amused", "from": 3, "to": 4, "direction": "forward" }
+  ]
+ }
+}

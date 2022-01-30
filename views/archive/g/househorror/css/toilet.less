@@ -1,0 +1,91 @@
+
+#toilet {
+	position:absolute;
+	width: 373px;
+	height: 542px;
+	cursor:move;
+	background:url(../images/toilet.jpg) no-repeat;
+
+	#sprite {
+		background: url(../images/hidden_corridor_player.png) no-repeat 0 0
+	}
+
+	#shadow  {
+		width: 122px;
+		height: 102px;
+		background: url(../images/hidden_corridor_shadow.png) no-repeat;
+		left: -38px;
+		top: -28px;
+		opacity:.5;
+	}
+
+	#floor {
+		position:absolute;
+		right: -12px;
+		bottom: 37px;
+		width: 373px;
+		height: 209px
+	}
+	
+	#dim {
+		position:absolute;
+		left:0;
+		top:0;
+		z-index:998;
+		width: 373px;
+		height: 542px;
+		background:url(../images/toilet_overlay.png) no-repeat;
+		opacity: .6;
+	}
+
+	#wc {
+		.item(
+			49px,
+			-117px,
+			18,
+			
+			99px,
+			282px,
+			
+			e(" url(../images/toilet_wc.png) ")
+		)
+	}
+
+	#cord {
+		.item(
+			53px,
+			-108px,
+			18,
+			
+			6px,
+			116px,
+			
+			e(" url(../images/toilet_cord.png) ")
+		);
+		.transition(all, .6s, ease-out);
+	}
+
+	#door_corridor {
+		.isometric_left;
+		width: 124px;
+		height: 234px;
+		position:absolute;
+		top: 75px;
+		left: 221px;
+		z-index:2000;
+		cursor: pointer;
+	}
+
+	#cord_use {
+		width: 20px;
+		height: 20px;
+		position:absolute;
+		top: 287px;
+		left: 59px;
+		z-index:2000;
+		border-radius:100%;
+		cursor: pointer;
+	}
+
+}
+

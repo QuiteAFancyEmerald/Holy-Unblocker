@@ -1,0 +1,55 @@
+{ "frames": {
+   "0": {
+    "frame": { "x": 0, "y": 0, "w": 36, "h": 38 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 36, "h": 38 },
+    "sourceSize": { "w": 36, "h": 38 },
+    "duration": 400
+   },
+   "1": {
+    "frame": { "x": 36, "y": 0, "w": 36, "h": 38 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 36, "h": 38 },
+    "sourceSize": { "w": 36, "h": 38 },
+    "duration": 100
+   },
+   "2": {
+    "frame": { "x": 0, "y": 38, "w": 36, "h": 38 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 36, "h": 38 },
+    "sourceSize": { "w": 36, "h": 38 },
+    "duration": 400
+   },
+   "3": {
+    "frame": { "x": 36, "y": 38, "w": 36, "h": 38 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 36, "h": 38 },
+    "sourceSize": { "w": 36, "h": 38 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.19.2",
+  "image": "magicspider.png",
+  "format": "I8",
+  "size": { "w": 72, "h": 76 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 3, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Meta", "opacity": 255, "blendMode": "normal", "data": "{ \"eyeOffsetFrames\": [ 3, 4 ]}" },
+   { "name": "Stroke", "opacity": 255, "blendMode": "normal" },
+   { "name": "Body", "opacity": 255, "blendMode": "normal" },
+   { "name": "Legs", "opacity": 255, "blendMode": "normal" },
+   { "name": "wings", "opacity": 255, "blendMode": "normal" },
+   { "name": "Head", "opacity": 255, "blendMode": "normal" },
+   { "name": "hair", "opacity": 255, "blendMode": "normal" }
+  ]
+ }
+}

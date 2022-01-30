@@ -1,0 +1,29 @@
+{
+  "name": "ThePond",
+  "version": "1.3.1",
+  "description": "A narrow fellow in the Pond",
+  "main": "test-server.js",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node test-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Zolmeister/pond.git"
+  },
+  "keywords": [
+    "The",
+    "Pond",
+    "Pond",
+    "Game"
+  ],
+  "author": "Zolmeister",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/Zolmeister/pond/issues"
+  }
+}

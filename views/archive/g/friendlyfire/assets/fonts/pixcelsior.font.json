@@ -1,0 +1,646 @@
+{
+    "image": "pixcelsior.png",
+    "characterMapping": [
+        {
+            "char": " ",
+            "width": 4,
+            "compactablePrecursors": []
+        },
+        {
+            "char": "!",
+            "width": 1,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "\"",
+            "width": 3,
+            "compactablePrecursors": [
+                "+", ",", "-", ".", "4", ":", ";", "A", "L", "_", "l", "Ä", "}", "…", "↑", "→", "↓",
+                "►"
+            ]
+        },
+        {
+            "char": "'",
+            "width": 1,
+            "compactablePrecursors": [
+                "+", ",", "-", ".", "4", ":", ";", "A", "L", "_", "l", "Ä", "}", "…", "↑", "→", "↓",
+                "►"
+            ]
+        },
+        {
+            "char": "(",
+            "width": 2,
+            "compactablePrecursors": []
+        },
+        {
+            "char": ")",
+            "width": 2,
+            "compactablePrecursors": [
+                "+", "-", "4", "O", "r", "v", "w", "y", "Ö", "}", "←", "↑", "→", "↓", "►", "♪"
+            ]
+        },
+        {
+            "char": "+",
+            "width": 5,
+            "compactablePrecursors": [
+                "\"", "'", "(", "+", ",", ".", "7", "C", "K", "L", "T", "X", "Y", "Z", "[", "_",
+                "l", "{", "‘", "’", "“", "”", "…"
+            ]
+        },
+        {
+            "char": ",",
+            "width": 2,
+            "compactablePrecursors": [
+                "!", "\"", "'", "+", "-", ".", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+                ":", "?", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O",
+                "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f",
+                "h", "i", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+                "Ä", "Ö", "Ü", "à", "á", "ä", "è", "é", "ö", "ü", "}", "‘", "’", "“", "”", "…", "←",
+                "↑", "→", "↓", "►", "♪", "◊"
+            ]
+        },
+        {
+            "char": "-",
+            "width": 4,
+            "compactablePrecursors": [
+                "\"", "'", "(", "+", ",", ".", "7", "C", "K", "L", "T", "X", "Y", "Z", "[", "_",
+                "l", "{", "‘", "’", "“", "”", "…"
+            ]
+        },
+        {
+            "char": ".",
+            "width": 1,
+            "compactablePrecursors": [
+                "\"", "'", "+", "-", "4", "7", "?", "F", "P", "T", "V", "W", "Y", "[", "f", "r",
+                "v", "w", "y", "{", "}", "‘", "’", "“", "”", "←", "↑", "→", "↓", "►", "♪", "◊"
+            ]
+        },
+        {
+            "char": "0",
+            "width": 5,
+            "compactablePrecursors": ["[", "_", "{", "‘", "“"]
+        },
+        {
+            "char": "1",
+            "width": 3,
+            "compactablePrecursors": [
+                ",", ".", "4", "K", "L", "T", "[", "_", "l", "{", "‘", "“", "…"
+            ]
+        },
+        {
+            "char": "2",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "3",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "4",
+            "width": 5,
+            "compactablePrecursors": [
+                "\"", "'", "(", ",", ".", "7", "K", "L", "T", "Y", "Z", "[", "_", "l", "{", "‘",
+                "’", "“", "”", "…"
+            ]
+        },
+        {
+            "char": "5",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "6",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "7",
+            "width": 5,
+            "compactablePrecursors": [
+                "+", ",", "-", ".", "4", ":", ";", "A", "L", "_", "a", "b", "c", "e", "g", "h", "k",
+                "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "Ä", "à",
+                "á", "ä", "è", "é", "ö", "ü", "{", "}", "…", "←", "↑", "→", "↓", "►"
+            ]
+        },
+        {
+            "char": "8",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "9",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": ":",
+            "width": 1,
+            "compactablePrecursors": ["\"", "'", "7", "T", "Y", "[", "{", "‘", "’", "“", "”"]
+        },
+        {
+            "char": ";",
+            "width": 2,
+            "compactablePrecursors":  [
+                "!", "\"", "'", "+", "-", ".", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+                ":", "?", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O",
+                "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f",
+                "h", "i", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+                "Ä", "Ö", "Ü", "à", "á", "ä", "è", "é", "ö", "ü", "}", "‘", "’", "“", "”", "…", "←",
+                "↑", "→", "↓", "►", "♪", "◊"
+            ]
+        },
+        {
+            "char": "?",
+            "width": 5,
+            "compactablePrecursors": [
+                "+", ",", "-", ".", "4", ":", ";", "A", "L", "_", "l", "Ä", "{", "}", "…", "↑", "→",
+                "↓", "►"
+            ]
+        },
+        {
+            "char": "A",
+            "width": 5,
+            "compactablePrecursors": ["\"", "'", "7", "T", "Y", "[", "{", "‘", "’", "“", "”"]
+        },
+        {
+            "char": "B",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "C",
+            "width": 5,
+            "compactablePrecursors": ["[", "_", "{", "‘", "“"]
+        },
+        {
+            "char": "D",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "E",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "F",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "G",
+            "width": 5,
+            "compactablePrecursors": ["[", "_", "{", "‘", "“"]
+        },
+        {
+            "char": "H",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "I",
+            "width": 1,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "J",
+            "width": 4,
+            "compactablePrecursors": [
+                "\"", "'", "+", "-", "7", "?", "F", "P", "T", "V", "Y", "[", "f", "r", "v", "y",
+                "{", "}", "‘", "’", "“", "”", "↑", "→", "↓", "►"
+            ]
+        },
+        {
+            "char": "K",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "L",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "M",
+            "width": 7,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "N",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "O",
+            "width": 5,
+            "compactablePrecursors": ["[", "_", "{", "‘", "“"]
+        },
+        {
+            "char": "P",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "Q",
+            "width": 5,
+            "compactablePrecursors": ["[", "_", "{", "‘", "“"]
+        },
+        {
+            "char": "R",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "S",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "T",
+            "width": 5,
+            "compactablePrecursors": [
+                "+", ",", "-", ".", "4", ":", ";", "A", "L", "_", "a", "b", "c", "e", "g", "h", "k",
+                "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "Ä", "à",
+                "á", "ä", "è", "é", "ö", "ü", "{", "}", "…", "←", "↑", "→", "↓", "►"
+            ]
+        },
+        {
+            "char": "U",
+            "width": 5,
+            "compactablePrecursors": ["_", "{"]
+        },
+        {
+            "char": "V",
+            "width": 5,
+            "compactablePrecursors": [",", ".", "4", "L", "_", "l", "{", "…"]
+        },
+        {
+            "char": "W",
+            "width": 7,
+            "compactablePrecursors": [",", ".", "L", "_", "l", "{", "…"]
+        },
+        {
+            "char": "X",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "Y",
+            "width": 5,
+            "compactablePrecursors": [
+                "+", ",", "-", ".", "4", ":", ";", "A", "L", "_", "l", "Ä", "{", "}", "…", "↑", "→",
+                "↓", "►"
+            ]
+        },
+        {
+            "char": "Z",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "[",
+            "width": 2,
+            "compactablePrecursors": []
+        },
+        {
+            "char": "]",
+            "width": 2,
+            "compactablePrecursors": [
+                "+", "-", ".", "0", "4", ":", "A", "D", "L", "O", "a", "b", "c",
+                "e", "h", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "v",
+                "w", "x", "y", "z", "Ä", "Ö", "à", "á", "ä", "è", "é", "ö", "ü",
+                "}", "…", "←", "↑", "→", "↓", "►", "♪"
+            ]
+        },
+        {
+            "char": "_",
+            "width": 5,
+            "compactablePrecursors": [
+                "\"", "'", "+", "-", "0", "4", "7", "?", "D", "F", "P", "T",
+                "V", "W", "Y", "f", "r", "v", "w", "y", "Ö", "Ü", "}", "‘", "’",
+                "“", "”", "←", "↑", "→", "↓", "►", "♪", "◊"
+            ]
+        },
+        {
+            "char": "a",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "b",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "c",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "d",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "e",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "f",
+            "width": 3,
+            "compactablePrecursors": [
+                "(", ",", ".", "4", "K", "L", "T", "[", "_", "l", "{", "}", "‘",
+                "“", "…", "↑", "→", "↓", "►"
+            ]
+        },
+        {
+            "char": "g",
+            "width": 5,
+            "compactablePrecursors": ["T", "‘", "“"]
+        },
+        {
+            "char": "h",
+            "width": 5,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "i",
+            "width": 1,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "j",
+            "width": 2,
+            "compactablePrecursors": [
+                "!", "\"", "'", "+", "-", ".", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+                ":", "?", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O",
+                "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f",
+                "h", "i", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+                "Ä", "Ö", "Ü", "à", "á", "ä", "è", "é", "ö", "ü", "}", "‘", "’", "“", "”", "…", "←",
+                "↑", "→", "↓", "►", "♪", "◊"
+            ]
+        },
+        {
+            "char": "k",
+            "width": 4,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "l",
+            "width": 2,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "m",
+            "width": 7,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "n",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "o",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "p",
+            "width": 5,
+            "compactablePrecursors": ["T", "‘", "“"]
+        },
+        {
+            "char": "q",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "r",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "s",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "t",
+            "width": 3,
+            "compactablePrecursors": [
+                "(", ",", ".", "4", "T", "[", "_", "l", "{", "‘", "“", "…", "↑",
+                "→", "↓", "►"
+            ]
+        },
+        {
+            "char": "u",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "v",
+            "width": 5,
+            "compactablePrecursors": [
+                "(", ",", ".", "K", "L", "T", "[", "_", "l", "{", "‘", "“", "…"
+            ]
+        },
+        {
+            "char": "w",
+            "width": 7,
+            "compactablePrecursors": [
+                "(", ",", ".", "K", "L", "T", "[", "_", "l", "{", "‘", "“", "…"
+            ]
+        },
+        {
+            "char": "x",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "y",
+            "width": 5,
+            "compactablePrecursors": [
+                "(", ",", ".", "K", "L", "T", "[", "_", "l", "{", "‘", "“", "…"
+            ]
+        },
+        {
+            "char": "z",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "Ä",
+            "width": 5,
+            "compactablePrecursors": ["\"", "'", "7", "T", "Y", "[", "{", "‘", "’", "“", "”"]
+        },
+        {
+            "char": "Ö",
+            "width": 5,
+            "compactablePrecursors": ["[", "_", "{", "‘", "“"]
+        },
+        {
+            "char": "Ü",
+            "width": 5,
+            "compactablePrecursors": ["_", "{"]
+        },
+        {
+            "char": "à",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "á",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "ä",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "è",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "é",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "ö",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "ü",
+            "width": 5,
+            "compactablePrecursors": ["T", "[", "{", "‘", "“"]
+        },
+        {
+            "char": "{",
+            "width": 3,
+            "compactablePrecursors": [
+                "\"", "'", "(", ",", ".", "C", "K", "L", "T", "X", "Y", "Z", "[", "_", "l", "{",
+                "‘", "’", "“", "”", "…"
+            ]
+        },
+        {
+            "char": "}",
+            "width": 3,
+            "compactablePrecursors": [
+                "\"", "'", "+", "-", ".", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ":",
+                "?", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P",
+                "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "h",
+                "i", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "v", "w", "x", "y", "z", "Ä",
+                "Ö", "Ü", "à", "á", "ä", "è", "é", "ö", "ü", "}", "…", "←", "↑", "→", "↓", "►", "♪",
+                "◊"
+            ]
+        },
+        {
+            "char": "‘",
+            "width": 2,
+            "compactablePrecursors": [
+                "+", ",", "-", ".", "4", ":", ";", "A", "L", "_", "l", "Ä", "}", "…", "↑", "→", "↓",
+                "►"
+            ]
+        },
+        {
+            "char": "’",
+            "width": 2,
+            "compactablePrecursors": [
+                "+", ",", "-", ".", "4", ":", ";", "A", "L", "[", "_", "l", "Ä", "{", "}", "‘", "“",
+                "…", "↑", "→", "↓", "►"
+            ]
+        },
+        {
+            "char": "“",
+            "width": 4,
+            "compactablePrecursors": [
+                "+", ",", "-", ".", "4", ":", ";", "A", "L", "_", "l", "Ä", "}", "…", "↑", "→", "↓",
+                "►"
+            ]
+        },
+        {
+            "char": "”",
+            "width": 4,
+            "compactablePrecursors": [
+                "+", ",", "-", ".", "4", ":", ";", "A", "L", "[", "_", "l", "Ä", "{", "}", "‘", "“",
+                "…", "↑", "→", "↓", "►"
+            ]
+        },
+        {
+            "char": "…",
+            "width": 5,
+            "compactablePrecursors": [
+                "\"", "'", "+", "-", "4", "7", "?", "T", "V", "W", "Y", "]", "f", "j", "v", "w",
+                "y", "{", "}", "‘", "’", "“", "”", "←", "↑", "→", "↓", "◊"
+            ]
+        },
+        {
+            "char": "←",
+            "width": 7,
+            "compactablePrecursors": [
+                "\"", "'", "(", ",", ".", "7", "?", "C", "K", "L", "T", "V",
+                "X", "Y", "Z", "[", "_", "l", "{", "‘", "’", "“", "”", "…"
+            ]
+        },
+        {
+            "char": "↑",
+            "width": 7,
+            "compactablePrecursors": [
+                "\"", "'", "(", ",", ".", "7", "?", "C", "K", "L", "T", "V",
+                "X", "Y", "Z", "[", "_", "l", "{", "‘", "’", "“", "”", "…"
+            ]
+        },
+        {
+            "char": "→",
+            "width": 7,
+            "compactablePrecursors": ["(", ",", ".", "L", "T", "[", "_", "l", "{", "…"]
+        },
+        {
+            "char": "↓",
+            "width": 7,
+            "compactablePrecursors": [
+                "\"", "'", "(", ",", ".", "7", "?", "C", "K", "L", "T", "V",
+                "X", "Y", "Z", "[", "_", "l", "{", "‘", "’", "“", "”", "…"
+            ]
+        },
+        {
+            "char": "►",
+            "width": 6,
+            "compactablePrecursors": ["{"]
+        },
+        {
+            "char": "♪",
+            "width": 5,
+            "compactablePrecursors": [
+                "\"", "'", "+", "-", "7", "?", "F", "P", "T", "V", "Y", "[", "f", "r", "v", "y",
+                "{", "}", "‘", "’", "“", "”", "↑", "→", "↓", "►"
+            ]
+        },
+        {
+            "char": "◊",
+            "width": 5,
+            "compactablePrecursors": [",", ".", "L", "_", "l", "{", "…"]
+        },
+        {
+            "char": "�",
+            "width": 5,
+            "compactablePrecursors": []
+        }
+    ],
+    "margin": 1,
+    "colors": {
+        "white": "#ffffff",
+        "black": "#000000",
+        "red": "#b70000",
+        "darkgrey": "#3d3d3d",
+        "grey": "#8f8f8f"
+    }
+}

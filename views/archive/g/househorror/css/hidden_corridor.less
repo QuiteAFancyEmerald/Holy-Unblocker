@@ -1,0 +1,111 @@
+
+#hidden_corridor {
+	position:absolute;
+	width: 789px;
+	height: 749px;
+	cursor:move;
+	background:url(../images/hidden_corridor.jpg) no-repeat;
+
+	#sprite {
+		background: url(../images/hidden_corridor_player.png) no-repeat 0 0
+	}
+
+	#shadow  {
+		width: 122px;
+		height: 102px;
+		background: url(../images/hidden_corridor_shadow.png) no-repeat;
+		left: -38px;
+		top: -28px;
+		opacity:.5;
+	}
+
+	#floor {
+		position:absolute;
+		right:-191px;
+		bottom:-107px;
+		width: 970px;
+		height: 560px
+	}
+	
+	#switch {
+		width: 57px;
+		height: 71px;
+		position: absolute;
+		left: 678px;
+		top: -146px;
+		z-index: 1;
+		background: url(../images/hidden_corridor_switch.png) no-repeat 0 0;
+	}
+
+	#switch_use {
+		.isometric_left;
+		width: 50px;
+		height: 40px;
+		position: absolute;
+		left: 694px;
+		top: 156px;
+		z-index:2000;
+		cursor:pointer;
+	}
+	
+	#discharge {
+		.item(
+			689px,
+			-217px,
+			1,
+			
+			40px,
+			99px,
+			
+			e(" url(../images/hidden_corridor_discharge.png) ")
+		);
+		opacity:0;
+
+		div { 
+			width: 107px;
+			height: 178px;
+			background: url(../images/hidden_corridor_discharge_glow.png);
+			position: absolute;
+			border-radius: 100%;
+			left: 50%;
+			top: 50%;
+			margin: -89px 0 0 -53px;
+		}
+	}
+
+	#spot {
+		.item(
+			378px,
+			-173px,
+			1,
+			
+			137px,
+			159px,
+			
+			e(" url(../images/hidden_corridor_spot.png) ")
+		)
+	}
+
+	#peephole {
+		.item(
+			376px,
+			-172px,
+			2000,
+			
+			205px,
+			176px,
+			
+			e(" url(../images/hidden_corridor_peephole.png) ")
+		)
+	}
+
+	#peephole_use {
+		.invisible_door(487px, 461px, 0, -360px);
+	}
+
+	#door_corridor {
+		.invisible_door(-57px, 677px);
+	}
+
+}
+

@@ -1,0 +1,333 @@
+/* line 17, ../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../Applications/LiveReload.app/Contents/Resources/SASS.lrplugin/lib/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 7, ../sass/screen.scss */
+body {
+  background-color: black;
+  color: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* line 14, ../sass/screen.scss */
+canvas {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  position: absolute;
+}
+
+/* line 19, ../sass/screen.scss */
+.game {
+  margin: 32px auto;
+  width: 640px;
+  height: 480px;
+}
+
+/* line 25, ../sass/screen.scss */
+.loader {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 31, ../sass/screen.scss */
+.loader #level-data {
+  width: 480px;
+}
+
+/* line 36, ../sass/screen.scss */
+button {
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* line 45, ../sass/screen.scss */
+.material-btn {
+  display: block;
+  font-weight: 100;
+  font-size: 1em;
+  letter-spacing: 0.08em;
+  color: white;
+  border-radius: 0.2em;
+  margin: 0 auto;
+  padding: 0.5em;
+  text-transform: uppercase;
+}
+/* line 58, ../sass/screen.scss */
+.material-btn.antimatter {
+  background-color: #f43;
+}
+/* line 62, ../sass/screen.scss */
+.material-btn.matter {
+  background-color: #26e;
+}
+
+/* line 67, ../sass/screen.scss */
+.title-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #222;
+  z-index: 1;
+}
+/* line 75, ../sass/screen.scss */
+.title-view .title-container {
+  display: table;
+  width: 100%;
+  height: 40%;
+  -webkit-transform: translateZ(2000px);
+  -moz-transform: translateZ(2000px);
+  -ms-transform: translateZ(2000px);
+  -o-transform: translateZ(2000px);
+  transform: translateZ(2000px);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-perspective: 1000px;
+  -moz-perspective: 1000px;
+  -ms-perspective: 1000px;
+  -o-perspective: 1000px;
+  perspective: 1000px;
+  -webkit-perspective-origin: center center;
+  -moz-perspective-origin: center center;
+  -ms-perspective-origin: center center;
+  -o-perspective-origin: center center;
+  perspective-origin: center center;
+}
+/* line 85, ../sass/screen.scss */
+.title-view .title-container .titles {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+/* line 99, ../sass/screen.scss */
+.title-view .start-btn {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  width: 128px;
+  height: 64px;
+  margin-left: -64px;
+  margin-top: -32px;
+  text-transform: uppercase;
+  background-color: rgba(34, 34, 34, 0.8);
+  border: 2px solid white;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  -webkit-transform: translateZ(10000px);
+  -moz-transform: translateZ(10000px);
+  -ms-transform: translateZ(10000px);
+  -o-transform: translateZ(10000px);
+  transform: translateZ(10000px);
+}
+/* line 120, ../sass/screen.scss */
+.title-view .start-btn:active {
+  background-color: white;
+}
+
+/* line 129, ../sass/screen.scss */
+.title,
+.title-shadow {
+  position: absolute;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 10vw;
+  font-weight: bold;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* line 138, ../sass/screen.scss */
+.title {
+  color: white;
+  text-shadow: 0 0 10px black;
+}
+
+/* line 143, ../sass/screen.scss */
+.title-shadow {
+  color: black;
+  -webkit-transform: translateZ(-100px);
+  -moz-transform: translateZ(-100px);
+  -ms-transform: translateZ(-100px);
+  -o-transform: translateZ(-100px);
+  transform: translateZ(-100px);
+}
+
+/* line 152, ../sass/screen.scss */
+.settings-view .settings {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  top: 50%;
+  left: 50%;
+  margin-top: -125px;
+  margin-left: -125px;
+  z-index: 2;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+/* line 166, ../sass/screen.scss */
+.settings-view .setting {
+  margin-bottom: 2px;
+}
+/* line 169, ../sass/screen.scss */
+.settings-view .setting label {
+  display: inline;
+  font-weight: 100;
+  font-size: 2em;
+  letter-spacing: 0.08em;
+}
+/* line 177, ../sass/screen.scss */
+.settings-view .setting input[type="checkbox"],
+.settings-view .setting input[type="checkbox"]:checked {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  width: 2em;
+  height: 2em;
+}
+/* line 184, ../sass/screen.scss */
+.settings-view .toggle-settings-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  font-size: 3em;
+  color: white;
+}
+
+@media screen and (min-width: 320px), screen and (min-height: 240px) {
+  /* line 198, ../sass/screen.scss */
+  .game {
+    margin: auto;
+  }
+
+  /* line 203, ../sass/screen.scss */
+  .game,
+  canvas {
+    width: 320px;
+    height: 240px;
+  }
+
+  /* line 208, ../sass/screen.scss */
+  .material-btn {
+    width: 320px;
+  }
+}
+@media screen and (min-width: 480px) and (min-height: 400px) {
+  /* line 216, ../sass/screen.scss */
+  .game {
+    margin: auto;
+  }
+
+  /* line 221, ../sass/screen.scss */
+  .game,
+  canvas {
+    width: 480px;
+    height: 360px;
+  }
+
+  /* line 226, ../sass/screen.scss */
+  .material-btn {
+    width: 480px;
+  }
+}
+@media screen and (min-width: 640px) and (min-height: 576px) {
+  /* line 235, ../sass/screen.scss */
+  .game {
+    margin: 32px auto;
+    width: 640px;
+    height: 480px;
+  }
+
+  /* line 241, ../sass/screen.scss */
+  canvas {
+    width: auto;
+    height: auto;
+  }
+
+  /* line 246, ../sass/screen.scss */
+  .material-btn {
+    width: 256px;
+  }
+}

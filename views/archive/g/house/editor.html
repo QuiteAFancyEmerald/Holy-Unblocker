@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Editor</title>
+
+  <style>
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    canvas {
+      border: 2px solid black;
+    }
+
+    textarea {
+      display: block;
+      width: 640px;
+    }
+
+    .controls {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: #fff;
+      opacity: 0.8;
+    }
+
+    label,
+    input,
+    .history {
+      display: block;
+    }
+
+    #translate-x,
+    #translate-y {
+      display: inline;
+    }
+
+    .history {
+      width: 224px;
+    }
+
+    .help > p {
+      font-size: 0.8em;
+      line-height: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <label for="scale">Scale</label>
+    <input type="number" id="scale" value="0.1" min="0.1" max="2" step="0.1">
+
+    <label for="translate">Translate All</label>
+    <input type="number" id="translate-x" value="0" min="-100" max="100" step="1">
+    <input type="number" id="translate-y" value="0" min="-100" max="100" step="1">
+    <button id="translate-btn">Translate</button>
+
+    <label for="history">History</label>
+    <select class="history" id="history" size="20"></select>
+
+    <button id="load-history-btn">Load</button>
+    <button id="remove-history-btn">Remove</button>
+    <button id="clear-history-btn">Clear</button>
+  </div>
+  <div id="editor"></div>
+  <div class="data-controls">
+    <label for="load-scale">Scale</label>
+    <input type="number" id="load-scale" value="0.1" min="0.1" max="2" step="0.1">
+
+    <button id="load-data-btn">Load Data</button>
+    <button id="load-batch-btn">Load Batch Data</button>
+  </div>
+  <div class="help">
+    <p>A - add shape.</p>
+    <p>D - remove shape.</p>
+    <p>V - add vertex.</p>
+    <p>Alt+click - remove vertex.</p>
+    <p>R - reset camera.</p>
+    <p>S - toggle snapping.</p>
+    <p>P - move player preview to mouse position.</p>
+    <p>Alt+P - center all polygons on centroid.</p>
+    <p>Space - export as physics entities.</p>
+    <p>Alt+Space - export as batch physics entities.</p>
+  </div>
+
+  <script data-main="js/editor-main" src="./js/require.js"></script>
+</body>
+</html>

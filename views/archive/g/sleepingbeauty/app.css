@@ -1,0 +1,148 @@
+@font-face {
+  font-family: Metrickal;
+  src: url(Metrickal-Regular.otf);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  line-height: 1.2;
+  margin: 0;
+  font-family: Metrickal, monospace;
+  color: #aaa;
+  background-color: #000;
+}
+body > * {
+  position: absolute;
+  transition: opacity 2000ms;
+}
+ul {
+  margin: 1.2em 0;
+  padding-left: 4ch;
+}
+.hidden {
+  opacity: 0;
+}
+.inactive {
+  opacity: 0.5;
+}
+#intro {
+  font-size: 18px;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+@media (max-height: 600px), (max-width: 830px) {
+  #intro {
+    font-size: 16px;
+  }
+}
+@media (max-height: 530px), (max-width: 750px) {
+  #intro {
+    font-size: 14px;
+  }
+}
+@media (max-height: 470px), (max-width: 680px) {
+  #intro {
+    font-size: 12px;
+  }
+}
+#intro > * {
+  position: absolute;
+}
+#intro .title {
+  white-space: pre;
+  left: 2ch;
+  top: 1.2em;
+  color: goldenrod;
+}
+#intro .tower {
+  white-space: pre;
+  right: 6ch;
+  bottom: 4.2em;
+}
+#intro .tower span:not(.transparent) {
+  background-color: #222;
+}
+#intro .text {
+  left: 16ch;
+  right: 28ch;
+  bottom: 6.6em;
+}
+#intro .text span {
+  color: #fff;
+}
+#intro .bottom {
+  bottom: 3em;
+  right: 1ch;
+  white-space: pre;
+}
+#intro .bottom .grass {
+  color: #3c3;
+}
+#intro .funfact {
+  color: #666;
+  left: 1ch;
+  bottom: 1.2em;
+  right: 1ch;
+  text-align: center;
+}
+#map {
+  left: 0;
+  top: 0;
+  width: 60vw;
+  height: 60vh;
+  overflow: hidden;
+}
+#map canvas {
+  position: relative;
+}
+#status {
+  right: 0;
+  bottom: 0;
+  width: 40vw;
+  height: 40vh;
+  border: 6px solid #000;
+}
+#combat {
+  right: 0;
+  top: 0;
+  width: 40vw;
+  height: 60vh;
+}
+#combat p {
+  text-align: center;
+  color: goldenrod;
+}
+#combat ul {
+  list-style: none;
+  display: inline-block;
+}
+#combat li span {
+  font-size: 24px;
+  vertical-align: middle;
+}
+@media (max-width: 1130px) and (max-height: 610px) {
+  #combat li span {
+    font-size: 18px;
+  }
+}
+#combat li:not(.inactive) span {
+  font-weight: bold;
+}
+#combat canvas,
+#combat ul {
+  vertical-align: middle;
+}
+#log {
+  left: 0;
+  bottom: 0;
+  width: 60vw;
+  height: 40vh;
+  overflow: hidden;
+  border: 6px solid #000;
+}
+#log p {
+  margin-top: 0;
+}

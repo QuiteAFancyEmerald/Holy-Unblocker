@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<script type="text/ecmascript" src="common/xhr.js"></script>
+<script type="text/ecmascript" src="chess.js"></script>
+<link type="text/css" rel="stylesheet" href="css/chess.css" />
+<link type="text/css" rel="stylesheet" href="skins/gnomechess.css" />
+<title>Chess</title>
+<script type="text/javascript">
+var nVwPressed = false;
+function pressVwBtn(nBtnId) {
+	if (nVwPressed) { document.getElementById("viewBtn" + nVwPressed).className = ""; }
+	document.getElementById("viewBtn" + nBtnId).className = "pressedBtn";
+	nVwPressed = nBtnId;
+}
+
+// Firefox only
+function onPGNLoaded(frEvnt) {
+	var sFBody = frEvnt.target.result;
+	chess.readPGN(sFBody, document.chessCtrl3.plyerClr2[1].checked);
+}
+
+// Firefox only
+function loadPGNFile() {
+	var oFile = document.getElementById("PGNFileData").files[0];
+	if (oFile) {
+		var oFReader = new FileReader();
+		oFReader.onload = onPGNLoaded;
+		oFReader.readAsText(oFile);
+	}
+}
+
+function initChess() {
+	chess.useAI(document.chessCtrl1.useAI.checked);
+	chess.setPromotion(document.chessCtrl1.selPromo.selectedIndex);
+	chess.setFrameRate(Math.abs(Number(document.chessCtrl2.frameRateCtrl.value)) || 1000);
+	chess.setSide(document.chessCtrl2.selSide.selectedIndex);
+	chess.useKeyboard(document.chessCtrl2.KeybCtrl.checked);
+	chess.placeById("chessDesk");
+	document.chessCtrl1.plyDepthCtrl.value = "0";
+	chess.setView(1);
+	pressVwBtn(1);
+}
+</script>
+<style type="text/css">
+hr {
+	width: 30%;
+	margin-top: 32px;
+	margin-bottom: 24px;
+}
+
+img.tbBtn {
+	cursor: pointer;
+	margin: 1px 3px 1px 3px;
+}
+
+#pgnTable {
+	width: auto;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+	border: 0;
+}
+
+#pgnTable tr td { padding: 2px; }
+
+#chessCtrlPanel {
+	display: none;
+}
+
+#chessDesk {
+	clear: both;
+	width: auto;
+	height: auto;
+	margin-top: 32px;
+	margin-bottom: 32px;
+}
+
+#chessToolBar {
+	width: 550px;
+	height: auto;
+	margin: 12px auto;
+	background-color: #969696;
+	-moz-box-shadow: inset 0 25px 27px -10px #BDBDBD;
+	-webkit-box-shadow: inset 0 25px 27px -10px #BDBDBD;
+	box-shadow: inset 0 25px 27px -10px #BDBDBD;
+	border: 2px solid #424242;
+	border-radius:4px;
+	text-align:center;
+	padding: 6px 3px 2px 3px;
+}
+
+#setViewBtns {
+	width: auto;
+	float: left;
+}
+
+#setViewBtns span {
+	margin: 0 3px;
+	display: inline-block;
+	font: 12px / 13px "Lucida Grande", sans-serif;
+	text-shadow: rgba(255, 255, 255, 0.4) 0 1px;
+	padding: 3px 6px;
+	border: 1px solid rgba(0, 0, 0, 0.6);
+	background-color: #969696;
+	cursor: default;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-moz-box-shadow: rgba(255, 255, 255, 0.4) 0 1px, inset 0 20px 20px -10px white;
+	-webkit-box-shadow: rgba(255, 255, 255, 0.4) 0 1px, inset 0 20px 20px -10px white;
+	box-shadow: rgba(255, 255, 255, 0.4) 0 1px, inset 0 20px 20px -10px white;
+}
+#setViewBtns span.pressedBtn {
+	background: #B5B5B5;
+	-moz-box-shadow: inset rgba(0, 0, 0, 0.4) 0 -5px 12px, inset rgba(0, 0, 0, 1) 0 1px 3px, rgba(255, 255, 255, 0.4) 0 1px;
+	-webkit-box-shadow: inset rgba(0, 0, 0, 0.4) 0 -5px 12px, inset rgba(0, 0, 0, 1) 0 1px 3px, rgba(255, 255, 255, 0.4) 0 1px;
+	box-shadow: inset rgba(0, 0, 0, 0.4) 0 -5px 12px, inset rgba(0, 0, 0, 1) 0 1px 3px, rgba(255, 255, 255, 0.4) 0 1px;
+}
+.configitem {
+	border:2px solid #424242;
+	border-radius:4px;
+	padding:6px;
+	margin:8px;
+}
+</style>
+</head>
+
+<body onload="initChess();">
+
+<form name="chessCtrl1" onsubmit="return(false);">
+<p style="text-align:center;">
+<input type="button" name="strtBtn" value="New game" onclick="chess.organize(this.form.plyerClr1[1].checked);" />
+<span class="configitem"><input id="useAIAsk" name="useAI" type="checkbox" onclick="chess.useAI(this.checked);" checked /> <label for="useAIAsk">Against machine</label></span>
+<span class="configitem">Pawn Promotion to: <select onchange="chess.setPromotion(this.selectedIndex);" name="selPromo"><option>Queen</option><option>Rook</option><option>Bishop</option><option>Knight</option></select></span>
+<span class="configitem">Player: <input type="radio" name="plyerClr1" id="white1" checked /> <label for="white1">white</label> <input type="radio" name="plyerClr1" id="black1" /> <label for="black1">black</label></span>
+<span class="configitem">Machine &quot;think time&quot; (press enter to save): <input type="text" name="plyDepthCtrl" value="0" size="2" onkeypress=";if(event.keyCode===13&&chess.setPlyDepth(this.value)){alert('Ply depth setted.' + (Number(this.value) > 2 ? '\nAttention! The game could be very slow.' : ' Good game :)'));}" /></span></p>
+
+<div id="chessToolBar"><div id="setViewBtns"><span id="viewBtn2" onclick="chess.setView(2);pressVwBtn(2);" onmousedown="return(false);">3D view</span><span id="viewBtn1" onclick="chess.setView(1);pressVwBtn(1);" onmousedown="return(false);">2D view</span><span id="viewBtn3" onclick="chess.setView(3);pressVwBtn(3);" onmousedown="return(false);">Both</span></div>
+<img class="tbBtn" src="icons/skip-backward.png" title="" onclick="chess.backToStart();" />
+<img class="tbBtn" src="icons/backward.png" title="" onclick="chess.navigate(-10, true);" />
+<img class="tbBtn" src="icons/reverse-play.png" title="" onclick="chess.navigate(-1, true);" />
+<img class="tbBtn" src="icons/stop.png" title="" onclick="chess.stopMotion();" />
+<img class="tbBtn" src="icons/play.png" title="" onclick="chess.navigate(1, true);" />
+<img class="tbBtn" src="icons/forward.png" title="" onclick="chess.navigate(10, true);" />
+<img class="tbBtn" src="icons/skip-forward.png" title="" onclick="chess.returnToEnd();" />
+<img class="tbBtn" src="icons/go-previous.png" title="" onclick="chess.navigate(-1);">
+<img class="tbBtn" src="icons/go-next.png" title="" onclick="chess.navigate(1);" />
+<img class="tbBtn" src="icons/help-hint.png" title="" onclick="chess.help();" />
+</div>
+</form>
+
+<div id="chessDesk"></div>
+
+<form name="chessCtrl2" onsubmit="return(false);">
+<p style="text-align:center;">
+<span class="configitem">View side: <select onchange="chess.setSide(this.selectedIndex);" name="selSide"><option>White</option><option>Black</option><option selected>Human side</option></select></span>
+<span class="configitem"><input id="useKeybAsk" name="KeybCtrl" type="checkbox" onclick="chess.useKeyboard(this.checked);" checked /> <label for="useKeybAsk">Enable keyboard</label></span>
+<span class="configitem">Motion frame rate: <input type="text" name="frameRateCtrl" value="1000" size="5" onchange="var nMs=new Number(this.value);if(!isNaN(nMs)&&nMs>0){chess.setFrameRate(nMs);}" /> ms</p></span>
+</form>
+<!--
+<hr />
+<h3 style="text-align:center;">Running code within the "chess" object.</h3>
+<p style="text-align:center;">Please uncomment the function chess.runInside(<em>sCode</em>) to execute your code.<br />
+<textarea rows="10" cols="55" id="debugArea" onkeyup="if(event.ctrlKey&&event.shiftKey&&event.keyCode===32){chess.runInside(this.value);}">
+/**
+* Javascript Console.
+* Press Ctrl+Shift+Space to run code
+* within the "chess" object.
+*/
+
+var sRappr = "";
+for (nBoardX = 0; nBoardX &lt; 12; nBoardX++) {
+	var nBoardY = 0;
+	for (nBoardY = 0; nBoardY &lt; 10; nBoardY++) { sRappr += (etc.aBoard[nBoardX * 10 + nBoardY]) + ", "; }
+	sRappr = sRappr.substr(0, sRappr.length - 2) + "\n";
+}
+alert("This is the numeric rappresentation of the chessboard:\n\n" + sRappr); 
+</textarea></p>
+-->
+</body>
+</html>

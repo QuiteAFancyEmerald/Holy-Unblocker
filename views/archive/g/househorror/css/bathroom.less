@@ -1,0 +1,246 @@
+
+#bathroom {
+	position:absolute;
+	width: 719px;
+	height: 610px;
+	cursor:move;
+	background:url(../images/bathroom.jpg) no-repeat;
+
+	#sprite {
+		background: url(../images/bathroom_player.png) no-repeat 0 0
+	}
+	
+	#faux_player {
+		width: 310px;
+		height: 310px;
+		position: absolute;
+		left: -160px;
+		top: -168px;
+		z-index: 2000;
+		background: url(../images/bathroom_player.png) no-repeat -930px 0;
+
+		.text_cloud {
+			left: 157px;
+			top: -50px;
+		}
+	}
+
+	#shadow  {
+		width: 198px;
+		height: 144px;
+		background: url(../images/bathroom_shadow.png) no-repeat;
+		left: -36px;
+		top: -59px;
+	}
+
+	#floor {
+		position:absolute;
+		right: 0;
+		bottom: 39px;
+		width: 604px;
+		height: 315px
+	}
+	
+	#door_corridor {
+		.isometric_left;
+		.door(568px, 95px);
+	}
+
+	#window {
+		width:545px;
+		height:329px;
+		position:absolute;
+		left: 427px;
+		top: -194px;
+		z-index:999;
+		background:url(../images/bathroom_window.png) no-repeat
+	} 
+
+	#washbasin {
+		.item(
+			248px,
+			-33px,
+			24,
+			
+			138px,
+			95px,
+			
+			e(" url(../images/bathroom_washbasin.png) ")
+		)
+	}
+
+	#bathtube {
+		.item(
+			177px,
+			99px,
+			242,
+			
+			275px,
+			214px,
+			
+			e(" url(../images/bathroom_bathtube.png) ")
+		)
+	}
+
+	#mirror {
+		.isometric_right;
+		width: 119px;
+		height: 109px;
+		position: absolute;
+		top: 137px;
+		left: 363px;
+		z-index: 2000;
+		cursor: pointer;
+	}
+	
+	#window {
+		.item(
+			13px,
+			-116px,
+			192,
+			
+			545px,
+			329px,
+			
+			e(" url(../images/bathroom_window.png) ")
+		)
+	}
+
+	#window_use {
+		.invisible_door(115px, 474px, 0, -240px);
+	}
+
+	#curtain {
+		.item(
+			13px,
+			110px,
+			11,
+			
+			212px,
+			286px,
+			
+			e(" url(../images/bathroom_curtain.png) ")
+		)
+	}
+
+	#curtain_folded {
+		.item(
+			13px,
+			110px,
+			11,
+			
+			212px,
+			286px,
+			
+			e(" url(../images/bathroom_curtain_folded.png) ")
+		);
+		opacity:0;
+	}
+
+	#curtain_use {
+		.isometric_right;
+		width: 124px;
+		height: 218px;
+		position: absolute;
+		top: 170px;
+		left: 118px;
+		z-index: 2001;
+		cursor: pointer;
+	}
+
+	#dark_character {
+		.item(
+			-159px,
+			-168px,
+			10,
+			
+			310px,
+			310px,
+			
+			e(" url(../images/dark_character.png) ")
+		);
+	}
+
+	#bathroom_overlay {
+		left:0;
+		top:0;
+		position:absolute;
+		z-index:9999;
+		width: 719px;
+		height: 610px;
+		background:url(../images/bathroom_overlay.png);
+	}
+
+}
+
+#reflection,
+#reflection_flicker {
+	width:512px;
+	height:512px;
+	position:absolute;
+}
+
+#reflection {
+	margin:-256px 0 0 -256px;
+	left:50%;
+	top:50%;
+	background:url(../images/bathroom_ref_bkg_01.jpg);
+}
+
+#reflection_flicker {
+	left:0;
+	top:0;
+	z-index:1;
+	background:url(../images/bathroom_ref_bkg_02.jpg);
+	opacity:0;
+}
+
+#face {
+	width:400px;
+	height:400px;
+	position:absolute;
+	left:56px;
+	bottom:0;
+	z-index:2;
+	background:url(../images/bathroom_ref_face_01.png);
+	.origin(50%, 400px);
+}
+
+.ref_tile {
+	position:absolute;
+	overflow:hidden;
+}
+
+.ref_tile > div {
+	/*background:rgba(255, 0, 0, .3);*/
+	position:absolute;
+	width:200%;
+	height:200%;
+	.origin(0, 0);
+	.rotate(45deg);
+	overflow:hidden;
+}
+
+.ref_tile > div + div {
+	left: 100%;
+	top: -183%;
+}
+
+.ref_tile > div > div {
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	.origin(0, 0);
+	.rotate(-45deg);
+	background:url(../images/bathroom_ref_face_02.png);
+	opacity:0;
+	.transition(opacity, .5s);
+	cursor:help;
+}
+
+.ref_tile > div + div > div{
+	left: 22px;
+	top: 78px;
+}

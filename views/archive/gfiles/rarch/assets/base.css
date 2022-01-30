@@ -280,7 +280,12 @@ input[type="file"] {
 	cursor: pointer;
 }
 
-.upload+.uploadlabel {
+.uploadimage {
+	width: 20px;
+	vertical-align: middle;
+}
+
+#upload {
 	border: 1px solid rgb(118, 118, 118);
 	border-radius: 2px;
 	padding: 4px;
@@ -289,13 +294,8 @@ input[type="file"] {
 	transition: ease .1s;
 }
 
-.upload+.uploadlabel:hover {
+#upload:hover {
 	background-color: #eee;
-}
-
-.uploadimage {
-	width: 20px;
-	vertical-align: middle;
 }
 
 #ffdcontent {
@@ -424,4 +424,221 @@ body.paused #resume {
 	white-space: pre-wrap;
 	z-index: 8;
 	display: none;
+}
+
+#modals {
+	background-color: rgba(255, 255, 255, 0.5);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	overflow: hidden;
+	z-index: 30;
+	display: none;
+}
+
+#managers {
+	background-color: white;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: calc(100vh - 50px);
+}
+
+.modaltop {
+	height: 30px;
+	line-height: 30px;
+	padding: 10px;
+}
+
+.modaltop h2 {
+	display: inline;
+	margin: 5px;
+	text-transform: capitalize;
+}
+
+.modaltop span {
+	float: right;
+	display: inline-block;
+	width: 30px;
+	text-align: center;
+	cursor: pointer;
+	font-size: 24px;
+}
+
+#keybindmanager, #screenshotmanager, #savemanager {
+	height: calc(100% - 90px);
+	padding: 20px;
+	padding-top: 10px;
+}
+
+#keybindmanager {
+	display: none;
+	width: 500px;
+}
+
+#screenshotmanager {
+	display: none;
+	width: 1000px;
+}
+
+#savemanager {
+	display: none;
+	width: 750px;
+}
+
+.managertableparent {
+	height: calc(100% - 78px);
+	width: 100%;
+	display: block;
+	overflow: auto;
+	margin-bottom: 20px;
+}
+
+.managertable {
+	box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 16, 0.15);
+	display: block;
+	width: 100%;
+	vertical-align: top;
+}
+
+.managertable tr {
+	display: block;
+	width: 100%;
+}
+
+.managertable td {
+	display: inline-block;
+	height: 100%;
+	padding: 2px;
+	padding-left: 6px;
+	white-space: nowrap;
+	overflow-x: auto;
+	
+	scrollbar-width: none;
+}
+
+#keybindtable td {
+	width: calc(50% - 8px);
+}
+
+.managertable td::-webkit-scrollbar {
+	display: none;
+}
+
+.managertable tr:nth-child(even) {
+	background-color: #ace9fa;
+}
+
+.managertable td:nth-child(even) {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+#keybindtable td:last-child {
+	cursor: pointer;
+}
+
+#keybindtable td:last-child:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+#savetable tr {
+	display: flex;
+}
+
+#savetable td:first-child {
+	flex-grow: 1;
+}
+
+#savetable td:last-child {
+	flex-shrink: 0;
+	padding-left: 2px;
+}
+
+#savetable td:last-child span {
+	cursor: pointer;
+	margin: 4px;
+	padding: 1px 4px;
+	user-select: none;
+	background: white;
+	background: linear-gradient(#ffffff, #f3f3f3);
+}
+
+#savetable td:last-child span:active {
+	background: linear-gradient(#f3f3f3, #ffffff);
+}
+
+#modals input[type="button"] {
+	background-color: white;
+	border-radius: 0px;
+	border: 2px solid black;
+	padding: 4px 8px;
+	cursor: pointer;
+}
+
+#modals input[type="button"]:active {
+	background-color: #efefef;
+}
+
+#modals .specialblue {
+	background-color: #1e90ff !important;
+	color: white;
+}
+
+#modals input[type="button"].specialblue:active {
+	background-color: #0e80ef !important;
+}
+
+#keybindtable .conflict {
+	color: red;
+}
+
+#keybindmanager h4 {
+	margin-top: 0px;
+}
+
+#screenshotsdiv {
+	background-color: pink;
+	height: calc(100% - 40px);
+	width: calc(100% + 20px);
+	overflow-y: auto;
+	overflow-x: hidden;
+	margin-bottom: 20px;
+	display: flex;
+    flex-wrap: wrap;
+	background-color: #efefef;
+	box-shadow: inset -20px 0px 0px 0px white;
+}
+
+#screenshotmanager h4 {
+	display: inline-block;
+	margin: 0px;
+	margin-right: 10px;
+}
+
+#screenshotsdiv .screenshot {
+	width: 180px;
+	height: min-content;
+	padding: 10px;
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
+}
+
+#screenshotsdiv .screenshot img {
+	width: 180px;
+	display: block;
+}
+
+#screenshotsdiv .screenshot input[type="button"] {
+	width: 180px;
+	display: block;
+	margin-top: 5px;
+}
+
+dji-cowriter {
+	display: none !important;
 }

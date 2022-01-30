@@ -1,0 +1,46 @@
+{
+    "entry": [
+        "♪ Chirp!",
+        "►Who are you? @who",
+        "►What are you up to? @what",
+        "►[relevant]Can you help me in my quest? @quest",
+        "►[not chirp]Did you just say “Chirp”? @chirp",
+        "►You have strange flying technique. @multijump",
+        "►Bye, bird. @bye"
+    ],
+    "chirp": [
+        "Yes, I did. ♪ Chirp. That's what birds say! !set chirp true @entry"
+    ],
+    "who": [
+        "I'm the bird around these parts. @entry"
+    ],
+    "what": [
+        "I do bird stuff, mostly.",
+        "I fly from my nest to some bushes to find food.",
+        "♪ Chirp.",
+        "There isn't any, though. !set relevant true",
+        "My adopted child might go hungry again.",
+        "►You adopted a bird baby?",
+        "No. ♪ Chirp!",
+        "It's something else. But it's still my son.",
+        "You can visit our nest on the tree in the west...",
+        "if you can fly, that is.",
+        "♪ Chirp! @entry"
+    ],
+    "quest": [
+        "What quest? I'm a bird!",
+        "Whatever you're up to is not my concern, really.",
+        "♪ Chirp. I'm just doing my daily bird things. @entry"
+    ],
+    "multijump": [
+        "I'm not actually flying, though.",
+        "It's the multi-jump power-up that I got a while ago.",
+        "♪ Chirp.",
+        "They said it was a flying ability, but it's not really.",
+        "But I don't care much. At least I don't have to flap my wings anymore. @entry"
+    ],
+    "bye": [
+        "Bye, human.",
+        "♪ Chirp! @entry !end"
+    ]
+}
