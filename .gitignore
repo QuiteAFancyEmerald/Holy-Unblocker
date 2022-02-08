@@ -4,4 +4,3 @@ node_modules
 .gitattributes
 .well-known
 package-lock.json
-/views/archive/gfiles/rarch/roms

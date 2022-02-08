@@ -1,6 +1,6 @@
 module.exports = {
     apps: [{
-        name: 'HolyUB',
+        name: 'HolyUnblockerPublic',
         script: './backend.js',
         env: {
             PORT: 8080,
