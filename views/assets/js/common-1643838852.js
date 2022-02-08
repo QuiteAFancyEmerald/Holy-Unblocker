@@ -41,7 +41,7 @@ function setAuthCookie(s, lax) {
 window.goProx = {
     corrosion: function(url, stealth) {
         setAuthCookie("__cor_auth=1", true);
-        goToUrl("https://cdn." + getDomain() + "/search/gateway?url=" + url, stealth);
+        goToUrl("https://" + getDomain() + "/search/gateway?url=" + url, stealth);
     },
     womginx: function(url, stealth) {
         setAuthCookie("wgauth=yes", false);

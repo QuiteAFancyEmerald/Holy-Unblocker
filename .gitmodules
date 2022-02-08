@@ -1,7 +1,3 @@
-[submodule "src/corrosion"]
-	path = src/corrosion
-	url = https://github.com/titaniumnetwork-dev/Corrosion
-
 [submodule "views/archive/g/house"]
 	path = views/archive/g/house
 	url = https://github.com/razh/game-off-2013
