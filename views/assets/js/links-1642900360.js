@@ -19,7 +19,7 @@ var hulinks = {
     "pylink": "https://github.com/BinBashBanana/PyDodge",
     "nulink": "https://github.com/nfriedly/node-unblocker",
     "tnlink": "https://discord.gg/CwWpdGkuWY",
-    "pallink": "https://github.com/LudicrousDevelopment/Palladium",
+    "pallink": "p.jklmnop.tk",
     "nclink": "https://nodeclusters.com",
     "qrlink": "https://support.discord.com/hc/en-us/articles/360039213771-QR-Code-Login-FAQ",
     "ytnoc": "javascript:(h=>{/youtube/.test(h+=location)?location=`//www.youtube-nocookie.com/embed/${[h.match`(?<=[ve]/|u/\\w+/|embed/|v=)[^%23&?]*`]}?autoplay=1`:0})``"
