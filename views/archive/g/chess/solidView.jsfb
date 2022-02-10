@@ -1,0 +1,671 @@
+/**
+* @package HTML Chess
+* http://htmlchess.sourceforge.net/
+* Pieces types in this function are so defined: 0 = pawn, 1 = king, 2 = knight, 3 = bishop, 4 = rook, 5 = queen.
+* Colors are: zero for white, one for black.
+*/
+var	oCnf = this, fDegRad = Math.PI / 180,
+	oSelectorCanvas = document.createElement("canvas"),
+	oValidCanvas = document.createElement("canvas"),
+	oInCheckCanvas = document.createElement("canvas"),
+	oScene = new Canvas3D.Scene(this.oSolidVwArea, this.i3DWidth, this.i3DHeight, true),
+	oCam = new Canvas3D.Camera(),
+	iSelectorY = 0, iSelectorX = 0, bPieceSelected, oSelectedPiece = null, bPiecesHidden = false, bSelectorAct = true,
+	aMouseRegions, iLastMouseRegionX = -1, iLastMouseRegionY = -1,
+	bIsRotating = false, iMouseDownX = 0, iMouseDownY = 0, bMouseIsDown = false, bUnhideOrdered = false,
+	aPieces = [], aPiecesCasing = [[],[],[],[],[],[]], aRots = [0,0,-90,90,0,180,0,180,0,0,0,0],
+	oLight1 = new Canvas3D.Light(), oLight2 = new Canvas3D.Light(), oLight3 = new Canvas3D.Light(),
+	oBoardMesh = createMesh(this.tmp3DBoard);
+
+delete this.tmp3DBoard;
+oBoardMesh.setForcedZ(64);
+oScene.addObject(oBoardMesh);
+
+function getElementPos(oElement) {
+	var nElPosX = -(document.body.scrollLeft+document.documentElement.scrollLeft), nElPosY = -(document.body.scrollTop+document.documentElement.scrollTop);
+	while (oElement && oElement.nodeName != "BODY") {
+		nElPosX += oElement.offsetLeft;
+		nElPosY += oElement.offsetTop;
+		oElement = oElement.offsetParent;
+	}
+	return {xAxis: nElPosX, yAxis: nElPosY};
+}
+
+// stand by selector
+function selectorListener(oMsEvnt1) {
+	if (!oMsEvnt1) { oMsEvnt1 = window.event; }
+	var oPos = getElementPos(oScene.getInputLayer()), oRegion = checkMouseRegions(oMsEvnt1.clientX - oPos.xAxis, oMsEvnt1.clientY - oPos.yAxis);
+	if (oRegion) {
+		showSelector();
+		showValidMoves();
+		showInCheckPieces();
+		bSelectorAct = true;
+		Canvas3D.removeEvent(oScene.getInputLayer(), "mousemove", selectorListener);
+	}
+}
+
+function standbySelector() {
+	if (bSelectorAct) {
+		hideSelector();
+		hideValidMoves();
+		hideInCheckPieces();
+		bSelectorAct = false;
+		Canvas3D.addEvent(oScene.getInputLayer(), "mousemove", selectorListener);
+	}
+}
+// end
+
+function moveZoom(bZoomIn) {
+	if (oCam = oScene.getActiveCamera()) {
+		var oTarget = oCam.getLookAt(), fDist = oTarget.dist(oCam.getPosition());
+		standbySelector();
+		hidePieces();
+		oCam.moveForward(bZoomIn ? (fDist - 50 < 40 ? fDist - 40 : 50) : -50);
+		updateMouseRegions();
+		updateSelector();
+		updateValidMoves();
+		updateInCheckPieces();
+		showPieces();
+	}
+}
+
+// setup polygons for board squares, used to check which piece mouse is hovering over
+function updateMouseRegions() {
+	//var oCam = oScene.getActiveCamera();
+
+	var iPosX, iPosY, iPosZ, oP1, oP2, oP3, oP4, iOffsetX = oCnf.i3DWidth >> 1, iOffsetY = oCnf.i3DHeight >> 1, aPaths = [];
+	for (var nRegX = 0; nRegX < 8; nRegX++) {
+		aPaths[nRegX] = [];
+		for (var nRegY = 0; nRegY < 8; nRegY++) {
+			iPosX = -(nRegX - 3) * 10;
+			iPosY = 0;
+			iPosZ = (nRegY - 4) * 10;
+
+			oP1 = oCam.project(oCam.transformPoint(new Canvas3D.Vec3(iPosX, iPosY, iPosZ)));
+			oP2 = oCam.project(oCam.transformPoint(new Canvas3D.Vec3(iPosX + 10, iPosY, iPosZ)));
+			oP3 = oCam.project(oCam.transformPoint(new Canvas3D.Vec3(iPosX + 10, iPosY, iPosZ + 10)));
+			oP4 = oCam.project(oCam.transformPoint(new Canvas3D.Vec3(iPosX, iPosY, iPosZ + 10)));
+
+			aPaths[nRegX][nRegY] = [
+				[oP1.x + iOffsetX, oP1.y + iOffsetY],
+				[oP2.x + iOffsetX, oP2.y + iOffsetY],
+				[oP3.x + iOffsetX, oP3.y + iOffsetY],
+				[oP4.x + iOffsetX, oP4.y + iOffsetY]
+			];
+		}
+	}
+	aMouseRegions = aPaths;	
+}
+
+function checkMouseRegions(iMouseX, iMouseY) {
+	var bIsLast = false, bFound = false, iRegionY = -1, iRegionX = -1, oCtx = oSelectorCanvas.getContext("2d");
+
+	if (iLastMouseRegionX > -1 && iLastMouseRegionY > -1 && checkSingleMouseRegion(oCtx, aMouseRegions[iLastMouseRegionX][iLastMouseRegionY], iMouseX, iMouseY)) { bIsLast = true; }
+	if (!bIsLast) {
+		for (var iCheckY = 0; iCheckY < 8 && !bFound; iCheckY++) {
+			for (var iCheckX = 0; iCheckX < 8 && !bFound; iCheckX++) {
+				if (checkSingleMouseRegion(oCtx, aMouseRegions[iCheckY][iCheckX], iMouseX, iMouseY)) {
+					iRegionY = iCheckY;
+					iRegionX = iCheckX;
+					bFound = true;
+				}
+			}	
+		}
+	}
+	return(iRegionY > -1 && iRegionX > -1 ? {regX: iRegionX, regY: iRegionY} : false);
+}
+
+function checkSingleMouseRegion(oCtx, aRegion, nX, nY) {
+	oCtx.beginPath();
+	oCtx.moveTo(aRegion[0][0], aRegion[0][1]);
+	oCtx.lineTo(aRegion[1][0], aRegion[1][1]);
+	oCtx.lineTo(aRegion[2][0], aRegion[2][1]);
+	oCtx.lineTo(aRegion[3][0], aRegion[3][1]);
+	oCtx.closePath();
+	return(oCtx.isPointInPath(nX, nY));
+}
+
+function moveSelector(iDeltaX, iDeltaY) {
+	var fAngle = Math.atan2(oCam.getPosition().x,oCam.getPosition().z) /  fDegRad;
+	// four scenarios for how to move the selector, depending on camera angle
+	if (fAngle >= 135 || fAngle <= -135) {
+		iSelectorX = iSelectorX + iDeltaX & 7;
+		iSelectorY = iSelectorY + iDeltaY & 7;
+	} else if (fAngle >= -45 && fAngle <= 45) {
+		iSelectorX = iSelectorX - iDeltaX & 7;
+		iSelectorY = iSelectorY - iDeltaY & 7;
+	} else if (fAngle >= -135 && fAngle <= -45) {
+		iSelectorY = iSelectorY - iDeltaX & 7;
+		iSelectorX = iSelectorX + iDeltaY & 7;
+	} else if (fAngle >= 45 && fAngle <= 135) {
+		iSelectorY = iSelectorY + iDeltaX & 7;
+		iSelectorX = iSelectorX - iDeltaY & 7;
+	}
+	updateSelector();
+}
+
+function hideSelector() { oSelectorCanvas.style.display = "none"; }
+function showSelector() { oSelectorCanvas.style.display = "block"; }
+function hideValidMoves() { oValidCanvas.style.display = "none"; }
+function showValidMoves() { oValidCanvas.style.display = "block"; }
+function hideInCheckPieces() { oInCheckCanvas.style.display = "none"; }
+function showInCheckPieces() { oInCheckCanvas.style.display = "block"; }
+
+function hidePieces() {
+	if (!bPiecesHidden) {
+		for (var iHide = 0; iHide < aPieces.length; iHide++) { aPieces[iHide].mesh.hide(); }
+		bPiecesHidden = true;
+	}
+}
+
+function showPieces() {
+	if (bPiecesHidden) {
+		for (var iShow = 0; iShow < aPieces.length; iShow++) { aPieces[iShow].mesh.show(); }
+		bPiecesHidden = false;
+	}
+}
+
+function updateSelector() {
+	var iOffsetX = oCnf.i3DWidth >> 1, iOffsetY = oCnf.i3DHeight >> 1, oCtx = oSelectorCanvas.getContext("2d");
+
+	oCtx.clearRect(0,0,oCnf.i3DWidth,oCnf.i3DHeight);
+
+	// draw active selector square
+	makeRegionPath(oCtx, iSelectorX, iSelectorY);
+	oCtx.fillStyle = "rgba(255,255,0,0.5)";
+	oCtx.fill();
+
+	if (bPieceSelected) {
+		// draw border around selected square
+		makeRegionPath(oCtx, oSelectedPiece.posX, oSelectedPiece.posY);
+		oCtx.lineWidth = 2;
+		oCtx.strokeStyle = "rgba(255,0,0,1)";
+		oCtx.stroke();
+	}
+}
+
+function makeRegionPath(oCtx, nMakeX, nMakeY) {
+	var aRegion = aMouseRegions[nMakeY][nMakeX];
+	oCtx.beginPath();
+	oCtx.moveTo(aRegion[0][0], aRegion[0][1]);
+	oCtx.lineTo(aRegion[1][0], aRegion[1][1]);
+	oCtx.lineTo(aRegion[2][0], aRegion[2][1]);
+	oCtx.lineTo(aRegion[3][0], aRegion[3][1]);
+	oCtx.closePath();
+}
+
+function updateValidMoves() {
+	var oCtx = oValidCanvas.getContext("2d");
+	oCtx.clearRect(0, 0, oCnf.i3DWidth, oCnf.i3DHeight);
+	oCtx.fillStyle = "rgba(0,255,0,0.2)";
+
+	if (!oSelectedPiece) { return; }
+
+	for (var iValidY = 0; iValidY < 8; iValidY++) {
+		for (var iValidX = 0; iValidX < 8; iValidX++) {
+			if (oCnf.isValidMove(oSelectedPiece.posX, oSelectedPiece.posY, iValidX, iValidY)) {
+				makeRegionPath(oCtx, iValidX, iValidY);
+				oCtx.fill();
+			}
+		}	
+	}
+}
+
+function updateInCheckPieces() {
+	var oInCheck = oInCheckCanvas.getContext("2d");
+	oInCheck.clearRect(0,0,oCnf.i3DWidth,oCnf.i3DHeight);
+	oInCheck.fillStyle = "rgba(0,0,255,0.2)";
+	for (var iSquare = 0; iSquare < oCnf.aThreats.length; iSquare++) {
+		iThrtndSq = oCnf.aThreats[iSquare]
+		makeRegionPath(oInCheck, iThrtndSq % 10 - 1, (iThrtndSq - iThrtndSq % 10) / 10 - 2);
+		oInCheck.fill();
+	}
+}
+
+// removes a piece from the board
+function removePiece(oPiece) {
+	var iPiece;
+	for (var iPieceId = 0; iPieceId < aPieces.length; iPieceId++) {
+		iPiece = aPieces[iPieceId];
+		if (iPiece === oPiece) { Array.prototype.push.apply(aPiecesCasing[iPiece.type], aPieces.splice(iPieceId, 1)); }
+	}
+	oScene.removeObject(oPiece.mesh);
+}
+
+function pieceByCoords(nHasX, nHasY) {
+	for (var iId = 0; iId < aPieces.length; iId++) {
+		if (aPieces[iId].posY === nHasY && aPieces[iId].posX === nHasX) { return(aPieces[iId]); }
+	}
+}
+
+function movePieceTo(oPiece, nToX, nToY) {
+	var oPos = getBoardPos(nToX, nToY);
+	oPiece.mesh.setPosition(new Canvas3D.Vec3(oPos.posY, 0, oPos.posX));
+	oPiece.posX = nToX;
+	oPiece.posY = nToY;
+}
+
+function getBoardPos(posX, posY) { return {posX: posX * 10 - 35, posY: 35 - posY * 10}; }
+
+function clearPieceSelection() {
+	oSelectedPiece = null;
+	bPieceSelected = false;
+	updateSelector();
+	updateValidMoves();
+}
+
+function snapClick(oMsEvnt2) {
+	if (!oMsEvnt2) { oMsEvnt2 = window.event; }
+	iMouseDownX = oMsEvnt2.clientX;
+	iMouseDownY = oMsEvnt2.clientY;
+	bMouseIsDown = true;
+}
+
+function snapDOMScroll(oMsEvnt3) {
+	if (!oMsEvnt3) { oMsEvnt3 = window.event; }
+	if (!oMsEvnt3.shiftKey) { return; }
+	if (oMsEvnt3.detail) { oMsEvnt3.wheelDelta = oMsEvnt3.detail * -40; } 
+
+	hidePieces();
+	hideSelector();
+	hideValidMoves();
+	oCam.setScale(oMsEvnt3.wheelDelta > 0 ? oCam.getScale() * 1.5 : oCam.getScale() / 1.5)
+
+	if (!bUnhideOrdered) {
+		setTimeout( function() {
+			showPieces();
+
+			bIsRotating = false;
+			oScene.setDirty(true);
+
+			updateMouseRegions();
+			updateSelector();
+			updateValidMoves();
+
+			showSelector();
+			showValidMoves();
+			bUnhideOrdered = false;
+		}, 100);
+		bUnhideOrdered = true;
+	}
+
+	if (oMsEvnt3.preventDefault) { oMsEvnt3.preventDefault(); } else { oMsEvnt3.returnValue = false; }
+}
+
+function snapMsBtnUp(oMsEvnt4) {
+	if (!oMsEvnt4) { oMsEvnt4 = window.event; }
+	bMouseIsDown = false;
+
+	if (bIsRotating) {
+		showPieces();
+
+		bIsRotating = false;
+		oScene.setDirty(true);
+
+		updateMouseRegions();
+		updateSelector();
+		updateValidMoves();
+		updateInCheckPieces();
+
+		setTimeout(function() { showSelector(); showValidMoves(); showInCheckPieces(); }, 10);
+	} else {
+		var oPos = getElementPos(oScene.getInputLayer());
+		iMouseDownX = oMsEvnt4.clientX - oPos.xAxis;
+		iMouseDownY = oMsEvnt4.clientY - oPos.yAxis;
+		var oRegion = checkMouseRegions(oMsEvnt4.clientX - oPos.xAxis, oMsEvnt4.clientY - oPos.yAxis);
+		if (oRegion) { oCnf.makeSelection(iSelectorY * 10 + iSelectorX + 21, true); }
+	}
+}
+
+function snapMsMove(oMsEvnt5) {
+	if (!oMsEvnt5) { oMsEvnt5 = window.event; }
+	if (bMouseIsDown) {
+		hidePieces();
+		hideSelector();
+		hideValidMoves();
+		hideInCheckPieces();
+
+		bIsRotating = true;
+
+		var	iMouseX = oMsEvnt5.clientX, iMouseY = oMsEvnt5.clientY, fDeltaX = (iMouseX - iMouseDownX) / 3, fDeltaY = -((iMouseY - iMouseDownY) / 3),
+			// save the old camera position
+			oOldCamPos = new Canvas3D.Vec3(oCam.getPosition().x, oCam.getPosition().y, oCam.getPosition().z);
+
+		// pitch the camera, but if we're not too low or if we're moving the camera up
+		oCam.pitchAroundTarget(fDeltaY);
+		if (!((oCam.getPosition().y > 15 || fDeltaY < 0) && (oCam.getPosition().y < 100 || fDeltaY > 0))) { oCam.setPosition(oOldCamPos); }
+
+		oCam.yawAroundTarget(fDeltaX);
+		oCam.lookAt(oCam.getLookAt(), oScene.getUpVector());
+		oCam.updateRotationMatrix();
+		iMouseDownX = oMsEvnt5.clientX;
+		iMouseDownY = oMsEvnt5.clientY;
+
+	} else {
+		var oPos = getElementPos(oScene.getInputLayer()), oRegion = checkMouseRegions(oMsEvnt5.clientX - oPos.xAxis, oMsEvnt5.clientY - oPos.yAxis);
+		if (oRegion) {
+			var bNewRegion = false;
+			if (iSelectorY !== oRegion.regY || iSelectorX !== oRegion.regX) { bNewRegion = true; }
+
+			iSelectorX = oRegion.regX;
+			iSelectorY = oRegion.regY;
+
+			if (bNewRegion) { updateSelector(); }
+		}
+	}
+}
+
+function snapKeyDown(oKeyEvnt2) {
+	if (!oCnf.bKeyCtrl) { return; }
+	if (!oKeyEvnt2) { oKeyEvnt2 = window.event; }
+	var iKeyCode = oKeyEvnt2.keyCode;
+	if (iKeyCode === 107) { moveZoom(true); } // "+"
+	else if (iKeyCode === 109) { moveZoom(false); } // "-"
+}
+
+
+function snapKeyPress(oKeyEvnt3) {
+	if (!oCnf.bKeyCtrl) { return; }
+	if (!oKeyEvnt3) { oKeyEvnt3 = window.event; }
+	var iKeyCode = oKeyEvnt3.charCode;
+	switch (iKeyCode) {
+		case 49: moveSelector(-1,1); break; // numpad 1
+		case 50: moveSelector(-1,0); break; // numpad 2
+		case 51: moveSelector(-1,-1); break; // numpad 3
+		case 52: moveSelector(0,1); break; // numpad 4
+		case 53: oCnf.makeSelection(iSelectorY * 10 + iSelectorX + 21, true); break; // numpad 5
+		case 54: moveSelector(0,-1); break; // numpad 6
+		case 55: moveSelector(1,1); break; // numpad 7
+		case 56: moveSelector(1,0); break; // numpad 8
+		case 57: moveSelector(1,-1); break; // numpad 9
+	}
+}
+
+function createMesh(oMeshData) {
+	var oMesh = new Canvas3D.Mesh();
+	oMesh._bShading = true;
+	oMesh._bWire = false;
+	oMesh._bFill = true;
+	oMesh._bZSort = true;
+	oMesh._bBackfaceCull = true;
+	oMesh._bTexture = false;
+	oMesh._bTextureShading = false;
+	oMesh.setMeshData(oMeshData, oScene);
+	return(oMesh);
+}
+
+function setPieceColor(oPieceMesh, nColor) {
+	for (var iMat = 0; iMat < oPieceMesh._aMaterials.length; iMat++) {
+		if (nColor === 0) {
+			oPieceMesh._aMaterials[iMat].r = 220;
+			oPieceMesh._aMaterials[iMat].g = 220;
+			oPieceMesh._aMaterials[iMat].b = 220;
+		} else {
+			oPieceMesh._aMaterials[iMat].r = 100;
+			oPieceMesh._aMaterials[iMat].g = 80;
+			oPieceMesh._aMaterials[iMat].b = 80;
+		}
+	}
+}
+
+function getPiece(nType, flagColor, nPutX, nPutY) {
+	var oNewPiece, nRot = aRots[flagColor | nType << 1], oPos = getBoardPos(nPutX, nPutY);
+	if (aPiecesCasing[nType].length > 0) {
+		oNewPiece = aPiecesCasing[nType].pop();
+		if (oNewPiece.color !== flagColor) {
+			setPieceColor(oNewPiece.mesh, flagColor);
+			oNewPiece.color = flagColor;
+		}
+		oNewPiece.posX = nPutX;
+		oNewPiece.posY = nPutY;
+	} else {
+		var oNewMesh = createMesh(new oCnf.aPiecesLab[nType]());
+		setPieceColor(oNewMesh, flagColor);
+		oNewPiece = {
+			mesh: oNewMesh,
+			color: flagColor,
+			type: nType,
+			posX: nPutX,
+			posY: nPutY,
+		};
+	}
+	if (nRot !== 0) { oNewPiece.mesh.setRotation(new Canvas3D.Vec3(0, nRot * fDegRad, 0)); }
+	oNewPiece.mesh.setPosition(new Canvas3D.Vec3(oPos.posY, 0, oPos.posX));
+	aPieces.push(oNewPiece);
+	oScene.addObject(oNewPiece.mesh);
+	return(oNewPiece);
+}
+
+function setupGame() {
+	var iTypeORColor;
+	for (var iPieceY = 0; iPieceY < 8; iPieceY++) {
+		for (var iPieceX = 0; iPieceX < 8; iPieceX++) {
+			iTypeORColor = oCnf.aBoard[iPieceY * 10 + iPieceX + 21];
+			if (iTypeORColor > 0) {
+				getPiece(iTypeORColor - 1 & 7, iTypeORColor >> 3 & 1, iPieceX, iPieceY);
+			}
+		}
+	}
+}
+
+function resetCamera() {
+	var nSize = oCnf.i3DWidth < oCnf.i3DHeight ? oCnf.i3DWidth : oCnf.i3DHeight; // min 200, max 900
+	oCam.setPosition(new Canvas3D.Vec3(oCnf.bBlackSide ? -50 : 50, nSize > 900 ? 45 : Math.round((nSize * (nSize * 67 - 118700) + 56340000) / 84000), 0));
+	oCam.lookAt(new Canvas3D.Vec3(0,0,0), oScene.getUpVector());
+	oCam.updateRotationMatrix();
+}
+
+function updateCamera() {
+	hidePieces();
+	standbySelector();
+	resetCamera();
+	updateMouseRegions();
+	updateSelector();
+	updateValidMoves();
+	updateInCheckPieces();
+	showPieces();
+}
+
+this.oSolidVwArea.style.width = this.i3DWidth + "px";
+this.oSolidVwArea.style.height = this.i3DHeight + "px";
+
+oInCheckCanvas.width = this.i3DWidth;
+oInCheckCanvas.height = this.i3DHeight;
+oInCheckCanvas.style.width = this.i3DWidth + "px";
+oInCheckCanvas.style.height = this.i3DHeight + "px";
+oInCheckCanvas.style.zIndex = 65;
+oInCheckCanvas.style.position = "absolute";
+
+oValidCanvas.width = this.i3DWidth;
+oValidCanvas.height = this.i3DHeight;
+oValidCanvas.style.width = this.i3DWidth + "px";
+oValidCanvas.style.height = this.i3DHeight + "px";
+oValidCanvas.style.zIndex = 66;
+oValidCanvas.style.position = "absolute";
+
+oSelectorCanvas.width = this.i3DWidth;
+oSelectorCanvas.height = this.i3DHeight;
+oSelectorCanvas.style.width = this.i3DWidth + "px";
+oSelectorCanvas.style.height = this.i3DHeight + "px";
+oSelectorCanvas.style.zIndex = 67;
+oSelectorCanvas.style.position = "absolute";
+
+oLight1.setPosition(new Canvas3D.Vec3(0,30,0));
+oLight1.setIntensity(0.8);
+oScene.addLight(oLight1);
+
+oLight2.setPosition(new Canvas3D.Vec3(100,30,100));
+oLight2.setIntensity(0.3);
+oScene.addLight(oLight2);
+
+oLight3.setPosition(new Canvas3D.Vec3(-100,30,-100));
+oLight3.setIntensity(0.3);
+oScene.addLight(oLight3);
+
+setupGame();
+
+oCam.setScale(18);
+oCam.setFOV(110);
+oCam.setFocalDistance(50);
+
+oCam.setReverseX(true);
+
+resetCamera();
+
+oScene.setActiveCamera(oCam);
+
+//oScene.setUpVector(new Canvas3D.Vec3(0,-1,0));
+
+this.oSolidVwArea.appendChild(oSelectorCanvas);
+this.oSolidVwArea.appendChild(oValidCanvas);
+this.oSolidVwArea.appendChild(oInCheckCanvas);
+
+Canvas3D.addEvent(oScene.getInputLayer(), "mousedown", snapClick);
+Canvas3D.addEvent(document.body, "DOMMouseScroll", snapDOMScroll);
+Canvas3D.addEvent(document.body, "mouseup", snapMsBtnUp);
+Canvas3D.addEvent(document.body, "mousemove", snapMsMove);
+Canvas3D.addEvent(document, "keypress", snapKeyPress);
+Canvas3D.addEvent(document, "keydown", snapKeyDown);
+oScene.begin();
+updateMouseRegions();
+updateInCheckPieces();
+this.bSolidView = true;
+
+return {
+	show: function() {
+		oCnf.oSolidVwArea.appendChild(oScene._oDrawCanvas);
+		oCnf.oSolidVwArea.appendChild(oScene._oInputOverlay);
+		oCnf.oSolidVwArea.appendChild(oSelectorCanvas);
+		oCnf.oSolidVwArea.appendChild(oValidCanvas);
+		oCnf.oSolidVwArea.appendChild(oInCheckCanvas);
+		oScene.addObject(oBoardMesh);
+		setupGame();
+		Canvas3D.addEvent(oScene.getInputLayer(), "mousedown", snapClick);
+		Canvas3D.addEvent(document.body, "DOMMouseScroll", snapDOMScroll);
+		Canvas3D.addEvent(document.body, "mouseup", snapMsBtnUp);
+		Canvas3D.addEvent(document.body, "mousemove", snapMsMove);
+		Canvas3D.addEvent(document, "keypress", snapKeyPress);
+		Canvas3D.addEvent(document, "keydown", snapKeyDown);
+		updateCamera();
+		oScene.begin();
+		oCnf.bSolidView = true;
+	},
+	hide: function() {
+		Canvas3D.removeEvent(oScene.getInputLayer(), "mousedown", snapClick);
+		Canvas3D.removeEvent(document.body, "DOMMouseScroll", snapDOMScroll);
+		Canvas3D.removeEvent(document.body, "mouseup", snapMsBtnUp);
+		Canvas3D.removeEvent(document.body, "mousemove", snapMsMove);
+		Canvas3D.removeEvent(document, "keypress", snapKeyPress);
+		Canvas3D.removeEvent(document, "keydown", snapKeyDown);
+		oScene.end();
+		oCnf.oSolidVwArea.removeChild(oInCheckCanvas);
+		oCnf.oSolidVwArea.removeChild(oValidCanvas);
+		oCnf.oSolidVwArea.removeChild(oSelectorCanvas);
+		oScene.removeAllObjects();
+		for (var iStop = aPieces.length; iStop > 0; iStop--) {
+			oPiece = aPieces[iStop - 1];
+			aPiecesCasing[oPiece.type].push(aPieces.pop());
+		}
+		oCnf.oSolidVwArea.removeChild(oScene._oInputOverlay);
+		oCnf.oSolidVwArea.removeChild(oScene._oDrawCanvas);
+		oCnf.oSolidVwArea.style.width = "0";
+		oCnf.bSolidView = false;
+	},
+	update: function(bUpdateCamera) {
+		clearPieceSelection();
+		for (var iCase = aPieces.length; iCase > 0; iCase--) {
+			oPiece = aPieces[iCase - 1];
+			aPiecesCasing[oPiece.type].push(aPieces.pop());
+			oScene.removeObject(oPiece.mesh);
+		}
+		setupGame();
+		if (bUpdateCamera) { updateCamera(); }
+		else {
+			updateValidMoves();
+			updateInCheckPieces();
+		}
+	},
+	selectPiece: function(nSquareId, bUnselect, bEmph) {
+		iSelectorX = nSquareId % 10 - 1;
+		iSelectorY = (nSquareId - nSquareId % 10) / 10 - 2;
+
+		if (bUnselect) {
+			for (var iSel = 0; iSel < aPieces.length; iSel++) {
+				if (aPieces[iSel].posY === iSelectorY && aPieces[iSel].posX === iSelectorX) {
+					oPiece = aPieces[iSel];
+					oSelectedPiece = aPieces[iSel];
+					bPieceSelected = true;
+				}
+			}
+			if (bEmph) {
+				updateSelector();
+				updateValidMoves();
+			} else {
+				standbySelector();
+				var oSCtx = oSelectorCanvas.getContext("2d"), oVCtx = oValidCanvas.getContext("2d");
+				oSCtx.clearRect(0,0,oCnf.i3DWidth,oCnf.i3DHeight);
+				oVCtx.clearRect(0,0,oCnf.i3DWidth,oCnf.i3DHeight);
+			}
+		} else {
+			clearPieceSelection();
+			updateInCheckPieces();
+		}
+	},
+	updateSize: function() {
+		oCnf.oSolidVwArea.style.width = oCnf.i3DWidth + "px";
+		oCnf.oSolidVwArea.style.height = oCnf.i3DHeight + "px";
+
+		oSelectorCanvas.width = oCnf.i3DWidth;
+		oSelectorCanvas.height = oCnf.i3DHeight;
+		oSelectorCanvas.style.width = oCnf.i3DWidth + "px";
+		oSelectorCanvas.style.height = oCnf.i3DHeight + "px";
+
+		oValidCanvas.width = oCnf.i3DWidth;
+		oValidCanvas.height = oCnf.i3DHeight;
+		oValidCanvas.style.width = oCnf.i3DWidth + "px";
+		oValidCanvas.style.height = oCnf.i3DHeight + "px";
+
+		oInCheckCanvas.width = oCnf.i3DWidth;
+		oInCheckCanvas.height = oCnf.i3DHeight;
+		oInCheckCanvas.style.width = oCnf.i3DWidth + "px";
+		oInCheckCanvas.style.height = oCnf.i3DHeight + "px";
+
+		oScene.setDimensions(oCnf.i3DWidth, oCnf.i3DHeight);
+
+		updateCamera();
+	},
+	move: function(bBackward, nStartPt, nEndPt, nTarget, nPromoPiece) {
+		var nStartX = nStartPt % 10 - 1, nStartY = (nStartPt - nStartPt % 10) / 10 - 2, nEndX = nEndPt % 10 - 1, nEndY = (nEndPt - nEndPt % 10) / 10 - 2;
+		if (bBackward) {
+			var oSelPiece = pieceByCoords(nEndX, nEndY);
+			if (nTarget) { getPiece(nTarget - 1 & 7, nTarget >> 3 & 1, nEndX, nEndY); }
+			else if (oSelPiece.type === 0 && (nStartPt + nEndPt & 1)) { // en passant
+				getPiece(0, oSelPiece.color ^ 1, nEndX, nStartY);
+			} else if (oSelPiece.type === 1 && (nEndPt - nStartPt + 2 | 4) === 4) { // castling
+				var chosenRook = pieceByCoords(nEndPt - nStartPt + 8 >> 1, nEndY);
+				movePieceTo(chosenRook, 30 - nEndPt + nStartPt >> 2 & 7, nEndY);
+				chosenRook.posX = 30 - nEndPt + nStartPt >> 2 & 7;
+			}
+			if (nPromoPiece) {
+				removePiece(oSelPiece);
+				getPiece(0, nEndY >> 2 ^ 1, nStartX, nStartY);
+			} else { movePieceTo(oSelPiece, nStartX, nStartY); }
+		} else {
+			var oSelPiece = pieceByCoords(nStartX, nStartY);
+			if (nTarget) { removePiece(pieceByCoords(nEndX, nEndY)); }
+			else if (oSelPiece.type === 0 && (nStartPt + nEndPt & 1)) { // en passant
+				removePiece(pieceByCoords(nEndX, nStartY));
+			} else if (oSelPiece.type === 1 && (nEndPt - nStartPt + 2 | 4) === 4) { // castling
+				var chosenRook = pieceByCoords(30 - nEndPt + nStartPt >> 2 & 7, nEndY);
+				movePieceTo(chosenRook, nEndPt - nStartPt + 8 >> 1, nEndY);
+				chosenRook.posX = nEndPt - nStartPt + 8 >> 1;
+			}
+			if (nPromoPiece) {
+				removePiece(oSelPiece);
+				oSelPiece = getPiece(nPromoPiece - 1 & 7, nEndY >> 2 ^ 1, nEndX, nEndY); }
+			else { movePieceTo(oSelPiece, nEndX, nEndY); }
+		}
+		updateInCheckPieces();
+	},
+	updateView: updateCamera
+};

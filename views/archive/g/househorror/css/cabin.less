@@ -1,0 +1,76 @@
+#cabin {
+	width: 427px;
+	height: 506px;
+	margin: -253px 0 0 -213px;
+	position:absolute;
+	left: 50%;
+	top: 50%;
+	background:url(../images/cabin_lights.png);
+
+	.cabinFull {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+
+	#corridor {
+		background:url(../images/cabin_corridor.png);
+		.cabinFull;
+	}
+
+	#ticket_inspector {
+		width: 310px;
+		height: 310px;
+		position: absolute;
+		left: 340px;
+		top: 190px;
+		opacity: 0;
+		background:url(../images/cabin_ticket_inspector.png);
+
+		.text_cloud {
+			left: 140px;
+			top: -30px;
+		}
+
+	}
+
+	#door {
+		background:url(../images/cabin_door.png);
+		.cabinFull;
+	}
+
+	#cabin_1 {
+		background:url(../images/cabin.png);
+		.cabinFull;
+	}
+
+	#faux_player {
+		width: 310px;
+		height: 310px;
+		position: absolute;
+		left: -20px;
+		top: 150px;
+		background:url(../images/cabin_player.png);
+
+		.text_cloud {
+			left: 100px;
+			bottom: 275px
+		}
+
+		&.stand-up {
+			.text_cloud {
+				left: 160px;
+				bottom: 305px;
+			}
+		}
+
+	}
+
+	#cabin_2 {
+		background:url(../images/cabin_2.png);
+		.cabinFull;
+	}
+
+}

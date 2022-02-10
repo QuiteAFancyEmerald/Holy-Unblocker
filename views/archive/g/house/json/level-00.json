@@ -1,0 +1,218 @@
+{
+  "name": "Introduction to Introductions 101",
+  "entities": [
+    {
+      "x": 0,
+      "y": 0,
+      "angle": 0,
+      "shapes": [
+        {
+          "type": "circle",
+          "x": 10,
+          "y": 20,
+          "radius": 10,
+          "fill": {
+            "type": "color",
+            "red": 255,
+            "green": 255,
+            "blue": 255,
+            "alpha": 1.0
+          },
+          "stroke": {
+            "type": "color",
+            "red": 255,
+            "green": 0,
+            "blue": 0,
+            "alpha": 1.0
+          },
+          "lineWidth": 4
+        },
+        {
+          "type": "rect",
+          "x": 20,
+          "y": 10,
+          "width": 10,
+          "height": 20
+        },
+        {
+          "type": "polygon",
+          "vertices": [ 100, 20, 100, 100, 0, 100 ]
+        },
+        {
+          "type": "segment",
+          "x0": -10,
+          "y0": 0,
+          "x1": 10,
+          "y1": 0
+        }
+      ]
+    }
+  ],
+  "physicsEntities": [
+    {
+      "shape": "circle",
+      "radius": 2,
+      "fixture": {
+        "density": 1.0,
+        "friction": 0.5,
+        "restitution": 0.2,
+        "isSensor": false,
+        "filter": {
+          "categoryBits": 1,
+          "maskBits": 65535,
+          "groupIndex": 0
+        }
+      },
+      "body": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "angle": 0,
+        "linearVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "linearDamping": 0,
+        "angularDamping": 0,
+        "allowSleep": true,
+        "awake": true,
+        "fixedRotation": false,
+        "bullet": false,
+        "type": "static",
+        "active": true,
+        "inertiaScale": 1.0
+      },
+      "shapes": [
+        {
+          "type": "circle",
+          "radius": 2,
+          "fill": {
+            "type": "color",
+            "alpha": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "shape": "polygon",
+      "type": "vector",
+      "data": [ 100, 20, 100, 100, 0, 100 ]
+    },
+    {
+      "shape": "polygon",
+      "type": "box",
+      "data": {
+        "hx": 5,
+        "hy": 2
+      }
+    },
+    {
+      "shape": "polygon",
+      "type": "orientedbox",
+      "data": {
+        "hx": 5,
+        "hy": 3,
+        "center": {
+          "x": 0,
+          "y": 0
+        },
+        "angle": 0.52
+      }
+    },
+    {
+      "shape": "polygon",
+      "type": "edge",
+      "data": [ -3, 0, 3, 0 ]
+    }
+  ],
+  "batchPhysicsEntities": [
+    {
+      "data": [
+        {
+          "x": 0,
+          "y": 0,
+          "angle": 0,
+          // This could be an array/{hx, hy}/etc.
+          "data": []
+        }
+      ],
+      "properties": {
+        "shape": "polygon",
+        "type": "vector",
+        "fixture": {
+          "density": 1.0,
+          "friction": 0.5,
+          "restitution": 0.2,
+          "isSensor": false,
+          "filter": {
+            "categoryBits": 1,
+            "maskBits": 65535,
+            "groupIndex": 0
+          }
+        },
+        "body": {
+          "linearVelocity": {
+            "x": 0,
+            "y": 0
+          },
+          "angularVelocity": 0,
+          "linearDamping": 0,
+          "angularDamping": 0,
+          "allowSleep": true,
+          "awake": true,
+          "fixedRotation": false,
+          "bullet": false,
+          "type": "static",
+          "active": true,
+          "inertiaScale": 1.0
+        },
+        "shapes": [
+          {
+            "type": "polygon",
+            "fill": {
+              "type": "color",
+              "alpha": 1
+            }
+          }
+        ]
+      }
+    },
+    // Example of real-world usage.
+    {
+      "data": [
+        {
+          "x": -29.8,
+          "y": 8.2,
+          "angle": 1.571,
+          "data": [ -7.8, 9.6, -2.9, -7.4, 8, 0.8 ]
+        },
+        {
+          "x": -18.1,
+          "y": 5.4,
+          "angle": 0,
+          "data": [ 9.5, 0.3, -2.3, 10.6, -10.6, -5.3 ]
+        },
+        {
+          "x": -9.4,
+          "y": 11,
+          "angle": 0,
+          "data": [ 4.3, 1.6, -11, 5, 0.9, -5.3 ]
+        }
+      ],
+      "properties": {
+        "shape": "polygon",
+        "type": "vector",
+        "fixture": {
+          "density": 1,
+          "friction": 0.5,
+          "restitution": 0.2,
+          "filter": {
+            "categoryBits": 6
+          }
+        }
+      }
+    }
+  ]
+}

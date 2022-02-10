@@ -1,0 +1,34 @@
+{
+    "entry": [
+        "How did you fare?",
+        "►There was a suspiciously convenient patch of soil at the top of the mountain.",
+        "The sacred garden, yes. How about my seed?",
+        "►He is alive and well. @alive",
+        "►He is alive… for now. @barelyalive",
+        "►He is alive but you might want to check if your seeds are not spoiled. @spoiled"
+    ],
+    "alive": [
+        "This is good news. This deed will not be forgotten.",
+        "As promised, you may have a piece of my crusty bark.",
+        "►Thanks! @returning !spawnwood !end"
+    ],
+    "barelyalive": [
+        "Trees are sturdy creatures. He will make me proud, I'm sure of it!",
+        "►If you say so…",
+        "Yes, yes… where were we? Ah yes, as promised, you may have a piece of my crusty bark.",
+        "►Thanks! @returning !spawnwood !end"
+    ],
+    "spoiled": [
+        "Oh dear… what did he say? Was he making strange frog related puns?",
+        "►That's a very specific… but no.",
+        "Well, don't mind him then. It's just a phase, he will grow out of it.",
+        "As promised, you may have a piece of my crusty bark.",
+        "►Thanks! @returning !spawnwood !end"
+    ],
+    "returning": [
+        "Greetings, friend!",
+        "►See you around! @returning !end",
+        "►Sorry, I lost the wood you gave me earlier!",
+        "You do this on purpose, right? Wood is not growing on trees! @returning !spawnwood !end"
+    ]
+}

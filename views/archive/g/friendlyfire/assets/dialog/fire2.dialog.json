@@ -1,0 +1,32 @@
+
+{
+    "entry": [
+        "Omnmnommnomm, that was good!",
+        "Hahahahaha!",
+        "I am finally complete.",
+        "►What are you doing?",
+        "►Whyyy?",
+        "I'm unstoppable!",
+        "This was the last time I have to ask a filthy mortal for help!",
+        "And now I'm going to devour the world.",
+        "And I'll start with you!",
+        "►It is how it is…",
+        "►I thought we were friends!",
+        "►Not so fast!",
+        "►Stop right there!",
+        "What do you want to do, stop me? You got nothing on me! You're a human! I'm literally fire!",
+        "[not $hasFriendship]As a cherry on top of the fiery cake, I'm also gonna consume all of your power-ups. @noFriendship",
+        "As a cherry on top of the fiery cake, I'm also gonna consume all of your power-ups. @friendship"
+    ],
+    "noFriendship": [
+        "All of the useful ones, that is. You can keep that annoying dancing Dave as eternal punishment!",
+        "HAHAHAHAHA! !crazyzoom !end"
+    ],
+    "friendship": [
+        "Wait…",
+        "Didn't you have a flying power-up before? Where did that go?",
+        "I was really looking forward to consume it. It tastes like chicken…",
+        "Oh well, doesn't matter.",
+        "HAHAHAHAHA! !friendshipEnding !end"
+    ]
+}

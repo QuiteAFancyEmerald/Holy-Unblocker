@@ -1,0 +1,523 @@
+
+#last_corridor {
+position:absolute;
+width: 1853px;
+height: 1352px;
+cursor:move;
+background: url(../images/last_corridor.jpg);
+
+	#player { 
+		.text_cloud {
+			left: 10px;
+			bottom: 280px;
+			min-width: 175px;
+		}
+
+		#flash {
+			z-index: 9999;
+		}
+	}
+
+	#sprite {
+		background: url(../images/hidden_corridor_player.png) no-repeat 0 0
+	}
+
+	#shadow  {
+		width: 122px;
+		height: 102px;
+		background: url(../images/hidden_corridor_shadow.png) no-repeat;
+		left: -38px;
+		top: -28px;
+		opacity:.5;
+	}
+
+	#floor {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		right: -47px;
+		bottom: -296px;
+	}
+
+	#door_train {
+		.isometric_right;
+		.door(1389px, -122px, 120px, 241px);
+	}
+
+	.leds {
+		height: 138px;
+		position: absolute;
+		background: url(../images/last_corridor_leds.png);
+
+		&.on div {
+			border-color: #b10505;
+		}
+	}
+
+	.wires {
+		border-left: 1px solid #000;
+		border-radius: 5px 0 0 0;
+		position: absolute;
+	}
+
+	#led_1 {
+		width: 79px;
+		right: 548px;
+		top: -12px;
+		.leds;
+		background-position: -163px 0;
+
+		&.on {
+			background-position: -163px -138px;
+		}
+
+		.wire_1 {
+			height: 97px;
+			width: 10px;
+			left: 16px;
+			bottom: 111px;
+			.wires;
+			.isometric_left;
+		}
+
+		.wire_2 {
+			height: 94px;
+			width: 10px;
+			left: 22px;
+			bottom: 117px;
+			.wires;
+			.isometric_left;
+		}
+
+		.wire_3 {
+			height: 97px;
+			width: 10px;
+			left: 27px;
+			bottom: 116px;
+			.wires;
+			.isometric_left;
+		}
+
+		.wire_4 {
+			height: 98px;
+			width: 10px;
+			left: 32px;
+			bottom: 118px;
+			.wires;
+			.isometric_left;
+		}
+
+	}
+
+	#led_2 {
+		width: 82px;
+		right: 963px;
+		top: 227px;
+		.leds;
+		background-position: -81px 0;
+
+		&.on {
+			background-position: -81px -138px;
+		}
+
+		.wire_1 {
+			height: 97px;
+			width: 10px;
+			left: 55px;
+			bottom: 130px;
+			.wires;
+			.isometric_left;
+		}
+
+		.wire_2 {
+			height: 97px;
+			width: 10px;
+			left: 65px;
+			bottom: 136px;
+			.wires;
+			.isometric_left;
+		}
+
+		.wire_3 {
+			height: 149px;
+			width: 10px;
+			left: -2px;
+			bottom: 45px;
+			.wires;
+			border-radius: 5px 0  0 5px;
+			.isometric_left;
+		}
+
+		.wire_4 {
+			height: 152px;
+			width: 10px;
+			left: -2px;
+			bottom: 38px;
+			.wires;
+			border-radius: 0 0 0 5px;
+			.isometric_left;
+		}
+
+	}
+
+	#led_3 {
+		width: 82px;
+		right: 1378px;
+		top: 467px;
+		.leds;
+		background-position: 0 0;
+
+		&.on {
+			background-position: 0 -138px;
+		}
+
+		.wire_1 {
+			height: 40px;
+			width: 10px;
+			left: -2px;
+			bottom: 78px;
+			.wires;
+			border-radius: 0 0 0 5px;
+			.isometric_left;
+		}
+
+		.wire_2 {
+			height: 40px;
+			width: 10px;
+			left: -2px;
+			bottom: 68px;
+			.wires;
+			border-radius: 0 0 0 5px;
+			.isometric_left;
+		}
+
+		.wire_3 {
+			height: 40px;
+			width: 10px;
+			left: -2px;
+			bottom: 37px;
+			.wires;
+			border-radius: 0 0 0 5px;
+			.isometric_left;
+		}
+
+		.wire_4 {
+			height: 164px;
+			width: 10px;
+			left: -2px;
+			bottom: 30px;
+			.wires;
+			border-radius: 5px 0 0 5px;
+			.isometric_left;
+		}
+
+	}
+
+	.use_leds {
+		width: 89px;
+		height: 87px;
+		border-radius: 10px;
+		position: absolute;
+		z-index: 1001;
+		cursor: pointer;
+		.isometric_right;
+	}
+
+	#use_led_1 {
+		right: 488px;
+		top: 323px;
+		.use_leds;
+	}
+
+	#use_led_2 {
+		right: 903px;
+		top: 562px;
+		.use_leds;
+	}
+
+	#use_led_3 {
+		right: 1320px;
+		top: 803px;
+		.use_leds;
+	}
+
+	.fluoresents {
+		width: 229px;
+		height: 158px;
+		position: absolute;
+		z-index: 1003;
+		opacity: 0;
+		background: url(../images/last_corridor_fluorescent.png);
+
+		&.crawl {
+			.transition(opacity, 10s)
+		}
+
+		&.on {
+			opacity: 1;
+		}
+	}
+
+	#fluorescent_1 {
+		right: 240px;
+		top: 120px;
+		.fluoresents;
+	}
+
+	#fluorescent_2 {
+		right: 667px;
+		top: 366px;
+		.fluoresents;
+	}
+
+	#fluorescent_3 {
+		right: 1082px;
+		top: 606px;
+		.fluoresents;
+	}
+
+	#fluorescent_4 {
+		right: 1498px;
+		top: 846px;
+		.fluoresents;
+	}
+
+	#dark_player {
+		width: 310px;
+		height: 310px;
+		position: absolute;
+		left: 140px;
+		top: 930px;
+		z-index: 1003;
+		opacity: 0;
+		background: url(../images/last_corridor_player_dark.png);
+
+		.text_cloud {
+			width: 175px;
+			left: -60px;
+			bottom: 316px;
+			.scaleX(-1);
+		}
+	}
+
+	#darkness {
+		left: -310px;
+		top: 178px;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		cursor: help;
+
+		&.crawl {
+			.transition(all, 10s);
+		}
+
+		&.retract_1 {
+			left: -730px;
+			top: 420px;
+		}
+
+		&.retract_2 {
+			left: -1150px;
+			top: 662px;
+		}
+
+		&.gone {
+			opacity: 0;
+		}
+
+		.wall {
+			width: 42*40px;
+			height: 8*40px;
+			position: absolute;
+			z-index: 1002;
+			bottom: 137px;
+			left: 50px;
+			.isometric_right;
+
+			background: -moz-linear-gradient(left, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%);
+			background: -webkit-gradient(linear, left top, right top, color-stop(95%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,0)));
+			background: -webkit-linear-gradient(left, rgba(0,0,0,1) 95%,rgba(0,0,0,0) 100%);
+			background: -o-linear-gradient(left, rgba(0,0,0,1) 95%,rgba(0,0,0,0) 100%);
+			background: -ms-linear-gradient(left, rgba(0,0,0,1) 95%,rgba(0,0,0,0) 100%);
+			background: linear-gradient(left, rgba(0,0,0,1) 95%,rgba(0,0,0,0) 100%);
+		}
+
+		.floor {
+			width: 42*40px;
+			height: 6*40px;
+			position: absolute;
+			z-index: 1002;
+			bottom: -103px;
+			left: 50px;
+			background: red;
+			.isometric_top;
+
+			background: -moz-linear-gradient(left, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%);
+			background: -webkit-gradient(linear, left top, right top, color-stop(95%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,0)));
+			background: -webkit-linear-gradient(left, rgba(0,0,0,1) 95%,rgba(0,0,0,0) 100%);
+			background: -o-linear-gradient(left, rgba(0,0,0,1) 95%,rgba(0,0,0,0) 100%);
+			background: -ms-linear-gradient(left, rgba(0,0,0,1) 95%,rgba(0,0,0,0) 100%);
+			background: linear-gradient(left, rgba(0,0,0,1) 95%,rgba(0,0,0,0) 100%);
+		}
+
+		.text {
+			color: #fff;
+			text-align: right;
+			font: 24px/64px 'Neuton', georgia, serif;
+			margin: 280px 410px 0 0;
+			float: right;
+			position: relative;
+			z-index: 1002;
+			opacity: 0;
+			.isometric_left;
+		}
+
+	}
+
+}
+
+#lightbox_led {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 2000;
+	background: rgba(0, 0, 0, .5);
+}
+
+#led_panel {
+	width: 512px;
+	height: 512px;
+	margin: -256px 0 0 -256px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	background: url(../images/last_corridor_led_panel.png);
+
+	#led_panel_body {
+		width: 452px;
+		height: 452px;
+		border-collapse: collapse;
+		position: absolute;
+		left: 30px;
+		top: 30px;
+
+		.cell {
+			width: 90.4px;
+			height: 90.4px;
+			border-radius: 100%;
+			background: url(../images/last_corridor_led_off.png) no-repeat 50% 50%;
+			cursor: pointer;
+			.transition(background-color, .2s);
+
+			&.light {
+				background-image: url(../images/last_corridor_led_on.png);
+			}
+
+			&.highlight {
+				background-color: rgba(255, 255, 255, .3);
+			}
+
+		}
+
+	}
+
+}
+
+#led_reference {
+	width: 220px;
+	height: 220px;
+	border-radius: 10px;
+	position: absolute;
+	right: -236px;
+	top: 0;
+
+	.table_wrapper {
+		width: 100px;
+		height: 100px;
+		margin: 5px;
+		float: left;
+		background: url(../images/last_corridor_led_panel_small.png);
+	}
+
+	table {
+		width: 90px;
+		height: 90px;
+		margin: 5px;
+		border-collapse: collapse;
+
+		.cell {
+			width: 18px;
+			height: 18px;
+			background: url(../images/last_corridor_led_small_off.png) no-repeat 50% 50%;
+
+			&.light {
+				background-image: url(../images/last_corridor_led_small_on.png);
+			}
+
+		}
+
+	}
+}
+
+#led_clear {
+	width: 210px;
+	height: 82px;
+	position: absolute;
+	left: 533px;
+	top: 235px;
+	cursor: pointer;
+	background-image: url(../images/last_corridor_led_reset.png); 
+}
+
+#darkness_fill {
+	width: 9999px;
+	height: 9999px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: #000;
+}
+
+#darkness_bg,
+#darkness_bg_light {
+	width: 558px;
+	height: 558px;
+	top: 425px;
+	left: -20px;
+	z-index: 1;
+	position: absolute;
+	background: url(../images/darkness_bg.jpg);
+}
+
+#darkness_bg_light {
+	background: url(../images/darkness_bg_light.jpg);
+}
+
+#darkness_floor,
+#darkness_floor_light {
+	width: 343px;
+	height: 197px;
+	top: 779px;
+	left: 84px;
+	z-index: 2;
+	position: absolute;
+	background: url(../images/darkness_floor.png);
+}
+
+#darkness_floor_light {
+	background: url(../images/darkness_floor_light.png);
+}
+
+#darkness_wires {
+	width: 406px;
+	height: 396px;
+	position: absolute;
+	top: 429px;
+	left: 34px;
+	z-index: 200;
+	background: url(../images/darkness_wires.png);
+	.origin(179, 370);
+}

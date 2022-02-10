@@ -1,0 +1,50 @@
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 24, "y": 22, "w": 24, "h": 20 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 4, "w": 24, "h": 20 },
+    "sourceSize": { "w": 24, "h": 24 },
+    "duration": 400
+   },
+   {
+    "filename": "1",
+    "frame": { "x": 24, "y": 0, "w": 24, "h": 22 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 2, "w": 24, "h": 22 },
+    "sourceSize": { "w": 24, "h": 24 },
+    "duration": 400
+   },
+   {
+    "filename": "2",
+    "frame": { "x": 0, "y": 0, "w": 24, "h": 23 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 1, "w": 24, "h": 23 },
+    "sourceSize": { "w": 24, "h": 24 },
+    "duration": 400
+   },
+   {
+    "filename": "3",
+    "frame": { "x": 0, "y": 23, "w": 24, "h": 20 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 4, "w": 24, "h": 20 },
+    "sourceSize": { "w": 24, "h": 24 },
+    "duration": 400
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.21-x64",
+  "image": "radio.png",
+  "format": "RGBA8888",
+  "size": { "w": 48, "h": 43 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 3, "direction": "forward" }
+  ]
+ }
+}

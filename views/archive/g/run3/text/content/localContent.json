@@ -1,0 +1,13 @@
+[{
+	"path":"autoContent.json",
+	"type":0
+},
+{
+	"path":"explore/homeAchieve.json",
+	"condition":{
+		"path":"home0",
+		"pathProgress":0
+	},
+	"type":3,
+	"version":1
+}]

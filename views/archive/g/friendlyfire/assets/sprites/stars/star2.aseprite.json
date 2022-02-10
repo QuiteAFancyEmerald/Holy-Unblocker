@@ -1,0 +1,59 @@
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 30, "y": 0, "w": 3, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 9, "y": 8, "w": 3, "h": 3 },
+    "sourceSize": { "w": 20, "h": 20 },
+    "duration": 200
+   },
+   {
+    "filename": "1",
+    "frame": { "x": 26, "y": 13, "w": 5, "h": 5 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 8, "y": 7, "w": 5, "h": 5 },
+    "sourceSize": { "w": 20, "h": 20 },
+    "duration": 200
+   },
+   {
+    "filename": "2",
+    "frame": { "x": 17, "y": 13, "w": 9, "h": 9 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 6, "y": 5, "w": 9, "h": 9 },
+    "sourceSize": { "w": 20, "h": 20 },
+    "duration": 200
+   },
+   {
+    "filename": "3",
+    "frame": { "x": 17, "y": 0, "w": 13, "h": 13 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 4, "y": 3, "w": 13, "h": 13 },
+    "sourceSize": { "w": 20, "h": 20 },
+    "duration": 200
+   },
+   {
+    "filename": "4",
+    "frame": { "x": 0, "y": 0, "w": 17, "h": 17 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 1, "w": 17, "h": 17 },
+    "sourceSize": { "w": 20, "h": 20 },
+    "duration": 200
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.19.2",
+  "image": "star2.png",
+  "format": "RGBA8888",
+  "size": { "w": 33, "h": 22 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 4, "direction": "pingpong" }
+  ]
+ }
+}

@@ -1,0 +1,57 @@
+{
+    "entry": [
+        "I… remember…",
+        "A memento from the past.",
+        "Thank you for bringing this to me.",
+        "How is my brother? Tell me about him.",
+        "►He is a good boy.",
+        "Good to hear that.",
+        "I can't believe I forgot about him…",
+        "This is unacceptable.",
+        "►Maybe you can make it up to him.",
+        "Yes… I must do that.",
+        "I must meet him. @sacriface"
+    ],
+    "sacriface": [
+        "I know that it's a lot to ask from you after you already did so much…",
+        "…but would you be so kind and give away your power of multi-jumping to my brother?",
+        "This is the only way for him to actually come to me. @sacrificeOptions"
+    ],
+    "sacrificeOptions": [
+        "►Can't you just leave the clouds yourself? @yourself",
+        "►Can't I carry you down? @carry",
+        "►Of course I will! @yes",
+        "►Eh, no thanks. @sacriface !end"
+    ],
+    "yourself": [
+        "As a power-up, I lost all means to move by myself.",
+        "I'm a slave to my own ambitions. @sacrificeOptions"
+    ],
+    "carry": [
+        "Touching me will most likely lead to a consumption of my unknown power.",
+        "I might keep my consciousness, but that's not a risk I can take.",
+        "Who knows how my power might manifest.",
+        "I must meet him like I am now. @sacrificeOptions"
+    ],
+    "yes": [
+        "You… will?",
+        "[not $seedgrown] Wait… @notyet",
+        "This sacrifice will not be forgotten.",
+        "Please go to my brother and grant him your power-up.",
+        "►Of course I will! @go"
+    ],
+    "notyet": [
+        "Make sure you have done everything you need to do here up in the clouds.",
+        "If you give away your multi-jump prematurely it could lead to a disaster.",
+        "I can tell that you still have business here.",
+        "►Thanks for heads up! !end @sacriface"
+    ],
+    "go": [
+        "Thank you human! !set $gotPowerShibaQuest true !end @end"
+    ],
+    "end": [
+        "Please grant your multi-jump to my mortal brother.",
+        "Your sacrifice will not be forgotten.",
+        "►Of course I will! @end !end"
+    ]
+}

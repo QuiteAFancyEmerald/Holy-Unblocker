@@ -1,0 +1,30 @@
+{
+    "entry": [
+        "You did it!",
+        "[not $mountainRiddleExplained]And you even did it without my help.",
+        "[not $mountainRiddleExplained]You rock!",
+        "[not $mountainRiddleExplained]I have nothing left to teach to.",
+        "[$mountainRiddleExplained]It was fairly easy with my help, wasn't it?",
+        "►[not $mountainRiddleExplained]You didn't really teach me anything. @teaching",
+        "►[$mountainRiddleExplained]Yeah. @easy",
+        "►[$mountainRiddleExplained]I still struggled. @struggled"
+    ],
+    "teaching": [
+        "Don't be like that…",
+        "Bye! @end !end"
+    ],
+    "easy": [
+        "I really should keep track of my tip sheets.",
+        "I feel kinda bad for spoiling your fun…",
+        "Well, bye! @end !end"
+    ],
+    "struggled": [
+        "What, really?",
+        "Maybe I have to revisit the tip sheet for brain dead humans…",
+        "Well, bye! @end !end"
+    ],
+    "end": [
+        "Hey again!",
+        "You can still use this mountain trial in your free time, if you want. @end !end"
+    ]
+}

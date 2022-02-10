@@ -1,0 +1,906 @@
+/*
+ * Javascript/Canvas Textured 3D Renderer v0.3.1
+ * Copyright (c) 2008 Jacob Seidelin, cupboy@gmail.com
+ * This software is free to use for non-commercial purposes. For anything else, please contact the author.
+ * This is a version modified by Stefano Gioffre'.
+ */
+
+Canvas3D.Mesh = function() {
+
+	this._oPosition = new Canvas3D.Vec3(0,0,0);
+	this._oRotation = new Canvas3D.Vec3(0,0,0);
+
+	this._aVertices = []; // vertex positions in object space
+	this._aGlobalVertices = []; // vertices translated to global space
+	this._aFaces = [];
+	this._aNormals = [];
+	this._aMaterials = [];
+
+	this._bDirty = true;
+
+	this._bVisible = true;
+
+	this._iForcedZ = -1;
+	this._bHideWhenRotating = false;
+
+	this._oDefaultColor = {r:155,g:155,b:155};
+	this._oDefaultMaterial = {};
+	this._iSize = 1;
+
+	this._fScale = 1;
+
+	this._bFill = true;		// render filled triangles
+	this._bWire = false;		// render wireframe
+	this._bShading = true;		// shade/light filled triangles
+	this._bBackfaceCull = true;	// only draw triangles facing the camera
+	this._bZSort = true;		// sort triangles back-to-front
+	this._bExpandClipPath = true;	// expand clip path by 1px, to minimize gaps
+
+	this._bTexture = false;		// render textured triangles (must enable bFill as well)
+	this._bTextureShading = false;	// render shading on textured triangles (must enable bShading as well)
+
+	// sometimes the exported normals from Max are messed up, or they're imported wrong or whatever, I don't know.
+	// We can recalculate them after loading.
+	this._bCalcNormals = true;
+
+	// only allow textures if canvas is available
+	var oCanvas = document.createElement("canvas");
+	this._bCanTexture = false;	
+	this._bCanTextureUV = false;	
+	if (oCanvas.getContext && oCanvas.getContext("2d")) {
+		this._bCanTexture = true;
+		if (oCanvas.getContext("2d").getImageData) {
+			this._bCanTextureUV = true;
+		}
+	}
+
+};
+
+// parse the mesh data
+// the mesh data (vertices, faces, texture coordinates, materials) are read from a JSON object structure
+// and copied into local arrays
+// normals are recalculated, if enabled.
+Canvas3D.Mesh.prototype.setMeshData = function(oMeshData, oScene) {
+	this._oMeshData = oMeshData;
+
+	this._aVertices = [];
+	this._aFaces = [];
+	this._aNormals = [];
+	this._aMaterials = [];
+
+	var oPos = this._oPosition;
+
+	var me = this;
+
+	if (this._oMeshData.mat) {
+		for (var m=0;m<this._oMeshData.mat.length;m++) {
+			var oMat = this._oMeshData.mat[m];
+			oMat.idx = m;
+			if (oMat.t) {
+				oMat.image = new Image();
+				if (oMat.uv && this._bCanTextureUV) {
+					oMat.image.mat = oMat;
+					oMat.image.onload = function() {
+						me._bakeTexture(this.mat);
+						if (oScene) {
+							oScene.setDirty(true);
+						}
+						this.onload = null;
+					}
+				}
+				oMat.image.src = "textures/" + oMat.t;
+			}
+			this._aMaterials.push(oMat);
+		}
+	}
+
+	for (var o=0;o<this._oMeshData.obj.length;o++) {
+
+		var oObject = this._oMeshData.obj[o];
+		var aVertices = oObject.vrt;
+		var aTexCoords = oObject.tex;
+
+		this._aTexCoords = aTexCoords;
+
+		var iVertOffset = this._aVertices.length;
+
+		var fTotalX = 0;
+		var fTotalY = 0;
+		var fTotalZ = 0;
+
+		var iNumVertices = aVertices.length;
+
+		for (var v=0;v<iNumVertices;v++) {
+			var oVertex = new Canvas3D.Vec3(
+					aVertices[v][0],
+					aVertices[v][1],
+					aVertices[v][2]
+			);
+
+			this._aVertices.push(oVertex);
+
+			this._aGlobalVertices.push(
+				new Canvas3D.Vec3(
+					oVertex.x + oPos.x,
+					oVertex.y + oPos.y,
+					oVertex.z + oPos.z
+				)
+			);
+
+			fTotalX += oVertex.x;
+			fTotalY += oVertex.y;
+			fTotalZ += oVertex.z;
+		}
+
+		var fAvgX = fTotalX / iNumVertices;
+		var fAvgY = fTotalY / iNumVertices;
+		var fAvgZ = fTotalZ / iNumVertices;
+
+		var oLocalCenter = new Canvas3D.Vec3(fAvgX, fAvgY, fAvgZ);
+
+		var aFaces = oObject.fac;
+		for (var f=0;f<aFaces.length;f++) {
+			var oFace = aFaces[f];
+
+			var oPoint1 = this._aGlobalVertices[oFace[0] + iVertOffset];
+			var oPoint2 = this._aGlobalVertices[oFace[1] + iVertOffset];
+			var oPoint3 = this._aGlobalVertices[oFace[2] + iVertOffset];
+
+			var oCenter = new Canvas3D.Vec3(
+				(oPoint1.x + oPoint2.x + oPoint3.x) / 3,
+				(oPoint1.y + oPoint2.y + oPoint3.y) / 3,
+				(oPoint1.z + oPoint2.z + oPoint3.z) / 3
+			);
+
+			var oNormal = new Canvas3D.Vec3(
+					oObject.nrm[f][0],
+					oObject.nrm[f][1],
+					oObject.nrm[f][2]
+			);
+
+			var oFace = {
+					a : oFace[0] + iVertOffset,
+					b : oFace[1] + iVertOffset,
+					c : oFace[2] + iVertOffset,
+					normal : oNormal,
+					center : oCenter,
+					mat : oFace[3],
+					idx : f,
+					lights : []
+			}
+
+			this._aFaces.push(oFace);
+		}
+
+		if (this._bCalcNormals) {
+			this._recalcNormals();
+		}
+	}
+}
+
+// here we prepare the texture for easy rendering.
+// For each face, a triangular region is drawn onto a canvas containing the image data for that face
+// We draw a triangular section on the destination canvas containing the corresponding pixel data from the source texture,
+// using the UV coords to retrieve the correct pixels
+// that way, we have all texture parts rotated and scaled into a common form, so they can easily be drawn later
+// at the moment, the data is read with getImageData and is rather slow, but it should be possible do to sort of the reverse process
+// of the drawTextureTriangle transform to draw these texture parts.
+Canvas3D.Mesh.prototype._bakeTexture = function(oMat) {
+
+	var f = this._aFaces.length;
+
+	var aTexFaces = [];
+	// find all face that need this texture
+	do {
+		var oFace = this._aFaces[f-1];
+		if (oFace.mat == oMat.idx) {
+			aTexFaces.push(oFace);
+			oFace.texidx = aTexFaces.length-1;
+		}
+	} while (--f)
+
+	f = aTexFaces.length;
+	if (f < 1) {
+		return;
+	}
+
+	var fc = aTexFaces.length;
+
+	var iTexRes = oMat.res;
+	var iTexWidth = iTexRes * f + f*2;
+	var iTexHeight = iTexRes + 2;
+
+	var iSrcWidth = oMat.w;
+	var iSrcHeight = oMat.h;
+
+	// create canvas for source texture image and paint the texture on it
+	var oSource = document.createElement("canvas");
+	oSource.width = iSrcWidth;
+	oSource.height = iSrcHeight;
+	oSource.style.width = iSrcWidth+"px";
+	oSource.style.height = iSrcHeight+"px";
+	var oSrcCtx = oSource.getContext("2d");
+	oSrcCtx.drawImage(oMat.image, 0, 0, iSrcWidth, iSrcHeight);
+	var oSrcDataObj = oSrcCtx.getImageData(0, 0, iSrcWidth, iSrcHeight);
+	var aSrcData = oSrcDataObj.data;
+
+	// create canvas for finished face textures.
+	var oTexCanvas = document.createElement("canvas");
+	oTexCanvas.width = iTexWidth;
+	oTexCanvas.height = iTexHeight;
+	oTexCanvas.style.width = iTexWidth+"px";
+	oTexCanvas.style.height = (iTexHeight)+"px";
+	oTexCanvas.style.backgroundColor = "rgb(255,0,255)";
+	oTexCanvas.resolution = iTexRes;
+	var oDstCtx = oTexCanvas.getContext("2d");
+	oDstCtx.fillStyle = "rgb(255,0,255)";
+	oDstCtx.fillRect(0,0,iTexWidth,iTexHeight);
+
+	var oDstDataObj = oDstCtx.getImageData(0, 0, iTexWidth, iTexHeight);
+	var aDstData = oDstDataObj.data;
+
+	var oContext = oTexCanvas.getContext("2d");
+
+	//uncomment to see how the texture is prepared
+	//document.body.appendChild(oSource);
+	//document.body.appendChild(oTexCanvas);
+
+	var iTexOffsetX = iTexRes;
+
+	do {
+		var oFace = aTexFaces[f-1];
+
+		var oCoords = this._aTexCoords[oFace.idx];
+
+		var oTexPoint1 = oCoords[1];
+		var oTexPoint2 = oCoords[2];
+		var oTexPoint3 = oCoords[0];
+
+		var x1 = oTexPoint1[0] * iSrcWidth;
+		var y1 = (1 - oTexPoint1[1]) * iSrcHeight;
+		var x3 = oTexPoint2[0] * iSrcWidth;
+		var y3 = (1 - oTexPoint2[1]) * iSrcHeight;
+		var x2 = oTexPoint3[0] * iSrcWidth;
+		var y2 = (1 - oTexPoint3[1]) * iSrcHeight;
+
+		var fUnitAX = (x2 - x1);
+		var fUnitAY = (y2 - y1);
+
+		var fUnitBX = (x3 - x2);
+		var fUnitBY = (y3 - y2);
+
+		var iOffsetX = 0;
+
+		var iDstXOffset = (iTexWidth - iTexOffsetX - (fc-f)*2-2);
+
+		// we paint the triangular texture with a 1px margin on each side and let the texture spill over into this margin.
+		// this is to prevent small transparent gaps to appear between the triangles when they are rotated and scaled into place during rendering.
+
+		var y = iTexRes+2;
+		do {
+			var iDstY = iTexRes+2-y;
+			var fStepY = (iTexRes+1-y) / iTexRes;
+
+			var fStepYUnitBX = fStepY*fUnitBX;
+			var fStepYUnitBY = fStepY*fUnitBY;
+
+			var iDstYOffset = iDstY*iTexWidth*4;
+
+			var x = iTexRes+2 - iOffsetX;
+			do {
+				var iDstX = x + iDstXOffset - 1;
+				var fStepX = (x-1 + iOffsetX) / iTexRes;
+	
+				var iSrcX = Math.floor(x1 + fStepX*fUnitAX + fStepYUnitBX);
+				var iSrcY = Math.floor(y1 + fStepX*fUnitAY + fStepYUnitBY);
+
+				if (iSrcX < 0) iSrcX = 0;
+				if (iSrcY < 0) iSrcY = 0;
+
+				if (iSrcX >= iSrcWidth) iSrcX = iSrcWidth-1;
+				if (iSrcY >= iSrcHeight) iSrcY = iSrcHeight-1;
+
+				var iDstPixOffset = iDstYOffset + iDstX*4;
+				var iSrcPixOffset = (iSrcY*iSrcWidth + iSrcX)*4;
+	
+				aDstData[iDstPixOffset] = aSrcData[iSrcPixOffset];
+				aDstData[iDstPixOffset+1] = aSrcData[iSrcPixOffset+1];
+				aDstData[iDstPixOffset+2] = aSrcData[iSrcPixOffset+2];
+
+				aDstData[iDstPixOffset+3] = oMat.texalpha ? aSrcData[iSrcPixOffset+3] : 255;
+
+			} while (--x);
+
+			iOffsetX++;
+			iDstXOffset++;
+
+		} while (--y);
+
+		iTexOffsetX += iTexRes;
+
+	} while (--f);
+
+	oDstCtx.putImageData(oDstDataObj, 0, 0);
+	oDstCtx.fillRect(0,0,0,0); // Opera doesn't update until we draw something?
+	oMat.facecanvas = oTexCanvas;
+}
+
+var fncZSort = function(a, b) {
+	return a.transcenter.z - b.transcenter.z;
+}
+
+// math and misc shortcuts
+var sin = Math.sin;
+var cos = Math.cos;
+var asin = Math.asin;
+var acos = Math.acos;
+var pow = Math.pow;
+var sqrt = Math.sqrt;
+
+var fRadDeg = 180 / Math.PI;
+var fDegRad = Math.PI / 180;
+var fDegRad45 = fDegRad*45;
+var fDegRad90 = fDegRad*90;
+var fDegRad180 = fDegRad*180;
+var fSqrt2Div2 = sqrt(2) / 2;
+
+// this functions draws a textured (and shaded) triangle on the canvas
+// this is done by rotating/scaling a triangular section in place, setting up a clipping path and drawing the image.
+// if UV coords are enabled, only the correct part of the triangle-strip texture is drawn
+// if not, the entire texture is drawn for each face
+// some of the code used for skewing the image was inspired by the AS function found here:
+// http://www.senocular.com/flash/actionscript.php?file=ActionScript_1.0/Prototypes/MovieClip/skew.as
+
+Canvas3D.Mesh.prototype._drawTextureTriangle = function(oContext, oMat, oPoint1, oPoint2, oPoint3, iOffsetX, iOffsetY, fShade, oNormal, iIdx) {
+	if (!oMat.image) {
+		return;
+	}
+	if (!oMat.image.complete) {
+		return;
+	}
+
+	var oMatImage = oMat.image;
+
+	if (!oMatImage.canvas) {
+		// first time around, we paint the texture image to a canvas
+		// drawing the triangle later on is slightly faster using another canvas object rather than an image object
+		// this should be moved to someplace else
+
+		var iTexWidth = 50;
+		var iTexHeight = 50;
+
+		var oTextureCanvas = document.createElement("canvas");
+
+		oTextureCanvas.width = iTexWidth;
+		oTextureCanvas.height = iTexHeight;
+
+		oTextureCanvas.style.width = iTexWidth + "px";
+		oTextureCanvas.style.height = iTexHeight + "px";
+
+		var oTexCtx = oTextureCanvas.getContext("2d");
+		oTexCtx.drawImage(oMatImage, 0, 0, iTexWidth, iTexHeight);
+
+		oMatImage.canvas = oTextureCanvas;
+	}
+
+	var x1 = oPoint1.x;
+	var y1 = oPoint1.y;
+	var x2 = oPoint2.x;
+	var y2 = oPoint2.y;
+	var x3 = oPoint3.x;
+	var y3 = oPoint3.y;
+
+	// trig to calc the angle we need to rotate in order get our texturetriangle in place
+	var dx = x3 - x2;
+	var dy = y3 - y2;
+	var a = sqrt((dx*dx + dy*dy));
+
+	dx = x3 - x1;
+	dy = y3 - y1;
+	var b = sqrt((dx*dx + dy*dy));
+
+	dx = x2 - x1;
+	dy = y2 - y1;
+	var c = sqrt((dx*dx + dy*dy));
+
+	var aa = a*a, bb = b*b, cc = c*c;
+
+	var fCosB = (aa + cc - bb) / (2*a*c);
+	var fAngleB = acos(fCosB);
+	if (isNaN(fAngleB)) return;
+
+	var fCosC = (aa + bb - cc) / (2*a*b);
+	var fAngleC = acos(fCosC);
+	if (isNaN(fAngleC)) return;
+
+	if ((fAngleB + fAngleC) == 0) return;
+
+	var fSkewX = -(fDegRad90 - (fAngleB + fAngleC));
+
+	var fTriRotation = -(asin((y2 - y1) / c));
+
+	if (x2 > x1) { // rotate the other way around if triangle is flipped
+		fTriRotation = fDegRad180 - fTriRotation;
+	}
+
+	if (fSkewX == fDegRad90) fSkewX = fDegRad*89.99;
+	if (fSkewX == -fDegRad90) fSkewX = -fDegRad*89.99;
+
+	var fCosX = cos(fSkewX);
+
+	var fRotation = fDegRad45 + fSkewX * 0.5;
+
+	var fDiv = 1 / (sin(fRotation) * fSqrt2Div2);
+
+	var fScaleX = fCosX * fDiv;
+	var fScaleY = (sin(fSkewX) + 1) * fDiv;
+
+	// setup the clipping path, so only texture within the triangle is drawn.
+	var iClipX1 = x1 + iOffsetX;
+	var iClipY1 = y1 + iOffsetY;
+
+	var iClipX2 = x2 + iOffsetX;
+	var iClipY2 = y2 + iOffsetY;
+
+	var iClipX3 = x3 + iOffsetX;
+	var iClipY3 = y3 + iOffsetY;
+
+	// here we try to expand the clip path by 1 pixel to get rid of (some of the) gaps between the triangles
+	// we do this simply by moving the topmost point 1px up, the leftmost point 1px left, and so on.
+	// later, we also render the triangle itself 1 px too big
+	// drawbacks are that the contour of the object will appear a bit "pointy".
+	if (this._bExpandClipPath && false) {
+		if (iClipY1 < iClipY2 && iClipY1 < iClipY3)
+			iClipY1--;
+		else if (iClipY2 < iClipY1 && iClipY2 < iClipY3)
+			iClipY2--;
+		else if (iClipY3 < iClipY1 && iClipY3 < iClipY2)
+			iClipY3--;
+
+		if (iClipY1 > iClipY2 && iClipY1 > iClipY3)
+			iClipY1++;
+		else if (iClipY2 > iClipY1 && iClipY2 > iClipY3)
+			iClipY2++;
+		else if (iClipY3 > iClipY1 && iClipY3 > iClipY2)
+			iClipY3++;
+
+		if (iClipX1 < iClipX2 && iClipX1 < iClipX3)
+			iClipX1--;
+		else if (iClipX2 < iClipX1 && iClipX2 < iClipX3)
+			iClipX2--;
+		else if (iClipX3 < iClipX1 && iClipX3 < iClipX2)
+			iClipX3--;
+
+		if (iClipX1 > iClipX2 && iClipX1 > iClipX3)
+			iClipX1++;
+		else if (iClipX2 > iClipX1 && iClipX2 > iClipX3)
+			iClipX2++;
+		else if (iClipX3 > iClipX1 && iClipX3 > iClipX2)
+			iClipX3++;
+	}
+
+	oContext.save();
+
+	// do the clip path
+	oContext.beginPath();
+	oContext.moveTo(iClipX1, iClipY1);
+	oContext.lineTo(iClipX2, iClipY2);
+	oContext.lineTo(iClipX3, iClipY3);
+	oContext.closePath();
+	oContext.clip();
+
+	// setup the skew/rotation transformation
+	oContext.translate(x2 + iOffsetX, y2 + iOffsetY);
+	oContext.rotate(fRotation + fTriRotation);
+	oContext.scale(fScaleX, fScaleY);
+	oContext.rotate(-fDegRad45);
+
+	var fTriScaleX = c / 2; // 100 * 50;
+	var fTriScaleY = b / 2; // 100 * 50;
+
+	if (oMat.uv) {
+		// we are using UV coordinates for texturing
+		if (this._bCanTextureUV && oMat.facecanvas) {
+			var iTexRes = oMat.facecanvas.resolution;
+			// draw our texture
+			// there will be a small gap between the triangles. Drawing the texture at offset (-1,-1)  gets rid of some of it.
+			oContext.drawImage(
+				oMat.facecanvas,
+				iIdx * iTexRes + iIdx*2+1, 1, iTexRes, iTexRes,
+				-1, -1,
+				fTriScaleX + 2,
+				fTriScaleY + 2
+			);
+		}
+	} else {
+		// no UV, just draw the same texture for all faces
+		oContext.drawImage(
+			oMatImage.canvas,
+			-1, -1,
+			fTriScaleX + 2,
+			fTriScaleY + 2
+		);
+	}
+
+	oContext.restore();
+
+	// if shading is turned on, render a semi-transparent black triangle on top.
+	// that means that a fully lit triangle will just be the raw texture, and the less lit a triangle is, the darker it gets.
+	// we could render semi-transparent white on top to make it brighter, but it doesn't look right, so we settle for that.
+	if (this._bTextureShading && fShade > 0) {
+		oContext.beginPath();
+		oContext.moveTo(iClipX1, iClipY1);
+		oContext.lineTo(iClipX2, iClipY2);
+		oContext.lineTo(iClipX3, iClipY3);
+		oContext.closePath();
+	
+		oContext.fillStyle = "rgba(0,0,0," + (fShade*0.5) + ")";
+		oContext.fill();
+	}
+}
+
+// draw the mesh on the oContext canvas context, at offset [iOffsetX, iOffsetY]
+Canvas3D.Mesh.prototype.draw = function(oContext, iOffsetX, iOffsetY) {
+	if (!this._bVisible) return;
+
+	var oScene = this._oScene;
+
+	var oCam = oScene.getActiveCamera();
+	var oAmbient = oScene.getAmbientLight()
+
+	// if shading is enabled, calculate the direction vectors to all light sources
+	var bLightDirty = false;
+	if (this._bShading && this._bFill) {
+		var aLights = oScene.getLights();
+		var aLightDirections = [];
+		for (var l=0;l<aLights.length;l++) {
+			// todo: this should be position relative to mesh
+			var oLightPos = aLights[l].getPosition();
+			var oLightDirection = oLightPos.unit();
+			aLightDirections.push(oLightDirection);
+
+			if (aLights[l].getDirty())
+				bLightDirty = true;
+		}
+	}
+
+	var aVertices = this._aGlobalVertices;
+	var aFaces = this._aFaces;
+
+	if (aVertices.length < 3 || aFaces.length < 1) {
+		// nothing to draw
+		return;
+	}
+
+	// let the camera transform all vertices and project them to 2D.
+	var aPoints2D = [];
+	var aTransVertices = [];
+	var v = aVertices.length;
+	do {
+		var oVertex = aVertices[v-1];
+
+		var oVec = oCam.transformPoint(oVertex);
+		aTransVertices[v-1] = oVec;
+
+		var oPoint2D = oCam.project(oVec);
+		aPoints2D[v-1] = oPoint2D;
+	} while (--v);
+
+	var aSortedFaces;
+
+	// if the faces are filled, we need to do z-sorting
+	if (this._bFill && this._bZSort) {
+		var f = aFaces.length;
+		do {
+			var oFace = aFaces[f-1];
+			oFace.transcenter = oCam.transformPoint(oFace.center);
+		} while (--f);
+
+		aSortedFaces = aFaces.sort(fncZSort);
+
+	// if not, just use the raw list
+	} else {
+
+		aSortedFaces = aFaces;
+	}
+
+	f = aSortedFaces.length;
+	if (f < 1) {
+		return;
+	}
+
+	// run through all faces
+	do {
+		var oFace = aSortedFaces[f-1];
+
+		var oPoint1 = aPoints2D[oFace.a];
+		var oPoint2 = aPoints2D[oFace.b];
+		var oPoint3 = aPoints2D[oFace.c];
+
+		var oNormal = oFace.normal;
+
+		var bDraw = false;
+
+		// do backface culling in screen space
+		if (this._bBackfaceCull) {
+			// screen space backface culling adapted from http://www.kirupa.com/developer/actionscript/backface_culling.htm
+			if (((oPoint3.y-oPoint1.y)/(oPoint3.x-oPoint1.x) - (oPoint2.y-oPoint1.y)/(oPoint2.x-oPoint1.x) <= 0) ^ (oPoint1.x <= oPoint3.x == oPoint1.x > oPoint2.x)){
+     				bDraw = true;
+			}
+		} else {
+			bDraw = true;
+		}
+
+		if (oCam.clip(aTransVertices[oFace.a]) || oCam.clip(aTransVertices[oFace.b]) || oCam.clip(aTransVertices[oFace.c])) {
+			bDraw = false;
+		}
+
+		
+		// if triangle is facing camera, draw it
+		if (bDraw) {
+
+			// get the material for this face
+			var oFaceMat = this._aMaterials[oFace.mat];
+			if (oFaceMat) {
+				oFaceColor = oFaceMat;
+			} else {
+				oFaceMat = this._oDefaultMaterial;
+				oFaceColor = this._oDefaultColor;
+			}
+			var bFaceTexture = this._bTexture && oFaceMat.t;
+
+			// save the original color
+			var oFaceOrgColor = {r:oFaceColor.r, g:oFaceColor.g, b:oFaceColor.b};
+
+			var fLight = 0;
+			var fShade = 1;
+
+			if (this._bFill) {
+				// setup ambient face color
+				if (!bFaceTexture) {
+					if (bLightDirty || this._bDirty) {
+						var oFaceColorAmb = {
+							r:(oAmbient.r / 255) * oFaceColor.r,
+							g:(oAmbient.g / 255) * oFaceColor.g,
+							b:(oAmbient.b / 255) * oFaceColor.b
+						};
+					}
+				}
+
+				// do lighting
+				if (this._bShading) {
+					if (bLightDirty || this._bDirty) {
+						for (var l=0;l<aLights.length;l++) {
+
+							var oLightPos = aLights[l].getPosition();
+							var oLightDir = new Canvas3D.Vec3(
+								oLightPos.x - oFace.center.x,
+								oLightPos.y - oFace.center.y,
+								oLightPos.z - oFace.center.z
+							).unit();
+
+							var fDot = -oLightDir.dot(oNormal);
+
+							// is the face facing the light source
+							if (fDot > 0) {
+								//fDot = Math.sqrt(fDot);
+								fLight = fDot * aLights[l].getIntensity();
+								fShade = fShade - fLight;
+
+								// lighten the face by the light intensity
+								if (!bFaceTexture) {
+									oFaceColorAmb = {
+										r: oFaceColorAmb.r + oFaceColor.r * fLight,
+										g: oFaceColorAmb.g + oFaceColor.g * fLight,
+										b: oFaceColorAmb.b + oFaceColor.b * fLight
+									};
+								}
+							}
+						}
+
+						oFaceColorAmb.r = Math.floor(oFaceColorAmb.r);
+						oFaceColorAmb.g = Math.floor(oFaceColorAmb.g);
+						oFaceColorAmb.b = Math.floor(oFaceColorAmb.b);
+
+						if (oFaceColorAmb.r < 0) oFaceColorAmb.r = 0;
+						if (oFaceColorAmb.g < 0) oFaceColorAmb.g = 0;
+						if (oFaceColorAmb.b < 0) oFaceColorAmb.b = 0;
+
+						if (oFaceColorAmb.r > 255) oFaceColorAmb.r = 255;
+						if (oFaceColorAmb.g > 255) oFaceColorAmb.g = 255;
+						if (oFaceColorAmb.b > 255) oFaceColorAmb.b = 255;
+
+						oFace.calccolor = oFaceColorAmb;
+						oFace.shade = fShade;
+					}
+					oFaceColorAmb = oFace.calccolor;
+					fShade = oFace.shade;
+				}
+				if (!bFaceTexture) {
+					oFaceColor = oFaceColorAmb;
+				}
+			}
+
+			oContext.beginPath();
+			oContext.moveTo(oPoint1.x + iOffsetX, oPoint1.y + iOffsetY);
+			oContext.lineTo(oPoint2.x + iOffsetX, oPoint2.y + iOffsetY)
+			oContext.lineTo(oPoint3.x + iOffsetX, oPoint3.y + iOffsetY)
+			oContext.closePath();
+
+			if (this._bFill) {
+				if (this._bCanTexture && this._bTexture && oFaceMat.image) {
+					this._drawTextureTriangle(oContext, oFaceMat, oPoint1, oPoint2, oPoint3, iOffsetX, iOffsetY, fShade, oNormal, oFace.texidx);
+				} else {
+					oContext.fillStyle = "rgb(" + oFaceColor.r + "," + oFaceColor.g + "," + oFaceColor.b + ")";
+					oContext.fill();
+					if (!this._bWire) {
+						oContext.lineWidth = 0.7;
+						oContext.strokeStyle = "rgb(" + oFaceColor.r + "," + oFaceColor.g + "," + oFaceColor.b + ")";
+						oContext.stroke();
+					}
+				}
+			}
+
+			if (this._bWire) {
+				oFaceOrgColor.r = Math.min(Math.max(Math.round(oFaceOrgColor.r),0),255);
+				oFaceOrgColor.g = Math.min(Math.max(Math.round(oFaceOrgColor.g),0),255);
+				oFaceOrgColor.b = Math.min(Math.max(Math.round(oFaceOrgColor.b),0),255);
+
+				oContext.lineWidth = 1;
+				oContext.strokeStyle = "rgb(" + oFaceOrgColor.r + "," + oFaceOrgColor.g + "," + oFaceOrgColor.b + ")";
+				oContext.stroke();
+			}
+
+		}
+	} while (--f);
+	this._bDirty = false;
+}
+
+Canvas3D.Mesh.prototype.setScene = function(oScene) {
+	if (this._oScene != oScene) {
+		this._oScene = oScene;
+	}
+}
+
+Canvas3D.Mesh.prototype.setLighting = function(bEnable) {
+	this._bShading = bEnable;
+}
+
+Canvas3D.Mesh.prototype.setBackfaceCull = function(bEnable) {
+	this._bBackfaceCull = bEnable;
+}
+
+Canvas3D.Mesh.prototype.setZSort = function(bEnable) {
+	this._bZSort = bEnable;
+}
+
+Canvas3D.Mesh.prototype.setFill = function(bEnable) {
+	this._bFill = bEnable;
+}
+
+Canvas3D.Mesh.prototype.setWire = function(bEnable) {
+	this._bWire = bEnable;
+}
+
+Canvas3D.Mesh.prototype.setTexture = function(bEnable) {
+	this._bTexture = bEnable;
+}
+
+Canvas3D.Mesh.prototype.setTextureShading = function(bEnable) {
+	this._bTextureShading = bEnable;
+}
+
+Canvas3D.Mesh.prototype._updateGlobalVertices = function() {
+	var oRot = this._oRotation;
+	var oPos = this._oPosition;
+
+	for (var i = 0; i < this._aVertices.length; i++) {
+		var oRotatedVertex = new Canvas3D.Vec3(
+			this._aVertices[i].x,
+			this._aVertices[i].y,
+			this._aVertices[i].z
+		);
+
+		if (oRot.x)
+			oRotatedVertex.rotateX(oRot.x);
+		if (oRot.y)
+			oRotatedVertex.rotateY(oRot.y);
+		if (oRot.z)
+			oRotatedVertex.rotateZ(oRot.z);
+
+		this._aGlobalVertices[i].x = oRotatedVertex.x * this._fScale + oPos.x;
+		this._aGlobalVertices[i].y = oRotatedVertex.y * this._fScale + oPos.y;
+		this._aGlobalVertices[i].z = oRotatedVertex.z * this._fScale + oPos.z;
+	}
+
+	this._recalcNormals();
+}
+
+Canvas3D.Mesh.prototype._recalcNormals = function() {
+	for (var f = 0; f < this._aFaces.length; f++) {
+		var oFace = this._aFaces[f];
+
+		var oPoint1 = this._aGlobalVertices[oFace.a];
+		var oPoint2 = this._aGlobalVertices[oFace.b];
+		var oPoint3 = this._aGlobalVertices[oFace.c];
+
+		var oCenter = new Canvas3D.Vec3(
+			(oPoint1.x + oPoint2.x + oPoint3.x) / 3,
+			(oPoint1.y + oPoint2.y + oPoint3.y) / 3,
+			(oPoint1.z + oPoint2.z + oPoint3.z) / 3
+		);
+
+		oFace.center = oCenter;
+
+		var oNormal = new Canvas3D.Vec3(
+			((oPoint1.y - oPoint2.y) * (oPoint1.z - oPoint3.z)) - ((oPoint1.z - oPoint2.z) * (oPoint1.y - oPoint3.y)),
+			((oPoint1.z - oPoint2.z) * (oPoint1.x - oPoint3.x)) - ((oPoint1.x - oPoint2.x) * (oPoint1.z - oPoint3.z)),
+			((oPoint1.x - oPoint2.x) * (oPoint1.y - oPoint3.y)) - ((oPoint1.y - oPoint2.y) * (oPoint1.x - oPoint3.x))
+		).unit();
+		oFace.normal = oNormal;
+	}
+}
+
+Canvas3D.Mesh.prototype.setPosition = function(oVec) {
+	if (oVec.x != this._oPosition.x || oVec.y != this._oPosition.y || oVec.z != this._oPosition.z) {
+		this._oPosition = oVec;
+		this._updateGlobalVertices();
+		this._bDirty = true;
+	}
+}
+
+Canvas3D.Mesh.prototype.setRotation = function(oVec) {
+	this._oRotation = oVec;
+	this._updateGlobalVertices();
+
+	this._bDirty = true;
+
+}
+
+Canvas3D.Mesh.prototype.getPosition = function(oVec) {
+	return this._oPosition;
+}
+
+Canvas3D.Mesh.prototype.setForcedZ = function(iZ) {
+	this._iForcedZ = iZ;
+}
+
+Canvas3D.Mesh.prototype.getForcedZ = function() {
+	return this._iForcedZ;
+}
+
+Canvas3D.Mesh.prototype.getHideWhenRotating = function() {
+	return this._bHideWhenRotating;
+}
+
+Canvas3D.Mesh.prototype.setHideWhenRotating = function(bEnable) {
+	this._bHideWhenRotating = bEnable;
+}
+
+Canvas3D.Mesh.prototype.getDirty = function() {
+	return this._bDirty;
+}
+
+Canvas3D.Mesh.prototype.hide = function() {
+	this._bVisible = false;
+	this._bDirty = true;
+}
+
+Canvas3D.Mesh.prototype.show = function() {
+	this._bVisible = true;
+	this._bDirty = true;
+}
+
+Canvas3D.Mesh.prototype.isVisible = function() {
+	return this._bVisible;
+}
+
+Canvas3D.Mesh.prototype.setScale = function(fScale) {
+	this._fScale = fScale;
+	this._bDirty = true;
+	this._updateGlobalVertices();
+}
+
+Canvas3D.Mesh.prototype.getScale = function() {
+	return this._fScale;
+}

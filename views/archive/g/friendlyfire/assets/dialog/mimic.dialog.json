@@ -1,0 +1,62 @@
+{
+    "entry": [
+        "…",
+        "…zZzZZ…",
+        "(Someone seems to be asleep in there.)",
+        "►I better force the chest open. @wakeup !wakeupchest !end",
+        "►I better leave the chest alone. @entry !end"
+    ],
+    "wakeup": [
+        "Oh my, was I asleep?",
+        "What time is it?",
+        "►I have not the slightest idea…",
+        "Well, no worries. @who"
+    ],
+    "who": [
+        "I haven't seen you before. Are you an item?",
+        "►No, just a regular human.",
+        "Ahh, one of those. @questions"
+    ],
+    "main": [
+        "Hello friend! @questions"
+    ],
+    "questions": [
+        "►What are you? @what",
+        "►[not asked_about_items]Do you have any items? @items",
+        "►[not asked_aboud_sleeping]I thought someone was sleeping in there. @sleeping",
+        "►I'm off.",
+        "Bye! @main !end"
+    ],
+    "what": [
+        "A mimic chest.",
+        "But a basic one, I can't even move properly.",
+        "It looks really silly when I jump to move forward, so I don't do it when people are around.",
+        "►How did you get here then?",
+        "Delivery services! @questions"
+    ],
+    "items": [
+        "No, we mimics usually don't carry items. !set asked_about_items true",
+        "Some do, but that only incentivizes unnecessary violence.",
+        "There's no need to attack a mimic who doesn't hold items, no?",
+        "►True",
+        "Yes, yes. @questions"
+    ],
+    "sleeping": [
+        "Oh, a common mistake! !set asked_aboud_sleeping true",
+        "The people I eat usually don't have the capacity to make sleep noises anymore.",
+        "But that was a long time ago. I'm living the vegan lifestyle now.",
+        "I moved here when I heard how peaceful it was. @sleeping_questions"
+    ],
+    "sleeping_questions": [
+        "►What do you eat then? @eat",
+        "►Lucky me… @lucky"
+    ],
+    "eat": [
+        "Vegetables, rice, and tofu.",
+        "Or whatever is prepared when I'm around. I can't really cook for myself. @sleeping_questions"
+    ],
+    "lucky": [
+        "Indeed!",
+        "If you had met me when I was still working as a trap for adventurers, you would be crushed and dismembered by now. @questions"
+    ]
+}

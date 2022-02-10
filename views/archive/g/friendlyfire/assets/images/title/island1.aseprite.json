@@ -1,0 +1,59 @@
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 0, "y": 0, "w": 19, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 14, "w": 19, "h": 16 },
+    "sourceSize": { "w": 49, "h": 42 },
+    "duration": 700
+   },
+   {
+    "filename": "1",
+    "frame": { "x": 0, "y": 0, "w": 19, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 15, "w": 19, "h": 16 },
+    "sourceSize": { "w": 49, "h": 42 },
+    "duration": 300
+   },
+   {
+    "filename": "2",
+    "frame": { "x": 0, "y": 0, "w": 19, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 15, "y": 16, "w": 19, "h": 16 },
+    "sourceSize": { "w": 49, "h": 42 },
+    "duration": 200
+   },
+   {
+    "filename": "3",
+    "frame": { "x": 0, "y": 0, "w": 19, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 15, "y": 17, "w": 19, "h": 16 },
+    "sourceSize": { "w": 49, "h": 42 },
+    "duration": 300
+   },
+   {
+    "filename": "4",
+    "frame": { "x": 0, "y": 0, "w": 19, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 14, "y": 18, "w": 19, "h": 16 },
+    "sourceSize": { "w": 49, "h": 42 },
+    "duration": 700
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.19.2",
+  "image": "island1.png",
+  "format": "RGBA8888",
+  "size": { "w": 19, "h": 16 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 4, "direction": "pingpong" }
+  ]
+ }
+}

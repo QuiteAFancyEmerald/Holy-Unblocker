@@ -1,0 +1,14 @@
+{
+    "entry": [
+        "Hello humble adventurer, welcome to my…",
+        "Wait, how did you get past the river? That's not how this works! !angry",
+        "►Whoops, I'll be on my way.",
+        "Yeah, do that please. @visited !end"
+    ],
+    "visited": [
+        "No no no no! Don't go breaking all the precious sequences! !angry",
+        "Get back to the other side and do things in the correct order.",
+        "►You might be right",
+        "Hush hush! @visited !end"
+    ]
+}

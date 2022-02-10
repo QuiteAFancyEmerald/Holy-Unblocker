@@ -1,0 +1,54 @@
+{ "frames": {
+   "person 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 25, "h": 79 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 4, "y": 3, "w": 25, "h": 79 },
+    "sourceSize": { "w": 32, "h": 82 },
+    "duration": 250
+   },
+   "person 1.aseprite": {
+    "frame": { "x": 25, "y": 0, "w": 25, "h": 79 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 4, "y": 3, "w": 25, "h": 79 },
+    "sourceSize": { "w": 32, "h": 82 },
+    "duration": 250
+   },
+   "person 2.aseprite": {
+    "frame": { "x": 50, "y": 0, "w": 25, "h": 79 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 4, "y": 3, "w": 25, "h": 79 },
+    "sourceSize": { "w": 32, "h": 82 },
+    "duration": 250
+   },
+   "person 3.aseprite": {
+    "frame": { "x": 0, "y": 79, "w": 25, "h": 79 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 4, "y": 3, "w": 25, "h": 79 },
+    "sourceSize": { "w": 32, "h": 82 },
+    "duration": 250
+   },
+   "person 4.aseprite": {
+    "frame": { "x": 25, "y": 79, "w": 25, "h": 79 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 4, "y": 3, "w": 25, "h": 79 },
+    "sourceSize": { "w": 32, "h": 82 },
+    "duration": 250
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.19.2",
+  "image": "person.png",
+  "format": "RGBA8888",
+  "size": { "w": 75, "h": 158 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 4, "direction": "forward" }
+  ]
+ }
+}

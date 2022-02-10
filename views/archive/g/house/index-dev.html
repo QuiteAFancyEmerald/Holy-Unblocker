@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub Game Off Game Jam</title>
+
+  <link rel="stylesheet" href="./stylesheets/screen.css">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+
+  <button class="material-btn" id="material-btn"></button>
+
+  <label for="run-checkbox">Toggle continuous rendering (R).</label>
+  <input type="checkbox" id="run-checkbox">
+  <p>Arrow keys to move.</p>
+  <p>Camera zoom and rotate: IJKL.</p>
+  <p>Reset camera: O.</p>
+  <p>Show menu screen: M.</p>
+
+  <label for="box2d-debug-checkbox">Toggle Box2D debug (B).</label>
+  <input type="checkbox" id="box2d-debug-checkbox">
+
+  <label for="settings-checkbox">Toggle low settings.</label>
+  <input type="checkbox" id="settings-checkbox">
+
+  <div class="loader">
+    <input type="textarea" id="level-data">
+    <button id="level-data-btn">Load</button>
+  </div>
+
+  <script data-main="js/main-dev" src="./js/require.js"></script>
+</body>
+</html>

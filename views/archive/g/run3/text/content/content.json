@@ -1,0 +1,63 @@
+[{
+	"path":"explore/homewards0.json",
+	"condition":{
+		"path":"homePlanC"
+	},
+	"type":1,
+	"version":11
+},
+{
+	"path":"explore/homewards1.json",
+	"condition":{
+		"path":"homePlanC"
+	},
+	"type":2,
+	"version":7,
+	"waitFor":"explore/homewards0.json"
+},
+{
+	"path":"explore/homeAchieve1.json",
+	"condition":{
+		"path":"home0",
+		"pathProgress":0
+	},
+	"type":3,
+	"version":2
+},
+{
+	"path":"explore/onwards0.json",
+	"condition":{
+		"path":"wormholeI"
+	},
+	"type":1,
+	"version":3
+},
+{
+	"path":"explore/onwards1.json",
+	"condition":{
+		"path":"wormholeI"
+	},
+	"type":2,
+	"version":6,
+	"waitFor":"explore/onwards0.json"
+},
+{
+	"path":"explore/onwardsAchieve.json",
+	"condition":{
+		"path":"wormholeN",
+		"pathProgress":1
+	},
+	"type":3,
+	"version":4
+},
+{
+	"path":"explore/earlyAchieve.json",
+	"type":3,
+	"version":10
+},
+{
+	"path":"infinite/infiniteAchieve.json",
+	"type":3,
+	"version":7,
+	"build":23773
+}]

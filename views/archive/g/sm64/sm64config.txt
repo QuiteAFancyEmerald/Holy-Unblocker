@@ -1,0 +1,14 @@
+fullscreen false
+key_a 50
+key_b 49
+key_start 51
+key_r 16
+key_z 37
+key_cup 25
+key_cdown 52
+key_cleft 38
+key_cright 39
+key_stickup 17
+key_stickdown 31
+key_stickleft 30
+key_stickright 32

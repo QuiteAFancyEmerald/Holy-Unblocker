@@ -1,0 +1,67 @@
+{ "frames": {
+   "0": {
+    "frame": { "x": 0, "y": 0, "w": 10, "h": 10 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 10, "h": 10 },
+    "sourceSize": { "w": 10, "h": 10 },
+    "duration": 100
+   },
+   "1": {
+    "frame": { "x": 10, "y": 0, "w": 10, "h": 10 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 10, "h": 10 },
+    "sourceSize": { "w": 10, "h": 10 },
+    "duration": 100
+   },
+   "2": {
+    "frame": { "x": 20, "y": 0, "w": 10, "h": 10 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 10, "h": 10 },
+    "sourceSize": { "w": 10, "h": 10 },
+    "duration": 100
+   },
+   "3": {
+    "frame": { "x": 30, "y": 0, "w": 10, "h": 10 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 10, "h": 10 },
+    "sourceSize": { "w": 10, "h": 10 },
+    "duration": 100
+   },
+   "4": {
+    "frame": { "x": 40, "y": 0, "w": 10, "h": 10 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 10, "h": 10 },
+    "sourceSize": { "w": 10, "h": 10 },
+    "duration": 100
+   },
+   "5": {
+    "frame": { "x": 50, "y": 0, "w": 10, "h": 10 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 10, "h": 10 },
+    "sourceSize": { "w": 10, "h": 10 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.21-x64",
+  "image": "dancing_ui_keys.png",
+  "format": "RGBA8888",
+  "size": { "w": 60, "h": 10 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "keyboard-dance1", "from": 0, "to": 0, "direction": "forward" },
+   { "name": "keyboard-dance2", "from": 1, "to": 1, "direction": "forward" },
+   { "name": "xbox-dance1", "from": 2, "to": 2, "direction": "forward" },
+   { "name": "xbox-dance2", "from": 3, "to": 3, "direction": "forward" },
+   { "name": "playstation-dance1", "from": 4, "to": 4, "direction": "forward" },
+   { "name": "playstation-dance2", "from": 5, "to": 5, "direction": "forward" }
+  ]
+ }
+}

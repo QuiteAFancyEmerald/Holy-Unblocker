@@ -1,0 +1,60 @@
+#intro {
+	font-size: 18px;
+
+	@media (max-height: 600px), (max-width: 830px) { font-size: 16px; }
+	@media (max-height: 530px), (max-width: 750px) { font-size: 14px; }
+	@media (max-height: 470px), (max-width: 680px) { font-size: 12px; }
+
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+
+	& > * {
+		position: absolute;
+	}
+
+	.title {
+		white-space: pre;
+		left: 2ch;
+		top: @em;
+		color: goldenrod;
+	}
+
+	.tower {
+		white-space: pre;
+		right: 6ch;
+		bottom: 3.5*@em;
+		span:not(.transparent) {
+			background-color: #222;
+		}
+	}
+
+	.text {
+		left: 16ch;
+		right: 28ch;
+		bottom: 5.5*@em;
+
+		span {
+			color: #fff;
+		}
+	}
+
+	.bottom {
+		bottom: 2.5*@em;
+		right: 1ch;
+		white-space: pre;
+
+		.grass {
+			color: #3c3;
+		}
+	}
+
+	.funfact {
+		color: #666;
+		left: 1ch;
+		bottom: @em;
+		right: 1ch;
+		text-align: center;
+	}
+}

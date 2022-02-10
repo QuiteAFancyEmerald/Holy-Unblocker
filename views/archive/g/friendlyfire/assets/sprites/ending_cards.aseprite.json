@@ -1,0 +1,113 @@
+{ "frames": [
+   {
+    "filename": "ending_cards 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 44, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 44, "h": 30 },
+    "sourceSize": { "w": 44, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "ending_cards 1.aseprite",
+    "frame": { "x": 44, "y": 0, "w": 44, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 44, "h": 30 },
+    "sourceSize": { "w": 44, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "ending_cards 2.aseprite",
+    "frame": { "x": 88, "y": 0, "w": 44, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 44, "h": 30 },
+    "sourceSize": { "w": 44, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "ending_cards 3.aseprite",
+    "frame": { "x": 132, "y": 0, "w": 44, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 44, "h": 30 },
+    "sourceSize": { "w": 44, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "ending_cards 4.aseprite",
+    "frame": { "x": 176, "y": 0, "w": 44, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 44, "h": 30 },
+    "sourceSize": { "w": 44, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "ending_cards 5.aseprite",
+    "frame": { "x": 220, "y": 0, "w": 44, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 44, "h": 30 },
+    "sourceSize": { "w": 44, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "ending_cards 6.aseprite",
+    "frame": { "x": 264, "y": 0, "w": 44, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 44, "h": 30 },
+    "sourceSize": { "w": 44, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "ending_cards 7.aseprite",
+    "frame": { "x": 308, "y": 0, "w": 44, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 44, "h": 30 },
+    "sourceSize": { "w": 44, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "ending_cards 8.aseprite",
+    "frame": { "x": 352, "y": 0, "w": 44, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 44, "h": 30 },
+    "sourceSize": { "w": 44, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "ending_cards 9.aseprite",
+    "frame": { "x": 396, "y": 0, "w": 44, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 44, "h": 30 },
+    "sourceSize": { "w": 44, "h": 30 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.25-x64",
+  "image": "ending_cards.png",
+  "format": "RGBA8888",
+  "size": { "w": 440, "h": 30 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "a_on", "from": 0, "to": 0, "direction": "forward" },
+   { "name": "a_off", "from": 1, "to": 1, "direction": "forward" },
+   { "name": "b_on", "from": 2, "to": 2, "direction": "forward" },
+   { "name": "b_off", "from": 3, "to": 3, "direction": "forward" },
+   { "name": "c_on", "from": 4, "to": 4, "direction": "forward" },
+   { "name": "c_off", "from": 5, "to": 5, "direction": "forward" },
+   { "name": "d_on", "from": 6, "to": 6, "direction": "forward" },
+   { "name": "d_off", "from": 7, "to": 7, "direction": "forward" },
+   { "name": "e_on", "from": 8, "to": 8, "direction": "forward" },
+   { "name": "e_off", "from": 9, "to": 9, "direction": "forward" }
+  ]
+ }
+}

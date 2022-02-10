@@ -1,0 +1,45 @@
+{
+    "entry": [
+        "…",
+        "Oh, hello mortal. !set $metPowerShiba",
+        "►Hello. Who are you?",
+        "I'm a power-up.",
+        "But I wasn't always one.",
+        "►Were you a dog before by any chance?",
+        "I do not remember my past life and it doesn't really matter either.",
+        "►How does one become a power-up?",
+        "I was taught by my mentor and father figure, the almighty flying power-up.",
+        "After years of meditation, I was able to transcend and leave my mortal shell behind.",
+        "I lost my memories and the ability to move, but it was worth the sacrifice.",
+        "►If you say so… @met"
+    ],
+    "met": [
+        "What is it you desire?",
+        "►What kind of power do you inherit? @powerup",
+        "►Aren't you interested in your past? @past",
+        "►[$metShiba]Did you know, you have a brother? @brother",
+        "►I'll leave you to yourself.",
+        "Please do. @met !end"
+    ],
+    "powerup": [
+        "That I do not know.",
+        "Usually, the designated power is bestowed upon birth.",
+        "Since I transcended being a mortal like you, my power is unknown.",
+        "But it doesn't matter either way.",
+        "I have no intention to be consumed.",
+        "►Not even… by me?",
+        "Yes, not even by a person I met a minute ago.",
+        "I shall contemplate about cloud related topics here for the rest of time.",
+        "►Too bad… @met"
+    ],
+    "past": [
+        "No, the memories of my mortal past are but an ember of the flame I am now.",
+        "This is how I must be. This is everything.",
+        "►If you say so… @met"
+    ],
+    "brother": [
+        "I do not remember my past life.",
+        "I also have no desire to involve myself with mortals.",
+        "►That's harsh man… I gotta tell the other dog. @met"
+    ]
+}

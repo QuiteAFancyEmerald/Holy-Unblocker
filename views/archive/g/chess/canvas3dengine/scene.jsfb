@@ -1,0 +1,290 @@
+/*
+ * Javascript/Canvas Textured 3D Renderer v0.3.1
+ * Copyright (c) 2008 Jacob Seidelin, cupboy@gmail.com
+ * This software is free to use for non-commercial purposes. For anything else, please contact the author.
+ * This is a version modified by Stefano Gioffre'.
+ */
+
+Canvas3D.Scene = function(oContainer, iWidth, iHeight, bObjectCanvas) {
+	this._oContainer = oContainer;
+	this._iWidth = iWidth;
+	this._iHeight = iHeight;
+	var oCanvas = this._oDrawCanvas = document.createElement("canvas");
+	this._oDrawContext = oCanvas.getContext("2d");
+	Canvas3D.addEvent(oCanvas, "selectstart", function() { return(false); });
+	oCanvas.style.position = "absolute";
+
+	this._oDrawCanvas.width = iWidth;
+	this._oDrawCanvas.height = iHeight;
+	this._oDrawCanvas.style.width = iWidth + "px";
+	this._oDrawCanvas.style.height = iHeight + "px";
+
+	oContainer.appendChild(this._oDrawCanvas);
+
+	this._oActiveCamera = null;
+
+	this._aObjects = [];
+
+	this._bRunning = false;
+
+	// if true, each object will be rendered on its own canvas
+	this._bUseObjectCanvas = bObjectCanvas;
+
+	this._bMouseRotate = true;
+	this._bMouseRotateY = true;
+	this._bMouseRotateX = true;
+
+	this._oUpVector = new Canvas3D.Vec3(0,1,0);
+
+	this._oAmbientLight = {r:50,g:50,b:50};
+
+	this._bDrawLights = false;
+	this._aLights = [];
+
+	this._iMaxZ = 10000000;
+
+	var oInputOverlay = this._oInputOverlay = document.createElement("span");
+	oInputOverlay.style.width = iWidth + "px";
+	oInputOverlay.style.height = iHeight + "px";
+	oInputOverlay.style.zIndex = this._iMaxZ + 10000000;
+	oInputOverlay.style.position = "absolute";
+	this._oContainer.appendChild(oInputOverlay);
+
+	Canvas3D.addEvent(oInputOverlay, "selectstart", function() { return(false); });
+
+};
+
+Canvas3D.Scene.prototype.getInputLayer = function() { return(this._oInputOverlay); };
+
+Canvas3D.Scene.prototype.setUpVector = function(oVec) { this._oUpVector = oVec; };
+
+Canvas3D.Scene.prototype.getUpVector = function() { return(this._oUpVector); };
+
+Canvas3D.Scene.prototype.getAmbientLight = function() {	return(this._oAmbientLight); };
+
+Canvas3D.Scene.prototype.zoomCamera = function(fZoom) { this.getActiveCamera().moveForward(fZoom); };
+
+Canvas3D.Scene.prototype.getObjects = function() { return(this._aObjects); };
+
+Canvas3D.Scene.prototype.addObject = function(obj) {
+	if (this._bUseObjectCanvas) {
+		var oObjectCanvas = document.createElement("canvas");
+		if (!oObjectCanvas.getContext) return;
+	
+		var oObjectContext = oObjectCanvas.getContext("2d");
+	
+		Canvas3D.addEvent(oObjectCanvas, "selectstart", function() { return(false); });
+	
+		oObjectCanvas.width = this._iWidth;
+		oObjectCanvas.height = this._iHeight;
+	
+		oObjectCanvas.style.width = this._iWidth + "px";
+		oObjectCanvas.style.height = this._iHeight + "px";
+
+		oObjectCanvas.style.position = "absolute";
+		this._oContainer.appendChild(oObjectCanvas);
+
+		this._aObjects.push({
+			"canvas": oObjectCanvas,
+			"context": oObjectContext,
+			"object": obj
+			
+		});
+	} else {
+		this._aObjects.push({ "object": obj });
+	}
+	obj.setScene(this);
+	this.setDirty(true);
+	return(obj);
+};
+/*
+Canvas3D.Scene.prototype.setWidth = function(iWidth) {
+	for (var iCnvsObj = 0; iCnvsObj < this._aObjects.length; iCnvsObj++) {
+		if (this._aObjects[iCnvsObj].hasOwnProperty("canvas")) {
+			this._aObjects[iCnvsObj].canvas.width = iWidth;
+			this._aObjects[iCnvsObj].canvas.style.width = iWidth + "px";
+		}
+	}
+	this._iWidth = iWidth;
+	this._oDrawCanvas.width = iWidth;
+	this._oDrawCanvas.style.width = iWidth + "px";
+	this._oInputOverlay.style.width = iWidth + "px";
+
+};
+
+Canvas3D.Scene.prototype.setHeight = function(iHeight) {
+	for (var iCnvsObj = 0; iCnvsObj < this._aObjects.length; iCnvsObj++) {
+		if (this._aObjects[iCnvsObj].hasOwnProperty("canvas")) {
+			this._aObjects[iCnvsObj].canvas.height = iHeight;
+			this._aObjects[iCnvsObj].canvas.style.height = iHeight + "px";
+		}
+	}
+	this._iHeight = iHeight;
+	this._oDrawCanvas.height = iHeight;
+	this._oDrawCanvas.style.height = iHeight + "px";
+	this._oInputOverlay.style.height = iHeight + "px";
+};
+*/
+Canvas3D.Scene.prototype.setDimensions = function(iWidth, iHeight) {
+	for (var iCnvsObj = 0; iCnvsObj < this._aObjects.length; iCnvsObj++) {
+		if (this._aObjects[iCnvsObj].hasOwnProperty("canvas")) {
+			this._aObjects[iCnvsObj].canvas.width = iWidth;
+			this._aObjects[iCnvsObj].canvas.height = iHeight;
+			this._aObjects[iCnvsObj].canvas.style.width = iWidth + "px";
+			this._aObjects[iCnvsObj].canvas.style.height = iHeight + "px";
+		}
+	}
+	this._iWidth = iWidth;
+	this._iHeight = iHeight;
+	this._oDrawCanvas.height = iHeight;
+	this._oDrawCanvas.width = iWidth;
+	this._oDrawCanvas.style.width = iWidth + "px";
+	this._oDrawCanvas.style.height = iHeight + "px";
+	this._oInputOverlay.style.width = iWidth + "px";
+	this._oInputOverlay.style.height = iHeight + "px";
+};
+
+Canvas3D.Scene.prototype.removeObject = function(oObject) {
+	for (var i=0;i<this._aObjects.length;i++) {
+		if (this._aObjects[i].object === oObject) {
+			if (this._bUseObjectCanvas) {
+				this._oContainer.removeChild(this._aObjects[i].canvas);
+			}
+			this._aObjects.splice(i, 1);
+		}
+	}
+};
+
+Canvas3D.Scene.prototype.removeAllObjects = function() {
+	if (this._bUseObjectCanvas) {
+		for (var i=0;i<this._aObjects.length;i++) {
+			this._oContainer.removeChild(this._aObjects[i].canvas);
+		}
+	}
+	this._aObjects.splice(0);
+};
+
+Canvas3D.Scene.prototype.addLight = function(oLight) {
+	oLight.setScene(this);
+	return(this._aLights.push(oLight));
+};
+
+Canvas3D.Scene.prototype.getLights = function() { return(this._aLights); };
+
+Canvas3D.Scene.prototype.clearObjects = function() { this._aObjects.splice(0); };
+
+Canvas3D.Scene.prototype.setActiveCamera = function(oCam) { this._oActiveCamera = oCam; };
+
+Canvas3D.Scene.prototype.getActiveCamera = function() { return(this._oActiveCamera); };
+
+Canvas3D.Scene.prototype.begin = function() {
+	this._bRunning = true;
+	this.getActiveCamera().setDirty(true);
+	this.drawAll();
+	var me = this;
+	this._iInterval = setInterval(function() { me.drawAll(); }, 1000 / 30);
+};
+
+Canvas3D.Scene.prototype.end = function() {
+	this._bRunning = false;
+	clearInterval(this._iInterval);
+};
+
+Canvas3D.Scene.prototype.setDirty = function(bDirty) {
+	this._bDirty = bDirty;
+};
+
+Canvas3D.Scene.prototype.getDirty = function() { return(this._bDirty); };
+
+Canvas3D.Scene.prototype.getWidth = function() { return(this._iWidth); };
+
+Canvas3D.Scene.prototype.getHeight = function() { return(this._iHeight); };
+
+Canvas3D.Scene.prototype.drawAll = function() {
+	if (!this._bRunning) return;
+
+	var oCam = this.getActiveCamera();
+
+	var iOffsetX = Math.floor(this._iWidth / 2);
+	var iOffsetY = Math.floor(this._iHeight / 2);
+
+	var aObjects = this._aObjects;
+	var bCamDirty = oCam.getDirty();
+	var iObjDrawn = 0;
+
+	var bObjDirty = false;
+	for (var c=0;c<aObjects.length;c++) {
+		if (aObjects[c].object.getDirty()) {
+			bObjDirty = true;
+		}
+	}
+
+	if (bCamDirty || this.getDirty() || bObjDirty) {
+		if (bCamDirty || this.getDirty()) {
+			this._oDrawContext.clearRect(0,0,this._iWidth,this._iHeight);
+		}
+
+		var aObjPos = [];
+		for (var c=0;c<aObjects.length;c++) {
+			if (aObjects[c].object.getSortPosition)
+				var oPos = aObjects[c].object.getSortPosition();
+			else
+				var oPos = aObjects[c].object.getPosition();
+
+			var oObjectPos = oCam.transformPoint(oPos);
+			aObjPos[c] = [aObjects[c], oObjectPos.z];
+		}
+
+		var aSortObj = aObjPos.sort(
+			function(a,b) {
+				return(b[1] - a[1]);
+			}
+		);
+		aObjects = aSortObj;
+
+		for (var c=0;c<aObjects.length;c++) {
+			var oObject = aObjects[c][0];
+			if (oObject.object.isVisible()) {
+				if (this._bUseObjectCanvas) {
+					if (bCamDirty || this.getDirty() || oObject.object.getDirty()) {
+						if (oObject.object.getForcedZ() > -1) {
+							oObject.canvas.style.zIndex = oObject.object.getForcedZ();
+						} else {
+							var oObjectPos = oCam.transformPoint(oObject.object.getPosition());
+							oObject.canvas.style.zIndex = 10000000 - Math.round(oObjectPos.z*100);
+						}
+						oObject.context.clearRect(0,0,this._iWidth,this._iHeight);
+						if (oObject.object.draw(oObject.context, iOffsetX, iOffsetY)) {
+							iObjDrawn++;
+						}
+						oObject.canvas.style.display = "block";
+					}
+				} else {
+					if (bCamDirty || this.getDirty()) {
+						if (oObject.object.draw(this._oDrawContext, iOffsetX, iOffsetY)) {
+							iObjDrawn++;
+						}
+					}
+				}
+			} else {
+				if (this._bUseObjectCanvas) {
+					oObject.canvas.style.display = "none";
+				}
+			}
+		}
+	}
+
+	if (this._bDrawLights) {
+		for (var c=0;c<this._aLights.length;c++) {
+			var oLight = this._aLights[c];
+			oLight.draw(this._oLightContext, iOffsetX, iOffsetY);
+		}
+	}
+
+	for (var c=0;c<this._aLights.length;c++) {
+		this._aLights[c].setDirty(false);
+	}
+	oCam.setDirty(false);
+	this.setDirty(false);
+
+};

@@ -1,0 +1,249 @@
+@import "compass/reset";
+
+@import "compass/css3/user-interface";
+@import "compass/css3/transform";
+@import "compass/css3/text-shadow";
+
+body {
+  background-color: black;
+  color: white;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+canvas {
+  @include user-select(none);
+  position: absolute;
+}
+
+.game {
+  margin: 32px auto;
+  width: 640px;
+  height: 480px;
+}
+
+.loader {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  #level-data {
+    width: 480px;
+  }
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  @include user-select(none);
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.material-btn {
+  display: block;
+  font-weight: 100;
+  font-size: 1em;
+  letter-spacing: 0.08em;
+  color: white;
+
+  border-radius: 0.2em;
+  margin: 0 auto;
+  padding: 0.5em;
+
+  text-transform: uppercase;
+
+  &.antimatter {
+    background-color: #f43;
+  }
+
+  &.matter {
+    background-color: #26e;
+  }
+}
+
+.title-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #222;
+
+  .title-container {
+    display: table;
+    width: 100%;
+    height: 40%;
+    @include transform3d(translateZ(2000px));
+
+    @include transform-style(preserve-3d);
+    @include perspective(1000px);
+    @include perspective-origin(center center);
+
+    .titles {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      margin: auto;
+
+      @include transform-style(preserve-3d);
+    }
+  }
+
+
+  $start-btn-width: 128px;
+  $start-btn-height: 64px;
+
+  .start-btn {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+
+    width: $start-btn-width;
+    height: $start-btn-height;
+
+    margin-left: -0.5 * $start-btn-width;
+    margin-top: -0.5 * $start-btn-height;
+
+    text-transform: uppercase;
+    background-color: rgba(34, 34, 34, 0.8);
+    border: 2px solid white;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+
+    @include translateZ(10000px);
+
+    &:active {
+      background-color: white;
+    }
+  }
+
+  z-index: 1;
+}
+
+.title,
+.title-shadow {
+  position: absolute;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 10vw;
+  font-weight: bold;
+  @include user-select(none);
+}
+
+.title {
+  color: white;
+  @include text-shadow(0 0 10px black);
+}
+
+.title-shadow {
+  color: black;
+  @include translateZ(-100px);
+}
+
+$settings-size: 250px;
+
+.settings-view {
+
+  .settings {
+    position: absolute;
+    width: $settings-size;
+    height: $settings-size;
+    top: 50%;
+    left: 50%;
+    margin-top: -0.5 * $settings-size;
+    margin-left: -0.5 * $settings-size;
+    z-index: 2;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+  }
+
+  .setting {
+    margin-bottom: 2px;
+
+    label {
+      display: inline;
+      font-weight: 100;
+      font-size: 2em;
+      letter-spacing: 0.08em;
+    }
+
+    input[type="checkbox"],
+    input[type="checkbox"]:checked {
+      @include user-select(none);
+      width: 2em;
+      height: 2em;
+    }
+  }
+
+  .toggle-settings-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 3em;
+    color: white;
+  }
+
+}
+
+@media screen and
+  (min-width: 320px),
+  screen and
+  (min-height: 240px) {
+  .game {
+    margin: auto;
+  }
+
+  .game,
+  canvas {
+    width: 320px;
+    height: 240px;
+  }
+
+  .material-btn {
+    width: 320px;
+  }
+}
+
+@media screen and
+  (min-width: 480px) and
+  (min-height: 400px) {
+  .game {
+    margin: auto;
+  }
+
+  .game,
+  canvas {
+    width: 480px;
+    height: 360px;
+  }
+
+  .material-btn {
+    width: 480px;
+  }
+}
+
+@media screen and
+  (min-width: 640px) and
+  (min-height: 576px) {
+
+  .game {
+    margin: 32px auto;
+    width: 640px;
+    height: 480px;
+  }
+
+  canvas {
+    width: auto;
+    height: auto;
+  }
+
+  .material-btn {
+    width: 256px;
+  }
+}

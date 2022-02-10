@@ -1,0 +1,95 @@
+{
+    "entry": [
+        "Hey! No touching!",
+        "►Woah, sorry. @sorry",
+        "►But aren't you collectible? @collectible"
+    ],
+    "sorry": [
+        "No hard feelings.",
+        "Just keep your hands where I can see them. @greetings",
+        "►Sure don't worry… @greetings"
+    ],
+    "collectible": [
+        "I am, that's why you shouldn't just go around touching me!",
+        "You really don't want to own a power-up that hates you!",
+        "►I guess… @greetings"
+    ],
+    "hey": [
+        "Hey there! @greetings"
+    ],
+    "greetings": [
+        "Need anything?",
+        "►Who are you? @who",
+        "►What are you up to? @what",
+        "►[not talkedAboutSeed]I have this seed problem… @seed",
+        "►[talkedAboutSeed]I still have this seed problem… @seed2",
+        "►[$gotBoneQuest]I have this bone problem… @bone",
+        "►I'm off… @bye"
+    ],
+    "bone": [
+        "A bone problem…?",
+        "►[not gotBoneInfo]Yeah, I need to get a bone through a door",
+        "►[gotBoneInfo]How did the trick work again? @throw",
+        "Oh… that might be tricky.",
+        "As you know, items won't go through doors.",
+        "►Is there really nothing I can do?",
+        "Well… I'll let you in on a little secret.",
+        "Listen closely!",
+        "It's not that items can't go through doors.",
+        "They just don't want to.",
+        "But you can trick them with a precise throw.",
+        "►How would that help? @throw"
+    ],
+    "throw": [
+        "It's really easy.",
+        "You pretend to go through the door without the item.",
+        "Just throw it and enter the door as usual.",
+        "The trick is, that you time the throw in a way, that you can still catch it.",
+        "Going through a door takes some time after all!",
+        "I hope that helps with your bone problem.",
+        "►Awesome, I'll try that. !set gotBoneInfo @greetings"
+    ],
+    "who": [
+        "I'm the almighty super throw!",
+        "Not that useful, but at least I'm not a dancing power-up.",
+        "I live in the clouds with the rest of the family.",
+        "►Like, literally in the clouds? @clouds",
+        "►Why are you down here? @down",
+        "►Back to topic. @greetings"
+    ],
+    "clouds": [
+        "Can you live there any other way?",
+        "►Nevermind… @greetings"
+    ],
+    "down": [
+        "I'm excercising my throwing arm…",
+        "Also, Dad has company over. I don't like the smell.",
+        "►I really don't want any details… @greetings"
+    ],
+    "what": [
+        "I'm throwing stuff up the mountain to excercise.",
+        "This is practically the best spot to do so in the entire world.",
+        "►Any success?",
+        "No, I ran out of stuff pretty quickly.",
+        "►Too bad… @greetings"
+    ],
+    "seed": [
+        "What kind of problem?",
+        "►I must get the seed up the mountain.",
+        "I see. Items really hate going through doors.",
+        "You're a human right? Humans can throw by default.",
+        "Maybe try throwing the seed up the mountain?",
+        "You won't find a better spot than this.",
+        "►Good call, I'll try that. @greetings !set talkedAboutSeed true"
+    ],
+    "seed2": [
+        "Really? Still?",
+        "Like I said, throw the seed up the mountain whenever possible.",
+        "This spot here is a perfect start.",
+        "This trick might come in handy later on as well.",
+        "►Got it. @greetings"
+    ],
+    "bye": [
+        "See ya! @hey !end"
+    ]
+}

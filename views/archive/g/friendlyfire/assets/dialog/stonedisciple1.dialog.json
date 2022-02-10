@@ -1,0 +1,79 @@
+{
+    "entry": [
+        "Hello! !set $talkedToStoneDisciple true",
+        "I'm a stone monk and student of the wise stone atop the mountain peak.",
+        "Are you here to climb the mountain?",
+        "►Yes. @yes",
+        "►Is there any other way to get up there? @no"
+    ],
+    "no": [
+        "No.",
+        "[$ismale]Maybe flying, but you don't look like a bird man or man bird.",
+        "[not $ismale]Maybe flying, but you don't look like a bird woman or woman bird.",
+        "►Damn… then yes. @yes"
+    ],
+    "yes": [
+        "Good.",
+        "In order to get up, just jump up the platforms here…",
+        "It's easy. Just jump and that's it.",
+        "…pfftttt. !amused",
+        "Nothing special to consider.",
+        "…hehe! !amused",
+        "►Why the suspicious act? @suspicious",
+        "►I'm on my way then. @onmyway"
+    ],
+    "suspicious": [
+        "That's part of the fun!",
+        "►OK… I'm on my way then. @onmyway"
+    ],
+    "onmyway": [
+        "Pffttttt… !amused",
+        "Good luck!@visited !end"
+    ],
+    "visited": [
+        "[not $gotTeleported]Go on, I'll wait here. !end",
+        "[$gotTeleported]Welcome back… @introduction !set $talkedToStoneDiscipleAgain true"
+    ],
+    "introduction": [
+        "How far did you get? Pftttt… hihi! !amused",
+        "►Not so far according to your reaction.",
+        "Yes, very true.",
+        "Just say a word if you need help.",
+        "►I'm in a hurry, give me something to work with. @explaination",
+        "►Riddles are my strong suit. I'll do it myself!",
+        "Respectable. Good luck then! @onmyown !end"
+    ],
+    "onmyown": [
+        "How goes the riddling?",
+        "►Progress is imminent! I can do this. @onmyown !end",
+        "►I could use some help after all.",
+        "I thought so! @explaination"
+    ],
+    "explaination": [
+        "This is a magical climbing chamber with unlimited height. !set $mountainRiddleExplained true",
+        "We adopted the concept from a fire spitting turtle.",
+        "He used it to keep some plumbers out. You can't make this stuff up.",
+        "►I really don't care, how can I overcome the trial? @solution"
+    ],
+    "solution": [
+        "You might already have guessed that the distinct gates are the key.",
+        "Just go through them in the right order and that's it.",
+        "►And you're gonna tell me the order?",
+        "No.",
+        "Wouldn't be much of a trial I spoiled the solution here and now.",
+        "►…",
+        "Don't worry. I have a cryptic tip for you!",
+        "Listen closely:",
+        "The solution is represented outside on the wall to the right…",
+        "►That is very specific and not cryptic at all.",
+        "…whoops.",
+        "I got the wrong tip sheet here.",
+        "Well, good luck nontheless.",
+        "►I'll try my best. @end !end"
+    ],
+    "end": [
+        "Still not finished?",
+        "Remember the tip: The solution is represented outside on the wall to the right.",
+        "►Yeah, thanks. @end !end"
+    ]
+}

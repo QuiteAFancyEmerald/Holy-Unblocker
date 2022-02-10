@@ -1,0 +1,97 @@
+
+{
+    "entry": [
+        "Hey, person! !talkedtofire",
+        "►[$devmode]Hey!",
+        "►[$devmode]I'm a dev, show me variables example! @variableExample",
+        "I am starving, I fear to die very soon and my light will go out forever. @help !sad"
+    ],
+    "variableExample": [
+        "This example demonstrates variables. !set exampleSeen",
+        "[exampleSeen]It's pretty cool!",
+        "It is not perfect yet and a little buggy, some things don't work yet… sorry",
+        "[exampleSeen]This line is conditional, and you should see it. !set fail",
+        "[not fail]This line unfortunately is visible due to a bug, where conditions are evaluated one line too early.",
+        "Variables sometimes only take effect after another sentence has been spoken. A little weird. Hopefully fixed in future.",
+        "Variables also work with player options.",
+        "►Say “hello” !set hello 1",
+        "►Say “howdy” !set hello 0",
+        "…",
+        "[hello=1]Hello!",
+        "[hello!=1]Howdy!",
+        "What was the other word again?",
+        "►[hello=1]Howdy!",
+        "►[not hello=1]Hello!",
+        "►I don't know… !set idk",
+        "…",
+        "[idk]You're a little forgetful…",
+        "[not idk]Ah, right!",
+        "Also, now setting a global variable which could be accessed from other dialogs. !set $test 42",
+        "Which can be accessed using a dollar sign.",
+        "[$test]Isn't that cool?",
+        "►Yes!",
+        "Bye! @entry !end"
+    ],
+    "help": [
+        "Would you help me out, kind stranger?",
+        "►Oh my God, a talking fire?! @impressed",
+        "►Why should I help you? @why",
+        "►How can I help you? @how",
+        "►I don't care! !angry",
+        "Oh you son of a…! No, sorry, I get it. Well, maybe another time. !neutral",
+        "Just be aware this whole game is pretty pointless if you don't help me out… @help !end"
+    ],
+    "impressed": [
+        "Well yes, I'm impressed too. Took me some time to get used to it. @help !amused"
+    ],
+    "how": [
+        "[not $ismale]I really need some wood. Surely a strong and marvelous woman like you can help an old fire out.",
+        "[$ismale]I really need some wood. Surely a strong and marvelous man like you can help an old fire out.",
+        "►Sounds boring. Maybe later… @bye",
+        "►I'm in. @details",
+        "►What do we say to the god of fire?",
+        "I don't know, what?",
+        "►Not today!",
+        "But if you don't help me out, there may not be a tomorrow. @why"
+    ],
+    "why": [
+        "Because I am the essence of life. If I die, everything dies. Do you want everything to die?",
+        "►Oh, I wouldn't want to be responsible for that! @details",
+        "►I don't know, do I?",
+        "►Yes!",
+        "No!",
+        "►OK",
+        "So you'll help me then?",
+        "►Definitely! @details",
+        "►Do I even have a choice?",
+        "Technically yes. Practically deciding against it would be a little stupid though.",
+        "►Well OK then, you convinced me. @details",
+        "►Why? @existence"
+    ],
+    "existence": [
+        "Because your sole existence in this world hinges on helping to keep me alive.",
+        "That's why you're here. There's nothing else for you to do anyway.",
+        "►Cool! I'll help you. @details",
+        "►I'd rather think about this in private. @bye"
+    ],
+    "bye": [
+        "Sure, take your time. You'll come back eventually! @help !end"
+    ],
+    "details": [
+        "Great! I knew I could rely on you. I know a good person when I see one!",
+        "►So what exactly should I do?",
+        "It's easy! I just need a little firewood so I can keep burning a little longer.",
+        "►I can get you some wood!",
+        "Yes, yes! But it needs to be a special kind of wood.",
+        "There's a good tree in the east. His wood is good. !treezoom",
+        "Go get it! !gotFireQuest",
+        "►Sure thing! @reminder !end"
+    ],
+    "reminder": [
+        "Hello again!",
+        "►What do I need to do?",
+        "►Bye! @reminder !end",
+        "Go east. Ask tree for wood. Bring me wood. Soon!",
+        "►On my way! @reminder !end"
+    ]
+}

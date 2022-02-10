@@ -1,0 +1,233 @@
+
+#train {
+position:absolute;
+width: 589px;
+height: 497px;
+cursor:move;
+
+	#sprite {
+		background: url(../images/hidden_corridor_player.png) no-repeat 0 0
+	}
+
+	#shadow  {
+		width: 122px;
+		height: 102px;
+		background: url(../images/hidden_corridor_shadow.png) no-repeat;
+		left: -38px;
+		top: -28px;
+		opacity:.5;
+	}
+
+	#ticket_inspector {
+		width: 310px;
+		height: 310px;
+		position: absolute;
+		left: 60px;
+		top: -270px;
+
+		.text_cloud {
+			left: 140px;
+			top: -30px;
+		}
+
+	}
+
+	#ticket_sprite {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		background:url(../images/cabin_ticket_inspector.png) 0 -310px;
+	}
+
+	#ticket_shadow {
+		width: 90px;
+		height: 60px;
+		position: absolute;
+		left: 120px;
+		top: 248px;
+		background: url(../images/train_ticket_inspector_shadow.png);
+	}
+
+	#floor {
+		width: 589px;
+		height: 497px;
+		position: absolute;
+		right: 37px;
+		bottom: 39px;
+	}
+
+	#train_platform {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		background:url(../images/train_platform.png) no-repeat;
+	}
+
+	#train_container {
+		width: 1467px;
+		height: 1030px;
+		position: absolute;
+		left: 0;
+		top: 0;
+
+		&.levitate {
+			-webkit-animation: levitate 10s;
+			-moz-animation: levitate 10s;
+			-ms-animation: levitate 10s;
+			-o-animation: levitate 10s;
+			animation: levitate 10s;
+			-webkit-animation-iteration-count: infinite;
+			-moz-animation-iteration-count: infinite;
+			-ms-animation-iteration-count: infinite;
+			-o-animation-iteration-count: infinite;
+			animation-iteration-count: infinite;
+		}
+	}
+
+	#train_interior {
+		width: 243px;
+		height: 459px;
+		position: absolute;
+		left: 153px;
+		top: -399px;
+		background: url(../images/train_interior.png);
+	}
+
+	#faux_player {
+		width: 310px;
+		height: 310px;
+		position: absolute;
+		left: 50px;
+		top: -249px;
+		background: url(../images/hidden_corridor_player.png) no-repeat 0 0;
+		display: none;
+
+		.shadow {
+			width: 122px;
+			height: 102px;
+			background: url(../images/hidden_corridor_shadow.png) no-repeat;
+			left: 100px;
+			top: 212px;
+			opacity:.5;
+		}
+	}
+
+	#train_door {
+		width: 109px;
+		height: 322px;
+		position: absolute;
+		left: 47px;
+		top: -322px;
+		background: url(../images/train_door.png);
+	}
+
+	#train_body {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: -90px;
+		top: -560px;
+		background: url(../images/train.png);
+	}
+
+	#train_engine {
+		width: 190px;
+		height: 195px;
+		border-radius: 10px;
+		position: absolute;
+		right: 265px;
+		top: 216px;
+		overflow: hidden;
+		.isometric_right();
+	}
+
+	#ring_1 {
+		width: 164px;
+		height: 164px;
+		border: 1px solid #ff0000;
+		border-radius: 100%;
+		position: absolute;
+		left: -27px;
+		top: -24px;
+	}
+
+	#ring_2 {
+		width: 151px;
+		height: 151px;
+		position: absolute;
+		left: -20px;
+		top: -17px;
+		background: url(../images/train_ring_2.png);
+
+		&.rotate {
+			-webkit-animation: spin 10s linear;
+			-moz-animation: spin 10s linear;
+			-ms-animation: spin 10s linear;
+			-o-animation: spin 10s linear;
+			animation: spin 10s linear;
+			-webkit-animation-iteration-count: infinite;
+			-moz-animation-iteration-count: infinite;
+			-ms-animation-iteration-count: infinite;
+			-o-animation-iteration-count: infinite;
+			animation-iteration-count: infinite;
+		}
+
+		&.rotate_faster {
+			-webkit-animation: spin 2s linear;
+			-moz-animation: spin 2s linear;
+			-ms-animation: spin 2s linear;
+			-o-animation: spin 2s linear;
+			animation: spin 2s linear;
+			-webkit-animation-iteration-count: infinite;
+			-moz-animation-iteration-count: infinite;
+			-ms-animation-iteration-count: infinite;
+			-o-animation-iteration-count: infinite;
+			animation-iteration-count: infinite;
+		}	
+	}
+
+	#ring_3 {
+		width: 81px;
+		height: 81px;
+		position: absolute;
+		left: 14px;
+		top: 18px;
+		background: url(../images/train_ring_3.png);
+	}
+
+	#train_glow {
+		width: 400px;
+		height: 405px;
+		position: absolute;
+		right: 90px;
+		top: 66px;
+		opacity: 0;
+		background: url(../images/train_glow.png);
+	}
+
+	#door_dark_corridor {
+		.invisible_door(313px, 318px);
+	}
+
+	#use_train_door {
+		.isometric_left;
+		.door(149px, -262px, 120px, 263px);
+		z-index: 2000;
+	}
+
+}
+
+#ekg {
+	width: 0;
+	height: 10px;
+	margin-top: -5px;
+	position: fixed;
+	left: 0;
+	top: 50%;
+	background: #fff;
+}
+

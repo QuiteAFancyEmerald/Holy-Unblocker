@@ -1,0 +1,82 @@
+
+#outside_view {
+	width: 944px;
+	height: 1156px;
+	margin:-472px 0 0 -578px;
+	position:fixed;
+	left:50%;
+	top:50%;
+	background:url(../images/outside_view.jpg) no-repeat;
+
+	#outside_corridor {
+		width: 110%;
+		height: 110%;
+		position:absolute;
+		left: -18px;
+		top: -5px;
+		z-index:1;
+		background:#000 url(../images/hidden_corridor.jpg) no-repeat 0 0;
+
+		#switch {
+			width: 57px;
+			height: 71px;
+			position: absolute;
+			left: 690px;
+			top: 149px;
+			z-index: 1;
+			background: url(../images/hidden_corridor_switch.png) no-repeat 0 0;
+		}
+
+		#player_sprite {
+			width:310px;
+			height:310px;
+			position:absolute;
+			left: 372px;
+			top: 213px;
+			z-index: 1;
+			background: url(../images/player_levitate_2.png) no-repeat 0 0;
+		}
+
+		#player_shadow {
+			width:122px;
+			height:102px;
+			background: url(../images/aquarium_shadow.png) no-repeat;
+			position:absolute;
+			left: 441px;
+			top: 442px;
+			z-index:1;
+		}
+
+	}
+
+	#fish {
+		width: 240px;
+		height: 240px;
+		position:absolute;
+		left: 328px;
+		top: 395px;
+		z-index:2;
+		background: url(../images/outside_fish.png) no-repeat;
+
+		.text_cloud {
+			left: 100px;
+			bottom: 200px
+		}
+	}
+
+	#tree {
+		width:440px;
+		height:570px;
+		position:absolute;
+		left: 160px;
+		top: 250px;
+		z-index:3;
+		background:url(../images/outside_view_tree_2.png) no-repeat;
+
+		&.leaves {
+			background:url(../images/outside_view_tree.png) no-repeat;
+		}
+	}
+
+}
+

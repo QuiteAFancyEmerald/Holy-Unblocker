@@ -1,0 +1,113 @@
+{
+    "entry": [
+        "[visited]You again… Breaking into my home.",
+        "[not visited]Who are you? Why are you breaking into my house…?",
+        "►[not visited]I was just looking around. @looking",
+        "►You… look like a flying ability power-up. @pickup",
+        "►[$seedplanted]Do you know anything about growing seeds? @seed",
+        "►[$seedgrown]I did it, the seed has grown. @grown",
+        "►[not visited]What a strange person…",
+        "►[visited]Bye power-up. @dontcallmethat",
+        "Whatever. @entry !end"
+    ],
+    "dontcallmethat": [
+        "Don't call me that! @entry !end"
+    ],
+    "looking": [
+        "And you think this is an accepted behaviour?",
+        "Nevermind, it's apparent what your standards are.",
+        "How did you get up here in the first place?",
+        "►Via jumping. @jumping"
+    ],
+    "jumping": [
+        "Aw man, another one of the multi-jump gang. Flying is better and you know it. !set visited",
+        "►There was no flying ability available. @noflying",
+        "►I like the multi-jump.",
+        "Yeah, you look like someone who would. @entry"
+    ],
+    "noflying": [
+        "That's because I'm up here and don't let strangers touch me. That includes you! @entry !end"
+    ],
+    "pickup": [
+        "[$ismale]And you look like generic action guy.",
+        "[not $ismale]And you look like a random japanese school girl.",
+        "Go be generic somewhere else, it's unbearable. !set visited",
+        "►Don't change the subject. You're even glowing.",
+        "►Ouch! The truth hurts. @entry",
+        "Yeah, so? That's none of your business and as if you needed a flying ability in the first place!",
+        "I bet you got one of those multi-jump things! Even birds are falling for this scam nowadays.",
+        "►Guilty as charged.",
+        "I guessed so. @entry"
+    ],
+    "seed": [
+        "[not deal]Seeds? What is there to know? That's basic gardening. !set visited",
+        "[not deal]Just put the thing in dirt and pour some liquids over it.",
+        "►[not deal]I don't have any water.",
+        "[not deal]Well, that's too bad. But not really my problem, is it?",
+        "►[not deal]Then I will annoy you until it rains naturally. @annoy",
+        "[not deal]Don't you have some water? @water",
+        "[not $seedgrown]Seriously? I already gave you my stupid son and an instruction on how to get the water.",
+        "►[not $seedgrown]Sorry, can you repeat it?",
+        "[not $seedgrown]Wow… stand on top of the grey cloud next to my house.",
+        "[not $seedgrown]It's very very simple. There shouldn't be any reason for me to repeat this.",
+        "[not $seedgrown]Go away please!",
+        "►[not $seedgrown]OK… !end @entry",
+        "That's a trick question! I know that you already grew the seed.",
+        "You really can't hold your side of our deal, can you?",
+        "►Sorry, I just like being around you.",
+        "Leave before I call the cops on you.",
+        "►I'm on my way! !end @entry"
+    ],
+    "water": [
+        "Look around you! I'm living in the clouds.",
+        "When I get thirsty, I just put my face in through my living room wall and breathe in.",
+        "►Then I will annoy you until it rains naturally. @annoy"
+    ],
+    "annoy": [
+        "Company of a human is the last thing I need right now.",
+        "OK, let's strike a deal.",
+        "I get you your water and you leave me alone forever.",
+        "How does that sound?",
+        "►Best deal ever made. @deal",
+        "►I might still send you emails in secret.",
+        "Joke's on you, I forgot my email password a long time ago! @deal",
+        "►OK OK, the deal is great. @deal"
+    ],
+    "deal": [
+        "So, listen closely. You can get water out of the darker clouds.",
+        "Since waiting is not an option, there is the possibility of rain dancing.",
+        "I think one of my children holds this kind of useless power.",
+        "Let's see…",
+        "…",
+        "Yeah… Dave! That little misfit is nothing but trouble.",
+        "You can have him.",
+        "►Are you really just giving away your child? @giveaway",
+        "►Thanks. I will take care of him. @takecare"
+    ],
+    "giveaway": [
+        "Don't worry. I have plenty more where this one comes from.",
+        "Also, this might be the only opportunity for him to actually be of any importance.",
+        "Plus, you have no idea how annoying he can be.",
+        "So, win-win I guess? !learnraindance @use"
+    ],
+    "takecare": [
+        "Whatever. Just don't bring him back! !learnraindance @use"
+    ],
+    "use": [
+        "Where was I? Ah…",
+        "Using the power is easy: Stand on top of the cloud and Dave should give you a hint on what to do.",
+        "►I'm on my way then!",
+        "Close the door on your way out. !end !set deal true @entry"
+    ],
+    "grown": [
+        "What a great achievement. I'm so proud of you. !set visited",
+        "►Thanks!",
+        "►Are you being sarcastic? @sarcastic",
+        "That was sarcasm. I couldn't care less. @entry"
+    ],
+    "sarcastic": [
+        "Oh no, I have been found out!",
+        "►Shame on you!",
+        "I couldn't care less. @entry"
+    ]
+}
