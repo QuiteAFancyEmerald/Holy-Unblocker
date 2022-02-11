@@ -49,7 +49,7 @@ var h5gms = [
     {name: "Konnekt", path: "konnekt/", img: "konnekt.png", description: "Fight against nodes and viruses! An interesting puzzle game developed by MONSTERKODI."},
     {name: "Push Back", path: "pushback/", img: "pushback.png", description: "A cool physics game!"},
     {name: "JS Racer", path: "racer/", img: "racer.png", description: "Want to race online? Enjoy an old age like racing game!"},
-    {name: "Bullet-Force", path: "bullet/", img: "Bullet-Force.png", description: "Multiplayer shooter"},
+    {name: "Bullet-Force", path: "xx142-b2.exe/", img: "Bullet-Force.png", description: "Multiplayer shooter"},
     {name: "Factory Balls Forever", path: "factoryballsforever/", img: "factory.png", description: "A puzzle game where you have to color the balls correctly! Use different tools to cover up the ball before start painting over it."}
 ];
 
