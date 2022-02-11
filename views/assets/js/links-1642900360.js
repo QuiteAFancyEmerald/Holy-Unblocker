@@ -15,7 +15,7 @@ var hulinks = {
     "ptlink": "https://www.patreon.com/holyunblocker",
     "allink": "https://github.com/titaniumnetwork-dev/Corrosion",
     "plink": "https://github.com/sysce/proxy",
-    "wnlink": "https://github.com/binary-person/womginx",
+    "wnlink": "a.jklmnop.tk",
     "pylink": "https://github.com/BinBashBanana/PyDodge",
     "nulink": "https://github.com/nfriedly/node-unblocker",
     "tnlink": "https://discord.gg/CwWpdGkuWY",
