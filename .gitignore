@@ -3,4 +3,3 @@ node_modules
 .vscode
 .gitattributes
 .well-known
-package-lock.json
