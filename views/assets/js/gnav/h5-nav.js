@@ -46,10 +46,11 @@ var h5gms = [
     {name: "Geometry Dash", path: "geometrydash/", img: "geometrydash.png", description: "Jump and fly your way through danger in this rhythm-based action platformer!"},
     {name: "Hextris", path: "hextris/", img: "hextris.png", description: "An addictive puzzle game inspired by Tetris."},
     {name: "Astray", path: "astray/", img: "astray.png", description: "A WebGL maze game built with Three.js and Box2dWeb."},
+    {name: "Underrun", path: "underrun/", img: "underrun.png", description: "Explore deep underground in this doom-like game. Kill enemies, explore and progress. Use WASD to move and Mouse1 to shoot."},
     {name: "Konnekt", path: "konnekt/", img: "konnekt.png", description: "Fight against nodes and viruses! An interesting puzzle game developed by MONSTERKODI."},
     {name: "Push Back", path: "pushback/", img: "pushback.png", description: "A cool physics game!"},
     {name: "JS Racer", path: "racer/", img: "racer.png", description: "Want to race online? Enjoy an old age like racing game!"},
-    {name: "Bullet-Force", path: "xx142-b2.exe/", img: "Bullet-Force.png", description: "Multiplayer shooter"},
+    {name: "xx142-b2.exe", path: "xx142-b2exe/", img: "Bullet-Force.png", description: "Multiplayer shooter"},
     {name: "Factory Balls Forever", path: "factoryballsforever/", img: "factory.png", description: "A puzzle game where you have to color the balls correctly! Use different tools to cover up the ball before start painting over it."}
 ];
 
