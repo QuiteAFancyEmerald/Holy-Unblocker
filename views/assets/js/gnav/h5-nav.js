@@ -52,30 +52,4 @@ var h5gms = [
     {name: "JS Racer", path: "racer/", img: "racer.png", description: "Want to race online? Enjoy an old age like racing game!"},
     {name: "xx142-b2.exe", path: "xx142-b2exe/", img: "Bullet-Force.png", description: "Multiplayer shooter"},
     {name: "Factory Balls Forever", path: "factoryballsforever/", img: "factory.png", description: "A puzzle game where you have to color the balls correctly! Use different tools to cover up the ball before start painting over it."}
-];
-
-var glist = document.getElementById("glist");
-
-for (let item of h5gms) {
-    let a = document.createElement("a");
-    a.href = "#";
-    var img = document.createElement("img");
-    img.src = "/assets/img/h5g/" + item.img;
-    a.appendChild(img);
-    var title = document.createElement("h3");
-    title.textContent = item.name;
-    a.appendChild(title);
-    var desc = document.createElement("p");
-    desc.textContent = item.description;
-    if (item.credits == "itch") desc.innerHTML += '<br>Credits: game can be found <a target="_blank" href="https://itch.io">here</a>.';
-    a.appendChild(desc);
-
-    a.onclick = function(e) {
-        if (e.target == a || e.target.tagName != "A") {
-            e.preventDefault();
-            item.custom ? goProx[item.custom](true) : goFrame("/archive/g/" + item.path, item.nolag);
-        }
-    }
-
-    glist.appendChild(a);
-}
+    
