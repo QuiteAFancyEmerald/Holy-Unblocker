@@ -1,6 +1,6 @@
 {
     "title": "HU OSS",
-    "port": "8080",
+    "port": "443",
     "ssl": false,
     "ws": true,
     "prefix": "/search/",
