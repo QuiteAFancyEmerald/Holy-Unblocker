@@ -5,7 +5,6 @@
 /* ----------------------------------------------- */
 
 var h5gms = [
-    {name: "GunKnight", path: "gunknight/", img: "gunknight.png", description: "A roguelike heavily inspired by Gungeon and Binding of Isaac, you play a Knight whose quest is to venture into a nearby dungeon - utilizing the most powerful magic of all... GUN MAGIC!"},
     {name: "Bonkio", path: "bonk/", img: "Bonk.png", description: "bonk from crazygames."},
     {name: "A Dark Room", path: "adarkroom/", img: "darkroom.png", description: "A player lights a fire in a dark room."},
     {name: "osu!", custom: "osu", img: "os1.png", description: "Rhythm is just a *click* away! If you experience any input lag be sure to read over the osu! FAQ page."},
