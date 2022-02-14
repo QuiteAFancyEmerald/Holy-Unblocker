@@ -52,6 +52,7 @@ var h5gms = [
     {name: "JS Racer", path: "racer/", img: "racer.png", description: "Want to race online? Enjoy an old age like racing game!"},
     {name: "xx142-b2.exe", path: "xx142-b2exe/", img: "Bullet-Force.png", description: "Multiplayer shooter"},
     {name: "Factory Balls Forever", path: "factoryballsforever/", img: "factory.png", description: "A puzzle game where you have to color the balls correctly! Use different tools to cover up the ball before start painting over it."}
+    {name: "Bonk.io", path: "Bonk/", img: "Bonk.png", description: "Bonk.io from crazygames.com"}
 ];
 
 var glist = document.getElementById("glist");
