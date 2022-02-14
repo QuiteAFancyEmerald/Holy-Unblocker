@@ -6,6 +6,7 @@
     "prefix": "/search/",
     "codec": "xor",
     "blacklist": [
+        "blocked.goguardian.com",
         "accounts.google.com",
         "dcounter.space"
     ]
