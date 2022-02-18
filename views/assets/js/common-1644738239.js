@@ -30,6 +30,8 @@ function setAuthCookie(s, lax) {
     document.cookie = s + "; expires=" + (Date.now() + 259200) + "; SameSite=" + (lax ? "Lax" : "None") + "; domain=." + getDomain() + "; path=/; Secure;";
 }
 
+let sxlink = 'https://searx.degenerate.info';
+
 /* To use:
  * goProx.proxy(url-string, stealth-boolean-optional)
  *
@@ -47,19 +49,41 @@ window.goProx = {
         setAuthCookie("wgauth=yes", false);
         goToUrl("https://a." + getDomain() + "/main/" + url, stealth);
     },
-    invid: function(url, stealth) {
-        setAuthCookie("__cor_auth=1", true);
-        goToUrl("https://client." + getDomain(), stealth);
+    searx: function(stealth) {
+        setAuthCookie("oldsmobile=badcar", true);
+        goToUrl("https://c." + getDomain() + "/engine/", stealth);
     },
     libreddit: function(stealth) {
         setAuthCookie("oldsmobile=badcar", true);
         goToUrl("https://c." + getDomain(), stealth);
     },
+    rnav: function(stealth) {
+        goToUrl("https://client." + getDomain(), stealth);
+    },
     osu: function(stealth) {
         setAuthCookie("osauth=true", false);
         goToUrl("https://osu." + getDomain() + "/index.html", stealth);
     },
-
+    mcnow: function(stealth) {
+        setAuthCookie("__cor_auth=1", false);
+        goToUrl("https://cdn." + getDomain() + "/search/gateway?url=" + ('https://now.gg/play/mojang/2534/minecraft-trial'), stealth);
+    },
+    glife: function(stealth) {
+        setAuthCookie("__cor_auth=1", false);
+        goToUrl("https://cdn." + getDomain() + "/search/gateway?url=" + ('https://now.gg/play/lunime/5767/gacha-life'), stealth);
+    },
+    roblox: function(stealth) {
+        setAuthCookie("__cor_auth=1", false);
+        goToUrl("https://cdn." + getDomain() + "/search/gateway?url=" + ('https://now.gg/play/roblox-corporation/5349/roblox'), stealth);
+    },
+    amongus: function(stealth) {
+        setAuthCookie("__cor_auth=1", false);
+        goToUrl("https://cdn." + getDomain() + "/search/gateway?url=" + ('https://now.gg/play/innersloth-llc/4047/among-us'), stealth);
+    },
+    pubg: function(stealth) {
+        setAuthCookie("__cor_auth=1", false);
+        goToUrl("https://cdn." + getDomain() + "/search/gateway?url=" + ('https://now.gg/play/proxima-beta/2609/pubg-mobile-resistance'), stealth);
+    },
     train: function(stealth) {
         setAuthCookie("wgauth=yes", false);
         goToUrl("https://a." + getDomain() + "/go/" + ('v6p9' + 'd9t4.ssl.hw' + 'cdn.net/html/1970' + '387/index.ht' + 'ml'), stealth);

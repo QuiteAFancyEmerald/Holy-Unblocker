@@ -854,6 +854,16 @@ strong) {
     margin: 0px auto;
 }
 
+.responsive-fix {
+    padding: 20px;
+}
+
+#cor-logo {
+    border-radius: 50%;
+    padding: 20px;
+    width: 150px;
+}
+
 .box-g {
     padding: 10px 50px;
 }
@@ -871,17 +881,25 @@ strong) {
     width: 200px;
     padding: 20px;
     margin: 10px;
-    border: 1px solid var(--nord4);
+    border: 2px solid var(--nord9);
+    border-radius: 5% 15%;
+    transition: ease-in-out 0.5s;
     flex-grow: 0;
     flex-shrink: 0;
 }
 
+#glist>a:hover {
+    border: 2px solid var(--nord11);
+}
+
 #glist>a img {
     pointer-events: none;
+    border-radius: 30%;
     width: 200px;
     height: 200px;
     object-position: 50% top;
-    object-fit: contain;
+    object-fit: cover;
+    box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.38);
 }
 
 #glist>a h3 {
