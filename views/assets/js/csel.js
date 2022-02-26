@@ -5,11 +5,11 @@
 /* ----------------------------------------------- */
 
 (function() {
-    var date = new Date();
+    let date = new Date();
     date.setFullYear(date.getFullYear() + 100);
     date = date.toUTCString();
 
-    var csel = document.getElementById("csel");
+    let csel = document.getElementById("csel");
 
     function setCookie(name, value) {
         document.cookie = name + "=" + encodeURIComponent(value) + "; expires=" + date + "; ";
@@ -20,23 +20,23 @@
     }
 
     async function readCookie(name) {
-        var cookie = document.cookie.split("; ");
-        var cookies = {};
-        for (var i = 0; i < cookie.length; i++) {
-            var p = cookie[i].split("=");
+        let cookie = document.cookie.split("; ");
+        let cookies = {};
+        for (let i = 0; i < cookie.length; i++) {
+            let p = cookie[i].split("=");
             cookies[p[0]] = p[1];
         }
         return decodeURIComponent(cookies[name]);
     }
 
     function pageTitle(value) {
-        var tag = document.getElementsByTagName("title")[0] || document.createElement("title");
+        let tag = document.getElementsByTagName("title")[0] || document.createElement("title");
         tag.innerHTML = value;
         document.head.appendChild(tag);
     }
 
     function pageIcon(value) {
-        var tag = document.querySelector("link[rel*='icon']") || document.createElement("link");
+        let tag = document.querySelector("link[rel*='icon']") || document.createElement("link");
         tag.rel = "icon";
         tag.href = value;
         document.head.appendChild(tag);

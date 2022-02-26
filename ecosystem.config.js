@@ -1,17 +1,18 @@
 module.exports = {
     apps: [{
-        name: 'HolyUnblockerPublic',
+        name: 'HolyUB',
         script: './backend.js',
         env: {
-            PORT: 8080,
+            PORT: 8078,
             NODE_ENV: "development",
         },
         env_production: {
-            PORT: 8080,
+            PORT: 8078,
             NODE_ENV: "production",
         },
         instances: "1",
-        exec_mode: "cluster",
+        exec_interpreter: "babel-node",
+        exec_mode: "fork",
         autorestart: true,
         exp_backoff_restart_delay: 100,
         cron_restart: "*/10 * * * *",

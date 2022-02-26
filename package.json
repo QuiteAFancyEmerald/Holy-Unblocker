@@ -15,13 +15,11 @@
     "author": "Titanium Network",
     "license": "MIT",
     "dependencies": {
+        "babel": "^6.23.0",
         "corrosion": "^1.0.0",
         "express": "^4.17.1",
         "mime-types": "^2.1.27",
         "node-fetch": "^3.2.0",
         "ws": "^7.5.3"
-    },
-    "engines": {
-        "node": ">=12.20.0"
     }
 }

@@ -3,7 +3,7 @@
     "port": "8080",
     "ssl": false,
     "ws": true,
-    "prefix": "/search/",
+    "prefix": "/service/",
     "codec": "xor",
     "blacklist": [
         "accounts.google.com",

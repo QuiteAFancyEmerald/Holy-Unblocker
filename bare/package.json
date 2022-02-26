@@ -1,0 +1,30 @@
+{
+	"name": "tomp-bare-server",
+	"description": "Back.",
+	"version": "0.0.1",
+	"homepage": "https://github.com/tomphttp",
+	"bugs": {
+		"url": "https://github.com/tomphttp/bare-server-node/issues",
+		"email": "tomp@sys32.dev"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tomphttp/bare-server-node.git"
+	},
+	"author": {
+		"name": "TOMP Development",
+		"email": "tomp@sys32.dev",
+		"url": "https://github.com/tomphttp"
+	},
+	"keywords": [
+		"proxy",
+		"tomp",
+		"tomphttp",
+		"sys32"
+	],
+	"license": "GPL-3.0",
+	"type": "module",
+	"dependencies": {
+		"commander": "^9.0.0"
+	}
+}
