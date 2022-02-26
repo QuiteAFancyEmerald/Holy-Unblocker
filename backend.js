@@ -1,5 +1,4 @@
 (async() => {
     await
-    import ('./src/backend.mjs');
-
+    import ('./src/server.mjs');
 })();
