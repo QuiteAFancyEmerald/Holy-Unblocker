@@ -1,7 +1,7 @@
 {
     "name": "Holy Unblocker v5.5",
     "description": "Holy Unblocker is a secure web proxy service.",
-    "repository": "https://github.com/titaniumnetwork-dev/Holy-Unblocker",
+    "repository": "https://github.com/titaniumnetwork-dev",
     "logo": "https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/icon.png",
     "keywords": ["holyunblocker", "womginx", "corrosion", "titaniumnetwork", "node", "proxy", "unblocker", "webproxy", "games"]
 }
