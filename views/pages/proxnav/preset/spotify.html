@@ -24,10 +24,11 @@
         <div class="ad" id="ad-right"></div>
         <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
         <div class="box box-medium text-center textm">
-            <h1 class="bigtitle">Searx</h1>
+            <h1 class="bigtitle">Spotify</h1>
             <p class="responsive-fix">
-                Sea&#173;rx is a free inte&#173;rnet me&#173;tasearch en&#173;gine which ag&#173;gregates r&#173;esults from mo&#173;re than 7&#173;0 sea&#173;rch ser&#173;vices. User&#173;s are neit&#173;her tra&#173;cked nor pr&#173;ofil&#173;ed.
-                <br>Add&#173;itiona&#173;lly, se&#173;arx c&#173;an be u&#173;sed ov&#173;er To&#173;r for onli&#173;ne anonym&#173;ity.
+                Sp&#173;oti&#173;fy is a digi&#173;tal mus&#173;ic, podc&#173;ast, and v&#173;ideo servi&#173;ce th&#173;at giv&#173;es yo&#173;u acc&#173;ess to mill&#173;ions of so&#173;ngs and oth&#173;er cont&#173;ent f&#173;rom creat&#173;ors all o&#173;ver the
+                wor&#173;ld.
+                <br>Using Ult&#173;rav&#173;iolet, Spo&#173;tify wo&#173;rks wh&#173;ile b&#173;eing su&#173;per fa&#173;st. Enj&#173;oy unblo&#173;cked mu&#173;sic strea&#173;ming!
             </p>
             <h3>Having Issues?</h3>
             <p class="font3 accented">
@@ -35,12 +36,22 @@
                 <br>Sometimes the pro&#173;xie&#173;s are under high load so things may be s&#173;low, sorry. In that case simply wait for the pa&#173;ge to load.
             </p>
             <div class="responsive-fix">
-                <p>Down for now.</p>
+                <a class="fancybutton glowbutton" href="#" onclick="goProx.ultraviolet('https://open.spotify.com');">Classic</a>
+                <a class="fancybutton glowbutton" href="#" onclick="goProx.ultraviolet('https://open.spotify.com', true);">Stealth</a>
             </div>
         </div>
     </div>
     <div id="footer" class="fullwidth"></div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+    <script src="uv.bundle.js"></script>
+    <script src="uv.config.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.navigator.serviceWorker.register('/sw.js', {
+                scope: __uv$config.prefix,
+            });
+        };
+    </script>
     <script src="assets/js/common.js"></script>
     <script src="assets/js/header.js"></script>
     <script src="assets/js/csel.js"></script>

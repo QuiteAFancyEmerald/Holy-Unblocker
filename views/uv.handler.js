@@ -17,6 +17,10 @@ async function __uvHook(window, config = {}, bare = '/bare/') {
         window,
     });
 
+    if (typeof config.construct === 'function') {
+        config.construct(__uv, worker ? 'worker' : 'window');
+    };
+
     const { client } = __uv;
     const {
         HTMLMediaElement,

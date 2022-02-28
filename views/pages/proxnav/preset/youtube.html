@@ -45,6 +45,13 @@
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <script src="uv.bundle.js"></script>
     <script src="uv.config.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.navigator.serviceWorker.register('/sw.js', {
+                scope: __uv$config.prefix,
+            });
+        };
+    </script>
     <script src="assets/js/common.js"></script>
     <script src="assets/js/header.js"></script>
     <script src="assets/js/csel.js"></script>

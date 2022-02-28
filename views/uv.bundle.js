@@ -37985,6 +37985,10 @@ class WebSocketApi extends _events_js__WEBPACK_IMPORTED_MODULE_0__["default"] {
         this.protocol = ctx.nativeMethods.getOwnPropertyDescriptor(this.wsProto, 'protocol');
         this.send = this.wsProto.send;
         this.close = this.wsProto.close;
+        this.CONNECTING = 0;
+        this.OPEN = 1;
+        this.CLOSING = 2;
+        this.CLOSED = 3;
     };
     overrideWebSocket() {
         this.ctx.override(this.window, 'WebSocket', (target, that, args) => {
@@ -37998,6 +38002,11 @@ class WebSocketApi extends _events_js__WEBPACK_IMPORTED_MODULE_0__["default"] {
             if (event.intercepted) return event.returnValue;
             return new event.target(event.data.url, event.data.protocols);
         }, true);
+
+        this.window.WebSocket.CONNECTING = this.CONNECTING;
+        this.window.WebSocket.OPEN = this.OPEN;
+        this.window.WebSocket.CLOSING = this.CLOSING;
+        this.window.WebSocket.CLOSED = this.CLOSED;
     };
     overrideUrl() {
         this.ctx.overrideDescriptor(this.wsProto, 'url', {
@@ -39050,9 +39059,9 @@ class Ultraviolet {
         this.meta = options.meta || {};
         this.meta.base ||= undefined;
         this.meta.origin ||= '';
-        this.bundleScript = options.bundleScript || '/uv.bundle.js';
-        this.handlerScript = options.handlerScript || '/uv.handler.js';
-        this.configScript = options.handlerScript || '/uv.config.js';
+        this.bundleScript = options.bundle || '/uv.bundle.js';
+        this.handlerScript = options.handler || '/uv.handler.js';
+        this.configScript = options.config || '/uv.config.js';
         this.meta.url ||= this.meta.base || '';
         this.codec = Ultraviolet.codec;
         this.html = new _html_js__WEBPACK_IMPORTED_MODULE_0__["default"](this);

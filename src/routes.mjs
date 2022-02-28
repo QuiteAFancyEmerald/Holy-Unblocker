@@ -32,7 +32,7 @@ const pages = {
     'rh': 'pages/proxnav/rammerhead.html',
     'w': 'pages/proxnav/womginx.html',
     /* Proxy Presets */
-    'sx': 'pages/proxnav/preset/searx.html',
+    'sx': 'pages/proxnav/preset/spotify.html',
     'y': 'pages/proxnav/preset/youtube.html',
     'd': 'pages/proxnav/preset/discord.html',
     'r': 'pages/proxnav/preset/reddit.html',

@@ -1,6 +1,6 @@
 self.__uv$config = {
-    prefix: '/sw/',
-    bare: '/bare/',
+    prefix: '/service/',
+    bare: 'https://cdn.' + location.hostname + '/bare/',
     encodeUrl: Ultraviolet.codec.xor.encode,
     decodeUrl: Ultraviolet.codec.xor.decode,
     handler: '/uv.handler.js',
