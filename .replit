@@ -1,2 +1,3 @@
 language = "nodejs"
-run = "node --max_old_space_size=2560 ./backend.js"
+onBoot = "bash setup_repl.sh"
+run = "bash setup_repl.sh"
