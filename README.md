@@ -168,12 +168,12 @@ After you have selected a decent VPS, use Cloudflare for the DNS records for bot
 This is an example of DNS records involving Heroku. Self-hosting will require `A records` preferably.
 <img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/dnssetup.png" width="500"></img>
 
-- `@` and `www.deepsoil.ml` are being used for the local Corrosion proxy.
-- `p.deepsoil.ml` is being used for Palladium.
-- `a.deepsoil.ml` is being used for womginx.
-- `cdn.deepsoil.ml` is being used for a private Corrosion host on the official sites.
+- `@` and `www.example.ml` are being used for the local Ultraviolet proxy.
+- `client.example.ml` is being used for Rammerhead.
+- `a.example.ml` is being used for womginx.
+- `cdn.example.ml` is being used for a private Ultraviolet host on the official sites.
 
-As stated previously, Holy Unblocker is hosted locally with Corrosion.
+As stated previously, Holy Unblocker is hosted locally with Ultraviolet.
 
 #### Heroku Steps
 So you chose to use Heroku to host. I personally favor it as a free choice.
@@ -186,7 +186,7 @@ Make sure you connect your Heroku app to your GitHub and enable automatic deploy
 For beginners, Freenom is a good provider for obtaining domains for free. However the catch is that you can only use properly "Freenom" domains for free being .cf, .ml, .gq, ga and .tk. However these can be blocked rather easily.
 
 - Get some Freenom domains then add them to your Heroku instance (Personal > [App Name] > Settings > Domains)
-Add a domain for both `www.youdomainhere.cf` and `yourdomainhere.cf` with .cf being interchangeable with other Freenom domain names.
+Add a domain for both `www.example.cf` and `example.cf` with .cf being interchangeable with other Freenom domain names.
 - If you prefer to obtain premium domains (TLDs) then use <a href="https://porkbun.com">Porkbun</a>, which offers domains for amazing prices. Literally a `.net` domain normally costs around $10. On Porkbun for the first year it costs $3 so its definitely a deal.
 
 #### Cloudflare Steps
@@ -244,27 +244,6 @@ A detailed FAQ with common issues and solutions can be found <a href="https://ho
 
 Captcha support is currently not available on all of the current proxies sadly. Therefore some sites may not work with any of the sites. Read below for issues with links on sites.
 
-**Why are some page links not working or leading to 404 pages?**
-
-This is an issue with the latest release of Alloy proxy but it may also occur with other proxies.
-
-In this case manually entering the URL of the page you would like to view can solve this or try navigating using the home button. (Reddit, Twitter) The next release of Alloy may fix this also.
-
-**When using YouTube on any of the proxy sites, why does the page not load fully or the video is just white?**
-
-There are two methods for fixing this:
-
-- Reloading the page normally when the error above happens should load the video.
-- Or right-clicking the page and doing Reload Frame if you are using some form of Stealth Mode.
-
-**When using Discord under Alloy or SysYa, why does the page stay gray/white or the QR code not load?**
-
-Once again do the same steps above:
-- Reloading the page normally when the error above happens should load the video
-- Or right-clicking the page and doing Reload Frame if you are using some form of Stealth Mode.
-
-Make sure you are also doing the steps correctly. Simply view link above for extended Discord proxy information/steps.
-
 **I am getting 502 errors. What do I do?**
 
 When this happens you may either switch sites to fix the error or wait a bit. Sometimes clearing your cache can help.
@@ -282,12 +261,11 @@ This project is maintained by Quite A Fancy Emerald with massive help from BinBa
 View the official website for more detail and credits.
 
 ### Proxy Sources:
-This project currently uses Corrosion, Womginx, and Palladium, linked below.
+This project currently uses Ultraviolet, Womginx, and Rammerhead, linked below.
 
-- <a href="https://github.com/titaniumnetwork-dev/Corrosion">Corrosion</a>
+- <a href="https://github.com/titaniumnetwork-dev/Ultraviolet">Ultraviolet</a>
 - <a href="https://github.com/binary-person/womginx">Womginx</a>
-- <a href="https://github.com/LudicrousDevelopment/Palladium">Palladium</a>
-- <a href="https://github.com/BinBashBanana/PyDodge">PyDodge</a>
+- <a href="https://github.com/binary-person/rammerhead">Rammerhead</a>
 
 ### Other:
 
