@@ -47,6 +47,7 @@ Simply do `%proxy hu` in `#proxy-commands` for more Holy Unblocker links on the 
 [![Deploy to IBM Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/ibmcloud.svg)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/titaniumnetwork-dev/Holy-Unblocker)
 [![Deploy to Amplify Console](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/amplifyconsole.svg)](https://console.aws.amazon.com/amplify/home#/deploy?repo=https://github.com/titaniumnetwork-dev/Holy-Unblocker)
 [![Run on Google Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/googlecloud.svg)](https://deploy.cloud.run/?git_repo=https://github.com/titaniumnetwork-dev/Holy-Unblocker)
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/QuiteAFancyEmerald/Holy-Unblocker-Old&branch=master&name=HolyUnblocker&run_command=npm start)
 
 #### Is Holy Unblocker still being worked on?
 Yes! A lot of users may have noticed the initial message about Holy Unblocker being down however Holy Unblocker is now being maintained by a seperate team and no longer by me. You may check it out <a href="https://git.holy.how/">here</a> once setup or join the TN Discord linked below for more information. 
