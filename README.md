@@ -13,6 +13,9 @@ Also has a good amount of locally hosted games featured on the site.
 #### Why are updates no longer happening here for this repository?
 Please read over <a href="#important-message-original">here</a>.
 
+#### Where can I find the games for this repo? (404 errors, etc.)
+Due to piracy concerns, size, etc. this has been moved over <a href="https://github.com/QuiteAFancyEmerald/HU-Archive">here</a>.
+
 #### Supports
 - Youtube.com
 - Discord.com
