@@ -59,6 +59,9 @@ Simply do `%proxy hu` in `#proxy-commands` for more Holy Unblocker links on the 
 #### Is Holy Unblocker still being worked on?
 Yes! A lot of users may have noticed the initial message about Holy Unblocker being down however Holy Unblocker is now being maintained by a seperate team and no longer by me. You may check it out <a href="https://git.holy.how/">here</a> once setup or join the TN Discord linked below for more information. 
 
+#### Where can I find the new source material for Holy Unblocker?
+Check it out <a href="https://github.com/holy-unblocker/website-aio">here</a> if you wish to have an easier to deploy instance with the new changes :D
+
 #### Important Message (Original)
 This isn’t the greatest announcement sorry. After lots of thought and severe hesitation I’m shutting down Holy Unblocker and leaving TN. It's just been something that I’ve been super conflicted with for months hence the lack of updates and the massive gaps that happened last year. I just didn’t want to throw away a project that I passionately enjoyed and spent time on while making amazing friends and meeting epic devs here. I could go on forever for who these people are but ima like leave it here. They know who they are :D
 
