@@ -163,13 +163,13 @@ You will first want to host your proxies locally or externally.
 
 #### List of some good hosting options:
 - <a href="https://dedipath.com">Dedipath</a> (Paid and Dedicated)
-- <a href="https://heroku.com">Heroku</a> (Free)
-- <a href="https://nodeclusters.com">NodeClusters</a> (Paid)
+- <a href="#">Oracle Cloud</a> (Free, Paid, Dedicated)
+- <a href="https://heroku.com">Heroku</a> (Paid)
 - <a href="https://glitch.com">Glitch</a> (Free)
 - <a href="https://repl.it">Repl.it</a> (Free)
 - <a href="https://azure.microsoft.com">Azure</a> (Free and Paid)
 
-Out of the list of hosting providers Heroku and NodeClusters rank first as a preference. You may also self-host.
+Out of the list of hosting providers Dedipath and Azure rank first as a preference. You may also self-host.
 
 After you have selected a decent VPS, use Cloudflare for the DNS records for both the site and the subdomains for the proxies.
 
@@ -182,13 +182,6 @@ This is an example of DNS records involving Heroku. Self-hosting will require `A
 - `cdn.example.ml` is being used for a private Ultraviolet host on the official sites.
 
 As stated previously, Holy Unblocker is hosted locally with Ultraviolet.
-
-#### Heroku Steps
-So you chose to use Heroku to host. I personally favor it as a free choice.
-
-- First obtain a card; (Prepaid, Debit, and Credit Cards work). You need this to add custom domains to your Heroku instance.
-
-Make sure you connect your Heroku app to your GitHub and enable automatic deploys. Will make things easier. :) 
 
 #### Freenom/Domain Steps
 For beginners, Freenom is a good provider for obtaining domains for free. However the catch is that you can only use properly "Freenom" domains for free being .cf, .ml, .gq, ga and .tk. However these can be blocked rather easily.
