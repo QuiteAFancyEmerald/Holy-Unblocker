@@ -3,11 +3,11 @@
 
 Holy Unblocker, an official flagship Titanium Network site, can bypass web filters regardless of whether it is an extension or network-based. Being a secure web proxy service, it supports numerous sites while being updated frequently and concentrating on detail with design, mechanics, and features.
 
-## Why are updates no longer happening here for this repository?
-Please read over <a href="#important-message-original">here</a> and check out the NEW repository for this project.
-
 Works with a large number of sites, including YouTube, Discord, and more!
 Also has a good amount of locally hosted games featured on the site.
+
+## Why are updates no longer happening here for this repository?
+Please read over <a href="#important-message-original">here</a> and check out the **NEW** <a href="https://github.com/holy-unblocker/website-aio">repository</a> for this project.
 
 ### You can support Holy Unblocker by starring the repository!
 
