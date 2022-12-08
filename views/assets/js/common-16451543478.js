@@ -8,8 +8,12 @@ function tryGetElement(id) {
     return document.getElementById(id) || {};
 }
 
+/**
+ * Get the preferred apex domain name.
+ * Not exactly apex, as any subdomain other than those listed will be ignored.
+ */
 function getDomain() {
-    return document.domain.replace(/^(www|edu|cooking|beta)\./, "");
+    return location.host.replace(/^(www|edu|cooking|beta)\./, "");
 }
 
 // nolag = no external js (arc widget, an-lytics, etc.)
