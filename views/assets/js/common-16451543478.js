@@ -8,8 +8,12 @@ function tryGetElement(id) {
     return document.getElementById(id) || {};
 }
 
+/**
+ * Get the preferred apex domain name.
+ * Not exactly apex, as any subdomain other than those listed will be ignored.
+ */
 function getDomain() {
-    return document.domain.replace(/^(www|edu|cooking|beta)\./, "");
+    return location.host.replace(/^(www|edu|cooking|beta)\./, "");
 }
 
 // nolag = no external js (arc widget, an-lytics, etc.)
@@ -66,69 +70,69 @@ const xor = {
 window.goProx = {
     ultraviolet: function(url, stealth) {
         setAuthCookie("__cor_auth=1", true);
-        goToUrl("https://" + getDomain() + "/service/" + xor.encode(omnibox(url)), stealth);
+        goToUrl(location.protocol + "//" + getDomain() + __uv$config.prefix + xor.encode(omnibox(url)), stealth);
     },
     womginx: function(url, stealth) {
         setAuthCookie("wgauth=yes", false);
-        goToUrl("https://a." + getDomain() + "/main/" + omnibox(url), stealth);
+        goToUrl(location.protocol + "//a." + getDomain() + "/main/" + omnibox(url), stealth);
     },
     searx: function(stealth) {
         setAuthCookie("oldsmobile=badcar", true);
-        goToUrl("https://c." + getDomain() + "/engine/", stealth);
+        goToUrl(location.protocol + "//c." + getDomain() + "/engine/", stealth);
     },
     libreddit: function(stealth) {
         setAuthCookie("oldsmobile=badcar", true);
-        goToUrl("https://c." + getDomain(), stealth);
+        goToUrl(location.protocol + "//c." + getDomain(), stealth);
     },
     rnav: function(stealth) {
-        goToUrl("https://client." + getDomain(), stealth);
+        goToUrl(location.protocol + "//client." + getDomain(), stealth);
     },
     osu: function(stealth) {
         setAuthCookie("osauth=true", false);
-        goToUrl("https://osu." + getDomain() + "/index.html", stealth);
+        goToUrl(location.protocol + "//osu." + getDomain() + "/index.html", stealth);
     },
     mcnow: function(stealth) {
         setAuthCookie("__cor_auth=1", false);
-        goToUrl("https://cdn." + getDomain() + "/sw/" + xor.encode('https://now.gg/play/mojang/2534/minecraft-trial'), stealth);
+        goToUrl(location.protocol + "//cdn." + getDomain() + "/sw/" + xor.encode('https://now.gg/play/mojang/2534/minecraft-trial'), stealth);
     },
     glife: function(stealth) {
         setAuthCookie("__cor_auth=1", false);
-        goToUrl("https://cdn." + getDomain() + "/sw/" + xor.encode('https://now.gg/play/lunime/5767/gacha-life'), stealth);
+        goToUrl(location.protocol + "//cdn." + getDomain() + "/sw/" + xor.encode('https://now.gg/play/lunime/5767/gacha-life'), stealth);
     },
     roblox: function(stealth) {
         setAuthCookie("__cor_auth=1", false);
-        goToUrl("https://cdn." + getDomain() + "/sw/" + xor.encode('https://now.gg/play/roblox-corporation/5349/roblox'), stealth);
+        goToUrl(location.protocol + "//cdn." + getDomain() + "/sw/" + xor.encode('https://now.gg/play/roblox-corporation/5349/roblox'), stealth);
     },
     amongus: function(stealth) {
         setAuthCookie("__cor_auth=1", false);
-        goToUrl("https://cdn." + getDomain() + "/sw/" + xor.encode('https://now.gg/play/innersloth-llc/4047/among-us'), stealth);
+        goToUrl(location.protocol + "//cdn." + getDomain() + "/sw/" + xor.encode('https://now.gg/play/innersloth-llc/4047/among-us'), stealth);
     },
     pubg: function(stealth) {
         setAuthCookie("__cor_auth=1", false);
-        goToUrl("https://cdn." + getDomain() + "/sw/" + xor.encode('https://now.gg/play/proxima-beta/2609/pubg-mobile-resistance'), stealth);
+        goToUrl(location.protocol + "//cdn." + getDomain() + "/sw/" + xor.encode('https://now.gg/play/proxima-beta/2609/pubg-mobile-resistance'), stealth);
     },
     train: function(stealth) {
         setAuthCookie("wgauth=yes", false);
-        goToUrl("https://a." + getDomain() + "/go/" + ('v6p9' + 'd9t4.ssl.hw' + 'cdn.net/html/1970' + '387/index.ht' + 'ml'), stealth);
+        goToUrl(location.protocol + "//a." + getDomain() + "/go/" + ('v6p9' + 'd9t4.ssl.hw' + 'cdn.net/html/1970' + '387/index.ht' + 'ml'), stealth);
     },
     village: function(stealth) {
         setAuthCookie("wgauth=yes", false);
-        goToUrl("https://a." + getDomain() + "/go/" + ('v6p' + '9d9t4.ss' + 'l.hwcd' + 'n.net/html/3' + '626475/index.html'), stealth);
+        goToUrl(location.protocol + "//a." + getDomain() + "/go/" + ('v6p' + '9d9t4.ss' + 'l.hwcd' + 'n.net/html/3' + '626475/index.html'), stealth);
     },
     prison: function(stealth) {
         setAuthCookie("wgauth=yes", false);
-        goToUrl("https://a." + getDomain() + "/go/" + ('v6p' + '9d9t4.ssl.hwc' + 'dn.net/h' + 'tml/364' + '7099/index.html'), stealth);
+        goToUrl(location.protocol + "//a." + getDomain() + "/go/" + ('v6p' + '9d9t4.ssl.hwc' + 'dn.net/h' + 'tml/364' + '7099/index.html'), stealth);
     },
     rpg: function(stealth) {
         setAuthCookie("wgauth=yes", false);
-        goToUrl("https://a." + getDomain() + "/go/" + ('v6p9d9' + 't4.ssl.hwc' + 'dn.net/html/347' + '0524/Die%20in%20the%20Du' + 'ngeon%201.1%20[WEB]/index.html'), stealth);
+        goToUrl(location.protocol + "//a." + getDomain() + "/go/" + ('v6p9d9' + 't4.ssl.hwc' + 'dn.net/html/347' + '0524/Die%20in%20the%20Du' + 'ngeon%201.1%20[WEB]/index.html'), stealth);
     },
     speed: function(stealth) {
         setAuthCookie("wgauth=yes", false);
-        goToUrl("https://a." + getDomain() + "/go/" + ('v6p9' + 'd9t4.ssl.hw' + 'cdn.net/html/36' + '28752/index.html'), stealth);
+        goToUrl(location.protocol + "//a." + getDomain() + "/go/" + ('v6p9' + 'd9t4.ssl.hw' + 'cdn.net/html/36' + '28752/index.html'), stealth);
     },
     heli: function(stealth) {
         setAuthCookie("wgauth=yes", false);
-        goToUrl("https://" + ('v6p9d' + '9t4.ssl.h' + 'wcdn.net/ht' + 'ml/3605' + '579/Helo%20Sto' + 'rm/index.html'), stealth);
+        goToUrl(location.protocol + "//" + ('v6p9d' + '9t4.ssl.h' + 'wcdn.net/ht' + 'ml/3605' + '579/Helo%20Sto' + 'rm/index.html'), stealth);
     }
 };

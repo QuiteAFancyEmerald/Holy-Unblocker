@@ -58,14 +58,11 @@
     </div>
     <div id="footer" class="fullwidth"></div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <script src="uv.bundle.js"></script>
-    <script src="uv.config.js"></script>
+    <script src="uv/uv.bundle.js"></script>
+    <script src="uv/uv.config.js"></script>
+    <script src="assets/js/register-sw.js"></script>
     <script>
-        if ('serviceWorker' in navigator) {
-            window.navigator.serviceWorker.register('/sw.js', {
-                scope: __uv$config.prefix,
-            });
-        };
+        registerSW();
     </script>
     <script src="assets/js/common.js"></script>
     <script src="assets/js/links.js"></script>
