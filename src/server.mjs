@@ -1,4 +1,5 @@
-import createBareServer from '@tomphttp/bare-server-node'
+import { uvPath } from '@titaniumnetwork-dev/ultraviolet';
+import createBareServer from '@tomphttp/bare-server-node';
 import http from 'http';
 import path from 'path';
 import express from 'express';
@@ -32,9 +33,10 @@ server.on('upgrade', (req, socket, head) => {
     }
 });
 
-router.get('/', async(req, res) => res.send(paintSource(tryReadFile(path.normalize(__dirname + '/views/' + (['/', '/?'].includes(req.url) ? pages.index : pages[Object.keys(req.query)[0]]))))));
+router.get('/', async(req, res) => res.send(paintSource(tryReadFile(path.join(__dirname, 'views', ['/', '/?'].includes(req.url) ? pages.index : pages[Object.keys(req.query)[0]])))));
 app.use(router);
-app.use(express.static(path.normalize(__dirname + '/views')));
+app.use(express.static(path.join(__dirname, 'views')));
+app.use("/uv/", express.static(uvPath));
 app.disable('x-powered-by');
 app.use((req, res) => {
     res.status(404).send(paintSource(text404));

@@ -15,6 +15,7 @@
     "author": "Titanium Network",
     "license": "MIT",
     "dependencies": {
+        "@titaniumnetwork-dev/ultraviolet": "^1.0.4",
         "@tomphttp/bare-server-node": "^1.2.2",
         "babel": "^6.23.0",
         "corrosion": "^1.0.0",
@@ -22,8 +23,5 @@
         "mime-types": "^2.1.27",
         "node-fetch": "^3.2.0",
         "ws": "^7.5.3"
-    },
-    "peerDependencies": {
-        "@titaniumnetwork-dev/ultraviolet": "^1.0.3"
     }
 }
