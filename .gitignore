@@ -3,5 +3,3 @@ node_modules
 .vscode
 .gitattributes
 .well-known
-package-lock.json
-/views/archive/gfiles/rarch/roms

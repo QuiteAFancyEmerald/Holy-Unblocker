@@ -1,0 +1,230 @@
+<!-- https://markdowntohtml.com/ -->
+<h1 id="holy-unblocker-img-align-left-src-https-raw-githubusercontent-com-titaniumnetwork-dev-holy-unblocker-master-views-assets-img-icon-png-img-">Holy Unblocker Documentation</h1>
+<p>Holy Unblocker, an official flagship Titanium Network site, can bypass web filters regardless of whether it is an extension or network-based. Being a secure web proxy service, it supports numerous sites while being updated frequently and concentrating on detail with design, mechanics, and features.</p>
+<p>Works with a large number of sites, including YouTube, Discord, and more!</p>
+<p>Also has a good amount of locally hosted games featured on the site.</p>
+<p><strong>Read below for information if the official site is blocked or for obtaining more links.</strong></p>
+<h4 id="supports">Supports</h4>
+<ul>
+    <li>Youtube.com</li>
+    <li>Discord.com</li>
+    <li>Google.com</li>
+    <li>Reddit.com</li>
+    <li>Bing.com</li>
+    <li>And more sites!</li>
+</ul>
+<h4 id="features-">Features:</h4>
+<ul>
+    <li>Tab customization using the Options menu for improved stealth </li>
+    <li>Considerable variety with the open selection of proxy types </li>
+    <li>Game library with moderately decent titles</li>
+    <li>Has frequent support articles for issues relating to the various proxy instances</li>
+</ul>
+<p>Note: EmuLibrary is not featured in the public version.</p>
+<p>Official Site: <a href="https://holyubofficial.net">https://holyubofficial.net</a></p>
+<p><strong>Be sure to join Titanium Network&#39;s Discord for more official site links:</strong> <a href="https://discord.gg/unblock">https://discord.gg/unblock</a></p>
+<p>Simply do <code>%proxy hu</code> in <code>#proxy-commands</code> for more Holy Unblocker links on the TN Discord server.</p>
+<h2 id="table-of-contents-">Table of contents:</h2>
+<ul>
+    <li><a href="#how-to-setup">Setup</a>
+        <ul>
+            <li><a href="#structure">Structure</a>
+                <ul>
+                    <li><a href="#structure-information">Structure Information</a></li>
+                    <li><a href="#details-of-views">Static Files</a></li>
+                    <li><a href="#scripts-located-in-viewsassetsjs">Scripts</a></li>
+                </ul>
+            </li>
+            <li><a href="#future-additions">Future Additions</a></li>
+            <li><a href="#vauge-explanation-for-beginners-with-external-proxies-and-hosting">Beginner&#39;s Explanation</a>
+                <ul>
+                    <li><a href="#list-of-some-good-hosting-options">Hosting Providers</a></li>
+                    <li><a href="#heroku-steps">Heroku Setup</a></li>
+                    <li><a href="#freenomdomain-steps">Domain Setup</a></li>
+                    <li><a href="#cloudflare-steps">Cloudflare Setup</a></li>
+                    <li><a href="#workspace-configurations">Workspace Configurations</a></li>
+                </ul>
+            </li>
+            <li><a href="#detailed-faq">Detailed FAQ</a></li>
+            <li><a href="#more-information">More Information</a></li>
+        </ul>
+    </li>
+</ul>
+<h2 id="how-to-setup">How to Setup</h2>
+<p>Either use the button above to deploy to Heroku or do the below:</p>
+<pre><code>git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/titaniumnetwork-dev/Holy-Unblocker.git
+
+cd Holy-Unblocker
+
+npm install
+
+npm <span class="hljs-literal">start</span>
+</code></pre>
+<p>The default place for the proxy when its started is <code>http://localhost:8080</code> but you can change it if needed in config.json</p>
+<p>This website is hosted locally with Corrosion built-in. More more information go to the Corrosion repository below.</p>
+<h2 id="structure">Structure</h2>
+<ul>
+    <li><code>index.html</code>: The homepage of the site.</li>
+    <li><code>404.html</code>: The 404 page.</li>
+    <li><code>error.html</code>: Other errors that are not 404.</li>
+    <li><code>info.html</code>: Documentation (This page!)</li>
+    <li><code>faq.html</code>: Frequently asked questions page.</li>
+    <li><code>hidden.html</code>: Fake &quot;Site not Found&quot; page (unused)</li>
+    <li><code>frame.html</code>: Handles any pages under stealth.</li>
+    <li><code>surf.html</code>: Web Proxies page, page offers to be redirected to any proxies you would like to add. In this case, Corrosion, Womginx, and Palladium.</li>
+    <li><code>credits.html</code>: List of all contributors to the site.</li>
+    <li><code>bookmarklets.html</code>: Bookmarklets page, to be worked on more in the future.</li>
+    <li><code>icons.html</code>: Information regarding Settings Menu page. Added this in for standard users.</li>
+    <li><code>terms.html</code>: Terms of Services, AUP and Privacy Policy page.</li>
+    <li><code>gtools.html</code>: Games page, help from @BinBashBanana and @kinglalu.</li>
+    <li><code>games5.html</code>: HTML5 game navigation page.</li>
+    <li><code>emulators.html</code>: Emulator navigation page, using <a href="https://github.com/BinBashBanana/webretro">webretro</a>.</li>
+    <li><code>emulibrary.html</code>: Games page for emulated games (not included in public release)</li>
+    <li><code>flash.html</code>: Games page for flash games, credits given to @BinBashBanana and Titanium Network for its assets.</li>
+    <li><code>corrosion.html</code>: Corrosion Proxy page which features Corrosion hosted locally but can be configured to redirect to an external instance.</li>
+    <li><code>womginx.html</code>: Womginx Proxy page. Script links to a subdomain for Womginx, a highly fast proxy with reCaptcha and discord support.</li>
+    <li><code>palladium.html</code>: Palladium Proxy page.</li>
+    <li><code>youtube.html</code>: An proxied version of Youtube running off of the locally hosted Corrosion.</li>
+    <li><code>discord.html</code>: Hub for the Discord proxy.</li>
+    <li><code>reddit.html</code>: Hub for the Reddit proxy.</li>
+</ul>
+<h3 id="structure-information">Structure Information</h3>
+<ul>
+    <li><code>/views/</code>: The physical site base of Holy Unblocker goes here where static assets are served.</li>
+    <li><code>/src/</code>: For future implementation of obfuscation and keyword removing features.</li>
+</ul>
+<h4 id="details-of-views-">Details of <code>/views/</code></h4>
+<ul>
+    <li><code>/archive/</code> is used for game pages and vibeOS.</li>
+    <li><code>/pages/</code> is used for the HTML for the site.</li>
+    <li><code>/assets/</code> is used for various assets for CSS, JS, and images.</li>
+</ul>
+<h4 id="scripts-located-in-views-assets-js-">Scripts located in <code>/views/assets/js/</code></h4>
+<ul>
+    <li><code>common.js</code> is used on all of the pages for common useful functions.</li>
+    <li><code>prset.js</code> is used on the proxy pages for proxy form functionality.</li>
+    <li><code>header.js</code> inserts the header into every page using javascript.</li>
+    <li><code>csel.js</code> manages the settings menu on the header.</li>
+    <li><code>footer.js</code> inserts the footer into every page using javascript.</li>
+    <li><code>gnav/*.js</code> are used for navigation on the games pages.</li>
+</ul>
+<h2 id="future-additions">Future Additions</h2>
+<ul>
+    <li>Expansive game library</li>
+    <li>Various parity changes.</li>
+</ul>
+<h2 id="vauge-explanation-for-beginners-with-external-proxies-and-hosting">Vauge Explanation for Beginners With External Proxies and Hosting</h2>
+<p>You will first want to host your proxies locally or externally. </p>
+<h4 id="list-of-some-good-hosting-options-">List of some good hosting options:</h4>
+<ul>
+    <li><a href="https://dedipath.com">Dedipath</a> (Paid and Dedicated)</li>
+    <li><a href="https://heroku.com">Heroku</a> (Free)</li>
+    <li><a href="https://nodeclusters.com">NodeClusters</a> (Paid)</li>
+    <li><a href="https://glitch.com">Glitch</a> (Free)</li>
+    <li><a href="https://repl.it">Repl.it</a> (Free)</li>
+    <li><a href="https://azure.microsoft.com">Azure</a> (Free and Paid)</li>
+</ul>
+<p>Out of the list of hosting providers Heroku and NodeClusters rank first as a preference. You may also self-host.</p>
+<p>After you have selected a decent VPS, use Cloudflare for the DNS records for both the site and the subdomains for the proxies.</p>
+<p>This is an example of DNS records involving Heroku. Self-hosting will require <code>A records</code> preferably.</p>
+<p><img src="/assets/img/dnssetup.png" width="500"></img></p>
+<ul>
+    <li><code>@</code> and <code>www.deepsoil.ml</code> are being used for the local Corrosion proxy.</li>
+    <li><code>p.deepsoil.ml</code> is being used for Palladium.</li>
+    <li><code>a.deepsoil.ml</code> is being used for womginx.</li>
+    <li><code>cdn.deepsoil.ml</code> is being used for a private Corrosion host on the official sites.</li>
+</ul>
+<p>As stated previously, Holy Unblocker is hosted locally with Corrosion.</p>
+<h4 id="heroku-steps">Heroku Steps</h4>
+<p>So you chose to use Heroku to host. I personally favor it as a free choice.</p>
+<ul>
+    <li>First obtain a card; (Prepaid, Debit, and Credit Cards work). You need this to add custom domains to your Heroku instance.</li>
+</ul>
+<p>Make sure you connect your Heroku app to your GitHub and enable automatic deploys. Will make things easier. :) </p>
+<h4 id="freenom-domain-steps">Freenom/Domain Steps</h4>
+<p>For beginners, Freenom is a good provider for obtaining domains for free. However the catch is that you can only use properly &quot;Freenom&quot; domains for free being .cf, .ml, .gq, ga and .tk. However these can be blocked rather easily.</p>
+<ul>
+    <li>Get some Freenom domains then add them to your Heroku instance (Personal &gt; [App Name] &gt; Settings &gt; Domains) Add a domain for both <code>www.youdomainhere.cf</code> and <code>yourdomainhere.cf</code> with .cf being interchangeable with other
+        Freenom domain names.</li>
+    <li>If you prefer to obtain premium domains (TLDs) then use <a href="https://porkbun.com">Porkbun</a>, which offers domains for amazing prices. Literally a <code>.net</code> domain normally costs around $10. On Porkbun for the first year it costs $3 so
+        its definitely a deal.</li>
+</ul>
+<h4 id="cloudflare-steps">Cloudflare Steps</h4>
+<ul>
+    <li>Use Cloudflare (make an account), add your site (Freenom Domain or other) and then add your various DNS targets to Cloudflare. Make sure you add Cloudflare&#39;s Nameservers which will be given later when you are adding your site. </li>
+</ul>
+<p>Make sure they are CNAME although A records also work and try to follow this structure:</p>
+<p><strong>Type | Name | Target</strong></p>
+<p><code>CNAME | @ | your-main-heroku-target-here.herokudns.com</code><br><code>CNAME | www | your-main-heroku-target-here.herokudns.com</code></p>
+<p><strong>Below are if you want external proxies also with your site:</strong></p>
+<p><code>CNAME | p | your-palladium-instance-here.herokudns.com</code><br><code>CNAME | a | your-womginx-instance-here.herokudns.com</code><br><code>CNAME | pd | your-pydodgeb-instance-here.herokudns.com</code></p>
+<p>Make sure HTTPS is forced and have SSL set to Flexible for Heroku. Otherwise you can have SSL set to Full.</p>
+<h4 id="workspace-configurations">Workspace Configurations</h4>
+<p>Preferably if you have your own device use Visual Studio Code. Pretty much the best option you can get but obviously this is an opinion. Also make sure you have <a href="https://nodejs.org/">Node.JS</a> installed on your machine.</p>
+<p>Not going to go too in depth with this part but first fork this repository. The clone it locally through a Terminal of some sort depending on what OS you are on. Make sure you navigate to the folder you want to set this up in.</p>
+<pre><code>git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/titaniumnetwork-dev/Holy-Unblocker.git
+
+cd Holy-Unblocker
+
+npm install
+</code></pre>
+<p>Now simply add the folder you cloned this repo in in <span id="vsc" style="cursor: help;">VSC</span>. Then run <code>npm install</code>. I recommend that if you are releasing this publically on GitHub that you add a <code>.gitignore</code> in your root directory with the following exclusions:</p>
+<pre><code>node_modules
+</code></pre>
+<p>Now you have your following workspace environment setup. To deploy the following workspace you just created you will need to look up depending on your hosting provider.</p>
+<p>For an online IDE that you can use on your school computer and/or chromebook use GitPod. Basically the equivalent of Visual Studio Code but with in-browser support.</p>
+<ul>
+    <li>Make an account: <code>https://gitpod.io/</code></li>
+    <li>Fork this repo and enter in this URL to setup your workspace: <code>https://gitpod.io#https://github.com/YourNameHere/Holy-Unblocker/</code></li>
+</ul>
+<p>Use the same steps above by running <code>npm install</code> in your repository and adding a <code>.gitignore</code> in your root directory specifying to exclude <code>node_modules</code>.</p>
+<h2 id="detailed-faq">Detailed FAQ</h2>
+<p>A detailed FAQ with common issues and solutions can be found <a href="https://holyubofficial.net/?faq">here</a> or on any official HU site on the FAQ page.</p>
+<details>
+    <summary>Quick FAQ</summary>
+
+    <p><strong>Why is the site I am on not working correctly or having CAPTCHA errors?</strong></p> Captcha support is currently not available on all of the current proxies sadly. Therefore some sites may not work with any of the sites. Read below for issues
+    with links on sites.
+
+    <p><strong>Why are some page links not working or leading to 404 pages?</strong></p> This is an issue with the latest release of Alloy proxy but it may also occur with other proxies. In this case manually entering the URL of the page you would like to view
+    can solve this or try navigating using the home button. (Reddit, Twitter) The next release of Alloy may fix this also.
+
+    <p><strong>When using YouTube on any of the proxy sites, why does the page not load fully or the video is just white?</strong></p> There are two methods for fixing this: - Reloading the page normally when the error above happens should load the video. -
+    Or right-clicking the page and doing Reload Frame if you are using some form of Stealth Mode.
+
+    <p><strong>When using Discord under Alloy or SysYa, why does the page stay gray/white or the QR code not load?</strong></p> Once again do the same steps above: - Reloading the page normally when the error above happens should load the video - Or right-clicking
+    the page and doing Reload Frame if you are using some form of Stealth Mode. Make sure you are also doing the steps correctly. Simply view link above for extended Discord proxy information/steps.
+
+    <p><strong>I am getting 502 errors. What do I do?</strong></p> When this happens you may either switch sites to fix the error or wait a bit. Sometimes clearing your cache can help. If you still have any questions feel free to ask them in the discord linked
+    here.
+
+</details>
+
+<h2 id="more-information">More Information</h2>
+<p>This project is maintained by Quite A Fancy Emerald with massive help from BinBashBanana (OlyB) and is an official flagship Titanium Network proxy site.</p>
+<ul>
+    <li><a href="https://github.com/titaniumnetwork-dev/Holy-Unblocker">GitHub link</a></li>
+    <li><a href="https://github.com/titaniumnetwork-dev/">https://github.com/titaniumnetwork-dev/</a></li>
+    <li><a href="https://titaniumnetwork.org/">https://titaniumnetwork.org/</a></li>
+</ul>
+<p>View the official website for more detail and credits.</p>
+<h3 id="proxy-sources-">Proxy Sources:</h3>
+<p>This project currently uses Corrosion, Womginx, and Palladium, linked below.</p>
+<ul>
+    <li><a href="https://github.com/titaniumnetwork-dev/Corrosion">Corrosion</a></li>
+    <li><a href="https://github.com/binary-person/womginx">Womginx</a></li>
+    <li><a href="https://github.com/LudicrousDevelopment/Palladium">Palladium</a></li>
+    <li><a href="https://github.com/BinBashBanana/PyDodge">PyDodge</a></li>
+</ul>
+<h3 id="other-">Other:</h3>
+<ul>
+    <li><a href="https://github.com/vibedivide/vibeOS">vibeOS</a></li>
+    <li><a href="https://github.com/BinBashBanana/webretro">webretro</a></li>
+    <li><a href="https://ruffle.rs/">Ruffle</a></li>
+    <li><a href="https://github.com/BlaNKtext/webosu">webosu</a></li>
+</ul>
+<h3 id="notable-mentions-">Notable Mentions:</h3>
+<ul>
+    <li><a href="https://soyoustart.com/">SoYouStart / OVH</a> (Hosting Provider)</li>
+</ul>
+<p>Thanks :D</p>
