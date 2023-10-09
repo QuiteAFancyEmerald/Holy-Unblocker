@@ -8,7 +8,7 @@ tsParticles.load("particles-js", {
             "value": Math.floor((window.innerWidth * window.innerHeight) / 16384),
             "density": {
                 "enable": true,
-                "value_area": 950
+                "value_area": 2050
             }
         },
         "color": {
