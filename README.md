@@ -7,7 +7,7 @@ Works with a large number of sites, including YouTube, Discord, and more!
 Also has a good amount of locally hosted games featured on the site.
 
 ## Why are updates no longer happening here for this repository?
-Please read over <a href="#important-message-original">here</a> and check out the **NEW** <a href="https://github.com/holy-unblocker/website-aio">repository</a> for this project.
+Please read over <a href="#important-message-original">here</a> and check out the **NEW** <a href="https://github.com/holy-unblocker">repository</a> for this project.
 
 ### You can support Holy Unblocker by starring the repository!
 
