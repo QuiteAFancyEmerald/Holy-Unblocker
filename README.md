@@ -1,5 +1,5 @@
 <img align="left" width="70px" src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/icon.png"></img>
-# Holy Unblocker (Old)
+# Holy Unblocker (v5.x.x)
 
 Holy Unblocker, an official flagship Titanium Network site, can bypass web filters regardless of whether it is an extension or network-based. Being a secure web proxy service, it supports numerous sites while being updated frequently and concentrating on detail with design, mechanics, and features.
 
@@ -7,9 +7,11 @@ Works with a large number of sites, including YouTube, Discord, and more!
 Also has a good amount of locally hosted games featured on the site.
 
 ## Why are updates no longer happening here for this repository?
-Please read over <a href="#important-message-original">here</a> and check out the **NEW** <a href="https://github.com/holy-unblocker">repository</a> for this project. I am no longer maintaining this project and it has a new owner now with a new source (much better!!) codebase.
+I am no longer maintaining this project.
 
-#### Important Message (Original)
+
+<details><summary>Important Closing Message (Original)</summary>
+
 This isn’t the greatest announcement sorry. After lots of thought and severe hesitation I’m shutting down Holy Unblocker and leaving TN. It's just been something that I’ve been super conflicted with for months hence the lack of updates and the massive gaps that happened last year. I just didn’t want to throw away a project that I passionately enjoyed and spent time on while making amazing friends and meeting epic devs here. I could go on forever for who these people are but ima like leave it here. They know who they are :D
 
 The main change of thought is that I’m finally just putting an end right now due to 1) the lack of motivation 2) the community is NOT the greatest at time and not the nicest at times (have to put that out here) 3) the future doesn’t look so good for HU/TN as a project.
@@ -23,13 +25,13 @@ Check out his Patreon also! For current HU patrons you will not be billed next m
 With love <3
 Emerald :HuTaoHype:
 
+</details>
+
 ### You can support Holy Unblocker by starring the repository!
 
 Read below for information if the official site is blocked or for obtaining more links.
 
 Can't deploy using any of the free options below? Check out Railway or look into cheap, paid VPS hosting solutions.
-
-New Repository: https://github.com/holy-unblocker/website-aio
 
 #### Where can I find the games for this repo? (404 errors, etc.)
 Due to piracy concerns, size, etc. this has been moved over <a href="https://github.com/QuiteAFancyEmerald/HU-Archive">here</a>.
