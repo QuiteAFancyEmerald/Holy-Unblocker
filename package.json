@@ -15,13 +15,16 @@
     "author": "Titanium Network",
     "license": "MIT",
     "dependencies": {
-        "@titaniumnetwork-dev/ultraviolet": "^1.0.4",
-        "@tomphttp/bare-server-node": "^1.2.2",
+        "@mercuryworkshop/bare-mux": "^1.1.4",
+        "@mercuryworkshop/epoxy-transport": "^2.0.6",
+        "@titaniumnetwork-dev/ultraviolet": "^3.1.5",
+        "@tomphttp/bare-server-node": "^2.0.3",
         "babel": "^6.23.0",
         "corrosion": "^1.0.0",
-        "express": "^4.17.1",
-        "mime-types": "^2.1.27",
-        "node-fetch": "^3.2.0",
-        "ws": "^7.5.3"
+        "express": "^4.19.2",
+        "mime-types": "^2.1.35",
+        "node-fetch": "^3.3.2",
+        "wisp-server-node": "^1.1.0",
+        "ws": "^8.18.0"
     }
 }
