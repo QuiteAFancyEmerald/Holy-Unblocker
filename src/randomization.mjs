@@ -32,24 +32,26 @@ const insertText = (lis, str, newText) => {
 //  changes with each time it is loaded.
 const randomListItem = lis => () => lis[Math.random() * lis.length | 0],
 
-charset = ["&#173;", "&#8203;", "&shy;"],
+charset = ["&#173;", "&#8203;", "&shy;", "<wbr>"],
+getRandomChar = randomListItem(charRandom),
 insertCharset = str => insertText(
     charset,
     str,
-    randomListItem(charRandom)
+    getRandomChar
 ),
 
+getRandomSplash = randomListItem(splashRandom),
 hutaoInsert = str => insertText(
     "<!--HUTAOWOA-->",
     str,
-    randomListItem(splashRandom)
+    getRandomSplash
 ),
 
-cookingText = () => `<span style="display:none" data-fact="${randomListItem(vegetables)()}">${randomListItem(cookingInserts)()}</span>`,
+getCookingText = () => `<span style="display:none" data-fact="${randomListItem(vegetables)()}">${randomListItem(cookingInserts)()}</span>`,
 insertCooking = str => insertText(
     "<!-- IMPORTANT-HUTAOCOOKINGINSERT-DONOTDELETE -->",
     str,
-    cookingText
+    getCookingText
 ),
 
 //  This one isn't for obfuscation; it's just for dealing with cache issues.
