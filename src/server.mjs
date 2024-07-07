@@ -76,7 +76,18 @@ server.on('upgrade', (req, socket, head) => {
     }
 });
 
-router.get('/', async (req, res) => res.send(paintSource(tryReadFile(path.join(__dirname, 'views', ['/', '/?'].includes(req.url) ? pages.index : pages[Object.keys(req.query)[0]])))));
+
+//  All website files are stored in the /views directory.
+//  This takes one of those files and displays it for a site visitor.
+router.get('/', async (req, res) => res.send(paintSource(tryReadFile(
+    path.join(__dirname,
+    'views',
+//  This returns the file path, and has the index page set as the home page.
+    '/?'.indexOf(req.url) ? pages[Object.keys(req.query)[0]] : pages.index
+    )
+))));
+
+
 app.use(router);
 app.use(express.static(path.join(__dirname, 'views')));
 app.use("/uv/", express.static(uvPath));
