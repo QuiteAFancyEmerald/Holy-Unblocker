@@ -695,9 +695,9 @@ details[open] summary {
 }
 
 .box-card {
-  width: 550px;
+  width: 700px;
   margin: 100px 200px;
-  padding: 70px;
+  padding: 40px;
   background-color: var(--nord1);
   border-radius: 10px;
   animation: fadeInAnimation ease-in-out 0.3s;
@@ -705,6 +705,7 @@ details[open] summary {
   animation-fill-mode: forwards;
   position: relative;
   overflow: hidden;
+  text-align: left;
 }
 
 .box-card::after {
@@ -715,21 +716,54 @@ details[open] summary {
   width: 100%;
   height: 100%;
   background: url("/assets/img/noise.png") repeat, rgba(255, 255, 255, 0.03);
-  opacity: 0.03;
+  opacity: var(--noise-opacity, 0.03); /* Use a CSS variable to control opacity */
   pointer-events: none;
   -webkit-mask-image: radial-gradient(circle, white 30%, transparent 50%);
   -webkit-mask-size: 800px 800px;
   -webkit-mask-position: calc(var(--mouse-x) - 400px) calc(var(--mouse-y) - 400px);
   -webkit-mask-repeat: no-repeat;
-  mask-image: radial-gradient(circle, white 30%, transparent 50%);
+  mask-image: radial-gradient(closest-side, white 30%, rgba(255, 255, 255, 0.5) 70%, transparent 90%);
   mask-size: 800px 800px;
   mask-position: calc(var(--mouse-x) - 400px) calc(var(--mouse-y) - 400px);
   mask-repeat: no-repeat;
-  transition: -webkit-mask-position 0.05s ease, mask-position 0.05s ease, opacity 0.3s ease;
+  transition: -webkit-mask-position 0.1s ease, mask-position 0.1s ease, opacity 1s ease; /* Extend opacity transition */
 }
 
 .box-card:hover::after {
   opacity: 0.06;
+}
+
+.box-card:not(:hover)::after {
+  opacity: 0;
+}
+
+.box-card .content {
+  float: left; /* Float content to the left */
+  width: calc(100% - 240px); /* Adjust width to leave space for the image */
+}
+
+.image-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 200px; /* Width of the image */
+  background-color: var(--nord2); /* Background color for the image container */
+  border-radius: 10px; /* Rounded corners for the image container */
+  padding: 10px; /* Padding inside the image container */
+}
+
+.box-card .hero {
+  width: 100%; /* Ensure the image fills the container */
+  border-radius: 5px; /* Rounded corners for the image */
+}
+
+.box-card h1 {
+  margin-top: 0; /* Remove default margin for h1 */
+}
+
+.box-card p {
+  margin: 0 0 10px; /* Adjust paragraph margins */
+  line-height: 1.5;
 }
 
 .box-medium {
