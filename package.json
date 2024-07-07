@@ -1,6 +1,6 @@
 {
     "name": "holyub",
-    "version": "5.7.1",
+    "version": "5.7.8",
     "repository": "https://github.com/QuiteAFancyEmerald/Holy-Unblocker",
     "description": "Holy Unblocker is a secure web proxy service with support for many sites.",
     "main": "backend.js",
@@ -13,7 +13,7 @@
         "unblocker"
     ],
     "author": "Titanium Network",
-    "license": "MIT",
+    "license": "GNU AFFERO",
     "dependencies": {
         "@mercuryworkshop/bare-mux": "^1.1.4",
         "@mercuryworkshop/epoxy-transport": "^2.0.6",

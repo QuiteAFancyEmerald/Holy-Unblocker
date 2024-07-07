@@ -190,6 +190,8 @@ details[open] summary {
   height: 90px;
   display: flex;
   justify-content: center;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  border-bottom: 10px solid transparent;
 }
 
 #particles-js {
@@ -227,15 +229,8 @@ details[open] summary {
 
 #footer {
   font-family: "Lato", sans-serif;
-  padding-top: 10vw;
-  background: url("/assets/img/waves.svg"),
-    linear-gradient(
-      180deg,
-      transparent 0px,
-      transparent 10vw,
-      var(--nord1) 10vw,
-      var(--nord1) 100%
-    );
+  padding-top: 15vw;
+  background: url("/assets/img/waves.svg"), linear-gradient(180deg, transparent 0px, transparent 10vw, var(--nord1) 10vw, var(--nord1) 100%);
   background-repeat: no-repeat;
   background-size: 100vw auto;
 }
@@ -883,6 +878,10 @@ details[open] summary {
 
 .box-error p {
   margin: 10px 0px;
+}
+
+.splashend>h1 {
+  font-size: 40px;
 }
 
 #documentation {
