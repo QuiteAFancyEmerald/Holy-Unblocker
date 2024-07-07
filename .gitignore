@@ -4,3 +4,4 @@ node_modules
 .gitattributes
 .well-known
 views/archive
+ngrok.exe
