@@ -821,7 +821,7 @@ details[open] summary {
 }
 
 .box-card .content {
-  width: calc(95% - 250px);
+  width: calc(95% - 180px);
   margin-right: 20px;
   box-sizing: border-box; 
 }
