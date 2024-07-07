@@ -9,14 +9,14 @@ This will be our nonexhaustive todo list for revamping the Holy Unblocker projec
   - [ ] Restructure navigation scripts to ensure updated proxy functionality is sanitized and effective
 
 ## Proxy Functionality
-  - [ ] Ensure Ultraviolet is updated to support bare-mux and wisp - done
-  - [ ] Add Rammerhead support - done
+  - [x] Ensure Ultraviolet is updated to support bare-mux and wisp - done
+  - [x] Add Rammerhead support - done
   - [ ] Fix slow Ultraviolet speeds despite being local; something on the backend??
 
 ## Site Redesign
-  - [ ] Landing Page - done
+  - [x] Landing Page - done
   - [ ] Web Proxies page
   - [ ] Application page
   - [ ] Games Libray page
-  - [ ] Footer Design - done
+  - [x] Footer Design - done
   - [ ] Header Design
