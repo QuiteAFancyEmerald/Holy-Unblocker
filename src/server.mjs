@@ -89,7 +89,7 @@ app.use(helmet({
         fontSrc: ["'self'", 'https:', 'data:'],
         mediaSrc: ["'self'", 'https:', 'data:'],
         connectSrc: ["'self'", 'https:'],
-        frameSrc: ["'none'"],
+        frameSrc: ["'self'"],
         objectSrc: ["'none'"],
       },
     },

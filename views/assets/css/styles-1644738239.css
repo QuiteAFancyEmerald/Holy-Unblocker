@@ -198,11 +198,12 @@ details[open] summary {
 
 #header {
   background-color: var(--nord1);
-  height: 90px;
   display: flex;
-  justify-content: center;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  justify-content: space-between; /* Align items horizontally */
+  align-items: center; /* Align items vertically */
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.274);
   border-bottom: 10px solid transparent;
+  padding: 10px 200px 10px;
 }
 
 #particles-js {
@@ -271,56 +272,65 @@ details[open] summary {
   color: white;
 }
 
+.brand-logo-container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+}
+
 .brand {
-  display: inline-block;
   font-size: 21px;
   font-weight: bold;
   height: 30px;
   line-height: 30px;
   white-space: nowrap;
-  margin: 30px;
-  margin-right: 6vw;
+  margin-right: 20px; /* Adjust margin as needed */
 }
 
-.brand:hover {
-  animation: pulse 1s;
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  background-image: url('/assets/img/icon.png'); /* Replace with your logo path */
+  background-size: cover;
 }
 
 .navbar {
   list-style: none;
-  padding: 0px;
-  height: 70px;
-  margin: 10px;
-  margin-left: 6vw;
-  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center; /* Align items vertically */
 }
 
 .navbar > li {
-  cursor: pointer;
-  float: left;
-  margin: 15px 0px;
-  overflow: hidden;
+  margin-left: 50px; /* Adjust spacing between items */
 }
 
 .navbar > li > a {
-  display: inline-block;
-  height: 20px;
-  line-height: 20px;
-  padding: 10px 20px;
+  text-decoration: none;
+  color: inherit;
 }
 
-.navbar > li > a:hover {
-  animation: pulse 1s;
+.navbar-1 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Ensure it stays horizontal */
+  align-items: center; /* Align items vertically */
 }
 
-.navbar > li > a > .fas {
-  margin-left: 5px;
+.navbar-1 > li {
+  margin-left: 30px; /* Adjust spacing between items */
+}
+
+.navbar-1 > li > a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .navbar .dropdown-child {
   display: none;
   position: absolute;
-  margin-top: 10px;
   z-index: 5;
   background-color: var(--nord0);
   border: 1px solid var(--nord3);
@@ -336,13 +346,12 @@ details[open] summary {
 
 .subnavbar {
   list-style: none;
-  padding: 0px;
+  padding: 0;
 }
 
 .subnavbar > li > a {
-  display: inline-block;
-  padding: 0px 5px;
-  width: calc(100% - 10px);
+  display: block;
+  padding: 5px 0;
 }
 
 .subnavbar > li > a:hover {

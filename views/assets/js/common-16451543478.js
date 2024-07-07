@@ -69,12 +69,12 @@ const xor = {
 
 window.goProx = {
     ultraviolet: function(url, stealth) {
-        setAuthCookie("__cor_auth=1", true);
+        setAuthCookie("__cor_auth=1", false);
         goToUrl(location.protocol + "//" + getDomain() + __uv$config.prefix + __uv$config.encodeUrl(omnibox(url)), stealth);
     },
-    womginx: function(url, stealth) {
+    rhserver: function(url, stealth) {
         setAuthCookie("wgauth=yes", false);
-        goToUrl(location.protocol + "//a." + getDomain() + "/main/" + omnibox(url), stealth);
+        goToUrl(RammerheadEncode(omnibox(url)), stealth);
     },
     searx: function(stealth) {
         setAuthCookie("oldsmobile=badcar", true);
