@@ -6,11 +6,10 @@ Holy Unblocker, an official flagship Titanium Network site, can bypass web filte
 Works with a large number of sites, including YouTube, Discord, and more!
 Also has a good amount of locally hosted games featured on the site.
 
-## Why are updates no longer happening here for this repository?
-I am no longer maintaining this project.
+## Why are official domains now numbered? Is this project maintained again?
+Yes, this project is active again for LTS support! However, the approach is now much simpler to ensure functionality: traffic will be focused on a single domain. More than ever, this project serves as a proof of concept for the brave souls willing to innovate in the web proxy service space.
 
-
-<details><summary>Important Closing Message (Original)</summary>
+<details><summary>Former Closing Message (Original - 2022)</summary>
 
 This isn’t the greatest announcement sorry. After lots of thought and severe hesitation I’m shutting down Holy Unblocker and leaving TN. It's just been something that I’ve been super conflicted with for months hence the lack of updates and the massive gaps that happened last year. I just didn’t want to throw away a project that I passionately enjoyed and spent time on while making amazing friends and meeting epic devs here. I could go on forever for who these people are but ima like leave it here. They know who they are :D
 
