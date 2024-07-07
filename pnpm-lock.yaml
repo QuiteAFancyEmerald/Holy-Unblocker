@@ -26,6 +26,9 @@ dependencies:
   express:
     specifier: ^4.19.2
     version: 4.19.2
+  helmet:
+    specifier: ^7.1.0
+    version: 7.1.0
   mime-types:
     specifier: ^2.1.35
     version: 2.1.35
@@ -1365,6 +1368,11 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       function-bind: 1.1.2
+    dev: false
+
+  /helmet@7.1.0:
+    resolution: {integrity: sha512-g+HZqgfbpXdCkme/Cd/mZkV0aV3BZZZSugecH03kl38m/Kmdx8jKjBikpDj2cr+Iynv4KpYEviojNdTJActJAg==}
+    engines: {node: '>=16.0.0'}
     dev: false
 
   /http-cache-semantics@4.1.1:

@@ -1,4 +1,4 @@
-import insertText from './randomization.mjs';
+import { insertText } from './randomization.mjs';
 export { loadTemplates as default };
 
 
