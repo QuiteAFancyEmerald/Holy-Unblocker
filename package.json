@@ -1,6 +1,6 @@
 {
     "name": "holyub",
-    "version": "5.7.8",
+    "version": "6.1.0",
     "repository": "https://github.com/QuiteAFancyEmerald/Holy-Unblocker",
     "description": "Holy Unblocker is a secure web proxy service with support for many sites.",
     "main": "backend.js",

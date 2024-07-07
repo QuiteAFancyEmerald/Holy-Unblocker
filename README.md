@@ -1,5 +1,5 @@
 <img align="left" width="70px" src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/icon.png"></img>
-# Holy Unblocker LTS (v5.x.x)
+# Holy Unblocker LTS (v6.x.x)
 
 Holy Unblocker LTS, an experimental web proxy service, can bypass web filters or 'blockers' regardless of whether the method of censorship is client-side or network-based. This includes the potential ability to bypass content blockers overseas, Chrome extensions, localized client firewalls, and network-related filters.
 

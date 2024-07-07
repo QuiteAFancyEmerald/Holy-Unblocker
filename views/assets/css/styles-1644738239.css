@@ -8,6 +8,7 @@
 
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");
 @import url("https://fonts.googleapis.com/css?family=Montserrat+Alternates");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700");
 @import url("/assets/css/fonts.all.min.css");
 
@@ -131,7 +132,7 @@ img {
 
 /* For WebKit/Blink Browsers */
 ::selection {
-  background: rgb(180, 142, 0.513); /* Use rgba for opacity */
+  background: rgba(180, 142, 173, 0.513); /* Use rgba for opacity */
 }
 
 /* For Gecko Browsers (Firefox) */
@@ -204,6 +205,7 @@ details[open] summary {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.274);
   border-bottom: 10px solid transparent;
   padding: 10px 200px 10px;
+  z-index: 1;
 }
 
 #particles-js {
@@ -284,6 +286,9 @@ details[open] summary {
   line-height: 30px;
   white-space: nowrap;
   margin-right: 20px; /* Adjust margin as needed */
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .logo {
@@ -291,6 +296,14 @@ details[open] summary {
   height: 50px;
   margin-right: 20px;
   background-image: url('/assets/img/icon.png'); /* Replace with your logo path */
+  background-size: cover;
+}
+
+.new {
+  width: 50px;
+  height: 45.5px;
+  margin-left: 8px;
+  background-image: url('/assets/img/new.svg'); /* Replace with your logo path */
   background-size: cover;
 }
 
@@ -336,7 +349,8 @@ details[open] summary {
   border: 1px solid var(--nord3);
   border-radius: 10px;
   cursor: auto;
-  padding: 10px 25px;
+  padding: 15px 25px;
+  margin-top: 10px;
   font-family: "Titillium Web", sans-serif;
 }
 
@@ -352,6 +366,9 @@ details[open] summary {
 .subnavbar > li > a {
   display: block;
   padding: 5px 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 5px;
 }
 
 .subnavbar > li > a:hover {
