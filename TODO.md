@@ -7,7 +7,7 @@ This will be our nonexhaustive todo list for revamping the Holy Unblocker projec
   - [ ] Optimize the stylesheets and the HTML layout. Add more proper commenting and redivide the code so that it's less hard on the eyes.
   - [ ] Optimize the JS. This time it won't be in one line and will be somewhat thoroughly commented.
   - [ ] Restructure navigation scripts to ensure updated proxy functionality is sanitized and effective
-  - [ ] Particles.js automatically adjusting per display size
+  - [x] Particles.js automatically adjusting per display size
 
 ## Proxy Functionality
   - [x] Ensure Ultraviolet is updated to support bare-mux and wisp - done
