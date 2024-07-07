@@ -247,7 +247,6 @@ details[open] summary {
   }
   50% {
     transform: scale(1.05);
-    border: 1.05px solid var(--nord4);
   }
 }
 
@@ -549,6 +548,7 @@ details[open] summary {
 
 .startbutton {
   margin: 25px;
+  background: var(--nord15);
 }
 
 .fancybutton {
@@ -685,11 +685,93 @@ details[open] summary {
   animation-fill-mode: forwards;
 }
 
+.splashstroke {
+  display: inline-block;
+  position: relative;
+  margin-top: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.splashstrokeheader {
+  position: relative;
+  display: inline-block;
+  font-size: 36px; 
+  line-height: 1.2;
+}
+
+.underline-svg {
+  position: absolute;
+  bottom: -50px; 
+  left: 0;
+  width: 100%;
+}
+
+.hero-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 80px;
+  margin: 80px auto; 
+  max-width: 1200px; 
+}
+
+.box-hero {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.hero-content {
+  flex: 1;
+}
+
+.hero-text-wrap {
+  margin-right: 300px; 
+}
+
+.hero-text-wrap p {
+  margin-bottom: 50px;
+}
+
+.image-container-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+}
+
+.image-container-hero>a {
+  background-color: var(--nord15);
+}
+
+.hero {
+  width: 300px;
+  height: auto; 
+  border-radius: 50%;
+}
+
+.image-container-hero>h2, p {
+  color: var(--nord4);
+}
+
+.box-hero h1,
+.box-hero h2,
+.box-hero h3 {
+  margin: 10px 0;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: 1fr;
   gap: 80px; 
   margin: 80px;
+  margin-top: 300px;
 }
 
 @media (min-width: 768px) {
@@ -771,6 +853,7 @@ details[open] summary {
 }
 
 .box-card p {
+  color: var(--nord4);
   margin: 0 0 10px;
   line-height: 1.5;
 }
