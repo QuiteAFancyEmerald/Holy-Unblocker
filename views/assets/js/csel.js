@@ -79,8 +79,8 @@
     readCookie("HBHideAds").then(s => (s != "undefined") && (function() { pageHideAds(); (document.getElementById("hideads") || {}).checked = "true"; })());
 
     if (csel) {
-        csel.innerHTML = decodeURIComponent(atob("JTNDcCUyMGNsYXNzJTNEJTIyY3NlbHRpdGxlJTIyJTNFVGFiJTIwQ2xvYWslM0MlMkZwJTNFJTBBJTNDcCUyMGNsYXNzJTNEJTIyY3NlbGxhYmVsJTIyJTNFQ2hhbmdlJTIwdGhlJTIwdGl0bGUlM0ElM0MlMkZwJTNFJTBBJTNDZm9ybSUyMGNsYXNzJTNEJTIyY3NlbGZvcm0lMjIlMjBpZCUzRCUyMnRpdGxlZm9ybSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUzQ2lucHV0JTIwdHlwZSUzRCUyMnRleHQlMjIlMjBwbGFjZWhvbGRlciUzRCUyMlRhYiUyMFRpdGxlJTIyJTIwc3BlbGxjaGVjayUzRCUyMmZhbHNlJTIyJTNFJTNDaW5wdXQlMjBjbGFzcyUzRCUyMmNzZWxidXR0b24lMjIlMjB0eXBlJTNEJTIyc3VibWl0JTIyJTIwdmFsdWUlM0QlMjJBcHBseSUyMiUzRSUwQSUzQyUyRmZvcm0lM0UlMEElM0NwJTIwY2xhc3MlM0QlMjJjc2VsbGFiZWwlMjIlM0VDaGFuZ2UlMjB0aGUlMjAlM0NhJTIwaHJlZiUzRCUyMiUyRiUzRmklMjIlM0VpY29uJTNDJTJGYSUzRSUzQSUzQyUyRnAlM0UlMEElM0Nmb3JtJTIwY2xhc3MlM0QlMjJjc2VsZm9ybSUyMiUyMGlkJTNEJTIyaWNvbmZvcm0lMjIlM0UlMEElMjAlMjAlMjAlMjAlM0NpbnB1dCUyMHR5cGUlM0QlMjJ0ZXh0JTIyJTIwcGxhY2Vob2xkZXIlM0QlMjJJY29uJTIwVVJMJTIyJTIwc3BlbGxjaGVjayUzRCUyMmZhbHNlJTIyJTNFJTNDaW5wdXQlMjBjbGFzcyUzRCUyMmNzZWxidXR0b24lMjIlMjB0eXBlJTNEJTIyc3VibWl0JTIyJTIwdmFsdWUlM0QlMjJBcHBseSUyMiUzRSUwQSUzQyUyRmZvcm0lM0UlMEElM0NpbnB1dCUyMGlkJTNEJTIyY3NlbHJlc2V0JTIyJTIwY2xhc3MlM0QlMjJjc2VsYnV0dG9uJTIyJTIwdHlwZSUzRCUyMmJ1dHRvbiUyMiUyMHZhbHVlJTNEJTIyUmVzZXQlMjIlM0UlMEElM0NwJTIwY2xhc3MlM0QlMjJjc2VsbGFiZWwlMjIlM0UlMEElMjAlMjAlMjAlMjAlM0NpbnB1dCUyMGlkJTNEJTIyaGlkZWFkcyUyMiUyMHR5cGUlM0QlMjJjaGVja2JveCUyMiUzRSUwQSUyMCUyMCUyMCUyMCUzQ3NwYW4lM0VIaWRlJTIwQWRzJTNDJTJGc3BhbiUzRSUwQSUzQyUyRnAlM0UlMEElM0NwJTNFQWRzJTIwaGVscCUyMHN1cHBvcnQlMjBIJTI2JTIzMTczJTNCbyUyNiUyMzE3MyUzQmx5JTIwVSUyNiUyMzE3MyUzQm5iJTI2JTIzMTczJTNCbG9jayUyNiUyMzE3MyUzQmVyISUzQyUyRnAlM0U="));
-
+        csel.innerHTML = 
+decodeURIComponent(atob("JTNDcCUyMGNsYXNzJTNEJTIyY3NlbHRpdGxlJTIyJTNFVGFiJTIwQ2xvYWslM0MlMkZwJTNFJTBBJTNDcCUyMGNsYXNzJTNEJTIyY3NlbGxhYmVsJTIyJTNFQ2hhbmdlJTIwdGhlJTIwdGl0bGUlM0ElM0MlMkZwJTNFJTBBJTNDZm9ybSUyMGNsYXNzJTNEJTIyY3NlbGZvcm0lMjIlMjBpZCUzRCUyMnRpdGxlZm9ybSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUzQ2lucHV0JTIwdHlwZSUzRCUyMnRleHQlMjIlMjBwbGFjZWhvbGRlciUzRCUyMlRhYiUyMFRpdGxlJTIyJTIwc3BlbGxjaGVjayUzRCUyMmZhbHNlJTIyJTNFJTNDaW5wdXQlMjBjbGFzcyUzRCUyMmNzZWxidXR0b24lMjIlMjB0eXBlJTNEJTIyc3VibWl0JTIyJTIwdmFsdWUlM0QlMjJBcHBseSUyMiUzRSUwQSUzQyUyRmZvcm0lM0UlMEElM0NwJTIwY2xhc3MlM0QlMjJjc2VsbGFiZWwlMjIlM0VDaGFuZ2UlMjB0aGUlMjAlM0NhJTIwaHJlZiUzRCUyMiUyRiUzRmklMjIlM0VpY29uJTNDJTJGYSUzRSUzQSUzQyUyRnAlM0UlMEElM0Nmb3JtJTIwY2xhc3MlM0QlMjJjc2VsZm9ybSUyMiUyMGlkJTNEJTIyaWNvbmZvcm0lMjIlM0UlMEElMjAlMjAlMjAlMjAlM0NpbnB1dCUyMHR5cGUlM0QlMjJ0ZXh0JTIyJTIwcGxhY2Vob2xkZXIlM0QlMjJJY29uJTIwVVJMJTIyJTIwc3BlbGxjaGVjayUzRCUyMmZhbHNlJTIyJTNFJTNDaW5wdXQlMjBjbGFzcyUzRCUyMmNzZWxidXR0b24lMjIlMjB0eXBlJTNEJTIyc3VibWl0JTIyJTIwdmFsdWUlM0QlMjJBcHBseSUyMiUzRSUwQSUzQyUyRmZvcm0lM0UlMEElM0NpbnB1dCUyMGlkJTNEJTIyY3NlbHJlc2V0JTIyJTIwY2xhc3MlM0QlMjJjc2VsYnV0dG9uJTIyJTIwdHlwZSUzRCUyMmJ1dHRvbiUyMiUyMHZhbHVlJTNEJTIyUmVzZXQlMjIlM0UlMEElM0NpbnB1dCUyMGlkJTNEJTIyY3NlbGFiJTIyJTIwY2xhc3MlM0QlMjJjc2VsYnV0dG9uJTIyJTIwdHlwZSUzRCUyMmJ1dHRvbiUyMiUyMHZhbHVlJTNEJTIyYWJvdXQlM0FibGFuayUyMiUzRSUwQSUzQ3AlMjBjbGFzcyUzRCUyMmNzZWxsYWJlbCUyMiUzRSUwQSUyMCUyMCUyMCUyMCUzQ2lucHV0JTIwaWQlM0QlMjJoaWRlYWRzJTIyJTIwdHlwZSUzRCUyMmNoZWNrYm94JTIyJTNFJTBBJTIwJTIwJTIwJTIwJTNDc3BhbiUzRUhpZGUlMjBBZHMlM0MlMkZzcGFuJTNFJTBBJTNDJTJGcCUzRSUwQSUzQ3AlM0VBZHMlMjBoZWxwJTIwc3VwcG9ydCUyMEglMjYlMjMxNzMlM0JvJTI2JTIzMTczJTNCbHklMjBVJTI2JTIzMTczJTNCbmIlMjYlMjMxNzMlM0Jsb2NrJTI2JTIzMTczJTNCZXIhJTNDJTJGcCUzRQ=="));
         document.getElementById("titleform").addEventListener("submit", function(e) {
             e.preventDefault();
             if (this.firstElementChild.value) {
@@ -109,6 +109,25 @@
                 pageIcon("assets/img/icon.png");
             }
         }, false);
+
+        document.getElementById("cselab").addEventListener("click", function () {
+            var win = window.open()
+            var url = `${window.location.href}`
+            var iframe = win.document.createElement('iframe')
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.border = "none";
+            iframe.style.overflow = "hidden";
+            iframe.style.margin = "0";
+            iframe.style.padding = "0";
+            iframe.style.position = "fixed";
+            iframe.style.top = "0";
+            iframe.style.bottom = "0";
+            iframe.style.left = "0";
+            iframe.style.right = "0";
+            iframe.src = url;
+            win.document.body.appendChild(iframe)
+        });
 
         document.getElementById("hideads").addEventListener("change", function(e) {
             e.target.checked ? hideAds() : showAds();

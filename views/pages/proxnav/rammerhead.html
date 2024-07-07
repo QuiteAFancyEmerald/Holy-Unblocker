@@ -11,8 +11,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <script src="/assets/js/proxy.js" defer></script>
+    <script src="/baremux/bare.cjs" defer></script>
+    <script src="/epoxy/index.js" defer></script>
+    <script src="/uv/uv.bundle.js" defer></script>
+    <script src="/uv/uv.config.js" defer></script>
+    <script src="/assets/js/register-sw.js" defer></script>
     <script src="/assets/js/search.js" defer></script>
+    <script src="/assets/js/proxy.js" defer></script>
     <script defer>
         localStorage.setItem('proxy', 'rh');
     </script>
@@ -34,8 +39,6 @@
             <p>Its ses&#173;sion-ba&#173;sed prox&#173;ying con&#173;cept enables much suppo&#173;rt for web&#173;ites like Dis&#173;cord, Yo&#173;uTu&#173;be, and mor&#173;e!</p>
             <form id="pr-form">
                 <input type="text" id="pr-url" spellcheck="false" autocomplete="off" placeholder="Search or enter in a target site!">
-                <a href="#" id="pr-go1" class="pr-button glowbutton">Classic</a>
-                <a href="#" id="pr-go2" class="pr-button glowbutton">Stealth</a>
             </form>
             <p>Import&#173;ant: Ma&#173;ke su&#173;re you trea&#173;t thi&#173;s as a PR&#173;IVA&#173;TE sess&#173;i&#173;on. Do NO&#173;T shar&#173;e Ram&#173;me&#173;rh&#173;ead li&#173;nks.</p>
             <h3>More Information:</h3>
@@ -59,9 +62,6 @@
     <script src="assets/js/common.js"></script>
     <script src="assets/js/links.js"></script>
     <script src="assets/js/prset.js"></script>
-    <script>
-        prSet("rammerhead");
-    </script>
     <script src="assets/js/header.js"></script>
     <script src="assets/js/csel.js"></script>
     <script src="assets/js/footer.js"></script>
