@@ -25,6 +25,43 @@ const insertText = (lis, str, newText) => {
     return str;
 };
 
+const randomListItem = lis => lis[Math.random() * lis.length | 0];
+
+const charset = ["&#173;", "&#8203;", "&shy;"];
+const insertCharset = str => insertText(
+    charset,
+    str,
+    () => randomListItem(charRandom)
+);
+
+const hutaoInsert = str => insertText(
+    "<!--HUTAOWOA-->",
+    str,
+    () => randomListItem(splashRandom)
+);
+
+const insertCooking = str => insertText(
+    "<!-- IMPORTANT-HUTAOCOOKINGINSERT-DONOTDELETE -->",
+    str,
+    () => `<span style="display:none" data-fact="${randomListItem(vegetables)}">${randomListItem(cookingInserts)}</span>`
+);
+
+const cacheBusting = str => {
+    for (let item of Object.entries(cacheBustList))
+        str = insertText(item[0], str, item[1]);
+    return str;
+};
+
+export const paintSource = str => insertCharset(hutaoInsert(insertCooking(cacheBusting(str))));
+
+export const tryReadFile = file => existsSync(file) ? readFileSync(file, "utf8") : text404;
+
+/*
+//  All of this is now old code.
+//  The newer versions of these functions are directly above.
+*/
+/*
+
 function randomListItem(lis) {
     return lis[Math.floor(Math.random() * lis.length)];
 }
@@ -55,3 +92,5 @@ export function paintSource(str) {
 export function tryReadFile(file) {
     return existsSync(file) ? readFileSync(file, 'utf8') : text404;
 }
+
+*/
