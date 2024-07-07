@@ -77,6 +77,22 @@ server.on('upgrade', (req, socket, head) => {
     }
 });
 
+// Apply Helmet middleware for security
+app.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        styleSrc: ["'self'", 'https:', "'unsafe-inline'"],
+        scriptSrc: ["'self'", 'https:', "'unsafe-inline'"],
+        imgSrc: ["'self'", 'data:', '*.amazonaws.com'],
+        fontSrc: ["'self'", 'https:', 'data:'],
+        mediaSrc: ["'self'", 'https:', 'data:'],
+        connectSrc: ["'self'", 'https:'],
+        frameSrc: ["'none'"],
+        objectSrc: ["'none'"],
+      },
+    },
+}));
 
 //  All website files are stored in the /views directory.
 //  This takes one of those files and displays it for a site visitor.
