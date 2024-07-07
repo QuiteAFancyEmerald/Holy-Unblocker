@@ -25,36 +25,47 @@ const insertText = (lis, str, newText) => {
     return str;
 };
 
-const randomListItem = lis => lis[Math.random() * lis.length | 0];
 
-const charset = ["&#173;", "&#8203;", "&shy;"];
-const insertCharset = str => insertText(
+
+//  Below are lots of function definitions used to obfuscate the website.
+//  This makes the website harder to properly categorize, as its source code
+//  changes with each time it is loaded.
+const randomListItem = lis => () => lis[Math.random() * lis.length | 0],
+
+charset = ["&#173;", "&#8203;", "&shy;"],
+insertCharset = str => insertText(
     charset,
     str,
-    () => randomListItem(charRandom)
-);
+    randomListItem(charRandom)
+),
 
-const hutaoInsert = str => insertText(
+hutaoInsert = str => insertText(
     "<!--HUTAOWOA-->",
     str,
-    () => randomListItem(splashRandom)
-);
+    randomListItem(splashRandom)
+),
 
-const insertCooking = str => insertText(
+cookingText = () => `<span style="display:none" data-fact="${randomListItem(vegetables)()}">${randomListItem(cookingInserts)()}</span>`,
+insertCooking = str => insertText(
     "<!-- IMPORTANT-HUTAOCOOKINGINSERT-DONOTDELETE -->",
     str,
-    () => `<span style="display:none" data-fact="${randomListItem(vegetables)}">${randomListItem(cookingInserts)}</span>`
-);
+    cookingText
+),
 
-const cacheBusting = str => {
+//  This one isn't for obfuscation; it's just for dealing with cache issues.
+cacheBusting = str => {
     for (let item of Object.entries(cacheBustList))
         str = insertText(item[0], str, item[1]);
     return str;
 };
 
-export const paintSource = str => insertCharset(hutaoInsert(insertCooking(cacheBusting(str))));
 
-export const tryReadFile = file => existsSync(file) ? readFileSync(file, "utf8") : text404;
+
+//  Applies the final obfuscation changes to an entire file.
+export const paintSource = str => insertCharset(hutaoInsert(insertCooking(cacheBusting(str)))),
+
+//  Grabs the text content of a file.
+tryReadFile = file => existsSync(file) ? readFileSync(file, "utf8") : text404;
 
 /*
 //  All of this is now old code.
