@@ -1,7 +1,9 @@
 <img align="left" width="70px" src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/icon.png"></img>
 # Holy Unblocker LTS (v5.x.x)
 
-Holy Unblocker, an official flagship Titanium Network site, can bypass web filters regardless of whether it is an extension or network-based. Being a secure web proxy service, it supports numerous sites while being updated frequently and concentrating on detail with design, mechanics, and features.
+Holy Unblocker LTS, an experimental web proxy service, can bypass web filters or 'blockers' regardless of whether the method of censorship is client-side or network-based. This includes the potential ability to bypass content blockers overseas, Chrome extensions, localized client firewalls, and network-related filters.
+
+This project serves mostly as a proof of concept for the ideal clientless solution to bypassing censorship. Being a secure web proxy service, it supports numerous sites while being updated frequently and concentrating on detail with design, mechanics, and features.
 
 Works with a large number of sites, including YouTube, Discord, and more!
 Also has a good amount of locally hosted games featured on the site.
@@ -51,7 +53,7 @@ Due to piracy concerns, size, etc. this has been moved over <a href="https://git
 
 Note: EmuLibrary is not featured in the public version.
 
-Official Site: <a href="https://holyubofficial.net">https://holyubofficial.net</a>
+Official Site: TO BE UPDATED
 
 **Be sure to join Titanium Network's Discord for more official site links:** <a href="https://discord.gg/unblock">https://discord.gg/unblock</a>
 
@@ -72,12 +74,6 @@ Simply do `%proxy hu` in `#proxy-commands` for more Holy Unblocker links on the 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2Ftitaniumnetwork-dev%2FHoly-Unblocker)
 
 [![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/QuiteAFancyEmerald/Holy-Unblocker-Old&branch=master&name=HolyUnblocker&run_command=npm%start)
-
-#### Is Holy Unblocker still being worked on?
-Yes! A lot of users may have noticed the initial message about Holy Unblocker being down however Holy Unblocker is now being maintained by a seperate team and no longer by me. You may check it out <a href="https://git.holy.how/">here</a> once setup or join the TN Discord linked below for more information. 
-
-#### Where can I find the new source material for Holy Unblocker?
-Check it out <a href="https://github.com/holy-unblocker/website-aio">here</a> if you wish to have an easier to deploy instance with the new changes :D
 
 ## Table of contents:
 
@@ -112,7 +108,7 @@ npm start
 
 The default place for the proxy when its started is `http://localhost:8080` but you can change it if needed in config.json
 
-This website is hosted locally with Corrosion built-in. More more information go to the Corrosion repository below.
+This website is hosted locally with Ultraviolet and Rammerhead built-in.
 
 
 ## Structure
@@ -165,10 +161,7 @@ This website is hosted locally with Corrosion built-in. More more information go
 You will first want to host your proxies locally or externally. 
 
 #### List of some good hosting options:
-- <a href="https://dedipath.com">Dedipath</a> (Paid and Dedicated)
 - <a href="#">Oracle Cloud</a> (Free, Paid, Dedicated)
-- <a href="https://heroku.com">Heroku</a> (Paid)
-- <a href="https://glitch.com">Glitch</a> (Free)
 - <a href="https://repl.it">Repl.it</a> (Free)
 - <a href="https://azure.microsoft.com">Azure</a> (Free and Paid)
 
@@ -205,11 +198,11 @@ Make sure they are CNAME although A records also work and try to follow this str
 
 **Below are if you want external proxies also with your site:**
 
-`CNAME | p | your-palladium-instance-here.herokudns.com`  
 `CNAME | a | your-womginx-instance-here.herokudns.com`  
-`CNAME | pd | your-pydodgeb-instance-here.herokudns.com`
 
-Make sure HTTPS is forced and have SSL set to Flexible for Heroku. Otherwise you can have SSL set to Full.
+
+
+Make sure HTTPS is forced and have SSL set to Flexible for some services. Otherwise you can have SSL set to Full.
 
 #### Workspace Configurations 
 Preferably if you have your own device use Visual Studio Code. Pretty much the best option you can get but obviously this is an opinion. Also make sure you have <a href="https://nodejs.org/">Node.JS</a> installed on your machine.
@@ -239,8 +232,6 @@ For an online IDE that you can use on your school computer and/or chromebook use
 Use the same steps above by running `npm install` in your repository and adding a `.gitignore` in your root directory specifying to exclude `node_modules`.
 
 ## Detailed FAQ
-A detailed FAQ with common issues and solutions can be found <a href="https://holyubofficial.net/?faq">here</a> or on any official HU site on the FAQ page.
-
 <details>
 <summary>Quick FAQ</summary>
 
@@ -257,7 +248,7 @@ If you still have any questions feel free to ask them in the discord linked here
 </details>
 
 ## More Information
-This project is maintained by Quite A Fancy Emerald with massive help from BinBashBanana (OlyB) and is an official flagship Titanium Network proxy site.
+This project is maintained by Quite A Fancy Emerald with massive help from BinBashBanana (OlyB) and is an official flagship Titanium Network web proxy site.
 
 - <a href="https://github.com/titaniumnetwork-dev/">https://github.com/titaniumnetwork-dev/</a>
 - <a href="https://titaniumnetwork.org/">https://titaniumnetwork.org/</a>
@@ -265,11 +256,12 @@ This project is maintained by Quite A Fancy Emerald with massive help from BinBa
 View the official website for more detail and credits.
 
 ### Proxy Sources:
-This project currently uses Ultraviolet, Womginx, and Rammerhead, linked below.
+This project currently uses Ultraviolet, Wisp, Womginx, and Rammerhead, linked below.
 
 - <a href="https://github.com/titaniumnetwork-dev/Ultraviolet">Ultraviolet</a>
 - <a href="https://github.com/binary-person/womginx">Womginx</a>
 - <a href="https://github.com/binary-person/rammerhead">Rammerhead</a>
+- <a href="https://github.com/MercuryWorkshop/wisp-server-node">Wisp</a>
 
 ### Other:
 
