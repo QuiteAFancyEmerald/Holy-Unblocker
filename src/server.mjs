@@ -1,14 +1,15 @@
-import wisp from "wisp-server-node";
-import { uvPath } from "@titaniumnetwork-dev/ultraviolet";
-import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
-import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
-import http from 'http';
+import { paintSource, tryReadFile } from './randomization.mjs';
+import pkg from './routes.mjs';
+import { readFile } from 'fs/promises';
 import path from 'path';
 import express from 'express';
-import { readFile } from 'fs/promises';
-import pkg from './routes.mjs';
-import { paintSource, tryReadFile } from './randomization.mjs';
-
+import http from 'http';
+import createRammerhead from 'rammerhead/src/server/index.js';
+import { createBareServer } from '@tomphttp/bare-server-node';
+import wisp from "wisp-server-node";
+import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
+import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
+import { uvPath } from "@titaniumnetwork-dev/ultraviolet";
 
 const config = JSON.parse(await readFile(new URL('./config.json', import.meta.url)));
 const { pages, text404 } = pkg;
@@ -16,8 +17,64 @@ const __dirname = path.resolve();
 const port = process.env.PORT || config.port;
 const app = express();
 const router = express.Router();
-const server = http.createServer();
+const bare = createBareServer('/bare/');
+const rh = createRammerhead();
 
+const rammerheadScopes = [
+    '/rammerhead.js',
+    '/hammerhead.js',
+    '/transport-worker.js',
+    '/task.js',
+    '/iframe-task.js',
+    '/worker-hammerhead.js',
+    '/messaging',
+    '/sessionexists',
+    '/deletesession',
+    '/newsession',
+    '/editsession',
+    '/needpassword',
+    '/syncLocalStorage',
+    '/api/shuffleDict',
+    '/mainport'
+];
+
+const rammerheadSession = /^\/[a-z0-9]{32}/;
+
+function shouldRouteRh(req) {
+    const url = new URL(req.url, 'http://0.0.0.0');
+    return (
+        rammerheadScopes.includes(url.pathname) ||
+        rammerheadSession.test(url.pathname)
+    );
+}
+
+function routeRhRequest(req, res) {
+    rh.emit('request', req, res);
+}
+
+function routeRhUpgrade(req, socket, head) {
+    rh.emit('upgrade', req, socket, head);
+}
+
+const server = http.createServer((req, res) => {
+    if (bare.shouldRoute(req)) {
+        bare.routeRequest(req, res);
+    } else if (shouldRouteRh(req)) {
+        routeRhRequest(req, res);
+    } else {
+        app(req, res);
+    }
+});
+
+server.on('upgrade', (req, socket, head) => {
+    if (bare.shouldRoute(req)) {
+        bare.routeUpgrade(req, socket, head);
+    } else if (shouldRouteRh(req)) {
+        routeRhUpgrade(req, socket, head);
+    } else if (req.url.endsWith('/wisp/')) {
+        wisp.routeRequest(req, socket, head);
+    }
+});
 
 router.get('/', async (req, res) => res.send(paintSource(tryReadFile(path.join(__dirname, 'views', ['/', '/?'].includes(req.url) ? pages.index : pages[Object.keys(req.query)[0]])))));
 app.use(router);
@@ -25,23 +82,13 @@ app.use(express.static(path.join(__dirname, 'views')));
 app.use("/uv/", express.static(uvPath));
 app.use("/epoxy/", express.static(epoxyPath));
 app.use("/baremux/", express.static(baremuxPath));
+
 app.disable('x-powered-by');
 
 app.use((req, res) => {
     res.status(404).send(paintSource(text404));
 });
 
-server.on("request", (req, res) => {
-    res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
-    res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
-    app(req, res);
-});
-server.on("upgrade", (req, socket, head) => {
-    if (req.url.endsWith("/wisp/"))
-        wisp.routeRequest(req, socket, head);
-    else
-        socket.end();
-});
 
 server.listen(port);
 console.log('Holy Unblocker is listening on port ' + port + '.');

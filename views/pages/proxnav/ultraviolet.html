@@ -18,7 +18,10 @@
     <script src="/uv/uv.config.js" defer></script>
     <script src="/assets/js/register-sw.js" defer></script>
     <script src="/assets/js/search.js" defer></script>
-    <script src="/assets/js/uvhuwork.js" defer></script>
+    <script src="/assets/js/proxy.js" defer></script>
+    <script defer>
+        localStorage.setItem('proxy', 'uv');
+    </script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/tsparticles@1.39.2/tsparticles.min.js" integrity="sha256-FCz5ToEA27payrGYaVGRidiIA+68Z31TBXFzcIT1/gU=" crossorigin="anonymous"></script>
 </head>
 
@@ -37,8 +40,6 @@
                 CAPT&#173;CHA suppor&#173;t.</p>
             <form id="pr-form">
                 <input type="text" id="pr-url" spellcheck="false" autocomplete="off" placeholder="Search or enter in a target site!">
-                <a href="#" id="pr-go1" class="pr-button glowbutton">Cl&#173;assic</a>
-                <a href="#" id="pr-go2" class="pr-button glowbutton">Stea&#173;lth</a>
             </form>
             <h3>More Information:</h3>
             <div class="font3">
