@@ -65,6 +65,9 @@
         setCookie("HBHideAds", "true");
     }
 
+    // Ghetto Default Disable Ads
+    setCookie("HBHideAds", "true");
+
     function showAds() {
         pageShowAds();
         removeCookie("HBHideAds");
