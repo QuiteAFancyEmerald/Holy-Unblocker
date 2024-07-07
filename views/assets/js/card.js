@@ -1,18 +1,13 @@
-// Select all elements with class "box-card"
 const shimmerEffects = document.querySelectorAll(".box-card");
 
-// Loop through each ".box-card" element
-shimmerEffects.forEach(shimmerEffect => {
-  // Add mousemove event listener
-  shimmerEffect.addEventListener("mousemove", handleMouseMove);
 
-  // Add mouseleave event listener
+shimmerEffects.forEach(shimmerEffect => {
+  shimmerEffect.addEventListener("mousemove", handleMouseMove);
   shimmerEffect.addEventListener("mouseleave", handleMouseLeave);
 });
 
-// Function to handle mousemove event
 function handleMouseMove(e) {
-  const rect = this.getBoundingClientRect(); // Use "this" to refer to the current ".box-card" element
+  const rect = this.getBoundingClientRect();
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
 
@@ -20,9 +15,7 @@ function handleMouseMove(e) {
   this.style.setProperty("--mouse-y", `${y}px`);
 }
 
-// Function to handle mouseleave event
 function handleMouseLeave() {
-  // Reset mouse position variables to center
   this.style.setProperty("--mouse-x", `50%`);
   this.style.setProperty("--mouse-y", `50%`);
 }
