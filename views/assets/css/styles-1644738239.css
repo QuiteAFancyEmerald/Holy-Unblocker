@@ -685,27 +685,28 @@ details[open] summary {
   animation-fill-mode: forwards;
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 100px 100px;
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 80px; 
+  margin: 80px;
+}
+
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 .box-card {
-  width: 700px;
-  margin: 100px 200px;
+  width: 100%;
   padding: 40px;
   background-color: var(--nord1);
   border-radius: 10px;
-  animation: fadeInAnimation ease-in-out 0.3s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
   position: relative;
   overflow: hidden;
   text-align: left;
+  box-sizing: border-box; 
 }
 
 .box-card::after {
@@ -716,7 +717,7 @@ details[open] summary {
   width: 100%;
   height: 100%;
   background: url("/assets/img/noise.png") repeat, rgba(255, 255, 255, 0.03);
-  opacity: var(--noise-opacity, 0.03); /* Use a CSS variable to control opacity */
+  opacity: var(--noise-opacity, 0.03); 
   pointer-events: none;
   -webkit-mask-image: radial-gradient(circle, white 30%, transparent 50%);
   -webkit-mask-size: 800px 800px;
@@ -726,11 +727,11 @@ details[open] summary {
   mask-size: 800px 800px;
   mask-position: calc(var(--mouse-x) - 400px) calc(var(--mouse-y) - 400px);
   mask-repeat: no-repeat;
-  transition: -webkit-mask-position 0.1s ease, mask-position 0.1s ease, opacity 1s ease; /* Extend opacity transition */
+  transition: -webkit-mask-position 0.1s ease, mask-position 0.1s ease, opacity 1s ease; 
 }
 
 .box-card:hover::after {
-  opacity: 0.06;
+  opacity: 0.07;
 }
 
 .box-card:not(:hover)::after {
@@ -738,31 +739,39 @@ details[open] summary {
 }
 
 .box-card .content {
-  float: left; /* Float content to the left */
-  width: calc(100% - 240px); /* Adjust width to leave space for the image */
+  width: calc(100% - 250px - 20px);
+  margin-right: 20px;
 }
 
 .image-container {
   position: absolute;
-  bottom: 0;
   right: 0;
-  width: 200px; /* Width of the image */
-  background-color: var(--nord2); /* Background color for the image container */
-  border-radius: 10px; /* Rounded corners for the image container */
-  padding: 10px; /* Padding inside the image container */
+  margin-right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 250px;
+  background-color: var(--nord0m3);
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  border: 1px solid transparent;
+}
+
+.image-container:hover {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
 }
 
 .box-card .hero {
-  width: 100%; /* Ensure the image fills the container */
-  border-radius: 5px; /* Rounded corners for the image */
+  width: 100%;
+  border-radius: 5px;
 }
 
 .box-card h1 {
-  margin-top: 0; /* Remove default margin for h1 */
+  margin-top: 0;
 }
 
 .box-card p {
-  margin: 0 0 10px; /* Adjust paragraph margins */
+  margin: 0 0 10px;
   line-height: 1.5;
 }
 
