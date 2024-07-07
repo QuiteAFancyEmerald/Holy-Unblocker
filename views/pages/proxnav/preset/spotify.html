@@ -12,6 +12,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="/baremux/bare.cjs" defer></script>
+    <script src="/epoxy/index.js" defer></script>
+    <script src="/uv/uv.bundle.js" defer></script>
+    <script src="/uv/uv.config.js" defer></script>
+    <script src="/assets/js/register-sw.js" defer></script>
+    <script src="/assets/js/search.js" defer></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/tsparticles@1.39.2/tsparticles.min.js" integrity="sha256-FCz5ToEA27payrGYaVGRidiIA+68Z31TBXFzcIT1/gU=" crossorigin="anonymous"></script>
 </head>
 
@@ -43,12 +49,7 @@
     </div>
     <div id="footer" class="fullwidth"></div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <script src="uv/uv.bundle.js"></script>
-    <script src="uv/uv.config.js"></script>
-    <script src="assets/js/register-sw.js"></script>
-    <script>
-        registerSW();
-    </script>
+    <iframe style="display: none;" id="hu-frame"></iframe>
     <script src="assets/js/common.js"></script>
     <script src="assets/js/header.js"></script>
     <script src="assets/js/csel.js"></script>

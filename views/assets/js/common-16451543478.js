@@ -70,7 +70,7 @@ const xor = {
 window.goProx = {
     ultraviolet: function(url, stealth) {
         setAuthCookie("__cor_auth=1", true);
-        goToUrl(location.protocol + "//" + getDomain() + __uv$config.prefix + xor.encode(omnibox(url)), stealth);
+        goToUrl(location.protocol + "//" + getDomain() + __uv$config.prefix + __uv$config.encodeUrl(omnibox(url)), stealth);
     },
     womginx: function(url, stealth) {
         setAuthCookie("wgauth=yes", false);

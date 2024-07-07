@@ -1,6 +1,6 @@
 const stockSW = "/uv/sw.js";
-
 const swAllowedHostnames = ["localhost", "127.0.0.1"];
+
 
 async function registerSW() {
   if (!navigator.serviceWorker) {
@@ -16,5 +16,5 @@ async function registerSW() {
   await navigator.serviceWorker.register(stockSW);
 
   let wispUrl = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/";
-  await BareMux.SetTransport("EpxMod.EpoxyClient", { wisp: wispUrl, wisp_v2: false }); // ?????
+  await BareMux.SetTransport("EpxMod.EpoxyClient", { wisp: wispUrl });
 }
