@@ -2,6 +2,7 @@ import { insertText, tryReadFile } from './randomization.mjs';
 import path from 'path';
 export { loadTemplates as default };
 
+const __dirname = path.resolve();
 
 const header = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/header.html')),
 
