@@ -1,6 +1,7 @@
 import pkg from './routes.mjs';
 import { existsSync, readFileSync } from 'fs';
 const { cookingInserts, vegetables, charRandom, splashRandom, cacheBustList, text404 } = pkg;
+export { insertText, paintSource, tryReadFile };
 
 /*
 //  Try this instead of the .replace method. Might be more performant.
@@ -14,13 +15,14 @@ const insertText = (lis, str, newText) => {
 //  This will put other relevant argument types, like a string, into a list.
     lis = [].concat(lis);
 
+    let position;
 //  Loop through each of the placeholder strings.
-    for (let i = lis.length - 1, position; i >= 0; i--) {
+    for (let placeholder of lis) {
 //      Find all matches of a placeholder string and insert new text there.
-        while ((position = str.indexOf(lis[i])) >= 0)
+        while ((position = str.indexOf(placeholder)) >= 0)
             str = str.slice(0, position)
                 + (typeof newText == "function" ? newText() : newText)
-                + str.slice(position + lis[i].length);
+                + str.slice(position + placeholder.length);
     }
     return str;
 };
@@ -59,12 +61,10 @@ cacheBusting = str => {
     for (let item of Object.entries(cacheBustList))
         str = insertText(item[0], str, item[1]);
     return str;
-};
-
-
+},
 
 //  Applies the final obfuscation changes to an entire file.
-export const paintSource = str => insertCharset(hutaoInsert(insertCooking(cacheBusting(str)))),
+paintSource = str => insertCharset(hutaoInsert(insertCooking(cacheBusting(str)))),
 
 //  Grabs the text content of a file.
 tryReadFile = file => existsSync(file) ? readFileSync(file, "utf8") : text404;

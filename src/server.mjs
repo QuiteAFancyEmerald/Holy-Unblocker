@@ -1,4 +1,5 @@
 import { paintSource, tryReadFile } from './randomization.mjs';
+import loadTemplates from './templates.mjs';
 import pkg from './routes.mjs';
 import { readFile } from 'fs/promises';
 import path from 'path';
@@ -98,13 +99,13 @@ app.use(helmet({
 //  This takes one of those files and displays it for a site visitor.
 //  Query strings like /?j are converted into paths like /views/hidden.html
 //  back here. Which query string converts to what is defined in routes.mjs.
-router.get('/', async (req, res) => res.send(paintSource(tryReadFile(
+router.get('/', async (req, res) => res.send(paintSource(loadTemplates(tryReadFile(
     path.join(__dirname,
     'views',
 //  This returns the file path, and has the index page set as the home page.
     '/?'.indexOf(req.url) ? pages[Object.keys(req.query)[0]] : pages.index
     )
-))));
+)))));
 
 
 app.use(router);
@@ -116,7 +117,7 @@ app.use("/baremux/", express.static(baremuxPath));
 app.disable('x-powered-by');
 
 app.use((req, res) => {
-    res.status(404).send(paintSource(text404));
+    res.status(404).send(paintSource(loadTemplates(text404)));
 });
 
 
