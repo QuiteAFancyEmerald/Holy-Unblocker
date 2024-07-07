@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Ultraviolet LTS</title>
-    <meta name="description" content="The new highly innovative proxy of Titanium Network using technologies such as service workers and sophisticated rewriting techniques with CAPTCHA support. Ultraviolet focuses on speed with YouTube, now.gg, Spotify, CoolMathGames and various .io sites!"
-    />
+    <meta name="description"
+        content="The new highly innovative proxy of Titanium Network using technologies such as service workers and sophisticated rewriting techniques with CAPTCHA support. Ultraviolet focuses on speed with YouTube, now.gg, Spotify, CoolMathGames and various .io sites!" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#434c5e">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,12 @@
     <script src="/uv/uv.bundle.js" defer></script>
     <script src="/uv/uv.config.js" defer></script>
     <script src="/assets/js/register-sw.js" defer></script>
+<<<<<<< HEAD
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/tsparticles@1.39.2/tsparticles.min.js" integrity="sha256-FCz5ToEA27payrGYaVGRidiIA+68Z31TBXFzcIT1/gU=" crossorigin="anonymous"></script>
+=======
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/tsparticles@1.39.2/tsparticles.min.js"
+        integrity="sha256-FCz5ToEA27payrGYaVGRidiIA+68Z31TBXFzcIT1/gU=" crossorigin="anonymous"></script>
+>>>>>>> eca0dce (speed is better. fixed proxy yay)
 </head>
 
 <body>
@@ -31,38 +36,68 @@
         <div class="box box-medium text-center textm">
             <h1 class="bigtitle">Ultraviolet (Beta)</h1>
             <img id="cor-logo" class="pr-logo" src="/assets/img/uv2.png" alt="Ultraviolet TN Logo">
-            <p>The highly innovative proxy of Titanium Network using technologies such as service workers and sophisticated rewriting techniques with
+            <p>The highly innovative proxy of Titanium Network using technologies such as service workers and
+                sophisticated rewriting techniques with
                 CAPTCHA support.</p>
-            <form id="pr-form">
-                <input type="text" id="pr-url" spellcheck="false" autocomplete="off" placeholder="Search or enter in a target site!">
-            </form>
+            <div id="pr-form">
+                <input type="text" id="pr-url" spellcheck="false" autocomplete="off"
+                    placeholder="Search or enter in a target site!">
+                <a href="#" id="pr-go1" class="pr-button glowbutton">Cl&#173;assic</a>
+                <a href="#" id="pr-go2" class="pr-button glowbutton">Stea&#173;lth</a>
+            </div>
             <h3>More Information:</h3>
             <div class="font3">
                 <p class="accented">
                     Focusing on speed UV works with YouTube, now.gg, Spotify, CoolMathGames and various .io sites!
                     <br>CAPTCHA is supported!
-                    <br>Ultraviolet is highly recommended due to its speed and enhanced support for almost every site making it one of the most advanced web proxies.
-                    <br>Sites with given support for logging in are Twitter, Spotify, Reddit, and Discord. YouTube allows for nearly full functionality.
+                    <br>Ultraviolet is highly recommended due to its speed and enhanced support for almost every site
+                    making it one of the most advanced web proxies.
+                    <br>Sites with given support for logging in are Twitter, Spotify, Reddit, and Discord. YouTube
+                    allows for nearly full functionality.
                     <br>Discord support on Rammerhead is a KNOWN bug. It is being worked on.
                 </p>
                 <p class="accented">
                     Common Errors with Solutions:
-                    <br>- Having issues with CAPTCHAs? It will take trial and error but try to go slow when it comes to solving them. CAPTCHA is a given but will take a few attempts.
+                    <br>- Having issues with CAPTCHAs? It will take trial and error but try to go slow when it comes to
+                    solving them. CAPTCHA is a given but will take a few attempts.
                     <br>- Try using Classic mode or doing 'Reload Frame'. ("cdn.example.com" cannot be reached.)
-                    <br>- You may not be able to login normally into a number of sites. Phone verification on a select number of sites may occur also with no real soluion.
+                    <br>- You may not be able to login normally into a number of sites. Phone verification on a select
+                    number of sites may occur also with no real soluion.
                 </p>
-                <p>GitHub:&nbsp;<a class="bluelink" id="tnlink"><strong>https://github.com/titaniumnetwork-dev</strong></a></p>
+                <p>GitHub:&nbsp;<a class="bluelink"
+                        id="tnlink"><strong>https://github.com/titaniumnetwork-dev</strong></a></p>
             </div>
         </div>
     </div>
     <div id="footer" class="fullwidth"><!--FOOTER--></div>
-    <iframe style="display: none;" id="hu-frame"></iframe>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <script src="assets/js/common.js"></script>
     <script src="assets/js/links.js"></script>
     <script src="assets/js/prset.js"></script>
     <script src="assets/js/csel.js"></script>
     <script defer="defer" src="assets/js/particlesjs/particles.js"></script>
+    <script>
+        prSet("ultraviolet");
+
+        async function registerSW() {
+            if (!navigator.serviceWorker) {
+                if (
+                    location.protocol !== "https:" &&
+                    !swAllowedHostnames.includes(location.hostname)
+                )
+                    throw new Error("Service workers cannot be registered without https.");
+
+                throw new Error("Your browser doesn't support service workers.");
+            }
+
+            await navigator.serviceWorker.register(stockSW);
+
+            let wispUrl = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/";
+            await BareMux.SetTransport("EpxMod.EpoxyClient", { wisp: wispUrl });
+        }
+        
+        registerSW();
+    </script>
 </body>
 
 </html>

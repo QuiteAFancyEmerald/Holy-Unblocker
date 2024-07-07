@@ -27,9 +27,12 @@
             <img class="pr-logo" src="/assets/img/rhicon.webp" alt="Rammerhead Proy Logo">
             <p>Rammerhead is one of the most advanced free secure web proxies.</p>
             <p>Its session-based proxying concept enables much support for webites like Discord, YouTube, and more!</p>
-            <form id="pr-form">
-                <input type="text" id="pr-url" spellcheck="false" autocomplete="off" placeholder="Search or enter in a target site!">
-            </form>
+            <div id="pr-form">
+                <input type="text" id="pr-url" spellcheck="false" autocomplete="off"
+                    placeholder="Search or enter in a target site!">
+                <a href="#" id="pr-go1" class="pr-button glowbutton">Cl&#173;assic</a>
+                <a href="#" id="pr-go2" class="pr-button glowbutton">Stea&#173;lth</a>
+            </div>
             <p>Important: Make sure you treat this as a PRIVATE session. Do NOT share Rammerhead links.</p>
             <h3>More Information:</h3>
             <div class="font3">
@@ -46,13 +49,15 @@
             </div>
         </div>
     </div>
-    <iframe style="display: none;" id="hu-frame"></iframe>
     <div id="footer" class="fullwidth"><!--FOOTER--></div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <script src="assets/js/common.js"></script>
     <script src="assets/js/links.js"></script>
     <script src="assets/js/prset.js"></script>
     <script src="assets/js/csel.js"></script>
+    <script>
+        prSet("rammerhead");
+    </script>
     <script defer="defer" src="assets/js/particlesjs/particles.js"></script>
 </body>
 
