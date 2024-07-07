@@ -79,6 +79,8 @@ server.on('upgrade', (req, socket, head) => {
 
 //  All website files are stored in the /views directory.
 //  This takes one of those files and displays it for a site visitor.
+//  Query strings like /?j are converted into paths like /views/hidden.html
+//  back here. Which query string converts to what is defined in routes.mjs.
 router.get('/', async (req, res) => res.send(paintSource(tryReadFile(
     path.join(__dirname,
     'views',
