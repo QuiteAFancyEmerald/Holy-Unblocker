@@ -129,6 +129,17 @@ img {
   display: block;
 }
 
+/* For WebKit/Blink Browsers */
+::selection {
+  background: rgba(129, 161, 193, 0.557); /* Use rgba for opacity */
+}
+
+/* For Gecko Browsers (Firefox) */
+::-moz-selection {
+  background: rgba(129, 161, 193, 0.557); /* Use rgba for opacity */
+}
+
+
 .text-center {
   text-align: center;
 }
@@ -821,9 +832,10 @@ details[open] summary {
 }
 
 .box-card .content {
-  width: calc(95% - 180px);
+  width: calc(95% - min(30%, 180px) - 32px);
   margin-right: 20px;
   box-sizing: border-box; 
+  overflow-wrap: break-word
 }
 
 .image-container {
