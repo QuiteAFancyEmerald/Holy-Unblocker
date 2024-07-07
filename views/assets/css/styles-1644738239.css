@@ -680,6 +680,8 @@ details[open] summary {
   animation-fill-mode: forwards;
 }
 
+/* Homepage Hero */
+
 .splashstroke {
   display: inline-block;
   position: relative;
@@ -761,12 +763,15 @@ details[open] summary {
   margin: 10px 0;
 }
 
+/* Shimmer Noise Cards */
 .grid-container {
   display: grid;
   grid-template-columns: 1fr;
   gap: 80px; 
   margin: 80px;
   margin-top: 300px;
+  padding: 0 20px; /* Add padding to prevent overflow */
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
@@ -816,17 +821,19 @@ details[open] summary {
 }
 
 .box-card .content {
-  width: calc(100% - 250px - 20px);
+  width: calc(95% - 250px);
   margin-right: 20px;
+  box-sizing: border-box; 
 }
 
 .image-container {
   position: absolute;
-  right: 0;
-  margin-right: 5%;
+  right: 5%;
   top: 50%;
   transform: translateY(-50%);
-  width: 250px;
+  width: 30%; 
+  max-width: 180px; /* Add a max-width to prevent it from getting too large */
+  height: auto;
   background-color: var(--nord0m3);
   border-radius: 10px;
   padding: 5px;
