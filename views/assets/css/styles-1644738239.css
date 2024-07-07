@@ -9,7 +9,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");
 @import url("https://fonts.googleapis.com/css?family=Montserrat+Alternates");
 @import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700");
-@import url("https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css");
+@import url("/assets/css/fonts.all.min.css");
 
 /*
 Nord Theme (https://nordtheme.com)
@@ -84,6 +84,17 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
     }
     100% {
         opacity: 1;
+    }
+}
+
+/* Subtle Blur Hover */
+
+@keyframes iconpulse {
+    0% {
+        filter: blur(0px);
+    }
+    50% {
+        filter: blur(0.9px);
     }
 }
 
@@ -235,6 +246,7 @@ details[open] summary {
     }
     50% {
         transform: scale(1.05);
+        border: 1.05px solid var(--nord4);
     }
 }
 
@@ -340,6 +352,11 @@ details[open] summary {
     text-align: center;
 }
 
+.footersocials>a:hover {
+    animation: pulse 0.6s;
+    animation-composition: add;
+}
+
 .footerflex>div {
     margin: 25px 50px;
 }
@@ -364,6 +381,10 @@ details[open] summary {
 .footerlist ul {
     list-style: none;
     padding: 0px;
+}
+
+.footerlist ul>li:hover {
+    animation: iconpulse 2s;
 }
 
 .footerlist ul>li {
