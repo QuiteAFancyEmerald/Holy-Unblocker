@@ -131,12 +131,12 @@ img {
 
 /* For WebKit/Blink Browsers */
 ::selection {
-  background: rgba(129, 161, 193, 0.557); /* Use rgba for opacity */
+  background: rgb(180, 142, 0.513); /* Use rgba for opacity */
 }
 
 /* For Gecko Browsers (Firefox) */
 ::-moz-selection {
-  background: rgba(129, 161, 193, 0.557); /* Use rgba for opacity */
+  background: rgba(180, 142, 173, 0.513); /* Use rgba for opacity */
 }
 
 
@@ -810,7 +810,7 @@ details[open] summary {
   width: 100%;
   height: 100%;
   background: url("/assets/img/noise.png") repeat, rgba(255, 255, 255, 0.03);
-  opacity: var(--noise-opacity, 0.03); 
+  opacity: var(--noise-opacity, 0.02); 
   pointer-events: none;
   -webkit-mask-image: radial-gradient(circle, white 30%, transparent 50%);
   -webkit-mask-size: 800px 800px;
@@ -820,7 +820,6 @@ details[open] summary {
   mask-size: 800px 800px;
   mask-position: calc(var(--mouse-x) - 400px) calc(var(--mouse-y) - 400px);
   mask-repeat: no-repeat;
-  transition: -webkit-mask-position 0.1s ease, mask-position 0.1s ease, opacity 1s ease; 
 }
 
 .box-card:hover::after {

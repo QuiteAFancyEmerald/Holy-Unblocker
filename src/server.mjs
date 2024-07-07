@@ -3,6 +3,7 @@ import pkg from './routes.mjs';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import express from 'express';
+import helmet from 'helmet';
 import http from 'http';
 import createRammerhead from 'rammerhead/src/server/index.js';
 import { createBareServer } from '@tomphttp/bare-server-node';
