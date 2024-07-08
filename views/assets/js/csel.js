@@ -43,16 +43,17 @@ pageIcon = value => {
     document.head.appendChild(tag);
 },
 
-
-pageHideAds = () => {
-    (document.getElementById('advertising')||new Text()).remove();
-},
-
+//  Make a small stylesheet to override a setting from the main stylesheet.
 pageShowAds = () => {
     let advertising = document.createElement('style');
     advertising.id = "advertising";
     advertising.innerText = `.ad { display:block; }`;
     document.appendChild.bind(document.head || document.body || document.documentElement || document)(advertising);
+},
+
+//  Remove the stylesheet made by the function above, if it exists.
+pageHideAds = () => {
+    (document.getElementById('advertising')||new Text()).remove();
 };
 
 
@@ -123,6 +124,8 @@ if (document.getElementById('csel')) {
         }
     }, false);
 }
+
+
 
 /* ----------------------------------------------- 
 /* Original code written by OlyB
