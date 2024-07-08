@@ -12,15 +12,14 @@ const text404 = readFileSync(path.normalize(__dirname + '/views/404.html'), 'utf
 const pages = {
     'index': 'index.html',
     /* Main */
-    'in': 'docs.html',
+    'documentation': 'docs.html',
     'faq': 'faq.html',
     'j': 'hidden.html',
     's': 'pages/frame.html',
-    'z': 'pages/surf.html',
-    'c': 'pages/nav/credits.html',
+    'browse': 'pages/surf.html',
+    'credits': 'pages/nav/credits.html',
     'x': 'pages/nav/bookmarklets.html',
-    'i': 'pages/nav/icons.html',
-    't': 'pages/nav/terms.html',
+    'terms': 'pages/nav/terms.html',
     /* Games */
     'g': 'pages/nav/gtools.html',
     'h': 'pages/nav/games5.html',
@@ -31,10 +30,8 @@ const pages = {
     'q': 'pages/proxnav/ultraviolet.html',
     'rh': 'pages/proxnav/rammerhead.html',
     /* Proxy Presets */
-    'sx': 'pages/proxnav/preset/spotify.html',
     'y': 'pages/proxnav/preset/youtube.html',
-    'd': 'pages/proxnav/preset/discord.html',
-    'r': 'pages/proxnav/preset/reddit.html',
+    'apps': 'pages/proxnav/preset/applications.html',
     /* Misc */
     'fg': 'archive/gfiles/flash/index.html',
     'eg': 'archive/gfiles/rarch/index.html',

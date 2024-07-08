@@ -2,7 +2,7 @@ const axios = require('axios');
 
 async function testServerResponse() {
     try {
-        const response = await axios.get('http://localhost:8080/');
+        const response = await axios.get('http://localhost:8080/?pathtonowhere');
         if (response.status === 200) {
             console.log('Server responded with status code 200. Test passed.');
             process.exit(0); // Exit with success
