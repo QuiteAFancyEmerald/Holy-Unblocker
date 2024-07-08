@@ -93,13 +93,16 @@ app.use(helmet({
 //  This takes one of those files and displays it for a site visitor.
 //  Query strings like /?j are converted into paths like /views/hidden.html
 //  back here. Which query string converts to what is defined in routes.mjs.
-router.get('/', async (req, res) => res.send(paintSource(loadTemplates(tryReadFile(
-    path.join(__dirname,
-    'views',
-//  This returns the file path, and has the index page set as the home page.
-    '/?'.indexOf(req.url) ? pages[Object.keys(req.query)[0]] : pages.index
-    )
-)))));
+router.get('/', async (req, res) => {
+    const paramKey = Object.keys(req.query)[0];
+    const filePath = paramKey ? pages[paramKey] : pages.index;
+  
+    const validPath = filePath || pages.index;
+  
+    res.send(paintSource(loadTemplates(tryReadFile(
+      path.join(__dirname, 'views', validPath)
+    ))));
+  });
 
 
 app.use(router);
