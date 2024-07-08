@@ -31,6 +31,6 @@ const header = tryReadFile(
     //  Used only on faq.html
         .replace("<!--FAQ-->", faq)
     //  Used only on terms.html
-        .replace("<!--TOS-->", str, terms)
+        .replace("<!--TOS-->", terms)
     //  Used only on header.html
-        .replace("<!--SETTINGS-->", str, settings);
+        .replace("<!--SETTINGS-->", settings);

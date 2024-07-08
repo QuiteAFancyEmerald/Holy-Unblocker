@@ -12,7 +12,7 @@ const tryGetElement = id => document.getElementById(id) || {};
  * Not exactly apex, as any subdomain other than those listed will be ignored.
  **/
 
-const getDomain = () => location.host.replace(/^(www|edu|cooking|beta)\./, "");
+const getDomain = () => location.host.replace(/^(?:www|edu|cooking|beta)\./, "");
 
 /* STEALTH FRAME */
 const goFrame = url => {
