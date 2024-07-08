@@ -1,16 +1,16 @@
 <div class="brand-logo-container">
   <div class="logo"></div>
-  <a href="/" class="brand">Holy Unblocker v6.1.0</a>
+  <a href="/" class="brand pulse">Holy Unblocker v6.1.0</a>
 </div>
 <input id="mnavecb" type="checkbox" />
 <label for="mnavecb" class="mnave">
   <span class="mnavebutton"></span>
 </label>
 <ul class="navbar-1">
-  <li><a href="/?z">Web Proxies</a></li>
-  <li><a href="/?g">Games</a></li>
-  <li><a href="/?y">YouTube</a></li>
-  <li class="brand-logo-container">
+  <li class="pulse" ><a href="/?z">Web Proxies</a></li>
+  <li class="pulse" ><a href="/?g">Games</a></li>
+  <li class="pulse" ><a href="/?y">YouTube</a></li>
+  <li class="brand-logo-container pulse">
     <a href="/?r">Applications</a>
     <div class="new"></div>
   </li>
@@ -18,7 +18,9 @@
 <ul class="navbar">
   <!-- tabindex="0" is required on the dropdowns -->
   <li class="dropdown-parent">
-    <a href="#">More <i class="fas fa-ellipsis-v"></i></a>
+    <div class="pulse white-text">
+      <a href="#">More <i class="fas fa-ellipsis-v"></i></a>
+    </div>
     <div class="dropdown-child" tabindex="0">
       <ul class="subnavbar">
         <i class="fas fa-bars"></i>
@@ -31,9 +33,11 @@
     </div>
   </li>
   <li class="dropdown-parent">
-    <a href="#">Settings <i class="fas fa-cog"></i></a>
+    <div class="pulse white-text">
+      <a href="#">Settings <i class="fas fa-cog pulse"></i></a>
+    </div>
     <div class="dropdown-child" tabindex="0">
-      <div id="csel"></div>
+      <div id="csel"><!--SETTINGS--></div>
     </div>
   </li>
 </ul>

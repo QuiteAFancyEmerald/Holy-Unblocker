@@ -17,6 +17,8 @@ faq = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/faq.html')
 
 terms = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/tos.html')),
 
+settings = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/settings.html')),
+
 loadTemplates = str => {
     str = insertText("<!--HEADER-->", str, header);
     str = insertText("<!--FOOTER-->", str, footer);
@@ -30,5 +32,7 @@ loadTemplates = str => {
     str = insertText("<!--FAQ-->", str, faq);
 //  Used only on terms.html
     str = insertText("<!--TOS-->", str, terms);
+//  Used only on csel.html
+    str = insertText("<!--SETTINGS-->", str, settings);
     return str;
 };

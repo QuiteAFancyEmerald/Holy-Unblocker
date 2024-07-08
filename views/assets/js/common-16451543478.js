@@ -270,7 +270,7 @@ async function RammerheadEncode(baseUrl) {
 
 window.goProx = {
     ultraviolet: function (url, stealth) {
-        setAuthCookie("__cor_auth=1", true);
+        setAuthCookie("__cor_auth=1", false);
         goToUrl(location.protocol + "//" + getDomain() + __uv$config.prefix + __uv$config.encodeUrl(omnibox(url)), stealth);
     },
     womginx: function (url, stealth) {
@@ -281,11 +281,11 @@ window.goProx = {
         goToUrl(location.protocol + "//" + getDomain() + await RammerheadEncode(omnibox(url)), stealth);
     }, // i spent like 20 mins just to realize i had to make it async
     searx: function (stealth) {
-        setAuthCookie("oldsmobile=badcar", true);
+        setAuthCookie("oldsmobile=badcar", false);
         goToUrl(location.protocol + "//c." + getDomain() + "/engine/", stealth);
     },
     libreddit: function (stealth) {
-        setAuthCookie("oldsmobile=badcar", true);
+        setAuthCookie("oldsmobile=badcar", false);
         goToUrl(location.protocol + "//c." + getDomain(), stealth);
     },
     rnav: function (stealth) {
@@ -297,46 +297,46 @@ window.goProx = {
     },
     mcnow: function (stealth) {
         setAuthCookie("__cor_auth=1", false);
-        goToUrl(location.protocol + "//cdn." + getDomain() + "/sw/" + xor.encode('https://now.gg/play/mojang/2534/minecraft-trial'), stealth);
+        goToUrl(location.protocol + "//" + getDomain() + __uv$config.prefix + __uv$config.encodeUrl('https://now.gg/play/mojang/2534/minecraft-trial'), stealth);
     },
     glife: function (stealth) {
         setAuthCookie("__cor_auth=1", false);
-        goToUrl(location.protocol + "//cdn." + getDomain() + "/sw/" + xor.encode('https://now.gg/play/lunime/5767/gacha-life'), stealth);
+        goToUrl(location.protocol + "//" + getDomain() + __uv$config.prefix + __uv$config.encodeUrl('https://now.gg/play/lunime/5767/gacha-life'), stealth);
     },
     roblox: function (stealth) {
         setAuthCookie("__cor_auth=1", false);
-        goToUrl(location.protocol + "//cdn." + getDomain() + "/sw/" + xor.encode('https://now.gg/play/roblox-corporation/5349/roblox'), stealth);
+        goToUrl(location.protocol + "//" + getDomain() + __uv$config.prefix + __uv$config.encodeUrl('https://now.gg/play/roblox-corporation/5349/roblox'), stealth);
     },
     amongus: function (stealth) {
         setAuthCookie("__cor_auth=1", false);
-        goToUrl(location.protocol + "//cdn." + getDomain() + "/sw/" + xor.encode('https://now.gg/play/innersloth-llc/4047/among-us'), stealth);
+        goToUrl(location.protocol + "//" + getDomain() + __uv$config.prefix + __uv$config.encodeUrl('https://now.gg/play/innersloth-llc/4047/among-us'), stealth);
     },
     pubg: function (stealth) {
         setAuthCookie("__cor_auth=1", false);
-        goToUrl(location.protocol + "//cdn." + getDomain() + "/sw/" + xor.encode('https://now.gg/play/proxima-beta/2609/pubg-mobile-resistance'), stealth);
+        goToUrl(location.protocol + "//" + getDomain() + __uv$config.prefix + __uv$config.encodeUrl('https://now.gg/play/proxima-beta/2609/pubg-mobile-resistance'), stealth);
     },
     train: function (stealth) {
         setAuthCookie("wgauth=yes", false);
-        goToUrl(location.protocol + "//a." + getDomain() + "/go/" + ('v6p9' + 'd9t4.ssl.hw' + 'cdn.net/html/1970' + '387/index.ht' + 'ml'), stealth);
+        goToUrl(location.protocol + "//" + getDomain() + __uv$config.prefix + __uv$config.encodeUrl('v6p9' + 'd9t4.ssl.hw' + 'cdn.net/html/1970' + '387/index.ht' + 'ml'), stealth);
     },
     village: function (stealth) {
         setAuthCookie("wgauth=yes", false);
-        goToUrl(location.protocol + "//a." + getDomain() + "/go/" + ('v6p' + '9d9t4.ss' + 'l.hwcd' + 'n.net/html/3' + '626475/index.html'), stealth);
+        goToUrl(location.protocol + "//" + getDomain() + __uv$config.prefix + __uv$config.encodeUrl('v6p' + '9d9t4.ss' + 'l.hwcd' + 'n.net/html/3' + '626475/index.html'), stealth);
     },
     prison: function (stealth) {
         setAuthCookie("wgauth=yes", false);
-        goToUrl(location.protocol + "//a." + getDomain() + "/go/" + ('v6p' + '9d9t4.ssl.hwc' + 'dn.net/h' + 'tml/364' + '7099/index.html'), stealth);
+        goToUrl(location.protocol + "//" + getDomain() + __uv$config.prefix + __uv$config.encodeUrl('v6p' + '9d9t4.ssl.hwc' + 'dn.net/h' + 'tml/364' + '7099/index.html'), stealth);
     },
     rpg: function (stealth) {
         setAuthCookie("wgauth=yes", false);
-        goToUrl(location.protocol + "//a." + getDomain() + "/go/" + ('v6p9d9' + 't4.ssl.hwc' + 'dn.net/html/347' + '0524/Die%20in%20the%20Du' + 'ngeon%201.1%20[WEB]/index.html'), stealth);
+        goToUrl(location.protocol + "//" + getDomain() + __uv$config.prefix + __uv$config.encodeUrl('v6p9d9' + 't4.ssl.hwc' + 'dn.net/html/347' + '0524/Die%20in%20the%20Du' + 'ngeon%201.1%20[WEB]/index.html'), stealth);
     },
     speed: function (stealth) {
         setAuthCookie("wgauth=yes", false);
-        goToUrl(location.protocol + "//a." + getDomain() + "/go/" + ('v6p9' + 'd9t4.ssl.hw' + 'cdn.net/html/36' + '28752/index.html'), stealth);
+        goToUrl(location.protocol + "//" + getDomain() + __uv$config.prefix + __uv$config.encodeUrl('v6p9' + 'd9t4.ssl.hw' + 'cdn.net/html/36' + '28752/index.html'), stealth);
     },
     heli: function (stealth) {
         setAuthCookie("wgauth=yes", false);
-        goToUrl(location.protocol + "//" + ('v6p9d' + '9t4.ssl.h' + 'wcdn.net/ht' + 'ml/3605' + '579/Helo%20Sto' + 'rm/index.html'), stealth);
+        goToUrl(location.protocol + "//" + __uv$config.prefix + __uv$config.encodeUrl('v6p9d' + '9t4.ssl.h' + 'wcdn.net/ht' + 'ml/3605' + '579/Helo%20Sto' + 'rm/index.html'), stealth);
     }
 };

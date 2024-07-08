@@ -300,6 +300,11 @@ details[open] summary {
   background-size: cover;
 }
 
+.white-text>a {
+  text-decoration: none !important;
+  color: var(--nord4) !important;
+}
+
 .new {
   width: 50px;
   height: 45.5px;
