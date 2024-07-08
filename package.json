@@ -9,7 +9,7 @@
         "build": "npm run start",
         "test": "npm run test-400",
         "start-test-server": "node backend.js &",
-        "test-400": "curl -s -o /dev/null -w '%{http_code}' http://localhost:8080/ | ( grep -q 400 || exit 1 )"
+        "test-400": "test.js"
     },
     "keywords": [
         "proxy",
@@ -23,6 +23,7 @@
         "@mercuryworkshop/epoxy-transport": "^2.0.6",
         "@titaniumnetwork-dev/ultraviolet": "^3.1.5",
         "@tomphttp/bare-server-node": "^2.0.3",
+        "axios": "^1.7.2",
         "babel": "^6.23.0",
         "express": "^4.19.2",
         "helmet": "^7.1.0",
