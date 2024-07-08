@@ -11,22 +11,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20.8.0'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
-    - name: Install dependencies
+      - name: Install dependencies
         run: npm install
 
-    - name: Build project
-      run: npm run build
+      - name: Check if server is already running
+        id: check-server
+        run: |
+          if lsof -Pi :8080 -sTCP:LISTEN -t >/dev/null ; then
+            echo "Server is already running"
+            exit 0
+          else
+            echo "Server is not running"
+            exit 1
+          fi
 
-    - name: Start server and run tests
-       run: |
-        npm run start-test-server
-        sleep 10 # Wait for the server to start
-        npm run test-400
+      - name: Start server if not already running
+        if: steps.check-server.outcome == 'failure'
+        run: npm run start-test-server
+
+      - name: Wait for server to start
+        if: steps.check-server.outcome == 'failure'
+        run: sleep 30 
+
+      - name: Test server response
+        run: npm run test-400
+
+      - name: Stop server after testing
+        if: steps.check-server.outcome == 'failure'
+        run: pkill node || true 
