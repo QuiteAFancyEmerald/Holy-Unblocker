@@ -1,60 +1,35 @@
 import pkg from "./routes.mjs";
 import { existsSync, readFileSync } from "fs";
+export { paintSource, tryReadFile };
 const {
-  cookingInserts,
-  vegetables,
-  charRandom,
-  splashRandom,
-  cacheBustList,
-  text404,
-} = pkg;
-export { insertText, paintSource, tryReadFile };
-
-/*
-//  Try this instead of the .replace method. Might be more performant.
-//  Will edit str by replacing all matches of lis with newText.
-//  Usage: insertText(['<Example1>', '<Example2>'],
-//             '<Example1> Big Giant Paragraph <Example2> Smol Paragraph',
-//             stringOrFunctionToGenerateNewText);
-*/
-const insertText = (lis, str, newText) => {
-  let position;
-
-//  The lis argument should be a list of strings containing placeholders.
-//  Ensure lis is formatted as a list, and loop through each of the
-//  placeholder strings.
-  for (let placeholder of [].concat(lis)) {
-//      Find all matches of a placeholder string and insert new text there.
-    while ((position = str.indexOf(placeholder)) != -1)
-      str =
-        str.slice(0, position) +
-        (typeof newText == "function" ? newText() : newText) +
-        str.slice(position + placeholder.length);
-  }
-  return str;
-};
+    cookingInserts,
+    vegetables,
+    charRandom,
+    splashRandom,
+    cacheBustList,
+    text404,
+  } = pkg;
 
 //  Below are lots of function definitions used to obfuscate the website.
 //  This makes the website harder to properly categorize, as its source code
 //  changes with each time it is loaded.
 const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
-  charset = ["&#173;", "&#8203;", "&shy;", "<wbr>"],
+  charset = /&#173;|&#8203;|&shy;|<wbr>/gi,
   getRandomChar = randomListItem(charRandom),
-  insertCharset = (str) => insertText(charset, str, getRandomChar),
+  insertCharset = (str) => str.replace(charset, getRandomChar),
   getRandomSplash = randomListItem(splashRandom),
-  hutaoInsert = (str) => insertText("<!--HUTAOWOA-->", str, getRandomSplash),
+  hutaoInsert = (str) => str.replaceAll("<!--HUTAOWOA-->", getRandomSplash),
   getCookingText = () =>
     `<span style="display:none" data-fact="${randomListItem(vegetables)()}">${randomListItem(cookingInserts)()}</span>`,
   insertCooking = (str) =>
-    insertText(
+    str.replaceAll(
       "<!-- IMPORTANT-HUTAOCOOKINGINSERT-DONOTDELETE -->",
-      str,
       getCookingText
     ),
 //  This one isn't for obfuscation; it's just for dealing with cache issues.
   cacheBusting = (str) => {
     for (let item of Object.entries(cacheBustList))
-      str = insertText(item[0], str, item[1]);
+      str = str.replaceAll(item[0], item[1]);
     return str;
   },
 //  Apply the final obfuscation changes to an entire file.

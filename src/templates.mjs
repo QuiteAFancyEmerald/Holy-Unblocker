@@ -1,4 +1,4 @@
-import { insertText, tryReadFile } from "./randomization.mjs";
+import { tryReadFile } from "./randomization.mjs";
 import path from "path";
 export { loadTemplates as default };
 
@@ -22,17 +22,15 @@ const header = tryReadFile(
   settings = tryReadFile(
     path.normalize(__dirname + "/views/pages/misc/deobf/settings.html")
   ),
-  loadTemplates = (str) => {
-    str = insertText("<!--HEADER-->", str, header);
-    str = insertText("<!--FOOTER-->", str, footer);
+  loadTemplates = (str) =>
+    str.replace("<!--HEADER-->", header)
+        .replace("<!--FOOTER-->", footer)
 
     //  Used only on docs.html
-    str = insertText("<!--DOCS-->", str, documentation);
+        .replace("<!--DOCS-->", documentation)
     //  Used only on faq.html
-    str = insertText("<!--FAQ-->", str, faq);
+        .replace("<!--FAQ-->", faq)
     //  Used only on terms.html
-    str = insertText("<!--TOS-->", str, terms);
-    //  Used only on csel.html
-    str = insertText("<!--SETTINGS-->", str, settings);
-    return str;
-  };
+        .replace("<!--TOS-->", str, terms)
+    //  Used only on header.html
+        .replace("<!--SETTINGS-->", str, settings);
