@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Start server if not already running
+      - name: Start server
         run: npm run start-test-server
 
       - name: Test server response

@@ -9,7 +9,7 @@
         "build": "npm run start",
         "test": "npm run test-400",
         "start-test-server": "node backend.js &",
-        "test-400": "curl -s -o /dev/null -w '%{http_code}' http://localhost:8080/ | grep 400"
+        "test-400": "curl -s -o /dev/null -w '%{http_code}' http://localhost:8080/ | ( grep -q 400 || exit 1 )"
     },
     "keywords": [
         "proxy",
