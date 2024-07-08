@@ -145,6 +145,10 @@ img {
   text-align: center;
 }
 
+a:not(.bluelink) {
+  color: #ebb5b9;
+}
+
 a.bluelink {
   color: var(--cyan);
   text-decoration: inherit;
@@ -285,7 +289,7 @@ details[open] summary {
   font-weight: 700;
   letter-spacing: 1px;
   text-decoration: none;
-  color: var(--nord6);
+  color: var(--nord6) !important;
 }
 
 .logo {
@@ -330,7 +334,7 @@ details[open] summary {
   margin: 0;
   display: flex; /* Ensure it stays horizontal */
   align-items: center; /* Align items vertically */
-  color: var(--nord15) !important;
+  color: #ebb5b9 !important;
 }
 
 .navbar-1 > li {
@@ -581,7 +585,7 @@ details[open] summary {
 .startbutton {
   margin: 25px;
   background: var(--nord15);
-  color: var(--nord4);
+  color: var(--nord4) !important;
 }
 
 .fancybutton {
@@ -590,7 +594,7 @@ details[open] summary {
   padding: 10px 12px;
   border-radius: 8px;
   background-color: var(--nord0);
-  color: var(--nord4);
+  color: var(--nord4) !important;
   margin: 5px 10px;
   transition: 0.3s ease-in-out;
   -webkit-transition: 0.3s ease-in-out;
