@@ -7,9 +7,9 @@
     "scripts": {
         "start": "node backend.js",
         "build": "npm run start",
-        "test": "npm run test-400",
+        "test": "npm run test-200",
         "start-test-server": "node backend.js &",
-        "test-400": "node test.js"
+        "test-200": "node test.js"
     },
     "keywords": [
         "proxy",

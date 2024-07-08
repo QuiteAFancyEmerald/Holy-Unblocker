@@ -26,7 +26,7 @@ jobs:
         run: npm run start-test-server
 
       - name: Test server response
-        run: npm run test-400
+        run: npm run test-200
 
       - name: Stop server after testing
         run: pkill node || true 
