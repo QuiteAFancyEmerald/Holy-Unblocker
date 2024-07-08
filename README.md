@@ -22,16 +22,13 @@ Also has a good amount of locally hosted games featured on the site.
 - Game library with moderately decent titles
 - Has frequent support articles for issues relating to the various proxy instances
 
+<img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.1.0-preview.png"></img>
+
 #### You can support Holy Unblocker by starring the repository!
 
 Read below for information if the official site is blocked or for obtaining more links. Can't deploy using any of the free options below? Check out Railway or look into cheap, paid VPS hosting solutions.
 
-#### Where can I find the games for this repo? (404 errors, etc.)
-Due to piracy concerns, size, etc. this has been moved over <a href="https://github.com/QuiteAFancyEmerald/HU-Archive">here</a>. EmuLibrary is not featured in the public version.
-
 **Be sure to join Titanium Network's Discord for more official site links:** <a href="https://discord.gg/unblock">https://discord.gg/unblock</a>
-
-<img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.1.0-preview.png"></img>
 
 ## Deploy Holy Unblocker
 
@@ -48,26 +45,6 @@ Due to piracy concerns, size, etc. this has been moved over <a href="https://git
 [![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/QuiteAFancyEmerald/Holy-Unblocker-Old&branch=master&name=HolyUnblocker&run_command=npm%start)
 </details>
 
-### Why are official domains now numbered? Is this project maintained again?
-Yes, this project is active again for LTS support! However, the approach is now much simpler to ensure functionality: traffic will be focused on a single domain. More than ever, this project serves as a proof of concept for the brave souls willing to innovate in the web proxy service space.
-
-<details><summary>Former Closing Message (Original - 2022)</summary>
-
-This isn’t the greatest announcement sorry. After lots of thought and severe hesitation I’m shutting down Holy Unblocker and leaving TN. It's just been something that I’ve been super conflicted with for months hence the lack of updates and the massive gaps that happened last year. I just didn’t want to throw away a project that I passionately enjoyed and spent time on while making amazing friends and meeting epic devs here. I could go on forever for who these people are but ima like leave it here. They know who they are :D
-
-The main change of thought is that I’m finally just putting an end right now due to 1) the lack of motivation 2) the community is NOT the greatest at time and not the nicest at times (have to put that out here) 3) the future doesn’t look so good for HU/TN as a project.
-
-Some things I’ll be keeping secret since there are more reasons to this choice unless otherwise for those who don’t find this enough information. Good friends here will know that I’ve been super stressed about this choice for months now. Also regardless a good motivator for this choice is the fact that I’ll be graduating soon.
-
-It’s possible that I may continue/come back for this in the future or keep it on GitHub only. I leave this here because even now I am still doubting myself about this change. But for now I’d check out other proxy sites like Incognito (Duce DOES a ton of updates frequently and he is the creator/developer of Ultraviolet so give him some love) :yayy_hopi: 
-
-Check out his Patreon also! For current HU patrons you will not be billed next month and the HU Patreon will be archived so head over to Duce’s patron so he can purchase more domains for Incognito.
-
-With love <3
-Emerald :HuTaoHype:
-
-</details>
-
 ## Table of contents:
 
 - [Setup](#how-to-setup)
@@ -78,7 +55,6 @@ Emerald :HuTaoHype:
     - [Future Additions](#future-additions)
     - [Beginner's Explanation](#vauge-explanation-for-beginners-with-external-proxies-and-hosting)
       - [Hosting Providers](#list-of-some-good-hosting-options)
-      - [Heroku Setup](#heroku-steps)
       - [Domain Setup](#freenomdomain-steps)
       - [Cloudflare Setup](#cloudflare-steps)
       - [Workspace Configurations](#workspace-configurations)
@@ -251,6 +227,9 @@ Use the same steps above by running `npm install` in your repository and adding 
 <details>
 <summary>Quick FAQ</summary>
 
+#### Where can I find the games for this repo? (404 errors, etc.)
+Due to piracy concerns, size, etc. this has been moved over <a href="https://github.com/QuiteAFancyEmerald/HU-Archive">here</a>. EmuLibrary is not featured in the public version.
+
 **Why is the site I am on not working correctly or having CAPTCHA errors?**
 
 Captcha support is currently not available on all of the current proxies sadly. Therefore some sites may not work with any of the sites. Read below for issues with links on sites.
@@ -262,6 +241,27 @@ When this happens you may either switch sites to fix the error or wait a bit. So
 If you still have any questions feel free to ask them in the discord linked here.
 
 </details>
+
+### Why are official domains now numbered? Is this project maintained again?
+Yes, this project is active again for LTS support! However, the approach is now much simpler to ensure functionality: traffic will be focused on a single domain. More than ever, this project serves as a proof of concept for the brave souls willing to innovate in the web proxy service space.
+
+<details><summary>Former Closing Message (Original - 2022)</summary>
+
+This isn’t the greatest announcement sorry. After lots of thought and severe hesitation I’m shutting down Holy Unblocker and leaving TN. It's just been something that I’ve been super conflicted with for months hence the lack of updates and the massive gaps that happened last year. I just didn’t want to throw away a project that I passionately enjoyed and spent time on while making amazing friends and meeting epic devs here. I could go on forever for who these people are but ima like leave it here. They know who they are :D
+
+The main change of thought is that I’m finally just putting an end right now due to 1) the lack of motivation 2) the community is NOT the greatest at time and not the nicest at times (have to put that out here) 3) the future doesn’t look so good for HU/TN as a project.
+
+Some things I’ll be keeping secret since there are more reasons to this choice unless otherwise for those who don’t find this enough information. Good friends here will know that I’ve been super stressed about this choice for months now. Also regardless a good motivator for this choice is the fact that I’ll be graduating soon.
+
+It’s possible that I may continue/come back for this in the future or keep it on GitHub only. I leave this here because even now I am still doubting myself about this change. But for now I’d check out other proxy sites like Incognito (Duce DOES a ton of updates frequently and he is the creator/developer of Ultraviolet so give him some love) :yayy_hopi: 
+
+Check out his Patreon also! For current HU patrons you will not be billed next month and the HU Patreon will be archived so head over to Duce’s patron so he can purchase more domains for Incognito.
+
+With love <3
+Emerald :HuTaoHype:
+
+</details>
+
 
 ## More Information
 This project is maintained by the Holy Unblocker LTS team and is an official flagship Titanium Network web proxy site.
