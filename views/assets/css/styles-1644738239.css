@@ -730,6 +730,12 @@ details[open] summary {
 
 /* Homepage Hero */
 
+.potato {
+  margin-top: 30px;
+  opacity: 0.5;
+  width: 350px !important;
+}
+
 .splashstroke {
   display: inline-block;
   position: relative;
