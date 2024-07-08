@@ -53,7 +53,7 @@ Due to piracy concerns, size, etc. this has been moved over <a href="https://git
 
 Note: EmuLibrary is not featured in the public version.
 
-Official Site: TO BE UPDATED
+Official Site: 
 
 **Be sure to join Titanium Network's Discord for more official site links:** <a href="https://discord.gg/unblock">https://discord.gg/unblock</a>
 
