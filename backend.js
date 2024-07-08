@@ -1,4 +1,3 @@
-(async() => {
-    await
-    import ('./src/server.mjs');
+(async () => {
+  await import("./src/server.mjs");
 })();

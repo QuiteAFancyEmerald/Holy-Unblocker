@@ -1,6 +1,13 @@
-import pkg from './routes.mjs';
-import { existsSync, readFileSync } from 'fs';
-const { cookingInserts, vegetables, charRandom, splashRandom, cacheBustList, text404 } = pkg;
+import pkg from "./routes.mjs";
+import { existsSync, readFileSync } from "fs";
+const {
+  cookingInserts,
+  vegetables,
+  charRandom,
+  splashRandom,
+  cacheBustList,
+  text404,
+} = pkg;
 export { insertText, paintSource, tryReadFile };
 
 /*
@@ -11,62 +18,51 @@ export { insertText, paintSource, tryReadFile };
 //             stringOrFunctionToGenerateNewText);
 */
 const insertText = (lis, str, newText) => {
-    let position;
+  let position;
 
-//  The lis argument should be a list of strings containing placeholders.
-//  Ensure lis is formatted as a list, and loop through each of the
-//  placeholder strings.
-    for (let placeholder of [].concat(lis)) {
-//      Find all matches of a placeholder string and insert new text there.
-        while ((position = str.indexOf(placeholder)) >= 0)
-            str = str.slice(0, position)
-                + (typeof newText == 'function' ? newText() : newText)
-                + str.slice(position + placeholder.length);
-    }
-    return str;
+  //  The lis argument should be a list of strings containing placeholders.
+  //  Ensure lis is formatted as a list, and loop through each of the
+  //  placeholder strings.
+  for (let placeholder of [].concat(lis)) {
+    //      Find all matches of a placeholder string and insert new text there.
+    while ((position = str.indexOf(placeholder)) >= 0)
+      str =
+        str.slice(0, position) +
+        (typeof newText == "function" ? newText() : newText) +
+        str.slice(position + placeholder.length);
+  }
+  return str;
 };
-
-
 
 //  Below are lots of function definitions used to obfuscate the website.
 //  This makes the website harder to properly categorize, as its source code
 //  changes with each time it is loaded.
-const randomListItem = lis => () => lis[Math.random() * lis.length | 0],
-
-charset = ['&#173;', '&#8203;', '&shy;', '<wbr>'],
-getRandomChar = randomListItem(charRandom),
-insertCharset = str => insertText(
-    charset,
-    str,
-    getRandomChar
-),
-
-getRandomSplash = randomListItem(splashRandom),
-hutaoInsert = str => insertText(
-    '<!--HUTAOWOA-->',
-    str,
-    getRandomSplash
-),
-
-getCookingText = () => `<span style="display:none" data-fact="${randomListItem(vegetables)()}">${randomListItem(cookingInserts)()}</span>`,
-insertCooking = str => insertText(
-    '<!-- IMPORTANT-HUTAOCOOKINGINSERT-DONOTDELETE -->',
-    str,
-    getCookingText
-),
-
-//  This one isn't for obfuscation; it's just for dealing with cache issues.
-cacheBusting = str => {
+const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
+  charset = ["&#173;", "&#8203;", "&shy;", "<wbr>"],
+  getRandomChar = randomListItem(charRandom),
+  insertCharset = (str) => insertText(charset, str, getRandomChar),
+  getRandomSplash = randomListItem(splashRandom),
+  hutaoInsert = (str) => insertText("<!--HUTAOWOA-->", str, getRandomSplash),
+  getCookingText = () =>
+    `<span style="display:none" data-fact="${randomListItem(vegetables)()}">${randomListItem(cookingInserts)()}</span>`,
+  insertCooking = (str) =>
+    insertText(
+      "<!-- IMPORTANT-HUTAOCOOKINGINSERT-DONOTDELETE -->",
+      str,
+      getCookingText
+    ),
+  //  This one isn't for obfuscation; it's just for dealing with cache issues.
+  cacheBusting = (str) => {
     for (let item of Object.entries(cacheBustList))
-        str = insertText(item[0], str, item[1]);
+      str = insertText(item[0], str, item[1]);
     return str;
-},
-
-//  Applies the final obfuscation changes to an entire file.
-paintSource = str => insertCharset(hutaoInsert(insertCooking(cacheBusting(str)))),
-
-//  Grabs the text content of a file.
-tryReadFile = file => existsSync(file) ? readFileSync(file, 'utf8') : text404;
+  },
+  //  Applies the final obfuscation changes to an entire file.
+  paintSource = (str) =>
+    insertCharset(hutaoInsert(insertCooking(cacheBusting(str)))),
+  //  Grabs the text content of a file.
+  tryReadFile = (file) =>
+    existsSync(file) ? readFileSync(file, "utf8") : text404;
 
 /*
 //  All of this is now old code.
