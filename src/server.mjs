@@ -94,10 +94,13 @@ app.use(helmet({
 //  Query strings like /?j are converted into paths like /views/hidden.html
 //  back here. Which query string converts to what is defined in routes.mjs.
 router.get('/', async (req, res) => res.send(paintSource(loadTemplates(tryReadFile(
-//      Return the index page if the query is not found, as there is no
-//      undefined page in routes.mjs. Also sets it as the default page.
-        path.join(__dirname, 'views', pages[Object.keys(req.query)[0]] || pages.index)
-    )))));
+    path.join(__dirname,
+        'views',
+//      Return the error page if the query is not found, as there is no
+//      undefined page in routes.mjs. Also set index as the default page.
+        '/?'.indexOf(req.url) ? pages[Object.keys(req.query)[0]] || text404 : pages.index
+    )
+)))));
 
 
 app.use(router);
