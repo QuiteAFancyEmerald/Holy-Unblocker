@@ -330,7 +330,7 @@ details[open] summary {
   margin: 0;
   display: flex; /* Ensure it stays horizontal */
   align-items: center; /* Align items vertically */
-  color: var(--nord15);
+  color: var(--nord15) !important;
 }
 
 .navbar-1 > li {
