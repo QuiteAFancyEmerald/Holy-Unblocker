@@ -1,6 +1,6 @@
 /* -----------------------------------------------
 /* Authors: OlyB
-/* MIT license: http://opensource.org/licenses/MIT
+/* GNU Affero General Public License v3.0: https://www.gnu.org/licenses/agpl-3.0.en.html
 /* Settings Menu
 /* ----------------------------------------------- */
 
