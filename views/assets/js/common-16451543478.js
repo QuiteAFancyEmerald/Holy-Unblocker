@@ -265,9 +265,6 @@ window.goProx = {
     rammerhead: async function (url, stealth) {
         goToUrl(location.origin + await RammerheadEncode(omnibox(url)), stealth);
     },
-    womginx: function (url, stealth) {
-        goToUrl(location.protocol + "//a." + getDomain() + "/main/" + omnibox(url), stealth);
-    },
     searx: function (stealth) {
         goToUrl(location.protocol + "//c." + getDomain() + "/engine/", stealth);
     },

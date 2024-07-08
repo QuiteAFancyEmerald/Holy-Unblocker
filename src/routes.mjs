@@ -30,7 +30,6 @@ const pages = {
     /* Proxies */
     'q': 'pages/proxnav/ultraviolet.html',
     'rh': 'pages/proxnav/rammerhead.html',
-    'w': 'pages/proxnav/womginx.html',
     /* Proxy Presets */
     'sx': 'pages/proxnav/preset/spotify.html',
     'y': 'pages/proxnav/preset/youtube.html',
