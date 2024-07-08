@@ -58,4 +58,4 @@ Allow: /?g
 Allow: /?c
 Allow: /?in
 
-Sitemap: https://holyuboffical.net/sitemap.xml
+Sitemap: https://holyunblockerlts.net/sitemap.xml

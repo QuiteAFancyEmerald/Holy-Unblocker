@@ -53,27 +53,28 @@ Due to piracy concerns, size, etc. this has been moved over <a href="https://git
 
 Note: EmuLibrary is not featured in the public version.
 
-Official Site: TO BE UPDATED
+Official Site: 
 
 **Be sure to join Titanium Network's Discord for more official site links:** <a href="https://discord.gg/unblock">https://discord.gg/unblock</a>
 
 Simply do `%proxy hu` in `#proxy-commands` for more Holy Unblocker links on the TN Discord server.
 
-<img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v5.0.0-preview.png"></img>
+<img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.1.0-preview.png"></img>
 
-### Deploy Holy Unblocker
+## Deploy Holy Unblocker
 
-[![Deploy to Heroku](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/heroku.svg)](https://heroku.com/deploy/?template=https://github.com/titaniumnetwork-dev/Holy-Unblocker)
-[![Run on Replit](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/replit.svg)](https://replit.com/github/titaniumnetwork-dev/Holy-Unblocker)
-[![Remix on Glitch](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/glitch.svg)](https://glitch.com/edit/#!/import/github/titaniumnetwork-dev/Holy-Unblocker)
-[![Deploy to Azure](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/azure.svg)](https://deploy.azure.com/?repository=https://github.com/titaniumnetwork-dev/Holy-Unblocker)
-[![Deploy to IBM Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/ibmcloud.svg)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/titaniumnetwork-dev/Holy-Unblocker)
-[![Deploy to Amplify Console](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/amplifyconsole.svg)](https://console.aws.amazon.com/amplify/home#/deploy?repo=https://github.com/titaniumnetwork-dev/Holy-Unblocker)
-[![Run on Google Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/googlecloud.svg)](https://deploy.cloud.run/?git_repo=https://github.com/titaniumnetwork-dev/Holy-Unblocker)
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
+[![Run on Replit](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/replit.svg)](https://replit.com/github/QuiteAFancyEmerald/Holy-Unblocker)
+[![Deploy to Azure](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/azure.svg)](https://deploy.azure.com/?repository=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
+[![Deploy to IBM Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/ibmcloud.svg)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
+[![Deploy to Amplify Console](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/amplifyconsole.svg)](https://console.aws.amazon.com/amplify/home#/deploy?repo=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
+[![Run on Google Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/googlecloud.svg)](https://deploy.cloud.run/?git_repo=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2Ftitaniumnetwork-dev%2FHoly-Unblocker)
+<details><summary>More Deployments</summary>
 
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2FQuiteAFancyEmerald%2FHoly-Unblocker)
 [![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/QuiteAFancyEmerald/Holy-Unblocker-Old&branch=master&name=HolyUnblocker&run_command=npm%start)
+</details>
 
 ## Table of contents:
 
@@ -129,9 +130,8 @@ This website is hosted locally with Ultraviolet and Rammerhead built-in.
 - `emulators.html`: Emulator navigation page, using <a href="https://github.com/BinBashBanana/webretro">webretro</a>.
 - `emulibrary.html`: Games page for emulated games (not included in public release)
 - `flash.html`: Games page for flash games, credits given to @BinBashBanana and Titanium Network for its assets.
-- `corrosion.html`: Corrosion Proxy page which features Corrosion hosted locally but can be configured to redirect to an external instance.
-- `womginx.html`: Womginx Proxy page. Script links to a subdomain for Womginx, a highly fast proxy with reCaptcha and discord support.
-- `palladium.html`: Palladium Proxy page.
+- `ultraviolet.html`: TODO
+- `rammerhead.html`: TODO
 - `youtube.html`: An proxied version of Youtube running off of the locally hosted Corrosion.
 - `discord.html`: Hub for the Discord proxy.
 - `reddit.html`: Hub for the Reddit proxy.
@@ -154,11 +154,32 @@ This website is hosted locally with Ultraviolet and Rammerhead built-in.
 - `gnav/*.js` are used for navigation on the games pages.
 
 ## Future Additions
-- Expansive game library
-- Various parity changes.
+This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above.
+
+### Code Cleanup
+
+  - [ ] Remove the timestamps attached to the end of the JS file names.
+  - [ ] Remove all current obfuscation in the source code. It needs to be dynamically obfuscated if anything, or not obfuscated at all. This option will be a config option on the server side before rendering with Express for a performance focus. Meta elements will have an additonal attribute indicating if they should be moved. This is to ensure a SEO source can be served by config or a source focused on pure censorship evasion.
+  - [ ] Optimize the stylesheets and the HTML layout. Add more proper commenting and redivide the code so that it's less hard on the eyes.
+  - [ ] Optimize the JS. This time it won't be in one line and will be somewhat thoroughly commented.
+  - [ ] Restructure navigation scripts to ensure updated proxy functionality is sanitized and effective
+  - [x] Particles.js automatically adjusting per display size
+
+### Proxy Functionality
+  - [x] Ensure Ultraviolet is updated to support bare-mux and wisp - done
+  - [x] Add Rammerhead support - done
+  - [ ] Fix slow Ultraviolet speeds despite being local; something on the backend??
+
+### Site Redesign
+  - [x] Landing Page - done
+  - [ ] Web Proxies page
+  - [ ] Application page
+  - [ ] Games Libray page
+  - [x] Footer Design - done
+  - [x] Header Design
 
 ## Vauge Explanation for Beginners With External Proxies and Hosting
-You will first want to host your proxies locally or externally. 
+You will first want to host your proxies locally or externally. OUTDATED
 
 #### List of some good hosting options:
 - <a href="#">Oracle Cloud</a> (Free, Paid, Dedicated)
@@ -255,20 +276,26 @@ This project is maintained by Quite A Fancy Emerald with massive help from BinBa
 
 View the official website for more detail and credits.
 
-### Proxy Sources:
+### Web Proxy Sources:
 This project currently uses Ultraviolet, Wisp, Womginx, and Rammerhead, linked below.
 
 - <a href="https://github.com/titaniumnetwork-dev/Ultraviolet">Ultraviolet</a>
 - <a href="https://github.com/binary-person/womginx">Womginx</a>
 - <a href="https://github.com/binary-person/rammerhead">Rammerhead</a>
 - <a href="https://github.com/MercuryWorkshop/wisp-server-node">Wisp</a>
+- <a href="https://github.com/MercuryWorkshop/bare-mux">Bare-Mux</a>
+- <a href="https://github.com/tomphttp/bare-server-node">TOMP Bare Server</a>
 
-### Other:
 
-- <a href="https://github.com/vibedivide/vibeOS">vibeOS</a>
+### Other Dependencies:
+
+- <a href="https://github.com/tsparticles/tsparticles">tsparticles</a>
+- <a href="https://github.com/helmetjs/helmet">Helmet for Express</a>
 - <a href="https://github.com/BinBashBanana/webretro">webretro</a>
 - <a href="https://ruffle.rs/">Ruffle</a>
-- <a href="https://github.com/BlaNKtext/webosu">webosu</a>
+- <a href="https://github.com/michalsnik/aos">AOS</a>
+- <a href="https://github.com/nordtheme">Nord Theme</a>
+- <a href="https://fontawesome.com/">Font Awesome</a>
 
 ### Notable Mentions:
 

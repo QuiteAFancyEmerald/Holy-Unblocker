@@ -1,5 +1,5 @@
 {
-    "title": "HU OSS",
+    "title": "HU LTS",
     "port": "8080",
     "ssl": false,
     "ws": true,

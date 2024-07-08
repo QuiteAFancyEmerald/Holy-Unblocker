@@ -1,4 +1,4 @@
-This will be our nonexhaustive todo list for revamping the Holy Unblocker project.
+This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above.
 
 ## Code Cleanup
 
