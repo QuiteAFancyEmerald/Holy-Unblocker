@@ -8,7 +8,47 @@ This project serves mostly as a proof of concept for the ideal clientless soluti
 Works with a large number of sites, including YouTube, Discord, and more!
 Also has a good amount of locally hosted games featured on the site.
 
-## Why are official domains now numbered? Is this project maintained again?
+#### Supports
+- Youtube.com
+- Discord.com
+- Google.com
+- Reddit.com
+- Bing.com
+- And more sites!
+
+#### Features:
+- Tab customization using the Options menu for improved stealth 
+- Considerable variety with the open selection of proxy types 
+- Game library with moderately decent titles
+- Has frequent support articles for issues relating to the various proxy instances
+
+#### You can support Holy Unblocker by starring the repository!
+
+Read below for information if the official site is blocked or for obtaining more links. Can't deploy using any of the free options below? Check out Railway or look into cheap, paid VPS hosting solutions.
+
+#### Where can I find the games for this repo? (404 errors, etc.)
+Due to piracy concerns, size, etc. this has been moved over <a href="https://github.com/QuiteAFancyEmerald/HU-Archive">here</a>. EmuLibrary is not featured in the public version.
+
+**Be sure to join Titanium Network's Discord for more official site links:** <a href="https://discord.gg/unblock">https://discord.gg/unblock</a>
+
+<img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.1.0-preview.png"></img>
+
+## Deploy Holy Unblocker
+
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
+[![Run on Replit](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/replit.svg)](https://replit.com/github/QuiteAFancyEmerald/Holy-Unblocker)
+[![Deploy to Azure](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/azure.svg)](https://deploy.azure.com/?repository=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
+[![Deploy to IBM Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/ibmcloud.svg)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
+[![Deploy to Amplify Console](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/amplifyconsole.svg)](https://console.aws.amazon.com/amplify/home#/deploy?repo=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
+[![Run on Google Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/googlecloud.svg)](https://deploy.cloud.run/?git_repo=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
+
+<details><summary>More Deployments</summary>
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2FQuiteAFancyEmerald%2FHoly-Unblocker)
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/QuiteAFancyEmerald/Holy-Unblocker-Old&branch=master&name=HolyUnblocker&run_command=npm%start)
+</details>
+
+### Why are official domains now numbered? Is this project maintained again?
 Yes, this project is active again for LTS support! However, the approach is now much simpler to ensure functionality: traffic will be focused on a single domain. More than ever, this project serves as a proof of concept for the brave souls willing to innovate in the web proxy service space.
 
 <details><summary>Former Closing Message (Original - 2022)</summary>
@@ -26,54 +66,6 @@ Check out his Patreon also! For current HU patrons you will not be billed next m
 With love <3
 Emerald :HuTaoHype:
 
-</details>
-
-### You can support Holy Unblocker by starring the repository!
-
-Read below for information if the official site is blocked or for obtaining more links.
-
-Can't deploy using any of the free options below? Check out Railway or look into cheap, paid VPS hosting solutions.
-
-#### Where can I find the games for this repo? (404 errors, etc.)
-Due to piracy concerns, size, etc. this has been moved over <a href="https://github.com/QuiteAFancyEmerald/HU-Archive">here</a>.
-
-#### Supports
-- Youtube.com
-- Discord.com
-- Google.com
-- Reddit.com
-- Bing.com
-- And more sites!
-
-#### Features:
-- Tab customization using the Options menu for improved stealth 
-- Considerable variety with the open selection of proxy types 
-- Game library with moderately decent titles
-- Has frequent support articles for issues relating to the various proxy instances
-
-Note: EmuLibrary is not featured in the public version.
-
-Official Site: 
-
-**Be sure to join Titanium Network's Discord for more official site links:** <a href="https://discord.gg/unblock">https://discord.gg/unblock</a>
-
-Simply do `%proxy hu` in `#proxy-commands` for more Holy Unblocker links on the TN Discord server.
-
-<img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.1.0-preview.png"></img>
-
-## Deploy Holy Unblocker
-
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
-[![Run on Replit](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/replit.svg)](https://replit.com/github/QuiteAFancyEmerald/Holy-Unblocker)
-[![Deploy to Azure](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/azure.svg)](https://deploy.azure.com/?repository=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
-[![Deploy to IBM Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/ibmcloud.svg)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
-[![Deploy to Amplify Console](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/amplifyconsole.svg)](https://console.aws.amazon.com/amplify/home#/deploy?repo=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
-[![Run on Google Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/googlecloud.svg)](https://deploy.cloud.run/?git_repo=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
-
-<details><summary>More Deployments</summary>
-
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2FQuiteAFancyEmerald%2FHoly-Unblocker)
-[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/QuiteAFancyEmerald/Holy-Unblocker-Old&branch=master&name=HolyUnblocker&run_command=npm%start)
 </details>
 
 ## Table of contents:
@@ -113,6 +105,8 @@ This website is hosted locally with Ultraviolet and Rammerhead built-in.
 
 
 ## Structure
+<details><summary>Web Pages</summary>
+
 - `index.html`: The homepage of the site.
 - `404.html`: The 404 page.
 - `error.html`: Other errors that are not 404.
@@ -135,6 +129,7 @@ This website is hosted locally with Ultraviolet and Rammerhead built-in.
 - `youtube.html`: An proxied version of Youtube running off of the locally hosted Corrosion.
 - `discord.html`: Hub for the Discord proxy.
 - `reddit.html`: Hub for the Reddit proxy.
+</details>
 
 ### Structure Information
 - `/views/`: The physical site base of Holy Unblocker goes here where static assets are served.
@@ -269,7 +264,7 @@ If you still have any questions feel free to ask them in the discord linked here
 </details>
 
 ## More Information
-This project is maintained by Quite A Fancy Emerald with massive help from BinBashBanana (OlyB) and is an official flagship Titanium Network web proxy site.
+This project is maintained by the Holy Unblocker LTS team and is an official flagship Titanium Network web proxy site.
 
 - <a href="https://github.com/titaniumnetwork-dev/">https://github.com/titaniumnetwork-dev/</a>
 - <a href="https://titaniumnetwork.org/">https://titaniumnetwork.org/</a>
@@ -300,5 +295,3 @@ This project currently uses Ultraviolet, Wisp, Womginx, and Rammerhead, linked b
 ### Notable Mentions:
 
 - <a href="https://soyoustart.com/">SoYouStart / OVH</a> (Hosting Provider)
-
-Thanks :D
