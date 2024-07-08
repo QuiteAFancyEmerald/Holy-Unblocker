@@ -201,7 +201,7 @@ This is an example of DNS records involving Heroku. Self-hosting will require `A
 As stated previously, Holy Unblocker is hosted locally with Ultraviolet.
 
 #### Freenom/Domain Steps
-For beginners, Freenom is a good provider for obtaining domains for free. However the catch is that you can only use properly "Freenom" domains for free being .cf, .ml, .gq, ga and .tk. However these can be blocked rather easily.
+For beginners, Freenom is a good provider for obtaining domains for free. However, Freenom only provides their TLDs (`.cf`, `.ml`, `.gq`, `.ga`, and `.tk`) for free, which can be easily blocked.
 
 - Get some Freenom domains then add them to your Heroku instance (Personal > [App Name] > Settings > Domains)
 Add a domain for both `www.example.cf` and `example.cf` with .cf being interchangeable with other Freenom domain names.

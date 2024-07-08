@@ -1016,7 +1016,7 @@ details[open] summary {
   height: 100%;
   background-color: var(--nord1);
   overflow: hidden;
-  display: block;
+  display: none;
   z-index: 1;
 }
 
