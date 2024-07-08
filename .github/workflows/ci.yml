@@ -20,10 +20,13 @@ jobs:
         node-version: '20.8.0'
 
     - name: Install dependencies
-      run: npm install
+        run: npm install
 
     - name: Build project
       run: npm run build
 
-    - name: Run tests
-      run: npm test
+    - name: Start server and run tests
+       run: |
+        npm run start-test-server
+        sleep 10 # Wait for the server to start
+        npm run test-400

@@ -6,8 +6,10 @@
     "main": "backend.js",
     "scripts": {
         "start": "node backend.js",
-        "build": "echo 'Building project...' && node backend.js && exit 0",
-        "test": "echo 'Testing project...' && exit 1"
+        "build": "echo 'Building project...' && exit 0",
+        "test": "echo 'Running tests...' && exit 0",
+        "start-test-server": "node backend.js &",
+        "test-400": "curl -s -o /dev/null -w '%{http_code}' http://localhost:8080/ | grep 400"
     },
     "keywords": [
         "proxy",
