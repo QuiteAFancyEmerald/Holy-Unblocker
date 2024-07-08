@@ -20,4 +20,4 @@ This will be our nonexhaustive todo list for revamping the Holy Unblocker projec
   - [ ] Application page
   - [ ] Games Libray page
   - [x] Footer Design - done
-  - [ ] Header Design
+  - [x] Header Design

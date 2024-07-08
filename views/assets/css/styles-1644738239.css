@@ -8,7 +8,7 @@
 
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");
 @import url("https://fonts.googleapis.com/css?family=Montserrat+Alternates");
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700");
 @import url("/assets/css/fonts.all.min.css");
 
@@ -145,10 +145,6 @@ img {
   text-align: center;
 }
 
-a:not(.bluelink) {
-  color: inherit;
-}
-
 a.bluelink {
   color: var(--cyan);
   text-decoration: inherit;
@@ -263,7 +259,6 @@ details[open] summary {
   animation: pulse 1s;
 }
 
-#header a,
 #footer a {
   text-decoration: inherit;
   color: var(--nord6);
@@ -286,9 +281,11 @@ details[open] summary {
   line-height: 30px;
   white-space: nowrap;
   margin-right: 20px; /* Adjust margin as needed */
-  font-family: "Oswald", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
+  text-decoration: none;
+  color: var(--nord6);
 }
 
 .logo {
@@ -313,6 +310,9 @@ details[open] summary {
   margin: 0;
   display: flex;
   align-items: center; /* Align items vertically */
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .navbar > li {
@@ -330,6 +330,7 @@ details[open] summary {
   margin: 0;
   display: flex; /* Ensure it stays horizontal */
   align-items: center; /* Align items vertically */
+  color: var(--nord15);
 }
 
 .navbar-1 > li {
@@ -338,7 +339,6 @@ details[open] summary {
 
 .navbar-1 > li > a {
   text-decoration: none;
-  color: inherit;
 }
 
 .navbar .dropdown-child {
@@ -581,6 +581,7 @@ details[open] summary {
 .startbutton {
   margin: 25px;
   background: var(--nord15);
+  color: var(--nord4);
 }
 
 .fancybutton {
@@ -589,6 +590,7 @@ details[open] summary {
   padding: 10px 12px;
   border-radius: 8px;
   background-color: var(--nord0);
+  color: var(--nord4);
   margin: 5px 10px;
   transition: 0.3s ease-in-out;
   -webkit-transition: 0.3s ease-in-out;
