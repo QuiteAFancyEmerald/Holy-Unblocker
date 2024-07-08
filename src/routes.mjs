@@ -8,13 +8,12 @@ const insert = JSON.parse(await readFile(new URL('./data.json',
 
 const __dirname = path.resolve();
 
-const text404 = readFileSync(path.normalize(__dirname + '/views/404.html'), 'utf8');
+const text404 = readFileSync(path.normalize(__dirname + '/views/error.html'), 'utf8');
 const pages = {
     'index': 'index.html',
     /* Main */
     'documentation': 'docs.html',
     'faq': 'faq.html',
-    'j': 'hidden.html',
     's': 'pages/frame.html',
     'browse': 'pages/surf.html',
     'credits': 'pages/nav/credits.html',

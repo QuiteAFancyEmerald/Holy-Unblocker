@@ -8,9 +8,6 @@ const header = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/h
 
 footer = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/footer.html')),
 
-//  Never used
-//  description = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/desc.html')),
-
 documentation = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/docs.html')),
 
 faq = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/faq.html')),
@@ -22,9 +19,6 @@ settings = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/setti
 loadTemplates = str => {
     str = insertText('<!--HEADER-->', str, header);
     str = insertText('<!--FOOTER-->', str, footer);
-
-//  Never used
-//  str = insertText('<!--DESC-->', str, description);
 
 //  Used only on docs.html
     str = insertText('<!--DOCS-->', str, documentation);
