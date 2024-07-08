@@ -25,9 +25,6 @@ jobs:
       - name: Start server if not already running
         run: npm run start-test-server
 
-      - name: Wait for server to start
-        run: sleep 30 
-
       - name: Test server response
         run: npm run test-400
 
