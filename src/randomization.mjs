@@ -11,13 +11,12 @@ export { insertText, paintSource, tryReadFile };
 //             stringOrFunctionToGenerateNewText);
 */
 const insertText = (lis, str, newText) => {
-//  The lis argument should be a list of strings containing placeholders.
-//  This will put other relevant argument types, like a string, into a list.
-    lis = [].concat(lis);
-
     let position;
-//  Loop through each of the placeholder strings.
-    for (let placeholder of lis) {
+
+//  The lis argument should be a list of strings containing placeholders.
+//  Ensure lis is formatted as a list, and loop through each of the
+//  placeholder strings.
+    for (let placeholder of [].concat(lis)) {
 //      Find all matches of a placeholder string and insert new text there.
         while ((position = str.indexOf(placeholder)) >= 0)
             str = str.slice(0, position)
