@@ -5,7 +5,8 @@
     "description": "Holy Unblocker is a secure web proxy service with support for many sites.",
     "main": "backend.js",
     "scripts": {
-        "start": "node backend.js"
+        "start": "node backend.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
         "proxy",
