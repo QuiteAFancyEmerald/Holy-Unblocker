@@ -20,19 +20,19 @@ terms = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/tos.html
 settings = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/settings.html')),
 
 loadTemplates = str => {
-    str = insertText("<!--HEADER-->", str, header);
-    str = insertText("<!--FOOTER-->", str, footer);
+    str = insertText('<!--HEADER-->', str, header);
+    str = insertText('<!--FOOTER-->', str, footer);
 
 //  Never used
-//  str = insertText("<!--DESC-->", str, description);
+//  str = insertText('<!--DESC-->', str, description);
 
 //  Used only on docs.html
-    str = insertText("<!--DOCS-->", str, documentation);
+    str = insertText('<!--DOCS-->', str, documentation);
 //  Used only on faq.html
-    str = insertText("<!--FAQ-->", str, faq);
+    str = insertText('<!--FAQ-->', str, faq);
 //  Used only on terms.html
-    str = insertText("<!--TOS-->", str, terms);
+    str = insertText('<!--TOS-->', str, terms);
 //  Used only on csel.html
-    str = insertText("<!--SETTINGS-->", str, settings);
+    str = insertText('<!--SETTINGS-->', str, settings);
     return str;
 };

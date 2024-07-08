@@ -45,15 +45,15 @@ pageIcon = value => {
 
 //  Make a small stylesheet to override a setting from the main stylesheet.
 pageShowAds = () => {
-    let advertising = document.createElement('style');
+    let advertising = document.createElement("style");
     advertising.id = "advertising";
-    advertising.innerText = `.ad { display:block; }`;
+    advertising.innerText = ".ad { display:block; }";
     document.appendChild.bind(document.head || document.body || document.documentElement || document)(advertising);
 },
 
 //  Remove the stylesheet made by the function above, if it exists.
 pageHideAds = () => {
-    (document.getElementById('advertising')||new Text()).remove();
+    (document.getElementById("advertising")||new Text()).remove();
 };
 
 
@@ -65,7 +65,7 @@ readCookie("HBIcon").then(s => (s != undefined) && pageIcon(s));
 readCookie("HBHideAds").then(s => (s != "false") ? pageHideAds() : pageShowAds((document.getElementById("hideads") || {}).checked = 0));
 
 //  All code below is used by the Settings UI in the navigation bar.
-if (document.getElementById('csel')) {
+if (document.getElementById("csel")) {
 
 //  Allow users to set a custom title with the UI.
     document.getElementById("titleform").addEventListener("submit", e => {
@@ -107,7 +107,7 @@ if (document.getElementById('csel')) {
 //  An iframe of the current page is inserted into the new tab.
     document.getElementById("cselab").addEventListener("click", () => {
         let win = window.open();
-        let iframe = win.document.createElement('iframe');
+        let iframe = win.document.createElement("iframe");
         iframe.style = "width: 100%; height: 100%; border: none; overflow: hidden; margin: 0; padding: 0; position: fixed; top: 0; left: 0";
         iframe.src = location.href;
         win.document.body.appendChild(iframe);

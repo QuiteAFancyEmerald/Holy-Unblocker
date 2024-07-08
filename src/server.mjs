@@ -8,10 +8,10 @@ import helmet from 'helmet';
 import http from 'http';
 import createRammerhead from 'rammerhead/src/server/index.js';
 import { createBareServer } from '@tomphttp/bare-server-node';
-import wisp from "wisp-server-node";
-import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
-import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
-import { uvPath } from "@titaniumnetwork-dev/ultraviolet";
+import wisp from 'wisp-server-node';
+import { epoxyPath } from '@mercuryworkshop/epoxy-transport';
+import { baremuxPath } from '@mercuryworkshop/bare-mux/node';
+import { uvPath } from '@titaniumnetwork-dev/ultraviolet';
 
 const config = JSON.parse(await readFile(new URL('./config.json', import.meta.url)));
 const { pages, text404 } = pkg;
@@ -104,9 +104,9 @@ router.get('/', async (req, res) => res.send(paintSource(loadTemplates(tryReadFi
 
 app.use(router);
 app.use(express.static(path.join(__dirname, 'views')));
-app.use("/uv/", express.static(uvPath));
-app.use("/epoxy/", express.static(epoxyPath));
-app.use("/baremux/", express.static(baremuxPath));
+app.use('/uv/', express.static(uvPath));
+app.use('/epoxy/', express.static(epoxyPath));
+app.use('/baremux/', express.static(baremuxPath));
 
 app.disable('x-powered-by');
 
