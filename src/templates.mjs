@@ -8,11 +8,27 @@ const header = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/h
 
 footer = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/footer.html')),
 
-description = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/desc.html')),
+//  Never used
+//  description = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/desc.html')),
+
+documentation = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/docs.html')),
+
+faq = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/faq.html')),
+
+terms = tryReadFile(path.normalize(__dirname + '/views/pages/misc/deobf/tos.html')),
 
 loadTemplates = str => {
     str = insertText("<!--HEADER-->", str, header);
     str = insertText("<!--FOOTER-->", str, footer);
-    str = insertText("<!--DESC-->", str, description);
+
+//  Never used
+//  str = insertText("<!--DESC-->", str, description);
+
+//  Used only on docs.html
+    str = insertText("<!--DOCS-->", str, documentation);
+//  Used only on faq.html
+    str = insertText("<!--FAQ-->", str, faq);
+//  Used only on terms.html
+    str = insertText("<!--TOS-->", str, terms);
     return str;
 };
