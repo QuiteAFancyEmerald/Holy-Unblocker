@@ -105,7 +105,7 @@ router.get("/", async (req, res) =>
                         'views',
 //  Return the error page if the query is not found, as there is no
 //  undefined page in routes.mjs. Also set index as the default page.
-                        '/?'.indexOf(req.url) ? pages[Object.keys(req.query)[0]] || text404 : pages.index
+                        '/?'.indexOf(req.url) ? pages[Object.keys(req.query)[0]] || 'error.html' : pages.index
                     )
                 )
             )
@@ -122,6 +122,7 @@ app.use("/baremux/", express.static(baremuxPath));
 
 app.disable("x-powered-by");
 
+//  Redundant code since 404 is handled elsewhere; left here as insurance.
 app.use((req, res) => {
   res.status(404).send(paintSource(loadTemplates(text404)));
 });
