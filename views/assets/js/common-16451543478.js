@@ -4,66 +4,43 @@
 /* MAIN Holy Unblocker LTS Common Script
 /* ----------------------------------------------- */
 
-function tryGetElement(id) {
-  return document.getElementById(id) || {};
-}
+//  Completely unused for some reason???
+//  const tryGetElement = id => document.getElementById(id) || {};
 
 /**
  * Get the preferred apex domain name.
  * Not exactly apex, as any subdomain other than those listed will be ignored.
  **/
 
-function getDomain() {
-  return location.host.replace(/^(www|edu|cooking|beta)\./, "");
-}
+const getDomain = () => location.host.replace(/^(www|edu|cooking|beta)\./, "");
 
 /* STEALTH FRAME */
-function goFrame(url) {
+const goFrame = url => {
   localStorage.setItem("huframesrc", url);
-  window.location.href = "?s";
-}
+  location.href = "?s";
+};
 
-function goToUrl(url, stealth, nolag) {
-  if (stealth) {
-    goFrame(url, nolag);
-  } else {
-    window.location.href = url;
-  }
-}
+const goToUrl = (url, stealth, nolag) => {
+  stealth ? goFrame(url, nolag) : location.href = url;
+};
 
 /* COOKIE AUTH DEMO */
 
-function setAuthCookie(s, lax) {
-  document.cookie =
-    s +
-    "; expires=" +
-    (Date.now() + 259200) +
-    "; SameSite=" +
-    (lax ? "Lax" : "None") +
-    "; domain=." +
-    getDomain() +
-    "; path=/; Secure;";
-}
+const setAuthCookie = (s, lax) => {
+  document.cookie = s + `; expires=${Date.now() + 259200}; SameSite=${lax ? "Lax" : "None"}; domain=.${getDomain()}; path=/; Secure;`;
+};
 
 /* OMNIBOX */
 
 const sx = "bing.com" + "/search?q=";
 
-function omnibox(url) {
-  if (url.substring(0, 4) == "http") {
-    return url;
-  } else if (url.includes("." || "")) {
-    return "https://" + url;
-  } else {
-    return "https://" + sx + url;
-  }
-}
+const omnibox = url =>
+  (url.indexOf("http")
+    ? "https://" + (url.indexOf(".") < 1 ? sx : "")
+    : "")
+  + url;
 
-function uvUrl(url) {
-  return (
-    location.origin + __uv$config.prefix + __uv$config.encodeUrl(omnibox(url))
-  );
-}
+const uvUrl = url => location.origin + __uv$config.prefix + __uv$config.encodeUrl(omnibox(url));
 
 /* RAMMERHEAD CONFIGURATION */
 

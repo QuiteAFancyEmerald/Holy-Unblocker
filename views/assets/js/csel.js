@@ -1,7 +1,7 @@
 /* -----------------------------------------------
-/* Authors: OlyB
+/* Authors: OlyB and Yoct
 /* GNU Affero General Public License v3.0: https://www.gnu.org/licenses/agpl-3.0.en.html
-/* Adapted and modified by yoct.
+/* Adapted and modified by Yoct.
 /* Settings Menu
 /* ----------------------------------------------- */
 
@@ -13,7 +13,7 @@ date = date.toUTCString();
 
 //  All cookies should be secure and are intended to work in iframes.
 const setCookie = (name, value) => {
-    document.cookie = name + `=${encodeURIComponent(value)}; expires=${date}; SameSite=None; Secure`;
+    document.cookie = name + `=${encodeURIComponent(value)}; expires=${date}; SameSite=None; Secure;`;
 },
 
 removeCookie = name => {
@@ -48,7 +48,7 @@ pageShowAds = () => {
     let advertising = document.createElement("style");
     advertising.id = "advertising";
     advertising.innerText = ".ad { display:block; }";
-    document.appendChild.bind(document.head || document.body || document.documentElement || document)(advertising);
+    (document.head || document.body || document.documentElement || document).appendChild(advertising);
 },
 
 //  Remove the stylesheet made by the function above, if it exists.
