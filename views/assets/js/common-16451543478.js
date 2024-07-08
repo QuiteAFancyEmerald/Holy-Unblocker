@@ -4,8 +4,8 @@
 /* MAIN Holy Unblocker LTS Common Script
 /* ----------------------------------------------- */
 
-//  Completely unused for some reason???
-//  const tryGetElement = id => document.getElementById(id) || {};
+//  Used in scripts outside this file.
+const tryGetElement = id => document.getElementById(id) || {};
 
 /**
  * Get the preferred apex domain name.
