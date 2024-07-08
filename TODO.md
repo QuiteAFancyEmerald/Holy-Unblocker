@@ -22,6 +22,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - [ ] socks5/tor routing option that can be configured (enabled) via either a cookie or pathname as a settings meny option
 
 ## Site Redesign
+  - [ ] Add potato (lime reminded me to do this)
   - [x] Landing Page - done
   - [ ] Web Proxies page
   - [ ] Application page
