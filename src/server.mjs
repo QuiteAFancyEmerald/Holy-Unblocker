@@ -22,6 +22,12 @@ const router = express.Router();
 const bare = createBareServer('/bare/');
 const rh = createRammerhead();
 
+app.get('/baremux/bare.cjs', (req, res) => {
+    res.setHeader('Content-Type', 'application/javascript');
+    res.sendFile(path.join(baremuxPath, 'bare.cjs'));
+});
+
+
 const rammerheadScopes = [
     '/rammerhead.js',
     '/hammerhead.js',
