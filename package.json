@@ -6,8 +6,8 @@
     "main": "backend.js",
     "scripts": {
         "start": "node backend.js",
-        "build": "echo 'Building project...' && exit 0",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "echo 'Building project...' && node backend.js && exit 0",
+        "test": "echo 'Testing project...' && exit 1"
     },
     "keywords": [
         "proxy",
