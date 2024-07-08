@@ -44,7 +44,7 @@ const uvUrl = url => location.origin + __uv$config.prefix + __uv$config.encodeUr
 
 /* RAMMERHEAD CONFIGURATION */
 
-function search(input, template) {
+search = (input, template) => {
   try {
     // input is a valid URL:
     // eg: https://example.com, https://example.com/test?q=param
@@ -58,7 +58,7 @@ function search(input, template) {
     // eg: example.com, https://example.com/test?q=param
     const url = new URL(`http://${input}`);
     // only if the hostname has a TLD/subdomain
-    if (url.hostname.includes(".")) return url.toString();
+    if (url.hostname.indexOf(".") != -1) return url.toString();
   } catch (err) {
     // input was not valid URL
   }

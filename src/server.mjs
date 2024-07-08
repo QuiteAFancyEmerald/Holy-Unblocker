@@ -15,14 +15,14 @@ import { uvPath } from "@titaniumnetwork-dev/ultraviolet";
 
 const config = JSON.parse(
   await readFile(new URL("./config.json", import.meta.url))
-);
-const { pages, text404 } = pkg;
-const __dirname = path.resolve();
-const port = process.env.PORT || config.port;
-const app = express();
-const router = express.Router();
-const bare = createBareServer("/bare/");
-const rh = createRammerhead();
+),
+{ pages, text404 } = pkg,
+__dirname = path.resolve(),
+port = process.env.PORT || config.port,
+app = express(),
+router = express.Router(),
+bare = createBareServer("/bare/"),
+rh = createRammerhead();
 
 app.get("/baremux/bare.cjs", (req, res) => {
   res.setHeader("Content-Type", "application/javascript");
@@ -47,25 +47,25 @@ const rammerheadScopes = [
   "/mainport",
 ];
 
-const rammerheadSession = /^\/[a-z0-9]{32}/;
+const rammerheadSession = /^\/[a-z0-9]{32}/,
 
-function shouldRouteRh(req) {
+shouldRouteRh = req => {
   const url = new URL(req.url, "http://0.0.0.0");
   return (
     rammerheadScopes.includes(url.pathname) ||
     rammerheadSession.test(url.pathname)
   );
-}
+},
 
-function routeRhRequest(req, res) {
+routeRhRequest = (req, res) => {
   rh.emit("request", req, res);
-}
+},
 
-function routeRhUpgrade(req, socket, head) {
+routeRhUpgrade = (req, socket, head) => {
   rh.emit("upgrade", req, socket, head);
-}
+},
 
-const server = http.createServer((req, res) => {
+server = http.createServer((req, res) => {
   if (bare.shouldRoute(req)) {
     bare.routeRequest(req, res);
   } else if (shouldRouteRh(req)) {
@@ -102,10 +102,10 @@ router.get("/", async (req, res) =>
             loadTemplates(
                 tryReadFile(
                     path.join(__dirname,
-                        'views',
-//  Return the error page if the query is not found, as there is no
-//  undefined page in routes.mjs. Also set index as the default page.
-                        '/?'.indexOf(req.url) ? pages[Object.keys(req.query)[0]] || 'error.html' : pages.index
+                        "views",
+//                      Return the error page if the query is not found in
+//                      routes.mjs. Also set index as the default page.
+                        "/?".indexOf(req.url) ? pages[Object.keys(req.query)[0]] || "error.html" : pages.index
                     )
                 )
             )

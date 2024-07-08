@@ -20,12 +20,12 @@ export { insertText, paintSource, tryReadFile };
 const insertText = (lis, str, newText) => {
   let position;
 
-  //  The lis argument should be a list of strings containing placeholders.
-  //  Ensure lis is formatted as a list, and loop through each of the
-  //  placeholder strings.
+//  The lis argument should be a list of strings containing placeholders.
+//  Ensure lis is formatted as a list, and loop through each of the
+//  placeholder strings.
   for (let placeholder of [].concat(lis)) {
-    //      Find all matches of a placeholder string and insert new text there.
-    while ((position = str.indexOf(placeholder)) >= 0)
+//      Find all matches of a placeholder string and insert new text there.
+    while ((position = str.indexOf(placeholder)) != -1)
       str =
         str.slice(0, position) +
         (typeof newText == "function" ? newText() : newText) +
@@ -51,18 +51,18 @@ const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
       str,
       getCookingText
     ),
-  //  This one isn't for obfuscation; it's just for dealing with cache issues.
+//  This one isn't for obfuscation; it's just for dealing with cache issues.
   cacheBusting = (str) => {
     for (let item of Object.entries(cacheBustList))
       str = insertText(item[0], str, item[1]);
     return str;
   },
-  //  Applies the final obfuscation changes to an entire file.
+//  Apply the final obfuscation changes to an entire file.
   paintSource = (str) =>
     insertCharset(hutaoInsert(insertCooking(cacheBusting(str)))),
-  //  Grabs the text content of a file.
+//  Grab the text content of a file. Ensure the file is a string.
   tryReadFile = (file) =>
-    existsSync(file) ? readFileSync(file, "utf8") : text404;
+    existsSync(file + "") ? readFileSync(file + "", "utf8") : text404;
 
 /*
 //  All of this is now old code.

@@ -12,6 +12,7 @@ const text404 = readFileSync(
   path.normalize(__dirname + "/views/error.html"),
   "utf8"
 );
+
 const pages = {
   index: "index.html",
   /* Main */
@@ -40,11 +41,11 @@ const pages = {
   vos: "archive/vibeOS/index.html",
 };
 
-const cookingInserts = insert.content;
-const vegetables = insert.keywords;
-const charRandom = insert.chars;
-const splashRandom = insert.splash;
-const cacheBustList = {
+const cookingInserts = insert.content,
+vegetables = insert.keywords,
+charRandom = insert.chars,
+splashRandom = insert.splash,
+cacheBustList = {
   "styles.css": "styles-1644738239.css",
   "h5-nav.js": "h5-nav-1644738239.js",
   "common.js": "common-16451543478.js",
