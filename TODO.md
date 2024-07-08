@@ -7,16 +7,22 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - [ ] Optimize the stylesheets and the HTML layout. Add more proper commenting and redivide the code so that it's less hard on the eyes.
   - [ ] Optimize the JS. This time it won't be in one line and will be somewhat thoroughly commented.
   - [ ] Restructure navigation scripts to ensure updated proxy functionality is sanitized and effective
-  - [x] Particles.js automatically adjusting per display size
-  - [ ] Fix routes.mjs throwing with incorrect paths
-  - [x] Create test script
+  - [x] Particles.js automatically adjusting per display size - done
+  - [ ] Fix routes.mjs throwing with incorrect paths - done
+  - [x] Create test script - done
+  - [x] XSS and fingerprinting protection (may need updates) - done
 
 ## Proxy Functionality
   - [x] Ensure Ultraviolet is updated to support bare-mux and wisp - done
   - [x] Add Rammerhead support - done
-  - [ ] Fix slow Ultraviolet speeds despite being local; something on the backend??
+  - [x] Fix slow Ultraviolet speeds despite being local; something on the backend?? - done
+  - [ ] Fix Ultraviolet on Firefox
+  - [ ] Adapt Applications page to use either Rammerhead or UV (for Reddit, YouTube, Discord)
+  - [ ] libcurl, epoxy and all that fun stuff 
+  - [ ] socks5/tor routing option that can be configured (enabled) via either a cookie or pathname as a settings meny option
 
 ## Site Redesign
+  - [ ] Add potato (lime reminded me to do this)
   - [x] Landing Page - done
   - [ ] Web Proxies page
   - [ ] Application page
