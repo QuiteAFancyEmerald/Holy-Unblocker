@@ -1,15 +1,21 @@
 {
-    "chars": [
-        "&#173;", "&#8203;", "&shy;"
-    ],
-    "keywords": [
-        "Example1", "Example2", "Example3", "Example4", "Example5", "Example6", "Example7", "Example8", "Example9"
-    ],
-    "content": [
-        "Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1",
-        "Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2"
-    ],
-    "splash": [
-        "This version is the public LTS build of the web proxy service project and may be hosted unofficially. Check your domain or jo‌&#173;in t‌he <a id='tnlink' target='_blank'>T⁡⁯&#173;N Di‌s&#173;c⁪o⁡&#173;rd</a> for official pr&#173;iva️t⁫e sit‌e li⁫n&#173;ks for your safety."
-    ]
+  "chars": ["&#173;", "&#8203;", "&shy;"],
+  "keywords": [
+    "Example1",
+    "Example2",
+    "Example3",
+    "Example4",
+    "Example5",
+    "Example6",
+    "Example7",
+    "Example8",
+    "Example9"
+  ],
+  "content": [
+    "Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1",
+    "Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2"
+  ],
+  "splash": [
+    "This version is the public LTS build of the web proxy service project and may be hosted unofficially. Check your domain or jo‌&#173;in t‌he <a id='tnlink' target='_blank'>T⁡⁯&#173;N Di‌s&#173;c⁪o⁡&#173;rd</a> for official pr&#173;iva️t⁫e sit‌e li⁫n&#173;ks for your safety."
+  ]
 }
