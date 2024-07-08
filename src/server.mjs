@@ -97,22 +97,22 @@ app.use(
 //  Query strings like /?j are converted into paths like /views/hidden.html
 //  back here. Which query string converts to what is defined in routes.mjs.
 router.get("/", async (req, res) =>
-  res.send(
-    paintSource(
-      loadTemplates(
-        tryReadFile(
-          //      Return the index page if the query is not found, as there is no
-          //      undefined page in routes.mjs. Also sets it as the default page.
-          path.join(
-            __dirname,
-            "views",
-            pages[Object.keys(req.query)[0]] || pages.index
-          )
+    res.send(
+        paintSource(
+            loadTemplates(
+                tryReadFile(
+                    path.join(__dirname,
+                        'views',
+//  Return the error page if the query is not found, as there is no
+//  undefined page in routes.mjs. Also set index as the default page.
+                        '/?'.indexOf(req.url) ? pages[Object.keys(req.query)[0]] || 'error.html' : pages.index
+                    )
+                )
+            )
         )
-      )
     )
-  )
 );
+
 
 app.use(router);
 app.use(express.static(path.join(__dirname, "views")));
@@ -122,6 +122,7 @@ app.use("/baremux/", express.static(baremuxPath));
 
 app.disable("x-powered-by");
 
+//  Redundant code since 404 is handled elsewhere; left here as insurance.
 app.use((req, res) => {
   res.status(404).send(paintSource(loadTemplates(text404)));
 });
