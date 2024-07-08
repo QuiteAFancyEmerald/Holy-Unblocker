@@ -300,6 +300,15 @@ details[open] summary {
   background-size: cover;
 }
 
+.logo-potato {
+  width: 20px;
+  height: 20px;
+  background-image: url('/assets/img/potato.webp'); /* Replace with your logo path */
+  background-size: cover;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
 .white-text>a {
   text-decoration: none !important;
   color: var(--nord4) !important;
