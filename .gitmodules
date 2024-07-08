@@ -1,7 +1,3 @@
-[submodule "views/archive"]
-	path = views/archive
-	url = https://github.com/QuiteAFancyEmerald/HU-Archive.git
-
 [submodule "views/archive/osu"]
 	path = views/archive/osu
 	url = https://github.com/BlaNKtext/webosu.git
