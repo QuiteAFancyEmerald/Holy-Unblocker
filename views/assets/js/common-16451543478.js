@@ -64,7 +64,7 @@ const search = (input, template) => {
 //  Return the input if it is already a valid URL.
 //  eg: https://example.com, https://example.com/test?q=param
     return new URL(input) + "";
-  } catch (err) {
+  } catch (e) {
 //  Continue if it is invalid.
   }
 
@@ -74,7 +74,7 @@ const search = (input, template) => {
     const url = new URL(`http://${input}`);
 //  Return only if the hostname has a TLD or a subdomain.
     if (url.hostname.indexOf(".") != -1) return url + "";
-  } catch (err) {
+  } catch (e) {
 //  Continue if it is invalid.
   }
 
@@ -83,12 +83,21 @@ const search = (input, template) => {
 };
 
 //  Parse a URL to use with Ultraviolet.
-const uvUrl = url => location.origin + __uv$config.prefix + __uv$config.encodeUrl(search(url, sx + "%s"));
+const uvUrl = url => {
+  try {
+    url = location.origin + __uv$config.prefix + __uv$config.encodeUrl(search(url, sx + "%s"));
+  } catch (e) {
+//  This is for cases where the Ultraviolet scripts have not been loaded.
+    url = search(url, sx + "%s");
+  }
+  return url;
+};
 
 /* RAMMERHEAD CONFIGURATION */
 
 //  Parse a URL to use with Rammerhead. Only usable if the server is active.
 const RammerheadEncode = async baseUrl => {
+
 //  Hellhead
   const mod = (n, m) => ((n % m) + m) % m;
   const baseDictionary =
@@ -132,7 +141,7 @@ const RammerheadEncode = async baseUrl => {
 
 //      Do not modify unrecognized characters.
         else if (idx == -1) shuffledStr += char;
-  
+
 //      Find the corresponding dictionary entry and use the character
 //      that is i places to the right of it.
         else shuffledStr += this.dictionary[
@@ -173,7 +182,6 @@ const RammerheadEncode = async baseUrl => {
         else unshuffledStr += baseDictionary[
             mod(idx - i, baseDictionary.length)
         ];
-        
       }
       return unshuffledStr;
     }
@@ -316,44 +324,49 @@ const RammerheadEncode = async baseUrl => {
  * goProx.proxy(url-string, stealth-boolean-optional);
  *
  * Examples:
- * goProx.corrosion("https://google.com");
- * goProx.womginx("discord.com", true);
+ * goProx.ultraviolet("https://google.com", true);
+ * await goProx.rammerhead("https://google.com", true);
+ * goProx.searx(true);
  */
-
-const goProx = {
+addEventListener("DOMContentLoaded", () => {
+  self.goProx = {
 //  `location.protocol + "//" + getDomain()` more like `location.origin`
 //  setAuthCookie("__cor_auth=1", false);
-  ultraviolet: UrlHandler(uvUrl),
+    ultraviolet: UrlHandler(uvUrl),
 
-  rammerhead: asyncUrlHandler(async () => location.origin + (await RammerheadEncode(search(url, sx + "%s")))),
+    rammerhead: asyncUrlHandler(async () => location.origin + (await RammerheadEncode(search(url, sx + "%s")))),
 
-  searx: UrlHandler(location.protocol + `//c.${getDomain()}/engine/`),
+    searx: UrlHandler(location.protocol + `//c.${getDomain()}/engine/`),
 
-  libreddit: UrlHandler(location.protocol + "//c." + getDomain()),
+    libreddit: UrlHandler(location.protocol + "//c." + getDomain()),
 
-  rnav: UrlHandler(location.protocol + "//c." + getDomain()),
+    rnav: UrlHandler(location.protocol + "//c." + getDomain()),
 
-  osu: UrlHandler(location.origin + "/archive/osu"),
+    osu: UrlHandler(location.origin + "/archive/osu"),
 
-  mcnow: UrlHandler(uvUrl("https://now.gg/play/a/10010/b")),
+    mcnow: UrlHandler(uvUrl("https://now.gg/play/a/10010/b")),
 
-  glife: UrlHandler(uvUrl("https://now.gg/apps/lunime/5767/gacha-life.html")),
+    glife: UrlHandler(uvUrl("https://now.gg/apps/lunime/5767/gacha-life.html")),
 
-  roblox: UrlHandler(uvUrl("https://now.gg/apps/roblox-corporation/5349/roblox.html")),
+    roblox: UrlHandler(uvUrl("https://now.gg/apps/roblox-corporation/5349/roblox.html")),
 
-  amongus: UrlHandler(uvUrl("https://now.gg/apps/innersloth-llc/4047/among-us.html")),
+    amongus: UrlHandler(uvUrl("https://now.gg/apps/innersloth-llc/4047/among-us.html")),
 
-  pubg: UrlHandler(uvUrl("https://now.gg/apps/proxima-beta/2609/pubg-mobile-resistance.html")),
+    pubg: UrlHandler(uvUrl("https://now.gg/apps/proxima-beta/2609/pubg-mobile-resistance.html")),
 
-  train: UrlHandler(uvUrl("https://hby.itch.io/last-train-home")),
+    train: UrlHandler(uvUrl("https://hby.itch.io/last-train-home")),
 
-  village: UrlHandler(uvUrl("https://kwoodhouse.itch.io/village-arsonist")),
+    village: UrlHandler(uvUrl("https://kwoodhouse.itch.io/village-arsonist")),
 
-  prison: UrlHandler(uvUrl("https://vimlark.itch.io/pick-up-prison")),
+    prison: UrlHandler(uvUrl("https://vimlark.itch.io/pick-up-prison")),
 
-  rpg: UrlHandler(uvUrl("https://alarts.itch.io/die-in-the-dungeon")),
+    rpg: UrlHandler(uvUrl("https://alarts.itch.io/die-in-the-dungeon")),
 
-  speed: UrlHandler(uvUrl("https://captain4lk.itch.io/what-the-road-brings")),
+    speed: UrlHandler(uvUrl("https://captain4lk.itch.io/what-the-road-brings")),
 
-  heli: UrlHandler(uvUrl("https://benjames171.itch.io/helo-storm"))
-};
+    heli: UrlHandler(uvUrl("https://benjames171.itch.io/helo-storm"))
+  };
+
+//  Prevent goProx from being edited.
+  Object.freeze(goProx);
+});
