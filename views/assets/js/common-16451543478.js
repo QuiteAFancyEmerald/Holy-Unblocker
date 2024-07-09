@@ -21,13 +21,18 @@ const goFrame = url => {
 //  See the goProx object at the bottom for some usage examples
 //  on the URL handlers, omnibox functions, and the uvUrl and
 //  RammerheadEncode functions.
-const UrlHandler = parser => (url, stealth, nolag) => {
-  if (typeof parser === "function") url = parser(url);
-  else nolag = stealth, stealth = url, url = parser;
-  stealth ? goFrame(url, nolag) : location.href = url;
-};
+const UrlHandler = parser => typeof parser === "function"
+//  Return different functions based on whether a URL has already been set.
+//  Should help avoid confusion when using or adding to the goProx object.
+  ? (url, stealth, nolag) => {
+      url = parser(url);
+      stealth ? goFrame(url, nolag) : location.href = url;
+    }
+  : (stealth, nolag) => {
+      stealth ? goFrame(url, nolag) : location.href = url;
+    };
 
-//  An asynchronous copy of the function above, just in case.
+//  An asynchronous version of the function above, just in case.
 const asyncUrlHandler = parser => async (url, stealth, nolag) => {
   if (typeof parser === "function") url = await parser(url);
   stealth ? goFrame(url, nolag) : location.href = url;
@@ -105,9 +110,7 @@ const RammerheadEncode = async baseUrl => {
 
     shuffle(str) {
 //    Do not reshuffle an already shuffled string.
-      if (!str.indexOf(shuffledIndicator)) {
-        return str;
-      }
+      if (!str.indexOf(shuffledIndicator)) return str;
 
       let shuffledStr = "";
       for (let i = 0; i < str.length; i++) {
@@ -122,16 +125,16 @@ const RammerheadEncode = async baseUrl => {
           shuffledStr += char;
           shuffledStr += str[++i];
           shuffledStr += str[++i];
-        } else if (idx == -1) {
-//        An unrecognized character not included in the dictionary.
-          shuffledStr += char;
-        } else {
-//        Find the corresponding dictionary entry and use the character
-//        that is i places to the right of it.
-          shuffledStr += this.dictionary[
-            mod(idx + i, baseDictionary.length)
-          ];
         }
+
+//      Do not modify unrecognized characters.
+        else if (idx == -1) shuffledStr += char;
+  
+//      Find the corresponding dictionary entry and use the character
+//      that is i places to the right of it.
+        else shuffledStr += this.dictionary[
+            mod(idx + i, baseDictionary.length)
+        ];
       }
 //    Add a prefix signifying that the string has been shuffled.
       return shuffledIndicator + shuffledStr;
@@ -141,9 +144,7 @@ const RammerheadEncode = async baseUrl => {
 //  won't ever be for this implementation. It is used by the server instead.
     unshuffle(str) {
 //    Do not unshuffle an already unshuffled string.
-      if (str.indexOf(shuffledIndicator)) {
-        return str;
-      }
+      if (str.indexOf(shuffledIndicator)) return str;
 
 //    Remove the prefix signifying that the string has been shuffled.
       str = str.slice(shuffledIndicator.length);
@@ -160,15 +161,16 @@ const RammerheadEncode = async baseUrl => {
           unshuffledStr += char;
           unshuffledStr += str[++i];
           unshuffledStr += str[++i];
-        } else if (idx == -1) {
-          unshuffledStr += char;
-        } else {
-//        Find the corresponding base character entry and use the character
-//        that is i places to the left of it.
-          unshuffledStr += baseDictionary.charAt(
-            mod(idx - i, baseDictionary.length)
-          );
         }
+
+        else if (idx == -1) unshuffledStr += char;
+
+//      Find the corresponding base character entry and use the character
+//      that is i places to the left of it.
+        else unshuffledStr += baseDictionary[
+            mod(idx - i, baseDictionary.length)
+        ];
+        
       }
       return unshuffledStr;
     }
@@ -185,14 +187,11 @@ const RammerheadEncode = async baseUrl => {
       if (!shush) console.log("Cannot communicate with the server");
     };
     request.onload = () => {
-      if (request.status === 200) {
-        callback(request.responseText);
-      } else {
-        if (!shush)
-          console.log(
-            `Unexpected server response to not match "200". Server says "${request.responseText}"`
-          );
-      }
+      if (request.status === 200) callback(request.responseText);
+      else if (!shush)
+        console.log(
+          `Unexpected server response to not match "200". Server says "${request.responseText}"`
+        );
     };
   };
 
@@ -206,7 +205,7 @@ const RammerheadEncode = async baseUrl => {
 
 //  Check if a session with the specified ID exists, then do something.
     sessionexists(id, callback) {
-      get("/sessionexists?id=" + encodeURIComponent(id), function (res) {
+      get("/sessionexists?id=" + encodeURIComponent(id), res => {
         if (res === "exists") return callback(true);
         if (res === "not found") return callback(false);
         console.log("Unexpected response from server. Received " + res);
@@ -292,10 +291,9 @@ const RammerheadEncode = async baseUrl => {
             console.log("^ new id");
             resolve(id);
           });
-        } else {
-//        Load the stored session now that Rammerhead has found it.
-          resolve(id);
         }
+//      Load the stored session now that Rammerhead has found it.
+        else resolve(id);
       });
     });
   };
