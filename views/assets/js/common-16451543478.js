@@ -59,7 +59,7 @@ const omnibox = url =>
 */
 
 //  Another omnibox function. Unsure if the version above is needed.
-const search = (input, template) => {
+const search = (input, template = `https://${sx}%s`) => {
   try {
 //  Return the input if it is already a valid URL.
 //  eg: https://example.com, https://example.com/test?q=param
@@ -85,10 +85,10 @@ const search = (input, template) => {
 //  Parse a URL to use with Ultraviolet.
 const uvUrl = url => {
   try {
-    url = location.origin + __uv$config.prefix + __uv$config.encodeUrl(search(url, sx + "%s"));
+    url = location.origin + __uv$config.prefix + __uv$config.encodeUrl(search(url));
   } catch (e) {
 //  This is for cases where the Ultraviolet scripts have not been loaded.
-    url = search(url, sx + "%s");
+    url = search(url);
   }
   return url;
 };
@@ -334,7 +334,7 @@ addEventListener("DOMContentLoaded", () => {
 //  setAuthCookie("__cor_auth=1", false);
     ultraviolet: UrlHandler(uvUrl),
 
-    rammerhead: asyncUrlHandler(async (url) => location.origin + (await RammerheadEncode(search(url, sx + "%s")))),
+    rammerhead: asyncUrlHandler(async (url) => location.origin + (await RammerheadEncode(search(url)))),
 
     searx: UrlHandler(location.protocol + `//c.${getDomain()}/engine/`),
 
