@@ -7,11 +7,8 @@
 //  Used in scripts outside this file.
 const tryGetElement = id => document.getElementById(id) || {};
 
-/**
- * Get the preferred apex domain name.
- * Not exactly apex, as any subdomain other than those listed will be ignored.
- **/
-
+//  Get the preferred apex domain name. Not exactly apex, as any
+//  subdomain other than those listed will be ignored.
 const getDomain = () => location.host.replace(/^(?:www|edu|cooking|beta)\./, "");
 
 /* STEALTH FRAME */
@@ -20,7 +17,19 @@ const goFrame = url => {
   location.href = "?s";
 };
 
-const goToUrl = (url, stealth, nolag) => {
+//  Used to set functions for the goProx object at the bottom.
+//  See the goProx object at the bottom for some usage examples
+//  on the URL handlers, omnibox functions, and the uvUrl and
+//  RammerheadEncode functions.
+const UrlHandler = parser => (url, stealth, nolag) => {
+  if (typeof parser === "function") url = parser(url);
+  else nolag = stealth, stealth = url, url = parser;
+  stealth ? goFrame(url, nolag) : location.href = url;
+};
+
+//  An asynchronous copy of the function above, just in case.
+const asyncUrlHandler = parser => async (url, stealth, nolag) => {
+  if (typeof parser === "function") url = await parser(url);
   stealth ? goFrame(url, nolag) : location.href = url;
 };
 
@@ -32,18 +41,21 @@ const setAuthCookie = (s, lax) => {
 
 /* OMNIBOX */
 
+//  Search engine is set to Bing. Intended to work just like the usual
+//  bar at the top of a browser.
 const sx = "bing.com" + "/search?q=";
-
 const omnibox = url =>
   (url.indexOf("http")
     ? "https://" + (url.indexOf(".") < 1 ? sx : "")
     : "")
   + url;
 
+//  Parse a URL to use with Ultraviolet.
 const uvUrl = url => location.origin + __uv$config.prefix + __uv$config.encodeUrl(omnibox(url));
 
 /* RAMMERHEAD CONFIGURATION */
 
+//  Another omnibox function. Unsure if the version further above is needed.
 const search = (input, template) => {
   try {
 //  Return the input if it is already a valid URL.
@@ -67,6 +79,7 @@ const search = (input, template) => {
   return template.replace("%s", encodeURIComponent(input));
 };
 
+//  Parse a URL to use with Rammerhead.
 const RammerheadEncode = async baseUrl => {
 //  Hellhead
   const mod = (n, m) => ((n % m) + m) % m;
@@ -124,6 +137,8 @@ const RammerheadEncode = async baseUrl => {
       return shuffledIndicator + shuffledStr;
     }
 
+//  Unshuffling is currently not done on the client side, and likely
+//  won't ever be for this implementation. It is used by the server instead.
     unshuffle(str) {
 //    Do not unshuffle an already unshuffled string.
       if (str.indexOf(shuffledIndicator)) {
@@ -207,52 +222,70 @@ const RammerheadEncode = async baseUrl => {
     },
   };
 
-//  Store Rammerhead sessions in the browser's local storage.
+//  Organize Rammerhead sessions via the browser's local storage.
+//  Local data consists of session creation timestamps and session IDs.
+//  The rest of the data is stored on the server.
   const localStorageKey = "rammerhead_sessionids";
   const localStorageKeyDefault = "rammerhead_default_sessionid";
   const sessionIdsStore = {
+
+//  Get the local data of all stored sessions.
     get() {
       const rawData = localStorage.getItem(localStorageKey);
       if (!rawData) return [];
       try {
         const data = JSON.parse(rawData);
+
+//      Catch invalidly stored Rammerhead session data.
+//      Either that or it's poorly spoofed.
         if (!Array.isArray(data)) throw "getout";
         return data;
       } catch (e) {
         return [];
       }
     },
+
+//  Store local Rammerhead session data in the form of an array.
     set(data) {
-      if (!data || !Array.isArray(data)) throw new TypeError("must be array");
+      if (!data || !Array.isArray(data)) throw new TypeError("Must be an array.");
       localStorage.setItem(localStorageKey, JSON.stringify(data));
     },
+
+//  Get the default session data.
     getDefault() {
-      var sessionId = localStorage.getItem(localStorageKeyDefault);
+      const sessionId = localStorage.getItem(localStorageKeyDefault);
       if (sessionId) {
-        var data = sessionIdsStore.get();
-        data.filter(function (e) {
-          return e.id === sessionId;
-        });
+        let data = sessionIdsStore.get();
+        data.filter(session => session.id === sessionId);
         if (data.length) return data[0];
       }
       return null;
     },
+
+//  Set a new default session based on a given session ID.
     setDefault(id) {
       localStorage.setItem(localStorageKeyDefault, id);
     },
   };
-  function addSession(id) {
-    var data = sessionIdsStore.get();
+
+//  Store or update local data for a Rammerhead session, which consists of
+//  the session's ID and when the session was last created.
+  const addSession = id => {
+    let data = sessionIdsStore.get();
     data.unshift({ id: id, createdOn: new Date().toLocaleString() });
     sessionIdsStore.set(data);
   }
-  function getSessionId() {
-    return new Promise((resolve) => {
-      var id = localStorage.getItem("session-string");
-      api.sessionexists(id, function (value) {
+
+//  Attempt to load an existing session that has been stored on the server.
+  const getSessionId = () => {
+    return new Promise(resolve => {
+//    Check if the browser has stored an existing session.
+      const id = localStorage.getItem("session-string");
+      api.sessionexists(id, value => {
         if (!value) {
+//        Create a new session if Rammerhead can't find an existing session.
           console.log("Session validation failed");
-          api.newsession(function (id) {
+          api.newsession(id => {
             addSession(id);
             localStorage.setItem("session-string", id);
             console.log(id);
@@ -260,95 +293,66 @@ const RammerheadEncode = async baseUrl => {
             resolve(id);
           });
         } else {
+//        Load the stored session now that Rammerhead has found it.
           resolve(id);
         }
       });
     });
-  }
-  var ProxyHref;
+  };
 
-  return getSessionId().then((id) => {
-    return new Promise((resolve, reject) => {
-      api.shuffleDict(id, function (shuffleDict) {
-        var shuffler = new StrShuffler(shuffleDict);
-        ProxyHref = "/" + id + "/" + shuffler.shuffle(baseUrl);
-        resolve(ProxyHref);
+//  Load the URL that was last visited in the Rammerhead session.
+  return getSessionId().then((id) =>
+    new Promise(resolve => {
+      api.shuffleDict(id, shuffleDict => {
+//      Encode the URL with Rammerhead's encoding table and return the URL.
+        resolve(`/${id}/` + new StrShuffler(shuffleDict).shuffle(baseUrl));
       });
-    });
-  });
+    })
+  );
 };
 
 /* To use:
- * goProx.proxy(url-string, stealth-boolean-optional)
+ * goProx.proxy(url-string, stealth-boolean-optional);
  *
  * Examples:
- * goProx.corrosion("https://google.com")
- * goProx.womginx("discord.com", true)
+ * goProx.corrosion("https://google.com");
+ * goProx.womginx("discord.com", true);
  */
 
-window.goProx = {
-  // `location.protocol + "//" + getDomain()` more like `location.origin`
-  ultraviolet: function (url, stealth) {
-    //setAuthCookie("__cor_auth=1", false);
-    goToUrl(uvUrl(url), stealth);
-  },
-  rammerhead: async function (url, stealth) {
-    goToUrl(location.origin + (await RammerheadEncode(omnibox(url))), stealth);
-  },
-  searx: function (stealth) {
-    goToUrl(location.protocol + "//c." + getDomain() + "/engine/", stealth);
-  },
-  libreddit: function (stealth) {
-    goToUrl(location.protocol + "//c." + getDomain(), stealth);
-  },
-  rnav: function (stealth) {
-    goToUrl(location.protocol + "//c." + getDomain(), stealth);
-  },
-  osu: function (stealth) {
-    goToUrl(location.origin + "/archive/osu", stealth);
-  },
-  mcnow: function (stealth) {
-    goToUrl(uvUrl("https://now.gg/play/a/10010/b"), stealth);
-  },
-  glife: function (stealth) {
-    goToUrl(uvUrl("https://now.gg/apps/lunime/5767/gacha-life.html"), stealth);
-  },
-  roblox: function (stealth) {
-    goToUrl(
-      uvUrl("https://now.gg/apps/roblox-corporation/5349/roblox.html"),
-      stealth
-    );
-  },
-  amongus: function (stealth) {
-    goToUrl(
-      uvUrl("https://now.gg/apps/innersloth-llc/4047/among-us.html"),
-      stealth
-    );
-  },
-  pubg: function (stealth) {
-    goToUrl(
-      uvUrl(
-        "https://now.gg/apps/proxima-beta/2609/pubg-mobile-resistance.html"
-      ),
-      stealth
-    );
-  },
-  train: function (stealth) {
-    goToUrl(uvUrl("https://hby.itch.io/last-train-home"), stealth);
-  },
-  village: function (stealth) {
-    goToUrl(uvUrl("https://kwoodhouse.itch.io/village-arsonist"), stealth);
-  },
-  prison: function (stealth) {
-    goToUrl(uvUrl("https://vimlark.itch.io/pick-up-prison"), stealth);
-  },
-  rpg: function (stealth) {
-    goToUrl(uvUrl("https://alarts.itch.io/die-in-the-dungeon"), stealth);
-  },
-  speed: function (stealth) {
-    goToUrl(uvUrl("https://captain4lk.itch.io/what-the-road-brings"), stealth);
-  },
-  heli: function (stealth) {
-    goToUrl(uvUrl("https://benjames171.itch.io/helo-storm"), stealth);
-  },
+const goProx = {
+//  `location.protocol + "//" + getDomain()` more like `location.origin`
+//  setAuthCookie("__cor_auth=1", false);
+  ultraviolet: UrlHandler(uvUrl),
+
+  rammerhead: asyncUrlHandler(async () => location.origin + (await RammerheadEncode(omnibox(url)))),
+
+  searx: UrlHandler(location.protocol + `//c.${getDomain()}/engine/`),
+
+  libreddit: UrlHandler(location.protocol + "//c." + getDomain()),
+
+  rnav: UrlHandler(location.protocol + "//c." + getDomain()),
+
+  osu: UrlHandler(location.origin + "/archive/osu"),
+
+  mcnow: UrlHandler(uvUrl("https://now.gg/play/a/10010/b")),
+
+  glife: UrlHandler(uvUrl("https://now.gg/apps/lunime/5767/gacha-life.html")),
+
+  roblox: UrlHandler(uvUrl("https://now.gg/apps/roblox-corporation/5349/roblox.html")),
+
+  amongus: UrlHandler(uvUrl("https://now.gg/apps/innersloth-llc/4047/among-us.html")),
+
+  pubg: UrlHandler(uvUrl("https://now.gg/apps/proxima-beta/2609/pubg-mobile-resistance.html")),
+
+  train: UrlHandler(uvUrl("https://hby.itch.io/last-train-home")),
+
+  village: UrlHandler(uvUrl("https://kwoodhouse.itch.io/village-arsonist")),
+
+  prison: UrlHandler(uvUrl("https://vimlark.itch.io/pick-up-prison")),
+
+  rpg: UrlHandler(uvUrl("https://alarts.itch.io/die-in-the-dungeon")),
+
+  speed: UrlHandler(uvUrl("https://captain4lk.itch.io/what-the-road-brings")),
+
+  heli: UrlHandler(uvUrl("https://benjames171.itch.io/helo-storm"))
 };
