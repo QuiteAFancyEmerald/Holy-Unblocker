@@ -334,7 +334,7 @@ addEventListener("DOMContentLoaded", () => {
 //  setAuthCookie("__cor_auth=1", false);
     ultraviolet: UrlHandler(uvUrl),
 
-    rammerhead: asyncUrlHandler(async () => location.origin + (await RammerheadEncode(search(url, sx + "%s")))),
+    rammerhead: asyncUrlHandler(async (url) => location.origin + (await RammerheadEncode(search(url, sx + "%s")))),
 
     searx: UrlHandler(location.protocol + `//c.${getDomain()}/engine/`),
 
