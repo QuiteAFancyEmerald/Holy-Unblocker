@@ -21,8 +21,8 @@ const handleMouseMove = element => {
 //  Reset the cursor tracking variables when the cursor leaves the card.
 handleMouseLeave = element => {
   element.addEventListener("mouseleave", () => {
-    this.style.setProperty("--mouse-x", `50%`);
-    this.style.setProperty("--mouse-y", `50%`);
+    element.style.setProperty("--mouse-x", `50%`);
+    element.style.setProperty("--mouse-y", `50%`);
   });
 };
 

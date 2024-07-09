@@ -44,39 +44,43 @@ const uvUrl = url => location.origin + __uv$config.prefix + __uv$config.encodeUr
 
 /* RAMMERHEAD CONFIGURATION */
 
-search = (input, template) => {
+const search = (input, template) => {
   try {
-    // input is a valid URL:
-    // eg: https://example.com, https://example.com/test?q=param
+//  Return the input if it is already a valid URL.
+//  eg: https://example.com, https://example.com/test?q=param
     return new URL(input).toString();
   } catch (err) {
-    // input was not a valid URL
+//  Continue if it is invalid.
   }
 
   try {
-    // input is a valid URL when http:// is added to the start:
-    // eg: example.com, https://example.com/test?q=param
+//  Check if the input is valid when http:// is added to the start.
+//  eg: example.com, https://example.com/test?q=param
     const url = new URL(`http://${input}`);
-    // only if the hostname has a TLD/subdomain
+//  Return only if the hostname has a TLD or a subdomain.
     if (url.hostname.indexOf(".") != -1) return url.toString();
   } catch (err) {
-    // input was not valid URL
+//  Continue if it is invalid.
   }
 
+//  Treat the input as a search query instead of a website.
   return template.replace("%s", encodeURIComponent(input));
-}
+};
 
-async function RammerheadEncode(baseUrl) {
-  // Hellhead
+const RammerheadEncode = async baseUrl => {
+//  Hellhead
   const mod = (n, m) => ((n % m) + m) % m;
   const baseDictionary =
     "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~-";
   const shuffledIndicator = "_rhs";
-  const generateDictionary = function () {
+//  Return a copy of the base dictionary with a randomized character order.
+//  Will be used as a Caesar cipher for URL encoding.
+  const generateDictionary = () => {
     let str = "";
     const split = baseDictionary.split("");
     while (split.length > 0) {
-      str += split.splice(Math.floor(Math.random() * split.length), 1)[0];
+//    Using .splice automatically rounds down to the nearest whole number.
+      str += split.splice(Math.random() * split.length, 1)[0];
     }
     return str;
   };
@@ -85,46 +89,67 @@ async function RammerheadEncode(baseUrl) {
     constructor(dictionary = generateDictionary()) {
       this.dictionary = dictionary;
     }
+
     shuffle(str) {
-      if (str.startsWith(shuffledIndicator)) {
-        return str;
-      }
-      let shuffledStr = "";
-      for (let i = 0; i < str.length; i++) {
-        const char = str.charAt(i);
-        const idx = baseDictionary.indexOf(char);
-        if (char === "%" && str.length - i >= 3) {
-          shuffledStr += char;
-          shuffledStr += str.charAt(++i);
-          shuffledStr += str.charAt(++i);
-        } else if (idx === -1) {
-          shuffledStr += char;
-        } else {
-          shuffledStr += this.dictionary.charAt(
-            mod(idx + i, baseDictionary.length)
-          );
-        }
-      }
-      return shuffledIndicator + shuffledStr;
-    }
-    unshuffle(str) {
-      if (!str.startsWith(shuffledIndicator)) {
+//    Do not reshuffle an already shuffled string.
+      if (!str.indexOf(shuffledIndicator)) {
         return str;
       }
 
+      let shuffledStr = "";
+      for (let i = 0; i < str.length; i++) {
+        const char = str[i];
+        const idx = baseDictionary.indexOf(char);
+
+//      For URL encoded characters and characters not included in the
+//      dictionary, leave untouched. Otherwise, replace with a character
+//      from the dictionary.
+        if (char === "%" && str.length - i >= 3) {
+//        A % symbol denotes that the next 2 characters are URL encoded.
+          shuffledStr += char;
+          shuffledStr += str[++i];
+          shuffledStr += str[++i];
+        } else if (idx == -1) {
+//        An unrecognized character not included in the dictionary.
+          shuffledStr += char;
+        } else {
+//        Find the corresponding dictionary entry and use the character
+//        that is i places to the right of it.
+          shuffledStr += this.dictionary[
+            mod(idx + i, baseDictionary.length)
+          ];
+        }
+      }
+//    Add a prefix signifying that the string has been shuffled.
+      return shuffledIndicator + shuffledStr;
+    }
+
+    unshuffle(str) {
+//    Do not unshuffle an already unshuffled string.
+      if (str.indexOf(shuffledIndicator)) {
+        return str;
+      }
+
+//    Remove the prefix signifying that the string has been shuffled.
       str = str.slice(shuffledIndicator.length);
 
       let unshuffledStr = "";
       for (let i = 0; i < str.length; i++) {
-        const char = str.charAt(i);
+        const char = str[i];
         const idx = this.dictionary.indexOf(char);
+
+//      Convert the dictionary entry characters back into their base
+//      characters using the base dictionary. Again, leave URL encoded
+//      characters and unrecognized symbols alone.
         if (char === "%" && str.length - i >= 3) {
           unshuffledStr += char;
-          unshuffledStr += str.charAt(++i);
-          unshuffledStr += str.charAt(++i);
-        } else if (idx === -1) {
+          unshuffledStr += str[++i];
+          unshuffledStr += str[++i];
+        } else if (idx == -1) {
           unshuffledStr += char;
         } else {
+//        Find the corresponding base character entry and use the character
+//        that is i places to the left of it.
           unshuffledStr += baseDictionary.charAt(
             mod(idx - i, baseDictionary.length)
           );
@@ -132,54 +157,65 @@ async function RammerheadEncode(baseUrl) {
       }
       return unshuffledStr;
     }
-  }
-  function get(url, callback, shush = false) {
-    var request = new XMLHttpRequest();
+  };
+
+//  Request information that's beiing stored elsewhere on the server.
+//  Executes the callback function if the server responds as intended.
+  const get = (url, callback, shush = false) => {
+    let request = new XMLHttpRequest();
     request.open("GET", url, true);
     request.send();
 
-    request.onerror = function () {
+    request.onerror = () => {
       if (!shush) console.log("Cannot communicate with the server");
     };
-    request.onload = function () {
+    request.onload = () => {
       if (request.status === 200) {
         callback(request.responseText);
       } else {
         if (!shush)
           console.log(
-            'unexpected server response to not match "200". Server says "' +
-              request.responseText +
-              '"'
+            `Unexpected server response to not match "200". Server says "${request.responseText}"`
           );
       }
     };
-  }
-  var api = {
+  };
+
+//  Functions for interacting with Rammerhead backend code on the server.
+  const api = {
+
+//  Make a new Rammerhead session and do something with it.
     newsession(callback) {
       get("/newsession", callback);
     },
+
+//  Check if a session with the specified ID exists, then do something.
     sessionexists(id, callback) {
       get("/sessionexists?id=" + encodeURIComponent(id), function (res) {
         if (res === "exists") return callback(true);
         if (res === "not found") return callback(false);
-        console.log("unexpected response from server. received" + res);
+        console.log("Unexpected response from server. Received " + res);
       });
     },
+
+//  Request a brand new encoding table to use for Rammerhead.
     shuffleDict(id, callback) {
       console.log("Shuffling", id);
-      get("/api/shuffleDict?id=" + encodeURIComponent(id), function (res) {
+      get("/api/shuffleDict?id=" + encodeURIComponent(id), res => {
         callback(JSON.parse(res));
       });
     },
   };
-  var localStorageKey = "rammerhead_sessionids";
-  var localStorageKeyDefault = "rammerhead_default_sessionid";
-  var sessionIdsStore = {
+
+//  Store Rammerhead sessions in the browser's local storage.
+  const localStorageKey = "rammerhead_sessionids";
+  const localStorageKeyDefault = "rammerhead_default_sessionid";
+  const sessionIdsStore = {
     get() {
-      var rawData = localStorage.getItem(localStorageKey);
+      const rawData = localStorage.getItem(localStorageKey);
       if (!rawData) return [];
       try {
-        var data = JSON.parse(rawData);
+        const data = JSON.parse(rawData);
         if (!Array.isArray(data)) throw "getout";
         return data;
       } catch (e) {
@@ -240,7 +276,7 @@ async function RammerheadEncode(baseUrl) {
       });
     });
   });
-}
+};
 
 /* To use:
  * goProx.proxy(url-string, stealth-boolean-optional)
