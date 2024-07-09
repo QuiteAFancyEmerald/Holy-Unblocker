@@ -29,7 +29,7 @@ const UrlHandler = parser => typeof parser === "function"
       stealth ? goFrame(url, nolag) : location.href = url;
     }
   : (stealth, nolag) => {
-      stealth ? goFrame(url, nolag) : location.href = url;
+      stealth ? goFrame(parser, nolag) : location.href = parser;
     };
 
 //  An asynchronous version of the function above, just in case.
@@ -49,23 +49,21 @@ const setAuthCookie = (s, lax) => {
 //  Search engine is set to Bing. Intended to work just like the usual
 //  bar at the top of a browser.
 const sx = "bing.com" + "/search?q=";
+
+/*
 const omnibox = url =>
   (url.indexOf("http")
     ? "https://" + (url.indexOf(".") < 1 ? sx : "")
     : "")
   + url;
+*/
 
-//  Parse a URL to use with Ultraviolet.
-const uvUrl = url => location.origin + __uv$config.prefix + __uv$config.encodeUrl(omnibox(url));
-
-/* RAMMERHEAD CONFIGURATION */
-
-//  Another omnibox function. Unsure if the version further above is needed.
+//  Another omnibox function. Unsure if the version above is needed.
 const search = (input, template) => {
   try {
 //  Return the input if it is already a valid URL.
 //  eg: https://example.com, https://example.com/test?q=param
-    return new URL(input).toString();
+    return new URL(input) + "";
   } catch (err) {
 //  Continue if it is invalid.
   }
@@ -75,7 +73,7 @@ const search = (input, template) => {
 //  eg: example.com, https://example.com/test?q=param
     const url = new URL(`http://${input}`);
 //  Return only if the hostname has a TLD or a subdomain.
-    if (url.hostname.indexOf(".") != -1) return url.toString();
+    if (url.hostname.indexOf(".") != -1) return url + "";
   } catch (err) {
 //  Continue if it is invalid.
   }
@@ -84,7 +82,12 @@ const search = (input, template) => {
   return template.replace("%s", encodeURIComponent(input));
 };
 
-//  Parse a URL to use with Rammerhead.
+//  Parse a URL to use with Ultraviolet.
+const uvUrl = url => location.origin + __uv$config.prefix + __uv$config.encodeUrl(search(url, sx + "%s"));
+
+/* RAMMERHEAD CONFIGURATION */
+
+//  Parse a URL to use with Rammerhead. Only usable if the server is active.
 const RammerheadEncode = async baseUrl => {
 //  Hellhead
   const mod = (n, m) => ((n % m) + m) % m;
@@ -322,7 +325,7 @@ const goProx = {
 //  setAuthCookie("__cor_auth=1", false);
   ultraviolet: UrlHandler(uvUrl),
 
-  rammerhead: asyncUrlHandler(async () => location.origin + (await RammerheadEncode(omnibox(url)))),
+  rammerhead: asyncUrlHandler(async () => location.origin + (await RammerheadEncode(search(url, sx + "%s")))),
 
   searx: UrlHandler(location.protocol + `//c.${getDomain()}/engine/`),
 
