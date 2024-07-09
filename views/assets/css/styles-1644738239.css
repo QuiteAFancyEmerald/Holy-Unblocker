@@ -146,7 +146,7 @@ img {
 }
 
 a:not(.bluelink) {
-  color: #ebb5b9;
+  color: #ebb5d5;
 }
 
 a.bluelink {
@@ -738,6 +738,13 @@ details[open] summary {
 }
 
 /* Homepage Hero */
+
+.image-container-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+}
 
 .potato {
   margin-top: 30px;
