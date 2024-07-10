@@ -15,7 +15,7 @@ async function registerSW() {
   await navigator.serviceWorker.register(stockSW);
 
   let wispUrl = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/";
-  await BareMux.SetTransport("EpxMod.EpoxyClient", { wisp: wispUrl });
+  await BareMux.SetTransport("EpxMod.default", { wisp: wispUrl });
 }
 
 registerSW();
