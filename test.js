@@ -133,8 +133,10 @@ async function testCommonJSOnPage() {
 
     if (rammerheadPassed && ultravioletPassed) {
       console.log('Both tests passed.');
+      process.exit(0); // Exit with success
     } else {
       console.error('Tests failed.');
+      process.exit(1); // Exit with failure
     }
   } catch (error) {
     console.error('Error in testCommonJSOnPage:', error.message);
