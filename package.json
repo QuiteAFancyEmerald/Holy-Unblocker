@@ -19,9 +19,9 @@
     "author": "Titanium Network",
     "license": "GNU AFFERO",
     "dependencies": {
-        "@mercuryworkshop/bare-mux": "^1.1.4",
-        "@mercuryworkshop/epoxy-transport": "^2.0.6",
-        "@titaniumnetwork-dev/ultraviolet": "^3.1.5",
+        "@mercuryworkshop/bare-mux": "^1.1.0",
+        "@mercuryworkshop/epoxy-transport": "^1.1.0",
+        "@titaniumnetwork-dev/ultraviolet": "3.1.1",
         "@tomphttp/bare-server-node": "^2.0.3",
         "axios": "^1.7.2",
         "babel": "^6.23.0",
@@ -31,7 +31,7 @@
         "node-fetch": "^3.3.2",
         "puppeteer": "^22.12.1",
         "rammerhead": "https://github.com/NebulaServices/rammerhead/releases/download/rammerhead-1.2.41-nebula.8/rammerhead-1.2.41-nebula.7.tgz",
-        "wisp-server-node": "^1.1.0",
+        "wisp-server-node": "^1.0.6",
         "ws": "^8.18.0"
     }
 }

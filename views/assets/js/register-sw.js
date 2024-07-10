@@ -16,6 +16,11 @@ async function registerSW() {
 
   let wispUrl = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/";
   await BareMux.SetTransport("EpxMod.default", { wisp: wispUrl });
+
+  //When testing proxy support CLEAR service workers from 8080 (or whatever current port you are using)
+
+  //  navigator.serviceWorker.register(stockSW).then(register => register.unregister().then(bool => console.log("Unregistered: " + bool)));
+  
 }
 
 registerSW();
