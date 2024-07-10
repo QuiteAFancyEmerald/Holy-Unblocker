@@ -330,7 +330,11 @@ const RammerheadEncode = async baseUrl => {
 };
 
 /* To use:
- * goProx.proxy(url-string, stealth-boolean-optional);
+ * goProx.proxy(url-string, mode-as-string-or-number);
+ * 
+ * Key: 1 = "stealth"
+ *      0 = "window"
+ *      Nothing = return as string variable
  *
  * Examples:
  * Stealth mode -
@@ -341,27 +345,21 @@ const RammerheadEncode = async baseUrl => {
  * await goProx.rammerhead("https://google.com", "stealth");
  * 
  * goProx.searx(1);
- * goProx.search("stealth");
+ * goProx.searx("stealth");
  * 
  * Window mode -
- * goProx.ultraviolet("https://google.com", 0);
  * goProx.ultraviolet("https://google.com", "window");
  * 
- * await goProx.rammerhead("https://google.com", 0);
  * await goProx.rammerhead("https://google.com", "window");
  * 
- * goProx.searx(0);
- * goProx.search("window");
+ * goProx.searx("window");
  * 
  * Return string value mode (default) -
  * goProx.ultraviolet("https://google.com");
- * goProx.ultraviolet("https://google.com");
  * 
- * await goProx.rammerhead("https://google.com");
  * await goProx.rammerhead("https://google.com");
  * 
  * goProx.searx();
- * goProx.search();
  */
 addEventListener("DOMContentLoaded", () => {
   self.goProx = {
