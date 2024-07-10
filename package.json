@@ -21,7 +21,6 @@
     "dependencies": {
         "@mercuryworkshop/bare-mux": "^1.1.0",
         "@mercuryworkshop/epoxy-transport": "^1.1.0",
-        "@titaniumnetwork-dev/ultraviolet": "3.1.1",
         "@tomphttp/bare-server-node": "^2.0.3",
         "axios": "^1.7.2",
         "babel": "^6.23.0",

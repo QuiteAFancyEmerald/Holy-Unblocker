@@ -11,7 +11,7 @@ import { createBareServer } from "@tomphttp/bare-server-node";
 import wisp from "wisp-server-node";
 import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
-import { uvPath } from "@titaniumnetwork-dev/ultraviolet";
+import { uvPath } from "../bin/lib/index.cjs";
 
 const config = JSON.parse(
   await readFile(new URL("./config.json", import.meta.url))
@@ -23,10 +23,6 @@ app = express(),
 router = express.Router(),
 bare = createBareServer("/bare/"),
 rh = createRammerhead();
-
-app.use("/uv/", express.static(uvPath));
-app.use("/epoxy/", express.static(epoxyPath));
-app.use("/baremux/", express.static(baremuxPath));
 
 app.get("/baremux/bare.cjs", (req, res) => {
   res.setHeader("Content-Type", "application/javascript");
@@ -120,6 +116,9 @@ router.get("/", async (req, res) =>
 
 app.use(router);
 app.use(express.static(path.join(__dirname, "views")));
+app.use("/uv/", express.static(uvPath));
+app.use("/epoxy/", express.static(epoxyPath));
+app.use("/baremux/", express.static(baremuxPath));
 
 app.disable("x-powered-by");
 
