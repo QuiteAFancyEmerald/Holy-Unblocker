@@ -24,6 +24,10 @@ router = express.Router(),
 bare = createBareServer("/bare/"),
 rh = createRammerhead();
 
+app.use("/uv/", express.static(uvPath));
+app.use("/epoxy/", express.static(epoxyPath));
+app.use("/baremux/", express.static(baremuxPath));
+
 app.get("/baremux/bare.cjs", (req, res) => {
   res.setHeader("Content-Type", "application/javascript");
   res.sendFile(path.join(baremuxPath, "bare.cjs"));
@@ -116,9 +120,6 @@ router.get("/", async (req, res) =>
 
 app.use(router);
 app.use(express.static(path.join(__dirname, "views")));
-app.use("/uv/", express.static(uvPath));
-app.use("/epoxy/", express.static(epoxyPath));
-app.use("/baremux/", express.static(baremuxPath));
 
 app.disable("x-powered-by");
 
