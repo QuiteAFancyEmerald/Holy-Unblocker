@@ -21,21 +21,30 @@ const goFrame = url => {
 //  See the goProx object at the bottom for some usage examples
 //  on the URL handlers, omnibox functions, and the uvUrl and
 //  RammerheadEncode functions.
-const UrlHandler = parser => typeof parser === "function"
+const urlHandler = parser => typeof parser === "function"
 //  Return different functions based on whether a URL has already been set.
 //  Should help avoid confusion when using or adding to the goProx object.
-  ? (url, stealth, nolag) => {
+  ? (url, mode) => {
       url = parser(url);
-      stealth ? goFrame(url, nolag) : location.href = url;
+      mode = `${mode}`.toLowerCase();
+      if (mode === "stealth" || mode == 1) goFrame(url);
+      else if (mode === "window" || mode == 0) location.href = url;
+      else return url;
     }
-  : (stealth, nolag) => {
-      stealth ? goFrame(parser, nolag) : location.href = parser;
+  : mode => {
+      mode = `${mode}`.toLowerCase();
+      if (mode === "stealth" || mode == 1) goFrame(parser);
+      else if (mode === "window" || mode == 0) location.href = parser;
+      else return parser;
     };
 
 //  An asynchronous version of the function above, just in case.
-const asyncUrlHandler = parser => async (url, stealth, nolag) => {
+const asyncUrlHandler = parser => async (url, mode) => {
   if (typeof parser === "function") url = await parser(url);
-  stealth ? goFrame(url, nolag) : location.href = url;
+  mode = `${mode}`.toLowerCase();
+  if (mode === "stealth" || mode == 1) goFrame(url);
+  else if (mode === "window" || mode == 0) location.href = url;
+  else return url;
 };
 
 /* COOKIE AUTH DEMO */
@@ -257,7 +266,7 @@ const RammerheadEncode = async baseUrl => {
 
 //  Store local Rammerhead session data in the form of an array.
     set(data) {
-      if (!data || !Array.isArray(data)) throw new TypeError("Must be an array.");
+      if (!Array.isArray(data)) throw new TypeError("Must be an array.");
       localStorage.setItem(localStorageKey, JSON.stringify(data));
     },
 
@@ -324,47 +333,73 @@ const RammerheadEncode = async baseUrl => {
  * goProx.proxy(url-string, stealth-boolean-optional);
  *
  * Examples:
- * goProx.ultraviolet("https://google.com", true);
- * await goProx.rammerhead("https://google.com", true);
- * goProx.searx(true);
+ * Stealth mode -
+ * goProx.ultraviolet("https://google.com", 1);
+ * goProx.ultraviolet("https://google.com", "stealth");
+ * 
+ * await goProx.rammerhead("https://google.com", 1);
+ * await goProx.rammerhead("https://google.com", "stealth");
+ * 
+ * goProx.searx(1);
+ * goProx.search("stealth");
+ * 
+ * Window mode -
+ * goProx.ultraviolet("https://google.com", 0);
+ * goProx.ultraviolet("https://google.com", "window");
+ * 
+ * await goProx.rammerhead("https://google.com", 0);
+ * await goProx.rammerhead("https://google.com", "window");
+ * 
+ * goProx.searx(0);
+ * goProx.search("window");
+ * 
+ * Return string value mode (default) -
+ * goProx.ultraviolet("https://google.com");
+ * goProx.ultraviolet("https://google.com");
+ * 
+ * await goProx.rammerhead("https://google.com");
+ * await goProx.rammerhead("https://google.com");
+ * 
+ * goProx.searx();
+ * goProx.search();
  */
 addEventListener("DOMContentLoaded", () => {
   self.goProx = {
 //  `location.protocol + "//" + getDomain()` more like `location.origin`
 //  setAuthCookie("__cor_auth=1", false);
-    ultraviolet: UrlHandler(uvUrl),
+    ultraviolet: urlHandler(uvUrl),
 
-    rammerhead: asyncUrlHandler(async (url) => location.origin + (await RammerheadEncode(search(url)))),
+    rammerhead: asyncUrlHandler(async url => location.origin + (await RammerheadEncode(search(url)))),
 
-    searx: UrlHandler(location.protocol + `//c.${getDomain()}/engine/`),
+    searx: urlHandler(location.protocol + `//c.${getDomain()}/engine/`),
 
-    libreddit: UrlHandler(location.protocol + "//c." + getDomain()),
+    libreddit: urlHandler(location.protocol + "//c." + getDomain()),
 
-    rnav: UrlHandler(location.protocol + "//c." + getDomain()),
+    rnav: urlHandler(location.protocol + "//client." + getDomain()),
 
-    osu: UrlHandler(location.origin + "/archive/osu"),
+    osu: urlHandler(location.origin + "/archive/osu"),
 
-    mcnow: UrlHandler(uvUrl("https://now.gg/play/a/10010/b")),
+    mcnow: urlHandler(uvUrl("https://now.gg/play/a/10010/b")),
 
-    glife: UrlHandler(uvUrl("https://now.gg/apps/lunime/5767/gacha-life.html")),
+    glife: urlHandler(uvUrl("https://now.gg/apps/lunime/5767/gacha-life.html")),
 
-    roblox: UrlHandler(uvUrl("https://now.gg/apps/roblox-corporation/5349/roblox.html")),
+    roblox: urlHandler(uvUrl("https://now.gg/apps/roblox-corporation/5349/roblox.html")),
 
-    amongus: UrlHandler(uvUrl("https://now.gg/apps/innersloth-llc/4047/among-us.html")),
+    amongus: urlHandler(uvUrl("https://now.gg/apps/innersloth-llc/4047/among-us.html")),
 
-    pubg: UrlHandler(uvUrl("https://now.gg/apps/proxima-beta/2609/pubg-mobile-resistance.html")),
+    pubg: urlHandler(uvUrl("https://now.gg/apps/proxima-beta/2609/pubg-mobile-resistance.html")),
 
-    train: UrlHandler(uvUrl("https://hby.itch.io/last-train-home")),
+    train: urlHandler(uvUrl("https://hby.itch.io/last-train-home")),
 
-    village: UrlHandler(uvUrl("https://kwoodhouse.itch.io/village-arsonist")),
+    village: urlHandler(uvUrl("https://kwoodhouse.itch.io/village-arsonist")),
 
-    prison: UrlHandler(uvUrl("https://vimlark.itch.io/pick-up-prison")),
+    prison: urlHandler(uvUrl("https://vimlark.itch.io/pick-up-prison")),
 
-    rpg: UrlHandler(uvUrl("https://alarts.itch.io/die-in-the-dungeon")),
+    rpg: urlHandler(uvUrl("https://alarts.itch.io/die-in-the-dungeon")),
 
-    speed: UrlHandler(uvUrl("https://captain4lk.itch.io/what-the-road-brings")),
+    speed: urlHandler(uvUrl("https://captain4lk.itch.io/what-the-road-brings")),
 
-    heli: UrlHandler(uvUrl("https://benjames171.itch.io/helo-storm"))
+    heli: urlHandler(uvUrl("https://benjames171.itch.io/helo-storm"))
   };
 
 //  Prevent goProx from being edited.
