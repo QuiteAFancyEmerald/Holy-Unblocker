@@ -1,6 +1,6 @@
 {
   "title": "HU LTS",
-  "port": "3000",
+  "port": "8080",
   "ssl": false,
   "ws": true,
   "prefix": "/service/",
