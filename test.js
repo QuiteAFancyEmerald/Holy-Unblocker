@@ -15,9 +15,7 @@ async function testGeneratedUrl(url, headers) {
   try {
     console.log(`Testing generated URL: ${url}`);
 
-    // Make the Axios request with custom headers
     const response = await axios.get(url, { headers });
-
     console.log(`Response status for ${url}: ${response.status}`);
     return response.status === 200;
   } catch (error) {
@@ -56,24 +54,21 @@ async function testCommonJSOnPage() {
       "--enable-features=ServiceWorker",
       "--enable-features=InsecureOrigins",
     ],
-    headless: false,
+    headless: true,
     ignoreHTTPSErrors: true,
   });
   const page = await browser.newPage();
 
   try {
-    // Function to extract headers from the page context
     async function getHeaders() {
       const headers = {};
 
-      // Example: Extract headers dynamically from the page
-      headers['User-Agent'] = await page.evaluate(() => navigator.userAgent);
-      headers['Referer'] = await page.evaluate(() => window.location.href);
+      headers["User-Agent"] = await page.evaluate(() => navigator.userAgent);
+      headers["Referer"] = await page.evaluate(() => window.location.href);
 
       return headers;
     }
 
-    // Function to test Rammerhead with "?rh"
     async function testRammerhead() {
       await page.goto("http://localhost:8080/?rh");
 
@@ -125,11 +120,8 @@ async function testCommonJSOnPage() {
     async function testUltraviolet() {
       await page.goto("http://localhost:8080/?q");
 
-<<<<<<< HEAD
-      // Wait for the document's readyState to be complete
       await page.waitForFunction(() => document.readyState === "complete");
 
-      // Evaluate the function to register the service worker
       await page.evaluate(async () => {
         const stockSW = "/uv/sw.js";
         const swAllowedHostnames = ["localhost", "127.0.0.1"];
@@ -145,33 +137,6 @@ async function testCommonJSOnPage() {
               );
 
             throw new Error("Your browser doesn't support service workers.");
-=======
-      const testResults = await page.evaluate(async () => {
-        const results = {};
-        await new Promise((resolve) => {
-
-          const waitForDocument = () => document.readyState === "complete"
-          ? resolve()
-          : window.addEventListener("load", resolve);
-
-//        Wait until a service worker is registered before continuing.
-//        Also make sure the document is loaded.
-          const waitForWorker = async () => setTimeout(async () => (await navigator.serviceWorker.getRegistrations()).length >= 1 ? waitForDocument() : waitForWorker(), 1000);
-
-          waitForWorker();
-        });
-
-        if (window.goProx && window.goProx.ultraviolet) {
-          try {
-            const generatedUrl = window.goProx.ultraviolet(
-              "example.com",
-              false
-            );
-            console.log("Generated Ultraviolet URL:", generatedUrl);
-            results.ultraviolet = generatedUrl ? generatedUrl : "failure";
-          } catch (e) {
-            results.ultraviolet = "failure: " + e.message;
->>>>>>> 9e01004564071a2c3da4a61de0fff7ed566ee933
           }
 
           await navigator.serviceWorker.register(stockSW);
@@ -182,16 +147,14 @@ async function testCommonJSOnPage() {
             location.host +
             "/wisp/";
           await BareMux.SetTransport("EpxMod.EpoxyClient", { wisp: wispUrl });
-
-          // When testing proxy support, clear service workers from 8080 (or whatever current port you are using)
-          // navigator.serviceWorker.register(stockSW).then(register => register.unregister().then(bool => console.log("Unregistered: " + bool)));
         }
 
         await registerSW();
       });
 
-      // Test for the existence of /assets/js/register-sw.js
-      const swTestPassed = await testEndpoint("http://localhost:8080/assets/js/register-sw.js");
+      const swTestPassed = await testEndpoint(
+        "http://localhost:8080/assets/js/register-sw.js"
+      );
 
       console.log(
         `Service Worker registration test result: ${
@@ -202,7 +165,6 @@ async function testCommonJSOnPage() {
       return swTestPassed;
     }
 
-    // Run tests for Rammerhead and Ultraviolet
     const rammerheadPassed = await testRammerhead();
     const ultravioletPassed = await testUltraviolet();
 
