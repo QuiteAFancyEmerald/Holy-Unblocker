@@ -104,17 +104,24 @@ async function testCommonJSOnPage() {
     async function testUltraviolet() {
       await page.goto("http://localhost:8080/?q");
 
-      // Wait for the service worker to be active
-      await page.waitForFunction(
-        () => navigator.serviceWorker.controller !== null
-      );
-
       const testResults = await page.evaluate(async () => {
         const results = {};
+        await new Promise((resolve) => {
+
+          const waitForDocument = () => document.readyState === "complete"
+          ? resolve()
+          : window.addEventListener("load", resolve);
+
+//        Wait until a service worker is registered before continuing.
+//        Also make sure the document is loaded.
+          const waitForWorker = async () => setTimeout(async () => (await navigator.serviceWorker.getRegistrations()).length >= 1 ? waitForDocument() : waitForWorker(), 1000);
+
+          waitForWorker();
+        });
 
         if (window.goProx && window.goProx.ultraviolet) {
           try {
-            const generatedUrl = await window.goProx.ultraviolet(
+            const generatedUrl = window.goProx.ultraviolet(
               "example.com",
               false
             );
