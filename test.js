@@ -105,7 +105,8 @@ async function testCommonJSOnPage() {
       await page.goto("http://localhost:8080/?q");
 
       const testResults = await page.evaluate(async () => {
-        const results = {};
+        const results = [{}, {}];
+
         await new Promise((resolve) => {
 
           const waitForDocument = () => document.readyState === "complete"
@@ -114,7 +115,11 @@ async function testCommonJSOnPage() {
 
 //        Wait until a service worker is registered before continuing.
 //        Also make sure the document is loaded.
-          const waitForWorker = async () => setTimeout(async () => (await navigator.serviceWorker.getRegistrations()).length >= 1 ? waitForDocument() : waitForWorker(), 1000);
+          const waitForWorker = async () => setTimeout(async () => {
+          (await navigator.serviceWorker.getRegistrations()).length >= 1
+            ? waitForDocument()
+            : waitForWorker()
+          }, 1000);
 
           waitForWorker();
         });
@@ -126,21 +131,37 @@ async function testCommonJSOnPage() {
               false
             );
             console.log("Generated Ultraviolet URL:", generatedUrl);
-            results.ultraviolet = generatedUrl ? generatedUrl : "failure";
+            results[0].ultraviolet = generatedUrl ? generatedUrl : "failure";
+
+            const testGeneratedUrlHacky = async (url) => {
+              let result = false;
+              const exampleIFrame = document.createElement("iframe");
+              const waitForDocument = new Promise(resolve => exampleIFrame.addEventListener("load", () => {
+                result = exampleIFrame.contentWindow.document.title === "Example Domain";
+                resolve();
+              }));
+              exampleIFrame.src = url;
+              exampleIFrame.style.display = "none";
+              document.documentElement.appendChild(exampleIFrame);
+              await waitForDocument;
+              return result;
+            };
+
+            results[1].uvTestPassed = await testGeneratedUrlHacky(results[0].ultraviolet);
           } catch (e) {
-            results.ultraviolet = "failure: " + e.message;
+            results[0].ultraviolet = "failure: " + e.message;
           }
         } else {
-          results.goProx = "not defined";
+          results[0].goProx = "not defined";
         }
 
         return results;
       });
 
-      console.log("Ultraviolet test results:", testResults);
+      console.log("Ultraviolet test results:", testResults[0]);
 
-      if (testResults.ultraviolet && testResults.ultraviolet !== "failure") {
-        const uvTestPassed = await testGeneratedUrl(testResults.ultraviolet);
+      if (testResults[0].ultraviolet && testResults[0].ultraviolet !== "failure") {
+        const uvTestPassed = testResults[1].uvTestPassed;
         console.log(
           `Ultraviolet test result: ${uvTestPassed ? "success" : "failure"}`
         );
