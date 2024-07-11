@@ -1,7 +1,7 @@
 const axios = require("axios");
 const puppeteer = require("puppeteer");
 
-async function testEndpoint(url) {
+const testEndpoint = async url => {
   try {
     const response = await axios.get(url);
     return response.status === 200;
@@ -9,9 +9,9 @@ async function testEndpoint(url) {
     console.error(`Error while testing ${url}:`, error.message);
     return false;
   }
-}
+};
 
-async function testGeneratedUrl(url, headers) {
+const testGeneratedUrl = async (url, headers) => {
   try {
     console.log(`Testing generated URL: ${url}`);
 
@@ -22,9 +22,9 @@ async function testGeneratedUrl(url, headers) {
     console.error(`Error while testing generated URL ${url}:`, error.message);
     return false;
   }
-}
+};
 
-async function testServerResponse() {
+const testServerResponse = async () => {
   const endpoints = [
     "http://localhost:8080/",
     "http://localhost:8080/?pathtonowhere",
@@ -78,9 +78,9 @@ async function testServerResponse() {
     );
     process.exit(1);
   }
-}
+};
 
-async function testCommonJSOnPage() {
+const testCommonJSOnPage = async () => {
   const browser = await puppeteer.launch({
     args: [
       "--enable-features=NetworkService",
@@ -93,16 +93,16 @@ async function testCommonJSOnPage() {
   const page = await browser.newPage();
 
   try {
-    async function getHeaders() {
+    const getHeaders = async () => {
       const headers = {};
 
       headers["User-Agent"] = await page.evaluate(() => navigator.userAgent);
       headers["Referer"] = await page.evaluate(() => window.location.href);
 
       return headers;
-    }
+    };
 
-    async function testRammerhead() {
+    const testRammerhead = async () => {
       await page.goto("http://localhost:8080/?rh");
 
       const testResults = await page.evaluate(async () => {
@@ -148,7 +148,7 @@ async function testCommonJSOnPage() {
       );
 
       return rammerheadTestPassed;
-    }
+    };
 
     /*
 
@@ -188,7 +188,7 @@ xx                                                  xx
 
 
 
-    async function testUltraviolet() {
+    const testUltraviolet = async () => {
       await page.goto("http://localhost:8080/?q");
 
       const testResults = await page.evaluate(async () => {
@@ -212,24 +212,34 @@ xx                                                  xx
         });
 
         if (window.goProx && window.goProx.ultraviolet) {
+//          For the hacky URL test, use the URL page's EXACT title.
+          const website = {
+            path: "example.com",
+            title: "Example Domain"
+          };
+
           try {
             const generatedUrl = window.goProx.ultraviolet(
-              "example.com",
+              website.path,
               false
             );
             console.log("Generated Ultraviolet URL:", generatedUrl);
             results[0].ultraviolet = generatedUrl ? generatedUrl : "failure";
 
+//          Test to see if the document title for example.com has loaded,
+//          by appending an IFrame to the document and grabbing its content.
             const testGeneratedUrlHacky = async (url) => {
               let result = false;
               const exampleIFrame = document.createElement("iframe");
-              const waitForDocument = new Promise(resolve => exampleIFrame.addEventListener("load", () => {
-                result = exampleIFrame.contentWindow.document.title === "Example Domain";
+              const waitForDocument = new Promise(resolve => {
+                document.documentElement.appendChild(exampleIFrame);
+                exampleIFrame.addEventListener("load", () => {
+                result = exampleIFrame.contentWindow.document.title === website.title;
                 resolve();
-              }));
+              });
+            });
               exampleIFrame.src = url;
               exampleIFrame.style.display = "none";
-              document.documentElement.appendChild(exampleIFrame);
               await waitForDocument;
               return result;
             };
@@ -257,7 +267,7 @@ xx                                                  xx
         console.log(`Ultraviolet test result: failure`);
         return false;
       }
-    }
+    };
 
     // Run tests for Rammerhead and Ultraviolet
     const rammerheadPassed = await testRammerhead();
@@ -276,6 +286,6 @@ xx                                                  xx
   } finally {
     await browser.close();
   }
-}
+};
 
 testServerResponse();
