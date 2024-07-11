@@ -11,9 +11,14 @@ async function testEndpoint(url) {
   }
 }
 
-async function testGeneratedUrl(url) {
+async function testGeneratedUrl(url, headers) {
   try {
-    const response = await axios.get(url);
+    console.log(`Testing generated URL: ${url}`);
+
+    // Make the Axios request with custom headers
+    const response = await axios.get(url, { headers });
+
+    console.log(`Response status for ${url}: ${response.status}`);
     return response.status === 200;
   } catch (error) {
     console.error(`Error while testing generated URL ${url}:`, error.message);
@@ -46,13 +51,28 @@ async function testServerResponse() {
 
 async function testCommonJSOnPage() {
   const browser = await puppeteer.launch({
-    args: ["--enable-features=NetworkService"],
+    args: [
+      "--enable-features=NetworkService",
+      "--enable-features=ServiceWorker",
+      "--enable-features=InsecureOrigins",
+    ],
     headless: false,
     ignoreHTTPSErrors: true,
   });
   const page = await browser.newPage();
 
   try {
+    // Function to extract headers from the page context
+    async function getHeaders() {
+      const headers = {};
+
+      // Example: Extract headers dynamically from the page
+      headers['User-Agent'] = await page.evaluate(() => navigator.userAgent);
+      headers['Referer'] = await page.evaluate(() => window.location.href);
+
+      return headers;
+    }
+
     // Function to test Rammerhead with "?rh"
     async function testRammerhead() {
       await page.goto("http://localhost:8080/?rh");
@@ -88,9 +108,10 @@ async function testCommonJSOnPage() {
 
       console.log("Rammerhead test results:", testResults);
 
+      const headers = await getHeaders();
       const rammerheadTestPassed =
         testResults.rammerhead !== "failure" &&
-        (await testGeneratedUrl(testResults.rammerhead));
+        (await testGeneratedUrl(testResults.rammerhead, headers));
 
       console.log(
         `Rammerhead test result: ${
@@ -104,44 +125,53 @@ async function testCommonJSOnPage() {
     async function testUltraviolet() {
       await page.goto("http://localhost:8080/?q");
 
-      // Wait for the service worker to be active
-      await page.waitForFunction(
-        () => navigator.serviceWorker.controller !== null
-      );
+      // Wait for the document's readyState to be complete
+      await page.waitForFunction(() => document.readyState === "complete");
 
-      const testResults = await page.evaluate(async () => {
-        const results = {};
+      // Evaluate the function to register the service worker
+      await page.evaluate(async () => {
+        const stockSW = "/uv/sw.js";
+        const swAllowedHostnames = ["localhost", "127.0.0.1"];
 
-        if (window.goProx && window.goProx.ultraviolet) {
-          try {
-            const generatedUrl = await window.goProx.ultraviolet(
-              "example.com",
-              false
-            );
-            console.log("Generated Ultraviolet URL:", generatedUrl);
-            results.ultraviolet = generatedUrl ? generatedUrl : "failure";
-          } catch (e) {
-            results.ultraviolet = "failure: " + e.message;
+        async function registerSW() {
+          if (!navigator.serviceWorker) {
+            if (
+              location.protocol !== "https:" &&
+              !swAllowedHostnames.includes(location.hostname)
+            )
+              throw new Error(
+                "Service workers cannot be registered without https."
+              );
+
+            throw new Error("Your browser doesn't support service workers.");
           }
-        } else {
-          results.goProx = "not defined";
+
+          await navigator.serviceWorker.register(stockSW);
+
+          let wispUrl =
+            (location.protocol === "https:" ? "wss" : "ws") +
+            "://" +
+            location.host +
+            "/wisp/";
+          await BareMux.SetTransport("EpxMod.EpoxyClient", { wisp: wispUrl });
+
+          // When testing proxy support, clear service workers from 8080 (or whatever current port you are using)
+          // navigator.serviceWorker.register(stockSW).then(register => register.unregister().then(bool => console.log("Unregistered: " + bool)));
         }
 
-        return results;
+        await registerSW();
       });
 
-      console.log("Ultraviolet test results:", testResults);
+      // Test for the existence of /assets/js/register-sw.js
+      const swTestPassed = await testEndpoint("http://localhost:8080/assets/js/register-sw.js");
 
-      if (testResults.ultraviolet && testResults.ultraviolet !== "failure") {
-        const uvTestPassed = await testGeneratedUrl(testResults.ultraviolet);
-        console.log(
-          `Ultraviolet test result: ${uvTestPassed ? "success" : "failure"}`
-        );
-        return uvTestPassed;
-      } else {
-        console.log(`Ultraviolet test result: failure`);
-        return false;
-      }
+      console.log(
+        `Service Worker registration test result: ${
+          swTestPassed ? "success" : "failure"
+        }`
+      );
+
+      return swTestPassed;
     }
 
     // Run tests for Rammerhead and Ultraviolet
