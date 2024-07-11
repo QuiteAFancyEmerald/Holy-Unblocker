@@ -11,9 +11,12 @@ async function testEndpoint(url) {
   }
 }
 
-async function testGeneratedUrl(url) {
+async function testGeneratedUrl(url, headers) {
   try {
-    const response = await axios.get(url);
+    console.log(`Testing generated URL: ${url}`);
+
+    const response = await axios.get(url, { headers });
+    console.log(`Response status for ${url}: ${response.status}`);
     return response.status === 200;
   } catch (error) {
     console.error(`Error while testing generated URL ${url}:`, error.message);
@@ -46,14 +49,26 @@ async function testServerResponse() {
 
 async function testCommonJSOnPage() {
   const browser = await puppeteer.launch({
-    args: ["--enable-features=NetworkService"],
-    headless: false,
+    args: [
+      "--enable-features=NetworkService",
+      "--enable-features=ServiceWorker",
+      "--enable-features=InsecureOrigins",
+    ],
+    headless: true,
     ignoreHTTPSErrors: true,
   });
   const page = await browser.newPage();
 
   try {
-    // Function to test Rammerhead with "?rh"
+    async function getHeaders() {
+      const headers = {};
+
+      headers["User-Agent"] = await page.evaluate(() => navigator.userAgent);
+      headers["Referer"] = await page.evaluate(() => window.location.href);
+
+      return headers;
+    }
+
     async function testRammerhead() {
       await page.goto("http://localhost:8080/?rh");
 
@@ -88,9 +103,10 @@ async function testCommonJSOnPage() {
 
       console.log("Rammerhead test results:", testResults);
 
+      const headers = await getHeaders();
       const rammerheadTestPassed =
         testResults.rammerhead !== "failure" &&
-        (await testGeneratedUrl(testResults.rammerhead));
+        (await testGeneratedUrl(testResults.rammerhead, headers));
 
       console.log(
         `Rammerhead test result: ${
