@@ -142,6 +142,7 @@ async function testCommonJSOnPage() {
 
         if (window.goProx && window.goProx.ultraviolet) {
           try {
+//          For the hacky URL test, keep this as example.com.
             const generatedUrl = window.goProx.ultraviolet(
               "example.com",
               false
@@ -149,6 +150,8 @@ async function testCommonJSOnPage() {
             console.log("Generated Ultraviolet URL:", generatedUrl);
             results[0].ultraviolet = generatedUrl ? generatedUrl : "failure";
 
+//          Test to see if the document title for example.com has loaded,
+//          by appending an IFrame to the document and grabbing its content.
             const testGeneratedUrlHacky = async (url) => {
               let result = false;
               const exampleIFrame = document.createElement("iframe");

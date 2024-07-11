@@ -68,9 +68,10 @@ readCookie("HBHideAds").then(s => (s != "false") ? pageHideAds() : pageShowAds((
 if (document.getElementById("csel")) {
 
 //  Allow users to set a custom title with the UI.
-    document.getElementById("titleform").addEventListener("submit", e => {
+    let titleform = document.getElementById("titleform");
+    titleform.addEventListener("submit", e => {
         e.preventDefault();
-        e = this.firstElementChild;
+        e = titleform.firstElementChild;
         if (e.value) {
             pageTitle(e.value);
             setCookie("HBTitle", e.value);
@@ -81,9 +82,10 @@ if (document.getElementById("csel")) {
     }, false);
 
 //  Allow users to set a custom favicon with the UI.
-    document.getElementById("iconform").addEventListener("submit", e => {
+    let iconform = document.getElementById("iconform");
+    iconform.addEventListener("submit", e => {
         e.preventDefault();
-        e = this.firstElementChild;
+        e = iconform.firstElementChild;
         if (e.value) {
             pageIcon(e.value);
             setCookie("HBIcon", e.value);
