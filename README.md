@@ -84,8 +84,7 @@ This website is hosted locally with Ultraviolet and Rammerhead built-in.
 <details><summary>Web Pages</summary>
 
 - `index.html`: The homepage of the site.
-- `404.html`: The 404 page.
-- `error.html`: Other errors that are not 404.
+- `error.html`: A general error page for all 404 errors and other errors.
 - `info.html`: Documentation (This page!)
 - `faq.html`: Frequently asked questions page.
 - `hidden.html`: Fake "Site not Found" page (unused)
@@ -119,9 +118,7 @@ This website is hosted locally with Ultraviolet and Rammerhead built-in.
 #### Scripts located in `/views/assets/js/`
 - `common.js` is used on all of the pages for common useful functions.
 - `prset.js` is used on the proxy pages for proxy form functionality.
-- `header.js` inserts the header into every page using javascript.
 - `csel.js` manages the settings menu on the header.
-- `footer.js` inserts the footer into every page using javascript.
 - `gnav/*.js` are used for navigation on the games pages.
 
 ## Future Additions
@@ -129,27 +126,39 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 
 ### Code Cleanup
 
-  - [ ] Remove the timestamps attached to the end of the JS file names.
   - [ ] Remove all current obfuscation in the source code. It needs to be dynamically obfuscated if anything, or not obfuscated at all. This option will be a config option on the server side before rendering with Express for a performance focus. Meta elements will have an additonal attribute indicating if they should be moved. This is to ensure a SEO source can be served by config or a source focused on pure censorship evasion.
   - [ ] Optimize the stylesheets and the HTML layout. Add more proper commenting and redivide the code so that it's less hard on the eyes.
   - [ ] Optimize the JS. This time it won't be in one line and will be somewhat thoroughly commented.
   - [ ] Restructure navigation scripts to ensure updated proxy functionality is sanitized and effective
-  - [x] Particles.js automatically adjusting per display size
+  - [x] Particles.js automatically adjusting per display size - done
+  - [x] Fix routes.mjs throwing with incorrect paths - done
+  - [x] Create test script - done
+  - [x] XSS and fingerprinting protection (may need updates) - done
+  - [ ] Update games navigation JS and page
+  - [ ] Ensure all the original submodules get added back to HU-Archive
 
-### Proxy Functionality
+### Proxy/Site Functionality
   - [x] Ensure Ultraviolet is updated to support bare-mux and wisp - done
   - [x] Add Rammerhead support - done
-  - [ ] Fix slow Ultraviolet speeds despite being local; something on the backend??
+  - [x] Fix slow Ultraviolet speeds despite being local; something on the backend?? - done
+  - [ ] Fix Ultraviolet on Firefox
+  - [ ] Adapt Applications page to use either Rammerhead or UV (for Reddit, YouTube, Discord)
+  - [ ] libcurl, epoxy and all that fun stuff 
+  - [ ] socks5/tor routing option that can be configured (enabled) via either a cookie or pathname as a settings meny option
+  - [ ] Update games page content
+  - [ ] Update csel.js (after Setting menu redesign) to support custom transports, icon swap, routing
+  - [ ] Omnibox autoupdate script (for the Google/Bing style auto suggest feature)
 
 ### Site Redesign
+  - [x] Add potato (lime reminded me to do this)
   - [x] Landing Page - done
   - [ ] Web Proxies page
   - [ ] Application page
-  - [ ] Games Libray page
+  - [ ] Games Library page
   - [x] Footer Design - done
-  - [x] Header Design
+  - [x] Header Design - done
 
-## Vauge Explanation for Beginners With External Proxies and Hosting
+## Vague Explanation for Beginners With External Proxies and Hosting
 You will first want to host your proxies locally or externally. OUTDATED
 
 #### List of some good hosting options:

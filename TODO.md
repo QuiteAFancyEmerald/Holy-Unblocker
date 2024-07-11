@@ -11,7 +11,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - [x] Create test script - done
   - [x] XSS and fingerprinting protection (may need updates) - done
   - [ ] Update games navigation JS and page
-  - [ ] Ensure all the origianl submodules get added back to HU-Archive
+  - [ ] Ensure all the original submodules get added back to HU-Archive
 
 ## Proxy/Site Functionality
   - [x] Ensure Ultraviolet is updated to support bare-mux and wisp - done
@@ -30,9 +30,9 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - [x] Landing Page - done
   - [ ] Web Proxies page
   - [ ] Application page
-  - [ ] Games Libray page
+  - [ ] Games Library page
   - [x] Footer Design - done
-  - [x] Header Design
+  - [x] Header Design - done
 
 ## Changelog
 
