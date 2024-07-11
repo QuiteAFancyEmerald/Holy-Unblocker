@@ -120,51 +120,75 @@ async function testCommonJSOnPage() {
     async function testUltraviolet() {
       await page.goto("http://localhost:8080/?q");
 
-      await page.waitForFunction(() => document.readyState === "complete");
+      const testResults = await page.evaluate(async () => {
+        const results = [{}, {}];
 
-      await page.evaluate(async () => {
-        const stockSW = "/uv/sw.js";
-        const swAllowedHostnames = ["localhost", "127.0.0.1"];
+        await new Promise((resolve) => {
 
-        async function registerSW() {
-          if (!navigator.serviceWorker) {
-            if (
-              location.protocol !== "https:" &&
-              !swAllowedHostnames.includes(location.hostname)
-            )
-              throw new Error(
-                "Service workers cannot be registered without https."
-              );
+          const waitForDocument = () => document.readyState === "complete"
+          ? resolve()
+          : window.addEventListener("load", resolve);
 
-            throw new Error("Your browser doesn't support service workers.");
+//        Wait until a service worker is registered before continuing.
+//        Also make sure the document is loaded.
+          const waitForWorker = async () => setTimeout(async () => {
+          (await navigator.serviceWorker.getRegistrations()).length >= 1
+            ? waitForDocument()
+            : waitForWorker()
+          }, 1000);
+
+          waitForWorker();
+        });
+
+        if (window.goProx && window.goProx.ultraviolet) {
+          try {
+            const generatedUrl = window.goProx.ultraviolet(
+              "example.com",
+              false
+            );
+            console.log("Generated Ultraviolet URL:", generatedUrl);
+            results[0].ultraviolet = generatedUrl ? generatedUrl : "failure";
+
+            const testGeneratedUrlHacky = async (url) => {
+              let result = false;
+              const exampleIFrame = document.createElement("iframe");
+              const waitForDocument = new Promise(resolve => exampleIFrame.addEventListener("load", () => {
+                result = exampleIFrame.contentWindow.document.title === "Example Domain";
+                resolve();
+              }));
+              exampleIFrame.src = url;
+              exampleIFrame.style.display = "none";
+              document.documentElement.appendChild(exampleIFrame);
+              await waitForDocument;
+              return result;
+            };
+
+            results[1].uvTestPassed = await testGeneratedUrlHacky(results[0].ultraviolet);
+          } catch (e) {
+            results[0].ultraviolet = "failure: " + e.message;
           }
-
-          await navigator.serviceWorker.register(stockSW);
-
-          let wispUrl =
-            (location.protocol === "https:" ? "wss" : "ws") +
-            "://" +
-            location.host +
-            "/wisp/";
-          await BareMux.SetTransport("EpxMod.EpoxyClient", { wisp: wispUrl });
+        } else {
+          results[0].goProx = "not defined";
         }
 
-        await registerSW();
+        return results;
       });
 
-      const swTestPassed = await testEndpoint(
-        "http://localhost:8080/assets/js/register-sw.js"
-      );
+      console.log("Ultraviolet test results:", testResults[0]);
 
-      console.log(
-        `Service Worker registration test result: ${
-          swTestPassed ? "success" : "failure"
-        }`
-      );
-
-      return swTestPassed;
+      if (testResults[0].ultraviolet && testResults[0].ultraviolet !== "failure") {
+        const uvTestPassed = testResults[1].uvTestPassed;
+        console.log(
+          `Ultraviolet test result: ${uvTestPassed ? "success" : "failure"}`
+        );
+        return uvTestPassed;
+      } else {
+        console.log(`Ultraviolet test result: failure`);
+        return false;
+      }
     }
 
+    // Run tests for Rammerhead and Ultraviolet
     const rammerheadPassed = await testRammerhead();
     const ultravioletPassed = await testUltraviolet();
 

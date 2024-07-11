@@ -26,6 +26,7 @@
         "express": "^4.19.2",
         "helmet": "^7.1.0",
         "mime-types": "^2.1.35",
+        "node-fetch": "^3.3.2",
         "puppeteer": "^22.12.1",
         "rammerhead": "https://github.com/NebulaServices/rammerhead/releases/download/rammerhead-1.2.41-nebula.8/rammerhead-1.2.41-nebula.7.tgz",
         "wisp-server-node": "^1.0.6",
