@@ -45,7 +45,11 @@ async function testServerResponse() {
 }
 
 async function testCommonJSOnPage() {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({
+    args: ["--enable-features=NetworkService"],
+    headless: false,
+    ignoreHTTPSErrors: true,
+  });
   const page = await browser.newPage();
 
   try {
@@ -100,19 +104,22 @@ async function testCommonJSOnPage() {
     async function testUltraviolet() {
       await page.goto("http://localhost:8080/?q");
 
-      // Wait for the service workers and other scripts to load
-      await page.waitForFunction(() => {
-        return window.goProx && window.goProx.ultraviolet;
-      });
+      // Wait for the service worker to be active
+      await page.waitForFunction(
+        () => navigator.serviceWorker.controller !== null
+      );
 
       const testResults = await page.evaluate(async () => {
         const results = {};
 
-        if (window.goProx) {
+        if (window.goProx && window.goProx.ultraviolet) {
           try {
-            const uvUrl = await window.goProx.ultraviolet("example.com", false);
-            console.log("Generated Ultraviolet URL:", uvUrl);
-            results.ultraviolet = uvUrl ? uvUrl : "failure";
+            const generatedUrl = await window.goProx.ultraviolet(
+              "example.com",
+              false
+            );
+            console.log("Generated Ultraviolet URL:", generatedUrl);
+            results.ultraviolet = generatedUrl ? generatedUrl : "failure";
           } catch (e) {
             results.ultraviolet = "failure: " + e.message;
           }
