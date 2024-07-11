@@ -334,7 +334,7 @@ const RammerheadEncode = async baseUrl => {
  * 
  * Key: 1 = "stealth"
  *      0 = "window"
- *      Nothing = return as string variable
+ *      Nothing = return URL as a string
  *
  * Examples:
  * Stealth mode -
