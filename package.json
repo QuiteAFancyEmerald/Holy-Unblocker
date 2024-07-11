@@ -7,9 +7,9 @@
     "scripts": {
         "start": "node backend.js",
         "build": "npm run start",
-        "test": "npm run test-200",
+        "test": "npm run proxy-validator",
         "start-test-server": "node backend.js &",
-        "test-200": "node test.js"
+        "proxy-validator": "node proxyServiceValidator.js"
     },
     "keywords": [
         "proxy",
