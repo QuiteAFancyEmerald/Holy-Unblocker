@@ -20,7 +20,7 @@
     "license": "GNU AFFERO",
     "dependencies": {
         "@mercuryworkshop/bare-mux": "^2.0.1",
-        "@mercuryworkshop/epoxy-transport": "^2.1.2",
+        "@mercuryworkshop/epoxy-transport": "^2.1.3",
         "@titaniumnetwork-dev/ultraviolet": "3.2.1",
         "@tomphttp/bare-server-node": "^2.0.3",
         "axios": "^1.7.2",
