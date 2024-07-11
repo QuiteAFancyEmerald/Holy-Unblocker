@@ -11,6 +11,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - [x] Create test script - done
   - [x] XSS and fingerprinting protection (may need updates) - done
   - [ ] Update games navigation JS and page
+  - [ ] Ensure all the origianl submodules get added back to HU-Archive
 
 ## Proxy/Site Functionality
   - [x] Ensure Ultraviolet is updated to support bare-mux and wisp - done
@@ -32,3 +33,20 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - [ ] Games Libray page
   - [x] Footer Design - done
   - [x] Header Design
+
+## Changelog
+
+  - Added wisp support
+  - Fixed AD config setting being opt-out; ads are not implemented in the project however
+  - Added Rammerhead support (locally)
+  - Drastically updated visuals across the service and refactored stylesheets
+  - Bumped games page functionality
+  - Updated randomization scripts to ES6 syntax and implemented the alternative to RegEx string replacement
+  - Helmet for express implemented into backend
+  - Improved component handling via templates.mjs along with deletion of obsolete files that previously handled this standard in a poor format
+  - Fixed oddly slow speeds with Ultraviolet (as well as a general version bump to support epoxy-tls and bare-mux)
+  - Implemented testing scripts for an improved GitHub actions workflow by doing a quick test on proxy + site functionality
+  - Greatly optimized client-side scripts across the site with a new standard
+  - Changes to server.mjs with path logic and error handling
+  - Updated standards for common scripts
+  - Ultraviolet made local
