@@ -117,6 +117,44 @@ async function testCommonJSOnPage() {
       return rammerheadTestPassed;
     }
 
+    /*
+
+                                                     xx   
+  xx                                            xx    
+   xxx                                        xx      
+     xxx                                     xx       
+       xxx                                  xx        
+         xxx                              xx          
+            xx                           xx           
+             xx                         xx            
+                                       xx             
+                                      xx              
+                                                      
+                                                      
+                                                      
+                                                      
+               x                    x                 
+                                                      
+                                                      
+                                                      
+                                                      
+                                                      
+                                                      
+                        xxxxxxxxxxxxxxx               
+             xxxxxxxxxxxx              xxxxx          
+          xxxx                              xxx       
+       xxx                                    xxx     
+     xxx                                        xx    
+    xx                                           xx   
+   xx                                             xx  
+ xxx                                               x  
+ xx                                                 x 
+xx                                                  xx
+
+*/
+
+
+
     async function testUltraviolet() {
       await page.goto("http://localhost:8080/?q");
 
