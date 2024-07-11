@@ -52,7 +52,7 @@ const testServerResponse = async () => {
     "http://localhost:8080/assets/js/csel.js",
     "http://localhost:8080/assets/js/particlesjs/particles.js",
     "http://localhost:8080/baremux/index.js",
-    "http://localhost:8080/baremux/worker.mjs",
+    "http://localhost:8080/baremux/worker.js",
     "http://localhost:8080/epoxy/index.mjs",
     "http://localhost:8080/uv/uv.bundle.js",
     "http://localhost:8080/uv/uv.config.js",
