@@ -13,26 +13,33 @@
 @import url("https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css");
 
 @font-face {
-  font-family: "NeueMontrealMedium";
-  src:
-    local("Neue Montreal Medium"),
-    url("/assets/fonts/NeueMontreal-Medium.woff") format("woff");
+  font-family: 'NeueMontrealMedium';
+  src: local('Neue Montreal Medium'),
+       url('/assets/fonts/NeueMontreal-Medium.woff2') format('woff2'),
+       url('/assets/fonts/NeueMontreal-Medium.woff') format('woff'),
+       url('/assets/fonts/NeueMontreal-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-
 @font-face {
-  font-family: "NeueMontrealRegular";
-  src:
-    local("Neue Montreal Regular"),
-    url("/assets/fonts/NeueMontreal-Regular.woff") format("woff");
+  font-family: 'NeueMontrealRegular';
+  src: local('Neue Montreal Regular'),
+       url('/assets/fonts/NeueMontreal-Regular.woff2') format('woff2'),
+       url('/assets/fonts/NeueMontreal-Regular.woff') format('woff'),
+       url('/assets/fonts/NeueMontreal-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-
 @font-face {
-  font-family: "NeueMontrealThin";
-  src:
-    local("Neue Montreal Thin"),
-    url("/assets/fonts/NeueMontreal-Light.woff") format("woff");
+  font-family: 'NeueMontrealLight';
+  src: local('Neue Montreal Light'),
+       url('/assets/fonts/NeueMontreal-Light.woff2') format('woff2'),
+       url('/assets/fonts/NeueMontreal-Light.woff') format('woff'),
+       url('/assets/fonts/NeueMontreal-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 /*
@@ -865,7 +872,7 @@ iner
 
 .hero-text-wrap p {
   margin-bottom: 50px;
-  font-family: "NeueMontrealRegular", sans-serif;
+  color: var(--nord4);
 }
 
 .image-container-hero {
