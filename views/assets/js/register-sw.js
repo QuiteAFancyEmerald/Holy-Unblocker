@@ -1,6 +1,6 @@
 const stockSW = "/uv/sw.js";
 const swAllowedHostnames = ["localhost", "127.0.0.1"];
-let connection = new BareMux.BareMuxConnection("/baremux/worker.js")
+const connection = new BareMux.BareMuxConnection("/baremux/worker.js");
 
 async function registerSW() {
   if (!navigator.serviceWorker) {
@@ -12,14 +12,21 @@ async function registerSW() {
 
     throw new Error("Your browser doesn't support service workers.");
   }
+
   let wispUrl = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/";
-  await connection.setTransport("/epoxy/index.mjs", [{ wisp: wispUrl }])
+  await connection.setTransport("/epoxy/index.mjs", [{ wisp: wispUrl }]);
   await navigator.serviceWorker.register(stockSW);
-
-//  When testing proxy support CLEAR service workers from 8080 (or whatever current port you are using)
-
-//  navigator.serviceWorker.register(stockSW).then(register => register.unregister().then(bool => console.log("Unregistered: " + bool)));
-
 }
 
+async function setupTransportOnLoad() {
+  const conn = new BareMuxConnection("/baremux/worker.js");
+  if (await conn.getTransport() !== "/baremux/module.js") {
+    await conn.setTransport("/baremux/module.js", [{ wisp: wispUrl }]);
+  }
+}
+
+// Run transport setup on page load
+setupTransportOnLoad();
+
+// Register service worker
 registerSW();
