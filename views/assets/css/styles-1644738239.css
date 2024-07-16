@@ -235,7 +235,8 @@ details[open] summary {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.274);
   border-bottom: 10px solid transparent;
   padding: 10px 200px 10px;
-  z-index: 1;
+  z-index: 2;
+  position: relative;
 }
 
 #particles-js {
@@ -277,6 +278,7 @@ details[open] summary {
   background: url("/assets/img/waves.svg"), linear-gradient(180deg, transparent 0px, transparent 10vw, var(--nord1) 10vw, var(--nord1) 100%);
   background-repeat: no-repeat;
   background-size: 100vw auto;
+  position: relative;
 }
 
 @keyframes pulse {
