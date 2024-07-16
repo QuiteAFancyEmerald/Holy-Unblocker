@@ -816,12 +816,14 @@ iner
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 80px;
   margin: 80px auto; 
-  max-width: 1200px; 
-  background-color: var(--nord0m3);
+  width: 70%;
+  background-color: rgb(76, 86, 106, 0.15);
   border-radius: 10px;
   padding: 5px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Semi-transparent border */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
 }
 
 .box-hero {
@@ -922,12 +924,14 @@ iner
 .box-card {
   width: 100%;
   padding: 40px;
-  background-color: var(--nord1);
+  background-color: rgb(76, 86, 106, 0.15);
   border-radius: 10px;
   position: relative;
   overflow: hidden;
   text-align: left;
-  box-sizing: border-box; 
+  box-sizing: border-box;
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
 }
 
 .box-card::after {
