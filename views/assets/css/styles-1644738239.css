@@ -815,15 +815,18 @@ iner
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 80px;
-  margin: 80px auto; 
+  margin: 80px auto;
   width: 70%;
-  background-color: rgb(76, 86, 106, 0.15);
+  background-color: rgba(76, 86, 106, 0.15); /* Semi-transparent background color */
   border-radius: 10px;
   padding: 5px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2); /* Semi-transparent border */
-  backdrop-filter: blur(10px); /* Frosted glass effect */
   -webkit-backdrop-filter: blur(10px); /* For Safari */
+  backdrop-filter: blur(10px); /* Standard */
+  
+  /* Additional styling for better compatibility */
+  position: relative; /* Ensures z-index works properly */
 }
 
 .box-hero {
