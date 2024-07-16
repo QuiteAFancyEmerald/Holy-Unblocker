@@ -27,7 +27,7 @@ handleMouseLeave = element => {
 };
 
 //  Query and add event listeners
-const shimmerEffects = document.querySelectorAll(".box-card");
+const shimmerEffects = document.querySelectorAll(".box-card, .box-hero");
 
 //  Attach CSS variables, mouse-x and mouse-y, to elements that will be
 //  given shimmer effects, by adding or modifying the style attribute.
