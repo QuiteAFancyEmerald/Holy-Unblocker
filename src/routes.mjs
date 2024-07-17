@@ -47,9 +47,7 @@ charRandom = insert.chars,
 splashRandom = insert.splash,
 cacheBustList = {
   "styles.css": "styles-1644738239.css",
-  "h5-nav.js": "h5-nav-1644738239.js",
   "common.js": "common-16451543478.js",
-  "links.js": "links-1644738239.js",
 };
 
 export default {

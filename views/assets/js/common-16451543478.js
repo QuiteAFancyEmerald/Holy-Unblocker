@@ -4,9 +4,6 @@
 /* MAIN Holy Unblocker LTS Common Script
 /* ----------------------------------------------- */
 
-//  Used in scripts outside this file.
-const tryGetElement = id => document.getElementById(id) || {};
-
 //  Get the preferred apex domain name. Not exactly apex, as any
 //  subdomain other than those listed will be ignored.
 const getDomain = () => location.host.replace(/^(?:www|edu|cooking|beta)\./, "");
@@ -403,3 +400,97 @@ addEventListener("DOMContentLoaded", () => {
 //  Prevent goProx from being edited.
   Object.freeze(goProx);
 });
+
+//  Load in relevant JSON files used to organize large sets of data.
+//  This first one is for links, whereas the rest are for navigation menus.
+(async () => {
+  const huLinks = await fetch("/assets/json/links.json", {mode: "same-origin"}).then(response => response.json());
+
+  for (let item of Object.entries(huLinks))
+    (document.getElementById(item[0]) || {}).href = item[1];
+
+  const navLists = {
+    "emu-nav": "emu-nav",
+    "emulib-nav": "emulib-nav",
+    "flash-nav": "flash-nav",
+    "h5-nav": "h5-nav"
+  };
+
+  for (let [listId, filename] of Object.entries(navLists)) {
+
+    let navList = document.getElementById(listId);
+
+    if(navList) {
+    
+      const data = await fetch(`/assets/json/${filename}.json`, {mode: "same-origin"}).then(response => response.json());
+
+      switch (filename) {
+        case "emu-nav":
+        case "emulib-nav":
+        case "h5-nav": {
+          const dirnames = {
+            "emu-nav": "emu",
+            "emulib-nav": "emulib",
+            "h5-nav": "h5g"
+          },
+          dir = dirnames[filename],
+          clickHandler = parser => e => {
+            if (e.target == a || e.target.tagName != "A") {
+              e.preventDefault();
+              parser();
+            }
+          };
+
+          for (let item of data) {
+            let a = document.createElement("a");
+            a.href = "#";
+
+            let img = document.createElement("img");
+            img.src = `/assets/img/${dir}/` + item.img;
+            let title = document.createElement("h3");
+            title.textContent = item.name;
+            let desc = document.createElement("p");
+            desc.textContent = item.description;
+
+            if (filename === "h5-nav") {
+              if (item.credits === "itch") desc.innerHTML += '<br>Credits: Game can be found <a target="_blank" href="https://itch.io">here</a>.';
+              if (item.credits === "nowgg") desc.innerHTML += '<br>Credits: Game can be found <a target="_blank" href="https://now.gg">here</a>.';
+            }
+
+            a.appendChild(img);
+            a.appendChild(title);
+            a.appendChild(desc);
+
+            let functionsList = [
+              () => goFrame(item.path),
+              () => goFrame("/?eg&core=" + item.core + "&rom=" + item.rom),
+              () => item.custom ? goProx[item.custom](true) : goFrame("/archive/g/" + item.path, item.nolag)
+            ];
+
+            a.addEventListener("click", clickHandler(functionsList[Object.values(dirnames).indexOf(dir)]));
+
+            navList.appendChild(a);
+          }
+          break;
+        }
+
+        case "flash-nav":
+          for (let item of data) {
+            let a = document.createElement("a");
+            a.href = "#";
+            a.textContent = item.slice(0, -4);
+
+            a.addEventListener("click", e => {
+              e.preventDefault();
+              goFrame("/?fg&swf=" + item);
+            });
+
+            navList.appendChild(a);
+          }
+          break;
+
+  //    No default case.
+      }
+    }
+  }
+})();

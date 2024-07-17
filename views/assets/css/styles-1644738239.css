@@ -1396,14 +1396,14 @@ iner
   padding: 10px 50px;
 }
 
-#glist {
+.glist {
   font-family: "Lato", sans-serif;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-#glist > a {
+.glist > a {
   display: block;
   text-decoration: none;
   width: 200px;
@@ -1416,11 +1416,11 @@ iner
   flex-shrink: 0;
 }
 
-#glist > a:hover {
+.glist > a:hover {
   border: 2px solid var(--nord11);
 }
 
-#glist > a img {
+.glist > a img {
   pointer-events: none;
   border-radius: 30%;
   width: 200px;
@@ -1430,11 +1430,11 @@ iner
   box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.38);
 }
 
-#glist > a h3 {
+.glist > a h3 {
   margin: 16px 0px;
 }
 
-#glist > a p {
+.glist > a p {
   margin-bottom: 0px;
 }
 
@@ -1454,7 +1454,7 @@ iner
   color: var(--gray);
 }
 
-#flist {
+.flist {
   font-family: "Lato", sans-serif;
   background-color: var(--nord0);
   width: 400px;
@@ -1466,7 +1466,7 @@ iner
   padding-bottom: 2px;
 }
 
-#flist > a {
+.flist > a {
   display: block;
   text-decoration: none;
   text-transform: capitalize;
@@ -1476,7 +1476,7 @@ iner
   border-bottom: none;
 }
 
-#flist > a:hover {
+.flist > a:hover {
   background-color: var(--nord2);
 }
 
