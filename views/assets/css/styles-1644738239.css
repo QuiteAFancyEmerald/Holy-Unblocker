@@ -280,7 +280,9 @@ details[open] summary {
 }
 
 .pulse:hover {
-  animation: pulse 1s;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transform: scale(1.05);
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 #footer a {
@@ -419,7 +421,7 @@ details[open] summary {
   z-index: 5; /* Ensures it appears above other content */
   align-items: center;
   justify-content: center;
-  display: flex; /* Flexbox to center content */
+  display: none; /* Flexbox to center content */
 }
 
 .settings-content {
@@ -803,8 +805,38 @@ details[open] summary {
   animation: glowshadow 2s linear infinite, glowbg 2s linear infinite;
 }
 
-#csel .cseltitle {
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.cseltitle {
   font-size: 22px;
+  color: white;
+  margin: 0;
+}
+
+.cseltitle-main {
+  font-size: 35px;
+  color: #ebb5d5;
+}
+
+.close-settings-btn {
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.close-settings-btn:hover {
+  color: lightgray;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transform: scale(1.05);
+}
+
+#csel {
+  color: var(--nord4);
 }
 
 #csel .csellabel {
@@ -827,6 +859,13 @@ details[open] summary {
   background-color: var(--nord1);
   border: 1px solid var(--nord9);
   display: inline;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+#csel select:hover {
+  background-color: var(--nord3);
+  color: var(--nord5);
+  transform: scale(1.05);
 }
 
 #csel input[type="text"]:focus {
@@ -834,8 +873,14 @@ details[open] summary {
   transition: box-shadow 0.15s ease-out;
 }
 
+
 #csel .cselbutton {
   background-color: var(--nord8);
+}
+
+#csel .cselbutton:hover {
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transform: scale(1.05);
 }
 
 #csel .cselbutton:active {

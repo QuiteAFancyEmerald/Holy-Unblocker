@@ -32,7 +32,7 @@
       </ul>
     </div>
   </li>
-  <li class="dropdown-parent">
+  <li class="dropdown-parent open-settings-menu">
     <div class="pulse white-text">
       <a href="#">Settings <i class="fas fa-cog pulse"></i></a>
     </div>
@@ -41,3 +41,29 @@
     </div>
   </li>
 </ul>
+<script>
+function setupSettingsDropdown() {
+  const openSettingsBtn = document.querySelector('.open-settings-menu');
+  const settingsContent = document.querySelector('.dropdown-settings');
+
+  if (!openSettingsBtn || !settingsContent) {
+    console.error('Open settings button or settings content not found.');
+    return;
+  }
+
+  openSettingsBtn.addEventListener('click', () => {
+    settingsContent.style.display = 'flex'; // Display the settings dropdown
+  });
+
+  document.addEventListener('click', (event) => {
+    const isCloseBtn = event.target.closest('.close-settings-btn');
+    if (isCloseBtn) {
+      settingsContent.style.display = 'none'; // Hide the settings dropdown
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupSettingsDropdown();
+});
+</script>
