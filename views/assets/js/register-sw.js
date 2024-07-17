@@ -2,6 +2,7 @@ const stockSW = "/uv/sw.js";
 const swAllowedHostnames = ["localhost", "127.0.0.1"];
 const connection = new BareMux.BareMuxConnection("/baremux/worker.js");
 const wispUrl = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/";
+const bareAsModule = "/assets/js/bareTransport.js";
 
 async function registerSW() {
   if (!navigator.serviceWorker) {
