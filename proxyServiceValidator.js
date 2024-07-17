@@ -235,10 +235,10 @@ xx                                                  xx
               const waitForDocument = new Promise(resolve => {
                 document.documentElement.appendChild(exampleIFrame);
                 exampleIFrame.addEventListener("load", () => {
-                result = exampleIFrame.contentWindow.document.title === website.title;
-                resolve();
+                  result = exampleIFrame.contentWindow.document.title === website.title;
+                  resolve();
+                });
               });
-            });
               exampleIFrame.src = url;
               exampleIFrame.style.display = "none";
               await waitForDocument;
