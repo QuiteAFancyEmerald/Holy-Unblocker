@@ -48,7 +48,6 @@ const testServerResponse = async () => {
     "http://localhost:8080/?eg",
     "http://localhost:8080/?vos",
     "http://localhost:8080/assets/js/common-16451543478.js",
-    "http://localhost:8080/assets/js/links-1644738239.js",
     "http://localhost:8080/assets/js/csel.js",
     "http://localhost:8080/assets/js/particlesjs/particles.js",
     "http://localhost:8080/baremux/index.js",
@@ -58,11 +57,7 @@ const testServerResponse = async () => {
     "http://localhost:8080/uv/uv.config.js",
     "http://localhost:8080/assets/js/register-sw.js",
     "http://localhost:8080/assets/js/prset.js",
-    "http://localhost:8080/assets/js/gnav/emu-nav.js",
-    "http://localhost:8080/assets/js/gnav/h5-nav-1644738239.js",
-    "http://localhost:8080/assets/js/gnav/flash-nav.js",
     "http://localhost:8080/assets/js/card.js",
-    "http://localhost:8080/assets/js/gnav/emulib-nav.js",
     "http://localhost:8080/uv/sw.js",
     "http://localhost:8080/uv/uv.config.js"
   ];
