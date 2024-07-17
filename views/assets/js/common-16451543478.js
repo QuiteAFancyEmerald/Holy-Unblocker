@@ -401,12 +401,13 @@ addEventListener("DOMContentLoaded", () => {
   Object.freeze(goProx);
 });
 
+(async () => {
 //  Load in relevant JSON files used to organize large sets of data.
 //  This first one is for links, whereas the rest are for navigation menus.
-(async () => {
   const huLinks = await fetch("/assets/json/links.json", {mode: "same-origin"}).then(response => response.json());
 
   for (let item of Object.entries(huLinks))
+//  Replace all placeholder links with the corresponding entry in huLinks.
     (document.getElementById(item[0]) || {}).href = item[1];
 
   const navLists = {
@@ -421,9 +422,11 @@ addEventListener("DOMContentLoaded", () => {
     let navList = document.getElementById(listId);
 
     if(navList) {
-    
+//    List items stored in JSON format will be returned as a JS object.
       const data = await fetch(`/assets/json/${filename}.json`, {mode: "same-origin"}).then(response => response.json());
 
+//    Load the JSON lists into specific HTML parent elements as groups of
+//    child elements, if the parent element is found.
       switch (filename) {
         case "emu-nav":
         case "emulib-nav":
@@ -433,8 +436,11 @@ addEventListener("DOMContentLoaded", () => {
             "emulib-nav": "emulib",
             "h5-nav": "h5g"
           },
+
           dir = dirnames[filename],
-          clickHandler = parser => e => {
+
+//        Add a little functionality for each list item when clicked on.
+          clickHandler = (parser, a) => e => {
             if (e.target == a || e.target.tagName != "A") {
               e.preventDefault();
               parser();
@@ -442,6 +448,8 @@ addEventListener("DOMContentLoaded", () => {
           };
 
           for (let item of data) {
+//          Load each item as an anchor tag with an image, heading,
+//          description, and click event listener.
             let a = document.createElement("a");
             a.href = "#";
 
@@ -461,13 +469,15 @@ addEventListener("DOMContentLoaded", () => {
             a.appendChild(title);
             a.appendChild(desc);
 
+//          Which function is used for the click event is determined by
+//          the corresponding location/index in the dirnames object.
             let functionsList = [
               () => goFrame(item.path),
               () => goFrame("/?eg&core=" + item.core + "&rom=" + item.rom),
               () => item.custom ? goProx[item.custom](true) : goFrame("/archive/g/" + item.path, item.nolag)
             ];
 
-            a.addEventListener("click", clickHandler(functionsList[Object.values(dirnames).indexOf(dir)]));
+            a.addEventListener("click", clickHandler(functionsList[Object.values(dirnames).indexOf(dir)], a));
 
             navList.appendChild(a);
           }
@@ -476,6 +486,8 @@ addEventListener("DOMContentLoaded", () => {
 
         case "flash-nav":
           for (let item of data) {
+//          Load each item as an anchor tag with a short title and click
+//          event listener.
             let a = document.createElement("a");
             a.href = "#";
             a.textContent = item.slice(0, -4);
