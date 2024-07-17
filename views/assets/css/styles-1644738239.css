@@ -408,6 +408,30 @@ details[open] summary {
   font-family: "Titillium Web", sans-serif;
 }
 
+.navbar .dropdown-settings {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Blurs the background */
+  z-index: 5; /* Ensures it appears above other content */
+  align-items: center;
+  justify-content: center;
+  display: flex; /* Flexbox to center content */
+}
+
+.settings-content {
+  background-color: var(--nord0);
+  border: 1px solid var(--nord3);
+  border-radius: 10px;
+  padding: 25px;
+  z-index: 6; /* Ensures it appears above the background blur */
+  width: 450px; /* Adjust the size as needed */
+  text-align: center;
+}
+
 .dropdown-parent:focus-within .dropdown-child {
   display: block;
 }
@@ -787,15 +811,22 @@ details[open] summary {
   margin-top: 10px;
 }
 
-#csel input:not([type="checkbox"]) {
+#csel input:not([type="checkbox"]),
+#csel select {
   outline: none;
   display: block;
+  vertical-align: baseline;
   box-sizing: border-box;
-  width: 100%;
-  padding: 5px;
-  margin: 2px 0px;
+  width: calc(100% - 200px);
+  padding: 10px 12px;
+  color: white;
+  border-radius: 5px;
+  margin: 5px 0px;
   border-radius: 2px;
+  font-family: "NeueMontrealMedium", sans-serif;
+  background-color: var(--nord1);
   border: 1px solid var(--nord9);
+  display: inline;
 }
 
 #csel input[type="text"]:focus {
