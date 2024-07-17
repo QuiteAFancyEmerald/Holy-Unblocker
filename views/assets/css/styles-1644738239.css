@@ -227,18 +227,6 @@ details[open] summary {
   padding: 0px;
 }
 
-#header {
-  background-color: var(--nord1);
-  display: flex;
-  justify-content: space-between; /* Align items horizontally */
-  align-items: center; /* Align items vertically */
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.274);
-  border-bottom: 10px solid transparent;
-  padding: 10px 200px 10px;
-  z-index: 2;
-  position: relative;
-}
-
 #particles-js {
   background-color: var(--nord0);
   position: fixed;
@@ -303,6 +291,18 @@ details[open] summary {
 #header a:hover,
 #footer a:hover {
   color: white;
+}
+
+#header {
+  background-color: var(--nord1);
+  display: flex;
+  justify-content: space-between; /* Align items horizontally */
+  align-items: center; /* Align items vertically */
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.274);
+  border-bottom: 10px solid transparent;
+  padding: 10px 200px 10px;
+  z-index: 2;
+  position: relative;
 }
 
 .brand-logo-container {
@@ -427,6 +427,78 @@ details[open] summary {
 
 .subnavbar > li > a:hover {
   background-color: var(--primary);
+}
+
+@media (max-width: 1400px) {
+  #header {
+    padding: 10px 50px; /* Adjust padding for larger screens */
+  }
+
+  .brand {
+    font-size: 21px; /* Restore font size for larger screens */
+  }
+
+  .logo {
+    width: 50px; /* Restore logo size for larger screens */
+    height: 50px; /* Restore logo size for larger screens */
+  }
+
+  .navbar {
+    display: flex; /* Display navbar on larger screens */
+  }
+
+  .navbar-1 {
+    justify-content: flex-end; /* Align navbar-1 to the right on larger screens */
+    flex-grow: 1; /* Allow navbar-1 to take up remaining space */
+  }
+
+  .navbar-1 > li {
+    margin-left: 30px; /* Adjust spacing between items for larger screens */
+  }
+
+  .navbar-1 > li:last-child {
+    margin-right: 0; /* Remove right margin from the last item */
+  }
+}
+
+@media (max-width: 1170px) {
+  #header {
+    padding: 10px 40px; /* Adjust padding for larger screens */
+  }
+
+  .brand {
+    font-size: 21px; /* Restore font size for larger screens */
+  }
+
+  .logo {
+    width: 50px; /* Restore logo size for larger screens */
+    height: 50px; /* Restore logo size for larger screens */
+  }
+
+  .navbar {
+    display: flex; /* Display navbar on larger screens */
+  }
+
+  .navbar-1 {
+    justify-content: flex-end; /* Align navbar-1 to the right on larger screens */
+    flex-grow: 1; /* Allow navbar-1 to take up remaining space */
+  }
+
+  .navbar-1 > li {
+    margin-left: 20px; /* Adjust spacing between items for larger screens */
+  }
+
+  .navbar-1 > li:last-child {
+    margin-right: 0; /* Remove right margin from the last item */
+  }
+
+  #banner {
+    display: none;
+  }
+
+  .mnave {
+    display: none !important;
+  }
 }
 
 .footerflex {
@@ -775,14 +847,6 @@ details[open] summary {
 
 /* Homepage Hero */
 
-.image-container-hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; 
-  margin: auto 50px 80px auto;
-}
-
 .potato {
   margin-top: 30px;
   opacity: 0.5;
@@ -815,19 +879,18 @@ iner
 
 .hero-grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 80px;
-  margin: 80px auto;
-  width: 70%;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted minimum width for responsiveness */
+  gap: 40px; /* Reduced gap for smaller screens */
+  margin: 40px auto; /* Adjusted margin for smaller screens */
+  width: 90%; /* Reduced width for smaller screens */
+  max-width: 1200px; /* Added max-width to prevent excessive stretching on larger screens */
   background-color: rgba(76, 86, 106, 0.15); /* Semi-transparent background color */
   border-radius: 10px;
-  padding: 5px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  padding: 10px; /* Reduced padding for smaller screens */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2); /* Semi-transparent border */
   -webkit-backdrop-filter: blur(10px); /* For Safari */
   backdrop-filter: blur(10px); /* Standard */
-  
-  /* Additional styling for better compatibility */
   position: relative; /* Ensures z-index works properly */
 }
 
@@ -894,12 +957,46 @@ iner
 }
 
 .hero {
-  width: 300px;
+  width: 100%; /* Ensure the image takes full width of its container */
+  max-width: 300px; /* Ensure the image doesn't exceed its container */
   height: auto; 
   border-radius: 50%;
 }
 
-.image-container-hero>h2, p {
+@media (max-width: 600px) {
+  .hero-text-wrap {
+    margin-right: auto;
+  }
+
+  .logo {
+    width: 25px;
+    height: 25px;
+  }
+
+  .text-wrap {
+    width: 250px;
+  }
+
+  .image-container-hero {
+    display: none;
+  }
+
+  .hero, .image-container {
+    display: none;
+  }
+
+  .box-card .content {
+    width: min-content !important;
+  }
+
+  .grid-container {
+    margin: 20px !important;
+    margin-top: 100px !important;
+  }
+}
+
+.image-container-hero > h2,
+.image-container-hero > p {
   color: var(--nord4);
 }
 
