@@ -409,6 +409,8 @@ details[open] summary {
 }
 
 .navbar .dropdown-settings {
+  display: none;
+  pointer-events: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -419,10 +421,10 @@ details[open] summary {
   z-index: 5; /* Ensures it appears above other content */
   align-items: center;
   justify-content: center;
-  display: flex; /* Flexbox to center content */
 }
 
 .settings-content {
+  pointer-events: auto;
   background-color: var(--nord0);
   border: 1px solid var(--nord3);
   border-radius: 10px;
@@ -430,6 +432,10 @@ details[open] summary {
   z-index: 6; /* Ensures it appears above the background blur */
   width: 450px; /* Adjust the size as needed */
   text-align: center;
+}
+
+.dropdown-parent:focus-within .dropdown-settings {
+  display: flex; /* Flexbox to center content */
 }
 
 .dropdown-parent:focus-within .dropdown-child {
