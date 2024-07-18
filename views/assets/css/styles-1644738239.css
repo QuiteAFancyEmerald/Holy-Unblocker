@@ -403,7 +403,6 @@ details[open] summary {
   z-index: 5; /* Ensures it appears above other content */
   align-items: center;
   justify-content: center;
-  display: none; /* Flexbox to center content */
 }
 
 .settings-content {
@@ -417,7 +416,7 @@ details[open] summary {
   text-align: center;
 }
 
-.dropdown-parent:focus-within .dropdown-settings {
+.dropdown-parent:focus-within .dropdown-settings:not(:is(:has(.close-settings-btn:active))) {
   display: flex; /* Flexbox to center content */
 }
 

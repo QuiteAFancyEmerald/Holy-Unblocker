@@ -67,6 +67,9 @@ readCookie("HBHideAds").then(s => (s != "false") ? pageHideAds() : pageShowAds((
 //  All code below is used by the Settings UI in the navigation bar.
 if (document.getElementById("csel")) {
 
+    let closeBtn = document.querySelector(".dropdown-settings .close-settings-btn");
+    closeBtn.addEventListener("click", () => {document.activeElement.blur()});
+
 //  Allow users to set a custom title with the UI.
     let titleform = document.getElementById("titleform");
     titleform.addEventListener("submit", e => {

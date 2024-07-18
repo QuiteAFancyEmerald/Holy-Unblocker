@@ -124,7 +124,7 @@ This website is hosted locally with Ultraviolet and Rammerhead built-in.
 ## Future Additions
 This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above.
 
-### Code Cleanup
+## Code Cleanup
 
   - [ ] Remove all current obfuscation in the source code. It needs to be dynamically obfuscated if anything, or not obfuscated at all. This option will be a config option on the server side before rendering with Express for a performance focus. Meta elements will have an additonal attribute indicating if they should be moved. This is to ensure a SEO source can be served by config or a source focused on pure censorship evasion.
   - [ ] Optimize the stylesheets and the HTML layout. Add more proper commenting and redivide the code so that it's less hard on the eyes.
@@ -134,29 +134,74 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - [x] Fix routes.mjs throwing with incorrect paths - done
   - [x] Create test script - done
   - [x] XSS and fingerprinting protection (may need updates) - done
-  - [ ] Update games navigation JS and page
+  - [x] Update games navigation JS and page/change to JSON object system - done
   - [ ] Ensure all the original submodules get added back to HU-Archive
+  - [ ] Mobile support
+  - [ ] SEO overhaul adapted from the v2 SEO Guide format
 
-### Proxy/Site Functionality
+## Proxy/Site Functionality
   - [x] Ensure Ultraviolet is updated to support bare-mux and wisp - done
   - [x] Add Rammerhead support - done
   - [x] Fix slow Ultraviolet speeds despite being local; something on the backend?? - done
-  - [ ] Fix Ultraviolet on Firefox
+  - [x] Fix Ultraviolet on Firefox - (partial/needs work)
   - [ ] Adapt Applications page to use either Rammerhead or UV (for Reddit, YouTube, Discord)
-  - [ ] libcurl, epoxy and all that fun stuff 
+  - [x] libcurl, epoxy and all that fun stuff - done
   - [ ] socks5/tor routing option that can be configured (enabled) via either a cookie or pathname as a settings meny option
   - [ ] Update games page content
   - [ ] Update csel.js (after Setting menu redesign) to support custom transports, icon swap, routing
   - [ ] Omnibox autoupdate script (for the Google/Bing style auto suggest feature)
+  - [ ] Games library will feature 10000 items; 5000 flash games and 5000 other game types
 
-### Site Redesign
-  - [x] Add potato (lime reminded me to do this)
-  - [x] Landing Page - done
+## Site Redesign
+  - [x] Landing Cards - done
+  - [ ] Change fonts to cleaner look
+  - [ ] Add more AOS interactions on scroll or hover
+  - [ ] Add subtle noise to background elements
+  - [ ] Update colors + add themes
+  - [ ] Toggle elements
+  - [ ] Other card options
+  - [ ] Radial blur elements
+  - [ ] Code standard examples
+  - [ ] Horizontal/general movement on scroll with AOS
+  - [ ] Showcase dev dependencies
+  - [ ] Update icons
+  - [x] Landing Page - (partial/needs work)
+  - [x] Settings Menu - (partial/needs work)
+  - [ ] More Dropdown Menu
   - [ ] Web Proxies page
   - [ ] Application page
+  - [ ] Hosting page
+  - [ ] Resources page
   - [ ] Games Library page
-  - [x] Footer Design - done
-  - [x] Header Design - done
+  - [ ] Emulators Library page
+  - [ ] Emu Library page
+  - [ ] Web Games page
+  - [ ] Flash Games page  
+  - [ ] Documentation page
+  - [ ] FAQ page
+  - [ ] Credits page
+  - [ ] TOS page
+  - [x] Footer Design - (partial/needs work)
+  - [x] Header Design - (partial/needs work)
+
+## Changelog
+
+  - Added wisp support
+  - Fixed AD config setting being opt-out; ads are not implemented in the project however
+  - Added Rammerhead support (locally)
+  - Drastically updated visuals across the service and refactored stylesheets
+  - Bumped games page functionality
+  - Updated randomization scripts to ES6 syntax and implemented the alternative to RegEx string replacement
+  - Helmet for express implemented into backend
+  - Improved component handling via templates.mjs along with deletion of obsolete files that previously handled this standard in a poor format
+  - Fixed oddly slow speeds with Ultraviolet (as well as a general version bump to support epoxy-tls and bare-mux)
+  - Implemented testing scripts for an improved GitHub actions workflow by doing a quick test on proxy + site functionality
+  - Greatly optimized client-side scripts across the site with a new standard
+  - Changes to server.mjs with path logic and error handling
+  - Updated standards for common scripts
+  - libcurl and bare-as-module support added
+  - Deleted 5 JS scripts and moved lots of data into JSON files. Big reorganization. Games menu core scripts now nested inside of common.js utilizing a JSON system
+  - Massive updates to the Settings menu visually and functionality wise; added Bare-Mux support for swapping transports to work with Ultraviolet, default icons and selective adblocking + Tor on any proxy instances
 
 ## Vague Explanation for Beginners With External Proxies and Hosting
 You will first want to host your proxies locally or externally. OUTDATED
