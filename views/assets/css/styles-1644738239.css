@@ -284,8 +284,7 @@ details[open] summary {
   justify-content: space-between; /* Align items horizontally */
   align-items: center; /* Align items vertically */
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.274);
-  border-bottom: 10px solid transparent;
-  padding: 10px 200px 10px;
+  padding: 15px 200px;
   z-index: 2;
   position: relative;
 }
@@ -335,12 +334,13 @@ details[open] summary {
   color: var(--nord4) !important;
 }
 
-.new {
-  width: 50px;
-  height: 45.5px;
+.new::after {
+  content: "";
+  padding: 22.75px 25px;
   margin-left: 8px;
   background-image: url('/assets/img/new.svg'); /* Replace with your logo path */
   background-size: cover;
+  font-size: 0;
 }
 
 .navbar {
@@ -446,7 +446,7 @@ details[open] summary {
 
 @media (max-width: 1400px) {
   #header {
-    padding: 10px 50px; /* Adjust padding for larger screens */
+    padding: 15px 50px; /* Adjust padding for larger screens */
   }
 
   .brand {
@@ -478,7 +478,7 @@ details[open] summary {
 
 @media (max-width: 1170px) {
   #header {
-    padding: 10px 40px; /* Adjust padding for larger screens */
+    padding: 15px 40px; /* Adjust padding for larger screens */
   }
 
   .brand {
