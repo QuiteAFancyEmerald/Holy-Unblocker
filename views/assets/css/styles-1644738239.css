@@ -359,7 +359,7 @@ details[open] summary {
 
 .navbar > li > a {
   text-decoration: none;
-  color: inherit;
+  color: var(--nord4) !important;
 }
 
 .navbar-1 {
@@ -368,7 +368,7 @@ details[open] summary {
   margin: 0;
   display: flex; /* Ensure it stays horizontal */
   align-items: center; /* Align items vertically */
-  color: #ebb5b9 !important;
+  color: var(--nord4);
 }
 
 .navbar-1 > li {
@@ -377,6 +377,7 @@ details[open] summary {
 
 .navbar-1 > li > a {
   text-decoration: none;
+  color: var(--nord4);
 }
 
 .navbar .dropdown-child {
@@ -743,15 +744,15 @@ details[open] summary {
 }
 
 .mac-close {
-  background-color: var(--nord0);
+  background-color: var(--nord3);
 }
 
 .mac-minimize {
-  background-color: var(--nord0);
+  background-color: var(--nord3);
 }
 
 .mac-maximize {
-  background-color: var(--nord0);
+  background-color: var(--nord3);
 }
 
 .mac-content {
