@@ -471,7 +471,7 @@ addEventListener("DOMContentLoaded", () => {
 
 //          Which function is used for the click event is determined by
 //          the corresponding location/index in the dirnames object.
-            let functionsList = [
+            const functionsList = [
               () => goFrame(item.path),
               () => goFrame("/?eg&core=" + item.core + "&rom=" + item.rom),
               () => item.custom ? goProx[item.custom]("stealth") : goFrame("/archive/g/" + item.path)
