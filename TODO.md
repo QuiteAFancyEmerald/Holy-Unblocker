@@ -10,29 +10,55 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - [x] Fix routes.mjs throwing with incorrect paths - done
   - [x] Create test script - done
   - [x] XSS and fingerprinting protection (may need updates) - done
-  - [ ] Update games navigation JS and page
+  - [x] Update games navigation JS and page/change to JSON object system - done
   - [ ] Ensure all the original submodules get added back to HU-Archive
+  - [ ] Mobile support
+  - [ ] SEO overhaul adapted from the v2 SEO Guide format
 
 ## Proxy/Site Functionality
   - [x] Ensure Ultraviolet is updated to support bare-mux and wisp - done
   - [x] Add Rammerhead support - done
   - [x] Fix slow Ultraviolet speeds despite being local; something on the backend?? - done
-  - [ ] Fix Ultraviolet on Firefox
+  - [x] Fix Ultraviolet on Firefox - (partial/needs work)
   - [ ] Adapt Applications page to use either Rammerhead or UV (for Reddit, YouTube, Discord)
-  - [ ] libcurl, epoxy and all that fun stuff 
+  - [x] libcurl, epoxy and all that fun stuff - done
   - [ ] socks5/tor routing option that can be configured (enabled) via either a cookie or pathname as a settings meny option
   - [ ] Update games page content
   - [ ] Update csel.js (after Setting menu redesign) to support custom transports, icon swap, routing
   - [ ] Omnibox autoupdate script (for the Google/Bing style auto suggest feature)
+  - [ ] Games library will feature 10000 items; 5000 flash games and 5000 other game types
 
 ## Site Redesign
-  - [x] Add potato (lime reminded me to do this)
-  - [x] Landing Page - done
+  - [x] Landing Cards - done
+  - [ ] Change fonts to cleaner look
+  - [ ] Add more AOS interactions on scroll or hover
+  - [ ] Add subtle noise to background elements
+  - [ ] Update colors + add themes
+  - [ ] Toggle elements
+  - [ ] Other card options
+  - [ ] Radial blur elements
+  - [ ] Code standard examples
+  - [ ] Horizontal/general movement on scroll with AOS
+  - [ ] Showcase dev dependencies
+  - [ ] Update icons
+  - [x] Landing Page - (partial/needs work)
+  - [x] Settings Menu - (partial/needs work)
+  - [ ] More Dropdown Menu
   - [ ] Web Proxies page
   - [ ] Application page
+  - [ ] Hosting page
+  - [ ] Resources page
   - [ ] Games Library page
-  - [x] Footer Design - done
-  - [x] Header Design - done
+  - [ ] Emulators Library page
+  - [ ] Emu Library page
+  - [ ] Web Games page
+  - [ ] Flash Games page  
+  - [ ] Documentation page
+  - [ ] FAQ page
+  - [ ] Credits page
+  - [ ] TOS page
+  - [x] Footer Design - (partial/needs work)
+  - [x] Header Design - (partial/needs work)
 
 ## Changelog
 
@@ -49,4 +75,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - Greatly optimized client-side scripts across the site with a new standard
   - Changes to server.mjs with path logic and error handling
   - Updated standards for common scripts
-  - Ultraviolet made local
+  - libcurl and bare-as-module support added
+  - Deleted 5 JS scripts and moved lots of data into JSON files. Big reorganization. Games menu core scripts now nested inside of common.js utilizing a JSON system
+  - Massive updates to the Settings menu visually and functionality wise; added Bare-Mux support for swapping transports to work with Ultraviolet, default icons and selective adblocking + Tor on any proxy instances
+
