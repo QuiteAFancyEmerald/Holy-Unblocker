@@ -143,8 +143,7 @@
     "name": "Super Mario 64",
     "path": "sm64/",
     "img": "sm64.png",
-    "description": "A classic. Super Mario 64 is a 1996 platform game for the Nintendo 64 and the first Super Mario game to feature 3D gameplay.",
-    "nolag": true
+    "description": "A classic. Super Mario 64 is a 1996 platform game for the Nintendo 64 and the first Super Mario game to feature 3D gameplay."
   },
   {
     "name": "Zork Clone",

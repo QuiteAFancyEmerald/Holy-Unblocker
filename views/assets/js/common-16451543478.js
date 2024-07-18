@@ -474,7 +474,7 @@ addEventListener("DOMContentLoaded", () => {
             let functionsList = [
               () => goFrame(item.path),
               () => goFrame("/?eg&core=" + item.core + "&rom=" + item.rom),
-              () => item.custom ? goProx[item.custom](true) : goFrame("/archive/g/" + item.path, item.nolag)
+              () => item.custom ? goProx[item.custom]("stealth") : goFrame("/archive/g/" + item.path)
             ];
 
             a.addEventListener("click", clickHandler(functionsList[Object.values(dirnames).indexOf(dir)], a));
