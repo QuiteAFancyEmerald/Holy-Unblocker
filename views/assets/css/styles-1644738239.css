@@ -10,6 +10,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat+Alternates");
 @import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700");
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 @import url("https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css");
 
 /*
@@ -29,7 +30,8 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
 /* '~' function hexav(a,b){var da=parseInt(a,16),db=parseInt(b,16),diff=db-da,step=diff/3,dc=da+step,dd=db-step,c=Math.round(dc).toString(16),d=Math.round(dd).toString(16);return[c,d];} */
 
 :root {
-  --nord0: #2e3440;
+  --nord0: #1d232a;
+  --nord0m1: #2e3440;
   --nord0m2: #323946;
   --nord0m3: #373d4c;
   --nord1: #3b4252;
@@ -277,7 +279,7 @@ details[open] summary {
 }
 
 #header {
-  background-color: var(--nord1);
+  background-color: var(--nord0m1);
   display: flex;
   justify-content: space-between; /* Align items horizontally */
   align-items: center; /* Align items vertically */
@@ -682,25 +684,119 @@ details[open] summary {
   animation-fill-mode: forwards;
 }
 
-.box-home h1 {
-  font-size: 36px;
+.home-grid-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100px 0 100px 10%;
+  height: 85vh;
+  box-sizing: border-box;
+}
+
+.home-text {
+  max-width: 600px;
+  flex: 1;
+}
+
+.home-text h1 {
+  font-size: 48px;
+  color: var(--nord4);
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.home-text h1 > span {
+  font-size: 64px;
+  font-weight: 900;
+  color: rgb(255, 88, 97);
+  display: block;
+}
+
+.mac-window {
+  flex: 1;
+  max-width: 600px;
+  height: 450px;
+  border: 1px solid var(--nord0);
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #22262f;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mac-title-bar {
+  padding: 15px;
+  background-color: #22262f;
+  border-bottom: 1px solid var(--nord0);
+}
+
+.mac-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.mac-buttons span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.mac-close {
+  background-color: var(--nord0);
+}
+
+.mac-minimize {
+  background-color: var(--nord0);
+}
+
+.mac-maximize {
+  background-color: var(--nord0);
+}
+
+.mac-content {
+  color: var(--nord4);
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  padding: 30px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.homebutton {
+  display: inline-block;
+  text-decoration: none;
+  padding: 15px 50px;
+  border-radius: 8px;
+  background-color: var(--nord0);
+  color: var(--nord4) !important;
+  margin-top: 20px;
+  transition: 0.3s ease-in-out;
+  -webkit-transition: 0.3s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.homebutton:hover {
+  background-color: var(--nord2);
 }
 
 .hovermessage:hover {
-  font-size: 0px;
-  color: rgba(255, 255, 255, 0);
   transition: color 0.3s ease-in, font-size 0s linear 0.3s;
 }
 
 .hovermessage::before {
-  color: rgba(255, 255, 255, 0);
   font-size: 0px;
   content: attr(data-hover-text);
   text-decoration: inherit;
 }
 
 .hovermessage:hover::before {
-  color: white;
   font-size: 16px;
   transition: font-size 0s linear 0.3s, color 0.3s ease-in 0.3s;
 }
@@ -999,6 +1095,14 @@ iner
   flex: 1;
 }
 
+.hero-content-header {
+  color: var(--nord4);
+}
+
+.palered {
+  color: rgb(255, 88, 97);
+}
+
 .hero-text-wrap {
   margin-right: 300px; 
 }
@@ -1013,10 +1117,6 @@ iner
   flex-direction: column;
   align-items: center;
   justify-content: center; 
-}
-
-.image-container-hero>a {
-  background-color: var(--nord15);
 }
 
 .hero {
@@ -1058,9 +1158,12 @@ iner
   }
 }
 
-.image-container-hero > h2,
 .image-container-hero > p {
   color: var(--nord4);
+}
+
+.image-container-hero > h2 {
+  color: rgb(255, 88, 97);
 }
 
 .box-hero h1,

@@ -5,7 +5,7 @@
     id: "particles-js",
     options: {
       background: {
-        color: { value: "#2e3440" },
+        color: { value: "#1d232a" },
       },
       fullScreen: {
         enable: true,
