@@ -8,39 +8,9 @@
 
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");
 @import url("https://fonts.googleapis.com/css?family=Montserrat+Alternates");
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700");
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 @import url("https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css");
-
-@font-face {
-  font-family: 'NeueMontrealMedium';
-  src: local('Neue Montreal Medium'),
-       url('/assets/fonts/NeueMontreal-Medium.woff2') format('woff2'),
-       url('/assets/fonts/NeueMontreal-Medium.woff') format('woff'),
-       url('/assets/fonts/NeueMontreal-Medium.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'NeueMontrealRegular';
-  src: local('Neue Montreal Regular'),
-       url('/assets/fonts/NeueMontreal-Regular.woff2') format('woff2'),
-       url('/assets/fonts/NeueMontreal-Regular.woff') format('woff'),
-       url('/assets/fonts/NeueMontreal-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'NeueMontrealLight';
-  src: local('Neue Montreal Light'),
-       url('/assets/fonts/NeueMontreal-Light.woff2') format('woff2'),
-       url('/assets/fonts/NeueMontreal-Light.woff') format('woff'),
-       url('/assets/fonts/NeueMontreal-Light.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
 
 /*
 Nord Theme (https://nordtheme.com)
@@ -129,7 +99,8 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
 
 html {
   color: white;
-  font-family: "NeueMontrealMedium", sans-serif;
+  font-family: "Figtree", sans-serif;
+  font-weight: 300;
   scroll-behavior: smooth;
 }
 
@@ -156,6 +127,16 @@ h6 {
   margin: 0px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Figtree", sans-serif;
+  font-weight: 900;
+}
+
 img {
   display: block;
 }
@@ -176,7 +157,7 @@ img {
 }
 
 a:not(.bluelink) {
-  color: #ebb5d5;
+  color: rgb(255, 88, 97);
 }
 
 a.bluelink {
@@ -237,7 +218,7 @@ details[open] summary {
 }
 
 #banner {
-  background-color: var(--nord10);
+  background-color: var(--nord0m3);
   position: sticky;
   top: 0px;
   border-top: 1px solid white;
@@ -319,11 +300,11 @@ details[open] summary {
   line-height: 30px;
   white-space: nowrap;
   margin-right: 20px; /* Adjust margin as needed */
-  font-family: "Space Grotesk", sans-serif;
-  font-weight: 700;
+  font-family: "Figtree", sans-serif;
+  font-weight: 900;
   letter-spacing: 1px;
   text-decoration: none;
-  color: var(--nord6) !important;
+  color: var(--nord4) !important;
 }
 
 .logo {
@@ -366,7 +347,6 @@ details[open] summary {
   margin: 0;
   display: flex;
   align-items: center; /* Align items vertically */
-  /* font-family: "Space Grotesk", sans-serif; */
   
   letter-spacing: 1px;
 }
@@ -862,7 +842,8 @@ details[open] summary {
   border-radius: 5px;
   margin: 5px 0px;
   border-radius: 2px;
-  font-family: "NeueMontrealMedium", sans-serif;
+  font-family: "Figtree", sans-serif;
+  font-weight: 300;
   background-color: var(--nord1);
   border: 1px solid var(--nord9);
   display: inline;
