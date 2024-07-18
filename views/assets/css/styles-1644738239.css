@@ -510,6 +510,10 @@ details[open] summary {
   #banner {
     display: none;
   }
+
+  .mnave {
+    display: none !important;
+  }
 }
 
 .footerflex {
@@ -579,6 +583,65 @@ details[open] summary {
   vertical-align: top;
 }
 
+.mnave {
+  display: none;
+  width: 50px;
+  height: 50px;
+  margin: 20px;
+  cursor: pointer;
+  float: right;
+}
+
+#mnavecb {
+  display: none;
+}
+
+.mnavebutton,
+.mnavebutton::before,
+.mnavebutton::after {
+  display: block;
+  background-color: var(--nord4);
+  height: 4px;
+  width: 36px;
+  border-radius: 2px;
+}
+
+.mnavebutton::before,
+.mnavebutton::after {
+  content: "";
+  position: absolute;
+  transition: transform 0.2s ease-out, top 0.2s ease-out;
+}
+
+.mnavebutton {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.2s ease-out;
+}
+
+.mnavebutton::before {
+  top: 12px;
+}
+
+.mnavebutton::after {
+  top: -12px;
+}
+
+#mnavecb:checked + .mnave .mnavebutton {
+  background-color: transparent;
+}
+
+#mnavecb:checked + .mnave .mnavebutton::before {
+  top: 0px;
+  transform: rotate(-45deg);
+}
+
+#mnavecb:checked + .mnave .mnavebutton::after {
+  top: 0px;
+  transform: rotate(45deg);
+}
 
 @media only screen and (max-width: 1160px) {
   #header {
@@ -608,6 +671,10 @@ details[open] summary {
   }
   .navbar .dropdown-child {
     margin-top: 0px;
+  }
+  #mnavecb:checked ~ .navbar,
+  .mnave {
+    display: block;
   }
 }
 
