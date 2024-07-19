@@ -281,6 +281,7 @@ details[open] summary {
 #header {
   background-color: var(--nord0m1);
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-between; /* Align items horizontally */
   align-items: center; /* Align items vertically */
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.274);
@@ -349,8 +350,8 @@ details[open] summary {
   margin: 0;
   display: flex;
   align-items: center; /* Align items vertically */
-  
   letter-spacing: 1px;
+  order: 3;
 }
 
 .navbar > li {
@@ -369,6 +370,7 @@ details[open] summary {
   display: flex; /* Ensure it stays horizontal */
   align-items: center; /* Align items vertically */
   color: var(--nord4);
+  order: 2;
 }
 
 .navbar-1 > li {
@@ -495,8 +497,8 @@ details[open] summary {
   }
 
   .navbar-1 {
-    justify-content: flex-end; /* Align navbar-1 to the right on larger screens */
-    flex-grow: 1; /* Allow navbar-1 to take up remaining space */
+    justify-content: flex-start; /* Align navbar-1 to the left on smaller screens */
+    flex: 0 0 100%; /* Force navbar-1 to be on a new row */
   }
 
   .navbar-1 > li {
@@ -510,10 +512,11 @@ details[open] summary {
   #banner {
     display: none;
   }
-
+/*
   .mnave {
     display: none !important;
   }
+*/
 }
 
 .footerflex {
@@ -590,6 +593,7 @@ details[open] summary {
   margin: 20px;
   cursor: pointer;
   float: right;
+  order: 1;
 }
 
 #mnavecb {
@@ -646,7 +650,6 @@ details[open] summary {
 @media only screen and (max-width: 1160px) {
   #header {
     height: auto;
-    display: block;
   }
   .navbar {
     display: none;
@@ -1135,6 +1138,36 @@ iner
   .logo {
     width: 25px;
     height: 25px;
+  }
+
+  .brand {
+    font-size: 14px;
+  }
+
+  .navbar, .navbar-1 {
+    font-size: 11px;
+  }
+
+  .mnave {
+    width: 25px;
+    height: 25px;
+    margin: 10px;
+  }
+
+  .mnavebutton,
+  .mnavebutton::before,
+  .mnavebutton::after {
+    height: 2px;
+    width: 18px;
+    border-radius: 1px;
+  }
+
+  .mnavebutton::before {
+    top: 6px;
+  }
+
+  .mnavebutton::after {
+    top: -6px;
   }
 
   .text-wrap {
