@@ -4,7 +4,7 @@ const connection = new BareMux.BareMuxConnection("/baremux/worker.js");
 const wispUrl = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/";
 
 // Proxy configuration
-const proxyUrl = "socks5://localhost:9050"; // Replace with your proxy URL
+const proxyUrl = "socks5h://localhost:9050"; // Replace with your proxy URL
 
 async function registerSW() {
   if (!navigator.serviceWorker) {
@@ -18,14 +18,14 @@ async function registerSW() {
   }
 
   // Update the transport setup to include the proxy option
-  await connection.setTransport("/libcurl/index.mjs", [{ wisp: wispUrl, proxy: proxyUrl }]);
+  await connection.setTransport("/libcurl/index.mjs", [{ wisp: wispUrl /* proxy: proxyUrl */ }]);
   await navigator.serviceWorker.register(stockSW);
 }
 
 async function setupTransportOnLoad() {
   const conn = new BareMux.BareMuxConnection("/baremux/worker.js");
   if (await conn.getTransport() !== "/baremux/module.js") {
-    await conn.setTransport("/baremux/module.js", [{ wisp: wispUrl, proxy: proxyUrl }]);
+    await conn.setTransport("/libcurl/index.mjs", [{ wisp: wispUrl /* proxy: proxyUrl */ }]);
   }
 }
 
