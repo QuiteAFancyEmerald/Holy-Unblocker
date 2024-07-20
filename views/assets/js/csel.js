@@ -17,7 +17,7 @@ const setCookie = (name, value) => {
 },
 
 removeCookie = name => {
-    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT; ";
+    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT; SameSite=None; Secure;";
 },
 
 readCookie = async name => {
@@ -64,7 +64,13 @@ presetIcons = Object.freeze({
     "Bing": "Bing \n https://www.bing.com/sa/simg/favicon-trans-bg-blue-mg-28.ico",
     "Google Drive": "Home - Google Drive \n https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png",
     "Gmail": "Inbox - Gmail \n https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico"
-});
+}),
+
+//  Choose the default transport mode, for proxying, based on the browser.
+//  Firefox is not supported by epoxy yet, which is why this is implemented.
+defaultMode = /(?:Chrome|AppleWebKit)\//.test(navigator.userAgent)
+    ? "epoxy"
+    : "libcurl";
 
 
 //  Load a custom page title and favicon if it was previously stored.
@@ -74,12 +80,17 @@ readCookie("HBIcon").then(s => {(s != undefined) && pageIcon(s)});
 //  Load the UV transport mode that was last used, or use the default.
 readCookie("HBTransport").then(s => {
     let list = document.getElementById("transport-list");
-    if (list != undefined && list.options.length)
+    if (list != undefined && list.options.length) {
+        let options = [...list.options];
+        const offset =
+            (options.findIndex(e => e.value === defaultMode) + 1 || 1) - 1;
         list.selectedIndex =
-            ([...list.options].findIndex(e => e.value === s) + 1 || 1) - 1;
+            (options.findIndex(e => e.value === s) + 1 || offset + 1) - 1;
+    }
 });
 
 //  Ads are disabled by default. Load ads if ads were enabled previously.
+//  Change !== to === here if ads should be enabled by default.
 readCookie("HBHideAds").then(s => {(s !== "false") ? pageHideAds() : pageShowAds((document.getElementById("hideads") || {}).checked = 0)});
 
 //  Tor is disabled by default. Enable Tor if it was enabled previously.
@@ -159,7 +170,7 @@ if (document.getElementById("csel")) {
 
 //  Allow users to change the UV transport mode, for proxying, with the UI.
     attachEventListener("transport-list", "change", e => {
-        e.target.selectedIndex < 1
+        e.target.selectedIndex < 0 || e.target.value === defaultMode
             ? removeCookie("HBTransport")
             : setCookie("HBTransport", e.target.value);
 
@@ -197,7 +208,10 @@ if (document.getElementById("csel")) {
         } else {
             options.splice(list.selectedIndex, 1);
             options.forEach(e => {e.removeAttribute("disabled")});
-            setCookie("HBUseOnion", "false");
+
+//          Tor will likely never be enabled by default, so removing
+//          the cookie here may be better than setting it to false.
+            removeCookie("HBUseOnion");
         }
     });
 }

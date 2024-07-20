@@ -928,7 +928,7 @@ details[open] summary {
   color: var(--nord4);
 }
 
-#csel .csellabel {
+#csel .cseltitle ~ p:not(:last-child) {
   margin-top: 10px;
 }
 
@@ -981,11 +981,11 @@ details[open] summary {
   margin: 20px 0px 5px 0px;
 }
 
-#csel .csellabel a {
+#csel .cseltitle ~ p:not(:last-child) a {
   color: var(--nord8);
 }
 
-#csel .csellabel a:hover {
+#csel .cseltitle ~ p:not(:last-child) a:hover {
   text-decoration: underline;
 }
 
