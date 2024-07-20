@@ -22,15 +22,16 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - [x] Fix Ultraviolet on Firefox - (partial/needs work)
   - [ ] Adapt Applications page to use either Rammerhead or UV (for Reddit, YouTube, Discord)
   - [x] libcurl, epoxy and all that fun stuff - done
-  - [ ] socks5/tor routing option that can be configured (enabled) via either a cookie or pathname as a settings meny option
+  - [x] socks5/tor routing option that can be configured (enabled) via either a cookie or pathname as a settings meny option - done
   - [ ] Update games page content
-  - [ ] Update csel.js (after Setting menu redesign) to support custom transports, icon swap, routing
+  - [x] Update csel.js (after Setting menu redesign) to support custom transports, icon swap, routing - done
+  - [x] Update csel.js to support network based adblocking and workerware (https://github.com/MercuryWorkshop/workerware)
   - [ ] Omnibox autoupdate script (for the Google/Bing style auto suggest feature)
   - [ ] Games library will feature 10000 items; 5000 flash games and 5000 other game types
 
 ## Site Redesign
   - [x] Landing Cards - done
-  - [ ] Change fonts to cleaner look
+  - [x] Change fonts to cleaner look
   - [ ] Add more AOS interactions on scroll or hover
   - [ ] Add subtle noise to background elements
   - [ ] Update colors + add themes
