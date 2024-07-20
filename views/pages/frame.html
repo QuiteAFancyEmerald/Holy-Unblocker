@@ -36,15 +36,6 @@
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <iframe id="frame" allow="fullscreen" autofocus></iframe>
     <script>
-      var search = decodeURIComponent(window.location.search)
-        .substring(1)
-        .split("&");
-      var queries = {};
-      for (var i = 0; i < search.length; i++) {
-        var p = search[i].split("=");
-        queries[p[0]] = p[1];
-      }
-
       document.getElementById("frame").src = localStorage.getItem("huframesrc");
     </script>
     <script src="assets/js/csel.js"></script>

@@ -11,14 +11,14 @@ transports = {
   bare: "/baremux/index.mjs"
 },
 
-//  Copied and pasted here from csel.js in case csel.js fails to load.
+//  Copied and pasted here from csel.js in case csel.js is not loaded.
 //  Sets the default transport mode based on the browser. Firefox is not
 //  supported by epoxy yet, which is why this is implemented.
-defaultMode = /(?:Chrome|AppleWebKit)\//.test(navigator.userAgent)
+defaultMode2 = /(?:Chrome|AppleWebKit)\//.test(navigator.userAgent)
   ? "epoxy"
   : "libcurl";
 
-transports.default = transports[defaultMode];
+transports.default = transports[defaultMode2];
 
 //  Prevent the transports object from being edited.
 Object.freeze(transports);
