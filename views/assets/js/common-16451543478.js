@@ -359,7 +359,8 @@ const RammerheadEncode = async baseUrl => {
  * goProx.searx();
  */
 addEventListener("DOMContentLoaded", () => {
-  self.goProx = {
+//  Object.freeze prevents goProx from being edited.
+  self.goProx = Object.freeze({
 //  `location.protocol + "//" + getDomain()` more like `location.origin`
 //  setAuthCookie("__cor_auth=1", false);
     ultraviolet: urlHandler(uvUrl),
@@ -395,10 +396,7 @@ addEventListener("DOMContentLoaded", () => {
     speed: urlHandler(uvUrl("https://captain4lk.itch.io/what-the-road-brings")),
 
     heli: urlHandler(uvUrl("https://benjames171.itch.io/helo-storm"))
-  };
-
-//  Prevent goProx from being edited.
-  Object.freeze(goProx);
+  });
 });
 
 (async () => {

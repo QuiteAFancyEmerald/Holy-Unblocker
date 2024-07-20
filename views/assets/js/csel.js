@@ -54,27 +54,58 @@ pageShowAds = () => {
 //  Remove the stylesheet made by the function above, if it exists.
 pageHideAds = () => {
     (document.getElementById("advertising")||new Text()).remove();
-};
+},
+
+//  These titles and icons are used as autofill templates by settings.html.
+//  The icon URLs and tab titles may need to be updated over time.
+presetIcons = Object.freeze({
+    "": " \n ",
+    "Google": "Google \n https://www.google.com/favicon.ico",
+    "Bing": "Bing \n https://www.bing.com/sa/simg/favicon-trans-bg-blue-mg-28.ico",
+    "Google Drive": "Home - Google Drive \n https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png",
+    "Gmail": "Inbox - Gmail \n https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico"
+});
 
 
 //  Load a custom page title and favicon if it was previously stored.
-readCookie("HBTitle").then(s => (s != undefined) && pageTitle(s));
-readCookie("HBIcon").then(s => (s != undefined) && pageIcon(s));
+readCookie("HBTitle").then(s => {(s != undefined) && pageTitle(s)});
+readCookie("HBIcon").then(s => {(s != undefined) && pageIcon(s)});
+
+//  Load the UV transport mode that was last used, or use the default.
+readCookie("HBTransport").then(s => {
+    let list = document.getElementById("transport-list");
+    if (list != undefined && list.options.length)
+        list.selectedIndex =
+            ([...list.options].findIndex(e => e.value === s) + 1 || 1) - 1;
+});
 
 //  Ads are disabled by default. Load ads if ads were enabled previously.
-readCookie("HBHideAds").then(s => (s != "false") ? pageHideAds() : pageShowAds((document.getElementById("hideads") || {}).checked = 0));
+readCookie("HBHideAds").then(s => {(s !== "false") ? pageHideAds() : pageShowAds((document.getElementById("hideads") || {}).checked = 0)});
+
+//  Tor is disabled by default. Enable Tor if it was enabled previously.
+readCookie("HBUseOnion").then(s => {if (s === "true") {
+    let torCheck = document.getElementById("useonion") ||
+        {dispatchEvent: () => {}};
+    torCheck.checked = 1;
+    torCheck.dispatchEvent(new Event("change"));
+}});
+
 
 //  All code below is used by the Settings UI in the navigation bar.
 if (document.getElementById("csel")) {
+    const attachEventListener = (selector, ...args) => (
+            document.getElementById(selector) ||
+            document.querySelector(selector)
+        ).addEventListener(...args);
 
-    let closeBtn = document.querySelector(".dropdown-settings .close-settings-btn");
-    closeBtn.addEventListener("click", () => {document.activeElement.blur()});
+    attachEventListener(".dropdown-settings .close-settings-btn", "click",
+        () => {document.activeElement.blur()}
+    );
 
 //  Allow users to set a custom title with the UI.
-    let titleform = document.getElementById("titleform");
-    titleform.addEventListener("submit", e => {
+    attachEventListener("titleform", "submit", e => {
         e.preventDefault();
-        e = titleform.firstElementChild;
+        e = e.target.firstElementChild;
         if (e.value) {
             pageTitle(e.value);
             setCookie("HBTitle", e.value);
@@ -82,13 +113,12 @@ if (document.getElementById("csel")) {
         } else {
             alert("Please provide a title.");
         }
-    }, false);
+    });
 
 //  Allow users to set a custom favicon with the UI.
-    let iconform = document.getElementById("iconform");
-    iconform.addEventListener("submit", e => {
+    attachEventListener("iconform", "submit", e => {
         e.preventDefault();
-        e = iconform.firstElementChild;
+        e = e.target.firstElementChild;
         if (e.value) {
             pageIcon(e.value);
             setCookie("HBIcon", e.value);
@@ -96,21 +126,21 @@ if (document.getElementById("csel")) {
         } else {
             alert("Please provide an icon URL.");
         }
-    }, false);
+    });
 
 //  Allow users to reset the title and favicon to default with the UI.
-    document.getElementById("cselreset").addEventListener("click", () => {
+    attachEventListener("cselreset", "click", () => {
         if (confirm("Reset the title and icon to default?")) {
             removeCookie("HBTitle");
             removeCookie("HBIcon");
             pageTitle("Holy Unblocker");
             pageIcon("assets/img/icon.png");
         }
-    }, false);
+    });
 
 //  Allow users to make a new about:blank tab and view the site from there.
 //  An iframe of the current page is inserted into the new tab.
-    document.getElementById("cselab").addEventListener("click", () => {
+    attachEventListener("cselab", "click", () => {
         let win = window.open();
         let iframe = win.document.createElement("iframe");
         iframe.style = "width: 100%; height: 100%; border: none; overflow: hidden; margin: 0; padding: 0; position: fixed; top: 0; left: 0";
@@ -118,8 +148,29 @@ if (document.getElementById("csel")) {
         win.document.body.appendChild(iframe);
     });
 
-//  Allow users to enable or disable ads with the UI.
-    document.getElementById("hideads").addEventListener("change", e => {
+//  Provides users with a handy set of title and icon autofill options.
+    attachEventListener("icon-list", "change", e => {
+        let titleform = document.getElementById("titleform"),
+        iconform = document.getElementById("iconform");
+        [titleform.firstElementChild.value,
+        iconform.firstElementChild.value] =
+            (presetIcons[e.target.value] || " \n ").split(" \n ");
+    });
+
+//  Allow users to change the UV transport mode, for proxying, with the UI.
+    attachEventListener("transport-list", "change", e => {
+        e.target.selectedIndex < 1
+            ? removeCookie("HBTransport")
+            : setCookie("HBTransport", e.target.value);
+
+//      Only the libcurl transport mode supports Tor at the moment.
+        let torCheck = document.getElementById("useonion");
+        if(e.target.value !== "libcurl" && torCheck.checked)
+            torCheck.click();
+    });
+
+//  Allow users to toggle ads with the UI.
+    attachEventListener("hideads", "change", e => {
         if (e.target.checked) {
             pageHideAds();
             setCookie("HBHideAds", "true");
@@ -127,7 +178,28 @@ if (document.getElementById("csel")) {
             pageShowAds();
             setCookie("HBHideAds", "false");
         }
-    }, false);
+    });
+
+//  Allow users to toggle onion routing in Ultraviolet with the UI. Only
+//  the libcurl transport mode supports Tor at the moment, so ensure that
+//  users are aware that they cannot use Tor with other modes.
+    attachEventListener("useonion", "change", e => {
+        let list = document.getElementById("transport-list");
+        let options = [...list.options];
+        if (e.target.checked) {
+            list.selectedIndex = 
+                (options.findIndex(e => e.value === "libcurl") + 1
+                || 1) - 1;
+            options.splice(list.selectedIndex, 1);
+            options.forEach(e => {e.setAttribute("disabled", "true")});
+            list.dispatchEvent(new Event("change"));
+            setCookie("HBUseOnion", "true");
+        } else {
+            options.splice(list.selectedIndex, 1);
+            options.forEach(e => {e.removeAttribute("disabled")});
+            setCookie("HBUseOnion", "false");
+        }
+    });
 }
 
 

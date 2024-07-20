@@ -290,7 +290,7 @@ details[open] summary {
   position: relative;
 }
 
-.brand-logo-container {
+.brand-logo-container, .new {
   display: flex;
   align-items: center; /* Align items vertically */
 }
@@ -497,8 +497,8 @@ details[open] summary {
   }
 
   .navbar-1 {
-    justify-content: flex-start; /* Align navbar-1 to the left on smaller screens */
-    flex: 0 0 100%; /* Force navbar-1 to be on a new row */
+    justify-content: flex-end; /* Align navbar-1 to the right on larger screens */
+    flex-grow: 1; /* Allow navbar-1 to take up remaining space */
   }
 
   .navbar-1 > li {
@@ -651,10 +651,13 @@ details[open] summary {
   #header {
     height: auto;
   }
+  .navbar-1 {
+    justify-content: flex-start; /* Align navbar-1 to the left on smaller screens */
+    flex: 0 0 100%; /* Force navbar-1 to be on a new row */
+  }
   .navbar {
     display: none;
     margin: 0px;
-    width: 100%;
     height: auto;
   }
   .navbar > li {
@@ -986,7 +989,7 @@ details[open] summary {
   text-decoration: underline;
 }
 
-#csel #hideads {
+#hideads, #useonion {
   cursor: pointer;
   margin-left: 0px;
 }
