@@ -116,12 +116,31 @@ const testCommonJSOnPage = async () => {
           }
         });
 
-        if (window.goProx) {
+//      Locate the omnibox element on the Rammerhead page.
+        let omnibox = document.getElementById("pr-rh");
+        omnibox = omnibox && omnibox.querySelector("input[type=text]");
+
+        if (omnibox) {
           try {
-            const rammerheadUrl = await window.goProx.rammerhead(
-              "example.com",
-              false
+//          Send an artificial input to the omnibox. The omnibox will create
+//          a proxy URL and leave it as the input value in response.
+            const urlPath = "example.com";
+            omnibox.value = urlPath;
+            await omnibox.dispatchEvent(
+              new KeyboardEvent("keydown", {code: "Validator Test"})
             );
+
+//          Wait up to 5 seconds for the omnibox to finish updating.
+            const loadUrl = new Promise(resolve => {
+              if (omnibox.value !== urlPath) resolve(omnibox.value);
+              else omnibox.addEventListener("change", () => resolve(omnibox.value));
+            }),
+            timeout = new Promise(resolve => {
+              setTimeout(() => resolve(omnibox.value), 5000);
+            }),
+
+//          Record the proxy URL that the omnibox left here.
+            rammerheadUrl = await Promise.race([loadUrl, timeout]);
             console.log("Generated Rammerhead URL:", rammerheadUrl);
             results.rammerhead = rammerheadUrl ? rammerheadUrl : "failure";
           } catch (e) {
@@ -211,7 +230,11 @@ xx                                                  xx
           waitForWorker();
         });
 
-        if (window.goProx && window.goProx.ultraviolet) {
+//      Locate the omnibox element on the Ultraviolet page.
+        let omnibox = document.getElementById("pr-uv");
+        omnibox = omnibox && omnibox.querySelector("input[type=text]");
+
+        if (omnibox) {
 //          For the hacky URL test, use the URL page's EXACT title.
           const website = {
             path: "example.com",
@@ -219,10 +242,15 @@ xx                                                  xx
           };
 
           try {
-            const generatedUrl = window.goProx.ultraviolet(
-              website.path,
-              false
+//          Send an artificial input to the omnibox. The omnibox will create
+//          a proxy URL and leave it as the input value in response.
+            omnibox.value = website.path;
+            await omnibox.dispatchEvent(
+              new KeyboardEvent("keydown", {code: "Validator Test"})
             );
+
+//          Record the proxy URL that the omnibox left here.
+            const generatedUrl = omnibox.value;
             console.log("Generated Ultraviolet URL:", generatedUrl);
             results[0].ultraviolet = generatedUrl ? generatedUrl : "failure";
 

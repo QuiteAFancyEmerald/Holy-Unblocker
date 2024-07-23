@@ -361,8 +361,8 @@ const RammerheadEncode = async baseUrl => {
  * goProx.searx();
  */
 addEventListener("DOMContentLoaded", () => {
-//  Object.freeze prevents goProx from being edited.
-  self.goProx = Object.freeze({
+//  Object.freeze prevents goProx from accidentally being edited.
+  const goProx = Object.freeze({
 //  `location.protocol + "//" + getDomain()` more like `location.origin`
 //  setAuthCookie("__cor_auth=1", false);
     ultraviolet: urlHandler(uvUrl),
@@ -412,15 +412,21 @@ addEventListener("DOMContentLoaded", () => {
 
 //  Handle the other menu buttons differently if there is no omnibox. Menus
 //  which lack an omnibox likely use buttons as mere links.
-    const goProxMethod = prUrl !== undefined
+    const goProxMethod = prUrl
         ? mode => () => {goProx[type](prUrl.value, mode)}
         : mode => () => {goProx[type](mode)},
 
 //      Ultraviolet is currently incompatible with window mode.
         searchMode = type === "ultraviolet" ? "stealth" : "window";
 
-    if (prUrl) prUrl.addEventListener("keydown", e => {
+    if (prUrl) prUrl.addEventListener("keydown", async e => {
         if (e.code === "Enter") goProxMethod(searchMode)();
+
+//      This is exclusively used for the validator script.
+        else if (e.code === "Validator Test") {
+          e.target.value = await goProx[type](e.target.value);
+          e.target.dispatchEvent(new Event("change"));
+        }
     });
 
     if (prGo1) prGo1.addEventListener("click", goProxMethod("window"));
@@ -430,116 +436,116 @@ addEventListener("DOMContentLoaded", () => {
 
   prSet("pr-uv", "ultraviolet");
   prSet("pr-rh", "rammerhead");
-});
 
 
 
-(async () => {
+  (async () => {
 //  Load in relevant JSON files used to organize large sets of data.
 //  This first one is for links, whereas the rest are for navigation menus.
-  const huLinks = await fetch("/assets/json/links.json", {mode: "same-origin"}).then(response => response.json());
+    const huLinks = await fetch("/assets/json/links.json", {mode: "same-origin"}).then(response => response.json());
 
-  for (let item of Object.entries(huLinks))
-//  Replace all placeholder links with the corresponding entry in huLinks.
-    (document.getElementById(item[0]) || {}).href = item[1];
+    for (let item of Object.entries(huLinks))
+//    Replace all placeholder links with the corresponding entry in huLinks.
+      (document.getElementById(item[0]) || {}).href = item[1];
 
-  const navLists = {
-//  Pair an element ID with a JSON file name. They are identical for now.
-    "emu-nav": "emu-nav",
-    "emulib-nav": "emulib-nav",
-    "flash-nav": "flash-nav",
-    "h5-nav": "h5-nav"
-  };
+    const navLists = {
+//    Pair an element ID with a JSON file name. They are identical for now.
+      "emu-nav": "emu-nav",
+      "emulib-nav": "emulib-nav",
+      "flash-nav": "flash-nav",
+      "h5-nav": "h5-nav"
+    };
 
-  for (let [listId, filename] of Object.entries(navLists)) {
+    for (let [listId, filename] of Object.entries(navLists)) {
 
-    let navList = document.getElementById(listId);
+      let navList = document.getElementById(listId);
 
-    if(navList) {
-//    List items stored in JSON format will be returned as a JS object.
-      const data = await fetch(`/assets/json/${filename}.json`, {mode: "same-origin"}).then(response => response.json());
+      if(navList) {
+//      List items stored in JSON format will be returned as a JS object.
+        const data = await fetch(`/assets/json/${filename}.json`, {mode: "same-origin"}).then(response => response.json());
 
-//    Load the JSON lists into specific HTML parent elements as groups of
-//    child elements, if the parent element is found.
-      switch (filename) {
-        case "emu-nav":
-        case "emulib-nav":
-        case "h5-nav": {
-          const dirnames = {
-//        Set the directory of where each item of the corresponding JSON
-//        list will be retrieved from.
-            "emu-nav": "emu",
-            "emulib-nav": "emulib",
-            "h5-nav": "h5g"
-          },
+//      Load the JSON lists into specific HTML parent elements as groups of
+//      child elements, if the parent element is found.
+        switch (filename) {
+          case "emu-nav":
+          case "emulib-nav":
+          case "h5-nav": {
+            const dirnames = {
+//          Set the directory of where each item of the corresponding JSON
+//          list will be retrieved from.
+              "emu-nav": "emu",
+              "emulib-nav": "emulib",
+              "h5-nav": "h5g"
+            },
 
-          dir = dirnames[filename],
+            dir = dirnames[filename],
 
-//        Add a little functionality for each list item when clicked on.
-          clickHandler = (parser, a) => e => {
-            if (e.target == a || e.target.tagName != "A") {
-              e.preventDefault();
-              parser();
+//          Add a little functionality for each list item when clicked on.
+            clickHandler = (parser, a) => e => {
+              if (e.target == a || e.target.tagName != "A") {
+                e.preventDefault();
+                parser();
+              }
+            };
+
+            for (let item of data) {
+//            Load each item as an anchor tag with an image, heading,
+//            description, and click event listener.
+              let a = document.createElement("a");
+              a.href = "#";
+
+              let img = document.createElement("img");
+              img.src = `/assets/img/${dir}/` + item.img;
+              let title = document.createElement("h3");
+              title.textContent = item.name;
+              let desc = document.createElement("p");
+              desc.textContent = item.description;
+
+              if (filename === "h5-nav") {
+                if (item.credits === "itch") desc.innerHTML += '<br>Credits: Game can be found <a target="_blank" href="https://itch.io">here</a>.';
+                if (item.credits === "nowgg") desc.innerHTML += '<br>Credits: Game can be found <a target="_blank" href="https://now.gg">here</a>.';
+              }
+
+              a.appendChild(img);
+              a.appendChild(title);
+              a.appendChild(desc);
+
+//            Which function is used for the click event is determined by
+//            the corresponding location/index in the dirnames object.
+              const functionsList = [
+                () => goFrame(item.path),
+                () => goFrame("/?eg&core=" + item.core + "&rom=" + item.rom),
+                item.custom ? () => goProx[item.custom]("stealth") : () => goFrame("/archive/g/" + item.path)
+              ];
+
+              a.addEventListener("click", clickHandler(functionsList[Object.values(dirnames).indexOf(dir)], a));
+
+              navList.appendChild(a);
             }
-          };
-
-          for (let item of data) {
-//          Load each item as an anchor tag with an image, heading,
-//          description, and click event listener.
-            let a = document.createElement("a");
-            a.href = "#";
-
-            let img = document.createElement("img");
-            img.src = `/assets/img/${dir}/` + item.img;
-            let title = document.createElement("h3");
-            title.textContent = item.name;
-            let desc = document.createElement("p");
-            desc.textContent = item.description;
-
-            if (filename === "h5-nav") {
-              if (item.credits === "itch") desc.innerHTML += '<br>Credits: Game can be found <a target="_blank" href="https://itch.io">here</a>.';
-              if (item.credits === "nowgg") desc.innerHTML += '<br>Credits: Game can be found <a target="_blank" href="https://now.gg">here</a>.';
-            }
-
-            a.appendChild(img);
-            a.appendChild(title);
-            a.appendChild(desc);
-
-//          Which function is used for the click event is determined by
-//          the corresponding location/index in the dirnames object.
-            const functionsList = [
-              () => goFrame(item.path),
-              () => goFrame("/?eg&core=" + item.core + "&rom=" + item.rom),
-              () => item.custom ? goProx[item.custom]("stealth") : goFrame("/archive/g/" + item.path)
-            ];
-
-            a.addEventListener("click", clickHandler(functionsList[Object.values(dirnames).indexOf(dir)], a));
-
-            navList.appendChild(a);
+            break;
           }
-          break;
+
+          case "flash-nav":
+            for (let item of data) {
+//            Load each item as an anchor tag with a short title and click
+//            event listener.
+              let a = document.createElement("a");
+              a.href = "#";
+              a.textContent = item.slice(0, -4);
+
+              a.addEventListener("click", e => {
+                e.preventDefault();
+                goFrame("/?fg&swf=" + item);
+              });
+
+              navList.appendChild(a);
+            }
+            break;
+
+//        No default case.
+
         }
-
-        case "flash-nav":
-          for (let item of data) {
-//          Load each item as an anchor tag with a short title and click
-//          event listener.
-            let a = document.createElement("a");
-            a.href = "#";
-            a.textContent = item.slice(0, -4);
-
-            a.addEventListener("click", e => {
-              e.preventDefault();
-              goFrame("/?fg&swf=" + item);
-            });
-
-            navList.appendChild(a);
-          }
-          break;
-
-  //    No default case.
-
       }
     }
-  }
-})();
+  })();
+});
