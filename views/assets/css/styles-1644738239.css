@@ -1483,17 +1483,17 @@ iner
   }
 }
 
-#pr-form {
+.pr-form {
   margin-bottom: 16px;
 }
 
-#pr-form > input {
+.pr-form > input {
   background-color: var(--nord0);
   border: 1px solid var(--nord0);
 }
 
-#pr-form > input,
-#pr-form > a {
+.pr-form > input,
+.pr-form > a {
   vertical-align: baseline;
   outline: none;
   border-radius: 5px;
@@ -1504,16 +1504,16 @@ iner
   margin: 3px;
 }
 
-#pr-url {
+.pr-form > input[type=text] {
   max-width: 700px;
   width: calc(100% - 44px);
 }
 
-#pr-url:focus {
+.pr-form > input[type=text]:focus {
   animation: glowshadow 2s linear infinite;
 }
 
-#pr-url::placeholder {
+.pr-form > input[type=text]::placeholder {
   color: var(--gray);
 }
 

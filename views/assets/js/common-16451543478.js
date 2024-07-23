@@ -22,6 +22,7 @@ const urlHandler = parser => typeof parser === "function"
 //  Return different functions based on whether a URL has already been set.
 //  Should help avoid confusion when using or adding to the goProx object.
   ? (url, mode) => {
+      if (!url) return;
       url = parser(url);
       mode = `${mode}`.toLowerCase();
       if (mode === "stealth" || mode == 1) goFrame(url);
@@ -37,6 +38,7 @@ const urlHandler = parser => typeof parser === "function"
 
 //  An asynchronous version of the function above, just in case.
 const asyncUrlHandler = parser => async (url, mode) => {
+  if (!url) return;
   if (typeof parser === "function") url = await parser(url);
   mode = `${mode}`.toLowerCase();
   if (mode === "stealth" || mode == 1) goFrame(url);
@@ -397,7 +399,40 @@ addEventListener("DOMContentLoaded", () => {
 
     heli: urlHandler(uvUrl("https://benjames171.itch.io/helo-storm"))
   });
+
+
+//  Attach event listeners using goProx to specific app menus that need it.
+  const prSet = (id, type) => {
+    const formElement = document.getElementById(id);
+    if (!formElement) return;
+
+    let prUrl = formElement.querySelector("input[type=text]"),
+        prGo1 = formElement.getElementsByClassName("pr-go1")[0],
+        prGo2 = formElement.getElementsByClassName("pr-go2")[0];
+
+//  Handle the other menu buttons differently if there is no omnibox. Menus
+//  which lack an omnibox likely use buttons as mere links.
+    const goProxMethod = prUrl !== undefined
+        ? mode => () => {goProx[type](prUrl.value, mode)}
+        : mode => () => {goProx[type](mode)},
+
+//      Ultraviolet is currently incompatible with window mode.
+        searchMode = type === "ultraviolet" ? "stealth" : "window";
+
+    if (prUrl) prUrl.addEventListener("keydown", e => {
+        if (e.code === "Enter") goProxMethod(searchMode)();
+    });
+
+    if (prGo1) prGo1.addEventListener("click", goProxMethod("window"));
+    if (prGo2) prGo2.addEventListener("click", goProxMethod("stealth"));
+  };
+
+
+  prSet("pr-uv", "ultraviolet");
+  prSet("pr-rh", "rammerhead");
 });
+
+
 
 (async () => {
 //  Load in relevant JSON files used to organize large sets of data.
@@ -409,6 +444,7 @@ addEventListener("DOMContentLoaded", () => {
     (document.getElementById(item[0]) || {}).href = item[1];
 
   const navLists = {
+//  Pair an element ID with a JSON file name. They are identical for now.
     "emu-nav": "emu-nav",
     "emulib-nav": "emulib-nav",
     "flash-nav": "flash-nav",
@@ -430,6 +466,8 @@ addEventListener("DOMContentLoaded", () => {
         case "emulib-nav":
         case "h5-nav": {
           const dirnames = {
+//        Set the directory of where each item of the corresponding JSON
+//        list will be retrieved from.
             "emu-nav": "emu",
             "emulib-nav": "emulib",
             "h5-nav": "h5g"
@@ -500,6 +538,7 @@ addEventListener("DOMContentLoaded", () => {
           break;
 
   //    No default case.
+
       }
     }
   }
