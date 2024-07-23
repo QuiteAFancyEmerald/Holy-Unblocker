@@ -61,7 +61,6 @@ const testServerResponse = async () => {
     "http://localhost:8080/uv/uv.bundle.js",
     "http://localhost:8080/uv/uv.config.js",
     "http://localhost:8080/assets/js/register-sw.js",
-    "http://localhost:8080/assets/js/prset.js",
     "http://localhost:8080/assets/js/card.js",
     "http://localhost:8080/uv/sw.js",
     "http://localhost:8080/uv/uv.config.js"
