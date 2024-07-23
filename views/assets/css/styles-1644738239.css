@@ -109,9 +109,9 @@ html {
 body {
   position: absolute;
   width: 100%;
-  left: 0px;
-  top: 0px;
-  margin: 0px;
+  left: 0;
+  top: 0;
+  margin: 0;
   background-color: var(--nord0);
 }
 
@@ -126,7 +126,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0px;
+  margin: 0;
 }
 
 h1,
@@ -207,14 +207,14 @@ details[open] summary {
 
 .binside {
   list-style-position: inside;
-  padding: 0px;
+  padding: 0;
 }
 
 #particles-js {
   background-color: var(--nord0);
   position: fixed;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   z-index: -1;
   height: 100%;
 }
@@ -222,7 +222,7 @@ details[open] summary {
 #banner {
   background-color: var(--nord0m3);
   position: sticky;
-  top: 0px;
+  top: 0;
   border-top: 1px solid white;
   border-bottom: 1px solid white;
   font-weight: bold;
@@ -246,7 +246,7 @@ details[open] summary {
 #footer {
   font-family: "Lato", sans-serif;
   padding-top: 15vw;
-  background: url("/assets/img/waves.svg"), linear-gradient(180deg, transparent 0px, transparent 10vw, var(--nord1) 10vw, var(--nord1) 100%);
+  background: url("/assets/img/waves.svg"), linear-gradient(180deg, transparent 0, transparent 10vw, var(--nord1) 10vw, var(--nord1) 100%);
   background-repeat: no-repeat;
   background-size: 100vw auto;
   position: relative;
@@ -539,7 +539,7 @@ details[open] summary {
 
 .copyright {
   text-align: center;
-  padding: 25px 0px;
+  padding: 25px 0;
 }
 
 .footerbrand h3 a {
@@ -556,7 +556,7 @@ details[open] summary {
 
 .footerlist ul {
   list-style: none;
-  padding: 0px;
+  padding: 0;
 }
 
 .footerlist ul > li:hover {
@@ -577,7 +577,7 @@ details[open] summary {
   height: 20px;
   line-height: 20px;
   padding: 8px;
-  margin: 0px 5px;
+  margin: 0 5px;
   border: 1px solid var(--nord4);
   border-radius: 50%;
 }
@@ -638,12 +638,12 @@ details[open] summary {
 }
 
 #mnavecb:checked + .mnave .mnavebutton::before {
-  top: 0px;
+  top: 0;
   transform: rotate(-45deg);
 }
 
 #mnavecb:checked + .mnave .mnavebutton::after {
-  top: 0px;
+  top: 0;
   transform: rotate(45deg);
 }
 
@@ -657,13 +657,13 @@ details[open] summary {
   }
   .navbar {
     display: none;
-    margin: 0px;
+    margin: 0;
     height: auto;
   }
   .navbar > li {
     display: block;
     float: none;
-    margin: 0px;
+    margin: 0;
   }
   .navbar > li:hover {
     background-color: var(--nord0);
@@ -676,7 +676,7 @@ details[open] summary {
     animation: none;
   }
   .navbar .dropdown-child {
-    margin-top: 0px;
+    margin-top: 0;
   }
   #mnavecb:checked ~ .navbar,
   .mnave {
@@ -685,7 +685,7 @@ details[open] summary {
 }
 
 .box-home {
-  margin: 35vh 0px;
+  margin: 35vh 0;
   animation: fadeInAnimation ease-in-out 0.3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
@@ -798,7 +798,7 @@ details[open] summary {
 }
 
 .hovermessage::before {
-  font-size: 0px;
+  font-size: 0;
   content: attr(data-hover-text);
   text-decoration: inherit;
 }
@@ -848,19 +848,19 @@ details[open] summary {
 @keyframes glowshadow {
   0%,
   100% {
-    box-shadow: 0px 0px 8px 2px var(--nord0);
+    box-shadow: 0 0 8px 2px var(--nord0);
   }
   50% {
-    box-shadow: 0px 0px 8px 2px var(--nord1);
+    box-shadow: 0 0 8px 2px var(--nord1);
   }
 }
 
 @keyframes glowbg {
   0% {
-    background-position: 0px 0px;
+    background-position: 0;
   }
   100% {
-    background-position: 100px 0px;
+    background-position: 100px 0;
   }
 }
 
@@ -875,8 +875,8 @@ details[open] summary {
   display: inline-block;
   position: absolute;
   z-index: -1;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
@@ -932,23 +932,22 @@ details[open] summary {
   margin-top: 10px;
 }
 
-#csel input:not([type="checkbox"]),
+#csel input:not([type=checkbox]),
 #csel select {
   outline: none;
-  display: block;
+  display: inline;
   vertical-align: baseline;
   box-sizing: border-box;
   width: calc(100% - 200px);
   padding: 10px 12px;
   color: white;
   border-radius: 5px;
-  margin: 5px 0px;
+  margin: 5px 0;
   border-radius: 2px;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
   background-color: var(--nord1);
   border: 1px solid var(--nord9);
-  display: inline;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
@@ -958,27 +957,22 @@ details[open] summary {
   transform: scale(1.05);
 }
 
-#csel input[type="text"]:focus {
-  box-shadow: inset 0px 0px 5px 0px var(--nord3);
+#csel input[type=text]:focus {
+  box-shadow: inset 0 0 5px 0 var(--nord3);
   transition: box-shadow 0.15s ease-out;
 }
 
-
-#csel .cselbutton {
-  background-color: var(--nord8);
-}
-
-#csel .cselbutton:hover {
+#csel input:is([type=submit], [type=button]):hover {
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
   transform: scale(1.05);
 }
 
-#csel .cselbutton:active {
+#csel input:is([type=submit], [type=button]):active {
   background-color: #78b0c0;
 }
 
 #csel #cselreset {
-  margin: 20px 0px 5px 0px;
+  margin: 20px 0 5px;
 }
 
 #csel .cseltitle ~ p:not(:last-child) a {
@@ -989,9 +983,15 @@ details[open] summary {
   text-decoration: underline;
 }
 
+#csel .checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #hideads, #useonion {
   cursor: pointer;
-  margin-left: 0px;
+  margin-left: 0;
 }
 
 .box {
@@ -1177,6 +1177,10 @@ iner
     width: 300px;
   }
 
+  .settings-header {
+    margin-bottom: 10px;
+  }
+
   .cseltitle-main {
     font-size: 23.5px;
   }
@@ -1185,8 +1189,22 @@ iner
     font-size: 15px;
   }
 
-  #csel .cseltitle ~ input:not([type="checkbox"]), #csel select {
-    width: calc(100% - 100px);
+  #csel .cseltitle ~ p:not(:last-child) {
+    margin-top: 7px;
+  }
+
+  #csel input:not([type=checkbox]), #csel select {
+    padding: 7px 8px;
+    margin: 3.5px 1.75px;
+    font-size: 11px;
+  }
+
+  #csel .cseltitle ~ input:not([type=checkbox]), #csel select {
+    width: calc(100% - 94.5px);
+  }
+
+  #csel #cselreset {
+    margin: 13.5px 0 3.5px;
   }
 
   .text-wrap {
@@ -1339,7 +1357,7 @@ iner
 }
 
 .box-error {
-  margin: 40vh 0px;
+  margin: 40vh 0;
   font-family: "Lato", sans-serif;
 }
 
@@ -1348,7 +1366,7 @@ iner
 }
 
 .box-error p {
-  margin: 10px 0px;
+  margin: 10px 0;
 }
 
 .splashend>h1 {
@@ -1420,14 +1438,14 @@ iner
   border: none;
   width: 100vw;
   height: 100vh;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   background-color: #ffffff;
 }
 
 .ad {
   position: absolute;
-  margin: 0px 20px;
+  margin: 0 20px;
   width: 100px;
   height: 100%;
   background-color: var(--nord1);
@@ -1437,7 +1455,7 @@ iner
 }
 
 #ad-right {
-  right: 0px;
+  right: 0;
 }
 
 .ad::before {
@@ -1515,7 +1533,7 @@ iner
 .pr-logo {
   display: block;
   width: 15vw;
-  margin: 0px auto;
+  margin: 0 auto;
 }
 
 .responsive-fix {
@@ -1563,15 +1581,15 @@ iner
   height: 200px;
   object-position: 50% top;
   object-fit: cover;
-  box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.38);
+  box-shadow: 3px 4px 5px 0 rgba(0, 0, 0, 0.38);
 }
 
 .glist > a h3 {
-  margin: 16px 0px;
+  margin: 16px 0;
 }
 
 .glist > a p {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 #fsearchbar {
@@ -1597,7 +1615,7 @@ iner
   height: calc(100vh - 92px);
   overflow-y: auto;
   overflow-x: hidden;
-  margin: 0px auto;
+  margin: 0 auto;
   border: 2px solid var(--nord1);
   padding-bottom: 2px;
 }
@@ -1617,11 +1635,11 @@ iner
 }
 
 .gfooter {
-  margin: 32px 0px;
+  margin: 32px 0;
 }
 
 .gfooter-only {
-  margin: 40px 0px 32px 0px;
+  margin: 40px 0 32px;
 }
 
 #hu-frame {

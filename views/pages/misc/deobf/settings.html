@@ -1,20 +1,20 @@
-<div class="settings-content">
-    <div class="settings-header">
+<div class=settings-content>
+    <div class=settings-header>
         <p class=cseltitle-main>Settings</p>
         <i class="far fa-times-circle close-settings-btn"></i>
     </div>
     <p class=cseltitle>Browser Tab Config</p>
     <p>Change the universal tab title:</p>
     <form class=cselform id=titleform>
-        <input type=text placeholder="Tab Title" spellcheck=false><input class="cselbutton cselmargin" type=submit value=Apply>
+        <input type=text placeholder="Tab Title" spellcheck=false><input type=submit value=Apply>
     </form>
     <p>Change the universal tab <a href=/?i>icon</a>:</p>
     <form class=cselform id=iconform>
-        <input type=text placeholder="Icon URL" spellcheck=false><input class="cselbutton cselmargin" type=submit value=Apply>
+        <input type=text placeholder="Icon URL" spellcheck=false><input type=submit value=Apply>
     </form>
-    <input id=cselreset class="cselbutton" type=button value=Reset>
+    <input id=cselreset type=button value=Reset>
     <br>
-    <input id=cselab class="cselbutton" type=button value="Open Stealth Frame">
+    <input id=cselab type=button value="Open Stealth Frame">
     <p>Icon Presets:</p>
     <select id=icon-list>
         <option></option>
@@ -30,13 +30,13 @@
         <option>bare</option>
     </select>
     <p>Network Options:</p>
-    <p>
+    <p class=checkbox>
         <input id=hideads type=checkbox checked>
-        <span>Hide Ads</span>
+        <label for=hideads>Hide Ads</label>
     </p>
-    <p>
+    <p class=checkbox>
         <input id=useonion type=checkbox>
-        <span>Enable Tor</span>
+        <label for=useonion>Enable Tor</label>
     </p>
     <p><br>Holy Unblocker LTS v6.3.x</p>
 </div>
