@@ -1173,6 +1173,22 @@ iner
     top: -6px;
   }
 
+  .settings-content {
+    width: 300px;
+  }
+
+  .cseltitle-main {
+    font-size: 23.5px;
+  }
+
+  .cseltitle {
+    font-size: 15px;
+  }
+
+  #csel .cseltitle ~ input:not([type="checkbox"]), #csel select {
+    width: calc(100% - 100px);
+  }
+
   .text-wrap {
     width: 250px;
   }
