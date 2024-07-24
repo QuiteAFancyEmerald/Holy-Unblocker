@@ -239,6 +239,7 @@ details[open] summary {
   animation: fadeInAnimation ease-in-out 0.6s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+  overflow-x: clip;
 }
 
 /* to change the top padding on the footer, change the 3 vw values here to the same thing */
@@ -1138,6 +1139,10 @@ iner
     margin-right: auto;
   }
 
+  #header {
+    padding: 15px 30px;
+  }
+
   .logo {
     width: 25px;
     height: 25px;
@@ -1149,6 +1154,11 @@ iner
 
   .navbar, .navbar-1 {
     font-size: 11px;
+  }
+
+  .new::after {
+    padding: 18.2px 20px;
+    margin-left: 6.5px;
   }
 
   .mnave {
@@ -1226,6 +1236,16 @@ iner
   .grid-container {
     margin: 20px !important;
     margin-top: 100px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  #header {
+    padding: 15px 20px;
+  }
+
+  .navbar-1 {
+    justify-content: space-evenly;
   }
 }
 
