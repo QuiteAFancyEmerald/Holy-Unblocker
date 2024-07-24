@@ -216,8 +216,8 @@ xx                                                  xx
         await new Promise((resolve) => {
 
           const waitForDocument = () => document.readyState === "complete"
-          ? resolve()
-          : window.addEventListener("load", resolve);
+            ? resolve()
+            : window.addEventListener("load", resolve);
 
 //        Wait until a service worker is registered before continuing.
 //        Also make sure the document is loaded.
