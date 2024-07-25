@@ -73,31 +73,10 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
   --dark: #303030;
 }
 
-/* ---------------------------------------------------------------- */
 
-/* Smooth Loading */
-
-@keyframes fadeInAnimation {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-/* Subtle Blur Hover */
-
-@keyframes iconpulse {
-  0% {
-    filter: blur(0px);
-  }
-  50% {
-    filter: blur(0.9px);
-  }
-}
-
-/* HU CSS */
+/* -----------------------------------------------
+/* HU Page Layout / General Styling
+/* ----------------------------------------------- */
 
 html {
   color: white;
@@ -152,7 +131,6 @@ img {
 ::-moz-selection {
   background: rgba(180, 142, 173, 0.513); /* Use rgba for opacity */
 }
-
 
 .text-center {
   text-align: center;
@@ -210,13 +188,21 @@ details[open] summary {
   padding: 0;
 }
 
-#particles-js {
-  background-color: var(--nord0);
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: -1;
-  height: 100%;
+/* Used on a lot of navigation pages. */
+.bigtitle {
+  font-size: 42px;
+}
+
+#header {
+  background-color: var(--nord0m1);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between; /* Align items horizontally */
+  align-items: center; /* Align items vertically */
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.274);
+  padding: 15px 200px;
+  z-index: 2;
+  position: relative;
 }
 
 #banner {
@@ -242,31 +228,24 @@ details[open] summary {
   overflow-x: clip;
 }
 
-/* to change the top padding on the footer, change the 3 vw values here to the same thing */
+#particles-js {
+  background-color: var(--nord0);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  height: 100%;
+}
+
+/* To change the top padding on the footer, change the 3 vw values here to the same thing. */
 
 #footer {
   font-family: "Lato", sans-serif;
   padding-top: 15vw;
-  background: url("/assets/img/waves.svg"), linear-gradient(to bottom, transparent 0 10vw, #1d2029 10vw 100%);
+  background: url("/assets/img/waves.svg"), linear-gradient(to bottom, transparent 0 15vw, #1d2029 15vw 100%);
   background-repeat: no-repeat;
   background-size: 100vw auto;
   position: relative;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-.pulse:hover {
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  transform: scale(1.05);
-  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 #footer a {
@@ -279,17 +258,10 @@ details[open] summary {
   color: white;
 }
 
-#header {
-  background-color: var(--nord0m1);
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between; /* Align items horizontally */
-  align-items: center; /* Align items vertically */
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.274);
-  padding: 15px 200px;
-  z-index: 2;
-  position: relative;
-}
+
+/* -----------------------------------------------
+/* Icons and Branding
+/* ----------------------------------------------- */
 
 .brand-logo-container, .new {
   display: flex;
@@ -318,7 +290,7 @@ details[open] summary {
   background-size: cover;
 }
 
-.brand-logo-container>i {
+.brand-logo-container > i {
   margin-right: 10px;
 }
 
@@ -331,18 +303,23 @@ details[open] summary {
   overflow: hidden;
 }
 
-.white-text>a {
-  text-decoration: none !important;
-  color: var(--nord4) !important;
-}
-
 .new::after {
   content: "";
   padding: 22.75px 25px;
   margin-left: 8px;
-  background-image: url('/assets/img/new.svg'); /* Replace with your logo path */
+  background-image: url('/assets/img/new.svg');
   background-size: cover;
   font-size: 0;
+}
+
+
+/* -----------------------------------------------
+/* Navigation Bar and Menus (Header Contents)
+/* ----------------------------------------------- */
+
+.white-text > a {
+  text-decoration: none !important;
+  color: var(--nord4) !important;
 }
 
 .navbar {
@@ -396,6 +373,27 @@ details[open] summary {
   font-family: "Titillium Web", sans-serif;
 }
 
+/* "More" Navigation Menu */
+
+.subnavbar {
+  list-style: none;
+  padding: 0;
+}
+
+.subnavbar > li > a {
+  display: block;
+  padding: 5px 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 5px;
+}
+
+.subnavbar > li > a:hover {
+  background-color: var(--primary);
+}
+
+/* "Settings" Navigation Menu */
+
 .navbar .dropdown-settings {
   display: none;
   pointer-events: none;
@@ -430,22 +428,112 @@ details[open] summary {
   display: block;
 }
 
-.subnavbar {
-  list-style: none;
-  padding: 0;
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.subnavbar > li > a {
-  display: block;
-  padding: 5px 0;
-  padding-left: 15px;
-  padding-right: 15px;
+.cseltitle {
+  font-size: 22px;
+  color: white;
+  margin: 0;
+}
+
+.cseltitle-main {
+  font-size: 35px;
+  color: #ebb5d5;
+}
+
+.close-settings-btn {
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.close-settings-btn:hover {
+  color: lightgray;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transform: scale(1.05);
+}
+
+#csel {
+  color: var(--nord4);
+}
+
+#csel .cseltitle ~ p:not(:last-child) {
+  margin-top: 10px;
+}
+
+#csel input:not([type=checkbox]),
+#csel select {
+  outline: none;
+  display: inline;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  width: calc(100% - 200px);
+  padding: 10px 12px;
+  color: white;
   border-radius: 5px;
+  margin: 5px 0;
+  border-radius: 2px;
+  font-family: "Figtree", sans-serif;
+  font-weight: 300;
+  background-color: var(--nord1);
+  border: 1px solid var(--nord9);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-.subnavbar > li > a:hover {
-  background-color: var(--primary);
+#csel select:hover {
+  background-color: var(--nord3);
+  color: var(--nord5);
+  transform: scale(1.05);
 }
+
+#csel input[type=text]:focus {
+  box-shadow: inset 0 0 5px 0 var(--nord3);
+  transition: box-shadow 0.15s ease-out;
+}
+
+#csel input:is([type=submit], [type=button]):hover {
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transform: scale(1.05);
+}
+
+#csel input:is([type=submit], [type=button]):active {
+  background-color: #78b0c0;
+}
+
+#csel #cselreset {
+  margin: 20px 0 5px;
+}
+
+#csel .cseltitle ~ p:not(:last-child) a {
+  color: var(--nord8);
+}
+
+#csel .cseltitle ~ p:not(:last-child) a:hover {
+  text-decoration: underline;
+}
+
+/* Settings Menu Checkboxes */
+
+#csel .checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#hideads, #useonion {
+  cursor: pointer;
+  margin-left: 0;
+}
+
+
+/* -----------------------------------------------
+/* Footer Contents
+/* ----------------------------------------------- */
 
 .footerflex {
   display: flex;
@@ -514,66 +602,10 @@ details[open] summary {
   vertical-align: top;
 }
 
-.mnave {
-  display: none;
-  width: 50px;
-  height: 50px;
-  margin: 20px;
-  cursor: pointer;
-  float: right;
-  order: 1;
-}
 
-#mnavecb {
-  display: none;
-}
-
-.mnavebutton,
-.mnavebutton::before,
-.mnavebutton::after {
-  display: block;
-  background-color: var(--nord4);
-  height: 4px;
-  width: 36px;
-  border-radius: 2px;
-}
-
-.mnavebutton::before,
-.mnavebutton::after {
-  content: "";
-  position: absolute;
-  transition: transform 0.2s ease-out, top 0.2s ease-out;
-}
-
-.mnavebutton {
-  position: relative;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: background-color 0.2s ease-out;
-}
-
-.mnavebutton::before {
-  top: 12px;
-}
-
-.mnavebutton::after {
-  top: -12px;
-}
-
-#mnavecb:checked + .mnave .mnavebutton {
-  background-color: transparent;
-}
-
-#mnavecb:checked + .mnave .mnavebutton::before {
-  top: 0;
-  transform: rotate(-45deg);
-}
-
-#mnavecb:checked + .mnave .mnavebutton::after {
-  top: 0;
-  transform: rotate(45deg);
-}
+/* -----------------------------------------------
+/* Welcome Screen Content (i.e. Big Bold Words)
+/* ----------------------------------------------- */
 
 .box-home {
   margin: 35vh 0;
@@ -587,7 +619,7 @@ details[open] summary {
   align-items: center;
   justify-content: space-between;
   padding: 100px 0 100px 10%;
-  height: 85vh;
+  height: max(85vh, 25em);
   box-sizing: border-box;
 }
 
@@ -684,21 +716,25 @@ details[open] summary {
   background-color: var(--nord2);
 }
 
+/* NOTE: Currently unused. */
 .hovermessage:hover {
   transition: color 0.3s ease-in, font-size 0s linear 0.3s;
 }
 
+/* NOTE: Currently unused. */
 .hovermessage::before {
   font-size: 0;
   content: attr(data-hover-text);
   text-decoration: inherit;
 }
 
+/* NOTE: Currently unused. */
 .hovermessage:hover::before {
   font-size: 16px;
   transition: font-size 0s linear 0.3s, color 0.3s ease-in 0.3s;
 }
 
+/* NOTE: Currently unused. */
 .buttonlink {
   font-family: "Titillium Web", sans-serif;
   font-weight: bold;
@@ -710,6 +746,7 @@ details[open] summary {
   border-radius: 3px;
 }
 
+/* NOTE: Currently unused. */
 .startbutton {
   margin: 25px;
   background: var(--nord15);
@@ -730,159 +767,6 @@ details[open] summary {
 
 .fancybutton:hover {
   background-color: var(--nord2);
-}
-
-.fb-l {
-  background-color: var(--nord1);
-}
-
-@keyframes glowshadow {
-  0%,
-  100% {
-    box-shadow: 0 0 8px 2px var(--nord0);
-  }
-  50% {
-    box-shadow: 0 0 8px 2px var(--nord1);
-  }
-}
-
-@keyframes glowbg {
-  0% {
-    background-position: 0;
-  }
-  100% {
-    background-position: 100px 0;
-  }
-}
-
-.glowbutton {
-  position: relative;
-  z-index: 1;
-}
-
-.glowbutton::after {
-  content: "";
-  border-radius: inherit;
-  display: inline-block;
-  position: absolute;
-  z-index: -1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.3s ease-out;
-}
-
-.glowbutton:hover::after {
-  opacity: 1;
-  animation: glowshadow 2s linear infinite;
-}
-
-.glowbutton:active::after {
-  background: linear-gradient(90deg, var(--nord7), var(--nord8), var(--nord7));
-  background-size: 100px auto;
-  animation: glowshadow 2s linear infinite, glowbg 2s linear infinite;
-}
-
-.settings-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.cseltitle {
-  font-size: 22px;
-  color: white;
-  margin: 0;
-}
-
-.cseltitle-main {
-  font-size: 35px;
-  color: #ebb5d5;
-}
-
-.close-settings-btn {
-  color: white;
-  cursor: pointer;
-  font-size: 24px;
-}
-
-.close-settings-btn:hover {
-  color: lightgray;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  transform: scale(1.05);
-}
-
-#csel {
-  color: var(--nord4);
-}
-
-#csel .cseltitle ~ p:not(:last-child) {
-  margin-top: 10px;
-}
-
-#csel input:not([type=checkbox]),
-#csel select {
-  outline: none;
-  display: inline;
-  vertical-align: baseline;
-  box-sizing: border-box;
-  width: calc(100% - 200px);
-  padding: 10px 12px;
-  color: white;
-  border-radius: 5px;
-  margin: 5px 0;
-  border-radius: 2px;
-  font-family: "Figtree", sans-serif;
-  font-weight: 300;
-  background-color: var(--nord1);
-  border: 1px solid var(--nord9);
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-}
-
-#csel select:hover {
-  background-color: var(--nord3);
-  color: var(--nord5);
-  transform: scale(1.05);
-}
-
-#csel input[type=text]:focus {
-  box-shadow: inset 0 0 5px 0 var(--nord3);
-  transition: box-shadow 0.15s ease-out;
-}
-
-#csel input:is([type=submit], [type=button]):hover {
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  transform: scale(1.05);
-}
-
-#csel input:is([type=submit], [type=button]):active {
-  background-color: #78b0c0;
-}
-
-#csel #cselreset {
-  margin: 20px 0 5px;
-}
-
-#csel .cseltitle ~ p:not(:last-child) a {
-  color: var(--nord8);
-}
-
-#csel .cseltitle ~ p:not(:last-child) a:hover {
-  text-decoration: underline;
-}
-
-#csel .checkbox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#hideads, #useonion {
-  cursor: pointer;
-  margin-left: 0;
 }
 
 .box {
@@ -1044,6 +928,7 @@ iner
 }
 
 /* Shimmer Noise Cards */
+
 .grid-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -1167,14 +1052,6 @@ iner
   font-size: 40px;
 }
 
-#documentation {
-  font-family: "Lato", sans-serif;
-}
-
-#documentation code {
-  color: var(--nord13);
-}
-
 .textm p,
 .textm details,
 .box-card p {
@@ -1189,6 +1066,19 @@ iner
 .textm h6,
 .box-card h1 {
   margin-bottom: 8px;
+}
+
+
+/* -----------------------------------------------
+/* Documentation and FAQ Pages
+/* ----------------------------------------------- */
+
+#documentation {
+  font-family: "Lato", sans-serif;
+}
+
+#documentation code {
+  color: var(--nord13);
 }
 
 .faq-center {
@@ -1216,28 +1106,12 @@ iner
   color: var(--nord4);
 }
 
-.bigtitle {
-  font-size: 42px;
+/* Used on icons.html and the FAQ page. */
+.fb-l {
+  background-color: var(--nord1);
 }
 
-#bks-parent {
-  margin-bottom: 8px;
-}
-
-.buttonrow {
-  margin-bottom: 16px;
-}
-
-#frame {
-  position: fixed;
-  display: block;
-  border: none;
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  background-color: #ffffff;
-}
+/* Advertisements, obviously. */
 
 .ad {
   position: absolute;
@@ -1263,6 +1137,10 @@ iner
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* -----------------------------------------------
+/* Proxy Pages
+/* ----------------------------------------------- */
 
 .pr-form {
   margin-bottom: 16px;
@@ -1317,19 +1195,62 @@ iner
   margin: 0 auto;
 }
 
+/* Used on the Games and YouTube pages. */
 .responsive-fix {
   padding: 20px;
 }
 
+/* Used on the UV page. */
 #cor-logo {
   border-radius: 50%;
   padding: 20px;
   width: 150px;
 }
 
+/* Used on the Bookmarklets and FAQ pages, and icons.html. */
+#bks-parent {
+  margin-bottom: 8px;
+}
+
+/* Used exclusively on the Web Proxies page. */
+.buttonrow {
+  margin-bottom: 16px;
+}
+
+/* Stealth Mode IFrame */
+
+#frame {
+  position: fixed;
+  display: block;
+  border: none;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: #ffffff;
+}
+
+/* NOTE: Currently unused. */
+#hu-frame {
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #111;
+}
+
+
+/* -----------------------------------------------
+/* HU Games Directory
+/* ----------------------------------------------- */
+
 .box-g {
   padding: 10px 50px;
 }
+
+/* Games list for non-flash games */
 
 .glist {
   font-family: "Lato", sans-serif;
@@ -1373,6 +1294,8 @@ iner
   margin-bottom: 0;
 }
 
+/* Flash Games Search Bar */
+
 #fsearchbar {
   font-family: "Lato", sans-serif;
   font-size: 16px;
@@ -1388,6 +1311,8 @@ iner
 #fsearchbar::placeholder {
   color: var(--gray);
 }
+
+/* Flash Games List */
 
 .flist {
   font-family: "Lato", sans-serif;
@@ -1415,6 +1340,8 @@ iner
   background-color: var(--nord2);
 }
 
+/* Footer for non-flash games */
+
 .gfooter {
   margin: 32px 0;
 }
@@ -1423,18 +1350,179 @@ iner
   margin: 40px 0 32px;
 }
 
-#hu-frame {
-  border: none;
+
+/* -----------------------------------------------
+/* CSS Animations
+/* ----------------------------------------------- */
+
+/* Smooth Loading */
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Subtle Blur Hover Animation */
+
+@keyframes iconpulse {
+  0% {
+    filter: blur(0px);
+  }
+  50% {
+    filter: blur(0.9px);
+  }
+}
+
+/* Pulse Hover Animation */
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pulse:hover {
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transform: scale(1.05);
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* Glowing Button Animation */
+
+@keyframes glowshadow {
+  0%,
+  100% {
+    box-shadow: 0 0 8px 2px var(--nord0);
+  }
+  50% {
+    box-shadow: 0 0 8px 2px var(--nord1);
+  }
+}
+
+@keyframes glowbg {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: 100px 0;
+  }
+}
+
+.glowbutton {
+  position: relative;
+  z-index: 1;
+}
+
+.glowbutton::after {
+  content: "";
+  border-radius: inherit;
+  display: inline-block;
   position: absolute;
-  top: 0;
+  z-index: -1;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #111;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.glowbutton:hover::after {
+  opacity: 1;
+  animation: glowshadow 2s linear infinite;
+}
+
+.glowbutton:active::after {
+  background: linear-gradient(90deg, var(--nord7), var(--nord8), var(--nord7));
+  background-size: 100px auto;
+  animation: glowshadow 2s linear infinite, glowbg 2s linear infinite;
 }
 
 
-/* CSS Media Queries (largely for mobile support) */
+/* -----------------------------------------------
+/* Mobile Support
+/* ----------------------------------------------- */
+
+/* Mobile Header Dropdown Menu */
+
+.mnave {
+  display: none;
+  width: 50px;
+  height: 50px;
+  margin: 20px;
+  cursor: pointer;
+  float: right;
+  order: 1;
+}
+
+#mnavecb {
+  display: none;
+}
+
+.mnavebutton,
+.mnavebutton::before,
+.mnavebutton::after {
+  display: block;
+  background-color: var(--nord4);
+  height: 4px;
+  width: 36px;
+  border-radius: 2px;
+}
+
+.mnavebutton::before,
+.mnavebutton::after {
+  content: "";
+  position: absolute;
+  transition: transform 0.2s ease-out, top 0.2s ease-out;
+}
+
+.mnavebutton {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.2s ease-out;
+}
+
+.mnavebutton::before {
+  top: 12px;
+}
+
+.mnavebutton::after {
+  top: -12px;
+}
+
+#mnavecb:checked + .mnave .mnavebutton {
+  background-color: transparent;
+}
+
+#mnavecb:checked + .mnave .mnavebutton::before {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+#mnavecb:checked + .mnave .mnavebutton::after {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+/* For mobile-exclusive versions of certain UI elements. */
+.mobile {
+  display: none;
+}
+
+
+/* -----------------------------------------------
+/* CSS Media Queries (largely for mobile support)
+/* ----------------------------------------------- */
 
 @media (max-width: 1400px) {
   #header {
@@ -1560,7 +1648,21 @@ iner
   }
 }
 
+@media (max-width: 960px) {
+  .mac-window {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 800px) {
+  .homebutton:not(.mobile) {
+    display: none;
+  }
+
+  .mobile {
+    display: inline-block;
+  }
+
   .image-container-hero {
     display: none;
   }
@@ -1582,12 +1684,6 @@ iner
 
   #ad-right {
     display: none !important;
-  }
-}
-
-@media (max-width: 960px) {
-  .mac-window {
-    display: none;
   }
 }
 

@@ -12,7 +12,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - [x] XSS and fingerprinting protection (may need updates) - done
   - [x] Update games navigation JS and page/change to JSON object system - done
   - [ ] Ensure all the original submodules get added back to HU-Archive
-  - [ ] Mobile support
+  - [x] Mobile support - (welcome screen only, partial/needs work)
   - [ ] SEO overhaul adapted from the v2 SEO Guide format
 
 ## Proxy/Site Functionality
@@ -73,10 +73,10 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - Improved component handling via templates.mjs along with deletion of obsolete files that previously handled this standard in a poor format
   - Fixed oddly slow speeds with Ultraviolet (as well as a general version bump to support epoxy-tls and bare-mux)
   - Implemented testing scripts for an improved GitHub actions workflow by doing a quick test on proxy + site functionality
-  - Greatly optimized client-side scripts across the site with a new standard
+  - Greatly optimized client-side scripts across the site with a new standard, and generally reworked to no longer leave global variables
   - Changes to server.mjs with path logic and error handling
   - Updated standards for common scripts
   - libcurl and bare-as-module support added
   - Deleted 5 JS scripts and moved lots of data into JSON files. Big reorganization. Games menu core scripts now nested inside of common.js utilizing a JSON system
   - Massive updates to the Settings menu visually and functionality wise; added Bare-Mux support for swapping transports to work with Ultraviolet, default icons and selective adblocking + Tor on any proxy instances
-
+  - CSS Has been partially restructured for mobile support, and is now properly arranged into clearly labeled sections (for the most part)
