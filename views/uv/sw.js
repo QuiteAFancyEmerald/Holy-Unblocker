@@ -36,7 +36,12 @@ let blacklist;
 fetch("/assets/json/blacklist.json").then(request => {
   request.json().then(jsonData => {
     blacklist = jsonData.map(
-      domain => new RegExp(domain.replaceAll(".", "\\.").replaceAll("*", "."))
+      domain => new RegExp(
+        encodeURIComponent(domain)
+        .replace(/([()])/g, "\\$1")
+        .replaceAll("*.", "(?:.+\\.)?")
+        .replaceAll(".", "\\.")
+      )
     );
   });
 });
