@@ -3,6 +3,7 @@
 (() => {
 
 const stockSW = "/uv/sw.js",
+  blacklistSW = "/uv/sw-blacklist.js",
   swAllowedHostnames = ["localhost", "127.0.0.1"],
   connection = new BareMux.BareMuxConnection("/baremux/worker.js"),
   wispUrl = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/wisp/",
@@ -56,7 +57,22 @@ const registerSW = async () => {
     transportOptions.proxy = proxyUrl;
 
   await connection.setTransport(transportMode, [transportOptions]);
-  await navigator.serviceWorker.register(stockSW);
+
+//  Choose a service worker to register based on whether or not the user
+//  has ads enabled. If the user changes this setting, this script needs
+//  to be reloaded for this to update, such as by refreshing the page.
+  const registrations = await navigator.serviceWorker.getRegistrations(),
+    usedSW = await readCookie("HBHideAds") !== "false"
+      ? blacklistSW
+      : stockSW;
+
+//  Unregister a service worker if it isn't the one being used.
+  for (const registration of registrations)
+    if (registration.active &&
+      new URL(registration.active.scriptURL).pathname !== usedSW)
+      await registration.unregister();
+
+  await navigator.serviceWorker.register(usedSW);
 }
 
 /*

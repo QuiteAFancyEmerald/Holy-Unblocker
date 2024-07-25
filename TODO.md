@@ -24,8 +24,10 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - [x] libcurl, epoxy and all that fun stuff - done
   - [x] socks5/tor routing option that can be configured (enabled) via either a cookie or pathname as a settings meny option - done
   - [ ] Update games page content
+  - [ ] Update settings menu again to make more room for more features
   - [x] Update csel.js (after Setting menu redesign) to support custom transports, icon swap, routing - done
-  - [x] Update csel.js to support network based adblocking and workerware (https://github.com/MercuryWorkshop/workerware)
+  - [x] Update csel.js to support network based adblocking (partial/needs work)
+  - [ ] Update sw.js to support workerware (https://github.com/MercuryWorkshop/workerware)
   - [ ] Omnibox autoupdate script (for the Google/Bing style auto suggest feature)
   - [ ] Games library will feature 10000 items; 5000 flash games and 5000 other game types
 
@@ -80,3 +82,4 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - Deleted 5 JS scripts and moved lots of data into JSON files. Big reorganization. Games menu core scripts now nested inside of common.js utilizing a JSON system
   - Massive updates to the Settings menu visually and functionality wise; added Bare-Mux support for swapping transports to work with Ultraviolet, default icons and selective adblocking + Tor on any proxy instances
   - CSS Has been partially restructured for mobile support, and is now properly arranged into clearly labeled sections (for the most part)
+  - Incorporated makeshift domain blacklisting functionality into Ultraviolet, currently used for blocking ads if ads are disabled in settings

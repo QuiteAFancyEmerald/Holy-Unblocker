@@ -47,10 +47,14 @@ const testServerResponse = async () => {
     "http://localhost:8080/?fg",
     "http://localhost:8080/?eg",
     "http://localhost:8080/?vos",
+    "http://localhost:8080/assets/js/particlesjs/particles.js",
+    "http://localhost:8080/assets/js/bareTransport.js",
+    "http://localhost:8080/assets/js/card.js",
     "http://localhost:8080/assets/js/common-16451543478.js",
     "http://localhost:8080/assets/js/csel.js",
-    "http://localhost:8080/assets/js/particlesjs/particles.js",
+    "http://localhost:8080/assets/js/register-sw.js",
     "http://localhost:8080/assets/json/emu-nav.json",
+    "http://localhost:8080/assets/json/blacklist.json",
     "http://localhost:8080/assets/json/emulib-nav.json",
     "http://localhost:8080/assets/json/flash-nav.json",
     "http://localhost:8080/assets/json/h5-nav.json",
@@ -59,11 +63,10 @@ const testServerResponse = async () => {
     "http://localhost:8080/baremux/worker.js",
     "http://localhost:8080/epoxy/index.mjs",
     "http://localhost:8080/uv/uv.bundle.js",
-    "http://localhost:8080/uv/uv.config.js",
-    "http://localhost:8080/assets/js/register-sw.js",
-    "http://localhost:8080/assets/js/card.js",
     "http://localhost:8080/uv/sw.js",
-    "http://localhost:8080/uv/uv.config.js"
+    "http://localhost:8080/uv/uv.config.js",
+    "http://localhost:8080/uv/workerware.js",
+    "http://localhost:8080/uv/WWError.js"
   ];
 
   const results = await Promise.all(endpoints.map(testEndpoint));
