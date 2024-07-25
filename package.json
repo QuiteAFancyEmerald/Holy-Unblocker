@@ -1,37 +1,37 @@
 {
-    "name": "holyub",
-    "version": "6.3.0",
-    "repository": "https://github.com/QuiteAFancyEmerald/Holy-Unblocker",
-    "description": "Holy Unblocker is a secure web proxy service with support for many sites.",
-    "main": "backend.js",
-    "scripts": {
-        "start": "node backend.js",
-        "build": "npm run start",
-        "test": "npm run proxy-validator",
-        "start-test-server": "node backend.js &",
-        "proxy-validator": "node proxyServiceValidator.js"
-    },
-    "keywords": [
-        "proxy",
-        "node.js",
-        "unblocker"
-    ],
-    "author": "Titanium Network",
-    "license": "GNU AFFERO",
-    "dependencies": {
-        "@mercuryworkshop/bare-as-module3": "^2.2.2",
-        "@mercuryworkshop/bare-mux": "^2.0.1",
-        "@mercuryworkshop/epoxy-transport": "^2.1.3",
-        "@mercuryworkshop/libcurl-transport": "^1.3.7",
-        "@titaniumnetwork-dev/ultraviolet": "3.2.1",
-        "@tomphttp/bare-server-node": "^2.0.3",
-        "axios": "^1.7.2",
-        "express": "^4.19.2",
-        "helmet": "^7.1.0",
-        "mime-types": "^2.1.35",
-        "puppeteer": "^22.12.1",
-        "rammerhead": "https://github.com/NebulaServices/rammerhead/releases/download/rammerhead-1.2.41-nebula.8/rammerhead-1.2.41-nebula.7.tgz",
-        "wisp-server-node": "^1.1.1",
-        "ws": "^8.18.0"
-    }
+  "name": "holyub",
+  "version": "6.3.0",
+  "repository": "https://github.com/QuiteAFancyEmerald/Holy-Unblocker",
+  "description": "Holy Unblocker is a secure web proxy service with support for many sites.",
+  "main": "backend.js",
+  "scripts": {
+    "start": "node backend.js",
+    "build": "npm run start",
+    "test": "npm run proxy-validator",
+    "start-test-server": "set -e; node backend.js & bg_pid=$!; wait \"${bg_pid}\"",
+    "proxy-validator": "node proxyServiceValidator.js"
+  },
+  "keywords": [
+    "proxy",
+    "node.js",
+    "unblocker"
+  ],
+  "author": "Titanium Network",
+  "license": "GNU AFFERO",
+  "dependencies": {
+    "@mercuryworkshop/bare-as-module3": "^2.2.2",
+    "@mercuryworkshop/bare-mux": "^2.0.1",
+    "@mercuryworkshop/epoxy-transport": "^2.1.3",
+    "@mercuryworkshop/libcurl-transport": "^1.3.7",
+    "@titaniumnetwork-dev/ultraviolet": "3.2.1",
+    "@tomphttp/bare-server-node": "^2.0.3",
+    "axios": "^1.7.2",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "mime-types": "^2.1.35",
+    "puppeteer": "^22.12.1",
+    "rammerhead": "https://github.com/NebulaServices/rammerhead/releases/download/rammerhead-1.2.41-nebula.8/rammerhead-1.2.41-nebula.7.tgz",
+    "wisp-server-node": "^1.1.1",
+    "ws": "^8.18.0"
+  }
 }
