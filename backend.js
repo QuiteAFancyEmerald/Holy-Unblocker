@@ -1,3 +1,8 @@
 (async () => {
-  await import("./src/server.mjs");
+  try {
+    await import("./src/server.mjs");
+  } catch (e) {
+    console.error(e);
+    process.exit(1);
+  }
 })();
