@@ -35,14 +35,13 @@ const uv = new UVServiceWorker();
 let blacklist;
 fetch("/assets/json/blacklist.json").then(request => {
   request.json().then(jsonData => {
-    blacklist = jsonData.map(
-      domain => new RegExp(
+    blacklist = new RegExp(jsonData.map(
+      domain =>
         encodeURIComponent(domain)
         .replace(/([()])/g, "\\$1")
         .replaceAll("*.", "(?:.+\\.)?")
         .replaceAll(".", "\\.")
-      )
-    );
+    ).join("|"));
   });
 });
 
@@ -52,7 +51,7 @@ self.addEventListener("fetch", (event) => {
 //    The one and only ghetto domain blacklist.
       if (!new URL(event.request.url).pathname.indexOf("/uv/service/")) {
         const url = new URL(uv.config.decodeUrl(new URL(event.request.url).pathname.replace(/^\/uv\/service\//, "")));
-        if (blacklist.some(domain => domain.test(url.hostname)))
+        if (blacklist.test(url.hostname))
           return new Response(new Blob(), {status: 406});
       }
 
