@@ -8,7 +8,7 @@
     "start": "node backend.js",
     "build": "npm run start",
     "test": "npm run proxy-validator",
-    "start-test-server": "timeout 5 bash -c 'set -e; node backend.js & bg_pid=$!;  wait \"${bg_pid}\"'; exitcode=\"$?\"; (( exitcode == 124 )) && (node backend.js &) || exit 1",
+    "start-test-server": "timeout 5 bash -c 'set -e; node backend.js & bg_pid=$!;  wait \"${bg_pid}\"'; test \"$?\" -eq \"124\" && (node backend.js &) || exit 1",
     "proxy-validator": "node proxyServiceValidator.js"
   },
   "keywords": [
