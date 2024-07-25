@@ -7,13 +7,13 @@ import express from "express";
 import helmet from "helmet";
 import http from "http";
 import createRammerhead from "rammerhead/src/server/index.js";
-import { createBareServer } from "@tomphttp/bare-server-node";
 import wisp from "wisp-server-node";
 import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
 import { libcurlPath } from "@mercuryworkshop/libcurl-transport";
 import { bareModulePath } from "@mercuryworkshop/bare-as-module3";
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
 import { uvPath } from "@titaniumnetwork-dev/ultraviolet";
+//  import { createBareServer } from "@tomphttp/bare-server-node";
 
 const config = JSON.parse(
   await readFile(new URL("./config.json", import.meta.url))
@@ -23,7 +23,7 @@ __dirname = path.resolve(),
 port = process.env.PORT || config.port,
 app = express(),
 router = express.Router(),
-bare = createBareServer("/bare/"),
+//  bare = createBareServer("/bare/"),
 rh = createRammerhead();
 
 const rammerheadScopes = [
@@ -63,9 +63,12 @@ routeRhUpgrade = (req, socket, head) => {
 },
 
 server = http.createServer((req, res) => {
+/*
   if (bare.shouldRoute(req)) {
     bare.routeRequest(req, res);
-  } else if (shouldRouteRh(req)) {
+  } else 
+*/
+  if (shouldRouteRh(req)) {
     routeRhRequest(req, res);
   } else {
     app(req, res);
@@ -73,9 +76,12 @@ server = http.createServer((req, res) => {
 });
 
 server.on("upgrade", (req, socket, head) => {
+/*
   if (bare.shouldRoute(req)) {
     bare.routeUpgrade(req, socket, head);
-  } else if (shouldRouteRh(req)) {
+  } else 
+*/
+  if (shouldRouteRh(req)) {
     routeRhUpgrade(req, socket, head);
   } else if (req.url.endsWith("/wisp/")) {
     wisp.routeRequest(req, socket, head);
