@@ -8,7 +8,7 @@
     "start": "node backend.js",
     "build": "npm run start",
     "test": "npm run proxy-validator",
-    "start-test-server": "set -e; node backend.js & bg_pid=$!; wait \"${bg_pid}\"",
+    "start-test-server": "set -e; node backend.js & bg_pid=$!; wait \"${bg_pid}\"; node backend.js &",
     "proxy-validator": "node proxyServiceValidator.js"
   },
   "keywords": [
