@@ -76,7 +76,7 @@ const testServerResponse = async () => {
     console.error(
       "One or more endpoints failed to respond with status code 200. Test failed."
     );
-    process.exit(1);
+    process.exitCode = 1;
   }
 };
 
@@ -303,14 +303,14 @@ xx                                                  xx
 
     if (rammerheadPassed && ultravioletPassed) {
       console.log("Both tests passed.");
-      process.exit(0);
+      process.exitCode = 0;
     } else {
       console.error("Tests failed.");
-      process.exit(1);
+      process.exitCode = 1;
     }
   } catch (error) {
     console.error("Error in testCommonJSOnPage:", error.message);
-    process.exit(1);
+    process.exitCode = 1;
   } finally {
     await browser.close();
   }
