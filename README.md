@@ -72,10 +72,10 @@ cd Holy-Unblocker
 
 npm install
 
-npm start
+npm run start
 ```
 
-The default place for the proxy when its started is `http://localhost:8080` but you can change it if needed in config.json
+The default place for the proxy when its started is `http://localhost:8080`, but you can change it if needed in `/src/config.json`.
 
 This website is hosted locally with Ultraviolet and Rammerhead built-in.
 
@@ -89,7 +89,7 @@ This website is hosted locally with Ultraviolet and Rammerhead built-in.
 - `faq.html`: Frequently asked questions page.
 - `hidden.html`: Fake "Site not Found" page (unused)
 - `frame.html`: Handles any pages under stealth.
-- `surf.html`: Web Proxies page, page offers to be redirected to any proxies you would like to add. In this case, Corrosion, Womginx, and Palladium.
+- `surf.html`: Web Proxies page, page offers to be redirected to any proxies you would like to add. In this case, Ultraviolet and Rammerhead.
 - `credits.html`: List of all contributors to the site.
 - `bookmarklets.html`: Bookmarklets page, to be worked on more in the future.
 - `icons.html`: Information regarding Settings Menu page. Added this in for standard users.
@@ -101,7 +101,7 @@ This website is hosted locally with Ultraviolet and Rammerhead built-in.
 - `flash.html`: Games page for flash games, credits given to @BinBashBanana and Titanium Network for its assets.
 - `ultraviolet.html`: TODO
 - `rammerhead.html`: TODO
-- `youtube.html`: An proxied version of Youtube running off of the locally hosted Corrosion.
+- `youtube.html`: A proxied version of Youtube running off the locally hosted Ultraviolet.
 - `discord.html`: Hub for the Discord proxy.
 - `reddit.html`: Hub for the Reddit proxy.
 </details>
@@ -113,13 +113,15 @@ This website is hosted locally with Ultraviolet and Rammerhead built-in.
 #### Details of `/views/`
 - `/archive/` is used for game pages and vibeOS.
 - `/pages/` is used for the HTML for the site.
-- `/assets/` is used for various assets for CSS, JS, and images.
+- `/assets/` is used for storing various CSS, JS, image, and JSON files.
 
 #### Scripts located in `/views/assets/js/`
-- `common.js` is used on all of the pages for common useful functions.
-- `prset.js` is used on the proxy pages for proxy form functionality.
+- `bareTransport.js` is a locally installed version of the bare transport module which allows Ultraviolet to function.
+- `card.js` adds a fancy visual effect to the box cards displayed on the welcome screen.
+- `common.js` is used on all pages and allows commonly used features to function.
 - `csel.js` manages the settings menu on the header.
-- `gnav/*.js` are used for navigation on the games pages.
+- `particles.js` is the animated background effect that's present on all pages.
+- `register-sw.js` creates and manages service workers that allow Ultraviolet to function, and also uses bare transport.
 
 ## Future Additions
 This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above.

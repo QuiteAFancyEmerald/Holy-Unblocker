@@ -399,7 +399,13 @@ addEventListener("DOMContentLoaded", async () => {
 
     speed: urlHandler(uvUrl("https://captain4lk.itch.io/what-the-road-brings")),
 
-    heli: urlHandler(uvUrl("https://benjames171.itch.io/helo-storm"))
+    heli: urlHandler(uvUrl("https://benjames171.itch.io/helo-storm")),
+
+    youtube: urlHandler(uvUrl("https://youtube.com")),
+
+    discordUV: urlHandler(uvUrl("https://discord.com/app")),
+
+    discordRH: urlHandler(await RammerheadEncode("https://discord.com/app"))
   });
 
 
@@ -409,8 +415,8 @@ addEventListener("DOMContentLoaded", async () => {
     if (!formElement) return;
 
     let prUrl = formElement.querySelector("input[type=text]"),
-        prGo1 = document.querySelector(`#${id}.pr-go1, #${id} .pr-go1`),
-        prGo2 = document.querySelector(`#${id}.pr-go2, #${id} .pr-go2`);
+        prGo1 = document.querySelectorAll(`#${id}.pr-go1, #${id} .pr-go1`),
+        prGo2 = document.querySelectorAll(`#${id}.pr-go2, #${id} .pr-go2`);
 
 //  Handle the other menu buttons differently if there is no omnibox. Menus
 //  which lack an omnibox likely use buttons as mere links.
@@ -431,13 +437,20 @@ addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    if (prGo1) prGo1.addEventListener("click", goProxMethod("window"));
-    if (prGo2) prGo2.addEventListener("click", goProxMethod("stealth"));
+    prGo1.forEach(element => {
+      element.addEventListener("click", goProxMethod("window"));
+    });
+    prGo2.forEach(element => {
+      element.addEventListener("click", goProxMethod("stealth"));
+    });
   };
 
 
   prSet("pr-uv", "ultraviolet");
   prSet("pr-rh", "rammerhead");
+  prSet("pr-yt", "youtube");
+  prSet("pr-rh-dc", "discordRH");
+  prSet("pr-uv-dc", "discordUV");
 
 
 
