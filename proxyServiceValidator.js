@@ -139,7 +139,7 @@ const testCommonJSOnPage = async () => {
               else omnibox.addEventListener("change", () => resolve(omnibox.value));
             }),
             timeout = new Promise(resolve => {
-              setTimeout(() => resolve(omnibox.value), 5000);
+              setTimeout(() => resolve(omnibox.value), 10000);
             }),
 
 //          Record the proxy URL that the omnibox left here.
