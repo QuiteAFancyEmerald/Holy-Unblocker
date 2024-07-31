@@ -65,7 +65,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 
 
 ## Community Requests
-  - [x] Example
+  - [ ] Add [Quake WASM](https://github.com/GMH-Code/Quake-WASM)
 
 ## Changelog
 
