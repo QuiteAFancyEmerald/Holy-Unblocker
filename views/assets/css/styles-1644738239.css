@@ -461,13 +461,14 @@ details[open] summary {
 
 .cseltitle-main {
   font-size: 35px;
-  color: #ebb5d5;
+  color: rgb(255, 88, 97);
+  font-weight: 900;
 }
 
 .close-settings-btn {
-  color: white;
   cursor: pointer;
   font-size: 24px;
+  font-weight: 100;
   margin-left: auto; 
 }
 
@@ -625,13 +626,13 @@ select:hover {
   color: #2e3440;
 }
 
-#cloakform {
+.cloakform {
   display: flex;
   gap: 10px; 
   margin-bottom: 15px;
 }
 
-#cloakform input[type="text"] {
+.cloakform input[type="text"] {
   flex: 1;
   background-color: #3b4252;
   border: 1px solid #4c566a;
@@ -641,7 +642,7 @@ select:hover {
   box-sizing: border-box;
 }
 
-#cloakform input[type="button"] {
+.cloakform input[type="button"] {
   background-color: #5e81ac;
   border: none;
   border-radius: 5px;
@@ -650,7 +651,7 @@ select:hover {
   cursor: pointer;
 }
 
-#cloakform input[type="button"]:hover {
+.cloakform input[type="button"]:hover {
   background-color: #81a1c1;
 }
 
