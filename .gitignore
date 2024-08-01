@@ -7,3 +7,4 @@ views/archive
 ngrok.exe
 package-lock.json
 pnpm-lock.yaml
+debug.log
