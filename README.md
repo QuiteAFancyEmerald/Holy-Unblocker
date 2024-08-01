@@ -22,7 +22,8 @@ Also has a good amount of locally hosted games featured on the site.
 - Game library with moderately decent titles
 - Has frequent support articles for issues relating to the various proxy instances
 
-<img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.1.0-preview.png"></img>
+<img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.3.0-preview.png"></img>
+<img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.3.0-preview-settings.png"></img>
 
 #### You can support Holy Unblocker by starring the repository!
 
@@ -347,6 +348,7 @@ This project currently uses Ultraviolet, Wisp, Womginx, and Rammerhead, linked b
 
 - <a href="https://github.com/tsparticles/tsparticles">tsparticles</a>
 - <a href="https://github.com/helmetjs/helmet">Helmet for Express</a>
+- <a href="https://github.com/DerpmanDev/modal">Modal</a>
 - <a href="https://github.com/BinBashBanana/webretro">webretro</a>
 - <a href="https://ruffle.rs/">Ruffle</a>
 - <a href="https://github.com/michalsnik/aos">AOS</a>
