@@ -409,20 +409,6 @@ details[open] summary {
   justify-content: center;
 }
 
-.settings-content {
-  pointer-events: auto;
-  background-color: var(--nord0);
-  border: 1px solid var(--nord3);
-  border-radius: 10px;
-  padding: 25px;
-  z-index: 6; /* Ensures it appears above the background blur */
-  width: 600px;
-  text-align: center;
-  max-height: 90vh; /* Sets the maximum height to 90% of the viewport height */
-  overflow-y: auto;
-  margin: 5vh auto;
-}
-
 .dropdown-parent:focus-within .dropdown-settings:not(:is(:has(.close-settings-btn:active))) {
   display: flex; /* Flexbox to center content */
 }
@@ -437,7 +423,7 @@ details[open] summary {
 
 .settings-content {
   pointer-events: auto;
-  background-color: #2e3440;
+  background-color: rgba(46, 52, 64, 0.2); /* Adding transparency */
   border: 1px solid #4c566a;
   border-radius: 10px;
   padding: 25px;
@@ -450,6 +436,9 @@ details[open] summary {
   font-family: 'Figtree', sans-serif;
   display: flex;
   flex-direction: column; 
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for depth */
 }
 
 .settings-header {
@@ -1017,7 +1006,7 @@ iner
   margin: 40px auto; /* Adjusted margin for smaller screens */
   width: 90%; /* Reduced width for smaller screens */
   max-width: 1200px; /* Added max-width to prevent excessive stretching on larger screens */
-  background-color: rgba(76, 86, 106, 0.15); /* Semi-transparent background color */
+  background-color: rgba(46, 52, 64, 0.2); /* Semi-transparent background color */
   border-radius: 10px;
   padding: 10px; /* Reduced padding for smaller screens */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -1051,7 +1040,7 @@ iner
   -webkit-mask-size: 800px 800px;
   -webkit-mask-position: calc(var(--mouse-x) - 400px) calc(var(--mouse-y) - 400px);
   -webkit-mask-repeat: no-repeat;
-  mask-image: radial-gradient(closest-side, white 30%, rgba(255, 255, 255, 0.5) 70%, transparent 90%);
+  mask-image: radial-gradient(closest-side, rgba(37, 35, 35, 0.377) 30%, rgba(255, 255, 255, 0.048) 70%, transparent 90%);
   mask-size: 800px 800px;
   mask-position: calc(var(--mouse-x) - 400px) calc(var(--mouse-y) - 400px);
   mask-repeat: no-repeat;
@@ -1134,7 +1123,7 @@ iner
 .box-card {
   width: 100%;
   padding: 40px;
-  background-color: rgb(76, 86, 106, 0.15);
+  background-color: rgba(46, 52, 64, 0.2);
   border-radius: 10px;
   position: relative;
   overflow: hidden;
@@ -1151,14 +1140,14 @@ iner
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("/assets/img/noise.png") repeat, rgba(255, 255, 255, 0.03);
+  background: url("/assets/img/noise.png") repeat, rgba(46, 52, 64, 0.03);
   opacity: var(--noise-opacity, 0.02); 
   pointer-events: none;
   -webkit-mask-image: radial-gradient(circle, white 30%, transparent 50%);
   -webkit-mask-size: 800px 800px;
   -webkit-mask-position: calc(var(--mouse-x) - 400px) calc(var(--mouse-y) - 400px);
   -webkit-mask-repeat: no-repeat;
-  mask-image: radial-gradient(closest-side, white 30%, rgba(255, 255, 255, 0.5) 70%, transparent 90%);
+  mask-image: radial-gradient(closest-side, rgba(37, 35, 35, 0.377) 30%, rgba(255, 255, 255, 0.048) 70%, transparent 90%);
   mask-size: 800px 800px;
   mask-position: calc(var(--mouse-x) - 400px) calc(var(--mouse-y) - 400px);
   mask-repeat: no-repeat;
