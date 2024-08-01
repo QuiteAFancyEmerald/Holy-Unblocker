@@ -1,42 +1,73 @@
-<div class=settings-content>
-    <div class=settings-header>
-        <p class=cseltitle-main>Settings</p>
-        <i class="far fa-times-circle close-settings-btn"></i>
-    </div>
-    <p class=cseltitle>Browser Tab Config</p>
-    <p>Change the universal tab title:</p>
-    <form id=titleform>
-        <input type=text placeholder="Tab Title" spellcheck=false><input type=submit value=Apply>
-    </form>
-    <p>Change the universal tab <a href=/?i>icon</a>:</p>
-    <form id=iconform>
-        <input type=text placeholder="Icon URL" spellcheck=false><input type=submit value=Apply>
-    </form>
-    <input id=cselreset type=button value=Reset>
-    <br>
-    <input id=cselab type=button value="Open Stealth Frame">
-    <p>Icon Presets:</p>
-    <select id=icon-list>
-        <option></option>
-        <option>Google</option>
-        <option>Bing</option>
-        <option>Google Drive</option>
-        <option>Gmail</option>
-    </select>
-    <p>Default Ultraviolet Transport:</p>
-    <select id=transport-list>
-        <option>epoxy</option>
-        <option>libcurl</option>
-        <option>bare</option>
-    </select>
-    <p>Network Options:</p>
-    <p class=checkbox>
-        <input id=hideads type=checkbox checked>
-        <label for=hideads>Hide Ads</label>
-    </p>
-    <p class=checkbox>
-        <input id=useonion type=checkbox>
-        <label for=useonion>Enable Tor</label>
-    </p>
-    <p><br>Holy Unblocker LTS v6.3.x</p>
+<div id="csel" class="settings-content">
+  <div class="settings-header">
+      <p class="cseltitle-main">Settings</p>
+      <i class="far fa-times-circle close-settings-btn"></i>
+  </div>
+  <div class="settings-content-body">
+      <div class="csel-container-left">
+          <p class="cseltitle">Tab Cloak</p>
+          <form id="cloakform">
+              <input type="text" placeholder="Tab Title" spellcheck="false">
+              <input type="button" value="Apply">
+          </form>
+          <form id="cloakform">
+              <input type="text" placeholder="Icon URL" spellcheck="false">
+              <input type="button" value="Apply">
+          </form>
+          <p class="cseltitle">Ultraviolet Proxy Transport</p>
+          <div class="radio-group">
+              <label>
+                  <p>Libcurl <span class="default-badge">Cross-Browser/Secure (Firefox)</span></p>
+                  <input type="radio" name="proxy" value="uv3" checked>
+              </label>
+              <label>
+                  <p>Epoxy <span class="bare-badge">Fastest/Secure (Chromium, Apple)</span></p>
+                  <input type="radio" name="proxy" value="uv1">
+              </label>
+              <label>
+                  <p>Bare <span class="beta-badge">Least Secure (All)</span></p>
+                  <input type="radio" name="proxy" value="dynamic">
+              </label>
+          </div>
+          <p class="cseltitle">Advanced Options</p>
+          <div class="radio-group">
+            <label>
+              <p>Hide Ads <span class="default-badge">AdGuard</span></p>
+              <input type="radio" id="hideads" checked>
+            </label>
+            <label>
+              <p>Enable Tor <span class="bare-badge">SOCKS5 Onion Routing</span></p>
+              <input type="radio" id="useonion">
+            </label>
+          </div>
+      </div>
+      <div class="settings-right-column">
+          <p class="cseltitle">Search Engine</p>
+          <select>
+              <option>Google</option>
+              <option>Bing</option>
+              <option>DuckDuckGo</option>
+              <option>Yahoo</option>
+          </select>
+          <p class="cseltitle">About:Blank</p>
+          <div class="switch-container">
+            <p>Stealth Tab <span class="default-badge">Default</span></p>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+          </div>        
+          <p class="cseltitle">Select Theme</p>
+          <div class="radio-group">
+              <label>
+                  <p>Light</p>
+                  <input type="radio" name="theme" value="lighttheme" checked>
+              </label>
+              <label>
+                  <p>Dark</p>
+                  <input type="radio" name="theme" value="darktheme">
+              </label>
+          </div>
+      </div>
+  </div>
 </div>

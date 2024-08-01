@@ -416,8 +416,11 @@ details[open] summary {
   border-radius: 10px;
   padding: 25px;
   z-index: 6; /* Ensures it appears above the background blur */
-  width: 450px; /* Adjust the size as needed */
+  width: 600px;
   text-align: center;
+  max-height: 90vh; /* Sets the maximum height to 90% of the viewport height */
+  overflow-y: auto;
+  margin: 5vh auto;
 }
 
 .dropdown-parent:focus-within .dropdown-settings:not(:is(:has(.close-settings-btn:active))) {
@@ -428,17 +431,32 @@ details[open] summary {
   display: block;
 }
 
-.settings-header {
+/* Settings Menu (Updated) */
+/* Designed adapted from vanilla HU v5 && Modal */
+/* Modal GitHub: https://github.com/DerpmanDev/modal */
+
+.settings-content {
+  pointer-events: auto;
+  background-color: #2e3440;
+  border: 1px solid #4c566a;
+  border-radius: 10px;
+  padding: 25px;
+  z-index: 6;
+  width: 800px; /* Width to accommodate both columns */
+  max-height: 90vh;
+  overflow-y: auto;
+  margin: 5vh auto;
+  color: #eceff4;
+  font-family: 'Figtree', sans-serif;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
+  flex-direction: column; 
 }
 
-.cseltitle {
-  font-size: 22px;
-  color: white;
-  margin: 0;
+.settings-header {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .cseltitle-main {
@@ -450,6 +468,7 @@ details[open] summary {
   color: white;
   cursor: pointer;
   font-size: 24px;
+  margin-left: auto; 
 }
 
 .close-settings-btn:hover {
@@ -458,37 +477,211 @@ details[open] summary {
   transform: scale(1.05);
 }
 
-#csel {
-  color: var(--nord4);
+.settings-content-body {
+  display: flex;
+  gap: 40px; /* Space between left and right columns */
 }
 
-#csel .cseltitle ~ p:not(:last-child) {
-  margin-top: 10px;
+.csel-container-left, .settings-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between items within columns */
+}
+
+.csel-container-left {
+  flex: 1; 
+  max-width: 400px; /* Adjusted to fit content without gaps */
+}
+
+.settings-right-column {
+  width: 300px; /* Fixed width for the right column */
+}
+
+.cseltitle {
+  font-size: 22px;
+  color: white;
+  margin: 10px 0;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Increased space between items for clarity */
+  margin-bottom: 15px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Aligns text to the left and input to the right */
+  color: #eceff4;
+  font-size: 16px;
+  max-width: 100%; /* Ensure label doesn't exceed container width */
+}
+
+.radio-group p {
+  margin: 0;
+  flex: 1; /* Take up available space */
+}
+
+.radio-group input[type="radio"] {
+  accent-color: #88c0d0;
+  cursor: pointer;
+  width: 20px; /* Adjust size for better appearance */
+  height: 20px;
+  background-color: #3b4252; /* Default background color */
+}
+
+.switch-container {
+  display: flex;
+  align-items: center; /* Align items vertically centered */
+  justify-content: space-between; /* Distribute space between items */
+}
+
+.switch-container p {
+  margin: 0; /* Remove default margin to align properly */
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #4c566a;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #81a1c1;
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
+}
+
+select {
+  margin: 0;
+  padding: 10px;
+  background-color: #3b4252;
+  border: 1px solid #4c566a;
+  border-radius: 5px;
+  color: #eceff4;
+  max-width: 300px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+select:hover {
+  background-color: #4c566a;
+}
+
+.default-badge, .bare-badge, .beta-badge {
+  display: inline-block;
+  padding: 2px 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.default-badge {
+  background-color: #88c0d0;
+  color: #2e3440;
+}
+
+.bare-badge {
+  background-color: #d08770;
+  color: #2e3440;
+}
+
+.beta-badge {
+  background-color: #b48ead;
+  color: #2e3440;
+}
+
+#cloakform {
+  display: flex;
+  gap: 10px; 
+  margin-bottom: 15px;
+}
+
+#cloakform input[type="text"] {
+  flex: 1;
+  background-color: #3b4252;
+  border: 1px solid #4c566a;
+  border-radius: 5px;
+  padding: 10px;
+  color: #eceff4;
+  box-sizing: border-box;
+}
+
+#cloakform input[type="button"] {
+  background-color: #5e81ac;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  color: #eceff4;
+  cursor: pointer;
+}
+
+#cloakform input[type="button"]:hover {
+  background-color: #81a1c1;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #3b4252;
+  border: 1px solid #4c566a;
+  border-radius: 5px;
+  color: #eceff4;
+  box-sizing: border-box; 
+}
+
+#csel {
+  color: var(--nord4);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 #csel input:not([type=checkbox]),
 #csel select {
   outline: none;
-  display: inline;
-  vertical-align: baseline;
   box-sizing: border-box;
-  width: calc(100% - 200px);
   padding: 10px 12px;
   color: white;
   border-radius: 5px;
   margin: 5px 0;
-  border-radius: 2px;
-  font-family: "Figtree", sans-serif;
-  font-weight: 300;
   background-color: var(--nord1);
   border: 1px solid var(--nord9);
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-}
-
-#csel select:hover {
-  background-color: var(--nord3);
-  color: var(--nord5);
-  transform: scale(1.05);
 }
 
 #csel input[type=text]:focus {
@@ -517,19 +710,17 @@ details[open] summary {
   text-decoration: underline;
 }
 
-/* Settings Menu Checkboxes */
-
 #csel .checkbox {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px; 
 }
 
 #hideads, #useonion {
   cursor: pointer;
   margin-left: 0;
 }
-
 
 /* -----------------------------------------------
 /* Footer Contents
