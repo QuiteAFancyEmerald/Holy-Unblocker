@@ -1,41 +1,58 @@
-<div class="brand-logo-container">
-  <div class="logo"></div>
-  <a href="/" class="brand pulse">Holy Unblocker v6.3.x</a>
+<div class="brand-logo-container" aria-label="Brand Logo">
+  <div class="logo" role="img" aria-label="Holy Unblocker Logo"></div>
+  <a href="/" class="brand pulse" title="Holy Unblocker Home Page">Holy Unblocker v6.3.x</a>
 </div>
-<ul class="navbar-1">
-  <li class="pulse" style="margin-left: 0; "><a href="/?browse">Web Proxies</a></li>
-  <li class="pulse"><a href="/?g">Games</a></li>
-  <li class="pulse"><a href="/?y">YouTube</a></li>
-  <li class="pulse new">
-    <a href="/?apps">Applications</a>
+
+<ul class="navbar-1" role="list" aria-label="Primary navigation">
+  <li class="pulse" style="margin-left: 0;" role="listitem">
+    <a href="/?browse" title="Web Proxies - Access various web proxies to bypass restrictions">Web Proxies</a>
+  </li>
+  <li class="pulse" role="listitem">
+    <a href="/?g" title="Games - Explore a range of games available through our service">Games</a>
+  </li>
+  <li class="pulse" role="listitem">
+    <a href="/?y" title="YouTube - Access YouTube content through our proxy service">YouTube</a>
+  </li>
+  <li class="pulse new" role="listitem">
+    <a href="/?apps" title="Applications - Browse a selection of useful applications">Applications</a>
   </li>
 </ul>
-<input id="mnavecb" type="checkbox" />
-<label for="mnavecb" class="mnave">
-  <span class="mnavebutton"></span>
+
+<input id="mnavecb" type="checkbox" aria-hidden="true" />
+<label for="mnavecb" class="mnave" aria-label="Toggle navigation menu">
+  <span class="mnavebutton" aria-hidden="true"></span>
 </label>
-<ul class="navbar">
-  <!-- tabindex="0" is required on the dropdowns -->
-  <li class="dropdown-parent">
-    <div class="pulse white-text">
-      <a href="#">More <i class="fas fa-ellipsis-v"></i></a>
+
+<ul class="navbar" role="list" aria-label="Secondary navigation">
+  <li class="dropdown-parent" role="listitem">
+    <div class="pulse white-text" aria-haspopup="true" aria-expanded="false">
+      <a href="#" aria-label="More options">More <i class="fas fa-ellipsis-v" aria-hidden="true"></i></a>
     </div>
-    <div class="dropdown-child" tabindex="0">
-      <ul class="subnavbar">
-        <i class="fas fa-bars"></i>
-        <li><a href="/?x">Bookmarklets</a></li>
-        <li><a href="/?documentation">Docs</a></li>
-        <li><a href="/?faq">FAQ</a></li>
-        <li><a href="/?credits">Credits</a></li>
-        <li><a href="/?terms">TOS</a></li>
+    <div class="dropdown-child" tabindex="0" role="menu" aria-label="More options submenu">
+      <ul class="subnavbar" role="menu">
+        <li role="menuitem">
+          <a href="/?x" title="Bookmarklets - Useful tools and shortcuts for your browser">Bookmarklets</a>
+        </li>
+        <li role="menuitem">
+          <a href="/?documentation" title="Documentation - Detailed information and guides">Docs</a>
+        </li>
+        <li role="menuitem">
+          <a href="/?faq" title="FAQ - Frequently asked questions and answers">FAQ</a>
+        </li>
+        <li role="menuitem">
+          <a href="/?credits" title="Credits - Acknowledgements and contributions">Credits</a>
+        </li>
+        <li role="menuitem">
+          <a href="/?terms" title="Terms of Service - Rules and policies of use">TOS</a>
+        </li>
       </ul>
     </div>
   </li>
-  <li class="dropdown-parent">
-    <div class="pulse white-text">
-      <a href="#">Settings <i class="fas fa-cog pulse"></i></a>
+  <li class="dropdown-parent" role="listitem">
+    <div class="pulse white-text" aria-haspopup="true" aria-expanded="false">
+      <a href="#" aria-label="Settings menu">Settings <i class="fas fa-cog pulse" aria-hidden="true"></i></a>
     </div>
-    <div class="dropdown-settings" tabindex="0">
+    <div class="dropdown-settings" tabindex="0" role="menu" aria-label="Settings menu">
       <div id="csel"><!--SETTINGS--></div>
     </div>
   </li>
