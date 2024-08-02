@@ -76,6 +76,10 @@ const serverFactory = (handler) => {
 
 //set logger to true for logs
 const app = Fastify({ logger: false, serverFactory: serverFactory });
+app.register(fastifyHelmet, {
+    contentSecurityPolicy: false,
+    xPoweredBy: false
+})
 app.register(fastifyStatic, {
     root: fileURLToPath(new URL('../views', import.meta.url)),
 });
