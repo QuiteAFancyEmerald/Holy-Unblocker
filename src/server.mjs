@@ -53,7 +53,7 @@ const routeRhUpgrade = (req, socket, head) => {
   rh.emit("upgrade", req, socket, head);
 }
 
-//create a server factory for RH, and wisp (and bare if you please)
+// Create a server factory for RH, and wisp (and bare if you please)
 const serverFactory = (handler) => {
     return createServer()
         .on('request', (req, res) => {
@@ -74,7 +74,7 @@ const serverFactory = (handler) => {
         })
 }
 
-//set logger to true for logs
+// Set logger to true for logs
 const app = Fastify({ logger: false, serverFactory: serverFactory });
 app.register(fastifyHelmet, {
     contentSecurityPolicy: false,
@@ -85,7 +85,7 @@ app.register(fastifyStatic, {
 });
 app.register(fastifyStatic, {
     root: uvPath,
-    //due to how Fastify works, we have to have the uvPath live on a different prefix then the one in /views/
+    // Due to how Fastify works, we have to have the uvPath live on a different prefix then the one in /views/
     prefix: "/uv-static/",
     decorateReply: false
 });
@@ -114,6 +114,6 @@ app.get("/", function(req, reply) {
     reply.send(paintSource(loadTemplates(tryReadFile(path.join(__dirname, "views", "/?".indexOf(req.url) ? pages[Object.keys(req.query)[0]] || "error.html" : pages.index)))))
 });
 
-//host is set as to avoid just being on localhost
-app.listen({ port: port, host: '0.0.0.0' });
+// Configure host to your liking but remember to tweak the Rammerhead IP as well above for any changes
+app.listen({ port: port /*, host: '0.0.0.0' */});
 console.log("Holy Unblocker is listening on port " + port + ".");
