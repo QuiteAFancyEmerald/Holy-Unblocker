@@ -1,144 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-
-<url>
-  <loc>https://holyunblockerlts.net/</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>1.00</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?z</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.90</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?faq</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.90</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?d</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.90</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?in</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.90</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?g</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?y</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?n</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?k</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?c</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.90</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?i</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?t</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?a</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?w</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?e</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?p</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?h</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?f</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?el</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?yh</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?ym</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-</url>
-<url>
-  <loc>https://holyunblockerlts.net/?dd</loc>
-  <lastmod>2021-03-14T17:04:57+00:00</lastmod>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-</url>
-
+    <url>
+        <loc>https://holyunblocker.org/</loc>
+        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <priority>1.00</priority>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://holyunblocker.org/?browse</loc>
+        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://holyunblocker.org/?g</loc>
+        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <priority>0.95</priority>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://holyunblocker.org/?faq</loc>
+        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <priority>0.60</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://holyunblocker.org/?documentation</loc>
+        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <priority>0.70</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://holyunblocker.org/?in</loc>
+        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <priority>0.70</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://holyunblocker.org/?credits</loc>
+        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <priority>0.70</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://holyunblocker.org/?terms</loc>
+        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <priority>0.60</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://holyunblocker.org/?a</loc>
+        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <priority>0.50</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://holyunblocker.org/?w</loc>
+        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <priority>0.50</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://holyunblocker.org/?e</loc>
+        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <priority>0.50</priority>
+        <changefreq>monthly</changefreq>
+    </url>
 
 </urlset>
