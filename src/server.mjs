@@ -112,3 +112,4 @@ app.get("/", function(req, reply) {
 
 //host is set as to avoid just being on localhost
 app.listen({ port: port, host: '0.0.0.0' });
+console.log("Holy Unblocker is listening on port " + port + ".");
