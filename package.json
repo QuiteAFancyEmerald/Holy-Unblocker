@@ -6,7 +6,7 @@
   "main": "backend.js",
   "scripts": {
     "start": "node backend.js",
-    "build": "cd rammerhead && npm install && npm build",
+    "build": "cd lib/rammerhead && npm install && npm run build",
     "test": "npm run proxy-validator",
     "start-test-server": "timeout 5 node backend.js; test \"$?\" -eq \"124\" && (node backend.js &) || exit 1",
     "proxy-validator": "node proxyServiceValidator.js"
