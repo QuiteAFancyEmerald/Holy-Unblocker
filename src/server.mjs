@@ -110,7 +110,7 @@ app.register(fastifyStatic, {
     decorateReply: false 
 });
 app.get("/", function(req, reply) {
-    reply.type('html');
+    reply.type('text/html');
     reply.send(paintSource(loadTemplates(tryReadFile(path.join(__dirname, "views", "/?".indexOf(req.url) ? pages[Object.keys(req.query)[0]] || "error.html" : pages.index)))))
 });
 
