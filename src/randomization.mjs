@@ -7,6 +7,7 @@ const {
     charRandom,
     splashRandom,
     cacheBustList,
+    VersionValue,
     text404,
   } = pkg;
 
@@ -19,6 +20,7 @@ const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
   insertCharset = (str) => str.replace(charset, getRandomChar),
   getRandomSplash = randomListItem(splashRandom),
   hutaoInsert = (str) => str.replaceAll("<!--HUTAOWOA-->", getRandomSplash),
+  versionInsert = (str) => str.replaceAll("<!-- VERSION -->", VersionValue),
   getCookingText = () =>
     `<span style="display:none" data-fact="${randomListItem(vegetables)()}">${randomListItem(cookingInserts)()}</span>`,
   insertCooking = (str) =>
@@ -34,7 +36,7 @@ const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
   },
 //  Apply the final obfuscation changes to an entire file.
   paintSource = (str) =>
-    insertCharset(hutaoInsert(insertCooking(cacheBusting(str)))),
+    insertCharset(hutaoInsert(versionInsert(insertCooking(cacheBusting(str))))),
 //  Grab the text content of a file. Ensure the file is a string.
   tryReadFile = (file) =>
     existsSync(file + "") ? readFileSync(file + "", "utf8") : text404;

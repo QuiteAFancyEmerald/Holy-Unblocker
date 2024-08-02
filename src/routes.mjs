@@ -45,6 +45,7 @@ const cookingInserts = insert.content,
 vegetables = insert.keywords,
 charRandom = insert.chars,
 splashRandom = insert.splash,
+VersionValue = insert.version,
 cacheBustList = {
   "styles.css": "styles-1644738239.css",
   "common.js": "common-16451543478.js",
@@ -57,5 +58,6 @@ export default {
   vegetables,
   charRandom,
   splashRandom,
+  VersionValue,
   cacheBustList,
 };
