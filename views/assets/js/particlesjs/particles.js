@@ -26,7 +26,7 @@
         },
         move: {
           enable: true,
-          speed: 2,
+          speed: 0.8,
           direction: "none",
           outModes: {
             default: "out",
@@ -43,7 +43,7 @@
           value: { min: 0.1, max: 0.5 },
           animation: {
             enable: true,
-            speed: 3,
+            speed: 0.5,
             sync: false,
           },
         },
@@ -54,7 +54,7 @@
           value: { min: 1, max: 5 },
           animation: {
             enable: true,
-            speed: 5,
+            speed: 0.5,
             sync: false,
           },
         },
