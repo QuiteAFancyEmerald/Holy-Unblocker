@@ -1,3 +1,3 @@
 (async () => {
-  await import("./src/fastify.mjs");
+  await import("./src/server.mjs");
 })();
