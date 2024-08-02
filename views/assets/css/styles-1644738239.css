@@ -824,6 +824,8 @@ input[type="text"] {
   display: block;
 }
 
+/* Command Terminal Home Page */
+
 .mac-window {
   flex: 1;
   max-width: 800px;
@@ -831,7 +833,9 @@ input[type="text"] {
   border: 1px solid var(--nord0);
   border-radius: 12px;
   overflow: hidden;
-  background-color: #22262f;
+  background-color: var(--nord0);
+  background-image: url("/assets/img/noise.png"), linear-gradient(145deg, rgba(34,38,47,0.9) 0%, rgba(34,38,47,0.9) 100%);
+  background-blend-mode: overlay;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -872,7 +876,6 @@ input[type="text"] {
   -ms-user-select: none; /* For Internet Explorer/Edge */
 }
 
-
 .mac-content {
   color: var(--nord4);
   font-family: "Source Code Pro", monospace;
@@ -883,6 +886,18 @@ input[type="text"] {
   justify-content: center;
   align-items: center;
   font-size: 18px;
+}
+
+.cmd {
+  color: #a4bbd1;
+}
+
+.url {
+  color: rgb(255, 136, 142); 
+}
+
+.comment {
+  color: #616E88; 
 }
 
 .homebutton {

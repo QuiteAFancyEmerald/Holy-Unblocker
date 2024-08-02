@@ -347,7 +347,9 @@ This project currently uses Ultraviolet, Wisp, Womginx, and Rammerhead, linked b
 ### Other Dependencies:
 
 - <a href="https://github.com/tsparticles/tsparticles">tsparticles</a>
-- <a href="https://github.com/helmetjs/helmet">Helmet for Express</a>
+- <a href="https://github.com/fastify/fastify">fastify</a>
+- <a href="https://github.com/fastify/fastify-helmet">@fastify/helmet</a>
+- <a href="https://github.com/fastify/fastify-static">@fastify/static</a>
 - <a href="https://github.com/DerpmanDev/modal">Modal</a>
 - <a href="https://github.com/BinBashBanana/webretro">webretro</a>
 - <a href="https://ruffle.rs/">Ruffle</a>
