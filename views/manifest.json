@@ -1,0 +1,53 @@
+{
+    "short_name": "Holy Unblocker LTS",
+    "name": "Holy Unblocker LTS | Free Web Proxy Service",
+    "icons": [
+        {
+            "src": "https://holyunblocker.org/assets/img/icon.png",
+            "type": "image/png",
+            "sizes": "300x300"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#b4213b",
+    "background_color": "#1f003e",
+    "description": "Holy Unblocker LTS is a free and secure web proxy service that helps you bypass web filters and access blocked websites. Enjoy anonymous browsing and internet freedom on devices like Chromebooks at school or work.",
+    "short_description": "Free web proxy service for bypassing filters and accessing blocked sites.",
+    "keywords": [
+        "proxy",
+        "web proxy",
+        "unblock websites",
+        "free web proxy",
+        "proxy list",
+        "online proxy",
+        "proxy server",
+        "proxy YouTube",
+        "bypass web filters",
+        "Holy Unblocker",
+        "unblock Chromebook",
+        "Titanium Network",
+        "fast proxy",
+        "secure proxy",
+        "anonymous browsing",
+        "internet freedom"
+    ],
+    "related_applications": [
+        {
+            "platform": "web",
+            "url": "https://holyunblocker.org"
+        },
+        {
+            "platform": "github",
+            "url": "https://github.com/QuiteAFancyEmerald/Holy-Unblocker"
+        },
+        {
+            "platform": "twitter",
+            "url": "https://twitter.com/titaniumnetdev"
+        },
+        {
+            "platform": "youtube",
+            "url": "https://www.youtube.com/channel/UC6LaREFvs9L72SK1s2PcxNg"
+        }
+    ]
+}

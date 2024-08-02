@@ -865,6 +865,14 @@ input[type="text"] {
   background-color: var(--nord3);
 }
 
+.no-select {
+  user-select: none; /* Prevent text selection */
+  -webkit-user-select: none; /* For Safari */
+  -moz-user-select: none; /* For Firefox */
+  -ms-user-select: none; /* For Internet Explorer/Edge */
+}
+
+
 .mac-content {
   color: var(--nord4);
   font-family: "Source Code Pro", monospace;
@@ -1001,19 +1009,72 @@ iner
 
 .hero-grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted minimum width for responsiveness */
-  gap: 40px; /* Reduced gap for smaller screens */
-  margin: 40px auto; /* Adjusted margin for smaller screens */
-  width: 90%; /* Reduced width for smaller screens */
-  max-width: 1200px; /* Added max-width to prevent excessive stretching on larger screens */
-  background-color: rgba(46, 52, 64, 0.2); /* Semi-transparent background color */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 40px; 
+  margin: 40px auto; 
+  width: 90%; 
+  max-width: 1200px; 
+  background-color: rgba(46, 52, 64, 0.2); 
   border-radius: 10px;
-  padding: 10px; /* Reduced padding for smaller screens */
+  padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Semi-transparent border */
-  -webkit-backdrop-filter: blur(10px); /* For Safari */
-  backdrop-filter: blur(10px); /* Standard */
-  position: relative; /* Ensures z-index works properly */
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px); 
+  position: relative;
+}
+
+.carousel-container {
+  text-align: center;
+  position: relative;
+  width: 500px;
+  margin: 0 auto; 
+}
+
+.carousel-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.carousel-wrapper {
+  overflow: hidden; 
+  position: relative;
+  width: 100%; 
+  padding: 10px 0;
+}
+
+.carousel {
+  display: flex;
+  width: auto;
+  animation: scroll 20s linear infinite; 
+}
+
+.carousel-inner {
+  display: flex;
+  width: auto; 
+}
+
+.dependencylogo {
+  flex: 0 0 auto; 
+  margin: 0 15px;
+}
+
+.dependencylogo img {
+  width: 50px; 
+  height: auto;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: var(--nord2);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%); 
+  }
 }
 
 .box-hero {
