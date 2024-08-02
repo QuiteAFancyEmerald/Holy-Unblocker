@@ -6,7 +6,7 @@
   "main": "backend.js",
   "scripts": {
     "start": "node backend.js",
-    "build": "npm run start",
+    "build": "cd rammerhead && npm install && npm build",
     "test": "npm run proxy-validator",
     "start-test-server": "timeout 5 node backend.js; test \"$?\" -eq \"124\" && (node backend.js &) || exit 1",
     "proxy-validator": "node proxyServiceValidator.js"
@@ -31,7 +31,6 @@
     "fastify": "^4.28.1",
     "mime-types": "^2.1.35",
     "puppeteer": "^22.12.1",
-    "rammerhead": "https://github.com/NebulaServices/rammerhead/releases/download/rammerhead-1.2.41-nebula.8/rammerhead-1.2.41-nebula.7.tgz",
     "wisp-server-node": "^1.1.1",
     "ws": "^8.18.0"
   }
