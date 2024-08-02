@@ -22,7 +22,7 @@ Also has a good amount of locally hosted games featured on the site.
 - Game library with moderately decent titles
 - Has frequent support articles for issues relating to the various proxy instances
 
-<img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.3.0-preview.png"></img>
+<img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.3.5-preview.png"></img>
 <img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.3.0-preview-settings.png"></img>
 
 #### You can support Holy Unblocker by starring the repository!
