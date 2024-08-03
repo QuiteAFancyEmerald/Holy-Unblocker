@@ -5,10 +5,13 @@
   "description": "Holy Unblocker is a secure web proxy service with support for many sites.",
   "main": "backend.js",
   "scripts": {
-    "start": "node backend.js",
-    "build": "cd lib/rammerhead && npm install && npm run build",
+    "start": "npm install && npm run build && npm run manual-start",
+    "restart": "npm stop; npm run manual-start",
+    "stop": "pkill node || true",
     "test": "npm run proxy-validator",
-    "start-test-server": "timeout 5 node backend.js; test \"$?\" -eq \"124\" && (node backend.js &) || exit 1",
+    "manual-start": "node backend.js & pkill -n npm || true",
+    "build": "cd lib/rammerhead && npm install && npm run build",
+    "start-test-server": "timeout 5 node backend.js; test $? -eq 124 && ( npm restart & ) || exit 1",
     "proxy-validator": "node proxyServiceValidator.js"
   },
   "keywords": [

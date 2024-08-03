@@ -71,10 +71,6 @@ git clone https://github.com/titaniumnetwork-dev/Holy-Unblocker.git
 
 cd Holy-Unblocker
 
-npm install
-
-npm run build
-
 npm start
 ```
 

@@ -29,7 +29,7 @@ jobs:
         run: npm run start-test-server
 
       - name: Test server response
-        run: npm run proxy-validator
+        run: npm test
 
       - name: Stop server after testing
-        run: pkill node || true 
+        run: npm stop
