@@ -66,12 +66,15 @@ Read below for information if the official site is blocked or for obtaining more
 
 Either use the button above to deploy to Heroku or do the below:
 
-```
+```bash
 git clone https://github.com/titaniumnetwork-dev/Holy-Unblocker.git
 
 cd Holy-Unblocker
 
 npm start
+
+# Or on subsequent uses...
+npm restart
 ```
 
 The default place for the proxy when its started is `http://localhost:8080`, but you can change it if needed in `/src/config.json`.
