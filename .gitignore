@@ -8,3 +8,5 @@ ngrok.exe
 package-lock.json
 pnpm-lock.yaml
 debug.log
+lib/rammerhead/sessions
+lib/rammerhead/cache-js
