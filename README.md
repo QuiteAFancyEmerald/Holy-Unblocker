@@ -73,7 +73,9 @@ cd Holy-Unblocker
 
 npm install
 
-npm run start
+npm run build
+
+npm start
 ```
 
 The default place for the proxy when its started is `http://localhost:8080`, but you can change it if needed in `/src/config.json`.
