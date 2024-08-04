@@ -106,9 +106,11 @@ readCookie("HBUseOnion").then(s => {if (s === "true") {
 //  All code below is used by the Settings UI in the navigation bar.
 if (document.getElementById("csel")) {
   const attachEventListener = (selector, ...args) => (
-      document.getElementById(selector) ||
-      document.querySelector(selector)
-    ).addEventListener(...args);
+        document.getElementById(selector) ||
+        document.querySelector(selector)
+      ).addEventListener(...args),
+    focusElement =
+      document.getElementsByClassName("dropdown-settings")[0].parentElement.querySelector("a[href='#']");
 
   attachEventListener(".dropdown-settings .close-settings-btn", "click",
     () => {document.activeElement.blur()}
@@ -124,6 +126,7 @@ if (document.getElementById("csel")) {
       e.value = "";
     } else if (confirm("Reset the title to default?")) {
 //    Allow users to reset the title to default if nothing is entered.
+      focusElement.focus();
       removeCookie("HBTitle");
       pageTitle("Holy Unblocker LTS");
     }
@@ -139,6 +142,7 @@ if (document.getElementById("csel")) {
       e.value = "";
     } else if (confirm("Reset the icon to default?")) {
 //    Allow users to reset the favicon to default if nothing is entered.
+      focusElement.focus();
       removeCookie("HBIcon");
       pageIcon("assets/img/icon.png");
     }
