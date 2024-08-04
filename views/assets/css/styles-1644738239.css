@@ -785,7 +785,7 @@ input[type="text"] {
 
 
 /* -----------------------------------------------
-/* Welcome Screen Content (i.e. Big Bold Words)
+/* Welcome Screen Content (i.e., Big Bold Words)
 /* ----------------------------------------------- */
 
 .box-home {
@@ -869,7 +869,7 @@ input[type="text"] {
   background-color: var(--nord3);
 }
 
-.no-select {
+.no-select, .cmd::before, .comment, .mac-content br {
   user-select: none; /* Prevent text selection */
   -webkit-user-select: none; /* For Safari */
   -moz-user-select: none; /* For Firefox */
@@ -892,12 +892,21 @@ input[type="text"] {
   color: #a4bbd1;
 }
 
+.cmd::before {
+  content: "$ ";
+  color: var(--nord4);
+}
+
 .url {
   color: rgb(255, 136, 142); 
 }
 
 .comment {
   color: #616E88; 
+}
+
+.comment::before {
+  content: "# ";
 }
 
 .homebutton {

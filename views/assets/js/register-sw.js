@@ -69,7 +69,7 @@ const registerSW = async () => {
 //  Unregister a service worker if it isn't the one being used.
   for (const registration of registrations)
     if (registration.active &&
-      new URL(registration.active.scriptURL).pathname !== usedSW)
+      new URL(registration.active.scriptURL).pathname !== new URL(usedSW, location.origin).pathname)
       await registration.unregister();
 
   await navigator.serviceWorker.register(usedSW);
