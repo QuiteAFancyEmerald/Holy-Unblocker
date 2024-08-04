@@ -83,14 +83,11 @@ readCookie("HBIcon").then(s => {(s != undefined) && pageIcon(s)});
 
 //  Load the UV transport mode that was last used, or use the default.
 readCookie("HBTransport").then(s => {
-  let list = document.getElementById("transport-list");
-  if (list != undefined && list.options.length) {
-      let options = [...list.options];
-      const offset =
-          (options.findIndex(e => e.value === defaultMode) + 1 || 1) - 1;
-      list.selectedIndex =
-          (options.findIndex(e => e.value === s) + 1 || offset + 1) - 1;
-  }
+  let transportMode =
+    document.querySelector(`#uv-transport-list input[value="${
+      s || defaultMode
+    }"]`);
+  if (transportMode) transportMode.click();
 });
 
 //  Ads are disabled by default. Load ads if ads were enabled previously.
@@ -125,7 +122,11 @@ if (document.getElementById("csel")) {
       pageTitle(e.value);
       setCookie("HBTitle", e.value);
       e.value = "";
-    } else alert("Please provide a title.");
+    } else if (confirm("Reset the title to default?")) {
+//    Allow users to reset the title to default if nothing is entered.
+      removeCookie("HBTitle");
+      pageTitle("Holy Unblocker LTS");
+    }
   });
 
 //  Allow users to set a custom favicon with the UI.
@@ -136,18 +137,16 @@ if (document.getElementById("csel")) {
       pageIcon(e.value);
       setCookie("HBIcon", e.value);
       e.value = "";
-    } else alert("Please provide an icon URL.");
-  });
-
-//  Allow users to reset the title and favicon to default with the UI.
-  attachEventListener("cselreset", "click", () => {
-    if (confirm("Reset the title and icon to default?")) {
-      removeCookie("HBTitle");
+    } else if (confirm("Reset the icon to default?")) {
+//    Allow users to reset the favicon to default if nothing is entered.
       removeCookie("HBIcon");
-      pageTitle("Holy Unblocker");
       pageIcon("assets/img/icon.png");
     }
   });
+
+/*
+
+  This is unused in the current settings menu.
 
 //  Allow users to make a new about:blank tab and view the site from there.
 //  An iframe of the current page is inserted into the new tab.
@@ -158,6 +157,7 @@ if (document.getElementById("csel")) {
     iframe.src = location.href;
     win.document.body.appendChild(iframe);
   });
+*/
 
 //  Provides users with a handy set of title and icon autofill options.
   attachEventListener("icon-list", "change", e => {
@@ -169,16 +169,20 @@ if (document.getElementById("csel")) {
   });
 
 //  Allow users to change the UV transport mode, for proxying, with the UI.
-  attachEventListener("transport-list", "change", e => {
-    e.target.selectedIndex < 0 || e.target.value === defaultMode
-      ? removeCookie("HBTransport")
-      : setCookie("HBTransport", e.target.value);
+  const uvTransportList = document.getElementById("uv-transport-list");
+  uvTransportList.querySelectorAll("input").forEach(element => {
+    element.addEventListener("change", e => {
+      !uvTransportList.querySelector("input:checked") ||
+      e.target.value === defaultMode
+        ? removeCookie("HBTransport")
+        : setCookie("HBTransport", e.target.value);
 
-//  Only the libcurl transport mode supports Tor at the moment.
-    let torCheck = document.getElementById("useonion");
-    if(e.target.value !== "libcurl" && torCheck.checked)
-      torCheck.click();
-  });
+  //  Only the libcurl transport mode supports Tor at the moment.
+      let torCheck = document.getElementById("useonion");
+      if(e.target.value !== "libcurl" && torCheck.checked)
+        torCheck.click();
+    })
+});
 
 //  Allow users to toggle ads with the UI.
   attachEventListener("hideads", "change", e => {
@@ -195,18 +199,16 @@ if (document.getElementById("csel")) {
 //  the libcurl transport mode supports Tor at the moment, so ensure that
 //  users are aware that they cannot use Tor with other modes.
   attachEventListener("useonion", "change", e => {
-    let list = document.getElementById("transport-list");
-    let options = [...list.options];
+    let unselectedModes =
+      document.querySelectorAll("#uv-transport-list input:not([value=libcurl])");
     if (e.target.checked) {
-      list.selectedIndex = 
-        (options.findIndex(e => e.value === "libcurl") + 1 || 1) - 1;
-      options.splice(list.selectedIndex, 1);
-      options.forEach(e => {e.setAttribute("disabled", "true")});
-      list.dispatchEvent(new Event("change"));
+      let selectedMode =
+        document.querySelector("#uv-transport-list input[value=libcurl]");
+      unselectedModes.forEach(e => {e.setAttribute("disabled", "true")});
+      selectedMode.click();
       setCookie("HBUseOnion", "true");
     } else {
-      options.splice(list.selectedIndex, 1);
-      options.forEach(e => {e.removeAttribute("disabled")});
+      unselectedModes.forEach(e => {e.removeAttribute("disabled")});
 
 //    Tor will likely never be enabled by default, so removing the cookie
 //    here may be better than setting it to false.
