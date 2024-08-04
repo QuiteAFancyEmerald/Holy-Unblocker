@@ -869,7 +869,7 @@ input[type="text"] {
   background-color: var(--nord3);
 }
 
-.no-select, .cmd::before, .comment, .mac-content br {
+.no-select, .comment, .mac-content br {
   user-select: none; /* Prevent text selection */
   -webkit-user-select: none; /* For Safari */
   -moz-user-select: none; /* For Firefox */
@@ -890,11 +890,16 @@ input[type="text"] {
 
 .cmd {
   color: #a4bbd1;
+  white-space: pre-wrap; /* Preserve new lines */
 }
 
 .cmd::before {
   content: "$ ";
   color: var(--nord4);
+}
+
+.cmd::after {
+  content: "\a";
 }
 
 .url {
