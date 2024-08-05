@@ -14,6 +14,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - [ ] Ensure all the original submodules get added back to HU-Archive
   - [x] Mobile support - (welcome screen only, partial/needs work)
   - [ ] SEO overhaul adapted from the v2 SEO Guide format
+  - [ ] Randomize the __uv$config global, and optionally randomize the UV prefix and URL encoding via cookies
 
 ## Proxy/Site Functionality
   - [x] Ensure Ultraviolet is updated to support bare-mux and wisp - done
@@ -27,6 +28,8 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - [ ] Update settings menu again to make more room for more features
   - [x] Update csel.js (after Setting menu redesign) to support custom transports, icon swap, routing - done
   - [x] Update csel.js to support network based adblocking (partial/needs work)
+  - [ ] Add a "website self-destruct" button to the settings menu
+  - [ ] Flesh out and rework the UV / bare client error page
   - [ ] Update sw.js to support workerware (https://github.com/MercuryWorkshop/workerware)
   - [ ] Omnibox autoupdate script (for the Google/Bing style auto suggest feature)
   - [ ] Games library will feature 10000 items; 5000 flash games and 5000 other game types
@@ -89,3 +92,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
   - Massive updates to the Settings menu visually and functionality wise; added Bare-Mux support for swapping transports to work with Ultraviolet, default icons and selective adblocking + Tor on any proxy instances
   - CSS Has been partially restructured for mobile support, and is now properly arranged into clearly labeled sections (for the most part)
   - Incorporated makeshift domain blacklisting functionality into Ultraviolet, currently used for blocking ads if ads are disabled in settings
+  - Fleshed out the SEO with more descriptions and better labeling
+  - Switched to Fastify for serving content from the backend; a separate Express backend file is kept in case it's still needed
+  - Rammerhead is now locally built into the HU LTS repository
+  - Simplified the HU LTS setup process and added more default npm commands
