@@ -53,7 +53,7 @@ const routeRhUpgrade = (req, socket, head) => {
   rh.emit("upgrade", req, socket, head);
 }
 
-// Create a server factory for RH, and wisp (and bare if you please)
+//  Create a server factory for RH, and wisp (and bare if you please).
 const serverFactory = (handler) => {
     return createServer()
         .on('request', (req, res) => {
@@ -74,12 +74,15 @@ const serverFactory = (handler) => {
         })
 }
 
-// Set logger to true for logs
+//  Set logger to true for logs
 const app = Fastify({ logger: false, serverFactory: serverFactory });
+
+//  Apply Helmet middleware for security
 app.register(fastifyHelmet, {
-    contentSecurityPolicy: false,
+    contentSecurityPolicy: false, // Disable CSP
     xPoweredBy: false
 })
+
 app.register(fastifyStatic, {
     root: fileURLToPath(new URL('../views', import.meta.url)),
 });
@@ -109,11 +112,54 @@ app.register(fastifyStatic, {
     prefix: "/baremux/",
     decorateReply: false 
 });
-app.get("/", function(req, reply) {
-    reply.type('text/html');
-    reply.send(paintSource(loadTemplates(tryReadFile(path.join(__dirname, "views", "/?".indexOf(req.url) ? pages[Object.keys(req.query)[0]] || "error.html" : pages.index)))))
+
+
+//  All website files are stored in the /views directory.
+//  This takes one of those files and displays it for a site visitor.
+//  Query strings like /?j are converted into paths like /views/hidden.html
+//  back here. Which query string converts to what is defined in routes.mjs.
+app.get("/", (req, reply) => {
+/*
+    Testing for future features that need cookies to deliver alternate source files.
+
+    if (req.raw.rawHeaders.includes("Cookie"))
+        console.log(req.raw.rawHeaders[req.raw.rawHeaders.indexOf("Cookie") + 1]);
+*/
+    reply.type("text/html").send(
+        paintSource(
+            loadTemplates(
+                tryReadFile(
+                    path.join(__dirname,
+                        "views",
+//                      Return the error page if the query is not found in
+//                      routes.mjs. Also set index as the default page.
+                        "/?".indexOf(req.url)
+                          ? pages[Object.keys(req.query)[0]] || "error.html"
+                          : pages.index
+                    )
+                )
+            )
+        )
+    );
 });
 
-// Configure host to your liking but remember to tweak the Rammerhead IP as well above for any changes
+
+/*
+Testing for future restructuring of this config file.
+
+app.get("/assets/js/uv/uv.config.js", (req, reply) => {
+    console.log(req.url);
+    reply.type("text/javascript");
+    reply.send(tryReadFile(path.join(__dirname, "views/assets/js/uv/uv.config.js")));
+});
+*/
+
+//  Set an error page for invalid paths outside the query string system.
+app.setNotFoundHandler((req, reply) => {
+    reply.code(404).type("text/html").send(paintSource(loadTemplates(tryReadFile(path.join(__dirname, "views/error.html")))));
+});
+
+//  Configure host to your liking, but remember to tweak the Rammerhead IP
+//  as well above for any changes.
 app.listen({ port: port /*, host: '0.0.0.0' */});
 console.log("Holy Unblocker is listening on port " + port + ".");
