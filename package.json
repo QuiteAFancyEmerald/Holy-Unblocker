@@ -11,7 +11,7 @@
     "test": "npm run proxy-validator && pm2 list",
     "monit": "pm2 monit",
     "manual-start": "pm2 start backend.js --attach &",
-    "build": "./build-assets.sh && cd lib/rammerhead && npm install && npm run build",
+    "build": "sh ./build-assets.sh && cd lib/rammerhead && npm install && npm run build",
     "start-test-server": "timeout 5 node backend.js; test $? -eq 124 && ( npm run manual-start & ) || exit 1",
     "proxy-validator": "node proxyServiceValidator.js"
   },
