@@ -16,7 +16,7 @@ import { paintSource, tryReadFile } from './randomization.mjs';
 import loadTemplates from './templates.mjs';
 import { fileURLToPath } from 'node:url';
 import { existsSync } from 'node:fs';
-const config = JSON.parse(await readFile(new URL("./config.json", import.meta.url))), { pages, text404 } = pkg;
+const config = Object.freeze(JSON.parse(await readFile(new URL("./config.json", import.meta.url)))), { pages, text404 } = pkg;
 const __dirname = path.resolve();
 const port = process.env.PORT || config.port;
 
@@ -84,8 +84,36 @@ app.register(fastifyHelmet, {
 })
 
 app.register(fastifyStatic, {
-    root: fileURLToPath(new URL('../views', import.meta.url)),
+    root: fileURLToPath(new URL("../views", import.meta.url))
 });
+
+app.register(fastifyStatic, {
+    root: fileURLToPath(new URL(
+        config.minifyScripts ? "../views/dist/assets/js" : "../views/assets/js",
+        import.meta.url
+    )),
+    prefix: "/assets/js/",
+    decorateReply: false
+});
+
+app.register(fastifyStatic, {
+    root: fileURLToPath(new URL(
+        config.minifyScripts ? "../views/dist/assets/css" : "../views/assets/css",
+        import.meta.url
+    )),
+    prefix: "/assets/css/",
+    decorateReply: false
+});
+
+app.register(fastifyStatic, {
+    root: fileURLToPath(new URL(
+        config.minifyScripts ? "../views/dist/uv" : "../views/uv",
+        import.meta.url
+    )),
+    prefix: "/uv/",
+    decorateReply: false
+});
+
 app.register(fastifyStatic, {
     root: uvPath,
     // Due to how Fastify works, we have to have the uvPath live on a different prefix then the one in /views/
