@@ -12,4 +12,4 @@ debug.log
 !/lib/rammerhead/sessions/.gitignore
 /lib/rammerhead/cache-js/*
 !/lib/rammerhead/cache-js/.gitignore
-/views/dist/
+/views/dist/*
