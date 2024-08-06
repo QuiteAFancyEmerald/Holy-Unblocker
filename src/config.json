@@ -1,10 +1,5 @@
 {
   "title": "HU LTS",
   "port": "8080",
-  "ssl": false,
-  "ws": true,
-  "minifyScripts": true,
-  "prefix": "/service/",
-  "codec": "xor",
-  "blacklist": ["accounts.google.com", "dcounter.space"]
+  "minifyScripts": true
 }
