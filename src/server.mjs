@@ -45,13 +45,13 @@ const shouldRouteRh = req => {
     rammerheadScopes.includes(url.pathname) ||
     rammerheadSession.test(url.pathname)
   );
-}
+};
 const routeRhRequest = (req, res) => {
   rh.emit("request", req, res);
-}
+};
 const routeRhUpgrade = (req, socket, head) => {
   rh.emit("upgrade", req, socket, head);
-}
+};
 
 //  Create a server factory for RH, and wisp (and bare if you please).
 const serverFactory = (handler) => {
@@ -72,7 +72,7 @@ const serverFactory = (handler) => {
                 wisp.routeRequest(req, socket, head);
             }
         })
-}
+};
 
 //  Set logger to true for logs
 const app = Fastify({ logger: false, serverFactory: serverFactory });
@@ -81,7 +81,7 @@ const app = Fastify({ logger: false, serverFactory: serverFactory });
 app.register(fastifyHelmet, {
     contentSecurityPolicy: false, // Disable CSP
     xPoweredBy: false
-})
+});
 
 app.register(fastifyStatic, {
     root: fileURLToPath(new URL("../views", import.meta.url))
@@ -116,7 +116,7 @@ app.register(fastifyStatic, {
 
 app.register(fastifyStatic, {
     root: uvPath,
-    // Due to how Fastify works, we have to have the uvPath live on a different prefix then the one in /views/
+    // Due to how Fastify works, we have to have the uvPath live on a different prefix than the one in /views/
     prefix: "/uv-static/",
     decorateReply: false
 });
@@ -147,12 +147,12 @@ app.register(fastifyStatic, {
 //  Query strings like /?j are converted into paths like /views/hidden.html
 //  back here. Which query string converts to what is defined in routes.mjs.
 app.get("/", (req, reply) => {
-/*
-    Testing for future features that need cookies to deliver alternate source files.
+
+//    Testing for future features that need cookies to deliver alternate source files.
 
     if (req.raw.rawHeaders.includes("Cookie"))
         console.log(req.raw.rawHeaders[req.raw.rawHeaders.indexOf("Cookie") + 1]);
-*/
+
     reply.type("text/html").send(
         paintSource(
             loadTemplates(

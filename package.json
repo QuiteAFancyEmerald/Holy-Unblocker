@@ -7,11 +7,12 @@
   "scripts": {
     "start": "npm install && npm run build && npm run manual-start",
     "restart": "npm stop; npm run manual-start",
-    "stop": "pkill node || true",
-    "test": "npm run proxy-validator",
-    "manual-start": "node backend.js & pkill -n npm || true",
+    "stop": "pm2 stop backend.js && ( pkill node || true )",
+    "test": "npm run proxy-validator && pm2 list",
+    "monit": "pm2 monit",
+    "manual-start": "pm2 start backend.js --attach &",
     "build": "npm run build-assets && cd lib/rammerhead && npm install && npm run build",
-    "build-assets": "mkdir ./views/dist; find ./views/dist -mindepth 1 -delete && esbuild --platform=browser --sourcemap --minify --outdir=./views/dist/assets/css ./views/assets/css/*.css && esbuild --platform=browser --sourcemap --minify --bundle --outdir=./views/dist ./views/*/*.js ./views/*/*/*.js ./views/*/*/*/*.js",
+    "build-assets": "bash -c 'mkdir ./views/dist; find ./views/dist -mindepth 1 -delete && esbuild --platform=browser --sourcemap --minify --outdir=./views/dist/assets/css ./views/assets/css/*.css && esbuild --platform=browser --sourcemap --minify --bundle --outdir=./views/dist ./views/*/*.js ./views/*/*/*.js ./views/*/*/*/*.js'",
     "start-test-server": "timeout 5 node backend.js; test $? -eq 124 && ( npm restart & ) || exit 1",
     "proxy-validator": "node proxyServiceValidator.js"
   },
@@ -35,6 +36,7 @@
     "esbuild": "^0.23.0",
     "fastify": "^4.28.1",
     "mime-types": "^2.1.35",
+    "pm2": "^5.4.2",
     "puppeteer": "^22.12.1",
     "wisp-server-node": "^1.1.1",
     "ws": "^8.18.0"
