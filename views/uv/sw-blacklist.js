@@ -1,6 +1,6 @@
-importScripts("/uv-static/uv.bundle.js");
+importScripts("/uv/uv.bundle.js");
 importScripts("/uv/uv.config.js");
-importScripts(__uv$config.sw || "/uv-static/uv.sw.js");
+importScripts(__uv$config.sw || "/uv/uv.sw.js");
 
 /*
 

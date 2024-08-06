@@ -106,20 +106,14 @@ app.register(fastifyStatic, {
 });
 
 app.register(fastifyStatic, {
-    root: fileURLToPath(new URL(
+    root: [fileURLToPath(new URL(
         config.minifyScripts ? "../views/dist/uv" : "../views/uv",
         import.meta.url
-    )),
+    )), uvPath],
     prefix: "/uv/",
     decorateReply: false
 });
 
-app.register(fastifyStatic, {
-    root: uvPath,
-    // Due to how Fastify works, we have to have the uvPath live on a different prefix than the one in /views/
-    prefix: "/uv-static/",
-    decorateReply: false
-});
 app.register(fastifyStatic, {
     root: epoxyPath,
     prefix: "/epoxy/",
