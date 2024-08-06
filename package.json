@@ -11,8 +11,7 @@
     "test": "npm run proxy-validator && pm2 list",
     "monit": "pm2 monit",
     "manual-start": "pm2 start backend.js --attach &",
-    "build": "npm run build-assets && cd lib/rammerhead && npm install && npm run build",
-    "build-assets": "bash -c 'mkdir ./views/dist; find ./views/dist -mindepth 1 -delete && esbuild --platform=browser --sourcemap --minify --bundle --external:*.png --external:*.jpg --external:*.jpeg --external:*.webp --external:*.svg --outdir=./views/dist ./views/*/*.js ./views/*/*/*.js ./views/*/*/*/*.js ./views/assets/css/*.css'",
+    "build": "./build-assets.sh && cd lib/rammerhead && npm install && npm run build",
     "start-test-server": "timeout 5 node backend.js; test $? -eq 124 && ( npm run manual-start & ) || exit 1",
     "proxy-validator": "node proxyServiceValidator.js"
   },
