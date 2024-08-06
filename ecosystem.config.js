@@ -4,11 +4,11 @@ module.exports = {
       name: "HolyUB",
       script: "./backend.js",
       env: {
-        PORT: 8078,
+        PORT: 8080,
         NODE_ENV: "development",
       },
       env_production: {
-        PORT: 8078,
+        PORT: 8080,
         NODE_ENV: "production",
       },
       instances: "1",

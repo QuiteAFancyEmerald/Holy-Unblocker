@@ -7,10 +7,10 @@
   "scripts": {
     "start": "npm install && npm run build && npm run manual-start",
     "restart": "npm stop; npm run manual-start",
-    "stop": "pm2 stop backend.js && ( pkill node || true )",
-    "test": "npm run proxy-validator && pm2 list",
+    "stop": "sh ./read-config.sh '.production' && pm2 stop ecosystem.config.js; pkill node || true",
+    "test": "npm run proxy-validator",
     "monit": "pm2 monit",
-    "manual-start": "pm2 start backend.js --attach &",
+    "manual-start": "sh ./read-config.sh '.production' && ( pm2 start ecosystem.config.js --env production ) || ( node backend.js & pkill -n npm || true )",
     "build": "sh ./build-assets.sh && cd lib/rammerhead && npm install && npm run build",
     "start-test-server": "timeout 5 node backend.js; test $? -eq 124 && ( npm run manual-start & ) || exit 1",
     "proxy-validator": "node proxyServiceValidator.js"
@@ -39,5 +39,8 @@
     "puppeteer": "^22.12.1",
     "wisp-server-node": "^1.1.1",
     "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@babel/node": "^7.25.0"
   }
 }
