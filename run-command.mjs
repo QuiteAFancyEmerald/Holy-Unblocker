@@ -27,7 +27,7 @@ for(let i = 2; i < process.argv.length; i++)
             console.log(stdout);
         });
       else if (process.platform === "win32")
-        exec("START", ['""', "node", "backend.js"], (error, stdout) => {
+        exec("START", ["/MIN", '""', '"node backend.js"'], (error, stdout) => {
           if (error) throw error;
           console.log(stdout);
         });
@@ -81,7 +81,18 @@ for(let i = 2; i < process.argv.length; i++)
       break;
     }
 
+    case "kill":
+      if (process.platform === "win32")
+        exec("taskkill", ["/F", "/IM", "node*"], (error, stdout) => {
+          console.log(stdout);
+        });
+      else exec("pkill", ["node"], (error, stdout) => {
+        console.log(stdout);
+      });
+      break;
+
 //  No default case.
+
   }
 
 
