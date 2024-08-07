@@ -54,14 +54,16 @@ for(let i = 2; i < process.argv.length; i++)
     case "stop":
       await writeFile(shutdown, "");
       try {
+        let timeoutId = undefined;
         const response = await Promise.race([
           fetch(new URL("/test-shutdown", serverUrl)),
           new Promise(resolve => {
-                setTimeout(() => {
+                timeoutId = setTimeout(() => {
                   resolve("Error");
                 }, 5000);
               })
         ]);
+        clearTimeout(timeoutId);
         if(response === "Error") throw new Error("Server is unresponsive.");
       } catch (e) {await unlink(shutdown)}
       if (config.production)
