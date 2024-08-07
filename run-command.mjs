@@ -27,7 +27,7 @@ for(let i = 2; i < process.argv.length; i++)
             console.log(stdout);
         });
       else if (process.platform === "win32")
-        exec("START", ["/B", "node", "backend.js"], (error, stdout) => {
+        exec("START", ['""', "node", "backend.js"], (error, stdout) => {
           if (error) throw error;
           console.log(stdout);
         });
@@ -53,8 +53,7 @@ for(let i = 2; i < process.argv.length; i++)
               })
         ]);
         if(response === "Error") throw new Error("Server is unresponsive.");
-      }
-      catch (e) {await unlink(shutdown)}
+      } catch (e) {await unlink(shutdown)}
       if (config.production)
         exec("npm run pm2-stop", (error, stdout) => {
           if (error) throw error;
