@@ -27,26 +27,26 @@ const testGeneratedUrl = async (url, headers) => {
 const testServerResponse = async () => {
   const endpoints = [
     "http://localhost:8080/",
-    "http://localhost:8080/?pathtonowhere",
-    "http://localhost:8080/?browse",
-    "http://localhost:8080/?rh",
-    "http://localhost:8080/?q",
-    "http://localhost:8080/?documentation",
-    "http://localhost:8080/?faq",
-    "http://localhost:8080/?s",
-    "http://localhost:8080/?credits",
-    "http://localhost:8080/?x",
-    "http://localhost:8080/?terms",
-    "http://localhost:8080/?g",
-    "http://localhost:8080/?h",
-    "http://localhost:8080/?el",
-    "http://localhost:8080/?f",
-    "http://localhost:8080/?m",
-    "http://localhost:8080/?y",
-    "http://localhost:8080/?apps",
-    "http://localhost:8080/?fg",
-    "http://localhost:8080/?eg",
-    "http://localhost:8080/?vos",
+    "http://localhost:8080/pathtonowhere",
+    "http://localhost:8080/browsing",
+    "http://localhost:8080/rammerhead",
+    "http://localhost:8080/ultraviolet",
+    "http://localhost:8080/documentation",
+    "http://localhost:8080/questions",
+    "http://localhost:8080/s",
+    "http://localhost:8080/credits",
+    "http://localhost:8080/bookmarklets",
+    "http://localhost:8080/terms",
+    "http://localhost:8080/games",
+    "http://localhost:8080/web-games",
+    "http://localhost:8080/emulators",
+    "http://localhost:8080/flash-games",
+    "http://localhost:8080/retro-games",
+    "http://localhost:8080/youtube",
+    "http://localhost:8080/apps",
+    "http://localhost:8080/flash",
+    "http://localhost:8080/webretro",
+    "http://localhost:8080/vibe-os",
     "http://localhost:8080/assets/js/particlesjs/particles.js",
     "http://localhost:8080/assets/js/bareTransport.js",
     "http://localhost:8080/assets/js/card.js",
@@ -106,7 +106,7 @@ const testCommonJSOnPage = async () => {
     };
 
     const testRammerhead = async () => {
-      await page.goto("http://localhost:8080/?rh");
+      await page.goto("http://localhost:8080/rammerhead");
 
       const testResults = await page.evaluate(async () => {
         const results = {};
@@ -211,7 +211,7 @@ xx                                                  xx
 
 
     const testUltraviolet = async () => {
-      await page.goto("http://localhost:8080/?q");
+      await page.goto("http://localhost:8080/ultraviolet");
 
       const testResults = await page.evaluate(async () => {
         const results = [{}, {}];
