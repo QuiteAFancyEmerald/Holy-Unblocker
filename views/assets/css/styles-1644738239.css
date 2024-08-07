@@ -975,13 +975,6 @@ input[type="text"] {
   background-color: var(--nord2);
 }
 
-.box {
-  margin: 20px 100px;
-  padding: 15px 20px;
-  background-color: var(--nord1);
-  border-radius: 10px;
-}
-
 .box-info {
   margin: 100px 200px;
   padding: 20px 30px;
@@ -1280,10 +1273,127 @@ iner
   line-height: 1.5;
 }
 
-.box-medium {
-  width: 50vw;
-  margin: 20px auto;
+/* Main container with increased margin and padding */
+.box-main-container {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space between text and image */
+  max-width: 1300px; /* Adjust to your desired max width */
+  margin: 50px auto 200px auto; /* Increased top margin for distance from navbar */
+  padding: 20px; /* Padding inside the container */
+  gap: 20%; /* Flexible gap between text and image */
+  position: relative; /* Positioning for the divider */
 }
+
+/* Badge styling */
+.box-badge {
+  padding: 10px 0;
+  border-radius: 3px;
+  background-color: #ffffff;
+  color: #000;
+  margin-bottom: 50px;
+}
+
+.box-default-badge {
+  background-color: #638af7;
+  color: #000;
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  margin: 0 5px;
+}
+
+/* Text container with padding */
+.box-text-container {
+  max-width: 600px; /* Adjust to control text container width */
+  padding: 20px; /* Padding inside the text container */
+}
+
+/* Headline styling with underline */
+.box-text-container > h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: rgb(255, 88, 97);
+}
+
+/* Description styling */
+.box-description {
+  font-size: 1.2rem;
+  margin: 30px 0;
+  font-weight: 300;
+  color: var(--nord4);
+}
+
+/* Button container styling */
+.box-button-container {
+  margin-top: 20px;
+}
+
+/* Button styling */
+.box-button {
+  display: inline-block;
+  padding: 15px 25px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff !important;
+  background-color: var(--nord2);
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+/* Image container */
+.box-image-container {
+  display: flex;
+  align-items: center; /* Center image vertically */
+  margin-left: auto; /* Push image container to the right */
+}
+
+.box-pr-logo {
+  max-width: 100%;
+  height: auto;
+  width: 600px; /* Fixed width of the image */
+}
+
+/* Line divider styling */
+.box-line-divider {
+  position: absolute;
+  bottom: -50px; /* Position below the main container */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  width: 80%;
+  height: 1px;
+  background-color: var(--nord11); /* Semi-transparent line */
+  opacity: 0.2;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .box-main-container {
+    flex-direction: column; /* Stack text and image vertically on smaller screens */
+    align-items: center; /* Center items horizontally */
+    gap: 20px; /* Reduce gap on smaller screens */
+    position: relative; /* Ensure divider is correctly positioned */
+  }
+
+  .box-text-container {
+    max-width: 100%; /* Full width on smaller screens */
+    text-align: center; /* Center text on smaller screens */
+  }
+
+  .box-image-container {
+    margin-left: 0; /* Reset margin on smaller screens */
+  }
+
+  .box-pr-logo {
+    width: 100%; /* Full width on smaller screens */
+  }
+}
+
+
+
+
 
 .box-large {
   width: 80vw;
@@ -1446,12 +1556,6 @@ iner
 
 .pr-button:hover {
   background-color: var(--nord2);
-}
-
-.pr-logo {
-  display: block;
-  width: 15vw;
-  margin: 0 auto;
 }
 
 /* Used on the Games and YouTube pages. */
