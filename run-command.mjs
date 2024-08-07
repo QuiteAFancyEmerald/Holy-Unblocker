@@ -22,7 +22,7 @@ const shutdown = fileURLToPath(new URL("./src/.shutdown", import.meta.url));
 
 //  Run each command line argument passed after node run-command.mjs.
 //  Commands are defined in the switch case statement below.
-for(let i = 2; i < process.argv.length; i++)
+for (let i = 2; i < process.argv.length; i++)
   switch (process.argv[i]) {
 //  Commmand to boot up the server. Use PM2 to run if production is true in the
 //  config file.
@@ -54,6 +54,9 @@ for(let i = 2; i < process.argv.length; i++)
     case "stop":
       await writeFile(shutdown, "");
       try {
+//      Give the server 5 seconds to respond, otherwise cancel this and throw an
+//      error to the console. The fetch request will also throw an error immediately
+//      if checking the server on localhost and the port is unused.
         let timeoutId = undefined;
         const response = await Promise.race([
           fetch(new URL("/test-shutdown", serverUrl)),
@@ -64,8 +67,11 @@ for(let i = 2; i < process.argv.length; i++)
               })
         ]);
         clearTimeout(timeoutId);
-        if(response === "Error") throw new Error("Server is unresponsive.");
-      } catch (e) {await unlink(shutdown)}
+        if (response === "Error") throw new Error("Server is unresponsive.");
+      } catch (e) {
+        console.error(e);
+        await unlink(shutdown);
+      }
       if (config.production)
         exec("npm run pm2-stop", (error, stdout) => {
           if (error) throw error;
