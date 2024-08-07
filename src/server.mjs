@@ -15,10 +15,22 @@ import path from 'node:path';
 import { paintSource, tryReadFile } from './randomization.mjs';
 import loadTemplates from './templates.mjs';
 import { fileURLToPath } from 'node:url';
-import { existsSync } from 'node:fs';
+import { existsSync, unlinkSync } from 'node:fs';
 const config = Object.freeze(JSON.parse(await readFile(new URL("./config.json", import.meta.url)))), { pages, text404 } = pkg;
 const __dirname = path.resolve();
-const port = process.env.PORT || config.port;
+const serverUrl = (base => {
+  try {
+    base = new URL(config.host);
+  } catch (e) {
+    base = new URL("http://a");
+    base.host = config.host;
+  }
+  base.port = process.env.PORT || config.port;
+  return Object.freeze(base);
+})();
+console.log(serverUrl);
+
+const shutdown = fileURLToPath(new URL("./.shutdown", import.meta.url));
 
 const rh = createRammerhead();
 const rammerheadScopes = [
@@ -40,7 +52,7 @@ const rammerheadScopes = [
 ];
 const rammerheadSession = /^\/[a-z0-9]{32}/;
 const shouldRouteRh = req => {
-  const url = new URL(req.url, "http://0.0.0.0");
+  const url = new URL(req.url, serverUrl);
   return (
     rammerheadScopes.includes(url.pathname) ||
     rammerheadSession.test(url.pathname)
@@ -130,7 +142,7 @@ app.register(fastifyStatic, {
 app.register(fastifyStatic, {
     root: epoxyPath,
     prefix: "/epoxy/",
-    decorateReply: false 
+    decorateReply: false
 });
 app.register(fastifyStatic, {
     root: libcurlPath,
@@ -140,12 +152,12 @@ app.register(fastifyStatic, {
 app.register(fastifyStatic, {
     root: bareModulePath,
     prefix: "/bareasmodule/",
-    decorateReply: false 
+    decorateReply: false
 });
 app.register(fastifyStatic, {
     root: baremuxPath,
     prefix: "/baremux/",
-    decorateReply: false 
+    decorateReply: false
 });
 
 
@@ -154,6 +166,13 @@ app.register(fastifyStatic, {
 //  Paths like /browsing are converted into paths like /views/pages/surf.html
 //  back here. Which path converts to what is defined in routes.mjs.
 app.get("/:file", (req, reply) => {
+
+    if (req.params.file === "test-shutdown" && existsSync(shutdown)) {
+        console.log("Holy Unblocker is shutting down.");
+        app.close();
+        unlinkSync(shutdown);
+        process.exitCode = 0;
+    }
 
 //    Testing for future features that need cookies to deliver alternate source files.
     if (req.raw.rawHeaders.includes("Cookie"))
@@ -200,5 +219,5 @@ app.setNotFoundHandler((req, reply) => {
 
 //  Configure host to your liking, but remember to tweak the Rammerhead IP
 //  as well above for any changes.
-app.listen({ port: port /*, host: '0.0.0.0' */});
-console.log("Holy Unblocker is listening on port " + port + ".");
+app.listen({ port: serverUrl.port, host: serverUrl.hostname });
+console.log("Holy Unblocker is listening on port " + serverUrl.port + ".");

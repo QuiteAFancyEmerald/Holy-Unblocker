@@ -1,5 +1,6 @@
 {
   "title": "HU LTS",
+  "host": "0.0.0.0",
   "port": "8080",
   "minifyScripts": true,
   "production": false

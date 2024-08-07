@@ -13,3 +13,4 @@ debug.log
 /lib/rammerhead/cache-js/*
 !/lib/rammerhead/cache-js/.gitignore
 /views/dist/*
+/src/.shutdown

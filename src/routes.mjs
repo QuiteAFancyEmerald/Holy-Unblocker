@@ -15,6 +15,7 @@ const text404 = readFileSync(
 
 const pages = {
   index: "index.html",
+  "manifest.json": "manifest.json",
   /* Main */
   documentation: "docs.html",
   questions: "faq.html",
