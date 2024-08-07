@@ -69,10 +69,10 @@ for (let i = 2; i < process.argv.length; i++)
         clearTimeout(timeoutId);
         if (response === "Error") throw new Error("Server is unresponsive.");
       } catch (e) {
-        console.error(e);
+        if (!(e instanceof TypeError)) console.error(e);
         await unlink(shutdown);
       }
-      if (config.production)
+      if (config.production && !process.argv.slice(i + 1).includes("kill"))
         exec("npm run pm2-stop", (error, stdout) => {
           if (error) throw error;
           console.log(stdout);
@@ -99,12 +99,13 @@ for (let i = 2; i < process.argv.length; i++)
       break;
     }
 
-//  Forcibly kill all node processes and fully reset PM2. To be used for debugging.
+//  Kill all node processes and fully reset PM2. To be used for debugging. The
+//  npm run pm2-nuke is built into the command because, if handled in Node, it
+//  will not wait for PM2 to actually finish resetting before it closes itself.
     case "kill":
-      exec("npm run pm2-nuke", (error, stdout) => {console.log(stdout)});
       if (process.platform === "win32")
-        exec("taskkill /F /IM node*", (error, stdout) => {console.log(stdout)});
-      else exec("pkill node", (error, stdout) => {console.log(stdout)});
+        exec("npm run pm2-nuke ; taskkill /F /IM node*", (error, stdout) => {console.log(stdout)});
+      else exec("npm run pm2-nuke ; pkill node", (error, stdout) => {console.log(stdout)});
       break;
 
 //  No default case.
