@@ -17,7 +17,7 @@ const getDomain =
 //  This is used for stealth mode when visiting external sites.
   goFrame = url => {
     localStorage.setItem("huframesrc", url);
-    location.href = "?s";
+    location.href = "/s";
   },
 
 //  Used to set functions for the goProx object at the bottom.
@@ -533,7 +533,7 @@ addEventListener("DOMContentLoaded", async () => {
 //          the corresponding location/index in the dirnames object.
             const functionsList = [
               () => goFrame(item.path),
-              () => goFrame("/?eg&core=" + item.core + "&rom=" + item.rom),
+              () => goFrame("/webretro?core=" + item.core + "&rom=" + item.rom),
               item.custom ? () => goProx[item.custom]("stealth") : () => goFrame("/archive/g/" + item.path)
             ];
 
@@ -554,7 +554,7 @@ addEventListener("DOMContentLoaded", async () => {
 
             a.addEventListener("click", e => {
               e.preventDefault();
-              goFrame("/?fg&swf=" + item);
+              goFrame("/flash?swf=" + item);
             });
 
             navList.appendChild(a);

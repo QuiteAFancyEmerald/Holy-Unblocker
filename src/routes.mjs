@@ -17,27 +17,27 @@ const pages = {
   index: "index.html",
   /* Main */
   documentation: "docs.html",
-  faq: "faq.html",
+  questions: "faq.html",
   s: "pages/frame.html",
-  browse: "pages/surf.html",
+  browsing: "pages/surf.html",
   credits: "pages/nav/credits.html",
-  x: "pages/nav/bookmarklets.html",
+  bookmarklets: "pages/nav/bookmarklets.html",
   terms: "pages/nav/terms.html",
   /* Games */
-  g: "pages/nav/gtools.html",
-  h: "pages/nav/games5.html",
-  el: "pages/nav/emulators.html",
-  f: "pages/nav/flash.html",
-  m: "pages/nav/emulibrary.html",
+  games: "pages/nav/gtools.html",
+  "web-games": "pages/nav/games5.html",
+  emulators: "pages/nav/emulators.html",
+  "flash-games": "pages/nav/flash.html",
+  "retro-games": "pages/nav/emulibrary.html",
   /* Proxies */
-  q: "pages/proxnav/ultraviolet.html",
-  rh: "pages/proxnav/rammerhead.html",
+  ultraviolet: "pages/proxnav/ultraviolet.html",
+  rammerhead: "pages/proxnav/rammerhead.html",
   /* Proxy Presets */
-  y: "pages/proxnav/preset/youtube.html",
+  youtube: "pages/proxnav/preset/youtube.html",
   apps: "pages/proxnav/preset/applications.html",
   /* Misc */
-  fg: "archive/gfiles/flash/index.html",
-  eg: "archive/gfiles/rarch/index.html",
+  flash: "archive/gfiles/flash/index.html",
+  webretro: "archive/gfiles/rarch/index.html",
   vos: "archive/vibeOS/index.html",
 };
 
