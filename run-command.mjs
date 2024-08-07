@@ -20,14 +20,14 @@ const shutdown = fileURLToPath(new URL("./src/.shutdown", import.meta.url));
 
 for(let i = 2; i < process.argv.length; i++)
   switch (process.argv[i]) {
-    case "start": {
+    case "start":
       if (config.production)
         exec("npm run pm2-start", (error, stdout) => {
             if (error) throw error;
             console.log(stdout);
         });
       else if (process.platform === "win32")
-        exec("START", ["/MIN", '""', '"node backend.js"'], (error, stdout) => {
+        exec('START /MIN "" "node backend.js"', (error, stdout) => {
           if (error) throw error;
           console.log(stdout);
         });
@@ -39,7 +39,6 @@ for(let i = 2; i < process.argv.length; i++)
         server.disconnect();
       }
       break;
-    }
 
     case "stop":
       await writeFile(shutdown, "");
@@ -83,11 +82,14 @@ for(let i = 2; i < process.argv.length; i++)
 
     case "kill":
       if (process.platform === "win32")
-        exec("taskkill", ["/F", "/IM", "node*"], (error, stdout) => {
+        exec("taskkill /F /IM node*", (error, stdout) => {
           console.log(stdout);
         });
-      else exec("pkill", ["node"], (error, stdout) => {
-        console.log(stdout);
+      else exec("pkill node", (error, stdout) => {
+          console.log(stdout);
+        });
+      exec("npm run pm2-nuke", (error, stdout) => {
+          console.log(stdout);
       });
       break;
 
