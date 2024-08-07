@@ -6,7 +6,7 @@
   "main": "backend.js",
   "scripts": {
     "start": "npm install && npm run build && npm run manual-start",
-    "restart": "npm stop ; npm run manual-start",
+    "restart": "node run-command.mjs stop start",
     "stop": "node run-command.mjs stop",
     "test": "npm run proxy-validator",
     "pm2-start": "pm2 start ecosystem.config.js --env production",

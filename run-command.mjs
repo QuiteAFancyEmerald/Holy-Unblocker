@@ -16,7 +16,7 @@ const serverUrl = (base => {
   return Object.freeze(base);
 })();
 
-const shutdown = new URL("./src/.shutdown", import.meta.url);
+const shutdown = fileURLToPath(new URL("./src/.shutdown", import.meta.url));
 
 for(let i = 2; i < process.argv.length; i++)
   switch (process.argv[i]) {
@@ -28,7 +28,7 @@ for(let i = 2; i < process.argv.length; i++)
         });
       else {
         const server = fork(
-          new URL("./backend.js", import.meta.url),
+          fileURLToPath(new URL("./backend.js", import.meta.url)),
           {detached: true}
         );
         server.unref();
