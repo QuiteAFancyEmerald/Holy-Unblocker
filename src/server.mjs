@@ -84,7 +84,20 @@ app.register(fastifyHelmet, {
 });
 
 app.register(fastifyStatic, {
-    root: fileURLToPath(new URL("../views", import.meta.url))
+    root: fileURLToPath(new URL("../views/pages", import.meta.url)),
+    decorateReply: false
+});
+
+app.register(fastifyStatic, {
+    root: fileURLToPath(new URL("../views/assets", import.meta.url)),
+    prefix: "/assets/",
+    decorateReply: false
+});
+
+app.register(fastifyStatic, {
+    root: fileURLToPath(new URL("../views/archive", import.meta.url)),
+    prefix: "/arcade/",
+    decorateReply: false
 });
 
 app.register(fastifyStatic, {
@@ -138,12 +151,11 @@ app.register(fastifyStatic, {
 
 //  All website files are stored in the /views directory.
 //  This takes one of those files and displays it for a site visitor.
-//  Query strings like /?j are converted into paths like /views/hidden.html
-//  back here. Which query string converts to what is defined in routes.mjs.
-app.get("/", (req, reply) => {
+//  Paths like /browsing are converted into paths like /views/pages/surf.html
+//  back here. Which path converts to what is defined in routes.mjs.
+app.get("/:file", (req, reply) => {
 
 //    Testing for future features that need cookies to deliver alternate source files.
-
     if (req.raw.rawHeaders.includes("Cookie"))
         console.log(req.raw.rawHeaders[req.raw.rawHeaders.indexOf("Cookie") + 1]);
 
@@ -155,14 +167,19 @@ app.get("/", (req, reply) => {
                         "views",
 //                      Return the error page if the query is not found in
 //                      routes.mjs. Also set index as the default page.
-                        "/?".indexOf(req.url)
-                          ? pages[Object.keys(req.query)[0]] || "error.html"
+                        req.params.file
+                          ? pages[req.params.file] || "error.html"
                           : pages.index
                     )
                 )
             )
         )
     );
+});
+
+//  Ignore trailing slashes for the above path handling.
+app.get("/:file/", (req, reply) => {
+    reply.redirect("/" + req.params.file);
 });
 
 
