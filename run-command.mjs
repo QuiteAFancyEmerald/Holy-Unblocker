@@ -1,5 +1,5 @@
 import { readFile, writeFile, unlink, mkdir, rm } from 'node:fs/promises';
-import { exec, fork } from 'node:child_process';
+import { exec, spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
 
@@ -27,12 +27,11 @@ for(let i = 2; i < process.argv.length; i++)
             console.log(stdout);
         });
       else {
-        const server = fork(
-          fileURLToPath(new URL("./backend.js", import.meta.url)),
-          {detached: true}
+        const server = spawn("node",
+          [fileURLToPath(new URL("./backend.js", import.meta.url))],
+          {cwd: process.cwd(), stdio: "inherit", detached: true}
         );
         server.unref();
-        server.disconnect();
       }
       break;
     }
