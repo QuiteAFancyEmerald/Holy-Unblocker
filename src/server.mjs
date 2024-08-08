@@ -16,14 +16,20 @@ import { paintSource, tryReadFile } from './randomization.mjs';
 import loadTemplates from './templates.mjs';
 import { fileURLToPath } from 'node:url';
 import { existsSync, unlinkSync } from 'node:fs';
+import ecosystem from '../ecosystem.config.js';
 
-const config = Object.freeze(JSON.parse(
-    await readFile(new URL("./config.json", import.meta.url))
-  )),
+const config = Object.freeze(
+    JSON.parse(await readFile(new URL("./config.json", import.meta.url)))
+  ),
+  ecosystemConfig = Object.freeze(
+    ecosystem.apps.find(app => app.name === "HolyUB") || apps[0]
+  ),
   { pages, text404 } = pkg,
   __dirname = path.resolve();
 
 //  Record the server's location as a URL object, including its host and port.
+//  The host can be modified at /src/config.json, whereas the ports can be modified
+//  at /ecosystem.config.js.
 const serverUrl = (base => {
   try {
     base = new URL(config.host);
@@ -31,7 +37,7 @@ const serverUrl = (base => {
     base = new URL("http://a");
     base.host = config.host;
   }
-  base.port = process.env.PORT || config.port;
+  base.port = ecosystemConfig[ config.production ? "env_production" : "env" ].PORT;
   return Object.freeze(base);
 })();
 console.log(serverUrl);

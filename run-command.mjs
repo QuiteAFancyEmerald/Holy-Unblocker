@@ -2,10 +2,16 @@ import { readFile, writeFile, unlink, mkdir, rm } from 'node:fs/promises';
 import { exec, fork } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
+import ecosystem from './ecosystem.config.js';
 
-//  Necessary constants are copied over from /src/server.mjs.
+//  Some necessary constants are copied over from /src/server.mjs.
 
-const config = Object.freeze(JSON.parse(await readFile(new URL("./src/config.json", import.meta.url))));
+const config = Object.freeze(
+    JSON.parse(await readFile(new URL("./src/config.json", import.meta.url)))
+  ),
+  ecosystemConfig = Object.freeze(
+    ecosystem.apps.find(app => app.name === "HolyUB") || apps[0]
+  );
 
 const serverUrl = (base => {
   try {
@@ -14,7 +20,7 @@ const serverUrl = (base => {
     base = new URL("http://a");
     base.host = config.host;
   }
-  base.port = process.env.PORT || config.port;
+  base.port = ecosystemConfig[ config.production ? "env_production" : "env" ].PORT;
   return Object.freeze(base);
 })();
 
@@ -28,7 +34,7 @@ for (let i = 2; i < process.argv.length; i++)
 //  config file.
     case "start":
       if (config.production)
-        exec("npx pm2 start ecosystem.config.js --env production --watch false",
+        exec("npx pm2 start ecosystem.config.js --env production",
           (error, stdout) => {
             if (error) throw error;
             console.log(stdout);
@@ -41,6 +47,8 @@ for (let i = 2; i < process.argv.length; i++)
           if (error) throw error;
           console.log(stdout);
         });
+//    The following approach (and similar approaches) will not work on Windows,
+//    because exiting this program will also terminate backend.js on Windows.
       else {
         const server = fork(
           fileURLToPath(new URL("./backend.js", import.meta.url)),
@@ -106,8 +114,12 @@ for (let i = 2; i < process.argv.length; i++)
 //  more PM2 debugging tools.
     case "kill":
       if (process.platform === "win32")
-        exec("( npx pm2 delete ecosystem.config.js ) ; taskkill /F /IM node*", (error, stdout) => {console.log(stdout)});
-      else exec("npx pm2 delete ecosystem.config.js; pkill node", (error, stdout) => {console.log(stdout)});
+        exec("( npx pm2 delete ecosystem.config.js ) ; taskkill /F /IM node*",
+          (error, stdout) => {console.log(stdout)}
+        );
+      else exec("npx pm2 delete ecosystem.config.js; pkill node",
+          (error, stdout) => {console.log(stdout)}
+        );
       break;
 
 //  No default case.
