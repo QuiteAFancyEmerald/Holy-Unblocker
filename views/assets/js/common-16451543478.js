@@ -463,9 +463,9 @@ addEventListener("DOMContentLoaded", async () => {
 //  This first one is for links, whereas the rest are for navigation menus.
   const huLinks = await fetch("/assets/json/links.json", {mode: "same-origin"}).then(response => response.json());
 
-  for (let item of Object.entries(huLinks))
+  for (let items = Object.entries(huLinks), i = 0; i < items.length; i++)
 //  Replace all placeholder links with the corresponding entry in huLinks.
-    (document.getElementById(item[0]) || {}).href = item[1];
+    (document.getElementById(items[i][0]) || {}).href = items[i][1];
 
   const navLists = {
 //  Pair an element ID with a JSON file name. They are identical for now.
@@ -507,10 +507,11 @@ addEventListener("DOMContentLoaded", async () => {
             }
           };
 
-          for (let item of data) {
+          for (let i = 0; i < data.length; i++) {
 //          Load each item as an anchor tag with an image, heading,
 //          description, and click event listener.
-            let a = document.createElement("a"),
+            let item = data[i],
+              a = document.createElement("a"),
               img = document.createElement("img"),
               title = document.createElement("h3"),
               desc = document.createElement("p");
@@ -545,10 +546,10 @@ addEventListener("DOMContentLoaded", async () => {
         }
 
         case "flash-nav":
-          for (let item of data) {
+          for (let i = 0; i < data.length; i++) {
 //          Load each item as an anchor tag with a short title and click
 //          event listener.
-            let a = document.createElement("a");
+            const item = data[i], a = document.createElement("a");
             a.href = "#";
             a.textContent = item.slice(0, -4);
 

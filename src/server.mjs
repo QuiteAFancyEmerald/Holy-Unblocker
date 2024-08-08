@@ -22,7 +22,7 @@ const config = Object.freeze(
     JSON.parse(await readFile(new URL("./config.json", import.meta.url)))
   ),
   ecosystemConfig = Object.freeze(
-    ecosystem.apps.find(app => app.name === "HolyUB") || apps[0]
+    ecosystem.apps.find(app => app.name === "HolyUB") || ecosystem.apps[0]
   ),
   { pages, text404 } = pkg,
   __dirname = path.resolve();
@@ -201,7 +201,7 @@ app.get("/:file", (req, reply) => {
 
 //  Testing for future features that need cookies to deliver alternate source files.
   if (req.raw.rawHeaders.includes("Cookie"))
-    console.log(req.raw.rawHeaders[req.raw.rawHeaders.indexOf("Cookie") + 1]);
+    console.log(req.raw.rawHeaders[ req.raw.rawHeaders.indexOf("Cookie") + 1 ]);
 
   reply.type("text/html").send(
     paintSource(
@@ -243,7 +243,5 @@ app.setNotFoundHandler((req, reply) => {
   reply.code(404).type("text/html").send(paintSource(loadTemplates(tryReadFile(path.join(__dirname, "views/error.html")))));
 });
 
-//  Configure host to your liking, but remember to tweak the Rammerhead IP
-//  as well above for any changes.
 app.listen({ port: serverUrl.port, host: serverUrl.hostname });
-console.log("Holy Unblocker is listening on port " + serverUrl.port + ".");
+console.log(`Holy Unblocker is listening on port ${serverUrl.port}.`);

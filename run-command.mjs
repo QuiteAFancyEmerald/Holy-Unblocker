@@ -10,7 +10,7 @@ const config = Object.freeze(
     JSON.parse(await readFile(new URL("./src/config.json", import.meta.url)))
   ),
   ecosystemConfig = Object.freeze(
-    ecosystem.apps.find(app => app.name === "HolyUB") || apps[0]
+    ecosystem.apps.find(app => app.name === "HolyUB") || ecosystem.apps[0]
   );
 
 const serverUrl = (base => {
@@ -80,6 +80,7 @@ for (let i = 2; i < process.argv.length; i++)
         if (response === "Error") throw new Error("Server is unresponsive.");
       } catch (e) {
 //      Check if this is the error thrown by the fetch request for an unused port.
+//      Don't print the unused port error, since nothing has actually broken.
         if (e instanceof TypeError) clearTimeout(timeoutId);
         else console.error(e);
         await unlink(shutdown);
