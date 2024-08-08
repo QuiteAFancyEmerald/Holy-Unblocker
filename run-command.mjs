@@ -61,13 +61,13 @@ for (let i = 2; i < process.argv.length; i++)
 
 //  Stop the server. Make a temporary file that the server will check for if told
 //  to shut down. This is done by sending a GET request to the server.
-    case "stop":
+    case "stop": {
       await writeFile(shutdown, "");
+      let timeoutId = undefined;
       try {
 //      Give the server 5 seconds to respond, otherwise cancel this and throw an
 //      error to the console. The fetch request will also throw an error immediately
 //      if checking the server on localhost and the port is unused.
-        let timeoutId = undefined;
         const response = await Promise.race([
           fetch(new URL("/test-shutdown", serverUrl)),
           new Promise(resolve => {
@@ -79,15 +79,19 @@ for (let i = 2; i < process.argv.length; i++)
         clearTimeout(timeoutId);
         if (response === "Error") throw new Error("Server is unresponsive.");
       } catch (e) {
-        if (!(e instanceof TypeError)) console.error(e);
+//      Check if this is the error thrown by the fetch request for an unused port.
+        if (e instanceof TypeError) clearTimeout(timeoutId);
+        else console.error(e);
         await unlink(shutdown);
       }
+//    Do not run this if Node will be killed later in this script. It will fail.
       if (config.production && !process.argv.slice(i + 1).includes("kill"))
         exec("npx pm2 stop ecosystem.config.js", (error, stdout) => {
           if (error) throw error;
           console.log(stdout);
         });
       break;
+    }
 
     case "build": {
       const dist = fileURLToPath(new URL("./views/dist", import.meta.url));
