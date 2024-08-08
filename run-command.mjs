@@ -35,7 +35,7 @@ for (let i = 2; i < process.argv.length; i++)
 //    Handle setup on Windows differently from platforms with POSIX-compliant shells.
 //    This should run the server as a background process.
       else if (process.platform === "win32")
-        exec('START /MIN "" "node backend.js"', (error, stdout) => {
+        exec('START /MIN "" node backend.js', (error, stdout) => {
           if (error) throw error;
           console.log(stdout);
         });
