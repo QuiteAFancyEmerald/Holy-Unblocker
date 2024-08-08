@@ -9,10 +9,10 @@ import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
 import { uvPath } from "@titaniumnetwork-dev/ultraviolet";
 import fastifyHelmet from '@fastify/helmet';
 import fastifyStatic from '@fastify/static';
-import pkg from "./routes.mjs";
+import pageRoutes from "./routes.mjs";
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { paintSource, tryReadFile } from './randomization.mjs';
+import { paintSource, preloaded404, tryReadFile } from './randomization.mjs';
 import loadTemplates from './templates.mjs';
 import { fileURLToPath } from 'node:url';
 import { existsSync, unlinkSync } from 'node:fs';
@@ -24,7 +24,7 @@ const config = Object.freeze(
   ecosystemConfig = Object.freeze(
     ecosystem.apps.find(app => app.name === "HolyUB") || ecosystem.apps[0]
   ),
-  { pages, externalPages, text404 } = pkg,
+  { pages, externalPages } = pageRoutes,
   __dirname = path.resolve();
 
 //  Record the server's location as a URL object, including its host and port.
@@ -195,26 +195,32 @@ app.register(fastifyStatic, {
 //  This takes one of those files and displays it for a site visitor.
 //  Paths like /browsing are converted into paths like /views/pages/surf.html
 //  back here. Which path converts to what is defined in routes.mjs.
-app.get("/:file", (req, reply) => {
+app.get("/:path", (req, reply) => {
 
 //  Testing for future features that need cookies to deliver alternate source files.
   if (req.raw.rawHeaders.includes("Cookie"))
     console.log(req.raw.rawHeaders[ req.raw.rawHeaders.indexOf("Cookie") + 1 ]);
 
-  if (req.params.file in externalPages) {
-    let externalRoute = externalPages[req.params.file];
+  const reqPath = req.params.path;
+
+  if (reqPath in externalPages) {
+    let externalRoute = externalPages[reqPath];
     if (typeof externalRoute !== "string") externalRoute = externalRoute.default;
     return reply.redirect(externalRoute);
   }
 
 //  If a GET request is sent to /test-shutdown and a script-generated shutdown file
 //  is present, gracefully shut the server down.
-    if (req.params.file === "test-shutdown" && existsSync(shutdown)) {
+    if (reqPath === "test-shutdown" && existsSync(shutdown)) {
         console.log("Holy Unblocker is shutting down.");
         app.close();
         unlinkSync(shutdown);
         process.exitCode = 0;
     }
+
+//  Return the error page if the query is not found in routes.mjs.
+    if (reqPath && !(reqPath in pages))
+      return reply.code(404).type("text/html").send(preloaded404);
 
     reply.type("text/html").send(
       paintSource(
@@ -223,11 +229,8 @@ app.get("/:file", (req, reply) => {
             path.join(
               __dirname,
               "views",
-//            Return the error page if the query is not found in routes.mjs.
-//            Also set the index the as the default page.
-              req.params.file
-                ? pages[req.params.file] || "error.html"
-                : pages.index
+//            Set the index the as the default page.
+              reqPath ? pages[reqPath] : pages.index
             )
           )
         )
@@ -238,6 +241,7 @@ app.get("/:file", (req, reply) => {
 app.get("/github/:redirect", (req, reply) => {
   if (req.params.redirect in externalPages.github)
     reply.redirect(externalPages.github[req.params.redirect]);
+  else reply.code(404).type("text/html").send(preloaded404);
 });
 
 /*
@@ -252,7 +256,7 @@ app.get("/assets/js/uv/uv.config.js", (req, reply) => {
 
 //  Set an error page for invalid paths outside the query string system.
 app.setNotFoundHandler((req, reply) => {
-  reply.code(404).type("text/html").send(text404);
+  reply.code(404).type("text/html").send(preloaded404);
 });
 
 app.listen({ port: serverUrl.port, host: serverUrl.hostname });

@@ -16,6 +16,7 @@ const text404 = readFileSync(
 const pages = {
   index: "index.html",
   "manifest.json": "manifest.json",
+  "test-404": "error.html",
   /* Main */
   documentation: "docs.html",
   questions: "faq.html",
@@ -39,7 +40,7 @@ const pages = {
   /* Misc */
   flash: "archive/gfiles/flash/index.html",
   webretro: "archive/gfiles/rarch/index.html",
-  vos: "archive/vibeOS/index.html",
+  "vibe-os": "archive/vibeOS/index.html",
 };
 
 const externalPages = {

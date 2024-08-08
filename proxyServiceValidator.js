@@ -30,7 +30,7 @@ const testGeneratedUrl = async (url, headers) => {
 const testServerResponse = async () => {
   const endpoints = [
     "http://localhost:8080/",
-    "http://localhost:8080/pathtonowhere",
+    "http://localhost:8080/test-404",
     "http://localhost:8080/browsing",
     "http://localhost:8080/rammerhead",
     "http://localhost:8080/ultraviolet",

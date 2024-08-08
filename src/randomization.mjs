@@ -1,6 +1,6 @@
 import pkg from "./routes.mjs";
 import { existsSync, readFileSync } from "fs";
-export { paintSource, tryReadFile };
+export { paintSource, preloaded404, tryReadFile };
 const {
     cookingInserts,
     vegetables,
@@ -37,9 +37,11 @@ const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
 //  Apply the final obfuscation changes to an entire file.
   paintSource = (str) =>
     insertCharset(hutaoInsert(versionInsert(insertCooking(cacheBusting(str))))),
+//  Use this instead of text404 for a preloaded error page.
+  preloaded404 = paintSource(text404),
 //  Grab the text content of a file. Ensure the file is a string.
   tryReadFile = (file) =>
-    existsSync(file + "") ? readFileSync(file + "", "utf8") : text404;
+    existsSync(file + "") ? readFileSync(file + "", "utf8") : preloaded404;
 
 /*
 //  All of this is now old code.
