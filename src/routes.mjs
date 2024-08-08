@@ -42,6 +42,24 @@ const pages = {
   vos: "archive/vibeOS/index.html",
 };
 
+const externalPages = {
+  github: {
+    default: "https://github.com/QuiteAFancyEmerald/Holy-Unblocker",
+    aos: "https://github.com/michalsnik/aos",
+    "bare-module": "https://github.com/motortruck1221/bare-as-module3",
+    "bare-mux": "https://github.com/MercuryWorkshop/bare-mux",
+    epoxy: "https://github.com/MercuryWorkshop/epoxy-tls",
+    fastify: "https://github.com/fastify/fastify",
+    "font-awesome": "https://github.com/FortAwesome/Font-Awesome",
+    "libcurl-js": "https://github.com/ading2210/libcurl.js",
+    "nord-theme": "https://github.com/nordtheme",
+    ultraviolet: "https://github.com/titaniumnetwork-dev/Ultraviolet",
+    wisp: "https://github.com/MercuryWorkshop/wisp-protocol"
+  },
+  "titaniumnetwork-documentation": "https://docs.titaniumnetwork.org",
+  "rammerhead-discord": "https://discord.gg/VNT4E7gN5Y"
+};
+
 const cookingInserts = insert.content,
 vegetables = insert.keywords,
 charRandom = insert.chars,
@@ -54,6 +72,7 @@ cacheBustList = {
 
 export default {
   pages,
+  externalPages,
   text404,
   cookingInserts,
   vegetables,

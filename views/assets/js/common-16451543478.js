@@ -475,7 +475,7 @@ addEventListener("DOMContentLoaded", async () => {
     "h5-nav": "h5-nav"
   };
 
-  for (let [listId, filename] of Object.entries(navLists)) {
+  for (const [listId, filename] of Object.entries(navLists)) {
 
     let navList = document.getElementById(listId);
 
@@ -510,7 +510,7 @@ addEventListener("DOMContentLoaded", async () => {
           for (let i = 0; i < data.length; i++) {
 //          Load each item as an anchor tag with an image, heading,
 //          description, and click event listener.
-            let item = data[i],
+            const item = data[i],
               a = document.createElement("a"),
               img = document.createElement("img"),
               title = document.createElement("h3"),

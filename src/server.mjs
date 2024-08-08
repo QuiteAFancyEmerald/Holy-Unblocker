@@ -24,7 +24,7 @@ const config = Object.freeze(
   ecosystemConfig = Object.freeze(
     ecosystem.apps.find(app => app.name === "HolyUB") || ecosystem.apps[0]
   ),
-  { pages, text404 } = pkg,
+  { pages, externalPages, text404 } = pkg,
   __dirname = path.resolve();
 
 //  Record the server's location as a URL object, including its host and port.
@@ -67,11 +67,13 @@ const rammerheadScopes = [
 
 const rammerheadSession = /^\/[a-z0-9]{32}/,
   shouldRouteRh = req => {
-    const url = new URL(req.url, serverUrl);
-    return (
-      rammerheadScopes.includes(url.pathname) ||
-      rammerheadSession.test(url.pathname)
-    );
+    try {
+      const url = new URL(req.url, serverUrl);
+      return (
+        rammerheadScopes.includes(url.pathname) ||
+        rammerheadSession.test(url.pathname)
+      );
+    } catch (e) {return false}
   },
   routeRhRequest = (req, res) => {
     rh.emit("request", req, res);
@@ -97,7 +99,12 @@ const serverFactory = (handler) => {
 };
 
 //  Set logger to true for logs
-const app = Fastify({ logger: false, serverFactory: serverFactory });
+const app = Fastify({
+  ignoreDuplicateSlashes: true,
+  ignoreTrailingSlash: true,
+  logger: false,
+  serverFactory: serverFactory
+});
 
 //  Apply Helmet middleware for security
 app.register(fastifyHelmet, {
@@ -190,43 +197,48 @@ app.register(fastifyStatic, {
 //  back here. Which path converts to what is defined in routes.mjs.
 app.get("/:file", (req, reply) => {
 
-//  If a GET request is sent to /test-shutdown and a script-generated shutdown file
-//  is present, gracefully shut the server down.
-  if (req.params.file === "test-shutdown" && existsSync(shutdown)) {
-      console.log("Holy Unblocker is shutting down.");
-      app.close();
-      unlinkSync(shutdown);
-      process.exitCode = 0;
-  }
-
 //  Testing for future features that need cookies to deliver alternate source files.
   if (req.raw.rawHeaders.includes("Cookie"))
     console.log(req.raw.rawHeaders[ req.raw.rawHeaders.indexOf("Cookie") + 1 ]);
 
-  reply.type("text/html").send(
-    paintSource(
-      loadTemplates(
-        tryReadFile(
-          path.join(
-            __dirname,
-            "views",
-//          Return the error page if the query is not found in routes.mjs. Also set
-//          the index the as the default page.
-            req.params.file
-              ? pages[req.params.file] || "error.html"
-              : pages.index
+  if (req.params.file in externalPages) {
+    let externalRoute = externalPages[req.params.file];
+    if (typeof externalRoute !== "string") externalRoute = externalRoute.default;
+    return reply.redirect(externalRoute);
+  }
+
+//  If a GET request is sent to /test-shutdown and a script-generated shutdown file
+//  is present, gracefully shut the server down.
+    if (req.params.file === "test-shutdown" && existsSync(shutdown)) {
+        console.log("Holy Unblocker is shutting down.");
+        app.close();
+        unlinkSync(shutdown);
+        process.exitCode = 0;
+    }
+
+    reply.type("text/html").send(
+      paintSource(
+        loadTemplates(
+          tryReadFile(
+            path.join(
+              __dirname,
+              "views",
+//            Return the error page if the query is not found in routes.mjs.
+//            Also set the index the as the default page.
+              req.params.file
+                ? pages[req.params.file] || "error.html"
+                : pages.index
+            )
           )
         )
       )
-    )
-  );
+    );
 });
 
-//  Ignore trailing slashes for the above path handling.
-app.get("/:file/", (req, reply) => {
-  reply.redirect("/" + req.params.file);
+app.get("/github/:redirect", (req, reply) => {
+  if (req.params.redirect in externalPages.github)
+    reply.redirect(externalPages.github[req.params.redirect]);
 });
-
 
 /*
 Testing for future restructuring of this config file.
@@ -240,7 +252,7 @@ app.get("/assets/js/uv/uv.config.js", (req, reply) => {
 
 //  Set an error page for invalid paths outside the query string system.
 app.setNotFoundHandler((req, reply) => {
-  reply.code(404).type("text/html").send(paintSource(loadTemplates(tryReadFile(path.join(__dirname, "views/error.html")))));
+  reply.code(404).type("text/html").send(text404);
 });
 
 app.listen({ port: serverUrl.port, host: serverUrl.hostname });
