@@ -28,10 +28,12 @@ for (let i = 2; i < process.argv.length; i++)
 //  config file.
     case "start":
       if (config.production)
-        exec("npm run pm2-start", (error, stdout) => {
+        exec("npx pm2 start ecosystem.config.js --env production --watch false",
+          (error, stdout) => {
             if (error) throw error;
             console.log(stdout);
-        });
+          }
+        );
 //    Handle setup on Windows differently from platforms with POSIX-compliant shells.
 //    This should run the server as a background process.
       else if (process.platform === "win32")
@@ -73,7 +75,7 @@ for (let i = 2; i < process.argv.length; i++)
         await unlink(shutdown);
       }
       if (config.production && !process.argv.slice(i + 1).includes("kill"))
-        exec("npm run pm2-stop", (error, stdout) => {
+        exec("npx pm2 stop ecosystem.config.js", (error, stdout) => {
           if (error) throw error;
           console.log(stdout);
         });
@@ -99,13 +101,13 @@ for (let i = 2; i < process.argv.length; i++)
       break;
     }
 
-//  Kill all node processes and fully reset PM2. To be used for debugging. The
-//  npm run pm2-nuke is built into the command because, if handled in Node, it
-//  will not wait for PM2 to actually finish resetting before it closes itself.
+//  Kill all node processes and fully reset PM2. To be used for debugging.
+//  Using npx pm2 monit, or npx pm2 list in the terminal will also bring up
+//  more PM2 debugging tools.
     case "kill":
       if (process.platform === "win32")
-        exec("npm run pm2-nuke ; taskkill /F /IM node*", (error, stdout) => {console.log(stdout)});
-      else exec("npm run pm2-nuke ; pkill node", (error, stdout) => {console.log(stdout)});
+        exec("( npx pm2 delete ecosystem.config.js ) ; taskkill /F /IM node*", (error, stdout) => {console.log(stdout)});
+      else exec("npx pm2 delete ecosystem.config.js; pkill node", (error, stdout) => {console.log(stdout)});
       break;
 
 //  No default case.
