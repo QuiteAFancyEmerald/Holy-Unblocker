@@ -18,35 +18,118 @@
     <link rel="stylesheet" href="/assets/css/Customizable-Background--Overlay.css">
     <link rel="stylesheet" href="/assets/css/Footer-Dark.css">
     <link rel="stylesheet" href="/assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="/assets/css/iframe.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
-    <!-- Game CSS-->
-    <link rel="stylesheet" href="/assets/css/games.css">
-    <link rel="stylesheet" href="/assets/css/gembed.css">
     <link rel="application/javascript" href="/assets/js/games.js">
-    <!-- Icons-->
     <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
+    <!-- Games CSS  -->
+    <style>
+        .gembed {
+            width: 80%;
+            height: 800%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: fixed;
+        }
+        
+        .fbody {
+            background-color: black;
+            color: rgb(0, 0, 0);
+            font-family: sans-serif;
+        }
+        
+        .glink {
+            display: block;
+            text-decoration: none;
+            color: white;
+            font: 18px;
+            border: 1px solid #007053;
+            margin-top: -1px;
+            background-color: #000000;
+            padding: 12px;
+            transition: 0.2s ease;
+        }
+        
+        .glink:hover {
+            background-color: rgb(0, 0, 0);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+        }
+        
+        #gsearchbar {
+            outline: none;
+            width: 98%;
+            top: 12px;
+            font-size: 16px;
+            border: 1px solid #007053;
+            padding: 12px;
+            margin-bottom: 12px;
+            transition: 0.2s ease;
+            background: #1c2228;
+        }
+        
+        #gsearchbar:focus {
+            background-color: rgb(29, 27, 27);
+            box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.4);
+        }
+        
+        .container {
+            padding: 20px;
+        }
+        
+        .box {
+            margin: auto;
+            background-color: wblack;
+            padding: 10px 10px 15px 10px;
+            width: 100%;
+            height: 540px;
+        }
+        
+        #glist {
+            overflow-x: hidden;
+            overflow-y: scroll;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            text-align: center;
+        }
+        
+        #glist h2 {
+            display: block;
+            text-decoration: none;
+            color: white;
+            font: 18px;
+            border: 1px solid #060606;
+            margin: -1px 0 0 0;
+            background-color: #060606;
+            padding: 12px;
+            font-weight: bold;
+            user-select: none;
+        }
+    </style>
     <!-- Important: Use <wbr> to mess with keywords. -->
     <div>
         <div class="header-dark" style="background-color: rgb(0,0,0);background-image: url(&quot;assets/img/black.jpg&quot;);">
             <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search" style="height: 100px;">
-                <div class="container"><a class="navbar-brand" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/">Ho&#8203;ly Unb&#8203;lock&#8203;er</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="container"><a class="navbar-brand" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 21px;margin: 10px;font-style: normal;font-weight: bold;" href="/">H<wbr>oly Unbloc<wbr>ker</a><button data-toggle="collapse" class="navbar-toggler"
+                        data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item" role="presentation"><a class="nav-link active" href="/z.html" style="font-family: 'Montserrat Alternates', sans-serif;">Su&#8203;rf Fre&#8203;ely</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="/g.html" style="font-family: 'Montserrat Alternates', sans-serif;">Ga&#8203;mes</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="/y.html" style="font-family: 'Montserrat Alternates', sans-serif;">YouTu&#8203;be</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="/d.html" style="font-family: 'Montserrat Alternates', sans-serif;">D&#8203;isc&#8203;ord</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="/n.html" style="font-family: 'Montserrat Alternates', sans-serif;">Cha&#8203;tbox</a></li>
-                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;color: rgb(255,255,255);font-family: 'Montserrat Alternates', sans-serif;">More</a>
-                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;"><a class="dropdown-item text-left text-white-50" role="presentation" href="/k.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Kru&#8203;nk&#8203;er</a><a class="dropdown-item text-left text-white-50" role="presentation" href="/info.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Docs</a><a class="dropdown-item text-white-50" role="presentation" href="/c.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Cre&#8203;dits</a></div>
+                            <li class="nav-item" role="presentation"><a class="nav-link active" href="/z.html" style="font-family: 'Montserrat Alternates', sans-serif;">S<wbr>urf Fr<wbr>eely</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="/g.html" style="font-family: 'Montserrat Alternates', sans-serif;">G<wbr>ames</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="/yt.html" style="font-family: 'Montserrat Alternates', sans-serif;">You<wbr>Tube</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="/p.html" style="font-family: 'Montserrat Alternates', sans-serif;">Disc<wbr>ord</a></li>
+                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;color: rgb(255,255,255);font-family: 'Montserrat Alternates', sans-serif;">M<wbr>ore</a>
+                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);font-family: 'Titillium Web', sans-serif;padding: 17%;padding-top: 10%;padding-bottom: 10%;"><a class="dropdown-item text-left text-white-50" role="presentation" href="/k.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Krun<wbr>ker</a><a class="dropdown-item text-left text-white-50"
+                                        role="presentation" href="/info.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Docs</a><a class="dropdown-item text-white-50" role="presentation" href="/c.html" style="color: rgb(255,255,255);padding: 0%;font-family: Lato, sans-serif;">Credits</a></div>
                             </li>
-                            <!--Options Menu-->
-                            <li id="csel" class="nav-item dropdown"><a class="dropdown-toggle nav-link text-white" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;font-family: 'Montserrat Alternates', sans-serif;">Options</a>
-                                <div class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);padding: 17%;padding-top: 10%;padding-bottom: 10%;">
+                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link text-white" data-toggle="dropdown" aria-expanded="false" href="#" style="opacity: 0.80;font-family: 'Montserrat Alternates', sans-serif;">Options</a>
+                                <div id="csel" class="dropdown-menu" role="menu" style="background-color: rgb(33,30,30);padding: 17%;padding-top: 10%;padding-bottom: 10%;">
                                     <style>
                                         .csel input[type="submit"] {
                                             cursor: pointer;
@@ -61,9 +144,6 @@
                                     <form id="iconform"><input class="bg-dark border rounded-0 border shadow-lg" type="url" placeholder="Icon URL" style="width: 100%; height: 40px; font-family: 'Montserrat Alternates', sans-serif;" />
                                         <input class="btn btn-dark btn-lg bg-dark border-dark rounded-0 border shadow-lg" type="submit" value="Apply" style="width: 100%;padding: 8px;margin: 0px;height: 90%;font-family: 'Montserrat Alternates', sans-serif;font-size: 16px;">
                                         <a href="/i.html">How To Find Icon URL</a>
-                                    </form>
-                                    <form id="toolsform">
-                                        <input class="btn btn-dark btn-lg bg-dark border-dark rounded-0 border shadow-lg" href="/x.html" type="submit" value="Bookmarklets" class="tb-btn">
                                     </form>
                                     <script src="assets/js/header.js"></script>
                                 </div>
@@ -196,7 +276,7 @@
                                 <a class="glink" href="./archive/f.html#redshift">Red<wbr>shift</a>
                                 <a class="glink" href="./archive/f.html#revenant2">Rev<wbr>enant2</a>
                                 <a class="glink" href="./archive/f.html#run2">R<wbr>un2</a>
-                                <a class="glink" href="./archive/g.html">Ru<wbr>n3</a>
+                                <a class="glink" href="./archive/f.html#run3">Ru<wbr>n3</a>
                                 <a class="glink" href="./archive/f.html#saszombieassault3">Saszombie<wbr>assault3</a>
                                 <a class="glink" href="./archive/f.html#shoppingcarthero3">Sh<wbr>oppingcarthero3</a>
                                 <a class="glink" href="./archive/f.html#siftheads">Sifthe<wbr>ads</a>
@@ -237,7 +317,6 @@
         </div>
     </div>
     </div>
-    <!--Footer-->
     <div class="footer-dark" style="background-color: rgb(0,0,0);">
         <footer>
             <div class="container">
@@ -273,7 +352,6 @@
             </div>
         </footer>
     </div>
-    <!--Scripts-->
     <script src="assets/js/links.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

@@ -1,0 +1,20 @@
+{
+  "name": "sanitizer",
+  "description": "Caja's HTML Sanitizer as a Node.js module",
+  "version": "0.1.3",
+  "author": "Ben Smawfield <bensmawfield@googlemail.com>",
+  "homepage": "http://github.com/theSmaw/Caja-HTML-Sanitizer",
+  "bugs": {
+    "mail": "bensmawfield@googlemail.com",
+    "url": "http://github.com/theSmaw/Caja-HTML-Sanitizer/issues"
+  },
+  "license": "Apache-2.0",
+  "main": "./sanitizer.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/theSmaw/Caja-HTML-Sanitizer.git"
+  },
+  "devDependencies": {
+    "mocha": "1.13.0"
+  }
+}

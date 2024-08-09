@@ -6,7 +6,6 @@
       querystring = require('querystring'),
       session = require('express-session'),
       sanitizer = require('sanitizer'),
-      websocket = require('./ws-proxy.js'),
       fetch = require('node-fetch');
 
   const config = JSON.parse(fs.readFileSync('./config.json', { encoding: 'utf8' }));
@@ -32,8 +31,7 @@
       server_protocol = 'http://';
   };
 
-  // WebSocket Proxying
-  websocket(server);
+  var login = require('./auth');
 
   console.log(`Alloy Proxy now running on ${server_protocol}0.0.0.0:${config.port}! Proxy prefix is "${config.prefix}"!`);
   server.listen(process.env.PORT || config.port);
@@ -61,10 +59,9 @@
       if (websitePath == '/') { return `${websiteURL}`; } else return `${websiteURL}${websitePath}`;
   };
 
-  var login = require('./auth');
-
   app.use(session({
       secret: 'alloy',
+      cookie: { sameSite: 'none', secure: 'true' },
       saveUninitialized: true,
       resave: true
   }));
@@ -103,6 +100,19 @@
   });
 
   app.post(`${config.prefix}session/`, async(req, res, next) => {
+      /* var cookies = request.cookies;
+       console.log(cookies);
+       if ('session_id' in cookies) {
+           var sid = cookies['session_id'];
+           if (login.isLoggedIn(sid)) {
+               response.setHeader('Set-Cookie', 'session_id=' + sid);
+               response.end(login.hello(sid));
+           } else {
+               response.end("Invalid session_id! Please login again\n");
+           }
+       } else {
+           response.end("Please login via HTTP POST\n");
+       } */
       let url = querystring.parse(req.raw_body).url;
       if (url.startsWith('//')) { url = 'http:' + url; } else if (url.startsWith('https://') || url.startsWith('http://')) { url = url } else { url = 'http://' + url };
       return res.redirect(config.prefix + rewrite_url(url));
@@ -151,6 +161,7 @@
 
           proxy.requestHeaders['origin'] = origin;
       }
+
       if (proxy.requestHeaders.cookie) {
           delete proxy.requestHeaders.cookie;
       }
@@ -158,7 +169,6 @@
           keepAlive: true
       });
       const httpsAgent = new https.Agent({
-          rejectUnauthorized: false,
           keepAlive: true
       });
       proxy.options = {
@@ -182,18 +192,6 @@
       if (proxy.url.hostname == 'www.reddit.com') { return res.redirect(307, config.prefix + rewrite_url('https://old.reddit.com')); };
 
       if (!req.url.slice(1).startsWith(`${proxy.url.encoded_origin}/`)) { return res.redirect(307, config.prefix + proxy.url.encoded_origin + '/'); };
-
-      const blocklist = JSON.parse(fs.readFileSync('./blocklist.json', { encoding: 'utf8' }));
-
-      let is_blocked = false;
-
-      Array.from(blocklist).forEach(blocked_hostname => {
-          if (proxy.url.hostname == blocked_hostname) {
-              is_blocked = true;
-          }
-      });
-
-      if (is_blocked == true) { return res.send(fs.readFileSync('./utils/error/error.html', 'utf8').toString().replace('%ERROR%', `Error 401: The website '${sanitizer.sanitize(proxy.url.hostname)}' is not permitted!`)) }
 
       proxy.response = await fetch(proxy.url.href, proxy.options).catch(err => res.send(fs.readFileSync('./utils/error/error.html', 'utf8').toString().replace('%ERROR%', `Error 400: Could not make request to '${sanitizer.sanitize(proxy.url.href)}'!`)));
 
@@ -286,14 +284,6 @@
   });
 
   app.use('/', express.static('public'));
-
-  app.get('/', async(req, res) => {
-
-      if (req.query.a) {
-          return res.send(fs.readFile('./public/e.html'))
-      }
-
-  });
 
   app.use(async(req, res, next) => {
       if (req.headers['referer']) {

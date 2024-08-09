@@ -2,6 +2,6 @@
     "name": "Holy Unblocker",
     "description": "A website that can be used to bypass web filters; both extension and firewall. Alloy Proxy hosted locally. (Can be used as a template.)",
     "repository": "https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic/",
-    "logo": "https://github.com/QuiteAFancyEmerald/HolyUnblockerPublic/blob/master/public/assets/img/i.png?raw=true",
+    "logo": "https://www.holyubofficial.ml/assets/img/i.png",
     "keywords": ["node", "proxy", "unblocker", "webproxy", "games", "holyunblocker", "alloy"]
 }

@@ -1,0 +1,28 @@
+{
+  "name" : "session",
+  "version" : "0.1.0",
+  "author" : "Julien Polo <julien.polo@altshift.fr>",
+  "description" : "Generic session manager (i.e. not depending on cookies or socket connection, etc.)",
+  "keywords" : ["session", "generic", "manager"],
+  "repository" : { 
+  	  "type" : "git",
+  	  "url" : "git://github.com/as-jpolo/node-session.git"
+  },
+  "bugs" : { 
+  	  "web" : "http://github.com/as-jpolo/node-session/issues" 
+  },
+  "directories" : { 
+	  "lib" : "lib" , 
+	  "test": "test"
+  },
+  "dependencies"  : {
+  	  "vows": "*"
+  },
+  "licenses" :[ 
+  	{ 
+  		"type" : "MIT",
+    	"url" : "http://github.com/as-jpolo/node-session/blob/master//LICENSE"
+    }   
+  ],
+  "main" : "lib/session"
+}
