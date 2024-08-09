@@ -108,74 +108,71 @@ const testCommonJSOnPage = async () => {
       return headers;
     };
 
-    const testRammerhead = async () => {
-      await page.goto('http://localhost:8080/rammerhead');
-
-      const testResults = await page.evaluate(async () => {
-        const results = {};
-
-        await new Promise((resolve) => {
-          if (document.readyState === 'complete') {
-            resolve();
-          } else {
-            window.addEventListener('load', resolve);
-          }
-        });
-
-        // Locate the omnibox element on the Rammerhead page.
-        let omnibox = document.getElementById('pr-rh');
-        omnibox = omnibox && omnibox.querySelector('input[type=text]');
-
-        if (omnibox) {
-          try {
-            // Send an artificial input to the omnibox. The omnibox will create
-            // a proxy URL and leave it as the input value in response.
-            const urlPath = 'example.com';
-            omnibox.value = urlPath;
-            const generateInput = async () => {
-              await omnibox.dispatchEvent(
-                new KeyboardEvent('keydown', { code: 'Validator Test' })
-              );
-            };
-            /* Keep trying to send a signal every 5 seconds until it works.
-             * Implemented to account for a condition where the document has
-             * finished loading, but the event handler for DOMContentLoaded has
-             * not finished executing its script to listen for artificial inputs.
-             */
-            await generateInput();
-            const inputInterval = setInterval(generateInput, 5000);
-
-            // Wait up to 40 seconds for the omnibox to finish updating.
-            const loadUrl = new Promise((resolve) => {
-                if (omnibox.value !== urlPath) {
-                  clearInterval(inputInterval);
-                  resolve(omnibox.value);
-                } else
-                  omnibox.addEventListener('change', () => {
-                    clearInterval(inputInterval);
-                    resolve(omnibox.value);
-                  });
-              }),
-              timeout = new Promise((resolve) => {
-                setTimeout(() => {
-                  clearInterval(inputInterval);
-                  resolve(omnibox.value);
-                }, 40000);
-              }),
-              // Record the proxy URL that the omnibox left here.
-              generatedUrl = await Promise.race([loadUrl, timeout]);
-            console.log('Generated Rammerhead URL:', generatedUrl);
-            results.rammerhead =
-              generatedUrl !== urlPath ? generatedUrl : 'failure';
-          } catch (e) {
-            results.rammerhead = 'failure: ' + e.message;
-          }
+    const generateUrl = async (omniboxId, urlPath, errorPrefix = 'failure') => {
+      // Wait for the document to load before getting the omnibox.
+      await new Promise((resolve) => {
+        if (document.readyState === 'complete') {
+          resolve();
         } else {
-          results.omnibox = 'not defined';
+          window.addEventListener('load', resolve);
         }
-
-        return results;
       });
+
+      let omnibox = document.getElementById(omniboxId);
+      omnibox = omnibox && omnibox.querySelector('input[type=text]');
+      if (omnibox) {
+        try {
+          // Send an artificial input to the omnibox. The omnibox will create
+          // a proxy URL and leave it as the input value in response.
+          omnibox.value = urlPath;
+          const generateInput = async () => {
+            await omnibox.dispatchEvent(
+              new KeyboardEvent('keydown', { code: 'Validator Test' })
+            );
+          };
+          /* Keep trying to send a signal every 5 seconds until it works.
+           * Implemented to account for a condition where the document has
+           * finished loading, but the event handler for DOMContentLoaded has
+           * not finished executing its script to listen for artificial inputs.
+           */
+          await generateInput();
+          const inputInterval = setInterval(generateInput, 5000);
+
+          // Wait up to 40 seconds for the omnibox to finish updating.
+          const loadUrl = new Promise((resolve) => {
+              if (omnibox.value !== urlPath) {
+                clearInterval(inputInterval);
+                resolve(omnibox.value);
+              } else
+                omnibox.addEventListener('change', () => {
+                  clearInterval(inputInterval);
+                  resolve(omnibox.value);
+                });
+            }),
+            timeout = new Promise((resolve) => {
+              setTimeout(() => {
+                clearInterval(inputInterval);
+                resolve(omnibox.value);
+              }, 40000);
+            }),
+            // Return the proxy URL that the omnibox left here.
+            generatedUrl = await Promise.race([loadUrl, timeout]);
+          return generatedUrl !== urlPath ? generatedUrl : errorPrefix;
+        } catch (e) {
+          return errorPrefix + ': ' + e.message;
+        }
+      } else {
+        return errorPrefix + ': omnibox not defined';
+      }
+    };
+
+    const testRammerhead = async () => {
+      const omniboxId = 'pr-rh',
+        urlPath = 'example.com';
+      await page.goto('http://localhost:8080/rammerhead');
+      const generatedUrl = await page.evaluate(generateUrl, omniboxId, urlPath);
+      const testResults = {};
+      testResults.rammerhead = generatedUrl;
 
       console.log('Rammerhead test results:', testResults);
 
@@ -230,79 +227,45 @@ xx                                                  xx
 */
 
     const testUltraviolet = async () => {
-      await page.goto('http://localhost:8080/ultraviolet');
-
-      const testResults = await page.evaluate(async () => {
-        const results = [{}, {}];
-
-        await new Promise((resolve) => {
-          const waitForDocument = () =>
-            document.readyState === 'complete'
-              ? resolve()
-              : window.addEventListener('load', resolve);
-
-          // Wait until a service worker is registered before continuing.
-          // Also make sure the document is loaded.
-          const waitForWorker = async () =>
-            setTimeout(async () => {
-              (await navigator.serviceWorker.getRegistrations()).length >= 1
-                ? waitForDocument()
-                : waitForWorker();
-            }, 1000);
-
-          waitForWorker();
+      const omniboxId = 'pr-uv',
+        errorPrefix = 'failure',
+        // For the hacky URL test further below, use the URL page's EXACT title.
+        website = Object.freeze({
+          path: 'example.com',
+          title: 'Example Domain',
         });
+      await page.goto('http://localhost:8080/ultraviolet');
+      const generatedUrl = await page.evaluate(
+        generateUrl,
+        omniboxId,
+        website.path,
+        errorPrefix
+      );
 
-        // Locate the omnibox element on the Ultraviolet page.
-        let omnibox = document.getElementById('pr-uv');
-        omnibox = omnibox && omnibox.querySelector('input[type=text]');
+      const testResults = await page.evaluate(
+        async (generatedUrl, pageTitle) => {
+          const results = [{}, {}];
 
-        if (omnibox) {
-          // For the hacky URL test, use the URL page's EXACT title.
-          const website = {
-            path: 'example.com',
-            title: 'Example Domain',
-          };
+          await new Promise((resolve) => {
+            const waitForDocument = () =>
+              document.readyState === 'complete'
+                ? resolve()
+                : window.addEventListener('load', resolve);
+
+            // Wait until a service worker is registered before continuing.
+            // Also check again to make sure the document is loaded.
+            const waitForWorker = async () =>
+              setTimeout(async () => {
+                (await navigator.serviceWorker.getRegistrations()).length >= 1
+                  ? waitForDocument()
+                  : waitForWorker();
+              }, 1000);
+
+            waitForWorker();
+          });
 
           try {
-            // Send an artificial input to the omnibox. The omnibox will create
-            // a proxy URL and leave it as the input value in response.
-            omnibox.value = website.path;
-            const generateInput = async () => {
-              await omnibox.dispatchEvent(
-                new KeyboardEvent('keydown', { code: 'Validator Test' })
-              );
-            };
-            /* Keep trying to send a signal every 5 seconds until it works.
-             * Implemented to account for a condition where the document has
-             * finished loading, but the event handler for DOMContentLoaded has
-             * not finished executing its script to listen for artificial inputs.
-             */
-            await generateInput();
-            const inputInterval = setInterval(generateInput, 5000);
-
-            // Wait up to 40 seconds for the omnibox to finish updating.
-            const loadUrl = new Promise((resolve) => {
-                if (omnibox.value !== website.path) {
-                  clearInterval(inputInterval);
-                  resolve(omnibox.value);
-                } else
-                  omnibox.addEventListener('change', () => {
-                    clearInterval(inputInterval);
-                    resolve(omnibox.value);
-                  });
-              }),
-              timeout = new Promise((resolve) => {
-                setTimeout(() => {
-                  clearInterval(inputInterval);
-                  resolve(omnibox.value);
-                }, 40000);
-              }),
-              // Record the proxy URL that the omnibox left here.
-              generatedUrl = await Promise.race([loadUrl, timeout]);
-            console.log('Generated Ultraviolet URL:', generatedUrl);
-            results[0].ultraviolet =
-              generatedUrl !== website.path ? generatedUrl : 'failure';
+            results[0].ultraviolet = generatedUrl;
 
             // Test to see if the document title for example.com has loaded,
             // by appending an IFrame to the document and grabbing its content.
@@ -312,7 +275,7 @@ xx                                                  xx
                 document.documentElement.appendChild(exampleIFrame);
                 exampleIFrame.addEventListener('load', () => {
                   resolve(
-                    exampleIFrame.contentWindow.document.title === website.title
+                    exampleIFrame.contentWindow.document.title === pageTitle
                   );
                 });
               });
@@ -321,7 +284,7 @@ xx                                                  xx
               const timeout = new Promise((resolve) => {
                 setTimeout(() => {
                   resolve(
-                    exampleIFrame.contentWindow.document.title === website.title
+                    exampleIFrame.contentWindow.document.title === pageTitle
                   );
                 }, 10000);
               });
@@ -332,17 +295,18 @@ xx                                                  xx
             };
 
             results[1].uvTestPassed =
-              results[0].ultraviolet !== 'failure' &&
+              !!results[0].ultraviolet.indexOf(errorPrefix) &&
               (await testGeneratedUrlHacky(results[0].ultraviolet));
           } catch (e) {
-            results[0].ultraviolet = 'failure: ' + e.message;
+            results[0].ultraviolet = errorPrefix + ': ' + e.message;
           }
-        } else {
-          results[0].omnibox = 'not defined';
-        }
 
-        return results;
-      });
+          return results;
+        },
+        generatedUrl,
+        website.title,
+        errorPrefix
+      );
 
       console.log('Ultraviolet test results:', testResults[0]);
 
