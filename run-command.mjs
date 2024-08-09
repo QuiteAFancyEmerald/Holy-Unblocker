@@ -56,14 +56,14 @@ commands: for (let i = 2; i < process.argv.length; i++)
       //    because exiting this program will also terminate backend.js on Windows.
       else {
         const server = fork(
-          fileURLToPath(new URL("./backend.js", import.meta.url)),
+          fileURLToPath(new URL('./backend.js', import.meta.url)),
           {
             cwd: process.cwd(),
-            stdio: ["inherit", "inherit", "pipe", "ipc"],
-            detached: true
+            stdio: ['inherit', 'inherit', 'pipe', 'ipc'],
+            detached: true,
           }
         );
-        server.stderr.on("data", stderr => {
+        server.stderr.on('data', (stderr) => {
           console.error(stderr.toString());
           process.exitCode = 1;
         });
@@ -72,11 +72,12 @@ commands: for (let i = 2; i < process.argv.length; i++)
       }
       break;
 
-//  Stop the server. Make a temporary file that the server will check for if told
-//  to shut down. This is done by sending a GET request to the server.
-    case "stop": {
-      await writeFile(shutdown, "");
-      let timeoutId, hasErrored = false;
+    //  Stop the server. Make a temporary file that the server will check for if told
+    //  to shut down. This is done by sending a GET request to the server.
+    case 'stop': {
+      await writeFile(shutdown, '');
+      let timeoutId,
+        hasErrored = false;
       try {
         //      Give the server 5 seconds to respond, otherwise cancel this and throw an
         //      error to the console. The fetch request will also throw an error immediately
@@ -92,29 +93,28 @@ commands: for (let i = 2; i < process.argv.length; i++)
         clearTimeout(timeoutId);
         if (response === 'Error') throw new Error('Server is unresponsive.');
       } catch (e) {
-//      Remove the temporary shutdown file since the server didn't remove it.
+        //      Remove the temporary shutdown file since the server didn't remove it.
         await unlink(shutdown);
-//      Check if this is the error thrown by the fetch request for an unused port.
-//      Don't print the unused port error, since nothing has actually broken.
+        //      Check if this is the error thrown by the fetch request for an unused port.
+        //      Don't print the unused port error, since nothing has actually broken.
         if (e instanceof TypeError) clearTimeout(timeoutId);
         else {
           console.error(e);
-//        Stop here unless Node will be killed later.
-          if (!process.argv.slice(i + 1).includes("kill"))
-            hasErrored = true;
+          //        Stop here unless Node will be killed later.
+          if (!process.argv.slice(i + 1).includes('kill')) hasErrored = true;
         }
       }
-//    Do not run this if Node will be killed later in this script. It will fail.
-      if (config.production && !process.argv.slice(i + 1).includes("kill"))
-        exec("npx pm2 stop ecosystem.config.js", (error, stdout) => {
+      //    Do not run this if Node will be killed later in this script. It will fail.
+      if (config.production && !process.argv.slice(i + 1).includes('kill'))
+        exec('npx pm2 stop ecosystem.config.js', (error, stdout) => {
           if (error) {
             console.error(error);
             hasErrored = true;
           }
           console.log(stdout);
         });
-//    Do not continue executing commands since the server was unable to be stopped.
-//    Mostly implemented to prevent duplicating Node instances with npm restart.
+      //    Do not continue executing commands since the server was unable to be stopped.
+      //    Mostly implemented to prevent duplicating Node instances with npm restart.
       if (hasErrored) {
         process.exitCode = 1;
         break commands;
@@ -164,6 +164,5 @@ commands: for (let i = 2; i < process.argv.length; i++)
 
     //  No default case.
   }
-
 
 process.exitCode = process.exitCode || 0;
