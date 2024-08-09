@@ -1,0 +1,16 @@
+{
+  "name": "parse-raw-http",
+  "version": "0.0.1",
+  "description": "Parse HTTP responses from the raw over-the-wire bytestream",
+  "keywords": ["parser", "parse", "raw", "http", "response", "bytes", "body", "data", "chunked"],
+  "homepage": "https://github.com/andrewschaaf/node-parse-raw-http",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha",
+    "test:watch": "mocha -w"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^3.4.2"
+  }
+}

@@ -1,5 +1,5 @@
 {
-    "port": "8080",
-    "prefix": "/home/",
-    "ssl": false
+	"listenip":"0.0.0.0",
+	"port":8080,
+	"ssl":false
 }

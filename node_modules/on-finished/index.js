@@ -20,7 +20,6 @@ module.exports.isFinished = isFinished
  * @private
  */
 
-var asyncHooks = tryRequireAsyncHooks()
 var first = require('ee-first')
 
 /**
@@ -31,7 +30,7 @@ var first = require('ee-first')
 /* istanbul ignore next */
 var defer = typeof setImmediate === 'function'
   ? setImmediate
-  : function (fn) { process.nextTick(fn.bind.apply(fn, arguments)) }
+  : function(fn){ process.nextTick(fn.bind.apply(fn, arguments)) }
 
 /**
  * Invoke callback when the response has finished, useful for
@@ -43,14 +42,14 @@ var defer = typeof setImmediate === 'function'
  * @public
  */
 
-function onFinished (msg, listener) {
+function onFinished(msg, listener) {
   if (isFinished(msg) !== false) {
     defer(listener, null, msg)
     return msg
   }
 
   // attach the listener to the message
-  attachListener(msg, wrap(listener))
+  attachListener(msg, listener)
 
   return msg
 }
@@ -63,7 +62,7 @@ function onFinished (msg, listener) {
  * @public
  */
 
-function isFinished (msg) {
+function isFinished(msg) {
   var socket = msg.socket
 
   if (typeof msg.finished === 'boolean') {
@@ -88,12 +87,12 @@ function isFinished (msg) {
  * @private
  */
 
-function attachFinishedListener (msg, callback) {
+function attachFinishedListener(msg, callback) {
   var eeMsg
   var eeSocket
   var finished = false
 
-  function onFinish (error) {
+  function onFinish(error) {
     eeMsg.cancel()
     eeSocket.cancel()
 
@@ -104,7 +103,7 @@ function attachFinishedListener (msg, callback) {
   // finished on first message event
   eeMsg = eeSocket = first([[msg, 'end', 'finish']], onFinish)
 
-  function onSocket (socket) {
+  function onSocket(socket) {
     // remove listener
     msg.removeListener('socket', onSocket)
 
@@ -125,7 +124,7 @@ function attachFinishedListener (msg, callback) {
   msg.on('socket', onSocket)
 
   if (msg.socket === undefined) {
-    // istanbul ignore next: node.js 0.8 patch
+    // node.js 0.8 patch
     patchAssignSocket(msg, onSocket)
   }
 }
@@ -138,7 +137,7 @@ function attachFinishedListener (msg, callback) {
  * @private
  */
 
-function attachListener (msg, listener) {
+function attachListener(msg, listener) {
   var attached = msg.__onFinished
 
   // create a private single listener with queue
@@ -158,8 +157,8 @@ function attachListener (msg, listener) {
  * @private
  */
 
-function createListener (msg) {
-  function listener (err) {
+function createListener(msg) {
+  function listener(err) {
     if (msg.__onFinished === listener) msg.__onFinished = null
     if (!listener.queue) return
 
@@ -184,51 +183,14 @@ function createListener (msg) {
  * @private
  */
 
-// istanbul ignore next: node.js 0.8 patch
-function patchAssignSocket (res, callback) {
+function patchAssignSocket(res, callback) {
   var assignSocket = res.assignSocket
 
   if (typeof assignSocket !== 'function') return
 
   // res.on('socket', callback) is broken in 0.8
-  res.assignSocket = function _assignSocket (socket) {
+  res.assignSocket = function _assignSocket(socket) {
     assignSocket.call(this, socket)
     callback(socket)
   }
-}
-
-/**
- * Try to require async_hooks
- * @private
- */
-
-function tryRequireAsyncHooks () {
-  try {
-    return require('async_hooks')
-  } catch (e) {
-    return {}
-  }
-}
-
-/**
- * Wrap function with async resource, if possible.
- * AsyncResource.bind static method backported.
- * @private
- */
-
-function wrap (fn) {
-  var res
-
-  // create anonymous resource
-  if (asyncHooks.AsyncResource) {
-    res = new asyncHooks.AsyncResource(fn.name || 'bound-anonymous-fn')
-  }
-
-  // incompatible node.js
-  if (!res || !res.runInAsyncScope) {
-    return fn
-  }
-
-  // return bound function
-  return res.runInAsyncScope.bind(res, fn, null)
 }

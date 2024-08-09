@@ -11,15 +11,15 @@ var getGlobal = function () {
 	throw new Error('unable to locate global object');
 }
 
-var globalObject = getGlobal();
+var global = getGlobal();
 
-module.exports = exports = globalObject.fetch;
+module.exports = exports = global.fetch;
 
 // Needed for TypeScript and Webpack.
-if (globalObject.fetch) {
-	exports.default = globalObject.fetch.bind(globalObject);
+if (global.fetch) {
+	exports.default = global.fetch.bind(global);
 }
 
-exports.Headers = globalObject.Headers;
-exports.Request = globalObject.Request;
-exports.Response = globalObject.Response;
+exports.Headers = global.Headers;
+exports.Request = global.Request;
+exports.Response = global.Response;

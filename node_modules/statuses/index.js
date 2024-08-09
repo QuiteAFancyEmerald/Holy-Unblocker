@@ -22,13 +22,10 @@ var codes = require('./codes.json')
 module.exports = status
 
 // status code to message map
-status.message = codes
-
-// status message (lower-case) to code map
-status.code = createMessageToStatusCodeMap(codes)
+status.STATUS_CODES = codes
 
 // array of status codes
-status.codes = createStatusCodeList(codes)
+status.codes = populateStatusesMap(status, codes)
 
 // status codes for redirects
 status.redirect = {
@@ -56,61 +53,27 @@ status.retry = {
 }
 
 /**
- * Create a map of message to status code.
+ * Populate the statuses map for given codes.
  * @private
  */
 
-function createMessageToStatusCodeMap (codes) {
-  var map = {}
+function populateStatusesMap (statuses, codes) {
+  var arr = []
 
   Object.keys(codes).forEach(function forEachCode (code) {
     var message = codes[code]
     var status = Number(code)
 
-    // populate map
-    map[message.toLowerCase()] = status
+    // Populate properties
+    statuses[status] = message
+    statuses[message] = status
+    statuses[message.toLowerCase()] = status
+
+    // Add to array
+    arr.push(status)
   })
 
-  return map
-}
-
-/**
- * Create a list of all status codes.
- * @private
- */
-
-function createStatusCodeList (codes) {
-  return Object.keys(codes).map(function mapCode (code) {
-    return Number(code)
-  })
-}
-
-/**
- * Get the status code for given message.
- * @private
- */
-
-function getStatusCode (message) {
-  var msg = message.toLowerCase()
-
-  if (!Object.prototype.hasOwnProperty.call(status.code, msg)) {
-    throw new Error('invalid status message: "' + message + '"')
-  }
-
-  return status.code[msg]
-}
-
-/**
- * Get the status message for given code.
- * @private
- */
-
-function getStatusMessage (code) {
-  if (!Object.prototype.hasOwnProperty.call(status.message, code)) {
-    throw new Error('invalid status code: ' + code)
-  }
-
-  return status.message[code]
+  return arr
 }
 
 /**
@@ -129,7 +92,8 @@ function getStatusMessage (code) {
 
 function status (code) {
   if (typeof code === 'number') {
-    return getStatusMessage(code)
+    if (!status[code]) throw new Error('invalid status code: ' + code)
+    return code
   }
 
   if (typeof code !== 'string') {
@@ -139,8 +103,11 @@ function status (code) {
   // '403'
   var n = parseInt(code, 10)
   if (!isNaN(n)) {
-    return getStatusMessage(n)
+    if (!status[n]) throw new Error('invalid status code: ' + n)
+    return n
   }
 
-  return getStatusCode(code)
+  n = status[code.toLowerCase()]
+  if (!n) throw new Error('invalid status message: "' + code + '"')
+  return n
 }
