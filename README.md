@@ -71,7 +71,7 @@ Read below for information if the official site is blocked or for obtaining more
 Either use the button above to deploy to Heroku or do the below:
 
 ```bash
-git clone https://github.com/titaniumnetwork-dev/Holy-Unblocker.git
+git clone --recurse-submodules https://github.com/titaniumnetwork-dev/Holy-Unblocker.git
 
 cd Holy-Unblocker
 
