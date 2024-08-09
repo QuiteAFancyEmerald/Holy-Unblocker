@@ -26,7 +26,7 @@ jobs:
         run: npm run build
 
       - name: Start server
-        run: npm run start-test-server
+        run: npm run manual-start
 
       - name: Test server response
         run: npm test
