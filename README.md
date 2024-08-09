@@ -81,6 +81,10 @@ npm start
 npm restart
 ```
 
+### It is highly recommended you switch branches via your IDE to a stable released branch. Often the master branch contains unstable or WIP changes.
+
+#### Example v6.x instead of master
+
 The default place for the proxy when its started is `http://localhost:8080`, but you can change it if needed in `/src/config.json`.
 
 This website is hosted locally with Ultraviolet and Rammerhead built-in.
