@@ -352,7 +352,8 @@ const RammerheadEncode = async (baseUrl) => {
  * goProx.searx();
  */
 addEventListener('DOMContentLoaded', async () => {
-  const goProx = {
+  // Object.freeze prevents goProx from accidentally being edited.
+  const goProx = Object.freeze({
     // `location.protocol + "//" + getDomain()` more like `location.origin`
     // setAuthCookie("__cor_auth=1", false);
     ultraviolet: urlHandler(uvUrl),
@@ -400,14 +401,8 @@ addEventListener('DOMContentLoaded', async () => {
     youtube: urlHandler(uvUrl('https://youtube.com')),
 
     discordUV: urlHandler(uvUrl('https://discord.com/app')),
-  };
 
-  // Don't slow down the rest of the script while encoding the URL.
-  RammerheadEncode('https://discord.com/app').then((url) => {
-    goProx.discordRH = urlHandler(url);
-
-    // Object.freeze prevents goProx from accidentally being edited.
-    Object.freeze(goProx);
+    discordRH: urlHandler(await RammerheadEncode('https://discord.com/app')),
   });
 
   // Attach event listeners using goProx to specific app menus that need it.

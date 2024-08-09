@@ -111,15 +111,13 @@ const testCommonJSOnPage = async () => {
     const generateUrl = async (omniboxId, urlPath, errorPrefix = 'failure') => {
       // Wait for the document to load before getting the omnibox.
       await new Promise((resolve) => {
-        if (document.readyState === 'complete') {
-          resolve();
-        } else {
-          window.addEventListener('load', resolve);
-        }
+        if (document.readyState === 'complete') resolve();
+        else window.addEventListener('load', resolve);
       });
 
       let omnibox = document.getElementById(omniboxId);
       omnibox = omnibox && omnibox.querySelector('input[type=text]');
+
       if (omnibox) {
         try {
           // Send an artificial input to the omnibox. The omnibox will create
@@ -136,24 +134,18 @@ const testCommonJSOnPage = async () => {
            * not finished executing its script to listen for artificial inputs.
            */
           await generateInput();
-          const inputInterval = setInterval(generateInput, 5000);
-
-          // Wait up to 40 seconds for the omnibox to finish updating.
-          const loadUrl = new Promise((resolve) => {
-              if (omnibox.value !== urlPath) {
-                clearInterval(inputInterval);
-                resolve(omnibox.value);
-              } else
-                omnibox.addEventListener('change', () => {
-                  clearInterval(inputInterval);
-                  resolve(omnibox.value);
-                });
+          const inputInterval = setInterval(generateInput, 5000),
+            resolveHandler = (resolve) => () => {
+              clearInterval(inputInterval);
+              resolve(omnibox.value);
+            },
+            // Wait up to 40 seconds for the omnibox to finish updating.
+            loadUrl = new Promise((resolve) => {
+              if (omnibox.value !== urlPath) resolveHandler(resolve)();
+              else omnibox.addEventListener('change', resolveHandler(resolve));
             }),
             timeout = new Promise((resolve) => {
-              setTimeout(() => {
-                clearInterval(inputInterval);
-                resolve(omnibox.value);
-              }, 40000);
+              setTimeout(resolveHandler(resolve), 40000);
             }),
             // Return the proxy URL that the omnibox left here.
             generatedUrl = await Promise.race([loadUrl, timeout]);
@@ -247,19 +239,19 @@ xx                                                  xx
           const results = [{}, {}];
 
           await new Promise((resolve) => {
-            const waitForDocument = () =>
-              document.readyState === 'complete'
-                ? resolve()
-                : window.addEventListener('load', resolve);
-
-            // Wait until a service worker is registered before continuing.
-            // Also check again to make sure the document is loaded.
-            const waitForWorker = async () =>
-              setTimeout(async () => {
-                (await navigator.serviceWorker.getRegistrations()).length >= 1
-                  ? waitForDocument()
-                  : waitForWorker();
-              }, 1000);
+            const waitForDocument = () => {
+                if (document.readyState === 'complete') resolve();
+                else window.addEventListener('load', resolve);
+              },
+              // Wait until a service worker is registered before continuing.
+              // Also check again to make sure the document is loaded.
+              waitForWorker = async () => {
+                setTimeout(async () => {
+                  (await navigator.serviceWorker.getRegistrations()).length > 0
+                    ? waitForDocument()
+                    : waitForWorker();
+                }, 1000);
+              };
 
             waitForWorker();
           });
