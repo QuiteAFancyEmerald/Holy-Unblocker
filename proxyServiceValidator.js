@@ -275,9 +275,12 @@ xx                                                  xx
                   resolve();
                 });
               });
+              const timeout = new Promise((resolve) => {
+                setTimeout(resolve, 10000, false);
+              });
               exampleIFrame.src = url;
               exampleIFrame.style.display = 'none';
-              await waitForDocument;
+              await Promise.race([waitForDocument, timeout]);
               return result;
             };
 
