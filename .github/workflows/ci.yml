@@ -33,3 +33,30 @@ jobs:
 
       - name: Stop server after testing
         run: npm stop
+
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.8.0'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build libraries
+        run: npm run build
+
+      - name: Start server
+        run: npm run manual-start
+
+      - name: Test server response
+        run: npm test
+
+      - name: Stop server after testing
+        run: npm stop
