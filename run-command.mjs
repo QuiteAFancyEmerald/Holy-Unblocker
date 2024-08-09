@@ -179,8 +179,8 @@ commands: for (let i = 2; i < process.argv.length; i++)
         process.exitCode = 1;
       });
       tempServer.stdout.on('data', () => {
-        // Kill the server and start a new one if there were no startup errors.
-        // Restarting is necessary to prevent the workflow check from hanging.
+        // There are no startup errors by this point, so kill the server and start
+        // over. The restart alters stdio to prevent the workflow check from hanging.
         tempServer.kill();
         const server = fork(
           fileURLToPath(new URL('./backend.js', import.meta.url)),
