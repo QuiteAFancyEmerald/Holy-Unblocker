@@ -61,7 +61,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Emu Library page
 - [ ] Web Games page
 - [ ] Flash Games page
-- [ ] Documentation page
+- [ ] Documentation on-site + Getting Started information updated (Tor, etc.)
 - [ ] FAQ page
 - [ ] Credits page
 - [ ] TOS page
