@@ -6,7 +6,6 @@ var fs = require('fs');
 var app = express();
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var xss = require("xss");
 
 var config = JSON.parse(fs.readFileSync('config.json', 'utf-8')),
   httpsAgent = new https.Agent({
@@ -98,12 +97,12 @@ function error(statusCode, info) {
   return fs.readFileSync('alloy/assets/error.html', 'utf8').toString().replace('%ERROR%', `Error ${statusCode}: ${info}`)
   }
   if (info && !statusCode) {
-    return (fs.readFileSync('alloy/assets/error.html', 'utf8').toString().replace('%ERROR%', `Error: ${info}`))
+    return fs.readFileSync('alloy/assets/error.html', 'utf8').toString().replace('%ERROR%', `Error: ${info}`)
   }
   if (statusCode && !info) {
-    return (fs.readFileSync('alloy/assets/error.html', 'utf8').toString().replace('%ERROR%', `Error ${statusCode}`))
+    return fs.readFileSync('alloy/assets/error.html', 'utf8').toString().replace('%ERROR%', `Error ${statusCode}`)
   }
-  return (fs.readFileSync('public/assets/error.html', 'utf8').toString().replace('%ERROR%', `An error has occurred!`))
+  return fs.readFileSync('public/assets/error.html', 'utf8').toString().replace('%ERROR%', `An error has occurred!`)
 }
 
 app.post('/createSession', async (req, res) => {
@@ -196,7 +195,7 @@ app.use(prefix, async (req, res, next) => {
     }
     return res.redirect(307, '/fetch/' + base64Encode('https://old.reddit.com') + location.path)
   }
-  const response = await fetch(location.href, options).catch(err => res.send(error('404', `"${xss(location.href)}" was not found!`)));
+  const response = await fetch(location.href, options).catch(err => res.send(error('404', `"${location.href}" was not found!`)));
   if(typeof response.buffer != 'function')return;
   var resbody = await response.buffer();
   var contentType = 'text/plain'

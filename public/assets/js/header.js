@@ -7,11 +7,21 @@ function randInt(min, max) {
 }
 
 var titles = [
-
+    "&rlm;&lrm;",
+    "Classes",
+    "My Drive - Google Drive",
+    "Google",
+    "Home | Schoology",
+    "My Meetings - Zoom"
 ]
 
 var icons = [
-
+    "./img/blank.png",
+    "https://ssl.gstatic.com/classroom/favicon.png",
+    "https://ssl.gstatic.com/docs/doclist/images/infinite_arrow_favicon_5.ico",
+    "https://www.google.com/favicon.ico",
+    "https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico",
+    "https://d24cgw3uvb9a9h.cloudfront.net/zoom.ico"
 ]
 
 var psel, prss;
@@ -28,20 +38,12 @@ window.addEventListener('DOMContentLoaded', function() {
     }
     document.getElementById('titleform').addEventListener('submit', function(e) {
         e.preventDefault();
-        if (this.firstChild.value) {
-            setTitle(this.firstChild.value);
-        } else {
-            setTitle('&rlm;&lrm;');
-        }
+        setTitle(this.firstChild.value);
     }, false);
 
     document.getElementById('iconform').addEventListener('submit', function(e) {
         e.preventDefault();
-        if (this.firstChild.value) {
-            setIcon(this.firstChild.value);
-        } else {
-            setIcon('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAC0lEQVQI12NgAAIAAAUAAeImBZsAAAAASUVORK5CYII=');
-        }
+        setIcon(this.firstChild.value);
     }, false);
 
     document.getElementById('atch').addEventListener('click', autoChange, false);
@@ -74,16 +76,16 @@ window.addEventListener('DOMContentLoaded', function() {
 }, false);
 
 function setPreferences() {
-    if (readCookie('HBTitle') != 'undefined') {
-        pageTitle(readCookie('HBTitle'));
+    if (readCookie('lemonTitle') != 'undefined') {
+        pageTitle(readCookie('lemonTitle'));
     }
-    if (readCookie('HBIcon') != 'undefined') {
-        pageIcon(readCookie('HBIcon'));
+    if (readCookie('lemonIcon') != 'undefined') {
+        pageIcon(readCookie('lemonIcon'));
     }
 }
 
 function setCookie(name, value) {
-    document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + date + '; SameSite=None; Secure';
+    document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + date + '; ';
 }
 
 function readCookie(name) {
@@ -98,12 +100,12 @@ function readCookie(name) {
 
 function setTitle(value) {
     pageTitle(value);
-    setCookie('HBTitle', value);
+    setCookie('lemonTitle', value);
 }
 
 function setIcon(value) {
     pageIcon(value);
-    setCookie('HBIcon', value);
+    setCookie('lemonIcon', value);
 }
 
 function pageTitle(value) {
