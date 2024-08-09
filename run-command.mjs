@@ -59,13 +59,25 @@ commands: for (let i = 2; i < process.argv.length; i++)
           fileURLToPath(new URL('./backend.js', import.meta.url)),
           {
             cwd: process.cwd(),
-            stdio: ['inherit', 'inherit', 'pipe', 'ipc'],
-            detached: true,
+            stdio: ['inherit', 'pipe', 'pipe', 'ipc'],
+            detached: true
           }
         );
-        server.stderr.on('data', (stderr) => {
+        server.stderr.on("data", stderr => {
           console.error(stderr.toString());
+          if (stderr.toString().indexOf("DeprecationWarning") + 1)
+            return;
+          server.stderr.destroy();
           process.exitCode = 1;
+        });
+        server.stdout.on("data", () => {
+          server.kill();
+          const server2 = fork(
+            fileURLToPath(new URL('./backend.js', import.meta.url)),
+            {cwd: process.cwd(), detached: true}
+          );
+          server2.unref();
+          server2.disconnect();
         });
         server.unref();
         server.disconnect();
