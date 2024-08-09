@@ -18,6 +18,8 @@ Also has a good amount of locally hosted games featured on the site.
 - Bing.com
 - And more sites!
 
+## You can support Holy Unblocker by starring the repository!
+
 #### Features:
 
 - Tab customization using the Options menu for improved stealth
@@ -27,8 +29,6 @@ Also has a good amount of locally hosted games featured on the site.
 
 <img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.3.5-preview.png"></img>
 <img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.3.0-preview-settings.png"></img>
-
-#### You can support Holy Unblocker by starring the repository!
 
 Read below for information if the official site is blocked or for obtaining more links. Can't deploy using any of the free options below? Check out Railway or look into cheap, paid VPS hosting solutions.
 
