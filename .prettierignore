@@ -1,2 +1,3 @@
 /lib
 /views/assets/js/*.js
+/views/dist

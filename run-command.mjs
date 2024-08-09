@@ -165,18 +165,6 @@ commands: for (let i = 2; i < process.argv.length; i++)
             console.log(stdout);
           }
         );
-      // Handle setup on Windows differently from platforms with POSIX-compliant
-      // shells. This should run the server as a background process.
-      else if (process.platform === 'win32')
-        exec('START /MIN "" node backend.js', (error, stdout) => {
-          if (error) {
-            console.error(error);
-            process.exitCode = 1;
-          }
-          console.log(stdout);
-        });
-      // The following approach (and similar approaches) will not work on Windows,
-      // because exiting this program will also terminate backend.js on Windows.
       else {
         const server = fork(
           fileURLToPath(new URL('./backend.js', import.meta.url)),
@@ -196,7 +184,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
           server.kill();
           const server2 = fork(
             fileURLToPath(new URL('./backend.js', import.meta.url)),
-            { cwd: process.cwd(), detached: true }
+            { cwd: process.cwd(), stdio: 'ignore', detached: true }
           );
           server2.unref();
           server2.disconnect();
