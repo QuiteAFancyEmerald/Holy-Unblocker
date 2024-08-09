@@ -6,12 +6,12 @@
 /* HU CSS
 /* ----------------------------------------------- */
 
-@import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");
-@import url("https://fonts.googleapis.com/css?family=Montserrat+Alternates");
-@import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700");
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic');
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700');
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
-@import url("https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css");
+@import url('https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css');
 
 /*
 Nord Theme (https://nordtheme.com)
@@ -73,14 +73,13 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
   --dark: #303030;
 }
 
-
 /* -----------------------------------------------
 /* HU Page Layout / General Styling
 /* ----------------------------------------------- */
 
 html {
   color: white;
-  font-family: "Figtree", sans-serif;
+  font-family: 'Figtree', sans-serif;
   font-weight: 300;
   scroll-behavior: smooth;
 }
@@ -114,7 +113,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Figtree", sans-serif;
+  font-family: 'Figtree', sans-serif;
   font-weight: 900;
 }
 
@@ -159,11 +158,11 @@ details[open] summary {
 }
 
 .font2 {
-  font-family: "Titillium Web", sans-serif;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .font3 {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 .notbold {
@@ -240,9 +239,10 @@ details[open] summary {
 /* To change the top padding on the footer, change the 3 vw values here to the same thing. */
 
 #footer {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   padding-top: 15vw;
-  background: url("/assets/img/waves.svg"), linear-gradient(to bottom, transparent 0 15vw, #1d2029 15vw 100%);
+  background: url('/assets/img/waves.svg'),
+    linear-gradient(to bottom, transparent 0 15vw, #1d2029 15vw 100%);
   background-repeat: no-repeat;
   background-size: 100vw auto;
   position: relative;
@@ -258,12 +258,12 @@ details[open] summary {
   color: white;
 }
 
-
 /* -----------------------------------------------
 /* Icons and Branding
 /* ----------------------------------------------- */
 
-.brand-logo-container, .new {
+.brand-logo-container,
+.new {
   display: flex;
   align-items: center; /* Align items vertically */
 }
@@ -275,7 +275,7 @@ details[open] summary {
   line-height: 30px;
   white-space: nowrap;
   margin-right: 20px; /* Adjust margin as needed */
-  font-family: "Figtree", sans-serif;
+  font-family: 'Figtree', sans-serif;
   font-weight: 900;
   letter-spacing: 1px;
   text-decoration: none;
@@ -304,14 +304,13 @@ details[open] summary {
 }
 
 .new::after {
-  content: "";
+  content: '';
   padding: 22.75px 25px;
   margin-left: 8px;
   background-image: url('/assets/img/new.svg');
   background-size: cover;
   font-size: 0;
 }
-
 
 /* -----------------------------------------------
 /* Navigation Bar and Menus (Header Contents)
@@ -370,7 +369,7 @@ details[open] summary {
   cursor: auto;
   padding: 15px 25px;
   margin-top: 10px;
-  font-family: "Titillium Web", sans-serif;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 /* "More" Navigation Menu */
@@ -409,7 +408,8 @@ details[open] summary {
   justify-content: center;
 }
 
-.dropdown-parent:focus-within .dropdown-settings:not(:is(:has(.close-settings-btn:active))) {
+.dropdown-parent:focus-within
+  .dropdown-settings:not(:is(:has(.close-settings-btn:active))) {
   display: flex; /* Flexbox to center content */
 }
 
@@ -435,7 +435,7 @@ details[open] summary {
   color: #eceff4;
   font-family: 'Figtree', sans-serif;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   backdrop-filter: blur(10px); /* Frosted glass effect */
   -webkit-backdrop-filter: blur(10px); /* For Safari */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for depth */
@@ -443,7 +443,7 @@ details[open] summary {
 
 .settings-header {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
@@ -458,12 +458,15 @@ details[open] summary {
   cursor: pointer;
   font-size: 24px;
   font-weight: 100;
-  margin-left: auto; 
+  margin-left: auto;
 }
 
 .close-settings-btn:hover {
   color: lightgray;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
   transform: scale(1.05);
 }
 
@@ -472,14 +475,15 @@ details[open] summary {
   gap: 40px; /* Space between left and right columns */
 }
 
-.csel-container-left, .settings-right-column {
+.csel-container-left,
+.settings-right-column {
   display: flex;
   flex-direction: column;
   gap: 15px; /* Space between items within columns */
 }
 
 .csel-container-left {
-  flex: 1; 
+  flex: 1;
   max-width: 400px; /* Adjusted to fit content without gaps */
 }
 
@@ -514,7 +518,7 @@ details[open] summary {
   flex: 1; /* Take up available space */
 }
 
-.radio-group input[type="radio"] {
+.radio-group input[type='radio'] {
   accent-color: #88c0d0;
   cursor: pointer;
   width: 20px; /* Adjust size for better appearance */
@@ -547,7 +551,7 @@ details[open] summary {
 
 .switch::after {
   position: absolute;
-  content: "";
+  content: '';
   height: 14px;
   width: 14px;
   left: 3px;
@@ -580,7 +584,9 @@ select:hover {
   background-color: #4c566a;
 }
 
-.default-badge, .bare-badge, .beta-badge {
+.default-badge,
+.bare-badge,
+.beta-badge {
   display: inline-block;
   padding: 2px 5px;
   border-radius: 5px;
@@ -605,11 +611,11 @@ select:hover {
 
 .cloakform {
   display: flex;
-  gap: 10px; 
+  gap: 10px;
   margin-bottom: 15px;
 }
 
-.cloakform input[type="text"] {
+.cloakform input[type='text'] {
   flex: 1;
   background-color: #3b4252;
   border: 1px solid #4c566a;
@@ -619,7 +625,7 @@ select:hover {
   box-sizing: border-box;
 }
 
-.cloakform input[type="button"] {
+.cloakform input[type='button'] {
   background-color: #5e81ac;
   border: none;
   border-radius: 5px;
@@ -628,18 +634,18 @@ select:hover {
   cursor: pointer;
 }
 
-.cloakform input[type="button"]:hover {
+.cloakform input[type='button']:hover {
   background-color: #81a1c1;
 }
 
-input[type="text"] {
+input[type='text'] {
   width: 100%;
   padding: 10px;
   background-color: #3b4252;
   border: 1px solid #4c566a;
   border-radius: 5px;
   color: #eceff4;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 #csel {
@@ -649,7 +655,7 @@ input[type="text"] {
   gap: 15px;
 }
 
-#csel input:not([type=checkbox]),
+#csel input:not([type='checkbox']),
 #csel select {
   outline: none;
   box-sizing: border-box;
@@ -659,20 +665,26 @@ input[type="text"] {
   margin: 5px 0;
   background-color: var(--nord1);
   border: 1px solid var(--nord9);
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
-#csel input[type=text]:focus {
+#csel input[type='text']:focus {
   box-shadow: inset 0 0 5px 0 var(--nord3);
   transition: box-shadow 0.15s ease-out;
 }
 
-#csel input:is([type=submit], [type=button]):hover {
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+#csel input:is([type='submit'], [type='button']):hover {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
   transform: scale(1.05);
 }
 
-#csel input:is([type=submit], [type=button]):active {
+#csel input:is([type='submit'], [type='button']):active {
   background-color: #78b0c0;
 }
 
@@ -692,10 +704,11 @@ input[type="text"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px; 
+  gap: 10px;
 }
 
-#hideads, #useonion {
+#hideads,
+#useonion {
   cursor: pointer;
   margin-left: 0;
 }
@@ -771,7 +784,6 @@ input[type="text"] {
   vertical-align: top;
 }
 
-
 /* -----------------------------------------------
 /* Welcome Screen Content (i.e., Big Bold Words)
 /* ----------------------------------------------- */
@@ -822,7 +834,12 @@ input[type="text"] {
   border-radius: 12px;
   overflow: hidden;
   background-color: var(--nord0);
-  background-image: url("/assets/img/noise.png"), linear-gradient(145deg, rgba(34,38,47,0.9) 0%, rgba(34,38,47,0.9) 100%);
+  background-image: url('/assets/img/noise.png'),
+    linear-gradient(
+      145deg,
+      rgba(34, 38, 47, 0.9) 0%,
+      rgba(34, 38, 47, 0.9) 100%
+    );
   background-blend-mode: overlay;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -857,7 +874,9 @@ input[type="text"] {
   background-color: var(--nord3);
 }
 
-.no-select, .comment, .mac-content br {
+.no-select,
+.comment,
+.mac-content br {
   user-select: none; /* Prevent text selection */
   -webkit-user-select: none; /* For Safari */
   -moz-user-select: none; /* For Firefox */
@@ -866,7 +885,7 @@ input[type="text"] {
 
 .mac-content {
   color: var(--nord4);
-  font-family: "Source Code Pro", monospace;
+  font-family: 'Source Code Pro', monospace;
   font-optical-sizing: auto;
   padding: 40px 0 0 80px;
   flex: 1;
@@ -882,24 +901,24 @@ input[type="text"] {
 }
 
 .cmd::before {
-  content: "$ ";
+  content: '$ ';
   color: var(--nord4);
 }
 
 .cmd::after {
-  content: "\a";
+  content: '\a';
 }
 
 .url {
-  color: rgb(255, 136, 142); 
+  color: rgb(255, 136, 142);
 }
 
 .comment {
-  color: #616E88; 
+  color: #616e88;
 }
 
 .comment::before {
-  content: "# ";
+  content: '# ';
 }
 
 .homebutton {
@@ -924,7 +943,9 @@ input[type="text"] {
 
 /* NOTE: Currently unused. */
 .hovermessage:hover {
-  transition: color 0.3s ease-in, font-size 0s linear 0.3s;
+  transition:
+    color 0.3s ease-in,
+    font-size 0s linear 0.3s;
 }
 
 /* NOTE: Currently unused. */
@@ -937,12 +958,14 @@ input[type="text"] {
 /* NOTE: Currently unused. */
 .hovermessage:hover::before {
   font-size: 16px;
-  transition: font-size 0s linear 0.3s, color 0.3s ease-in 0.3s;
+  transition:
+    font-size 0s linear 0.3s,
+    color 0.3s ease-in 0.3s;
 }
 
 /* NOTE: Currently unused. */
 .buttonlink {
-  font-family: "Titillium Web", sans-serif;
+  font-family: 'Titillium Web', sans-serif;
   font-weight: bold;
   display: inline-block;
   text-decoration: none;
@@ -1002,11 +1025,10 @@ input[type="text"] {
 .text-center {
   text-align: center;
 }
-iner
-.splashstrokeheader {
+iner .splashstrokeheader {
   position: relative;
   display: inline-block;
-  font-size: 36px; 
+  font-size: 36px;
   line-height: 1.2;
 }
 
@@ -1019,18 +1041,18 @@ iner
 
 .hero-grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-  gap: 40px; 
-  margin: 40px auto; 
-  width: 90%; 
-  max-width: 1200px; 
-  background-color: rgba(46, 52, 64, 0.2); 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin: 40px auto;
+  width: 90%;
+  max-width: 1200px;
+  background-color: rgba(46, 52, 64, 0.2);
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2); 
+  border: 1px solid rgba(255, 255, 255, 0.2);
   -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px); 
+  backdrop-filter: blur(10px);
   position: relative;
 }
 
@@ -1038,7 +1060,7 @@ iner
   text-align: center;
   position: relative;
   width: 500px;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .carousel-title {
@@ -1048,30 +1070,30 @@ iner
 }
 
 .carousel-wrapper {
-  overflow: hidden; 
+  overflow: hidden;
   position: relative;
-  width: 100%; 
+  width: 100%;
   padding: 10px 0;
 }
 
 .carousel {
   display: flex;
   width: auto;
-  animation: scroll 20s linear infinite; 
+  animation: scroll 20s linear infinite;
 }
 
 .carousel-inner {
   display: flex;
-  width: auto; 
+  width: auto;
 }
 
 .dependencylogo {
-  flex: 0 0 auto; 
+  flex: 0 0 auto;
   margin: 0 15px;
 }
 
 .dependencylogo img {
-  width: 50px; 
+  width: 50px;
   height: auto;
   padding: 10px;
   border-radius: 20px;
@@ -1083,7 +1105,7 @@ iner
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%); 
+    transform: translateX(-100%);
   }
 }
 
@@ -1098,20 +1120,28 @@ iner
 }
 
 .box-hero::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("/assets/img/noise.png") repeat, rgba(255, 255, 255, 0.03);
-  opacity: var(--noise-opacity, 0.02); 
+  background:
+    url('/assets/img/noise.png') repeat,
+    rgba(255, 255, 255, 0.03);
+  opacity: var(--noise-opacity, 0.02);
   pointer-events: none;
   -webkit-mask-image: radial-gradient(circle, white 30%, transparent 50%);
   -webkit-mask-size: 800px 800px;
-  -webkit-mask-position: calc(var(--mouse-x) - 400px) calc(var(--mouse-y) - 400px);
+  -webkit-mask-position: calc(var(--mouse-x) - 400px)
+    calc(var(--mouse-y) - 400px);
   -webkit-mask-repeat: no-repeat;
-  mask-image: radial-gradient(closest-side, rgba(37, 35, 35, 0.377) 30%, rgba(255, 255, 255, 0.048) 70%, transparent 90%);
+  mask-image: radial-gradient(
+    closest-side,
+    rgba(37, 35, 35, 0.377) 30%,
+    rgba(255, 255, 255, 0.048) 70%,
+    transparent 90%
+  );
   mask-size: 800px 800px;
   mask-position: calc(var(--mouse-x) - 400px) calc(var(--mouse-y) - 400px);
   mask-repeat: no-repeat;
@@ -1139,7 +1169,7 @@ iner
 
 .hero-text-wrap {
   max-width: 53ch;
-  margin-right: 25%; 
+  margin-right: 25%;
 }
 
 .hero-text-wrap p {
@@ -1151,13 +1181,13 @@ iner
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .hero {
   width: 100%; /* Ensure the image takes full width of its container */
   max-width: 300px; /* Ensure the image doesn't exceed its container */
-  height: auto; 
+  height: auto;
   border-radius: 50%;
 }
 
@@ -1184,7 +1214,7 @@ iner
 .grid-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 80px; 
+  gap: 80px;
   margin: 80px;
   margin-top: 300px;
   padding: 0 20px; /* Add padding to prevent overflow */
@@ -1205,20 +1235,28 @@ iner
 }
 
 .box-card::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("/assets/img/noise.png") repeat, rgba(46, 52, 64, 0.03);
-  opacity: var(--noise-opacity, 0.02); 
+  background:
+    url('/assets/img/noise.png') repeat,
+    rgba(46, 52, 64, 0.03);
+  opacity: var(--noise-opacity, 0.02);
   pointer-events: none;
   -webkit-mask-image: radial-gradient(circle, white 30%, transparent 50%);
   -webkit-mask-size: 800px 800px;
-  -webkit-mask-position: calc(var(--mouse-x) - 400px) calc(var(--mouse-y) - 400px);
+  -webkit-mask-position: calc(var(--mouse-x) - 400px)
+    calc(var(--mouse-y) - 400px);
   -webkit-mask-repeat: no-repeat;
-  mask-image: radial-gradient(closest-side, rgba(37, 35, 35, 0.377) 30%, rgba(255, 255, 255, 0.048) 70%, transparent 90%);
+  mask-image: radial-gradient(
+    closest-side,
+    rgba(37, 35, 35, 0.377) 30%,
+    rgba(255, 255, 255, 0.048) 70%,
+    transparent 90%
+  );
   mask-size: 800px 800px;
   mask-position: calc(var(--mouse-x) - 400px) calc(var(--mouse-y) - 400px);
   mask-repeat: no-repeat;
@@ -1235,8 +1273,8 @@ iner
 .box-card .content {
   width: calc(95% - min(30%, 180px) - 32px);
   margin-right: 20px;
-  box-sizing: border-box; 
-  overflow-wrap: break-word
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
 
 .image-container {
@@ -1244,7 +1282,7 @@ iner
   right: 5%;
   top: 50%;
   transform: translateY(-50%);
-  width: 30%; 
+  width: 30%;
   max-width: 180px; /* Add a max-width to prevent it from getting too large */
   height: auto;
   background-color: var(--nord0m3);
@@ -1391,10 +1429,6 @@ iner
   }
 }
 
-
-
-
-
 .box-large {
   width: 80vw;
   margin: 20px auto;
@@ -1406,7 +1440,7 @@ iner
 
 .box-error {
   margin: 40vh 0;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 .box-error h1 {
@@ -1437,13 +1471,12 @@ iner
   margin-bottom: 8px;
 }
 
-
 /* -----------------------------------------------
 /* Documentation and FAQ Pages
 /* ----------------------------------------------- */
 
 #documentation {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 #documentation code {
@@ -1498,8 +1531,8 @@ iner
 }
 
 .ad::before {
-  content: "Advertisement";
-  font-family: "Titillium Web", sans-serif;
+  content: 'Advertisement';
+  font-family: 'Titillium Web', sans-serif;
   position: absolute;
   z-index: -1;
   left: 50%;
@@ -1527,21 +1560,21 @@ iner
   border-radius: 5px;
   padding: 10px 12px;
   color: white;
-  font-family: "Montserrat Alternates", sans-serif;
+  font-family: 'Montserrat Alternates', sans-serif;
   font-size: 20px;
   margin: 3px;
 }
 
-.pr-form input[type=text] {
+.pr-form input[type='text'] {
   max-width: 700px;
   width: calc(100% - 44px);
 }
 
-.pr-form input[type=text]:focus {
+.pr-form input[type='text']:focus {
   animation: glowshadow 2s linear infinite;
 }
 
-.pr-form input[type=text]::placeholder {
+.pr-form input[type='text']::placeholder {
   color: var(--gray);
 }
 
@@ -1604,7 +1637,6 @@ iner
   background-color: #111;
 }
 
-
 /* -----------------------------------------------
 /* HU Games Directory
 /* ----------------------------------------------- */
@@ -1616,7 +1648,7 @@ iner
 /* Games list for non-flash games */
 
 .glist {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -1660,7 +1692,7 @@ iner
 /* Flash Games Search Bar */
 
 #fsearchbar {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 16px;
   background-color: var(--nord0);
   outline: none;
@@ -1678,7 +1710,7 @@ iner
 /* Flash Games List */
 
 .flist {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   background-color: var(--nord0);
   width: 400px;
   height: calc(100vh - 92px);
@@ -1712,7 +1744,6 @@ iner
 .gfooter-only {
   margin: 40px 0 32px;
 }
-
 
 /* -----------------------------------------------
 /* CSS Animations
@@ -1753,7 +1784,10 @@ iner
 }
 
 .pulse:hover {
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
   transform: scale(1.05);
   -webkit-font-smoothing: subpixel-antialiased;
 }
@@ -1785,7 +1819,7 @@ iner
 }
 
 .glowbutton::after {
-  content: "";
+  content: '';
   border-radius: inherit;
   display: inline-block;
   position: absolute;
@@ -1806,9 +1840,10 @@ iner
 .glowbutton:active::after {
   background: linear-gradient(90deg, var(--nord7), var(--nord8), var(--nord7));
   background-size: 100px auto;
-  animation: glowshadow 2s linear infinite, glowbg 2s linear infinite;
+  animation:
+    glowshadow 2s linear infinite,
+    glowbg 2s linear infinite;
 }
-
 
 /* -----------------------------------------------
 /* Mobile Support
@@ -1842,9 +1877,11 @@ iner
 
 .mnavebutton::before,
 .mnavebutton::after {
-  content: "";
+  content: '';
   position: absolute;
-  transition: transform 0.2s ease-out, top 0.2s ease-out;
+  transition:
+    transform 0.2s ease-out,
+    top 0.2s ease-out;
 }
 
 .mnavebutton {
@@ -1881,7 +1918,6 @@ iner
 .mobile {
   display: none;
 }
-
 
 /* -----------------------------------------------
 /* CSS Media Queries (largely for mobile support)
@@ -1953,7 +1989,7 @@ iner
   #banner {
     display: none;
   }
-/*
+  /*
   .mnave {
     display: none !important;
   }
@@ -2051,7 +2087,6 @@ iner
 }
 
 @media (max-width: 600px) {
-
   #header {
     padding: 15px 30px;
   }
@@ -2065,7 +2100,8 @@ iner
     font-size: 14px;
   }
 
-  .navbar, .navbar-1 {
+  .navbar,
+  .navbar-1 {
     font-size: 11px;
   }
 
@@ -2116,13 +2152,15 @@ iner
     margin-top: 7px;
   }
 
-  #csel input:not([type=checkbox]), #csel select {
+  #csel input:not([type='checkbox']),
+  #csel select {
     padding: 7px 8px;
     margin: 3.5px 1.75px;
     font-size: 11px;
   }
 
-  #csel .cseltitle ~ input:not([type=checkbox]), #csel select {
+  #csel .cseltitle ~ input:not([type='checkbox']),
+  #csel select {
     width: calc(100% - 94.5px);
   }
 
@@ -2134,7 +2172,8 @@ iner
     width: 60vw;
   }
 
-  .hero, .image-container {
+  .hero,
+  .image-container {
     display: none;
   }
 

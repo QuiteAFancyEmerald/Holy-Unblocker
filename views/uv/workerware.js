@@ -4,10 +4,10 @@
 /* Service Worker Middleware Script
 /* ----------------------------------------------- */
 
-importScripts("./WWError.js");
-const dbg = console.log.bind(console, "[WorkerWare]");
-const time = console.time.bind(console, "[WorkerWare]");
-const timeEnd = console.timeEnd.bind(console, "[WorkerWare]");
+importScripts('./WWError.js');
+const dbg = console.log.bind(console, '[WorkerWare]');
+const time = console.time.bind(console, '[WorkerWare]');
+const timeEnd = console.timeEnd.bind(console, '[WorkerWare]');
 
 /*
   OPTS:
@@ -23,26 +23,26 @@ const defaultOpt = {
 };
 
 const validEvents = [
-  "abortpayment",
-  "activate",
-  "backgroundfetchabort",
-  "backgroundfetchclick",
-  "backgroundfetchfail",
-  "backgroundfetchsuccess",
-  "canmakepayment",
-  "contentdelete",
-  "cookiechange",
-  "fetch",
-  "install",
-  "message",
-  "messageerror",
-  "notificationclick",
-  "notificationclose",
-  "paymentrequest",
-  "periodicsync",
-  "push",
-  "pushsubscriptionchange",
-  "sync",
+  'abortpayment',
+  'activate',
+  'backgroundfetchabort',
+  'backgroundfetchclick',
+  'backgroundfetchfail',
+  'backgroundfetchsuccess',
+  'canmakepayment',
+  'contentdelete',
+  'cookiechange',
+  'fetch',
+  'install',
+  'message',
+  'messageerror',
+  'notificationclick',
+  'notificationclose',
+  'paymentrequest',
+  'periodicsync',
+  'push',
+  'pushsubscriptionchange',
+  'sync',
 ];
 
 class WorkerWare {
@@ -52,7 +52,7 @@ class WorkerWare {
   }
   info() {
     return {
-      version: "0.1.0",
+      version: '0.1.0',
       middlewares: this._middlewares,
       options: this._opt,
     };
@@ -61,10 +61,11 @@ class WorkerWare {
     let validateMW = this.validateMiddleware(middleware);
     if (validateMW.error) throw new WWError(validateMW.error);
     // This means the middleware is an anonymous function, or the user is silly and named their function "function"
-    if (middleware.function.name == "function") middleware.name = crypto.randomUUID();
+    if (middleware.function.name == 'function')
+      middleware.name = crypto.randomUUID();
     if (!middleware.name) middleware.name = middleware.function.name;
     if (this._opt.randomNames) middleware.name = crypto.randomUUID();
-    if (this._opt.debug) dbg("Adding middleware:", middleware.name);
+    if (this._opt.debug) dbg('Adding middleware:', middleware.name);
     this._middlewares.push(middleware);
   }
   // Run all middlewares for the event type passed in.
@@ -91,12 +92,16 @@ class WorkerWare {
     return fn;
   }
   deleteByName(middlewareID) {
-    if (this._opt.debug) dbg("Deleting middleware:", middlewareID);
-    this._middlewares = this._middlewares.filter((mw) => mw.name !== middlewareID);
+    if (this._opt.debug) dbg('Deleting middleware:', middlewareID);
+    this._middlewares = this._middlewares.filter(
+      (mw) => mw.name !== middlewareID
+    );
   }
   deleteByEvent(middlewareEvent) {
-    if (this._opt.debug) dbg("Deleting middleware by event:", middlewareEvent);
-    this._middlewares = this._middlewares.filter((mw) => !mw.events.includes(middlewareEvent));
+    if (this._opt.debug) dbg('Deleting middleware by event:', middlewareEvent);
+    this._middlewares = this._middlewares.filter(
+      (mw) => !mw.events.includes(middlewareEvent)
+    );
   }
   get() {
     return this._middlewares;
@@ -107,7 +112,7 @@ class WorkerWare {
   */
   runMW(name, event) {
     const middlewares = this._middlewares;
-    if (this._opt.debug) dbg("Running middleware:", name);
+    if (this._opt.debug) dbg('Running middleware:', name);
     // if (middlewares.includes(name)) {
     //   return middlewares[name](event);
     // } else {
@@ -119,7 +124,7 @@ class WorkerWare {
         didCall = true;
         event.workerware = {
           config: middlewares[i].configuration || {},
-        }
+        };
         if (this._opt.timing) console.time(middlewares[i].name);
         let call = middlewares[i].function(event);
         if (this._opt.timing) console.timeEnd(middlewares[i].name);
@@ -127,7 +132,7 @@ class WorkerWare {
       }
     }
     if (!didCall) {
-      throw new WWError("Middleware not found!");
+      throw new WWError('Middleware not found!');
     }
   }
   // type middlewareManifest = {
@@ -139,32 +144,40 @@ class WorkerWare {
   validateMiddleware(middleware) {
     if (!middleware.function)
       return {
-        error: "middleware.function is required",
+        error: 'middleware.function is required',
       };
-    if (typeof middleware.function !== "function")
+    if (typeof middleware.function !== 'function')
       return {
-        error: "middleware.function must be typeof function",
+        error: 'middleware.function must be typeof function',
       };
-    if (typeof middleware.configuration !== "object" && middleware.configuration !== undefined) {
+    if (
+      typeof middleware.configuration !== 'object' &&
+      middleware.configuration !== undefined
+    ) {
       return {
-        error: "middleware.configuration must be typeof object",
+        error: 'middleware.configuration must be typeof object',
       };
     }
     if (!middleware.events)
       return {
-        error: "middleware.events is required",
+        error: 'middleware.events is required',
       };
     if (!Array.isArray(middleware.events))
       return {
-        error: "middleware.events must be an array",
+        error: 'middleware.events must be an array',
       };
     if (middleware.events.some((ev) => !validEvents.includes(ev)))
       return {
-        error: "Invalid event type! Must be one of the following: " + validEvents.join(", "),
+        error:
+          'Invalid event type! Must be one of the following: ' +
+          validEvents.join(', '),
       };
-    if (middleware.explicitCall && typeof middleware.explicitCall !== "boolean") {
+    if (
+      middleware.explicitCall &&
+      typeof middleware.explicitCall !== 'boolean'
+    ) {
       return {
-        error: "middleware.explicitCall must be typeof boolean",
+        error: 'middleware.explicitCall must be typeof boolean',
       };
     }
     return {

@@ -1,10 +1,10 @@
 //  This file is solely used for the automatically run GitHub job, which checks to
 //  see if all HU LTS code is working properly (at least on an Ubuntu machine).
 
-const axios = require("axios");
-const puppeteer = require("puppeteer");
+const axios = require('axios');
+const puppeteer = require('puppeteer');
 
-const testEndpoint = async url => {
+const testEndpoint = async (url) => {
   try {
     const response = await axios.get(url);
     return response.status === 200;
@@ -29,58 +29,58 @@ const testGeneratedUrl = async (url, headers) => {
 
 const testServerResponse = async () => {
   const endpoints = [
-    "http://localhost:8080/",
-    "http://localhost:8080/test-404",
-    "http://localhost:8080/browsing",
-    "http://localhost:8080/rammerhead",
-    "http://localhost:8080/ultraviolet",
-    "http://localhost:8080/documentation",
-    "http://localhost:8080/questions",
-    "http://localhost:8080/s",
-    "http://localhost:8080/credits",
-    "http://localhost:8080/bookmarklets",
-    "http://localhost:8080/terms",
-    "http://localhost:8080/games",
-    "http://localhost:8080/web-games",
-    "http://localhost:8080/emulators",
-    "http://localhost:8080/flash-games",
-    "http://localhost:8080/retro-games",
-    "http://localhost:8080/youtube",
-    "http://localhost:8080/apps",
-    "http://localhost:8080/flash",
-    "http://localhost:8080/webretro",
-    "http://localhost:8080/vibe-os",
-    "http://localhost:8080/assets/js/particlesjs/particles.js",
-    "http://localhost:8080/assets/js/bareTransport.js",
-    "http://localhost:8080/assets/js/card.js",
-    "http://localhost:8080/assets/js/common-16451543478.js",
-    "http://localhost:8080/assets/js/csel.js",
-    "http://localhost:8080/assets/js/register-sw.js",
-    "http://localhost:8080/assets/json/emu-nav.json",
-    "http://localhost:8080/assets/json/blacklist.json",
-    "http://localhost:8080/assets/json/emulib-nav.json",
-    "http://localhost:8080/assets/json/flash-nav.json",
-    "http://localhost:8080/assets/json/h5-nav.json",
-    "http://localhost:8080/assets/json/links.json",
-    "http://localhost:8080/baremux/index.js",
-    "http://localhost:8080/baremux/worker.js",
-    "http://localhost:8080/epoxy/index.mjs",
-    "http://localhost:8080/uv/uv.bundle.js",
-    "http://localhost:8080/uv/sw.js",
-    "http://localhost:8080/uv/uv.config.js",
-    "http://localhost:8080/uv/workerware.js",
-    "http://localhost:8080/uv/WWError.js"
+    'http://localhost:8080/',
+    'http://localhost:8080/test-404',
+    'http://localhost:8080/browsing',
+    'http://localhost:8080/rammerhead',
+    'http://localhost:8080/ultraviolet',
+    'http://localhost:8080/documentation',
+    'http://localhost:8080/questions',
+    'http://localhost:8080/s',
+    'http://localhost:8080/credits',
+    'http://localhost:8080/bookmarklets',
+    'http://localhost:8080/terms',
+    'http://localhost:8080/games',
+    'http://localhost:8080/web-games',
+    'http://localhost:8080/emulators',
+    'http://localhost:8080/flash-games',
+    'http://localhost:8080/retro-games',
+    'http://localhost:8080/youtube',
+    'http://localhost:8080/apps',
+    'http://localhost:8080/flash',
+    'http://localhost:8080/webretro',
+    'http://localhost:8080/vibe-os',
+    'http://localhost:8080/assets/js/particlesjs/particles.js',
+    'http://localhost:8080/assets/js/bareTransport.js',
+    'http://localhost:8080/assets/js/card.js',
+    'http://localhost:8080/assets/js/common-16451543478.js',
+    'http://localhost:8080/assets/js/csel.js',
+    'http://localhost:8080/assets/js/register-sw.js',
+    'http://localhost:8080/assets/json/emu-nav.json',
+    'http://localhost:8080/assets/json/blacklist.json',
+    'http://localhost:8080/assets/json/emulib-nav.json',
+    'http://localhost:8080/assets/json/flash-nav.json',
+    'http://localhost:8080/assets/json/h5-nav.json',
+    'http://localhost:8080/assets/json/links.json',
+    'http://localhost:8080/baremux/index.js',
+    'http://localhost:8080/baremux/worker.js',
+    'http://localhost:8080/epoxy/index.mjs',
+    'http://localhost:8080/uv/uv.bundle.js',
+    'http://localhost:8080/uv/sw.js',
+    'http://localhost:8080/uv/uv.config.js',
+    'http://localhost:8080/uv/workerware.js',
+    'http://localhost:8080/uv/WWError.js',
   ];
 
   const results = await Promise.all(endpoints.map(testEndpoint));
   const allPassed = results.every((result) => result);
 
   if (allPassed) {
-    console.log("All endpoints responded with status code 200. Test passed.");
+    console.log('All endpoints responded with status code 200. Test passed.');
     await testCommonJSOnPage();
   } else {
     console.error(
-      "One or more endpoints failed to respond with status code 200. Test failed."
+      'One or more endpoints failed to respond with status code 200. Test failed.'
     );
     process.exitCode = 1;
   }
@@ -89,9 +89,9 @@ const testServerResponse = async () => {
 const testCommonJSOnPage = async () => {
   const browser = await puppeteer.launch({
     args: [
-      "--enable-features=NetworkService",
-      "--enable-features=ServiceWorker",
-      "--enable-features=InsecureOrigins",
+      '--enable-features=NetworkService',
+      '--enable-features=ServiceWorker',
+      '--enable-features=InsecureOrigins',
     ],
     headless: true,
     ignoreHTTPSErrors: true,
@@ -102,73 +102,75 @@ const testCommonJSOnPage = async () => {
     const getHeaders = async () => {
       const headers = {};
 
-      headers["User-Agent"] = await page.evaluate(() => navigator.userAgent);
-      headers["Referer"] = await page.evaluate(() => window.location.href);
+      headers['User-Agent'] = await page.evaluate(() => navigator.userAgent);
+      headers['Referer'] = await page.evaluate(() => window.location.href);
 
       return headers;
     };
 
     const testRammerhead = async () => {
-      await page.goto("http://localhost:8080/rammerhead");
+      await page.goto('http://localhost:8080/rammerhead');
 
       const testResults = await page.evaluate(async () => {
         const results = {};
 
         await new Promise((resolve) => {
-          if (document.readyState === "complete") {
+          if (document.readyState === 'complete') {
             resolve();
           } else {
-            window.addEventListener("load", resolve);
+            window.addEventListener('load', resolve);
           }
         });
 
-//      Locate the omnibox element on the Rammerhead page.
-        let omnibox = document.getElementById("pr-rh");
-        omnibox = omnibox && omnibox.querySelector("input[type=text]");
+        //      Locate the omnibox element on the Rammerhead page.
+        let omnibox = document.getElementById('pr-rh');
+        omnibox = omnibox && omnibox.querySelector('input[type=text]');
 
         if (omnibox) {
           try {
-//          Send an artificial input to the omnibox. The omnibox will create
-//          a proxy URL and leave it as the input value in response.
-            const urlPath = "example.com";
+            //          Send an artificial input to the omnibox. The omnibox will create
+            //          a proxy URL and leave it as the input value in response.
+            const urlPath = 'example.com';
             omnibox.value = urlPath;
             await omnibox.dispatchEvent(
-              new KeyboardEvent("keydown", {code: "Validator Test"})
+              new KeyboardEvent('keydown', { code: 'Validator Test' })
             );
 
-//          Wait up to 5 seconds for the omnibox to finish updating.
-            const loadUrl = new Promise(resolve => {
-              if (omnibox.value !== urlPath) resolve(omnibox.value);
-              else omnibox.addEventListener("change", () => resolve(omnibox.value));
-            }),
-            timeout = new Promise(resolve => {
-              setTimeout(() => resolve(omnibox.value), 40000);
-            }),
-
-//          Record the proxy URL that the omnibox left here.
-            rammerheadUrl = await Promise.race([loadUrl, timeout]);
-            console.log("Generated Rammerhead URL:", rammerheadUrl);
-            results.rammerhead = rammerheadUrl ? rammerheadUrl : "failure";
+            //          Wait up to 5 seconds for the omnibox to finish updating.
+            const loadUrl = new Promise((resolve) => {
+                if (omnibox.value !== urlPath) resolve(omnibox.value);
+                else
+                  omnibox.addEventListener('change', () =>
+                    resolve(omnibox.value)
+                  );
+              }),
+              timeout = new Promise((resolve) => {
+                setTimeout(() => resolve(omnibox.value), 40000);
+              }),
+              //          Record the proxy URL that the omnibox left here.
+              rammerheadUrl = await Promise.race([loadUrl, timeout]);
+            console.log('Generated Rammerhead URL:', rammerheadUrl);
+            results.rammerhead = rammerheadUrl ? rammerheadUrl : 'failure';
           } catch (e) {
-            results.rammerhead = "failure: " + e.message;
+            results.rammerhead = 'failure: ' + e.message;
           }
         } else {
-          results.goProx = "not defined";
+          results.goProx = 'not defined';
         }
 
         return results;
       });
 
-      console.log("Rammerhead test results:", testResults);
+      console.log('Rammerhead test results:', testResults);
 
       const headers = await getHeaders();
       const rammerheadTestPassed =
-        testResults.rammerhead !== "failure" &&
+        testResults.rammerhead !== 'failure' &&
         (await testGeneratedUrl(testResults.rammerhead, headers));
 
       console.log(
         `Rammerhead test result: ${
-          rammerheadTestPassed ? "success" : "failure"
+          rammerheadTestPassed ? 'success' : 'failure'
         }`
       );
 
@@ -211,90 +213,96 @@ xx                                                  xx
 
 */
 
-
-
     const testUltraviolet = async () => {
-      await page.goto("http://localhost:8080/ultraviolet");
+      await page.goto('http://localhost:8080/ultraviolet');
 
       const testResults = await page.evaluate(async () => {
         const results = [{}, {}];
 
         await new Promise((resolve) => {
+          const waitForDocument = () =>
+            document.readyState === 'complete'
+              ? resolve()
+              : window.addEventListener('load', resolve);
 
-          const waitForDocument = () => document.readyState === "complete"
-            ? resolve()
-            : window.addEventListener("load", resolve);
-
-//        Wait until a service worker is registered before continuing.
-//        Also make sure the document is loaded.
-          const waitForWorker = async () => setTimeout(async () => {
-          (await navigator.serviceWorker.getRegistrations()).length >= 1
-            ? waitForDocument()
-            : waitForWorker()
-          }, 1000);
+          //        Wait until a service worker is registered before continuing.
+          //        Also make sure the document is loaded.
+          const waitForWorker = async () =>
+            setTimeout(async () => {
+              (await navigator.serviceWorker.getRegistrations()).length >= 1
+                ? waitForDocument()
+                : waitForWorker();
+            }, 1000);
 
           waitForWorker();
         });
 
-//      Locate the omnibox element on the Ultraviolet page.
-        let omnibox = document.getElementById("pr-uv");
-        omnibox = omnibox && omnibox.querySelector("input[type=text]");
+        //      Locate the omnibox element on the Ultraviolet page.
+        let omnibox = document.getElementById('pr-uv');
+        omnibox = omnibox && omnibox.querySelector('input[type=text]');
 
         if (omnibox) {
-//          For the hacky URL test, use the URL page's EXACT title.
+          //          For the hacky URL test, use the URL page's EXACT title.
           const website = {
-            path: "example.com",
-            title: "Example Domain"
+            path: 'example.com',
+            title: 'Example Domain',
           };
 
           try {
-//          Send an artificial input to the omnibox. The omnibox will create
-//          a proxy URL and leave it as the input value in response.
+            //          Send an artificial input to the omnibox. The omnibox will create
+            //          a proxy URL and leave it as the input value in response.
             omnibox.value = website.path;
             await omnibox.dispatchEvent(
-              new KeyboardEvent("keydown", {code: "Validator Test"})
+              new KeyboardEvent('keydown', { code: 'Validator Test' })
             );
 
-//          Record the proxy URL that the omnibox left here.
+            //          Record the proxy URL that the omnibox left here.
             const generatedUrl = omnibox.value;
-            console.log("Generated Ultraviolet URL:", generatedUrl);
-            results[0].ultraviolet = generatedUrl ? generatedUrl : "failure";
+            console.log('Generated Ultraviolet URL:', generatedUrl);
+            results[0].ultraviolet = generatedUrl ? generatedUrl : 'failure';
 
-//          Test to see if the document title for example.com has loaded,
-//          by appending an IFrame to the document and grabbing its content.
+            //          Test to see if the document title for example.com has loaded,
+            //          by appending an IFrame to the document and grabbing its content.
             const testGeneratedUrlHacky = async (url) => {
               let result = false;
-              const exampleIFrame = document.createElement("iframe");
-              const waitForDocument = new Promise(resolve => {
+              const exampleIFrame = document.createElement('iframe');
+              const waitForDocument = new Promise((resolve) => {
                 document.documentElement.appendChild(exampleIFrame);
-                exampleIFrame.addEventListener("load", () => {
-                  result = exampleIFrame.contentWindow.document.title === website.title;
+                exampleIFrame.addEventListener('load', () => {
+                  result =
+                    exampleIFrame.contentWindow.document.title ===
+                    website.title;
                   resolve();
                 });
               });
               exampleIFrame.src = url;
-              exampleIFrame.style.display = "none";
+              exampleIFrame.style.display = 'none';
               await waitForDocument;
               return result;
             };
 
-            results[1].uvTestPassed = await testGeneratedUrlHacky(results[0].ultraviolet);
+            results[1].uvTestPassed = await testGeneratedUrlHacky(
+              results[0].ultraviolet
+            );
           } catch (e) {
-            results[0].ultraviolet = "failure: " + e.message;
+            results[0].ultraviolet = 'failure: ' + e.message;
           }
         } else {
-          results[0].goProx = "not defined";
+          results[0].goProx = 'not defined';
         }
 
         return results;
       });
 
-      console.log("Ultraviolet test results:", testResults[0]);
+      console.log('Ultraviolet test results:', testResults[0]);
 
-      if (testResults[0].ultraviolet && testResults[0].ultraviolet !== "failure") {
+      if (
+        testResults[0].ultraviolet &&
+        testResults[0].ultraviolet !== 'failure'
+      ) {
         const uvTestPassed = testResults[1].uvTestPassed;
         console.log(
-          `Ultraviolet test result: ${uvTestPassed ? "success" : "failure"}`
+          `Ultraviolet test result: ${uvTestPassed ? 'success' : 'failure'}`
         );
         return uvTestPassed;
       } else {
@@ -308,14 +316,14 @@ xx                                                  xx
     const ultravioletPassed = await testUltraviolet();
 
     if (rammerheadPassed && ultravioletPassed) {
-      console.log("Both tests passed.");
+      console.log('Both tests passed.');
       process.exitCode = 0;
     } else {
-      console.error("Tests failed.");
+      console.error('Tests failed.');
       process.exitCode = 1;
     }
   } catch (error) {
-    console.error("Error in testCommonJSOnPage:", error.message);
+    console.error('Error in testCommonJSOnPage:', error.message);
     process.exitCode = 1;
   } finally {
     await browser.close();

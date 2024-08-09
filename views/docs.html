@@ -44,18 +44,18 @@
     <script src="assets/js/particlesjs/particles.js"></script>
     <script>
       (function () {
-        var v = document.getElementById("vsc");
+        var v = document.getElementById('vsc');
         var t, a;
         v.addEventListener(
-          "mouseenter",
+          'mouseenter',
           function () {
             t = setTimeout(function () {
               if (!a) {
                 a = true;
-                var e = new Audio("assets/misc/visualstudiocode.mp3");
+                var e = new Audio('assets/misc/visualstudiocode.mp3');
                 e.play();
                 e.addEventListener(
-                  "ended",
+                  'ended',
                   function () {
                     a = false;
                   },
@@ -67,7 +67,7 @@
           false
         );
         v.addEventListener(
-          "mouseleave",
+          'mouseleave',
           function () {
             clearTimeout(t);
           },

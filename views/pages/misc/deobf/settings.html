@@ -1,85 +1,91 @@
 <div id="csel" class="settings-content">
   <div class="settings-header">
-      <p class="cseltitle-main">Settings</p>
-      <i class="far fa-times-circle close-settings-btn"></i>
+    <p class="cseltitle-main">Settings</p>
+    <i class="far fa-times-circle close-settings-btn"></i>
   </div>
   <div class="settings-content-body">
-      <div class="csel-container-left">
-          <p class="cseltitle">Tab Cloak</p>
-          <form id="titleform" class="cloakform">
-              <input type="text" placeholder="Tab Title" spellcheck="false">
-              <input type="submit" value="Apply">
-          </form>
-          <form id="iconform" class="cloakform">
-              <input type="text" placeholder="Icon URL" spellcheck="false">
-              <input type="submit" value="Apply">
-          </form>
-          <p class="cseltitle">Ultraviolet Proxy Transport</p>
-          <div class="radio-group" id=uv-transport-list>
-              <label>
-                  <p>Libcurl <span class="default-badge">Cross-Browser/Secure (Firefox)</span></p>
-                  <input type="radio" name="uv-transport" value="libcurl" checked>
-              </label>
-              <label>
-                  <p>Epoxy <span class="bare-badge">Fastest/Secure (Chromium, Apple)</span></p>
-                  <input type="radio" name="uv-transport" value="epoxy">
-              </label>
-              <label>
-                  <p>Bare <span class="beta-badge">Least Secure (All)</span></p>
-                  <input type="radio" name="uv-transport" value="bare">
-              </label>
-          </div>
-          <p class="cseltitle">Advanced Options</p>
-          <div class="radio-group">
-            <label>
-              <p>Hide Ads <span class="default-badge">AdGuard</span></p>
-              <input type="checkbox" id="hideads" class="switch" checked>
-            </label>
-            <label>
-              <p>Enable Tor <span class="bare-badge">SOCKS5 Onion Routing</span></p>
-              <input type="checkbox" id="useonion" class="switch">
-            </label>
-          </div>
+    <div class="csel-container-left">
+      <p class="cseltitle">Tab Cloak</p>
+      <form id="titleform" class="cloakform">
+        <input type="text" placeholder="Tab Title" spellcheck="false" />
+        <input type="submit" value="Apply" />
+      </form>
+      <form id="iconform" class="cloakform">
+        <input type="text" placeholder="Icon URL" spellcheck="false" />
+        <input type="submit" value="Apply" />
+      </form>
+      <p class="cseltitle">Ultraviolet Proxy Transport</p>
+      <div class="radio-group" id="uv-transport-list">
+        <label>
+          <p>
+            Libcurl
+            <span class="default-badge">Cross-Browser/Secure (Firefox)</span>
+          </p>
+          <input type="radio" name="uv-transport" value="libcurl" checked />
+        </label>
+        <label>
+          <p>
+            Epoxy
+            <span class="bare-badge">Fastest/Secure (Chromium, Apple)</span>
+          </p>
+          <input type="radio" name="uv-transport" value="epoxy" />
+        </label>
+        <label>
+          <p>Bare <span class="beta-badge">Least Secure (All)</span></p>
+          <input type="radio" name="uv-transport" value="bare" />
+        </label>
       </div>
-      <div class="settings-right-column">
-          <p class="cseltitle">Search Engine</p>
-          <select>
-              <option>Google</option>
-              <option>Bing</option>
-              <option>DuckDuckGo</option>
-              <option>Yahoo</option>
-          </select>
-          <p class="cseltitle">About:Blank</p>
-          <div class="switch-container">
-            <p>Stealth Tab <span class="default-badge">Default</span></p>
-            <input type="checkbox" class="switch">
-          </div>        
-          <p class="cseltitle">Select Theme</p>
-          <div class="radio-group">
-              <label>
-                  <p>Light</p>
-                  <input type="radio" name="theme" value="lighttheme" checked>
-              </label>
-              <label>
-                  <p>Dark</p>
-                  <input type="radio" name="theme" value="darktheme">
-              </label>
-          </div>
-          <p class="cseltitle">Icon Presets</p>
-          <select id=icon-list>
-              <option><!-- Leave this blank to avoid a bug. --></option>
-              <option>Google</option>
-              <option>Bing</option>
-              <option>Google Drive</option>
-              <option>Gmail</option>
-          </select>
-          <p class="cseltitle">Enable Devtools</p>
-          <div class="radio-group">
-              <label>
-                  <p>Eruda Devtools<span class="bare-badge">CTRL+SHIFT+I</span></p>
-                  <input type="radio" name="theme" value="lighttheme" checked>
-              </label>
-          </div>
+      <p class="cseltitle">Advanced Options</p>
+      <div class="radio-group">
+        <label>
+          <p>Hide Ads <span class="default-badge">AdGuard</span></p>
+          <input type="checkbox" id="hideads" class="switch" checked />
+        </label>
+        <label>
+          <p>Enable Tor <span class="bare-badge">SOCKS5 Onion Routing</span></p>
+          <input type="checkbox" id="useonion" class="switch" />
+        </label>
       </div>
+    </div>
+    <div class="settings-right-column">
+      <p class="cseltitle">Search Engine</p>
+      <select>
+        <option>Google</option>
+        <option>Bing</option>
+        <option>DuckDuckGo</option>
+        <option>Yahoo</option>
+      </select>
+      <p class="cseltitle">About:Blank</p>
+      <div class="switch-container">
+        <p>Stealth Tab <span class="default-badge">Default</span></p>
+        <input type="checkbox" class="switch" />
+      </div>
+      <p class="cseltitle">Select Theme</p>
+      <div class="radio-group">
+        <label>
+          <p>Light</p>
+          <input type="radio" name="theme" value="lighttheme" checked />
+        </label>
+        <label>
+          <p>Dark</p>
+          <input type="radio" name="theme" value="darktheme" />
+        </label>
+      </div>
+      <p class="cseltitle">Icon Presets</p>
+      <select id="icon-list">
+        <option><!-- Leave this blank to avoid a bug. --></option>
+        <option>Google</option>
+        <option>Bing</option>
+        <option>Google Drive</option>
+        <option>Gmail</option>
+      </select>
+      <p class="cseltitle">Enable Devtools</p>
+      <div class="radio-group">
+        <label>
+          <p>Eruda Devtools<span class="bare-badge">CTRL+SHIFT+I</span></p>
+          <input type="radio" name="theme" value="lighttheme" checked />
+        </label>
+      </div>
+    </div>
   </div>
 </div>
