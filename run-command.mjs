@@ -29,7 +29,7 @@ const shutdown = fileURLToPath(new URL('./src/.shutdown', import.meta.url));
 
 //  Run each command line argument passed after node run-command.mjs.
 //  Commands are defined in the switch case statement below.
-for (let i = 2; i < process.argv.length; i++)
+commands: for (let i = 2; i < process.argv.length; i++)
   switch (process.argv[i]) {
     //  Commmand to boot up the server. Use PM2 to run if production is true in the
     //  config file.
@@ -46,26 +46,37 @@ for (let i = 2; i < process.argv.length; i++)
       //    This should run the server as a background process.
       else if (process.platform === 'win32')
         exec('START /MIN "" node backend.js', (error, stdout) => {
-          if (error) throw error;
+          if (error) {
+            console.error(error);
+            process.exitCode = 1;
+          }
           console.log(stdout);
         });
       //    The following approach (and similar approaches) will not work on Windows,
       //    because exiting this program will also terminate backend.js on Windows.
       else {
         const server = fork(
-          fileURLToPath(new URL('./backend.js', import.meta.url)),
-          { detached: true }
+          fileURLToPath(new URL("./backend.js", import.meta.url)),
+          {
+            cwd: process.cwd(),
+            stdio: ["inherit", "inherit", "pipe", "ipc"],
+            detached: true
+          }
         );
+        server.stderr.on("data", stderr => {
+          console.error(stderr.toString());
+          process.exitCode = 1;
+        });
         server.unref();
         server.disconnect();
       }
       break;
 
-    //  Stop the server. Make a temporary file that the server will check for if told
-    //  to shut down. This is done by sending a GET request to the server.
-    case 'stop': {
-      await writeFile(shutdown, '');
-      let timeoutId = undefined;
+//  Stop the server. Make a temporary file that the server will check for if told
+//  to shut down. This is done by sending a GET request to the server.
+    case "stop": {
+      await writeFile(shutdown, "");
+      let timeoutId, hasErrored = false;
       try {
         //      Give the server 5 seconds to respond, otherwise cancel this and throw an
         //      error to the console. The fetch request will also throw an error immediately
@@ -81,18 +92,33 @@ for (let i = 2; i < process.argv.length; i++)
         clearTimeout(timeoutId);
         if (response === 'Error') throw new Error('Server is unresponsive.');
       } catch (e) {
-        //      Check if this is the error thrown by the fetch request for an unused port.
-        //      Don't print the unused port error, since nothing has actually broken.
-        if (e instanceof TypeError) clearTimeout(timeoutId);
-        else console.error(e);
+//      Remove the temporary shutdown file since the server didn't remove it.
         await unlink(shutdown);
+//      Check if this is the error thrown by the fetch request for an unused port.
+//      Don't print the unused port error, since nothing has actually broken.
+        if (e instanceof TypeError) clearTimeout(timeoutId);
+        else {
+          console.error(e);
+//        Stop here unless Node will be killed later.
+          if (!process.argv.slice(i + 1).includes("kill"))
+            hasErrored = true;
+        }
       }
-      //    Do not run this if Node will be killed later in this script. It will fail.
-      if (config.production && !process.argv.slice(i + 1).includes('kill'))
-        exec('npx pm2 stop ecosystem.config.js', (error, stdout) => {
-          if (error) throw error;
+//    Do not run this if Node will be killed later in this script. It will fail.
+      if (config.production && !process.argv.slice(i + 1).includes("kill"))
+        exec("npx pm2 stop ecosystem.config.js", (error, stdout) => {
+          if (error) {
+            console.error(error);
+            hasErrored = true;
+          }
           console.log(stdout);
         });
+//    Do not continue executing commands since the server was unable to be stopped.
+//    Mostly implemented to prevent duplicating Node instances with npm restart.
+      if (hasErrored) {
+        process.exitCode = 1;
+        break commands;
+      }
       break;
     }
 
@@ -139,4 +165,5 @@ for (let i = 2; i < process.argv.length; i++)
     //  No default case.
   }
 
-process.exitCode = 0;
+
+process.exitCode = process.exitCode || 0;
