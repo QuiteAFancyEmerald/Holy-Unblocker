@@ -26,7 +26,7 @@ jobs:
         run: npm run build
 
       - name: Start server
-        run: npm run manual-start
+        run: npm run workflow-test
 
       - name: Test server response
         run: npm test
@@ -53,7 +53,7 @@ jobs:
         run: npm run build
 
       - name: Start server
-        run: npm run manual-start
+        run: npm run workflow-test
 
       - name: Test server response
         run: npm test

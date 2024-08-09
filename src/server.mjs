@@ -27,9 +27,10 @@ const config = Object.freeze(
   { pages, externalPages } = pageRoutes,
   __dirname = path.resolve();
 
-//  Record the server's location as a URL object, including its host and port.
-//  The host can be modified at /src/config.json, whereas the ports can be modified
-//  at /ecosystem.config.js.
+/* Record the server's location as a URL object, including its host and port.
+ * The host can be modified at /src/config.json, whereas the ports can be modified
+ * at /ecosystem.config.js.
+ */
 const serverUrl = ((base) => {
   try {
     base = new URL(config.host);
@@ -43,8 +44,8 @@ const serverUrl = ((base) => {
 })();
 console.log(serverUrl);
 
-//  The server will check for the existence of this file when a shutdown is requested.
-//  The shutdown script in run-command.js will temporarily produce this file.
+// The server will check for the existence of this file when a shutdown is requested.
+// The shutdown script in run-command.js will temporarily produce this file.
 const shutdown = fileURLToPath(new URL('./.shutdown', import.meta.url));
 
 const rh = createRammerhead();
@@ -85,7 +86,7 @@ const rammerheadSession = /^\/[a-z0-9]{32}/,
     rh.emit('upgrade', req, socket, head);
   };
 
-//  Create a server factory for RH, and wisp (and bare if you please).
+// Create a server factory for RH, and wisp (and bare if you please).
 const serverFactory = (handler) => {
   return createServer()
     .on('request', (req, res) => {
@@ -98,7 +99,7 @@ const serverFactory = (handler) => {
     });
 };
 
-//  Set logger to true for logs
+// Set logger to true for logs.
 const app = Fastify({
   ignoreDuplicateSlashes: true,
   ignoreTrailingSlash: true,
@@ -106,13 +107,13 @@ const app = Fastify({
   serverFactory: serverFactory,
 });
 
-//  Apply Helmet middleware for security
+// Apply Helmet middleware for security.
 app.register(fastifyHelmet, {
   contentSecurityPolicy: false, // Disable CSP
   xPoweredBy: false,
 });
 
-//  Assign server file paths to different paths, for serving content on the website.
+// Assign server file paths to different paths, for serving content on the website.
 app.register(fastifyStatic, {
   root: fileURLToPath(new URL('../views/pages', import.meta.url)),
   decorateReply: false,
@@ -133,7 +134,7 @@ app.register(fastifyStatic, {
 app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL(
-      //  Use the pre-compiled, minified scripts instead, if enabled in config.
+      // Use the pre-compiled, minified scripts instead, if enabled in config.
       config.minifyScripts ? '../views/dist/assets/js' : '../views/assets/js',
       import.meta.url
     )
@@ -145,7 +146,7 @@ app.register(fastifyStatic, {
 app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL(
-      //  Use the pre-compiled, minified stylesheets instead, if enabled in config.
+      // Use the pre-compiled, minified stylesheets instead, if enabled in config.
       config.minifyScripts ? '../views/dist/assets/css' : '../views/assets/css',
       import.meta.url
     )
@@ -154,13 +155,13 @@ app.register(fastifyStatic, {
   decorateReply: false,
 });
 
-//  This combines scripts from the official UV repository with local UV scripts into
-//  one directory path. Local versions of files override the official versions.
+// This combines scripts from the official UV repository with local UV scripts into
+// one directory path. Local versions of files override the official versions.
 app.register(fastifyStatic, {
   root: [
     fileURLToPath(
       new URL(
-        //    Use the pre-compiled, minified scripts instead, if enabled in config.
+        // Use the pre-compiled, minified scripts instead, if enabled in config.
         config.minifyScripts ? '../views/dist/uv' : '../views/uv',
         import.meta.url
       )
@@ -171,7 +172,7 @@ app.register(fastifyStatic, {
   decorateReply: false,
 });
 
-//  Register proxy paths to the website.
+// Register proxy paths to the website.
 app.register(fastifyStatic, {
   root: epoxyPath,
   prefix: '/epoxy/',
@@ -196,12 +197,13 @@ app.register(fastifyStatic, {
   decorateReply: false,
 });
 
-//  All website files are stored in the /views directory.
-//  This takes one of those files and displays it for a site visitor.
-//  Paths like /browsing are converted into paths like /views/pages/surf.html
-//  back here. Which path converts to what is defined in routes.mjs.
+/* All website files are stored in the /views directory.
+ * This takes one of those files and displays it for a site visitor.
+ * Paths like /browsing are converted into paths like /views/pages/surf.html
+ * back here. Which path converts to what is defined in routes.mjs.
+ */
 app.get('/:path', (req, reply) => {
-  //  Testing for future features that need cookies to deliver alternate source files.
+  // Testing for future features that need cookies to deliver alternate source files.
   if (req.raw.rawHeaders.includes('Cookie'))
     console.log(req.raw.rawHeaders[req.raw.rawHeaders.indexOf('Cookie') + 1]);
 
@@ -214,8 +216,8 @@ app.get('/:path', (req, reply) => {
     return reply.redirect(externalRoute);
   }
 
-  //  If a GET request is sent to /test-shutdown and a script-generated shutdown file
-  //  is present, gracefully shut the server down.
+  // If a GET request is sent to /test-shutdown and a script-generated shutdown file
+  // is present, gracefully shut the server down.
   if (reqPath === 'test-shutdown' && existsSync(shutdown)) {
     console.log('Holy Unblocker is shutting down.');
     app.close();
@@ -223,7 +225,7 @@ app.get('/:path', (req, reply) => {
     process.exitCode = 0;
   }
 
-  //  Return the error page if the query is not found in routes.mjs.
+  // Return the error page if the query is not found in routes.mjs.
   if (reqPath && !(reqPath in pages))
     return reply.code(404).type('text/html').send(preloaded404);
 
@@ -234,7 +236,7 @@ app.get('/:path', (req, reply) => {
           path.join(
             __dirname,
             'views',
-            //            Set the index the as the default page.
+            // Set the index the as the default page.
             reqPath ? pages[reqPath] : pages.index
           )
         )
@@ -259,7 +261,7 @@ app.get("/assets/js/uv/uv.config.js", (req, reply) => {
 });
 */
 
-//  Set an error page for invalid paths outside the query string system.
+// Set an error page for invalid paths outside the query string system.
 app.setNotFoundHandler((req, reply) => {
   reply.code(404).type('text/html').send(preloaded404);
 });

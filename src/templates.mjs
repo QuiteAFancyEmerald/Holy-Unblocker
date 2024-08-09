@@ -15,11 +15,11 @@ const header = tryReadFile(path.normalize(__dirname + '/header.html')),
       .replace('<!--HEADER-->', header)
       .replace('<!--FOOTER-->', footer)
 
-      //  Used only on docs.html
+      // Used only on docs.html
       .replace('<!--DOCS-->', documentation)
-      //  Used only on faq.html
+      // Used only on faq.html
       .replace('<!--FAQ-->', faq)
-      //  Used only on terms.html
+      // Used only on terms.html
       .replace('<!--TOS-->', terms)
-      //  Used only on header.html
+      // Used only on header.html
       .replace('<!--SETTINGS-->', settings);

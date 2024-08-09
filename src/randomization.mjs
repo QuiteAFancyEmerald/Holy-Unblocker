@@ -11,9 +11,10 @@ const {
   text404,
 } = pkg;
 
-//  Below are lots of function definitions used to obfuscate the website.
-//  This makes the website harder to properly categorize, as its source code
-//  changes with each time it is loaded.
+/* Below are lots of function definitions used to obfuscate the website.
+ * This makes the website harder to properly categorize, as its source code
+ * changes with each time it is loaded.
+ */
 const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
   charset = /&#173;|&#8203;|&shy;|<wbr>/gi,
   getRandomChar = randomListItem(charRandom),
@@ -28,26 +29,25 @@ const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
       '<!-- IMPORTANT-HUTAOCOOKINGINSERT-DONOTDELETE -->',
       getCookingText
     ),
-  //  This one isn't for obfuscation; it's just for dealing with cache issues.
+  // This one isn't for obfuscation; it's just for dealing with cache issues.
   cacheBusting = (str) => {
     for (let item of Object.entries(cacheBustList))
       str = str.replaceAll(item[0], item[1]);
     return str;
   },
-  //  Apply the final obfuscation changes to an entire file.
+  // Apply the final obfuscation changes to an entire file.
   paintSource = (str) =>
     insertCharset(hutaoInsert(versionInsert(insertCooking(cacheBusting(str))))),
-  //  Use this instead of text404 for a preloaded error page.
+  // Use this instead of text404 for a preloaded error page.
   preloaded404 = paintSource(text404),
-  //  Grab the text content of a file. Ensure the file is a string.
+  // Grab the text content of a file. Ensure the file is a string.
   tryReadFile = (file) =>
     existsSync(file + '') ? readFileSync(file + '', 'utf8') : preloaded404;
 
 /*
-//  All of this is now old code.
-//  The newer versions of these functions are directly above.
-*/
-/*
+
+All of this is now old code.
+The newer versions of these functions are directly above.
 
 function randomListItem(lis) {
     return lis[Math.floor(Math.random() * lis.length)];
