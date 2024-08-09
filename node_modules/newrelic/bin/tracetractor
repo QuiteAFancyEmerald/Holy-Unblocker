@@ -1,0 +1,97 @@
+#!/usr/bin/env node
+
+/**
+ * Use this script to extract the transaction traces from newrelic_agent.log.
+ * It spits out annotated JSON objects that should make it easier to figure out
+ * what goes where in the trace data. Use it with a JSON pretty printer (`npm
+ * -g install jsontool`) and you can pipe the output through that to get nicely
+ *  indented output:
+ *
+ * ./bin/tracetractor < newrelic_agent.log | json -ga
+ *
+ * jsontool also allows you to pick values out of the objects, i.e.
+ *
+ * ./bin/tracetractor < newrelic_agent.log | json -ga 'trace.root.children[0].name'
+ */
+
+var path   = require('path')
+  , domain = require('domain')
+  , split  = require('split')
+  , decode = require(path.join(__dirname, '..', 'lib', 'util', 'codec')).decode
+  ;
+
+var d = domain.create();
+d.on('error', function (error) {
+  // RangeErrors are dumb
+  console.error("Parsing and searching exploded:", error.stack || error);
+  process.exit(-1);
+});
+
+function children(segments) {
+  var processed = [];
+
+  segments.forEach(function cb_forEach(segment) {
+    processed.push({
+      name                  : segment[2],
+      relativeStartInMillis : segment[0],
+      relativeEndInMillis   : segment[1],
+      parameters            : segment[3],
+      children              : children(segment[4])
+    });
+  });
+
+  return processed;
+}
+
+function deroot(root) {
+  return {
+    name          : root[2],
+    entryInMillis : root[0],
+    exitInMillis  : root[1],
+    children      : children(root[4])
+  };
+}
+
+function detrace(trace) {
+  return {
+    startInSeconds    : trace[0],
+    root              : deroot(trace[3]),
+    requestParameters : trace[1],
+    customParameters  : trace[2],
+    parameterGroups   : trace[4]
+  };
+}
+
+d.run(function cb_run() {
+  process.stdin
+    .pipe(split(JSON.parse))
+    .on('data', function (entry) {
+      if (!(entry &&
+            entry.msg &&
+            entry.msg === "Sending with transaction_sample_data:")) return;
+
+      var data = JSON.parse(entry.data);
+
+      // data[0] is the agent run ID, which we don't care about for now
+      if (!(data && data[1] && Array.isArray(data[1]))) return;
+
+      data[1].forEach(function cb_forEach(tt) {
+        decode(tt[4], d.intercept(function cb_intercept(trace) {
+          console.log(JSON.stringify({
+            scope            : tt[2],
+            url              : tt[3],
+            startInMillis    : tt[0],
+            durationInMillis : tt[1],
+            trace            : detrace(trace),
+            guid             : tt[5],
+            // 7th field of the array is reserved
+            forcePersist     : tt[7]
+          }));
+        }));
+      });
+    })
+    .on('error', function (error) {
+      // FIXME: HAX, but bunyan doesn't add a newline at the end of the file, so...
+      if (error.message !== 'Unexpected end of input') throw error;
+    });
+});

@@ -1,0 +1,13 @@
+image: node-agent-test
+git:
+  depth: 1
+script:
+  - make drone
+services:
+  - orchardup/mysql
+  - dockerfile/mongodb
+  - borja/docker-memcached
+  - library/redis
+  - zmarcantel/cassandra
+  - library/postgres:9.2
+  - alexeiled/docker-oracle-xe-11g

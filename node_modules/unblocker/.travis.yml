@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+  - 8
+  - lts/*
+  - stable
+
+# wait until after all node.js versions pass before deploying
+# https://docs.travis-ci.com/user/build-stages/deploy-npm/
+
+stages:
+  - test
+  - name: deploy
+    if: tag IS present AND repo = 'nfriedly/node-unblocker'
+
+jobs:
+  include:
+    - stage: deploy
+      node_js: stable
+      script: skip
+      deploy:
+        provider: npm
+        email: nathan@nfriedly.com
+        api_key:
+          secure: "cmLDBcudwRWOtE2nu5MlucuUJRVGGV0gjwKuQDR7SgLJLWIkkW4TlM5JSN4UiT9NWznNrSPMDPpNwvLmOjmWITR1I/q+IAt6KBjxKVHwvaeDcWmzIhMWuRqTJcPe/GXkLNEYtb0ox2sAjkiwFU6DqOwZ+32NLsL1AQ9xe7AyvBc="
+        on:
+          tags: true

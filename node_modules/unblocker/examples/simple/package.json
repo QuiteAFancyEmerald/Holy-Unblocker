@@ -1,0 +1,11 @@
+{
+  "name": "simple-unblocker-server",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {
+    "unblocker": "*"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

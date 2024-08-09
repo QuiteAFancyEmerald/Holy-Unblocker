@@ -1,0 +1,53 @@
+{
+  "name": "unblocker",
+  "description": "Web proxy for evading internet censorship & general-purpose library for rewriting remote websites.",
+  "author": "Nathan Friedly - http://nfriedly.com",
+  "version": "2.0.5",
+  "repository": "git://github.com/nfriedly/node-unblocker.git",
+  "engines": {
+    "node": ">=6"
+  },
+  "dependencies": {
+    "async": "^3.1.0",
+    "content-type": "^1.0.4",
+    "cookie": "^0.4.0",
+    "debug": "^4.1.1",
+    "iconv-lite": "^0.5.0",
+    "lodash": "^4.17.15",
+    "mime": "^2.4.4",
+    "set-cookie-parser": "^2.4.1",
+    "tld": "0.0.2"
+  },
+  "devDependencies": {
+    "concat-stream": "^2.0.0",
+    "hyperquest": "^2.1.3",
+    "js-beautify": "^1.10.2",
+    "jshint": "^2.10.3",
+    "math-helpers": "~0.1.0",
+    "nodemon": "^2.0.2",
+    "tap": "^14.10.5"
+  },
+  "jshintConfig": {
+    "undef": true,
+    "unused": true,
+    "newcap": true,
+    "node": true,
+    "browser": false,
+    "devel": true
+  },
+  "todoJshintConfig": {
+    "strict": true,
+    "camelcase": true
+  },
+  "scripts": {
+    "watch": "nodemon --watch ./ --ignore ./examples --ext js,html,xhtml,json --exec npm run test",
+    "test": "npm run jshint && npm run test-spec",
+    "pre-commit": "npm run beautify && npm test",
+    "beautify": "js-beautify --end-with-newline --replace ./lib/*.js ./test/*.js",
+    "jshint": "jshint ./lib ./test",
+    "test-spec": "tap test/*spec.js",
+    "test-perf": "node test/performance.js"
+  },
+  "license": "AGPL-3.0",
+  "main": "lib/unblocker.js"
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test Page</title>
+
+<!-- standard links -->
+<link rel="stylesheet" href="/proxy/http://example.com/styles.css"/>
+<link rel="stylesheet" href="/proxy/https://example.com/styles.css"/>
+<link rel="stylesheet" href="/proxy/http://example.com/styles.css"/>
+<link rel="stylesheet" href="/proxy/http://localhost:<remotePort>/styles.css"/>
+<link rel="stylesheet" href="styles.css"/>
+
+<!-- single quotes -->
+<link rel="stylesheet" href='/proxy/http://example.com/styles.css'/>
+<link rel="stylesheet" href='/proxy/https://example.com/styles.css'/>
+<link rel="stylesheet" href='/proxy/http://example.com/styles.css'/>
+<link rel="stylesheet" href='/proxy/http://localhost:<remotePort>/styles.css'/>
+<link rel="stylesheet" href='styles.css'/>
+
+<!-- no quotes -->
+<link rel="stylesheet" href=/proxy/http://example.com/styles.css />
+<link rel="stylesheet" href=/proxy/https://example.com/styles.css />
+<link rel="stylesheet" href=/proxy/http://example.com/styles.css />
+<link rel="stylesheet" href=/proxy/http://localhost:<remotePort>/styles.css />
+<link rel="stylesheet" href=styles.css />
+
+<style type="text/css">
+.bg1 { background: url(/proxy/http://example.com/img.jpg); }
+.bg2 { background: url(/proxy/https://example.com/img.jpg); }
+.bg3 { background: url(/proxy/http://example.com/img.jpg); }
+.bg4 { background: url(/proxy/http://localhost:<remotePort>/img.jpg); }
+.bg5 { background: url(img.jpg); }
+
+.bg1 { background: url('/proxy/http://example.com/img.jpg'); }
+.bg2 { background: url('/proxy/https://example.com/img.jpg'); }
+.bg3 { background: url('/proxy/http://example.com/img.jpg'); }
+.bg4 { background: url('/proxy/http://localhost:<remotePort>/img.jpg'); }
+.bg5 { background: url('img.jpg'); }
+
+.bg1 { background: url("/proxy/http://example.com/img.jpg"); }
+.bg2 { background: url("/proxy/https://example.com/img.jpg"); }
+.bg3 { background: url("/proxy/http://example.com/img.jpg"); }
+.bg4 { background: url("/proxy/http://localhost:<remotePort>/img.jpg"); }
+.bg5 { background: url("img.jpg"); }
+
+.bg1 { background: url( /proxy/http://example.com/img.jpg ); }
+.bg2 { background: url( /proxy/https://example.com/img.jpg ); }
+.bg3 { background: url( /proxy/http://example.com/img.jpg ); }
+.bg4 { background: url( /proxy/http://localhost:<remotePort>/img.jpg ); }
+.bg5 { background: url( img.jpg ); }
+
+.bg1 { background: url( '/proxy/http://example.com/img.jpg' ); }
+.bg2 { background: url( '/proxy/https://example.com/img.jpg' ); }
+.bg3 { background: url( '/proxy/http://example.com/img.jpg' ); }
+.bg4 { background: url( '/proxy/http://localhost:<remotePort>/img.jpg' ); }
+.bg5 { background: url( 'img.jpg' ); }
+
+.bg1 { background: url( "/proxy/http://example.com/img.jpg" ); }
+.bg2 { background: url( "/proxy/https://example.com/img.jpg" ); }
+.bg3 { background: url( "/proxy/http://example.com/img.jpg" ); }
+.bg4 { background: url( "/proxy/http://localhost:<remotePort>/img.jpg" ); }
+.bg5 { background: url( "img.jpg" ); }
+
+.bg4 { background: url(   "/proxy/http://localhost:<remotePort>/img.jpg"   ); }
+.bg4 { background: url( "/proxy/http://localhost:<remotePort>/img.jpg"  ); }
+</style>
+
+<script src="/proxy/http://example.com/scripts.js"></script>
+<script src="/proxy/https://example.com/scripts.js"></script>
+<script src="/proxy/http://example.com/scripts.js"></script>
+<script src="/proxy/http://localhost:<remotePort>/scripts.js"></script>
+<script src="scripts.js"></script>
+
+<script src='/proxy/http://example.com/scripts.js'></script>
+<script src='/proxy/https://example.com/scripts.js'></script>
+<script src='/proxy/http://example.com/scripts.js'></script>
+<script src='/proxy/http://localhost:<remotePort>/scripts.js'></script>
+<script src='scripts.js'></script>
+
+<script src=/proxy/http://example.com/scripts.js></script>
+<script src=/proxy/https://example.com/scripts.js></script>
+<script src=/proxy/http://example.com/scripts.js></script>
+<script src=/proxy/http://localhost:<remotePort>/scripts.js></script>
+<script src=scripts.js></script>
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW"/>
+</head>
+<body>
+
+<a href="/proxy/http://localhost:<remotePort>/site/http/page.html">link with "http" in the url</a>
+<a href="/proxy/http://localhost:<remotePort>/site/https/page.html">link with "https" in the url</a>
+<a href="/proxy/http://localhost:8080">link with port number</a>
+
+</body>
+</html>

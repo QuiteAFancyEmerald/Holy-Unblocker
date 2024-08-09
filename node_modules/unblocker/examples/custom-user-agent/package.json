@@ -1,0 +1,12 @@
+{
+  "name": "simple-unblocker-server",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {
+    "express": "^4.16.4",
+    "unblocker": "*"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

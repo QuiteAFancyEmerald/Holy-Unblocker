@@ -1,0 +1,51 @@
+{
+  "env": {
+    "node": true,
+    "browser": false
+  },
+  "globals": {
+    "Promise": true
+  },
+  "rules": {
+    "brace-style": "error",
+    "comma-style": ["error", "last"],
+    "consistent-return": "off",
+    "curly": "off",
+    "eol-last": "error",
+    "eqeqeq": ["error", "smart"],
+    "camelcase": "off",
+    "dot-notation": "error",
+    "func-names": "error",
+    "guard-for-in": "error",
+    "max-len": ["error", 90, { "ignoreUrls": true }],
+    "max-nested-callbacks": ["error", 3],
+    "max-params": ["error", 5],
+    "new-cap": "error",
+    "no-comma-dangle": "off",
+    "no-console": "warn",
+    "no-else-return": "error",
+    "no-floating-decimal": "error",
+    "no-lonely-if": "error",
+    "no-mixed-requires": "error",
+    "no-multiple-empty-lines": "error",
+    "no-new": "error",
+    "no-new-func": "warn",
+    "no-shadow": "warn",
+    "no-undef": "error",
+    "no-underscore-dangle": "off",
+    "no-unused-vars": "error",
+    "no-use-before-define": "off",
+    "padded-blocks": ["error", "never"],
+    "radix": "error",
+    "semi": ["error", "never"],
+    "space-before-function-paren": ["error", "never"],
+    "keyword-spacing": "error",
+    "space-before-blocks": "error",
+    "space-infix-ops": "error",
+    "spaced-comment": "error",
+    "space-unary-ops": "error",
+    "strict": "error",
+    "quotes": ["off", "single"],
+    "wrap-iife": "error"
+  }
+}

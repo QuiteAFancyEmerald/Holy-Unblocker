@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test Page</title>
+
+<!-- standard links -->
+<link rel="stylesheet" href="http://example.com/styles.css"/>
+<link rel="stylesheet" href="https://example.com/styles.css"/>
+<link rel="stylesheet" href="//example.com/styles.css"/>
+<link rel="stylesheet" href="/styles.css"/>
+<link rel="stylesheet" href="styles.css"/>
+
+<!-- single quotes -->
+<link rel="stylesheet" href='http://example.com/styles.css'/>
+<link rel="stylesheet" href='https://example.com/styles.css'/>
+<link rel="stylesheet" href='//example.com/styles.css'/>
+<link rel="stylesheet" href='/styles.css'/>
+<link rel="stylesheet" href='styles.css'/>
+
+<!-- no quotes -->
+<link rel="stylesheet" href=http://example.com/styles.css />
+<link rel="stylesheet" href=https://example.com/styles.css />
+<link rel="stylesheet" href=//example.com/styles.css />
+<link rel="stylesheet" href=/styles.css />
+<link rel="stylesheet" href=styles.css />
+
+<style type="text/css">
+.bg1 { background: url(http://example.com/img.jpg); }
+.bg2 { background: url(https://example.com/img.jpg); }
+.bg3 { background: url(//example.com/img.jpg); }
+.bg4 { background: url(/img.jpg); }
+.bg5 { background: url(img.jpg); }
+
+.bg1 { background: url('http://example.com/img.jpg'); }
+.bg2 { background: url('https://example.com/img.jpg'); }
+.bg3 { background: url('//example.com/img.jpg'); }
+.bg4 { background: url('/img.jpg'); }
+.bg5 { background: url('img.jpg'); }
+
+.bg1 { background: url("http://example.com/img.jpg"); }
+.bg2 { background: url("https://example.com/img.jpg"); }
+.bg3 { background: url("//example.com/img.jpg"); }
+.bg4 { background: url("/img.jpg"); }
+.bg5 { background: url("img.jpg"); }
+
+.bg1 { background: url( http://example.com/img.jpg ); }
+.bg2 { background: url( https://example.com/img.jpg ); }
+.bg3 { background: url( //example.com/img.jpg ); }
+.bg4 { background: url( /img.jpg ); }
+.bg5 { background: url( img.jpg ); }
+
+.bg1 { background: url( 'http://example.com/img.jpg' ); }
+.bg2 { background: url( 'https://example.com/img.jpg' ); }
+.bg3 { background: url( '//example.com/img.jpg' ); }
+.bg4 { background: url( '/img.jpg' ); }
+.bg5 { background: url( 'img.jpg' ); }
+
+.bg1 { background: url( "http://example.com/img.jpg" ); }
+.bg2 { background: url( "https://example.com/img.jpg" ); }
+.bg3 { background: url( "//example.com/img.jpg" ); }
+.bg4 { background: url( "/img.jpg" ); }
+.bg5 { background: url( "img.jpg" ); }
+
+.bg4 { background: url(   "/img.jpg"   ); }
+.bg4 { background: url( "/img.jpg"  ); }
+</style>
+
+<script src="http://example.com/scripts.js"></script>
+<script src="https://example.com/scripts.js"></script>
+<script src="//example.com/scripts.js"></script>
+<script src="/scripts.js"></script>
+<script src="scripts.js"></script>
+
+<script src='http://example.com/scripts.js'></script>
+<script src='https://example.com/scripts.js'></script>
+<script src='//example.com/scripts.js'></script>
+<script src='/scripts.js'></script>
+<script src='scripts.js'></script>
+
+<script src=http://example.com/scripts.js></script>
+<script src=https://example.com/scripts.js></script>
+<script src=//example.com/scripts.js></script>
+<script src=/scripts.js></script>
+<script src=scripts.js></script>
+</head>
+<body>
+
+<a href="/site/http/page.html">link with "http" in the url</a>
+<a href="/site/https/page.html">link with "https" in the url</a>
+<a href="http://localhost:8080">link with port number</a>
+
+</body>
+</html>

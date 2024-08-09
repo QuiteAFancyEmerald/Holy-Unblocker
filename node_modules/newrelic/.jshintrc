@@ -1,0 +1,26 @@
+{
+  "node": true,
+  "laxcomma": true,
+  "eqeqeq": true,
+  "forin": true,
+  "immed": true,
+  "unused": true,
+  "undef": true,
+  "maxlen": 90,
+  "maxdepth": 3,
+  "maxparams": 4,
+  "newcap": true,
+  "nonew": true,
+  "asi": true,
+  "lastsemic": true,
+  "sub": true,
+  "shadow": false,
+  "predef": [
+    "after",
+    "afterEach",
+    "before",
+    "beforeEach",
+    "describe",
+    "it"
+  ]
+}
