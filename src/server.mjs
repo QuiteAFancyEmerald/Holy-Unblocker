@@ -17,7 +17,6 @@ import loadTemplates from './templates.mjs';
 import { fileURLToPath } from 'node:url';
 import { existsSync, unlinkSync } from 'node:fs';
 import ecosystem from '../ecosystem.config.js';
-import { createBareServer } from "@tomphttp/bare-server-node";
 
 const config = Object.freeze(
     JSON.parse(await readFile(new URL("./config.json", import.meta.url)))
