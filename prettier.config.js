@@ -13,4 +13,5 @@ module.exports = {
   htmlWhitespaceSensitivity: 'css', // Respect the default value of CSS display property
   endOfLine: 'lf', // Use line feed only (\n) for newlines
   embeddedLanguageFormatting: 'auto', // Format embedded code if Prettier can automatically identify it
+  proseWrap: 'preserve', // Do not wrap prose (including comments)
 };
