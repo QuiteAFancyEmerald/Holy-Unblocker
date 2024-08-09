@@ -156,43 +156,45 @@ commands: for (let i = 2; i < process.argv.length; i++)
         );
       break;
 
-    case 'workflow':
-      if (config.production)
-        exec(
-          'npx pm2 start ecosystem.config.js --env production',
-          (error, stdout) => {
-            if (error) throw error;
-            console.log(stdout);
-          }
-        );
-      else {
+    /* Make a temporary server solely to test startup errors. The server will
+     * stop the command if there is an error, and restart itself otherwise.
+     * This uses the same command for both Windows and other platforms, but
+     * consequently forces the server to stay completely silent after startup.
+     */
+    case 'workflow': {
+      const tempServer = fork(
+        fileURLToPath(new URL('./backend.js', import.meta.url)),
+        {
+          cwd: process.cwd(),
+          stdio: ['inherit', 'pipe', 'pipe', 'ipc'],
+          detached: true,
+        }
+      );
+      tempServer.stderr.on('data', (stderr) => {
+        // The temporary server will print startup errors that aren't deprecation
+        // warnings; stop the process and return an error exit code upon doing so.
+        if (stderr.toString().indexOf('DeprecationWarning') >= 0) return;
+        console.error(stderr.toString());
+        tempServer.kill();
+        process.exitCode = 1;
+      });
+      tempServer.stdout.on('data', () => {
+        // Kill the server and start a new one if there were no startup errors.
+        // Restarting is necessary to prevent the workflow check from hanging.
+        tempServer.kill();
         const server = fork(
           fileURLToPath(new URL('./backend.js', import.meta.url)),
-          {
-            cwd: process.cwd(),
-            stdio: ['inherit', 'pipe', 'pipe', 'ipc'],
-            detached: true,
-          }
+          // The stdio: 'ignore' makes the server completely silent, yet it is also
+          // why this works for Windows when the start command's version does not.
+          { cwd: process.cwd(), stdio: 'ignore', detached: true }
         );
-        server.stderr.on('data', (stderr) => {
-          console.error(stderr.toString());
-          if (stderr.toString().indexOf('DeprecationWarning') + 1) return;
-          server.stderr.destroy();
-          process.exitCode = 1;
-        });
-        server.stdout.on('data', () => {
-          server.kill();
-          const server2 = fork(
-            fileURLToPath(new URL('./backend.js', import.meta.url)),
-            { cwd: process.cwd(), stdio: 'ignore', detached: true }
-          );
-          server2.unref();
-          server2.disconnect();
-        });
         server.unref();
         server.disconnect();
-      }
+      });
+      tempServer.unref();
+      tempServer.disconnect();
       break;
+    }
 
     // No default case.
   }
