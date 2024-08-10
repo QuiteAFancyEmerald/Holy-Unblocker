@@ -296,7 +296,7 @@ app.get('/assets/js/common-16451543478.js', (req, reply) => {
 });
 
 app.get('/uv/:file.js', (req, reply) => {
-  const destination = existsSync(new URL('../views' + req.url, import.meta.url))
+  const destination = existsSync(fileURLToPath(new URL('../views' + req.url, import.meta.url)))
     ? '../views' + (config.minifyScripts ? '/dist' : '') + req.url
     : uvPath + '/' + req.params.file + '.js';
   reply
