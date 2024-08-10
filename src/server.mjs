@@ -127,7 +127,7 @@ app.register(fastifyStatic, {
 
 app.register(fastifyStatic, {
   root: fileURLToPath(new URL('../views/archive', import.meta.url)),
-  prefix: '/arcade/',
+  prefix: '/archive/',
   decorateReply: false,
 });
 
@@ -233,12 +233,10 @@ app.get('/:path', (req, reply) => {
     paintSource(
       loadTemplates(
         tryReadFile(
-          path.join(
-            __dirname,
-            'views',
+          '../views/' +
             // Set the index the as the default page.
-            reqPath ? pages[reqPath] : pages.index
-          )
+            (reqPath ? pages[reqPath] : pages.index),
+          import.meta.url
         )
       )
     )
@@ -251,15 +249,70 @@ app.get('/github/:redirect', (req, reply) => {
   else reply.code(404).type('text/html').send(preloaded404);
 });
 
-/*
-Testing for future restructuring of this config file.
+const encodingTable = (() => {
+    let yummyOneBytes = '';
+    for (let i = 0; i < 128; i++)
+      if (
+        JSON.stringify(JSON.stringify(String.fromCodePoint(i)).slice(1, -1))
+          .length < 6
+      )
+        yummyOneBytes += String.fromCodePoint(i);
+    return yummyOneBytes;
+  })(),
+  randomValue = crypto
+    .randomUUID()
+    .split('-')
+    .map((gibberish) => {
+      let randomNumber = parseInt(gibberish, 16),
+        output = '';
+      while (randomNumber >= encodingTable.length) {
+        output +=
+          encodingTable[Math.floor(randomNumber) % encodingTable.length];
+        randomNumber = randomNumber / encodingTable.length;
+      }
+      return output + Math.floor(randomNumber);
+    })
+    .join(''),
+  randomizeGlobal = config.randomizeIdentifiers
+    ? (file) =>
+        tryReadFile(file, import.meta.url).replace(
+          /(["'`])\{\{__uv\$config\}\}\1/g,
+          JSON.stringify(randomValue)
+        )
+    : (file) =>
+        tryReadFile(file, import.meta.url).replace(
+          /(["'`])\{\{__uv\$config\}\}\1/g,
+          JSON.stringify('__uv$config')
+        );
 
-app.get("/assets/js/uv/uv.config.js", (req, reply) => {
-  console.log(req.url);
-  reply.type("text/javascript");
-  reply.send(tryReadFile(path.join(__dirname, "views/assets/js/uv/uv.config.js")));
+app.get('/assets/js/common-16451543478.js', (req, reply) => {
+  reply
+    .type('text/javascript')
+    .send(
+      randomizeGlobal(
+        '../views' + (config.minifyScripts ? '/dist' : '') + req.url
+      )
+    );
 });
-*/
+
+app.get('/uv/:file.js', (req, reply) => {
+  const destination = existsSync(new URL('../views' + req.url, import.meta.url))
+    ? '../views' + (config.minifyScripts ? '/dist' : '') + req.url
+    : uvPath + '/' + req.params.file + '.js';
+  reply
+    .type('text/javascript')
+    .send(
+      randomizeGlobal(destination).replace(
+        /(["'`])\{\{ultraviolet-error\}\}\1/g,
+        JSON.stringify(
+          tryReadFile(
+            '../views/pages/proxnav/ultraviolet-error.html',
+            import.meta.url
+          )
+        )
+      )
+    );
+});
 
 // Set an error page for invalid paths outside the query string system.
 app.setNotFoundHandler((req, reply) => {

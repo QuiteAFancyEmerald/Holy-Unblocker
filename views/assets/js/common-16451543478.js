@@ -7,6 +7,8 @@
 // Encase everything in a new scope so that variables are not accidentally
 // attached to the global scope.
 (() => {
+// To be defined after the document has fully loaded.
+let uvConfig = {};
 // Get the preferred apex domain name. Not exactly apex, as any
 // subdomain other than those listed will be ignored.
 const getDomain = () =>
@@ -98,8 +100,8 @@ const sx = 'bing.com' + '/search?q=',
     try {
       url =
         location.origin +
-        __uv$config.prefix +
-        __uv$config.encodeUrl(search(url));
+        uvConfig.prefix +
+        uvConfig.encodeUrl(search(url));
     } catch (e) {
       // This is for cases where the Ultraviolet scripts have not been loaded.
       url = search(url);
@@ -352,6 +354,10 @@ const RammerheadEncode = async (baseUrl) => {
  * goProx.searx();
  */
 addEventListener('DOMContentLoaded', async () => {
+  // This won't break the service workers as they store the variable separately.
+  uvConfig = self['{{__uv$config}}'];
+  delete self['{{__uv$config}}'];
+
   // Object.freeze prevents goProx from accidentally being edited.
   const goProx = Object.freeze({
     // `location.protocol + "//" + getDomain()` more like `location.origin`
@@ -495,7 +501,7 @@ addEventListener('DOMContentLoaded', async () => {
             clickHandler = (parser, a) => (e) => {
               if (e.target == a || e.target.tagName != 'A') {
                 e.preventDefault();
-                parser(item);
+                parser();
               }
             };
 

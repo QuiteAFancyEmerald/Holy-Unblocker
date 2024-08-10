@@ -1,15 +1,14 @@
 import { tryReadFile } from './randomization.mjs';
-import path from 'path';
 export { loadTemplates as default };
 
-const __dirname = path.resolve() + '/views/pages/misc/deobf';
+const __dirname = '../views/pages/misc/deobf';
 
-const header = tryReadFile(path.normalize(__dirname + '/header.html')),
-  footer = tryReadFile(path.normalize(__dirname + '/footer.html')),
-  documentation = tryReadFile(path.normalize(__dirname + '/docs.html')),
-  faq = tryReadFile(path.normalize(__dirname + '/faq.html')),
-  terms = tryReadFile(path.normalize(__dirname + '/tos.html')),
-  settings = tryReadFile(path.normalize(__dirname + '/settings.html')),
+const header = tryReadFile(__dirname + '/header.html', import.meta.url),
+  footer = tryReadFile(__dirname + '/footer.html', import.meta.url),
+  documentation = tryReadFile(__dirname + '/docs.html', import.meta.url),
+  faq = tryReadFile(__dirname + '/faq.html', import.meta.url),
+  terms = tryReadFile(__dirname + '/tos.html', import.meta.url),
+  settings = tryReadFile(__dirname + '/settings.html', import.meta.url),
   loadTemplates = (str) =>
     str
       .replace('<!--HEADER-->', header)

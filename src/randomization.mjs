@@ -1,5 +1,6 @@
 import pkg from './routes.mjs';
 import { existsSync, readFileSync } from 'fs';
+import { fileURLToPath } from 'node:url';
 export { paintSource, preloaded404, tryReadFile };
 const {
   cookingInserts,
@@ -41,8 +42,12 @@ const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
   // Use this instead of text404 for a preloaded error page.
   preloaded404 = paintSource(text404),
   // Grab the text content of a file. Ensure the file is a string.
-  tryReadFile = (file) =>
-    existsSync(file + '') ? readFileSync(file + '', 'utf8') : preloaded404;
+  tryReadFile = (file, baseUrl) => {
+    file = fileURLToPath(new URL(file, baseUrl));
+    return existsSync(file + '')
+      ? readFileSync(file + '', 'utf8')
+      : preloaded404;
+  };
 
 /*
 
