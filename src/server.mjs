@@ -14,7 +14,7 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { paintSource, preloaded404, tryReadFile } from './randomization.mjs';
 import loadTemplates from './templates.mjs';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { existsSync, unlinkSync } from 'node:fs';
 import ecosystem from '../ecosystem.config.js';
 
@@ -249,74 +249,72 @@ app.get('/github/:redirect', (req, reply) => {
   else reply.code(404).type('text/html').send(preloaded404);
 });
 
-if (config.randomizeIdentifiers) {
-  const encodingTable = (() => {
-      let yummyOneBytes = '';
-      for (let i = 0; i < 128; i++)
-        if (
-          JSON.stringify(JSON.stringify(String.fromCodePoint(i)).slice(1, -1))
-            .length < 6
+const encodingTable = (() => {
+    let yummyOneBytes = '';
+    for (let i = 0; i < 128; i++)
+      if (
+        JSON.stringify(JSON.stringify(String.fromCodePoint(i)).slice(1, -1))
+          .length < 6
+      )
+        yummyOneBytes += String.fromCodePoint(i);
+    return yummyOneBytes;
+  })(),
+  randomValue = crypto
+    .randomUUID()
+    .split('-')
+    .map((gibberish) => {
+      let randomNumber = parseInt(gibberish, 16),
+        output = '';
+      while (randomNumber >= encodingTable.length) {
+        output +=
+          encodingTable[Math.floor(randomNumber) % encodingTable.length];
+        randomNumber = randomNumber / encodingTable.length;
+      }
+      return output + Math.floor(randomNumber);
+    })
+    .join(''),
+  randomizeGlobal = config.randomizeIdentifiers
+    ? (file) =>
+        tryReadFile(file, import.meta.url).replace(
+          /(["'`])\{\{__uv\$config\}\}\1/g,
+          JSON.stringify(randomValue)
         )
-          yummyOneBytes += String.fromCodePoint(i);
-      return yummyOneBytes;
-    })(),
-    randomValue = crypto
-      .randomUUID()
-      .split('-')
-      .map((gibberish) => {
-        let randomNumber = parseInt(gibberish, 16),
-          output = '';
-        while (randomNumber >= encodingTable.length) {
-          output +=
-            encodingTable[Math.floor(randomNumber) % encodingTable.length];
-          randomNumber = randomNumber / encodingTable.length;
-        }
-        return output + Math.floor(randomNumber);
-      })
-      .join(''),
-    randomizeGlobal = config.randomizeIdentifiers
-      ? (file) =>
-          tryReadFile(file, import.meta.url).replace(
-            /(["'`])\{\{__uv\$config\}\}\1/g,
-            JSON.stringify(randomValue)
-          )
-      : (file) =>
-          tryReadFile(file, import.meta.url).replace(
-            /(["'`])\{\{__uv\$config\}\}\1/g,
-            JSON.stringify('__uv$config')
-          );
+    : (file) =>
+        tryReadFile(file, import.meta.url).replace(
+          /(["'`])\{\{__uv\$config\}\}\1/g,
+          JSON.stringify('__uv$config')
+        );
 
-  app.get('/assets/js/common-16451543478.js', (req, reply) => {
-    reply
-      .type('text/javascript')
-      .send(
-        randomizeGlobal(
-          '../views' + (config.minifyScripts ? '/dist' : '') + req.url
-        )
-      );
-  });
+app.get('/assets/js/common-16451543478.js', (req, reply) => {
+  reply
+    .type('text/javascript')
+    .send(
+      randomizeGlobal(
+        '../views' + (config.minifyScripts ? '/dist' : '') + req.url
+      )
+    );
+});
 
-  app.get('/uv/:file.js', (req, reply) => {
-    const destination = existsSync(
-      fileURLToPath(new URL('../views' + req.url, import.meta.url))
-    )
-      ? '../views' + (config.minifyScripts ? '/dist' : '') + req.url
-      : uvPath + '/' + req.params.file + '.js';
-    reply
-      .type('text/javascript')
-      .send(
-        randomizeGlobal(destination).replace(
-          /(["'`])\{\{ultraviolet-error\}\}\1/g,
-          JSON.stringify(
-            tryReadFile(
-              '../views/pages/proxnav/ultraviolet-error.html',
-              import.meta.url
-            )
+app.get('/uv/:file.js', (req, reply) => {
+  const destination = existsSync(
+    fileURLToPath(new URL('../views' + req.url, import.meta.url))
+  )
+    ? '../views' + (config.minifyScripts ? '/dist' : '') + req.url
+    : pathToFileURL(uvPath) + `/${req.params.file}.js`;
+  reply
+    .type('text/javascript')
+    .send(
+      randomizeGlobal(destination).replace(
+        /(["'`])\{\{ultraviolet-error\}\}\1/g,
+        JSON.stringify(
+          tryReadFile(
+            '../views/pages/proxnav/ultraviolet-error.html',
+            import.meta.url
           )
         )
-      );
-  });
-}
+      )
+    );
+});
 
 // Set an error page for invalid paths outside the query string system.
 app.setNotFoundHandler((req, reply) => {
