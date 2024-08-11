@@ -27,7 +27,7 @@
     "@fastify/static": "^7.0.4",
     "@mercuryworkshop/bare-as-module3": "^2.2.2",
     "@mercuryworkshop/bare-mux": "^2.0.1",
-    "@mercuryworkshop/epoxy-transport": "^2.1.3",
+    "@mercuryworkshop/epoxy-transport": "^2.1.8",
     "@mercuryworkshop/libcurl-transport": "^1.3.7",
     "@titaniumnetwork-dev/ultraviolet": "~3.2.7",
     "@tomphttp/bare-server-node": "^2.0.3",
