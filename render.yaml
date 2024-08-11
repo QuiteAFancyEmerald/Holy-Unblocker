@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: holy-forest-1234
+    env: node
+    plan: free
+    startCommand: npm start
