@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["backend.js", "run-command.mjs", "lib/rammerhead/**", "proxyServiceValidator.js"]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/backend.js"
+    }
+  ],
+  "build": {
+    "env": {
+      "NPM_CONFIG_PRODUCTION": "false"
+    },
+    "scripts": {
+      "build": ""
+    }
+  }
+}
