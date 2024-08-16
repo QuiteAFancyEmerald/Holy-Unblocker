@@ -1,4 +1,4 @@
-This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above.
+This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above. Release for production will be v8.x.x and above.
 
 ## Code Cleanup
 
@@ -13,7 +13,8 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [x] Update games navigation JS and page/change to JSON object system - done
 - [ ] Ensure all the original submodules get added back to HU-Archive
 - [x] Mobile support - (welcome screen only, partial/needs work)
-- [ ] SEO overhaul adapted from the v2 SEO Guide format
+- [ ] SEO overhaul adapted from the v3 SEO Guide format - partial
+- [x] Fastify routes modified to ensure perfect SEO. This means absolute paths such as /example instead of ?z - done
 - [ ] Randomize the \_\_uv$config global, and optionally randomize the UV prefix and URL encoding via cookies
 
 ## Proxy/Site Functionality
@@ -25,17 +26,19 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Adapt Applications page to use either Rammerhead or UV (for Reddit, YouTube, Discord)
 - [x] libcurl, epoxy and all that fun stuff - done
 - [x] socks5/tor routing option that can be configured (enabled) via either a cookie or pathname as a settings meny option - done
-- [ ] Update games page content
+- [ ] Update games page content to 10000 games
+- [ ] Update Applications page to reflect modern fast links (use examples from the modern web proxy base)
 - [ ] Update settings menu again to make more room for more features
 - [x] Update csel.js (after Setting menu redesign) to support custom transports, icon swap, routing - done
 - [x] Update csel.js to support network based adblocking (partial/needs work)
 - [ ] Add a "website self-destruct" button to the settings menu
-- [ ] Flesh out and rework the UV / bare client error page
+- [ ] Flesh out and rework the UV / bare client error page - partial. function implementation done however styles not
 - [x] Update sw.js to support workerware (https://github.com/MercuryWorkshop/workerware)-- This is not done however we have our own middleware system implemented for adblocking, etc. 
 - [ ] Omnibox autoupdate script (for the Google/Bing style auto suggest feature)
 - [ ] Games library will feature 10000 items; 5000 flash games and 5000 other game types
 - [ ] Attach proxyvalidatorscript to a status page > have this be served via Fastify, etc. etc; config option disabled as it will cause issues potentially unless if we refactor it slightly.
 - [ ] Improve adblocking functions on site using AnuraOS standards
+
 ## Site Redesign
 
 - [x] Landing Cards - done
