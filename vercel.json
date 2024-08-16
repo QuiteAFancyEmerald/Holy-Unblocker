@@ -20,7 +20,7 @@
       "NPM_CONFIG_PRODUCTION": "false"
     },
     "scripts": {
-      "build": "node run-command.mjs build && cd lib/rammerhead && npm install && npm run build"
+      "build": "npm run build"
     }
   }
 }
