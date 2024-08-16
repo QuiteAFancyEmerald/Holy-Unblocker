@@ -2,4 +2,3 @@ node_modules
 *.log
 *.md
 views/archive
-lib/rammerhead
