@@ -18,6 +18,8 @@
   "build": {
     "env": {
       "NPM_CONFIG_PRODUCTION": "false"
-    }
+    },
+    "command": "on mobile gotta paste this mf"
+  }
   }
 }
