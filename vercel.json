@@ -5,7 +5,7 @@
       "src": "backend.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["backend.js", "run-command.mjs", "views/**", "src/**", "lib/rammerhead/**", "proxyServiceValidator.js"]
+        "includeFiles": ["backend.js", "run-command.mjs", "views/**", "src/**", "lib/rammerhead/**"]
       }
     }
   ],
@@ -19,7 +19,7 @@
     "env": {
       "NPM_CONFIG_PRODUCTION": "false"
     },
-    "command": "on mobile gotta paste this mf"
+    "command": "node run-command.mjs build && cd lib/rammerhead && npm install && npm run build"
   }
   }
 }
