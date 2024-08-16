@@ -21,5 +21,4 @@
     },
     "command": "node run-command.mjs build && cd lib/rammerhead && npm install && npm run build"
   }
-  }
 }
