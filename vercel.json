@@ -18,9 +18,6 @@
   "build": {
     "env": {
       "NPM_CONFIG_PRODUCTION": "false"
-    },
-    "scripts": {
-      "build": "npm run build"
     }
   }
 }
