@@ -32,7 +32,6 @@
     "@titaniumnetwork-dev/ultraviolet": "~3.2.7",
     "@tomphttp/bare-server-node": "^2.0.3",
     "axios": "^1.7.2",
-    "esbuild": "^0.23.0",
     "fastify": "^4.28.1",
     "mime-types": "^2.1.35",
     "pm2": "^5.4.2",
@@ -41,6 +40,7 @@
     "ws": "^8.18.0"
   },
   "devDependencies": {
-    "@babel/node": "^7.25.0"
+    "@babel/node": "^7.25.0",
+    "esbuild": "^0.23.0"
   }
 }
