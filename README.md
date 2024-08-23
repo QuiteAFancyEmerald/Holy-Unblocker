@@ -12,6 +12,7 @@ This project serves mostly as a proof of concept for the ideal clientless soluti
 Works with a large number of sites, including YouTube, Discord, and more!
 Also has a good amount of locally hosted games featured on the site.
 
+
 #### Supports
 
 - Youtube.com
@@ -98,6 +99,8 @@ This website is hosted locally with Ultraviolet and Rammerhead built-in.
 ## Structure
 
 <details><summary>Web Pages</summary>
+
+WIP
 
 - `index.html`: The homepage of the site.
 - `error.html`: A general error page for all 404 errors and other errors.
