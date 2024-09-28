@@ -1311,6 +1311,11 @@ iner .splashstrokeheader {
   line-height: 1.5;
 }
 
+.box-medium {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
 /* Main container with increased margin and padding */
 .box-main-container {
   display: flex;
