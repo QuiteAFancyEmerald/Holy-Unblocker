@@ -17,8 +17,6 @@ Also has a good amount of locally hosted games featured on the site.
 > [!TIP]
 > Holy Unblocker LTS is optimized for self-hosting to provide you with maximum privacy control! Fork this repository and consider starring. You can self-host using either free or paid deployment options, or set it up on a dedicated instance (VPS) for enhanced performance.
 
-### Supported Sites and Features
-
 | **Supported Sites**         | **Features**                                                                                                           |
 |-----------------------------|------------------------------------------------------------------------------------------------------------------------|
 | Youtube.com                 | Built-in variety of open source web proxies with both a focus on speed and/or security                                 |
@@ -420,4 +418,4 @@ This project currently uses Ultraviolet, Wisp, Womginx, and Rammerhead, linked b
 
 ### Notable Mentions:
 
-- <a href="https://soyoustart.com/">SoYouStart / OVH</a> (Hosting Provider)
+- <a href="https://crunchbits.com/">Crunchbits</a> (Hosting Provider)
