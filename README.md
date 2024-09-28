@@ -14,10 +14,13 @@ This project serves mostly as a proof of concept for the ideal clientless soluti
 Works with a large number of sites, including YouTube, Discord, and more!
 Also has a good amount of locally hosted games featured on the site.
 
+> [!TIP]
+> Holy Unblocker LTS is optimized for self-hosting to provide you with maximum privacy control! Fork this repository (and star!!!). You can self-host using either free or paid deployment options, or set it up on a dedicated instance (VPS) for enhanced performance.
 
 #### Supports
 
 - Youtube.com
+- Coolmathgames.com
 - Discord.com
 - Google.com
 - Reddit.com

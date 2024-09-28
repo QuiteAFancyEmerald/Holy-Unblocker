@@ -4,6 +4,9 @@
   "repository": "https://github.com/QuiteAFancyEmerald/Holy-Unblocker",
   "description": "Holy Unblocker is a secure web proxy service with support for many sites.",
   "main": "backend.js",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "start": "npm install && npm run build && npm run manual-start",
     "restart": "node run-command.mjs stop start",
@@ -13,7 +16,8 @@
     "kill": "node run-command.mjs stop kill",
     "build": "node run-command.mjs build && cd lib/rammerhead && npm install && npm run build",
     "proxy-validator": "node proxyServiceValidator.js",
-    "workflow-test": "node run-command.mjs workflow"
+    "workflow-test": "node run-command.mjs workflow",
+    "deployment": "npm install && npm run build && node backend.js"
   },
   "keywords": [
     "proxy",
