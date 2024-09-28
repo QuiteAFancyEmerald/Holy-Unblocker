@@ -19,15 +19,14 @@ Also has a good amount of locally hosted games featured on the site.
 
 | **Supported Sites**         | **Features**                                                                                                           |
 |-----------------------------|------------------------------------------------------------------------------------------------------------------------|
-| Youtube.com                 | Built-in variety of open source web proxies with both a focus on speed and/or security                                 |
-| Coolmathgames.com           | Features "Source Randomization" to circumvent major filters effectively along with randomizations to proxy globals    |
-| Discord.com                 | Tab title + icon customization using the Settings Menu for improved browsing stealth                                   |
-| Google.com                  | Adblocking support across all websites while surfing                                                                   |
+| Youtube                     | Built-in variety of open source web proxies with both a focus on speed and/or security                                 |
+| CoolMathGames               | Features "Source Randomization" to circumvent major filters effectively along with randomizations to proxy globals    |
+| Discord                     | Tab title + icon customization using the Settings Menu for improved browsing stealth                                   |
+| Now.gg                      | Adblocking support across all websites while surfing                                                                   |
 | Reddit.com                  | SOCKS5 and Onion routing support with Tor within the Settings Menu                                                    |
-| Bing.com                    | Game library with moderately decent titles and open-source emulation projects                                          |
-| Spotify.com                 | Has frequent support articles for issues relating to various proxy instances                                           |
+| GeForce NOW                 | Game library with moderately decent titles and open-source emulation projects                                          |
+| Spotify                     | Has frequent support articles for issues relating to various proxy instances                                           |
 | And essentially all sites!  | Built for intensive production loads and speed                                                                          |
-
 
 
 <img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.3.5-preview.png"></img>
