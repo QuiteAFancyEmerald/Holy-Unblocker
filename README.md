@@ -15,24 +15,30 @@ Works with a large number of sites, including YouTube, Discord, and more!
 Also has a good amount of locally hosted games featured on the site.
 
 > [!TIP]
-> Holy Unblocker LTS is optimized for self-hosting to provide you with maximum privacy control! Fork this repository (and star!!!). You can self-host using either free or paid deployment options, or set it up on a dedicated instance (VPS) for enhanced performance.
+> Holy Unblocker LTS is optimized for self-hosting to provide you with maximum privacy control! Fork this repository and consider starring. You can self-host using either free or paid deployment options, or set it up on a dedicated instance (VPS) for enhanced performance.
 
-#### Supports
+| **Supported Sites**         |
+|-----------------------------|
+| Youtube.com                 |
+| Coolmathgames.com           |
+| Discord.com                 |
+| Google.com                  |
+| Reddit.com                  |
+| Bing.com                    |
+| And more sites!             |
 
-- Youtube.com
-- Coolmathgames.com
-- Discord.com
-- Google.com
-- Reddit.com
-- Bing.com
-- And more sites!
 
-#### Features:
+| **Features**                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------|
+| Built-in variety of open source web proxies with both a focus on speed and/or security                                 |
+| Features "Source Randomization" to circumvent major filters effectively along with randomizations to proxy globals    |
+| Tab title + icon customization using the Settings Menu for improved browsing stealth                                   |
+| Adblocking support across all websites while surfing                                                                   |
+| SOCKS5 and Onion routing support with Tor within the Settings Menu                                                    |
+| Game library with moderately decent titles and open-source emulation projects                                          |
+| Has frequent support articles for issues relating to various proxy instances                                           |
+| Built for intensive production loads and speed                                                                          |
 
-- Tab customization using the Options menu for improved stealth
-- Considerable variety with the open selection of proxy types
-- Game library with moderately decent titles
-- Has frequent support articles for issues relating to the various proxy instances
 
 <img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.3.5-preview.png"></img>
 <img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.3.0-preview-settings.png"></img>
