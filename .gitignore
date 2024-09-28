@@ -14,3 +14,5 @@ debug.log
 !/lib/rammerhead/cache-js/.gitignore
 /views/dist/*
 /src/.shutdown
+lib/rammerhead/src/client/hammerhead.min.js
+lib/rammerhead/src/client/rammerhead.min.js
