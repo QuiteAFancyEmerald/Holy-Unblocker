@@ -1,0 +1,8 @@
+{
+  "name": "Holy Unblocker LTS",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:0-20", 
+  "features": {
+    "node": "20" 
+  },
+  "postCreateCommand": "npm install"
+}
