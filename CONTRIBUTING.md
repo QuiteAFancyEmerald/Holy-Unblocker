@@ -26,6 +26,14 @@ When making commits, please use the following format for your commit messages:
   Use the prefix `test:` for commits related to adding or modifying tests.  
   Example: `test: add tests for user authentication`
 
+- **Additions**:  
+  Use the prefix `add:` for commits that include new code additions, such as functions, classes, or modules that enhance the project.  
+  Example: `add: create user profile component`
+
+- **Updates**:  
+  Use the prefix `update:` for commits that modify existing functionality, improve performance, or make changes that are not new features but enhance the current implementation.  
+  Example: `update: enhance user profile loading performance`
+
 - **Version Changes**:  
   Use the format `v6.x.x` for version bumps. List the changes made.  
   Example: v6.3.9 - Added Contributing.md, Testing Out Deployment Fixes
