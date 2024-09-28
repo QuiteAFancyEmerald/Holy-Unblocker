@@ -40,22 +40,38 @@ Read below for information if the official site is blocked or for obtaining more
 
 ## Deploy Holy Unblocker
 
-<details><summary>Free Deployments</summary>
+### Free Deployments
+[![Deploy to Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?name=holy-unblocker&type=git&repository=QuiteAFancyEmerald%2FHoly-Unblocker&branch=master&builder=dockerfile&env%5B%5D=&ports=8080%3Bhttp%3B%2F)
+[![Deploy to Oracle Cloud](https://binbashbanana.github.io/deploy-buttons/buttons/remade/oraclecloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/BinBashBanana/deploy-buttons/archive/refs/heads/main.zip)
+
+<details><summary>More</summary>
 
 [![Deploy to Fly.io](https://img.shields.io/badge/Deploy%20to-Fly.io-blue?logo=fly.io)](https://fly.io/launch?repo=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2FQuiteAFancyEmerald%2FHoly-Unblocker)
-
-[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/QuiteAFancyEmerald/Holy-Unblocker-Old&branch=master&name=HolyUnblocker&run_command=npm%start)
-
 </details>
 
-#### Production Paid/Free Options
+### Production Paid/Free Options (Requires Payment Info)
 [![Deploy to Azure](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/azure.svg)](https://deploy.azure.com/?repository=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
 [![Deploy to IBM Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/ibmcloud.svg)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
 [![Deploy to Amplify Console](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/amplifyconsole.svg)](https://console.aws.amazon.com/amplify/home#/deploy?repo=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
 [![Run on Google Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/googlecloud.svg)](https://deploy.cloud.run/?git_repo=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
-[![Run on Replit](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/replit.svg)](https://replit.com/github/QuiteAFancyEmerald/Holy-Unblocker)
+
+#### What happened to Replit/Heroku Deployment?
+Replit is no longer free and Heroku has a set policy against web proxies. Try GitHub Codespaces or Gitpod instead for development on the cloud OR Koyeb for free hosting.
+
+### GitHub Codespaces
+
+<details><summary>Setup Instructions</summary>
+
+- Fork (and star!) this repository to your GitHub account
+- Head to the official <a href="https://github.com/codespaces">Codespaces</a> website (ensure you have a GitHub account already made)
+- Select **New Codespaces** and look for *[USERNAME]/Holy-Unblocker* on your account
+- Ensure the branch is set to `master` and the dev container configuration is set to **Holy Unblocker LTS**
+- Select **Create Codespace** and allow the container to setup
+- Type `npm install` and `npm start` in the terminal
+- Click "Make public" on the application popup, then access the deployed website via the ports tab.
+
+</details>
 
 ## Table of contents:
 
@@ -75,7 +91,7 @@ Read below for information if the official site is blocked or for obtaining more
 
 ## How to Setup
 
-Either use the button above to deploy to Heroku or do the below:
+Either use the button above to deploy to the deployment options above or type the commands below on a dedicated server:
 
 ```bash
 git clone --recurse-submodules https://github.com/titaniumnetwork-dev/Holy-Unblocker.git
@@ -304,7 +320,7 @@ Preferably if you have your own device use Visual Studio Code. Pretty much the b
 Not going to go too in depth with this part but first fork this repository. The clone it locally through a Terminal of some sort depending on what OS you are on. Make sure you navigate to the folder you want to set this up in.
 
 ```
-git clone https://github.com/titaniumnetwork-dev/Holy-Unblocker.git
+git clone https://github.com/QuiteAFancyEmerald/Holy-Unblocker.git
 
 cd Holy-Unblocker
 
