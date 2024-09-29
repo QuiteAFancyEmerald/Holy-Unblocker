@@ -1,8 +1,8 @@
 {
-  "name": "holyunblocker",
-  "version": "6.3.9",
-  "repository": "https://github.com/QuiteAFancyEmerald/Holy-Unblocker",
-  "description": "Holy Unblocker is a secure web proxy service with support for many sites.",
+  "name": "heavenlyunblocker",
+  "version": "1 alpha",
+  "repository": "https://https://github.com/Newsajik/Holy-Unblocker/",
+  "description": "Heavenly Unblocker (upgraded version of holy unblocker) is a secure web proxy service with support for many sites.",
   "main": "backend.js",
   "engines": {
     "node": "20.x"
