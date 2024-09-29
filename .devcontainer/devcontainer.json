@@ -1,5 +1,5 @@
 {
-  "name": "Holy Unblocker LTS",
+  "name": "Heavenly Unblocker LTS",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:0-20", 
   "features": {
     "node": "20" 
