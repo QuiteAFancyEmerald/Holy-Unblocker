@@ -1,7 +1,7 @@
 /* -----------------------------------------------
-/* Authors: QuiteAFancyEmerald, Yoct, and OlyB
+/* Authors: QuiteAFancyEmerald, Yoct, and OlyB (remaked by you already know by now)
 /* GNU Affero General Public License v3.0: https://www.gnu.org/licenses/agpl-3.0.en.html
-/* MAIN Holy Unblocker LTS Common Script
+/* MAIN Heavenly Unblocker LTS Common Script
 /* ----------------------------------------------- */
 
 // Encase everything in a new scope so that variables are not accidentally
@@ -192,7 +192,7 @@ const RammerheadEncode = async (baseUrl) => {
     }
   }
 
-  // Request information that's beiing stored elsewhere on the server.
+  // Request information that's being stored elsewhere on the server.
   // Executes the callback function if the server responds as intended.
   const get = (url, callback, shush = false) => {
       let request = new XMLHttpRequest();
