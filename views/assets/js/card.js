@@ -1,5 +1,5 @@
 /* -----------------------------------------------
-/* Authors: QuiteAFancyEmerald
+/* Authors: QuiteAFancyEmerald (remaked by xcfv/dsadsa/nearby/clien/Newsajik
 /* GNU Affero General Public License v3.0: https://www.gnu.org/licenses/agpl-3.0.en.html
 /* Card Shimmer Mouse Follow Script
 /* ----------------------------------------------- */
