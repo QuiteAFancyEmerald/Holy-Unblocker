@@ -1,5 +1,5 @@
 /* -----------------------------------------------
-/* Authors: OlyB and Yoct
+/* Authors: OlyB and Yoct (remaked by dsadsa/nearby/clien/xcfv/Newsajik)
 /* GNU Affero General Public License v3.0: https://www.gnu.org/licenses/agpl-3.0.en.html
 /* Adapted and modified by Yoct.
 /* Settings Menu
