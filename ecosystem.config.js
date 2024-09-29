@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'HolyUBLTS',
+      name: 'HeavenlyUBLTS',
       script: './backend.js',
       env: {
         PORT: 8080,
