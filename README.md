@@ -106,7 +106,7 @@ npm restart
 
 #### Example v6.x instead of master
 
-The default place for the proxy when its started is `http://localhost:8080`, but you can change it if needed in `/src/config.json`.
+The default place for the proxy when its started is `http://localhost:8080`, but you can change it if needed in `./ecosystem.config.js`. You can also modify the other configuration values at `/src/config.js`  
 
 This website is hosted locally with Ultraviolet and Rammerhead built-in.
 
