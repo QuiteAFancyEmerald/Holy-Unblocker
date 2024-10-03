@@ -39,7 +39,7 @@ Read below for information if the official site is blocked or for obtaining more
 ## Deploy Holy Unblocker
 
 ### Free Deployments
-[![Deploy to Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?name=holy-unblocker&type=git&repository=QuiteAFancyEmerald%2FHoly-Unblocker&branch=master&builder=dockerfile&env%5B%5D=&ports=8080%3Bhttp%3B%2F)
+[![Deploy to Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?name=holy-unblocker&type=git&repository=QuiteAFancyEmerald%2FHoly-Unblocker&branch=master&builder=buildpack&env%5B%5D=&ports=8080%3Bhttp%3B%2F)
 [![Deploy to Oracle Cloud](https://binbashbanana.github.io/deploy-buttons/buttons/remade/oraclecloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/BinBashBanana/deploy-buttons/archive/refs/heads/main.zip)
 
 <details><summary>More</summary>
@@ -106,7 +106,7 @@ npm restart
 
 #### Example v6.x instead of master
 
-The default place for the proxy when its started is `http://localhost:8080`, but you can change it if needed in `/src/config.json`.
+The default place for the proxy when its started is `http://localhost:8080`, but you can change it if needed in `./ecosystem.config.js`. You can also modify the other configuration values at `/src/config.js`  
 
 This website is hosted locally with Ultraviolet and Rammerhead built-in.
 
