@@ -10,8 +10,9 @@
 // This is to allow us to produce a generic bundle with no hard-coded paths.
 
 /**
- * @type {import('../uv').UltravioletCtor}
- */
+ * @type {import('../config').UltravioletCtor}
+*/
+
 const Ultraviolet = self.Ultraviolet;
 
 const cspHeaders = [

@@ -18,8 +18,10 @@ const {
  */
 const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
   charset = /&#173;|&#8203;|&shy;|<wbr>/gi,
+  ultraviolet_path = /uv/gi,
   getRandomChar = randomListItem(charRandom),
-  insertCharset = (str) => str.replace(charset, getRandomChar),
+  insertUVPath = (str) => str.replace(charset, getRandomChar),
+  insertCharset = (str) => str.replace(ultraviolet_path, 'config'),
   getRandomSplash = randomListItem(splashRandom),
   hutaoInsert = (str) => str.replaceAll('<!--HUTAOWOA-->', getRandomSplash),
   versionInsert = (str) => str.replaceAll('<!-- VERSION -->', VersionValue),
@@ -27,7 +29,7 @@ const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
     `<span style="display:none" data-fact="${randomListItem(vegetables)()}">${randomListItem(cookingInserts)()}</span>`,
   insertCooking = (str) =>
     str.replaceAll(
-      '<!-- IMPORTANT-HUTAOCOOKINGINSERT-DONOTDELETE -->',
+      '<!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->',
       getCookingText
     ),
   // This one isn't for obfuscation; it's just for dealing with cache issues.
@@ -38,7 +40,7 @@ const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
   },
   // Apply the final obfuscation changes to an entire file.
   paintSource = (str) =>
-    insertCharset(hutaoInsert(versionInsert(insertCooking(cacheBusting(str))))),
+    insertCharset(hutaoInsert(versionInsert(insertCooking(insertUVPath(cacheBusting(str)))))),
   // Use this instead of text404 for a preloaded error page.
   preloaded404 = paintSource(text404),
   // Grab the text content of a file. Ensure the file is a string.

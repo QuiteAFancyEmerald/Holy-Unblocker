@@ -1,6 +1,6 @@
-importScripts('/uv/uv.bundle.js');
-importScripts('/uv/uv.config.js');
-importScripts(self['{{__uv$config}}'].sw || '/uv/uv.sw.js');
+importScripts('/config/config.bundle.js');
+importScripts('/config/config.config.js');
+importScripts(self['{{__uv$config}}'].sw || '/config/config.sw.js');
 
 /*
 

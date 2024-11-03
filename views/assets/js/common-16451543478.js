@@ -450,7 +450,7 @@ addEventListener('DOMContentLoaded', async () => {
     });
   };
 
-  prSet('pr-uv', 'ultraviolet');
+  prSet('pr-runprod', 'ultraviolet');
   prSet('pr-rh', 'rammerhead');
   prSet('pr-yt', 'youtube');
   prSet('pr-rh-dc', 'discordRH');

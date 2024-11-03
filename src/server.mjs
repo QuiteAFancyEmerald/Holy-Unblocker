@@ -295,7 +295,7 @@ app.get('/assets/js/common-16451543478.js', (req, reply) => {
     );
 });
 
-app.get('/uv/:file.js', (req, reply) => {
+app.get('/config/:file.js', (req, reply) => {
   const destination = existsSync(
     fileURLToPath(new URL('../views' + req.url, import.meta.url))
   )

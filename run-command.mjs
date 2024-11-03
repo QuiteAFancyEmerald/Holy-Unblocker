@@ -121,7 +121,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
       await mkdir(dist);
       await build({
         entryPoints: [
-          './views/uv/**/*.js',
+          './views/config/**/*.js',
           './views/assets/js/**/*.js',
           './views/assets/css/**/*.css',
         ],
