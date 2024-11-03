@@ -26,11 +26,11 @@ const pages = {
   bookmarklets: 'pages/nav/bookmarklets.html',
   terms: 'pages/nav/terms.html',
   /* Games */
-  games: 'pages/nav/gtools.html',
-  'web-games': 'pages/nav/games5.html',
-  emulators: 'pages/nav/emulators.html',
-  'flash-games': 'pages/nav/flash.html',
-  'retro-games': 'pages/nav/emulibrary.html',
+  g: 'pages/nav/gtools.html',
+  e: 'pages/nav/games5.html',
+  c: 'pages/nav/emulators.html',
+  f: 'pages/nav/flash.html',
+  d: 'pages/nav/emulibrary.html',
   /* Proxies */
   a: 'pages/proxnav/ultraviolet.html',
   b: 'pages/proxnav/rammerhead.html',
