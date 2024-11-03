@@ -33,7 +33,7 @@
     "@mercuryworkshop/bare-mux": "^2.1.6",
     "@mercuryworkshop/epoxy-transport": "^2.1.26",
     "@mercuryworkshop/libcurl-transport": "^1.3.12",
-    "@titaniumnetwork-dev/ultraviolet": "~3.2.10",
+    "@titaniumnetwork-dev/ultraviolet": "~3.2.7",
     "@tomphttp/bare-server-node": "^2.0.3",
     "axios": "^1.7.2",
     "fastify": "^4.28.1",
