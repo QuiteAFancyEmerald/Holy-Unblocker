@@ -115,11 +115,11 @@ const testServerResponse = async () => {
     'http://localhost:8080/baremux/index.js',
     'http://localhost:8080/baremux/worker.js',
     'http://localhost:8080/epoxy/index.mjs',
-    'http://localhost:8080/uv/uv.bundle.js',
-    'http://localhost:8080/uv/sw.js',
-    'http://localhost:8080/uv/uv.config.js',
-    'http://localhost:8080/uv/workerware.js',
-    'http://localhost:8080/uv/WWError.js',
+    'http://localhost:8080/config/config.bundle.js',
+    'http://localhost:8080/config/sw.js',
+    'http://localhost:8080/config/config.config.js',
+    'http://localhost:8080/config/workerware.js',
+    'http://localhost:8080/config/WWError.js',
   ];
 
   const results = await Promise.all(endpoints.map(testEndpoint));
@@ -143,6 +143,7 @@ const testCommonJSOnPage = async () => {
       '--enable-features=ServiceWorker',
       '--enable-features=InsecureOrigins',
     ],
+    devtools: true,
     headless: true,
     ignoreHTTPSErrors: true,
   });
@@ -182,41 +183,57 @@ const testCommonJSOnPage = async () => {
       return rammerheadTestPassed;
     };
 
+        /*
+
+                                                        xx   
+      xx                                            xx    
+      xxx                                        xx      
+        xxx                                     xx       
+          xxx                                  xx        
+            xxx                              xx          
+                xx                           xx           
+                xx                         xx            
+                                          xx             
+                                          xx              
+                                                          
+                                                          
+                                                          
+                                                          
+                  x                    x                 
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                            xxxxxxxxxxxxxxx               
+                xxxxxxxxxxxx              xxxxx          
+              xxxx                              xxx       
+          xxx                                    xxx     
+        xxx                                        xx    
+        xx                                           xx   
+      xx                                             xx  
+    xxx                                               x  
+    xx                                                 x 
+    xx                                                  xx
+
+    */
+
     /*
+    WIP detectordetector eval changes
+    */
+   
+    const detectoreval = detectordetector;
 
-                                                     xx   
-  xx                                            xx    
-   xxx                                        xx      
-     xxx                                     xx       
-       xxx                                  xx        
-         xxx                              xx          
-            xx                           xx           
-             xx                         xx            
-                                       xx             
-                                      xx              
-                                                      
-                                                      
-                                                      
-                                                      
-               x                    x                 
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                        xxxxxxxxxxxxxxx               
-             xxxxxxxxxxxx              xxxxx          
-          xxxx                              xxx       
-       xxx                                    xxx     
-     xxx                                        xx    
-    xx                                           xx   
-   xx                                             xx  
- xxx                                               x  
- xx                                                 x 
-xx                                                  xx
+    const filterCheck = async () => {
+        const result = await page.evaluate(detectoreval);
 
-*/
+        const filterCheckPassed =
+        console.log(
+          'Detection Result:', result
+        );
+        return filterCheckPassed;
+    };
 
     const testUltraviolet = async () => {
       const omniboxId = 'pr-uv',
@@ -315,9 +332,10 @@ xx                                                  xx
     // Run tests for Rammerhead and Ultraviolet.
     const rammerheadPassed = await testRammerhead();
     const ultravioletPassed = await testUltraviolet();
+    //const filterCheckPassed = await filterCheck();
 
-    if (rammerheadPassed && ultravioletPassed) {
-      console.log('Both tests passed.');
+    if (rammerheadPassed && ultravioletPassed /* && filterCheckPassed */ ) {
+      console.log('All tests passed.');
       process.exitCode = 0;
     } else {
       console.error('Tests failed.');
