@@ -162,13 +162,13 @@ app.register(fastifyStatic, {
     fileURLToPath(
       new URL(
         // Use the pre-compiled, minified scripts instead, if enabled in config.
-        config.minifyScripts ? '../views/dist/uv' : '../views/uv',
+        config.minifyScripts ? '../views/dist/config' : '../views/config',
         import.meta.url
       )
     ),
     uvPath,
   ],
-  prefix: '/uv/',
+  prefix: '/config/',
   decorateReply: false,
 });
 

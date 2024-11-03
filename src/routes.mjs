@@ -32,8 +32,8 @@ const pages = {
   'flash-games': 'pages/nav/flash.html',
   'retro-games': 'pages/nav/emulibrary.html',
   /* Proxies */
-  ultraviolet: 'pages/proxnav/ultraviolet.html',
-  rammerhead: 'pages/proxnav/rammerhead.html',
+  a: 'pages/proxnav/ultraviolet.html',
+  b: 'pages/proxnav/rammerhead.html',
   /* Proxy Presets */
   youtube: 'pages/proxnav/preset/youtube.html',
   apps: 'pages/proxnav/preset/applications.html',
@@ -47,12 +47,12 @@ const externalPages = {
   github: {
     default: 'https://github.com/QuiteAFancyEmerald/Holy-Unblocker',
     aos: 'https://github.com/michalsnik/aos',
-    'bare-module': 'https://github.com/motortruck1221/bare-as-module3',
-    'bm': 'https://github.com/MercuryWorkshop/bare-mux',
-    epoxy: 'https://github.com/MercuryWorkshop/epoxy-tls',
+    bam: 'https://github.com/motortruck1221/bare-as-module3',
+    bm: 'https://github.com/MercuryWorkshop/bare-mux',
+    ep: 'https://github.com/MercuryWorkshop/epoxy-tls',
     fastify: 'https://github.com/fastify/fastify',
     'font-awesome': 'https://github.com/FortAwesome/Font-Awesome',
-    'libcurl-js': 'https://github.com/ading2210/libcurl.js',
+    lj: 'https://github.com/ading2210/libcurl.js',
     'nord-theme': 'https://github.com/nordtheme',
     config: 'https://github.com/titaniumnetwork-dev/Ultraviolet',
     wm: 'https://github.com/MercuryWorkshop/wisp-protocol',
