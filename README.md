@@ -261,6 +261,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - Switched to Fastify for serving content from the backend; a separate Express backend file is kept in case it's still needed
 - Rammerhead is now locally built into the HU LTS repository
 - Simplified the HU LTS setup process and added more default npm commands
+- Filter focus via https://gist.github.com/BinBashBanana/a1fd7345e2d86e69d5a532f16cbdbdaa
 
 ## Vague Explanation for Beginners With External Proxies and Hosting
 
@@ -401,6 +402,7 @@ This project currently uses Ultraviolet, Wisp, Womginx, and Rammerhead, linked b
 - <a href="https://github.com/MercuryWorkshop/wisp-server-node">Wisp</a>
 - <a href="https://github.com/MercuryWorkshop/bare-mux">Bare-Mux</a>
 - <a href="https://github.com/tomphttp/bare-server-node">TOMP Bare Server</a>
+- <a href="https://gist.github.com/BinBashBanana/a1fd7345e2d86e69d5a532f16cbdbdaa">DetectorDetector</a>
 
 ### Other Dependencies:
 
