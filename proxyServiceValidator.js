@@ -221,8 +221,7 @@ const testCommonJSOnPage = async () => {
 
     /*
     WIP detectordetector eval changes
-    */
-   
+
     const detectoreval = detectordetector;
 
     const filterCheck = async () => {
@@ -235,6 +234,8 @@ const testCommonJSOnPage = async () => {
         return filterCheckPassed;
     };
 
+    */
+   
     const testUltraviolet = async () => {
       const omniboxId = 'pr-uv',
         errorPrefix = 'failure',
