@@ -1,6 +1,6 @@
-importScripts('/config/config.bundle.js');
-importScripts('/config/config.config.js');
-importScripts(self['{{__uv$config}}'].sw || '/config/config.sw.js');
+importScripts('/network/network.bundle.js');
+importScripts('/network/network.config.js');
+importScripts(self['{{__uv$config}}'].sw || '/network/network.sw.js');
 
 const uv = new UVServiceWorker();
 

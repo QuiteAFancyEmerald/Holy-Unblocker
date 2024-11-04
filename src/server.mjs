@@ -162,13 +162,13 @@ app.register(fastifyStatic, {
     fileURLToPath(
       new URL(
         // Use the pre-compiled, minified scripts instead, if enabled in config.
-        config.minifyScripts ? '../views/dist/config' : '../views/config',
+        config.minifyScripts ? '../views/dist/network' : '../views/network',
         import.meta.url
       )
     ),
     uvPath,
   ],
-  prefix: '/config/',
+  prefix: '/network/',
   decorateReply: false,
 });
 
@@ -295,7 +295,7 @@ app.get('/assets/js/common-16451543478.js', (req, reply) => {
     );
 });
 
-app.get('/config/:file.js', (req, reply) => {
+app.get('/network/:file.js', (req, reply) => {
   const destination = existsSync(
     fileURLToPath(new URL('../views' + req.url, import.meta.url))
   )

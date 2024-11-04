@@ -1,8 +1,8 @@
 // Encase everything in a new scope so that variables are not accidentally
 // attached to the global scope.
 (() => {
-const stockSW = '/config/sw.js',
-  blacklistSW = '/config/sw-blacklist.js',
+const stockSW = '/network/sw.js',
+  blacklistSW = '/network/sw-blacklist.js',
   swAllowedHostnames = ['localhost', '127.0.0.1'],
   connection = new BareMux.BareMuxConnection('/baremux/worker.js'),
   wispUrl =

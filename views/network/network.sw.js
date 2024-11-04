@@ -10,7 +10,7 @@
 // This is to allow us to produce a generic bundle with no hard-coded paths.
 
 /**
- * @type {import('../config').UltravioletCtor}
+ * @type {import('../network').UltravioletCtor}
 */
 
 const Ultraviolet = self.Ultraviolet;

@@ -7,17 +7,17 @@
 
 
 /**
- * @type {import('../config').UltravioletCtor}
+ * @type {import('.').UltravioletCtor}
  */
 const Ultraviolet = self.Ultraviolet;
 
 /**
- * @type {import('../config').UVClientCtor}
+ * @type {import('.').UVClientCtor}
  */
 const UVClient = self.UVClient;
 
 /**
- * @type {import('../config').UVConfig}
+ * @type {import('.').UVConfig}
  */
 const __uv$config = self['{{__uv$config}}'];
 
