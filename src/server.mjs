@@ -316,7 +316,6 @@ app.get('/network/:file.js', (req, reply) => {
     );
 });
 
-// Set an error page for invalid paths outside the query string system.
 app.setNotFoundHandler((req, reply) => {
   reply.code(404).type('text/html').send(preloaded404);
 });
