@@ -293,7 +293,7 @@ app.get('/assets/js/common-16451543478.js', (req, reply) => {
         '../views' + (config.minifyScripts ? '/dist' : '') + req.url
       )
     );
-});
+}); 
 
 app.get('/network/:file.js', (req, reply) => {
   const destination = existsSync(
