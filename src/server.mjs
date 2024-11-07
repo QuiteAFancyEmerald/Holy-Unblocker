@@ -250,53 +250,40 @@ app.get('/github/:redirect', (req, reply) => {
 });
 
 const encodingTable = (() => {
-  let yummyOneBytes = '';
-  for (let i = 0; i < 128; i++)
-    if (
-      JSON.stringify(JSON.stringify(String.fromCodePoint(i)).slice(1, -1))
-        .length < 6
-    )
-      yummyOneBytes += String.fromCodePoint(i);
-  return yummyOneBytes;
-})(),
-
-// Random UUID generation
-randomValue = crypto
-  .randomUUID()
-  .split('-')
-  .map((gibberish) => {
-    let randomNumber = parseInt(gibberish, 16),
-      output = '';
-    while (randomNumber >= encodingTable.length) {
-      output +=
-        encodingTable[Math.floor(randomNumber) % encodingTable.length];
-      randomNumber = randomNumber / encodingTable.length;
-    }
-    return output + Math.floor(randomNumber);
-  })
-  .join(''),
-
-// Mapping for randomizable identifiers
-randomIdentifiers = {
-  '__uv$config': () => randomValue, 
-},
-
-randomizeGlobal = config.randomizeIdentifiers
-  ? (file) =>
-      tryReadFile(file, import.meta.url).replace(
-        /(["'`])\{\{(__uv\$\w+[-\w]*)\}\}\1/g,
-        (_, quote, identifier) => {
-          const replacement = randomIdentifiers[identifier] ? randomIdentifiers[identifier]() : identifier;
-          return quote + replacement + quote;
-        }
+    let yummyOneBytes = '';
+    for (let i = 0; i < 128; i++)
+      if (
+        JSON.stringify(JSON.stringify(String.fromCodePoint(i)).slice(1, -1))
+          .length < 6
       )
-  : (file) =>
-      tryReadFile(file, import.meta.url).replace(
-        /(["'`])\{\{(__uv\$\w+[-\w]*)\}\}\1/g,
-        (_, quote, identifier) => {
-          return quote + identifier + quote;
-        }
-      );
+        yummyOneBytes += String.fromCodePoint(i);
+    return yummyOneBytes;
+  })(),
+  randomValue = crypto
+    .randomUUID()
+    .split('-')
+    .map((gibberish) => {
+      let randomNumber = parseInt(gibberish, 16),
+        output = '';
+      while (randomNumber >= encodingTable.length) {
+        output +=
+          encodingTable[Math.floor(randomNumber) % encodingTable.length];
+        randomNumber = randomNumber / encodingTable.length;
+      }
+      return output + Math.floor(randomNumber);
+    })
+    .join(''),
+  randomizeGlobal = config.randomizeIdentifiers
+    ? (file) =>
+        tryReadFile(file, import.meta.url).replace(
+          /(["'`])\{\{__uv\$config\}\}\1/g,
+          JSON.stringify(randomValue)
+        )
+    : (file) =>
+        tryReadFile(file, import.meta.url).replace(
+          /(["'`])\{\{__uv\$config\}\}\1/g,
+          JSON.stringify('__uv$config')
+        );
 
 app.get('/assets/js/common-16451543478.js', (req, reply) => {
   reply
