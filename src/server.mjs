@@ -22,7 +22,7 @@ const config = Object.freeze(
     JSON.parse(await readFile(new URL('./config.json', import.meta.url)))
   ),
   ecosystemConfig = Object.freeze(
-    ecosystem.apps.find((app) => app.name === 'HolyUB') || ecosystem.apps[0]
+    ecosystem.apps.find((app) => app.name === 'HolyUBLTS') || ecosystem.apps[0]
   ),
   { pages, externalPages } = pageRoutes,
   __dirname = path.resolve();
@@ -169,7 +169,7 @@ app.register(fastifyStatic, {
     uvPath,
   ],
   prefix: '/network/',
-  decorateReply: false,
+  decorateReply: true,
 });
 
 // Register proxy paths to the website.
