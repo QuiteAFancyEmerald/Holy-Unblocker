@@ -22,7 +22,7 @@ const config = Object.freeze(
     JSON.parse(await readFile(new URL('./config.json', import.meta.url)))
   ),
   ecosystemConfig = Object.freeze(
-    ecosystem.apps.find((app) => app.name === 'HolyUB') || ecosystem.apps[0]
+    ecosystem.apps.find((app) => app.name === 'HolyUBLTS') || ecosystem.apps[0]
   ),
   { pages, externalPages } = pageRoutes,
   __dirname = path.resolve();
@@ -169,7 +169,7 @@ app.register(fastifyStatic, {
     uvPath,
   ],
   prefix: '/network/',
-  decorateReply: false,
+  decorateReply: true,
 });
 
 // Register proxy paths to the website.
@@ -293,7 +293,7 @@ app.get('/assets/js/common-16451543478.js', (req, reply) => {
         '../views' + (config.minifyScripts ? '/dist' : '') + req.url
       )
     );
-});
+}); 
 
 app.get('/network/:file.js', (req, reply) => {
   const destination = existsSync(
@@ -316,7 +316,6 @@ app.get('/network/:file.js', (req, reply) => {
     );
 });
 
-// Set an error page for invalid paths outside the query string system.
 app.setNotFoundHandler((req, reply) => {
   reply.code(404).type('text/html').send(preloaded404);
 });

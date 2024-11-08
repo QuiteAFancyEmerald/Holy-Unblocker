@@ -27,24 +27,24 @@
   "author": "Titanium Network",
   "license": "GNU AFFERO",
   "dependencies": {
-    "@fastify/helmet": "^11.1.1",
-    "@fastify/static": "^7.0.4",
-    "@mercuryworkshop/bare-as-module3": "^2.2.2",
+    "@fastify/helmet": "^12.0.1",
+    "@fastify/static": "^8.0.2",
+    "@mercuryworkshop/bare-as-module3": "^2.2.5",
     "@mercuryworkshop/bare-mux": "^2.1.6",
     "@mercuryworkshop/epoxy-transport": "^2.1.26",
     "@mercuryworkshop/libcurl-transport": "^1.3.12",
-    "@titaniumnetwork-dev/ultraviolet": "~3.2.7",
-    "@tomphttp/bare-server-node": "^2.0.3",
-    "axios": "^1.7.2",
-    "fastify": "^4.28.1",
+    "@titaniumnetwork-dev/ultraviolet": "~3.2.10",
+    "@tomphttp/bare-server-node": "^2.0.5",
+    "axios": "^1.7.7",
+    "fastify": "^5.1.0",
     "mime-types": "^2.1.35",
     "pm2": "^5.4.2",
-    "puppeteer": "^22.12.1",
+    "puppeteer": "^23.7.1",
     "wisp-server-node": "^1.1.7",
     "ws": "^8.18.0"
   },
   "devDependencies": {
-    "@babel/node": "^7.25.0",
-    "esbuild": "^0.23.0"
+    "@babel/node": "^7.26.0",
+    "esbuild": "^0.24.0"
   }
 }

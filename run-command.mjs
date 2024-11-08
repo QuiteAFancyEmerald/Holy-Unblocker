@@ -10,7 +10,7 @@ const config = Object.freeze(
     JSON.parse(await readFile(new URL('./src/config.json', import.meta.url)))
   ),
   ecosystemConfig = Object.freeze(
-    ecosystem.apps.find((app) => app.name === 'HolyUB') || ecosystem.apps[0]
+    ecosystem.apps.find((app) => app.name === 'HolyUBLTS') || ecosystem.apps[0]
   );
 
 const serverUrl = ((base) => {

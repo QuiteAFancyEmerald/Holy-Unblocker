@@ -63,7 +63,7 @@ const setAuthCookie = (s, lax) => {
 
 // Search engine is set to Bing. Intended to work just like the usual
 // bar at the top of a browser.
-const sx = 'bing.com' + '/search?q=',
+const sx = 'startpage.com/sp' + '/search?query=',
   /*
   omnibox = url =>
     (url.indexOf("http")

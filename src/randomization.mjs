@@ -18,9 +18,7 @@ const {
  */
 const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
   charset = /&#173;|&#8203;|&shy;|<wbr>/gi,
-  ultraviolet_path = /uv/gi,
   getRandomChar = randomListItem(charRandom),
-  insertUVPath = (str) => str.replace(ultraviolet_path, 'network'),
   insertCharset = (str) => str.replace(charset, getRandomChar),
   getRandomSplash = randomListItem(splashRandom),
   hutaoInsert = (str) => str.replaceAll('<!--HUTAOWOA-->', getRandomSplash),
@@ -40,7 +38,7 @@ const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
   },
   // Apply the final obfuscation changes to an entire file.
   paintSource = (str) =>
-    insertCharset(hutaoInsert(versionInsert(insertCooking(insertUVPath(cacheBusting(str)))))),
+    insertCharset(hutaoInsert(versionInsert(insertCooking(cacheBusting(str))))),
   // Use this instead of text404 for a preloaded error page.
   preloaded404 = paintSource(text404),
   // Grab the text content of a file. Ensure the file is a string.
