@@ -1,6 +1,6 @@
 <img align="left" width="70px" src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/icon.png"></img>
 
-# Holy Unblocker LTS (v6.x.x)
+# Holy Unblocker LTS (v6.3.9)
 
 ![GitHub Actions Status](https://github.com/QuiteAFancyEmerald/Holy-Unblocker/workflows/CI-Production/badge.svg)
 ![GitHub Actions Status](https://github.com/QuiteAFancyEmerald/Holy-Unblocker/workflows/CI-Win/badge.svg)
@@ -13,6 +13,17 @@ This project serves mostly as a proof of concept for the ideal clientless soluti
 
 Works with a large number of sites, including YouTube, Discord, and more!
 Also has a good amount of locally hosted games featured on the site.
+
+#### Current Branch: Production
+<details><summary>Branch Types</summary>
+
+- Latest (master; built for FOSS and SEO)
+- Beta (pending changes; changes that may break things)
+- Stable (v4, v5, v6; stable version of Holy Unblocker LTS)
+- Production (changes for self hosting in production settings; max filtering evasion and request handling)
+</details>
+
+<br>
 
 > [!TIP]
 > Holy Unblocker LTS is optimized for self-hosting to provide you with maximum privacy control! Fork this repository and consider starring. You can self-host using either free or paid deployment options, or set it up on a dedicated instance (VPS) for enhanced performance.
