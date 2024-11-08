@@ -14,6 +14,18 @@ This project serves mostly as a proof of concept for the ideal clientless soluti
 Works with a large number of sites, including YouTube, Discord, and more!
 Also has a good amount of locally hosted games featured on the site.
 
+#### Current Branch: Latest
+<details><summary>Branch Types</summary>
+
+- Latest (master; built for FOSS and SEO)
+- Beta (pending changes; changes that may break things)
+- Stable (v4, v5, v6; stable version of Holy Unblocker LTS)
+- Production (changes for self hosting in production settings; max filtering evasion and request handling)
+</details>
+
+<br>
+
+
 > [!TIP]
 > Holy Unblocker LTS is optimized for self-hosting to provide you with maximum privacy control! Fork this repository and consider starring. You can self-host using either free or paid deployment options, or set it up on a dedicated instance (VPS) for enhanced performance.
 
