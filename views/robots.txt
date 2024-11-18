@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
 
+User-agent: *
+Disallow: /uv
+
+User-agent: *
+Disallow: /assets
+
+User-agent: *
+Disallow: /github
+ 
 Sitemap: https://holyunblocker.org/sitemap.xml
