@@ -41,6 +41,7 @@ const pages = {
   flash: 'archive/gfiles/flash/index.html',
   webretro: 'archive/gfiles/rarch/index.html',
   'vibe-os': 'archive/vibeOS/index.html',
+  'robots.txt': 'robots.txt',
 };
 
 const externalPages = {
