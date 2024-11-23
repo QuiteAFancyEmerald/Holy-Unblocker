@@ -227,7 +227,7 @@ details[open] summary {
   overflow-x: clip;
 }
 
-#particles-js {
+#background-animated {
   background-color: var(--nord0);
   position: fixed;
   left: 0;
@@ -1565,6 +1565,7 @@ iner .splashstrokeheader {
   border-radius: 5px;
   padding: 10px 12px;
   color: white;
+  background-color: #22262f;
   font-family: 'Montserrat Alternates', sans-serif;
   font-size: 20px;
   margin: 3px;

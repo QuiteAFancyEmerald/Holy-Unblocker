@@ -404,7 +404,7 @@ addEventListener('DOMContentLoaded', async () => {
 
     heli: urlHandler(uvUrl('https://benjames171.itch.io/helo-storm')),
 
-    youtube: urlHandler(uvUrl('https://youtube.com')),
+    youtube: urlHandler(uvUrl('https://inv.nadeko.net')),
 
     discordUV: urlHandler(uvUrl('https://discord.com/app')),
 

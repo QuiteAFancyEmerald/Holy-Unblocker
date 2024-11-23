@@ -2,7 +2,7 @@
   await loadFull(tsParticles);
 
   await tsParticles.load({
-    id: 'particles-js',
+    id: 'background-animated',
     options: {
       background: {
         color: { value: '#1d232a' },

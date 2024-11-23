@@ -59,6 +59,7 @@ const externalPages = {
   },
   'config-docs': 'https://docs.titaniumnetwork.org',
   'config-chat': 'https://discord.gg/VNT4E7gN5Y',
+  'nt': 'https://nordtheme.com',
 };
 
 const cookingInserts = insert.content,
