@@ -16,7 +16,7 @@ import { uvPath } from '@titaniumnetwork-dev/ultraviolet';
 // import { createBareServer } from "@tomphttp/bare-server-node";
 
 const config = JSON.parse(
-    await readFile(new URL('./config.json', import.meta.url))
+    await readFile(new URL('../config.json', import.meta.url))
   ),
   { pages, text404 } = pkg,
   __dirname = path.resolve(),

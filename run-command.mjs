@@ -7,7 +7,7 @@ import ecosystem from './ecosystem.config.js';
 // Some necessary constants are copied over from /src/server.mjs.
 
 const config = Object.freeze(
-    JSON.parse(await readFile(new URL('./src/config.json', import.meta.url)))
+    JSON.parse(await readFile(new URL('./config.json', import.meta.url)))
   ),
   ecosystemConfig = Object.freeze(
     ecosystem.apps.find((app) => app.name === 'HolyUB') || ecosystem.apps[0]

@@ -19,7 +19,7 @@ import { existsSync, unlinkSync } from 'node:fs';
 import ecosystem from '../ecosystem.config.js';
 
 const config = Object.freeze(
-    JSON.parse(await readFile(new URL('./config.json', import.meta.url)))
+    JSON.parse(await readFile(new URL('../config.json', import.meta.url)))
   ),
   ecosystemConfig = Object.freeze(
     ecosystem.apps.find((app) => app.name === 'HolyUB') || ecosystem.apps[0]
