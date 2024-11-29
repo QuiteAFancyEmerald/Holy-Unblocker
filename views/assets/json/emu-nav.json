@@ -1,5 +1,11 @@
 [
   {
+    "name": "Webretro Collection",
+    "path": "/webretro",
+    "img": "genesis.png",
+    "description": "Search through the collection of emulators featured!"
+  },
+  {
     "name": "GBA Emulator",
     "path": "/webretro?core=mgba",
     "img": "gba.png",
@@ -18,16 +24,10 @@
     "description": "Emulate SNES games! Click to upload a ROM."
   },
   {
-    "name": "Genesis Emulator",
-    "path": "/webretro?core=genesis_plus_gx",
-    "img": "genesis.png",
-    "description": "Emulate Genesis games! Click to upload a ROM."
-  },
-  {
-    "name": "N64 Emulator (BROKEN)",
+    "name": "N64 Emulator",
     "path": "/webretro?core=mupen64plus_next",
     "img": "nintendo64.png",
-    "description": "Emulate N64 games! Click to upload a ROM. (Currently Broken)"
+    "description": "Emulate N64 games! Click to upload a ROM."
   },
   {
     "name": "VibeOS",
