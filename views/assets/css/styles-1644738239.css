@@ -799,13 +799,13 @@ input[type='text'] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 100px 0 100px 10%;
+  padding: 100px 0 100px 9%;
   height: max(85vh, 25em);
   box-sizing: border-box;
 }
 
 .home-text {
-  max-width: 600px;
+  max-width: 750px;
   flex: 1;
 }
 
@@ -893,6 +893,11 @@ input[type='text'] {
   justify-content: center;
   align-items: center;
   font-size: 18px;
+}
+
+.downarrowgroup {
+  color: var(--nord3);
+  margin-left: 80%;
 }
 
 .cmd {
