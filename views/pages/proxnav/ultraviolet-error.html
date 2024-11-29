@@ -18,28 +18,97 @@
     <link rel="dns-prefetch" href="https://arc.io" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic"
+      href="https://www.nerdfonts.com/assets/css/webfont.css"
     />
     <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Montserrat+Alternates"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700"
     />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous"
     />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-      crossorigin="anonymous"
-    ></script>
-    <script async src="https://arc.io/widget.min.js#2BzvQ1em"></script>
+    <style>
+      *,
+      body {
+        color: #eceff4;
+        background-color: #1d232a;
+        font-family: "Figtree", sans-serif;
+        font-optical-sizing: auto;
+      }
+
+      h1 {
+        color: #ff5861;
+        font-size: 64px;
+        font-weight: 900;
+        margin-top: 1.8%;
+      }
+
+      code {
+        color: #e5e9f0;
+        font-size: 24px;
+        font-weight: 500;
+      }
+
+      .uv-small {
+        color: #e5e9f0;
+        font-size: 20px;
+        font-weight: 500;
+      }
+
+      i {
+        color: #e5e9f0;
+        font-size: 20px;
+        font-weight: 900;
+        text-decoration: none;
+        font-style: normal;
+      }
+      
+      .footer-spacing {
+        margin-top: 0.5%;
+      }
+
+      button {
+        display: inline-block;
+        text-decoration: none;
+        padding: 15px 50px;
+        border-radius: 8px;
+        margin: 10px;
+        margin-top: 20px;
+        transition: 0.3s ease-in-out;
+        -webkit-transition: 0.3s ease-in-out;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+      }
+
+      button:hover {
+        background-color: #434c5e;
+      }
+
+      .container {
+        max-width: 650px;
+      }
+
+      .list-group-item {
+        background-color: #323946;
+        color: #eceff4;
+      }
+
+      .list-group {
+        border-radius: 18px;
+      }
+
+      textarea {
+        border-radius: 18px;
+        outline: none;
+        resize: none;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   </head>
   <body>
     <span style="display: none" data-cooking="cooks"
@@ -47,55 +116,46 @@
       expert advice to master the basics and build upon your existing cooking
       skills and knowledge.</span
     >
-    <div class="text-center" style="margin: 10%">
-      <h1>Site Error</h1>
-      <h4>
-        Failed to load <b id="fetchedURL"></b>
-      </h4>
-      <h5 style="padding: 1%">Possible Solutions:</h5>
-      <p>
-        If you are u<wbr />sing Stea<wbr />lth mode try doing "Rel<wbr />oad Fram<wbr />e" with the button below or right-clicking the page or simply re<wbr />load the page
-        a few times (Around five times at the max, takes a bit sometimes).
-      </p>
-      <p>
-        In the case of ma<wbr />intenan<wbr />ce, please wait for the issue to
-        be resolved. If the issue persists be sure to mention this in the Ti<wbr />ta<wbr />nium
-        Net<wbr />work Dis<wbr />cor<wbr />d.
-      </p>
-      <p>
-        Be su<wbr />re to View the F<wbr />AQ page also if you have any
-        quest<wbr />ions. Holy Unb<wbr />lock<wbr />er updates often so it is
-        most likely a temporary issue.
-      </p>
-      <br />
+    <div class="container-fluid text-center">
+      <h1>Network Error</h1>
+      <code>Failed to load: <b id="fetchedURL"></b></code>
+      <br>
+      <button id="reload">Refresh</button>
+      <br /><br>
+      <code class="uv-small">Refresh the network service | Ultraviolet v<span id="uvVersion"></span>.</code>
+      <br><br>
       <h5>
-        More Details:
         <p>
           <textarea id="errorTrace" cols="40" rows="10" readonly></textarea>
         </p>
       </h5>
-      <button id="reload">Reload</button>
-      <p>
-        <i>Ultraviolet v<span id="uvVersion"></span></i>
+      <br>
+      <div class="container text-wrap">
+        <ul class="list-group text-start">
+          <li class="list-group-item">
+            - Verifying you entered the correct address
+          </li>
+          <li class="list-group-item">
+            - Clearing your browser or site cache data via Ctrl+Shift+R and browser settings
+          </li>
+          <li class="list-group-item">
+            - In the case of website ma<wbr />intenan<wbr />ce or updates, please wait for the issue to
+            be resolved.
+          </li>
+          <li class="list-group-item">
+            - If the issue persists be sure to mention this in the Ti<wbr />ta<wbr />nium
+            Net<wbr />work Dis<wbr />cor<wbr />d.
+          </li>
+          <li class="list-group-item">
+            - View the F<wbr />AQ page for specific site compatibility issues.
+          </li>
+        </ul>
+      </div>
+      <br />
+      <p class="footer-spacing">
+        <i>Holy Unblocker LTS © 2020-2024 | Made With Love </i><i class="nf nf-fa-heart"></i>
       </p>
       <script src="{{src}}"></script>
-    </div>
-    <div class="footer-dark ft-bg" style="margin-top: 5%">
-      <footer>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 item text">
-              <h3>
-                <a href="#">Ho<wbr />ly Unb<wbr />loc<wbr />ker</a>
-              </h3>
-              <p>Global Web Proxy Innovation, Done Right.&nbsp;</p>
-              <p class="copyright">
-                Holy U<wbr />nblo<wbr />cke<wbr />r LTS © 2020-2024
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   </body>
 </html>
