@@ -35,13 +35,16 @@
         background-color: #1d232a;
         font-family: "Figtree", sans-serif;
         font-optical-sizing: auto;
+        background-image: radial-gradient(circle, rgba(131, 131, 131, 0.02) 1px, transparent 1px), radial-gradient(circle, rgba(148, 148, 148, 0.02) 1px, transparent 1px);
+        background-position: 0 0, 5px 5px;
+        background-size: 10px 10px;
       }
 
       h1 {
         color: #ff5861;
         font-size: 64px;
         font-weight: 900;
-        margin-top: 1.8%;
+        margin-top: 0.8%;
       }
 
       code {
@@ -92,7 +95,7 @@
       }
 
       .list-group-item {
-        background-color: #323946;
+        background-color: #2e3440;
         color: #eceff4;
       }
 
@@ -106,6 +109,13 @@
         resize: none;
         border: 1px solid rgba(255, 255, 255, 0.2);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 25px;
+        box-sizing: border-box;
+        width: 450px;
+      }
+
+      .nf-fa-heart {
+        color: #ff5861;
       }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
@@ -121,15 +131,14 @@
       <code>Fa<wbr>iled to l<wbr>oad: <b id="fetchedURL"></b></code>
       <br>
       <button id="reload">Ref<wbr>resh</button>
-      <br /><br>
-      <code class="uv-small">Ref<wbr>res<wbr>h the net<wbr>work serv<wbr>ice | Ul<wbr>tra<wbr>vio<wbr>let v<span id="uvVersion"></span>.</code>
       <br><br>
       <h5>
         <p>
-          <textarea id="errorTrace" cols="40" rows="10" readonly></textarea>
+          <textarea id="errorTrace" cols="40" rows="10" readonly>test</textarea>
         </p>
       </h5>
-      <br>
+      <code class="uv-small">Ref<wbr>res<wbr>h the net<wbr>work serv<wbr>ice | Ul<wbr>tra<wbr>vio<wbr>let v<span id="uvVersion"></span>.</code>
+      <br><br>
       <div class="container text-wrap">
         <ul class="list-group text-start">
           <li class="list-group-item">
