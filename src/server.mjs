@@ -132,6 +132,37 @@ app.register(fastifyStatic, {
 });
 
 app.register(fastifyStatic, {
+  root: fileURLToPath(new URL('../views/archive/gfiles/rarch', import.meta.url)),
+  prefix: '/serving/',
+  decorateReply: false,
+});
+
+app.register(fastifyStatic, {
+  root: fileURLToPath(new URL('../views/archive/gfiles/rarch/cores', import.meta.url)),
+  prefix: '/cores/',
+  decorateReply: false,
+});
+
+app.register(fastifyStatic, {
+  root: fileURLToPath(new URL('../views/archive/gfiles/rarch/info', import.meta.url)),
+  prefix: '/info/',
+  decorateReply: false,
+});
+
+app.register(fastifyStatic, {
+  root: fileURLToPath(new URL('../views/archive/gfiles/rarch/cores', import.meta.url)),
+  prefix: '/uauth/',
+  decorateReply: false,
+});
+
+// NEVER commit roms due to piracy concerns
+app.register(fastifyStatic, {
+  root: fileURLToPath(new URL('../views/archive/gfiles/rarch/roms', import.meta.url)),
+  prefix: '/roms/',
+  decorateReply: false,
+});
+
+app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL(
       // Use the pre-compiled, minified scripts instead, if enabled in config.
