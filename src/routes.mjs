@@ -40,6 +40,7 @@ const pages = {
   /* Misc */
   flash: 'archive/gfiles/flash/index.html',
   webretro: 'archive/gfiles/rarch/index.html',
+  'robots.txt': 'robots.txt',
   'vibe-os': 'archive/vibeOS/index.html',
 };
 
