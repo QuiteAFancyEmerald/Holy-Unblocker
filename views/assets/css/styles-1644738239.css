@@ -227,7 +227,7 @@ details[open] summary {
   overflow-x: clip;
 }
 
-#background-animated {
+#particles-js {
   background-color: var(--nord0);
   position: fixed;
   left: 0;

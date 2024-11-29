@@ -33,6 +33,7 @@ const pages = {
   'retro-games': 'pages/nav/emulibrary.html',
   /* Proxies */
   ultraviolet: 'pages/proxnav/ultraviolet.html',
+  uverror: 'pages/proxnav/ultraviolet-error.html',
   rammerhead: 'pages/proxnav/rammerhead.html',
   /* Proxy Presets */
   youtube: 'pages/proxnav/preset/youtube.html',
