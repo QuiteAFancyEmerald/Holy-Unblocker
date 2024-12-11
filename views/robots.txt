@@ -2,10 +2,13 @@ User-agent: *
 Allow: /
 
 User-agent: *
-Disallow: /uv
+Allow: /assets
 
 User-agent: *
-Disallow: /assets
+Allow: /assets/ico
+
+User-agent: *
+Disallow: /uv
 
 User-agent: *
 Disallow: /github
