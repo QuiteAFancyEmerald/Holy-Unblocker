@@ -228,6 +228,9 @@ app.register(fastifyStatic, {
   decorateReply: false,
 });
 
+/* If you are trying to add pages or assets in the root folder and 
+NOT entire folders check src/routes.mjs and add it manually. */
+
 /* All website files are stored in the /views directory.
  * This takes one of those files and displays it for a site visitor.
  * Paths like /browsing are converted into paths like /views/pages/surf.html
