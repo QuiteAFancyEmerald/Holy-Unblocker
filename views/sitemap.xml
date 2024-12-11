@@ -7,67 +7,67 @@
 
     <url>
         <loc>https://holyunblocker.org/</loc>
-        <lastmod>2024-08-02T00:00:00+00:00</lastmod>
+        <lastmod>2024-12-11T00:00:00+00:00</lastmod>
         <priority>1.00</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/?browse</loc>
-        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <loc>https://holyunblocker.org/browsing</loc>
+        <lastmod>2024-12-11T00:00:00+00:00</lastmod>
         <priority>0.95</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/?g</loc>
-        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <loc>https://holyunblocker.org/games</loc>
+        <lastmod>2024-12-11T00:00:00+00:00</lastmod>
         <priority>0.95</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/?faq</loc>
-        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <loc>https://holyunblocker.org/ultraviolet</loc>
+        <lastmod>2024-12-11T00:00:00+00:00</lastmod>
+        <priority>0.95</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://holyunblocker.org/rammerhead</loc>
+        <lastmod>2024-12-11T00:00:00+00:00</lastmod>
+        <priority>0.95</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://holyunblocker.org/youtube</loc>
+        <lastmod>2024-12-11T00:00:00+00:00</lastmod>
+        <priority>0.70</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://holyunblocker.org/credits</loc>
+        <lastmod>2024-12-11T00:00:00+00:00</lastmod>
+        <priority>0.70</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://holyunblocker.org/terms</loc>
+        <lastmod>2024-12-11T00:00:00+00:00</lastmod>
         <priority>0.60</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/?documentation</loc>
-        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
-        <priority>0.70</priority>
-        <changefreq>monthly</changefreq>
-    </url>
-    <url>
-        <loc>https://holyunblocker.org/?in</loc>
-        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
-        <priority>0.70</priority>
-        <changefreq>monthly</changefreq>
-    </url>
-    <url>
-        <loc>https://holyunblocker.org/?credits</loc>
-        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
-        <priority>0.70</priority>
-        <changefreq>monthly</changefreq>
-    </url>
-    <url>
-        <loc>https://holyunblocker.org/?terms</loc>
-        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
-        <priority>0.60</priority>
-        <changefreq>monthly</changefreq>
-    </url>
-    <url>
-        <loc>https://holyunblocker.org/?a</loc>
-        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <loc>https://holyunblocker.org/apps</loc>
+        <lastmod>2024-12-11T00:00:00+00:00</lastmod>
         <priority>0.50</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/?w</loc>
-        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <loc>https://holyunblocker.org/questions</loc>
+        <lastmod>2024-12-11T00:00:00+00:00</lastmod>
         <priority>0.50</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/?e</loc>
-        <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+        <loc>https://holyunblocker.org/emulators</loc>
+        <lastmod>2024-12-11T00:00:00+00:00</lastmod>
         <priority>0.50</priority>
         <changefreq>monthly</changefreq>
     </url>
