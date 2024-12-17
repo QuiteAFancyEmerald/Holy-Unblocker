@@ -189,7 +189,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Ensure all the original submodules get added back to HU-Archive
 - [x] Mobile support - (welcome screen only, partial/needs work)
 - [ ] SEO overhaul adapted from the v2 SEO Guide format
-- [ ] Randomize the \_\_uv$config global, and optionally randomize the UV prefix and URL encoding via cookies
+- [x] Randomize the \_\_uv$config global, and optionally randomize the UV prefix and URL encoding via cookies
 
 ## Proxy/Site Functionality
 
@@ -209,6 +209,9 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Update sw.js to support workerware (https://github.com/MercuryWorkshop/workerware)
 - [ ] Omnibox autoupdate script (for the Google/Bing style auto suggest feature)
 - [ ] Games library will feature 10000 items; 5000 flash games and 5000 other game types
+- [ ] Attach proxyvalidatorscript to a status page > have this be served via Fastify, etc. etc; config option disabled as it will cause issues potentially unless if we refactor it slightly.
+- [ ] Improve adblocking functions on site using AnuraOS standards
+- [ ] Revamp the Stealth Frame with a slight animation (ease in and then the wheeling loading with a gradient fading away once its loaded or shows the error page LOL), a loading wheel/page and lastly a omnibox widget. It will have like nav buttons, some of the settings from the settings menu, a home button, a button that brings up the Setting menu and be in a designed position. Intent is to reduce the back/forth nature that users have to do currently making it more tedious to use the site.
 
 ## Site Redesign
 
