@@ -23,8 +23,12 @@ Also has a good amount of locally hosted games featured on the site.
 - Production (changes for self hosting in production settings; max filtering evasion and request handling)
 </details>
 
+#### Considering switching branches for self-hosting to a production branch!
+
 <br>
 
+> [!CAUTION]
+> If you are going to self-host Holy Unblocker LTS please switch to the PRODUCTION branch for filter evasion features. The master branch is intended for development work and a highly readable source for developers. You can select a production branch (v6.x_production) via the branches dropdown.
 
 > [!TIP]
 > Holy Unblocker LTS is optimized for self-hosting to provide you with maximum privacy control! Fork this repository and consider starring. You can self-host using either free or paid deployment options, or set it up on a dedicated instance (VPS) for enhanced performance.
