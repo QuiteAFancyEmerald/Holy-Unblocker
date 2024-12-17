@@ -47,7 +47,8 @@ NOT entire folders check src/routes.mjs and add it manually. */
   'vibe-os': 'archive/vibeOS/index.html',
   'robots.txt': 'robots.txt',
   'sitemap.xml': 'sitemap.xml',
-  'browserconfig.xml': 'browserconfig.xml'
+  'browserconfig.xml': 'browserconfig.xml',
+  'favicon.ico': 'favicon.ico',
 };
 
 const externalPages = {
