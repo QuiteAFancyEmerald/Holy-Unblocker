@@ -123,7 +123,7 @@ img {
 
 /* For WebKit/Blink Browsers */
 ::selection {
-  background: rgba(180, 142, 173, 0.513); /* Use rgba for opacity */
+  background: rgba(180, 142, 173, 0.513);
 }
 
 ::-webkit-scrollbar {
@@ -137,13 +137,13 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--nord10);
+  background-color: var(--nord0m1);
   border-radius: 5px;
   border: 3px solid var;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--nord10);
+  background-color: var(--nord0m1);
 }
 
 ::-webkit-scrollbar-thumb:active {
@@ -162,7 +162,7 @@ img {
 
 /* For Gecko Browsers (Firefox) */
 ::-moz-selection {
-  background: rgba(180, 142, 173, 0.513); /* Use rgba for opacity */
+  background: rgba(180, 142, 173, 0.513);
 }
 
 @-moz-document url-prefix() {
@@ -235,11 +235,11 @@ details[open] summary {
 }
 
 #header {
-  background-color: var(--nord0m1);
+  background-color: var(--nord0);
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between; /* Align items horizontally */
-  align-items: center; /* Align items vertically */
+  justify-content: space-between; 
+  align-items: center;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.274);
   padding: 15px 200px;
   z-index: 2;
@@ -247,14 +247,14 @@ details[open] summary {
 }
 
 #banner {
-  background-color: var(--nord0m3);
+  background-color: var(--nord0m1);
   position: sticky;
   top: 0;
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
   font-weight: bold;
-  font-size: 14px;
-  padding: 12px;
+  font-size: 15px;
+  padding: 15px;
+  font-family: 'Figtree', sans-serif;
+  font-weight: 600;
   z-index: 1;
   animation: fadeInAnimation ease-in-out 0.3s;
   animation-iteration-count: 1;
@@ -307,7 +307,7 @@ details[open] summary {
 .brand-logo-container,
 .new {
   display: flex;
-  align-items: center; /* Align items vertically */
+  align-items: center; 
 }
 
 .brand {
@@ -316,7 +316,7 @@ details[open] summary {
   height: 30px;
   line-height: 30px;
   white-space: nowrap;
-  margin-right: 20px; /* Adjust margin as needed */
+  margin-right: 20px;
   font-family: 'Figtree', sans-serif;
   font-weight: 900;
   letter-spacing: 1px;
@@ -325,10 +325,10 @@ details[open] summary {
 }
 
 .logo {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   margin-right: 20px;
-  background-image: url('/assets/img/icon.png'); /* Replace with your logo path */
+  background-image: url('/assets/img/icon.png');
   background-size: cover;
 }
 
@@ -339,19 +339,10 @@ details[open] summary {
 .logo-potato {
   width: 20px;
   height: 20px;
-  background-image: url('/assets/img/potato.webp'); /* Replace with your logo path */
+  background-image: url('/assets/img/potato.webp');
   background-size: cover;
   opacity: 0.5;
   overflow: hidden;
-}
-
-.new::after {
-  content: '';
-  padding: 22.75px 25px;
-  margin-left: 8px;
-  background-image: url('/assets/img/new.svg');
-  background-size: cover;
-  font-size: 0;
 }
 
 /* -----------------------------------------------
@@ -363,58 +354,46 @@ details[open] summary {
   color: var(--nord4) !important;
 }
 
-.navbar {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center; /* Align items vertically */
-  letter-spacing: 1px;
-  order: 3;
-}
-
-.navbar > li {
-  margin-left: 50px; /* Adjust spacing between items */
-}
-
-.navbar > li > a {
-  text-decoration: none;
-  color: var(--nord4) !important;
-}
-
 .navbar-1 {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex; /* Ensure it stays horizontal */
-  align-items: center; /* Align items vertically */
+  display: flex;
+  align-items: center;
   color: var(--nord4);
   order: 2;
 }
 
 .navbar-1 > li {
-  margin-left: 30px; /* Adjust spacing between items */
+  margin-left: 30px; 
 }
 
 .navbar-1 > li > a {
   text-decoration: none;
   color: var(--nord4);
+  display: inline-block; 
 }
 
-.navbar .dropdown-child {
-  display: none;
-  position: absolute;
-  z-index: 5;
-  background-color: var(--nord0);
-  border: 1px solid var(--nord3);
-  border-radius: 10px;
-  cursor: auto;
-  padding: 15px 25px;
-  margin-top: 10px;
-  font-family: 'Titillium Web', sans-serif;
+/* New badge styling */
+.new {
+  position: relative;
 }
 
-/* "More" Navigation Menu */
+.new::after {
+  content: '';
+  display: inline-block;
+  width: 84px;
+  height: 45px; 
+  margin-left: 8px;
+  margin-top: 2px;
+  background-image: url('/assets/svg/new.svg');
+  background-size: contain; 
+  background-repeat: no-repeat;
+  image-rendering: -webkit-optimize-contrast; /* Better SVG rendering */
+  vertical-align: middle; 
+}
+
+/* Secondary Navigation Menu w/ Dropdown */
 
 .subnavbar {
   list-style: none;
@@ -430,10 +409,76 @@ details[open] summary {
 }
 
 .subnavbar > li > a:hover {
-  background-color: var(--primary);
+  background-color: var(--nord11) !important;
 }
 
-/* "Settings" Navigation Menu */
+.navbar {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  letter-spacing: 1px;
+  order: 3;
+}
+
+.navbar > li {
+  margin-left: 50px;
+}
+
+.navbar > li > a {
+  text-decoration: none;
+  color: var(--nord4) !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.3s ease; 
+}
+
+.navbar > li > a:hover {
+  color: var(--nord11); 
+}
+
+.navbar .dropdown-child {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  background-color: var(--nord0);
+  border: 1px solid var(--nord3);
+  border-radius: 10px;
+  cursor: auto;
+  padding: 15px 25px;
+  margin-top: 15px;
+  font-family: 'Titillium Web', sans-serif;
+  opacity: 0;
+  transform: translateY(-20px); 
+  transition: opacity 0.3s ease, transform 0.3s ease; 
+}
+
+.dropdown-parent:focus-within .dropdown-child {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.subnavbar {
+  list-style: none;
+  padding: 0;
+}
+
+.subnavbar > li > a {
+  display: block;
+  padding: 5px 15px;
+  border-radius: 5px;
+  color: var(--nord4);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none !important;
+}
+
+.subnavbar > li > a:hover {
+  background-color: var(--primary);
+  color: var(--nord0);
+}
 
 .navbar .dropdown-settings {
   display: none;
@@ -443,20 +488,24 @@ details[open] summary {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  backdrop-filter: blur(10px); /* Blurs the background */
-  z-index: 5; /* Ensures it appears above other content */
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 5;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .dropdown-parent:focus-within
   .dropdown-settings:not(:is(:has(.close-settings-btn:active))) {
-  display: flex; /* Flexbox to center content */
+  display: flex;
+  pointer-events: auto;
+  opacity: 1;
 }
 
-.dropdown-parent:focus-within .dropdown-child {
-  display: block;
+.dropdown-parent:focus-within .dropdown-settings {
+  opacity: 1;
 }
 
 /* Settings Menu (Updated) */
@@ -465,12 +514,12 @@ details[open] summary {
 
 .settings-content {
   pointer-events: auto;
-  background-color: rgba(46, 52, 64, 0.2); /* Adding transparency */
+  background-color: rgba(46, 52, 64, 0.2); 
   border: 1px solid #4c566a;
   border-radius: 10px;
   padding: 25px;
   z-index: 6;
-  width: 800px; /* Width to accommodate both columns */
+  width: 800px; 
   max-height: 90vh;
   overflow-y: auto;
   margin: 5vh auto;
@@ -480,7 +529,7 @@ details[open] summary {
   flex-direction: column;
   backdrop-filter: blur(10px); /* Frosted glass effect */
   -webkit-backdrop-filter: blur(10px); /* For Safari */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for depth */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow for depth */
 }
 
 .settings-header {
@@ -514,23 +563,23 @@ details[open] summary {
 
 .settings-content-body {
   display: flex;
-  gap: 40px; /* Space between left and right columns */
+  gap: 40px; 
 }
 
 .csel-container-left,
 .settings-right-column {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Space between items within columns */
+  gap: 15px; 
 }
 
 .csel-container-left {
   flex: 1;
-  max-width: 400px; /* Adjusted to fit content without gaps */
+  max-width: 400px; 
 }
 
 .settings-right-column {
-  width: 300px; /* Fixed width for the right column */
+  width: 300px; 
 }
 
 .cseltitle {
@@ -542,40 +591,40 @@ details[open] summary {
 .radio-group {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Increased space between items for clarity */
+  gap: 10px; 
   margin-bottom: 15px;
 }
 
 .radio-group label {
   display: flex;
-  align-items: center; /* Align items vertically */
-  justify-content: space-between; /* Aligns text to the left and input to the right */
+  align-items: center; 
+  justify-content: space-between; 
   color: #eceff4;
   font-size: 16px;
-  max-width: 100%; /* Ensure label doesn't exceed container width */
+  max-width: 100%;
 }
 
 .radio-group p {
   margin: 0;
-  flex: 1; /* Take up available space */
+  flex: 1; 
 }
 
 .radio-group input[type='radio'] {
   accent-color: #88c0d0;
   cursor: pointer;
-  width: 20px; /* Adjust size for better appearance */
+  width: 20px;
   height: 20px;
-  background-color: #3b4252; /* Default background color */
+  background-color: #3b4252; 
 }
 
 .switch-container {
   display: flex;
-  align-items: center; /* Align items vertically centered */
-  justify-content: space-between; /* Distribute space between items */
+  align-items: center; 
+  justify-content: space-between; 
 }
 
 .switch-container p {
-  margin: 0; /* Remove default margin to align properly */
+  margin: 0; 
 }
 
 .switch {
@@ -619,7 +668,7 @@ select {
   border-radius: 5px;
   color: #eceff4;
   max-width: 300px;
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  box-sizing: border-box; 
 }
 
 select:hover {
@@ -946,7 +995,7 @@ input[type='text'] {
 
 .cmd {
   color: #a4bbd1;
-  white-space: pre-wrap; /* Preserve new lines */
+  white-space: pre-wrap;
 }
 
 .cmd::before {
@@ -1091,13 +1140,11 @@ iner .splashstrokeheader {
 .hero-grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
   margin: 40px auto;
   width: 90%;
-  max-width: 1200px;
+  max-width: 1250px;
   background-color: rgba(46, 52, 64, 0.2);
   border-radius: 10px;
-  padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   -webkit-backdrop-filter: blur(10px);
@@ -1159,7 +1206,7 @@ iner .splashstrokeheader {
 }
 
 #scrollfix {
-  margin-bottom: 130px;
+  margin-bottom: 20px;
 }
 
 .box-hero {
@@ -1238,8 +1285,8 @@ iner .splashstrokeheader {
 }
 
 .hero {
-  width: 100%; /* Ensure the image takes full width of its container */
-  max-width: 300px; /* Ensure the image doesn't exceed its container */
+  width: 100%; 
+  max-width: 300px; 
   height: auto;
   border-radius: 50%;
 }
@@ -1270,7 +1317,7 @@ iner .splashstrokeheader {
   gap: 80px;
   margin: 80px;
   margin-top: 300px;
-  padding: 0 20px; /* Add padding to prevent overflow */
+  padding: 0 20px;
   box-sizing: border-box;
 }
 
@@ -1336,7 +1383,7 @@ iner .splashstrokeheader {
   top: 50%;
   transform: translateY(-50%);
   width: 30%;
-  max-width: 180px; /* Add a max-width to prevent it from getting too large */
+  max-width: 180px;
   height: auto;
   background-color: var(--nord0m3);
   border-radius: 10px;
@@ -1369,16 +1416,15 @@ iner .splashstrokeheader {
   margin-bottom: 100px;
 }
 
-/* Main container with increased margin and padding */
 .box-main-container {
   display: flex;
-  align-items: center; /* Center items vertically */
-  justify-content: space-between; /* Space between text and image */
-  max-width: 1300px; /* Adjust to your desired max width */
-  margin: 50px auto 200px auto; /* Increased top margin for distance from navbar */
-  padding: 20px; /* Padding inside the container */
-  gap: 20%; /* Flexible gap between text and image */
-  position: relative; /* Positioning for the divider */
+  align-items: center; 
+  justify-content: space-between;
+  max-width: 1300px; 
+  margin: 50px auto 200px auto;
+  padding: 20px; 
+  gap: 20%; 
+  position: relative;
 }
 
 /* Badge styling */
@@ -1399,20 +1445,17 @@ iner .splashstrokeheader {
   margin: 0 5px;
 }
 
-/* Text container with padding */
 .box-text-container {
-  max-width: 600px; /* Adjust to control text container width */
-  padding: 20px; /* Padding inside the text container */
+  max-width: 600px; 
+  padding: 20px; 
 }
 
-/* Headline styling with underline */
 .box-text-container > h1 {
   font-size: 2.5rem;
   font-weight: 900;
   color: rgb(255, 88, 97);
 }
 
-/* Description styling */
 .box-description {
   font-size: 1.2rem;
   margin: 30px 0;
@@ -1420,7 +1463,6 @@ iner .splashstrokeheader {
   color: var(--nord4);
 }
 
-/* Button container styling */
 .box-button-container {
   margin-top: 20px;
 }
@@ -1442,48 +1484,47 @@ iner .splashstrokeheader {
 /* Image container */
 .box-image-container {
   display: flex;
-  align-items: center; /* Center image vertically */
-  margin-left: auto; /* Push image container to the right */
+  align-items: center; 
+  margin-left: auto; 
 }
 
 .box-pr-logo {
   max-width: 100%;
   height: auto;
-  width: 600px; /* Fixed width of the image */
+  width: 600px; 
 }
 
-/* Line divider styling */
 .box-line-divider {
   position: absolute;
-  bottom: -50px; /* Position below the main container */
+  bottom: -50px;
   left: 50%;
-  transform: translateX(-50%); /* Center horizontally */
+  transform: translateX(-50%); 
   width: 80%;
   height: 1px;
-  background-color: var(--nord11); /* Semi-transparent line */
+  background-color: var(--nord11);
   opacity: 0.2;
 }
 
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
   .box-main-container {
-    flex-direction: column; /* Stack text and image vertically on smaller screens */
-    align-items: center; /* Center items horizontally */
-    gap: 20px; /* Reduce gap on smaller screens */
-    position: relative; /* Ensure divider is correctly positioned */
+    flex-direction: column; 
+    align-items: center; 
+    gap: 20px; 
+    position: relative; 
   }
 
   .box-text-container {
-    max-width: 100%; /* Full width on smaller screens */
-    text-align: center; /* Center text on smaller screens */
+    max-width: 100%;
+    text-align: center; 
   }
 
   .box-image-container {
-    margin-left: 0; /* Reset margin on smaller screens */
+    margin-left: 0;
   }
 
   .box-pr-logo {
-    width: 100%; /* Full width on smaller screens */
+    width: 100%; 
   }
 }
 
@@ -1569,33 +1610,6 @@ iner .splashstrokeheader {
 /* Used on icons.html and the FAQ page. */
 .fb-l {
   background-color: var(--nord1);
-}
-
-/* Advertisements, obviously. */
-
-.ad {
-  position: absolute;
-  margin: 0 20px;
-  width: 100px;
-  height: 100%;
-  background-color: var(--nord1);
-  overflow: hidden;
-  display: none;
-  z-index: 1;
-}
-
-#ad-right {
-  right: 0;
-}
-
-.ad::before {
-  content: 'Advertisement';
-  font-family: 'Titillium Web', sans-serif;
-  position: absolute;
-  z-index: -1;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 }
 
 /* -----------------------------------------------
@@ -1832,9 +1846,12 @@ iner .splashstrokeheader {
 
 /* Pulse Hover Animation */
 
+.pulse {
+  will-change: transform;
+}
+
 @keyframes pulse {
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(1);
   }
   50% {
@@ -1847,8 +1864,7 @@ iner .splashstrokeheader {
     background-color 0.3s ease,
     color 0.3s ease,
     transform 0.3s ease;
-  transform: scale(1.05);
-  -webkit-font-smoothing: subpixel-antialiased;
+  transform: scale(1.05) translateZ(0);
 }
 
 /* Glowing Button Animation */
