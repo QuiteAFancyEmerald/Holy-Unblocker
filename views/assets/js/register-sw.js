@@ -1,56 +1,43 @@
-// Encase everything in a new scope so that variables are not accidentally
-// attached to the global scope.
 (() => {
   const stockSW = '/uv/sw.js',
     blacklistSW = '/uv/sw-blacklist.js',
     swAllowedHostnames = ['localhost', '127.0.0.1'],
-    connection = new BareMux.BareMuxConnection('/baremux/worker.js'),
     wispUrl =
       (location.protocol === 'https:' ? 'wss' : 'ws') +
       '://' +
       location.host +
       '/wisp/',
-    scramjet = new ScramjetController({
-      prefix: "/scram/service/",
-      files: {
-          wasm: "/scram/scramjet.wasm.js",
-          worker: "/scram/scramjet.worker.js",
-          client: "/scram/scramjet.client.js",
-          shared: "/scram/scramjet.shared.js",
-          sync: "/scram/scramjet.sync.js"
-      },
-      flags: {
-        serviceworkers: true,
-        syncxhr: true,
-        scramitize: true,
-      },
-    }),
-    // Proxy configuration
-    proxyUrl = 'socks5h://localhost:9050', // Replace with your TOR proxy URL (or any)
+    proxyUrl = 'socks5h://localhost:9050', // Replace with your TOR proxy URL
     transports = {
       epoxy: '/epoxy/index.mjs',
       libcurl: '/libcurl/index.mjs',
       bare: '/baremux/index.mjs',
     },
-    // The following two variables are copied and pasted here from csel.js.
     readCookie = async (name) => {
-      // Get the first cookie that has the same name.
-      for (let cookie of document.cookie.split('; '))
-        if (!cookie.indexOf(name + '='))
-          // Return the cookie's stored content.
+      for (let cookie of document.cookie.split('; ')) {
+        if (!cookie.indexOf(name + '=')) {
           return decodeURIComponent(cookie.slice(name.length + 1));
+        }
+      }
     },
-    // Sets the default transport mode based on the browser. Firefox is not
-    // supported by epoxy yet, which is why this is implemented.
     defaultMode = /(?:Chrome|AppleWebKit)\//.test(navigator.userAgent)
       ? 'epoxy'
       : 'libcurl';
-  
+
   transports.default = transports[defaultMode];
-  
-  // Prevent the transports object from accidentally being edited.
+
   Object.freeze(transports);
-  
+
+  const waitForScramjetController = () =>
+    new Promise((resolve) => {
+      const interval = setInterval(() => {
+        if (typeof ScramjetController !== 'undefined') {
+          clearInterval(interval);
+          resolve();
+        }
+      }, 50);
+    });
+
   const registerSW = async () => {
     if (!navigator.serviceWorker) {
       if (
@@ -58,30 +45,32 @@
         !swAllowedHostnames.includes(location.hostname)
       )
         throw new Error('Service workers cannot be registered without https.');
-  
+
       throw new Error("Your browser doesn't support service workers.");
     }
-  
-    // If the user has changed the transport mode, use that over the default.
+
+    // Set the transport mode
     const transportMode =
       transports[await readCookie('HBTransport')] || transports.default;
     let transportOptions = { wisp: wispUrl };
-  
-    // Only use Tor with the proxy if the user has enabled it in settings.
-    if ((await readCookie('HBUseOnion')) === 'true')
+
+    if ((await readCookie('HBUseOnion')) === 'true') {
       transportOptions.proxy = proxyUrl;
-  
+      console.log('Using Onion Proxy:', proxyUrl);
+    }
+
+    console.log('Transport mode:', transportMode);
+
+    const connection = new BareMux.BareMuxConnection('/baremux/worker.js');
     await connection.setTransport(transportMode, [transportOptions]);
-  
-    /* Choose a service worker to register based on whether or not the user
-     * has adblocking enabled. If the user changes this setting, this script needs
-     * to be reloaded for this to update, such as by refreshing the page.
-     */
+
     const registrations = await navigator.serviceWorker.getRegistrations(),
       usedSW =
         (await readCookie('HBHideAds')) !== 'false' ? blacklistSW : stockSW;
-  
-    // Unregister a service worker if it isn't the one being used.
+
+    console.log('Service Worker being registered:', usedSW);
+
+    // Unregister outdated service workers
     for (const registration of registrations)
       if (
         registration.active &&
@@ -89,11 +78,47 @@
           new URL(usedSW, location.origin).pathname
       )
         await registration.unregister();
-  
+
     await navigator.serviceWorker.register(usedSW);
   };
 
-  // Register the service worker
-  registerSW();
-  scramjet.init("/scram/scramjet.sw.js");
+  const initializeScramjet = async () => {
+    try {
+
+      await waitForScramjetController();
+
+      const scramjet = new ScramjetController({
+        prefix: '/scram/service/',
+        files: {
+          wasm: '/scram/scramjet.wasm.js',
+          worker: '/scram/scramjet.worker.js',
+          client: '/scram/scramjet.client.js',
+          shared: '/scram/scramjet.shared.js',
+          sync: '/scram/scramjet.sync.js',
+        },
+        flags: {
+          serviceworkers: true,
+          syncxhr: true,
+          scramitize: true,
+        },
+      });
+
+      console.log('Initializing ScramjetController');
+      scramjet.init('/scram/scramjet.sw.js');
+    } catch (err) {
+      console.error('Scramjet initialization failed:', err);
+    }
+  };
+
+  const initialize = async () => {
+    try {
+      await registerSW();
+
+      await initializeScramjet();
+    } catch (err) {
+      console.error('Initialization failed:', err);
+    }
+  };
+
+  initialize();
 })();
