@@ -122,6 +122,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
       await build({
         entryPoints: [
           './views/uv/**/*.js',
+          './views/scram/**/*.js',
           './views/assets/js/**/*.js',
           './views/assets/css/**/*.css',
         ],

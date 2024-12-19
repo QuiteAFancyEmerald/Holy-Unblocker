@@ -63,7 +63,7 @@ const setAuthCookie = (s, lax) => {
 
 // Search engine is set to Bing. Intended to work just like the usual
 // bar at the top of a browser.
-const sx = 'bing.com' + '/search?q=',
+const sx = 'startpage.com/sp' + '/search?query=',
   /*
   omnibox = url =>
     (url.indexOf("http")
@@ -104,6 +104,19 @@ const sx = 'bing.com' + '/search?q=',
         uvConfig.encodeUrl(search(url));
     } catch (e) {
       // This is for cases where the Ultraviolet scripts have not been loaded.
+      url = search(url);
+    }
+    return url;
+  },
+  // Parse a URL to use with Scramjet.
+  sjUrl = (url) => {
+    try {
+      url =
+        location.origin +
+        "/scram/service/" +
+        search(url);
+    } catch (e) {
+      // This is for cases where the SJ scripts have not been loaded.
       url = search(url);
     }
     return url;
@@ -364,6 +377,8 @@ addEventListener('DOMContentLoaded', async () => {
     // setAuthCookie("__cor_auth=1", false);
     ultraviolet: urlHandler(uvUrl),
 
+    scramjet: urlHandler(sjUrl),
+
     rammerhead: asyncUrlHandler(
       async (url) => location.origin + (await RammerheadEncode(search(url)))
     ),
@@ -451,6 +466,7 @@ addEventListener('DOMContentLoaded', async () => {
   };
 
   prSet('pr-uv', 'ultraviolet');
+  prSet('pr-sj', 'scramjet');
   prSet('pr-rh', 'rammerhead');
   prSet('pr-yt', 'youtube');
   prSet('pr-rh-dc', 'discordRH');

@@ -203,6 +203,23 @@ app.register(fastifyStatic, {
   decorateReply: false,
 });
 
+// This combines scripts from the official scramjet repository with local scramjet scripts into
+// one directory path. Local versions of files override the official versions.
+app.register(fastifyStatic, {
+  root: [
+    fileURLToPath(
+      new URL(
+        // Use the pre-compiled, minified scripts instead, if enabled in config.
+        config.minifyScripts ? '../views/dist/scram' : '../views/scram',
+        import.meta.url
+      )
+    ),
+    uvPath,
+  ],
+  prefix: '/scram/',
+  decorateReply: false,
+});
+
 // Register proxy paths to the website.
 app.register(fastifyStatic, {
   root: epoxyPath,

@@ -36,6 +36,7 @@ NOT entire folders check src/routes.mjs and add it manually. */
   'retro-games': 'pages/nav/emulibrary.html',
   /* Proxies */
   ultraviolet: 'pages/proxnav/ultraviolet.html',
+  scramjet: 'pages/proxnav/scramjet.html',
   uverror: 'pages/proxnav/ultraviolet-error.html',
   rammerhead: 'pages/proxnav/rammerhead.html',
   /* Proxy Presets */
