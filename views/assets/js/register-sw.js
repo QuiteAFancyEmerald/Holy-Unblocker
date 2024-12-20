@@ -95,12 +95,7 @@
           client: '/scram/scramjet.client.js',
           shared: '/scram/scramjet.shared.js',
           sync: '/scram/scramjet.sync.js',
-        },
-        flags: {
-          serviceworkers: true,
-          syncxhr: true,
-          scramitize: true,
-        },
+        }
       });
 
       console.log('Initializing ScramjetController');

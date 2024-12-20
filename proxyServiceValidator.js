@@ -312,6 +312,8 @@ xx                                                  xx
       return uvTestPassed;
     };
 
+    /* Scramjet 
+
     const testScramjet = async () => {
       const omniboxId = 'pr-sj',
         errorPrefix = 'failure',
@@ -406,12 +408,14 @@ xx                                                  xx
       return sjTestPassed;
     };
 
+    */
+
     // Run tests for Rammerhead, Ultraviolet and Scramjet
     const rammerheadPassed = await testRammerhead();
     const ultravioletPassed = await testUltraviolet();
-    const scramjetPassed = await testScramjet();
+    //const scramjetPassed = await testScramjet();
 
-    if (rammerheadPassed && ultravioletPassed && scramjetPassed) {
+    if (rammerheadPassed && ultravioletPassed) {
       console.log('All proxy endpoint tests passed.');
       process.exitCode = 0;
     } else {

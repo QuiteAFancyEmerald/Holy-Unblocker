@@ -391,37 +391,31 @@ addEventListener('DOMContentLoaded', async () => {
 
     osu: urlHandler(location.origin + '/archive/osu'),
 
-    mcnow: urlHandler(uvUrl('https://now.gg/play/a/10010/b')),
+    mcnow: urlHandler(sjUrl('https://now.gg/play/a/10010/b')),
 
-    glife: urlHandler(uvUrl('https://now.gg/apps/lunime/5767/gacha-life.html')),
+    glife: urlHandler(sjUrl('https://now.gg/apps/lunime/5767/gacha-life.html')),
 
-    roblox: urlHandler(
-      uvUrl('https://now.gg/apps/roblox-corporation/5349/roblox.html')
-    ),
+    roblox: urlHandler(sjUrl('https://now.gg/apps/roblox-corporation/5349/roblox.html')),
 
-    amongus: urlHandler(
-      uvUrl('https://now.gg/apps/innersloth-llc/4047/among-us.html')
-    ),
+    amongus: urlHandler(sjUrl('https://now.gg/apps/innersloth-llc/4047/among-us.html')),
 
-    pubg: urlHandler(
-      uvUrl('https://now.gg/apps/proxima-beta/2609/pubg-mobile-resistance.html')
-    ),
+    pubg: urlHandler(sjUrl('https://now.gg/apps/proxima-beta/2609/pubg-mobile-resistance.html')),
 
-    train: urlHandler(uvUrl('https://hby.itch.io/last-train-home')),
+    train: urlHandler(sjUrl('https://hby.itch.io/last-train-home')),
 
-    village: urlHandler(uvUrl('https://kwoodhouse.itch.io/village-arsonist')),
+    village: urlHandler(sjUrl('https://kwoodhouse.itch.io/village-arsonist')),
 
-    prison: urlHandler(uvUrl('https://vimlark.itch.io/pick-up-prison')),
+    prison: urlHandler(sjUrl('https://vimlark.itch.io/pick-up-prison')),
 
-    rpg: urlHandler(uvUrl('https://alarts.itch.io/die-in-the-dungeon')),
+    rpg: urlHandler(sjUrl('https://alarts.itch.io/die-in-the-dungeon')),
 
-    speed: urlHandler(uvUrl('https://captain4lk.itch.io/what-the-road-brings')),
+    speed: urlHandler(sjUrl('https://captain4lk.itch.io/what-the-road-brings')),
 
-    heli: urlHandler(uvUrl('https://benjames171.itch.io/helo-storm')),
+    heli: urlHandler(sjUrl('https://benjames171.itch.io/helo-storm')),
 
-    youtube: urlHandler(uvUrl('https://youtube.com')),
+    youtube: urlHandler(sjUrl('https://youtube.com')),
 
-    discordUV: urlHandler(uvUrl('https://discord.com/app')),
+    discordUV: urlHandler(sjUrl('https://discord.com/app')),
 
     discordRH: urlHandler(await RammerheadEncode('https://discord.com/app')),
   });
