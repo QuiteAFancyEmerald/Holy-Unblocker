@@ -76,8 +76,8 @@ const cookingInserts = insert.content,
   splashRandom = insert.splash,
   VersionValue = insert.version,
   cacheBustList = {
-    'styles.css': 'styles-1644738239.css',
-    'common.js': 'common-16451543478.js',
+    'styles.css': 'styles-1735118314.css',
+    'common.js': 'common-1735118314.js',
   };
 
 export default {
