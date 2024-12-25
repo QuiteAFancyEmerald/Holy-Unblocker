@@ -39,7 +39,7 @@ Also has a good amount of locally hosted games featured on the site.
 | CoolMathGames               | Features "Source Randomization" to circumvent major filters effectively along with randomizations to proxy globals    |
 | Discord                     | Tab title + icon customization using the Settings Menu for improved browsing stealth                                   |
 | Now.gg                      | Adblocking support across all websites while surfing                                                                   |
-| Reddit.com                  | SOCKS5 and Onion routing support with Tor within the Settings Menu                                                    |
+| Reddit.com                  | SOCKS5 and Onion routing support with Tor within the Settings Menu. Use Tor/Onion sites in any browser!                                                    |
 | GeForce NOW                 | Game library with moderately decent titles and open-source emulation projects                                          |
 | Spotify                     | Has frequent support articles for issues relating to various proxy instances                                           |
 | And essentially all sites!  | Built for intensive production loads and speed                                                                          |
@@ -105,6 +105,12 @@ Replit is no longer free and Heroku has a set policy against web proxies. Try Gi
 
 ## How to Setup
 
+#### It is highly recommended you switch branches via your IDE to a production released branch. Often the master branch contains unstable or WIP changes. 
+
+#### Example: v6.x_production instead of master
+
+### Terminal
+
 Either use the button above to deploy to the deployment options above or type the commands below on a dedicated server:
 
 ```bash
@@ -112,19 +118,99 @@ git clone --recurse-submodules https://github.com/titaniumnetwork-dev/Holy-Unblo
 
 cd Holy-Unblocker
 
+git submodule init
+
+# Using the configuration file you can automatically use pm2 if you are hosting on a VPS!
 npm start
 
 # Or on subsequent uses...
 npm restart
+
+# If you encounter any build errors...
+npm run build
+
+# If you encounter any service errors...
+npm run proxy-validator
 ```
 
-### It is highly recommended you switch branches via your IDE to a stable released branch. Often the master branch contains unstable or WIP changes.
+This website is hosted locally with Scramjet, Ultraviolet (Wisp, Bare-Mux, EpoxyTransport, CurlTransport) and Rammerhead built-in.
 
-#### Example v6.x instead of master
+### Configuration
 
-The default place for the proxy when its started is `http://localhost:8080`, but you can change it if needed in `./ecosystem.config.js`. You can also modify the other configuration values at `/src/config.json`. To clarify you change the PORT and other production metrics via `./ecosystem.config.js`. Localized changes for source randomization, auto-minify, etc. are located in `/src/config.json`.
+#### Server Configuration Setup
+The default place for the proxy when its started is `http://localhost:8080`, but you can change it if needed in `./ecosystem.config.js`. You can also modify the other configuration values at `./config.json`. To clarify you change the PORT and other production metrics via `./ecosystem.config.js`. Localized changes for source randomization, auto-minify, etc. are located in `./config.json`.
 
-This website is hosted locally with Ultraviolet and Rammerhead built-in.
+#### Tor/Onion Routing Setup
+
+Simply host Tor using this guide: https://tb-manual.torproject.org/installation/
+
+If you are hosting Holy Unblocker LTS on a VPS utilizing Ubuntu consider attaching Tor to systemctl for easier production management. Once Tor is up and running on either Linux or Windows it will work automatically with Holy Unblocker LTS when enabled by the user via the Settings menu.
+
+#### Proxy Configuration
+
+The primary location for tweaking any web proxy related settings assigned via the Settings menu is `./views/assets/js/register-sw.js`. Here you can modify the provided transport options set locally via a cookie, swap out SOCKS5 proxies, change Onion routing ports, specify a blacklist, and more.
+
+- `stockSW`: The default service worker configuration file for Ultraviolet. For Holy Unblocker however adblocking is automatically enabled so this is not used by default.
+- `blacklistSW`: A modified version of Ultraviolet that allows for blacklisting domains and adblocking.
+- `proxyUrl`: Specifies a SOCKS5 protocol URL defaulting to the default Tor proxy port. This can be swapped out with any valid port or SOCK5s proxy.
+- `transports`: Specifies any provided ports to be swapped via Bare-Mux and utilize Wisp.
+- `wispUrl`: Modify the pathname or url handling for Wisp
+- `defaultMode`: Specify the default transport used globally (can be swapped by the users still via the Settings menu)
+- `ScramjetController`: This contructor allows you to swap out the prefix used for Scramjet dynamically and specify file locations. Note you may need to edit `./views/scram/scramjet.sw` when changing file names.
+
+#### Client Navigation Configuration
+
+The primary location for any client side navigation scripts is `./views/assets/js/common.js`. This file is primary used for Omnibox (Search Engine) functionality, swapping proxy options and linking games. 
+
+- `getDomain`: This constant is used for specifying any subdomains to remove when appending a URL into the omnibox.
+- `goFrame`: This specifies the stealth frame used for Holy Unblocker LTS
+- `sx`: This constant specifies the search engine you want to be proxied whenever a user types something in that isn't a URL
+- `search/uvUrl/sjUrl`: These functions specify and parse the queries used for submitted URLs
+- `RammerheadEncode:` This constant is a dependency for Rammerhead parsing and querying
+- `urlHandler/asyncUrlHandler`: Used to set functions for the goProx object.
+- `goProx`: This constant allows for the mapping of URL handling for specific proxies, games or links that need to fall under a web proxy.
+
+```js
+  const goProx = Object.freeze({
+    ultraviolet: urlHandler(uvUrl),
+
+    scramjet: urlHandler(sjUrl),
+
+    rammerhead: asyncUrlHandler(
+      async (url) => location.origin + (await RammerheadEncode(search(url)))
+    ),
+
+    // `location.protocol + "//" + getDomain()` more like `location.origin`
+
+    examplepath: urlHandler(location.protocol + `//c.${getDomain()}/example/`),
+
+    examplesubdomain: urlHandler(location.protocol + '//c.' + getDomain()),
+
+    example: urlHandler(sjUrl('https://example.com')),
+  });
+```
+
+- `prSet`: Attaches event listeners using goProx for any buttons or inputs needed
+
+```js
+ // prSet function code here....
+ 
+  prSet('pr-uv', 'ultraviolet');
+  prSet('pr-sj', 'scramjet');
+  prSet('pr-rh', 'rammerhead');
+  prSet('pr-yt', 'youtube');
+  prSet('pr-example', 'example');
+```
+
+- `huLinks/navLists`: Automatically takes paths stated in `./views/assets/json` and appends them depending on the page and usage. This is used for hiding links that would lead to filter blocks and create an easier system for adding games.
+
+#### Games Management
+
+As stated above all game links that need to be appended to a page (including images and descriptions) are managed via the nav files in`./views/assets/json`. When cloning Holy Unblocker utilize `--recurse-submodules` to ensure all submodules are downloaded along with `git submodule init`. 
+
+- `views/archive/g`: Contains any local or external HTML5/web games.
+- `views/archive/gfiles/flash`: Contains Ruffle (an Adobe Flash emulator) and a collection of flash games linked to an external CDN.
+- `views/archive/gfiles/rarch`: Contains webretro which is a project that ports RetroArch to WASM. Supports many systems like GBA, N64, etc; ROMS are NOT INCLUDED.
 
 ## Structure
 
@@ -149,6 +235,7 @@ WIP
 - `emulibrary.html`: Games page for emulated games (not included in public release)
 - `flash.html`: Games page for flash games, credits given to @BinBashBanana and Titanium Network for its assets.
 - `ultraviolet.html`: TODO
+- `scramjet.html`: TODO
 - `rammerhead.html`: TODO
 - `youtube.html`: A proxied version of Youtube running off the locally hosted Ultraviolet.
 - `discord.html`: Hub for the Discord proxy.
@@ -299,12 +386,10 @@ After you have selected a decent VPS, use Cloudflare for the DNS records for bot
 This is an example of DNS records involving Heroku. Self-hosting will require `A records` preferably.
 <img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/dnssetup.png" width="500"></img>
 
-- `@` and `www.example.ml` are being used for the local Ultraviolet proxy.
-- `client.example.ml` is being used for Rammerhead.
-- `a.example.ml` is being used for womginx.
-- `cdn.example.ml` is being used for a private Ultraviolet host on the official sites.
+- `@` and `www.example.ml` are being used for Holy Unblocker LTS.
+- `client.example.ml` is being used for other instances like Libreddit or Invidious.
 
-As stated previously, Holy Unblocker is hosted locally with Ultraviolet.
+As stated previously, Holy Unblocker is hosted locally with Scramjet, Ultraviolet and Rammerhead out of the box. No need for external instances.
 
 #### Freenom/Domain Steps
 
