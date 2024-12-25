@@ -25,6 +25,9 @@ jobs:
       - name: Build libraries
         run: npm run build
 
+      - name: Add Chrome sandbox to Ubuntu
+        run: echo -e "\nexport CHROME_DEVEL_SANDBOX=/opt/google/chrome/chrome-sandbox" >> ~/.bashrc
+
       - name: Start server
         run: npm run workflow-test
 
