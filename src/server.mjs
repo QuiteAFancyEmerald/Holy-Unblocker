@@ -296,17 +296,21 @@ app.get('/:path', (req, reply) => {
       default: 'text/html',
       html: 'text/html',
       txt: 'text/plain',
-      xml: "application/xml",
+      xml: 'application/xml',
       ico: 'image/vnd.microsoft.icon',
     },
-    type = supportedTypes[fileName.slice(fileName.lastIndexOf('.') + 1)];
+    type =
+      supportedTypes[fileName.slice(fileName.lastIndexOf('.') + 1)] ||
+      supportedTypes.default;
 
-  reply.type(type || supportedTypes.default);
-  reply.send(
-    paintSource(
-      loadTemplates(tryReadFile('../views/' + fileName, import.meta.url))
-    )
-  );
+  reply.type(type);
+  if (type === supportedTypes.default)
+    reply.send(
+      paintSource(
+        loadTemplates(tryReadFile('../views/' + fileName, import.meta.url))
+      )
+    );
+  else reply.send(tryReadFile('../views/' + fileName, import.meta.url));
 });
 
 app.get('/github/:redirect', (req, reply) => {

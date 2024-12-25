@@ -45,7 +45,10 @@ const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
   tryReadFile = (file, baseUrl) => {
     file = fileURLToPath(new URL(file, baseUrl));
     return existsSync(file + '')
-      ? readFileSync(file + '', 'utf8')
+      ? readFileSync(
+          file + '',
+          /\.(?:ico|png|jpg|jpeg)$/.test(file) ? undefined : 'utf8'
+        )
       : preloaded404;
   };
 
