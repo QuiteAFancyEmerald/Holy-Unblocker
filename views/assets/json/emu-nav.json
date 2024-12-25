@@ -1,9 +1,9 @@
 [
   {
-    "name": "Webretro",
+    "name": "Webretro Collection",
     "path": "/webretro",
     "img": "genesis.png",
-    "description": "Emulate over 20 console types! The master list if you wish to not use the fast links below."
+    "description": "Search through the collection of emulators featured!"
   },
   {
     "name": "GBA Emulator",
