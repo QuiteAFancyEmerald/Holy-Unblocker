@@ -413,14 +413,15 @@ View the official website for more detail and credits.
 
 ### Web Proxy Sources:
 
-This project currently uses Ultraviolet, Wisp, Womginx, and Rammerhead, linked below.
+This project currently uses Scramjet and Ultraviolet as web proxies adhering to the Wisp protocol. Bare-Mux is utilized for swapping transport systems to be utilized with Wisp. The included transport systems are EpoxyTransport and libcurl-transport. Rammerhead is also provided as an additional web proxy option.
 
+- <a href="https://github.com/MercuryWorkshop/scramjet">Scramjet</a>
 - <a href="https://github.com/titaniumnetwork-dev/Ultraviolet">Ultraviolet</a>
-- <a href="https://github.com/binary-person/womginx">Womginx</a>
-- <a href="https://github.com/binary-person/rammerhead">Rammerhead</a>
 - <a href="https://github.com/MercuryWorkshop/wisp-server-node">Wisp</a>
+- <a href="https://github.com/MercuryWorkshop/EpoxyTransport">EpoxyTransport</a>
+- <a href="https://github.com/MercuryWorkshop/CurlTransport">libcurl-transport</a>
 - <a href="https://github.com/MercuryWorkshop/bare-mux">Bare-Mux</a>
-- <a href="https://github.com/tomphttp/bare-server-node">TOMP Bare Server</a>
+- <a href="https://github.com/binary-person/rammerhead">Rammerhead</a>
 - <a href="https://gist.github.com/BinBashBanana/a1fd7345e2d86e69d5a532f16cbdbdaa">DetectorDetector</a>
 
 ### Other Dependencies:
