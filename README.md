@@ -163,7 +163,7 @@ The primary location for tweaking any web proxy related settings assigned via th
 - `transports`: Specifies any provided ports to be swapped via Bare-Mux and utilize Wisp.
 - `wispUrl`: Modify the pathname or url handling for Wisp
 - `defaultMode`: Specify the default transport used globally (can be swapped by the users still via the Settings menu)
-- `ScramjetController`: This contructor allows you to swap out the prefix used for Scramjet dynamically and specify file locations. Note you may need to edit `./views/scram/scramjet.sw` when changing file names.
+- `ScramjetController`: This constructor allows you to swap out the prefix used for Scramjet dynamically and specify file locations. Note you may need to edit `./views/scram/scramjet.sw` when changing file names.
 
 #### Client Navigation Configuration
 
