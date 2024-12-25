@@ -2,9 +2,9 @@ name: CI-Win-Production
 
 on:
   push:
-    branches: [v6.3-production]
+    branches: [v6.4-production]
   pull_request:
-    branches: [v6.3-production]
+    branches: [v6.4-production]
 
 jobs:
   build-windows:

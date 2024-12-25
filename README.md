@@ -1,6 +1,6 @@
 <img align="left" width="70px" src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/icon.png"></img>
 
-# Holy Unblocker LTS (v6.3.9)
+# Holy Unblocker LTS (v6.4.3)
 
 ![GitHub Actions Status](https://github.com/QuiteAFancyEmerald/Holy-Unblocker/workflows/CI-Production/badge.svg)
 ![GitHub Actions Status](https://github.com/QuiteAFancyEmerald/Holy-Unblocker/workflows/CI-Win/badge.svg)
@@ -23,7 +23,12 @@ Also has a good amount of locally hosted games featured on the site.
 - Production (changes for self hosting in production settings; max filtering evasion and request handling)
 </details>
 
+#### Considering switching branches for self-hosting to a production branch!
+
 <br>
+
+> [!CAUTION]
+> If you are going to self-host Holy Unblocker LTS please switch to the PRODUCTION branch for filter evasion features. The master branch is intended for development work and a highly readable source for developers. You can select a production branch (v6.x_production) via the branches dropdown.
 
 > [!TIP]
 > Holy Unblocker LTS is optimized for self-hosting to provide you with maximum privacy control! Fork this repository and consider starring. You can self-host using either free or paid deployment options, or set it up on a dedicated instance (VPS) for enhanced performance.
@@ -50,7 +55,7 @@ Read below for information if the official site is blocked or for obtaining more
 ## Deploy Holy Unblocker
 
 ### Free Deployments
-[![Deploy to Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?name=holy-unblocker&type=git&repository=QuiteAFancyEmerald%2FHoly-Unblocker&branch=master&builder=buildpack&env%5B%5D=&ports=8080%3Bhttp%3B%2F)
+[![Deploy to Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?name=holy-unblocker&type=git&repository=QuiteAFancyEmerald%2FHoly-Unblocker&branch=v6.4-production&builder=buildpack&env%5B%5D=&ports=8080%3Bhttp%3B%2F)
 [![Deploy to Oracle Cloud](https://binbashbanana.github.io/deploy-buttons/buttons/remade/oraclecloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/BinBashBanana/deploy-buttons/archive/refs/heads/main.zip)
 
 <details><summary>More</summary>
@@ -117,7 +122,7 @@ npm restart
 
 #### Example v6.x instead of master
 
-The default place for the proxy when its started is `http://localhost:8080`, but you can change it if needed in `./ecosystem.config.js`. You can also modify the other configuration values at `/src/config.json`. To clarify you change the PORT and other production metrics via `./ecosystem.config.js`. Localized changes for source randomization, auto-minify, etc. are located in `/src/config.json`. 
+The default place for the proxy when its started is `http://localhost:8080`, but you can change it if needed in `./ecosystem.config.js`. You can also modify the other configuration values at `/src/config.json`. To clarify you change the PORT and other production metrics via `./ecosystem.config.js`. Localized changes for source randomization, auto-minify, etc. are located in `/src/config.json`.
 
 This website is hosted locally with Ultraviolet and Rammerhead built-in.
 
@@ -188,7 +193,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Ensure all the original submodules get added back to HU-Archive
 - [x] Mobile support - (welcome screen only, partial/needs work)
 - [ ] SEO overhaul adapted from the v2 SEO Guide format
-- [ ] Randomize the \_\_uv$config global, and optionally randomize the UV prefix and URL encoding via cookies
+- [x] Randomize the \_\_uv$config global, and optionally randomize the UV prefix and URL encoding via cookies
 
 ## Proxy/Site Functionality
 
@@ -208,6 +213,9 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Update sw.js to support workerware (https://github.com/MercuryWorkshop/workerware)
 - [ ] Omnibox autoupdate script (for the Google/Bing style auto suggest feature)
 - [ ] Games library will feature 10000 items; 5000 flash games and 5000 other game types
+- [ ] Attach proxyvalidatorscript to a status page > have this be served via Fastify, etc. etc; config option disabled as it will cause issues potentially unless if we refactor it slightly.
+- [ ] Improve adblocking functions on site using AnuraOS standards
+- [ ] Revamp the Stealth Frame with a slight animation (ease in and then the wheeling loading with a gradient fading away once its loaded or shows the error page LOL), a loading wheel/page and lastly a omnibox widget. It will have like nav buttons, some of the settings from the settings menu, a home button, a button that brings up the Setting menu and be in a designed position. Intent is to reduce the back/forth nature that users have to do currently making it more tedious to use the site.
 
 ## Site Redesign
 
@@ -272,6 +280,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - Switched to Fastify for serving content from the backend; a separate Express backend file is kept in case it's still needed
 - Rammerhead is now locally built into the HU LTS repository
 - Simplified the HU LTS setup process and added more default npm commands
+- Filter focus via https://gist.github.com/BinBashBanana/a1fd7345e2d86e69d5a532f16cbdbdaa
 
 ## Vague Explanation for Beginners With External Proxies and Hosting
 
@@ -404,14 +413,16 @@ View the official website for more detail and credits.
 
 ### Web Proxy Sources:
 
-This project currently uses Ultraviolet, Wisp, Womginx, and Rammerhead, linked below.
+This project currently uses Scramjet and Ultraviolet as web proxies adhering to the Wisp protocol. Bare-Mux is utilized for swapping transport systems to be utilized with Wisp. The included transport systems are EpoxyTransport and libcurl-transport. Rammerhead is also provided as an additional web proxy option.
 
+- <a href="https://github.com/MercuryWorkshop/scramjet">Scramjet</a>
 - <a href="https://github.com/titaniumnetwork-dev/Ultraviolet">Ultraviolet</a>
-- <a href="https://github.com/binary-person/womginx">Womginx</a>
-- <a href="https://github.com/binary-person/rammerhead">Rammerhead</a>
 - <a href="https://github.com/MercuryWorkshop/wisp-server-node">Wisp</a>
+- <a href="https://github.com/MercuryWorkshop/EpoxyTransport">EpoxyTransport</a>
+- <a href="https://github.com/MercuryWorkshop/CurlTransport">libcurl-transport</a>
 - <a href="https://github.com/MercuryWorkshop/bare-mux">Bare-Mux</a>
-- <a href="https://github.com/tomphttp/bare-server-node">TOMP Bare Server</a>
+- <a href="https://github.com/binary-person/rammerhead">Rammerhead</a>
+- <a href="https://gist.github.com/BinBashBanana/a1fd7345e2d86e69d5a532f16cbdbdaa">DetectorDetector</a>
 
 ### Other Dependencies:
 
