@@ -7,7 +7,7 @@ import ecosystem from './ecosystem.config.js';
 // Some necessary constants are copied over from /src/server.mjs.
 
 const config = Object.freeze(
-    JSON.parse(await readFile(new URL('./src/config.json', import.meta.url)))
+    JSON.parse(await readFile(new URL('./config.json', import.meta.url)))
   ),
   ecosystemConfig = Object.freeze(
     ecosystem.apps.find((app) => app.name === 'HolyUBLTS') || ecosystem.apps[0]
@@ -122,6 +122,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
       await build({
         entryPoints: [
           './views/network/**/*.js',
+          './views/worker/**/*.js',
           './views/assets/js/**/*.js',
           './views/assets/css/**/*.css',
         ],
