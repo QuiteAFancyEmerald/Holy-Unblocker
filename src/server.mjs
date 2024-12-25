@@ -385,27 +385,6 @@ app.get('/network/:file.js', (req, reply) => {
     );
 });
 
-app.get('/worker/:file.js', (req, reply) => {
-  const destination = existsSync(
-    fileURLToPath(new URL('../views' + req.url, import.meta.url))
-  )
-    ? '../views' + (config.minifyScripts ? '/dist' : '') + req.url
-    : pathToFileURL('../views/worker') + `/${req.params.file}.js`;
-  reply
-    .type('text/javascript')
-    .send(
-      destination.replace(
-        /(["'`])\{\{ultraviolet-error\}\}\1/g,
-        JSON.stringify(
-          tryReadFile(
-            '../views/pages/proxnav/ultraviolet-error.html',
-            import.meta.url
-          )
-        )
-      )
-    );
-});
-
 app.setNotFoundHandler((req, reply) => {
   reply.code(404).type('text/html').send(preloaded404);
 });
