@@ -132,32 +132,42 @@ app.register(fastifyStatic, {
 });
 
 app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/archive/gfiles/rarch', import.meta.url)),
+  root: fileURLToPath(
+    new URL('../views/archive/gfiles/rarch', import.meta.url)
+  ),
   prefix: '/serving/',
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/archive/gfiles/rarch/cores', import.meta.url)),
+  root: fileURLToPath(
+    new URL('../views/archive/gfiles/rarch/cores', import.meta.url)
+  ),
   prefix: '/cores/',
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/archive/gfiles/rarch/info', import.meta.url)),
+  root: fileURLToPath(
+    new URL('../views/archive/gfiles/rarch/info', import.meta.url)
+  ),
   prefix: '/info/',
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/archive/gfiles/rarch/cores', import.meta.url)),
+  root: fileURLToPath(
+    new URL('../views/archive/gfiles/rarch/cores', import.meta.url)
+  ),
   prefix: '/uauth/',
   decorateReply: false,
 });
 
 // NEVER commit roms due to piracy concerns
 app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/archive/gfiles/rarch/roms', import.meta.url)),
+  root: fileURLToPath(
+    new URL('../views/archive/gfiles/rarch/roms', import.meta.url)
+  ),
   prefix: '/roms/',
   decorateReply: false,
 });
@@ -203,6 +213,23 @@ app.register(fastifyStatic, {
   decorateReply: true,
 });
 
+// This combines scripts from the official scramjet repository with local scramjet scripts into
+// one directory path. Local versions of files override the official versions.
+app.register(fastifyStatic, {
+  root: [
+    fileURLToPath(
+      new URL(
+        // Use the pre-compiled, minified scripts instead, if enabled in config.
+        config.minifyScripts ? '../views/dist/scram' : '../views/scram',
+        import.meta.url
+      )
+    ),
+    uvPath,
+  ],
+  prefix: '/scram/',
+  decorateReply: false,
+});
+
 // Register proxy paths to the website.
 app.register(fastifyStatic, {
   root: epoxyPath,
@@ -227,6 +254,9 @@ app.register(fastifyStatic, {
   prefix: '/baremux/',
   decorateReply: false,
 });
+
+/* If you are trying to add pages or assets in the root folder and 
+NOT entire folders check src/routes.mjs and add it manually. */
 
 /* All website files are stored in the /views directory.
  * This takes one of those files and displays it for a site visitor.
@@ -260,18 +290,27 @@ app.get('/:path', (req, reply) => {
   if (reqPath && !(reqPath in pages))
     return reply.code(404).type('text/html').send(preloaded404);
 
-  reply.type('text/html').send(
-    paintSource(
-      loadTemplates(
-        tryReadFile(
-          '../views/' +
-            // Set the index the as the default page.
-            (reqPath ? pages[reqPath] : pages.index),
-          import.meta.url
-        )
+  // Set the index the as the default page. Serve as an html file by default.
+  const fileName = reqPath ? pages[reqPath] : pages.index,
+    supportedTypes = {
+      default: 'text/html',
+      html: 'text/html',
+      txt: 'text/plain',
+      xml: 'application/xml',
+      ico: 'image/vnd.microsoft.icon',
+    },
+    type =
+      supportedTypes[fileName.slice(fileName.lastIndexOf('.') + 1)] ||
+      supportedTypes.default;
+
+  reply.type(type);
+  if (type === supportedTypes.default)
+    reply.send(
+      paintSource(
+        loadTemplates(tryReadFile('../views/' + fileName, import.meta.url))
       )
-    )
-  );
+    );
+  else reply.send(tryReadFile('../views/' + fileName, import.meta.url));
 });
 
 app.get('/github/:redirect', (req, reply) => {

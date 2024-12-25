@@ -33,6 +33,8 @@ const pages = {
   d: 'pages/nav/emulibrary.html',
   /* Proxies */
   a: 'pages/proxnav/ultraviolet.html',
+  j: 'pages/proxnav/scramjet.html',
+  uverror: 'pages/proxnav/ultraviolet-error.html',
   b: 'pages/proxnav/rammerhead.html',
   /* Proxy Presets */
   youtube: 'pages/proxnav/preset/youtube.html',
@@ -40,8 +42,11 @@ const pages = {
   /* Misc */
   flash: 'archive/gfiles/flash/index.html',
   webretro: 'archive/gfiles/rarch/index.html',
-  'robots.txt': 'robots.txt',
   'vibe-os': 'archive/vibeOS/index.html',
+  'robots.txt': 'robots.txt',
+  'sitemap.xml': 'sitemap.xml',
+  'browserconfig.xml': 'browserconfig.xml',
+  'favicon.ico': 'favicon.ico',
 };
 
 const externalPages = {
@@ -60,7 +65,7 @@ const externalPages = {
   },
   'config-docs': 'https://docs.titaniumnetwork.org',
   'config-chat': 'https://discord.gg/VNT4E7gN5Y',
-  'nt': 'https://nordtheme.com',
+  nt: 'https://nordtheme.com',
 };
 
 const cookingInserts = insert.content,

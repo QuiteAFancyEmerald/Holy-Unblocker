@@ -16,7 +16,7 @@
     "Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2"
   ],
   "splash": [
-    "This version is the public HU LTS build of the web proxy service project and being worked on (master branch)! Stuff will NOT work!"
+    "This version is the public HU LTS build of the web proxy service project and being worked on (v6.4_production branch)! Stuff will NOT work!"
   ],
-  "version": ["6.3.9"]
+  "version": ["6.4.3"]
 }

@@ -24,7 +24,9 @@ const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
   hutaoInsert = (str) => str.replaceAll('<!--HUTAOWOA-->', getRandomSplash),
   versionInsert = (str) => str.replaceAll('<!-- VERSION -->', VersionValue),
   getCookingText = () =>
-    `<span style="display:none" data-fact="${randomListItem(vegetables)()}">${randomListItem(cookingInserts)()}</span>`,
+    `<span style="display:none" data-fact="${randomListItem(
+      vegetables
+    )()}">${randomListItem(cookingInserts)()}</span>`,
   insertCooking = (str) =>
     str.replaceAll(
       '<!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->',
@@ -45,44 +47,9 @@ const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
   tryReadFile = (file, baseUrl) => {
     file = fileURLToPath(new URL(file, baseUrl));
     return existsSync(file + '')
-      ? readFileSync(file + '', 'utf8')
+      ? readFileSync(
+          file + '',
+          /\.(?:ico|png|jpg|jpeg)$/.test(file) ? undefined : 'utf8'
+        )
       : preloaded404;
   };
-
-/*
-
-All of this is now old code.
-The newer versions of these functions are directly above.
-
-function randomListItem(lis) {
-    return lis[Math.floor(Math.random() * lis.length)];
-}
-
-function insertCharset(str) {
-    return str.replace(/&#173;|&#8203;|&shy;|<wbr>/g, function() { return randomListItem(charRandom); });
-}
-
-function hutaoInsert(str) {
-    return str.replace(/<!--HUTAOWOA-->/g, function() { return randomListItem(splashRandom); });
-}
-
-function insertCooking(str) {
-    return str.replace(/<!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->/g, function() { return '<span style="display: none;" data-fact="' + randomListItem(vegetables) + '" data-type="' + randomListItem(vegetables) + '">' + randomListItem(cookingInserts) + '</span>'; }); // this needs to be inside a function, so that not every string is the same
-}
-
-function cacheBusting(str) {
-    for (var item of Object.entries(cacheBustList)) {
-        str = str.replace(new RegExp(item[0], "g"), item[1]);
-    }
-    return str;
-}
-
-export function paintSource(str) {
-    return insertCharset(hutaoInsert(insertCooking(cacheBusting(str))));
-}
-
-export function tryReadFile(file) {
-    return existsSync(file) ? readFileSync(file, 'utf8') : text404;
-}
-
-*/
