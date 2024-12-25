@@ -90,6 +90,13 @@ Replit is no longer free and Heroku has a set policy against web proxies. Try Gi
 ## Table of contents:
 
 - [Setup](#how-to-setup)
+  - [Terminal](#terminal)
+  - [Project Configuration](#configuration)
+    - [Server Configuration](#server-configuration-setup)
+    - [TOR Routing](#toronion-routing-setup)
+    - [Proxy](#proxy-configuration)
+    - [Client Navigation](#client-navigation-configuration)
+    - [Games Management](#games-management) 
   - [Structure](#structure)
     - [Structure Information](#structure-information)
     - [Static Files](#details-of-views)
