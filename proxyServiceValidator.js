@@ -142,6 +142,8 @@ const testCommonJSOnPage = async () => {
       '--enable-features=NetworkService',
       '--enable-features=ServiceWorker',
       '--enable-features=InsecureOrigins',
+      '--no-sandbox', 
+      '--disable-setuid-sandbox',
     ],
     headless: true,
     ignoreHTTPSErrors: true,
