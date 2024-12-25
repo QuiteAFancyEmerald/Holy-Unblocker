@@ -132,32 +132,42 @@ app.register(fastifyStatic, {
 });
 
 app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/archive/gfiles/rarch', import.meta.url)),
+  root: fileURLToPath(
+    new URL('../views/archive/gfiles/rarch', import.meta.url)
+  ),
   prefix: '/serving/',
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/archive/gfiles/rarch/cores', import.meta.url)),
+  root: fileURLToPath(
+    new URL('../views/archive/gfiles/rarch/cores', import.meta.url)
+  ),
   prefix: '/cores/',
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/archive/gfiles/rarch/info', import.meta.url)),
+  root: fileURLToPath(
+    new URL('../views/archive/gfiles/rarch/info', import.meta.url)
+  ),
   prefix: '/info/',
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/archive/gfiles/rarch/cores', import.meta.url)),
+  root: fileURLToPath(
+    new URL('../views/archive/gfiles/rarch/cores', import.meta.url)
+  ),
   prefix: '/uauth/',
   decorateReply: false,
 });
 
 // NEVER commit roms due to piracy concerns
 app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/archive/gfiles/rarch/roms', import.meta.url)),
+  root: fileURLToPath(
+    new URL('../views/archive/gfiles/rarch/roms', import.meta.url)
+  ),
   prefix: '/roms/',
   decorateReply: false,
 });
@@ -280,16 +290,21 @@ app.get('/:path', (req, reply) => {
   if (reqPath && !(reqPath in pages))
     return reply.code(404).type('text/html').send(preloaded404);
 
-  reply.type('text/html').send(
+  // Set the index the as the default page. Serve as an html file by default.
+  const fileName = reqPath ? pages[reqPath] : pages.index,
+    supportedTypes = {
+      default: 'text/html',
+      html: 'text/html',
+      txt: 'text/plain',
+      xml: "application/xml",
+      ico: 'image/vnd.microsoft.icon',
+    },
+    type = supportedTypes[fileName.slice(fileName.lastIndexOf('.') + 1)];
+
+  reply.type(type || supportedTypes.default);
+  reply.send(
     paintSource(
-      loadTemplates(
-        tryReadFile(
-          '../views/' +
-            // Set the index the as the default page.
-            (reqPath ? pages[reqPath] : pages.index),
-          import.meta.url
-        )
-      )
+      loadTemplates(tryReadFile('../views/' + fileName, import.meta.url))
     )
   );
 });
