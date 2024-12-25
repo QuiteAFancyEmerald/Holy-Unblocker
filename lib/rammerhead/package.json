@@ -25,7 +25,7 @@
   "homepage": "https://github.com/binary-person/rammerhead#readme",
   "dependencies": {
     "async-exit-hook": "^2.0.1",
-    "cookie": "^0.5.0",
+    "cookie": "^1.0.2",
     "fastify": "^4.26.2",
     "keyv-lru-files": "github:holy-unblocker/keyv-lru-files",
     "mime": "^2.5.2",
