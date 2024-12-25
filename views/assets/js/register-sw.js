@@ -1,6 +1,6 @@
 (() => {
-  const stockSW = '/uv/sw.js',
-    blacklistSW = '/uv/sw-blacklist.js',
+  const stockSW = '/network/sw.js',
+    blacklistSW = '/network/sw-blacklist.js',
     swAllowedHostnames = ['localhost', '127.0.0.1'],
     wispUrl =
       (location.protocol === 'https:' ? 'wss' : 'ws') +
@@ -90,16 +90,16 @@
       const scramjet = new ScramjetController({
         prefix: '/worker/service/',
         files: {
-          wasm: '/worker/scramjet.wasm.js',
-          worker: '/worker/scramjet.worker.js',
-          client: '/worker/scramjet.client.js',
-          shared: '/worker/scramjet.shared.js',
-          sync: '/worker/scramjet.sync.js',
+          wasm: '/worker/w.wasm.js',
+          worker: '/worker/w.worker.js',
+          client: '/worker/w.client.js',
+          shared: '/worker/w.shared.js',
+          sync: '/worker/w.sync.js',
         }
       });
 
       console.log('Initializing ScramjetController');
-      scramjet.init('/worker/scramjet.sw.js');
+      scramjet.init('/worker/w.sw.js');
     } catch (err) {
       console.error('SJWorker initialization failed:', err);
     }

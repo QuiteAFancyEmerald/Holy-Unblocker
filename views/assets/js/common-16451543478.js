@@ -413,7 +413,7 @@
   
       heli: urlHandler(sjUrl('https://benjames171.itch.io/helo-storm')),
   
-      youtube: urlHandler(sjUrl('https://youtube.com')),
+      youtube: urlHandler(sjUrl('https://inv.nadeko.net')),
   
       discordUV: urlHandler(sjUrl('https://discord.com/app')),
   
@@ -459,7 +459,7 @@
       });
     };
   
-    prSet('pr-uv', 'ultraviolet');
+    prSet('pr-runprod', 'ultraviolet');
     prSet('pr-sj', 'scramjet');
     prSet('pr-rh', 'rammerhead');
     prSet('pr-yt', 'youtube');

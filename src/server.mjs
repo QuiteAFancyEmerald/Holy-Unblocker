@@ -19,7 +19,7 @@ import { existsSync, unlinkSync } from 'node:fs';
 import ecosystem from '../ecosystem.config.js';
 
 const config = Object.freeze(
-    JSON.parse(await readFile(new URL('./config.json', import.meta.url)))
+    JSON.parse(await readFile(new URL('../config.json', import.meta.url)))
   ),
   ecosystemConfig = Object.freeze(
     ecosystem.apps.find((app) => app.name === 'HolyUBLTS') || ecosystem.apps[0]
@@ -224,9 +224,8 @@ app.register(fastifyStatic, {
         import.meta.url
       )
     ),
-    uvPath,
   ],
-  prefix: '/scram/',
+  prefix: '/worker/',
   decorateReply: false,
 });
 
@@ -375,6 +374,27 @@ app.get('/network/:file.js', (req, reply) => {
     .type('text/javascript')
     .send(
       randomizeGlobal(destination).replace(
+        /(["'`])\{\{ultraviolet-error\}\}\1/g,
+        JSON.stringify(
+          tryReadFile(
+            '../views/pages/proxnav/ultraviolet-error.html',
+            import.meta.url
+          )
+        )
+      )
+    );
+});
+
+app.get('/worker/:file.js', (req, reply) => {
+  const destination = existsSync(
+    fileURLToPath(new URL('../views' + req.url, import.meta.url))
+  )
+    ? '../views' + (config.minifyScripts ? '/dist' : '') + req.url
+    : pathToFileURL('../views/worker') + `/${req.params.file}.js`;
+  reply
+    .type('text/javascript')
+    .send(
+      destination.replace(
         /(["'`])\{\{ultraviolet-error\}\}\1/g,
         JSON.stringify(
           tryReadFile(

@@ -14,11 +14,14 @@
     <script src="/baremux/index.js" defer></script>
     <script src="/network/network.bundle.js" defer></script>
     <script src="/network/network.config.js" defer></script>
+    <link rel="prefetch" href="/worker/w.worker.js" />
+    <link rel="prefetch" href="/worker/w.shared.js" />
     <script src="/assets/js/register-sw.js" defer></script>
   </head>
 
   <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+    <script src="/worker/w.controller.js"></script>
     <iframe id="frame" allow="fullscreen" autofocus></iframe>
     <script>
       document.getElementById('frame').src = localStorage.getItem('huframesrc');
