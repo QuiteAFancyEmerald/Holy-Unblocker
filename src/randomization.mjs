@@ -1,6 +1,5 @@
 import pkg from './routes.mjs';
 import { existsSync, readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
 export { config, paintSource, randomizeGlobal, preloaded404, tryReadFile };
 const {
   cookingInserts,
@@ -80,12 +79,12 @@ const config = Object.freeze(
     insertCharset(hutaoInsert(versionInsert(insertCooking(cacheBusting(str))))),
   // Use this instead of text404 for a preloaded error page.
   preloaded404 = paintSource(text404),
-  // Grab the text content of a file. Ensure the file is a string.
-  tryReadFile = (file, baseUrl) => {
-    file = fileURLToPath(new URL(file, baseUrl));
-    return existsSync(file + '')
+  // Grab the text content of a file. Uses the root directory if no base is supplied.
+  tryReadFile = (file, baseUrl = new URL('../', import.meta.url)) => {
+    file = new URL(file, baseUrl);
+    return existsSync(file)
       ? readFileSync(
-          file + '',
+          file,
           /\.(?:ico|png|jpg|jpeg)$/.test(file) ? undefined : 'utf8'
         )
       : preloaded404;
