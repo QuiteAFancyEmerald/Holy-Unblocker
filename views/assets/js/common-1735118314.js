@@ -444,7 +444,7 @@ addEventListener('DOMContentLoaded', async () => {
     if (prUrl)
       prUrl.addEventListener('keydown', async (e) => {
         if (e.code === 'Enter') goProxMethod(searchMode)();
-        //        This is exclusively used for the validator script.
+        // This is exclusively used for the validator script.
         else if (e.code === 'Validator Test') {
           e.target.value = await goProx[type](e.target.value);
           e.target.dispatchEvent(new Event('change'));

@@ -10,8 +10,6 @@ import { uvPath } from '@titaniumnetwork-dev/ultraviolet';
 import fastifyHelmet from '@fastify/helmet';
 import fastifyStatic from '@fastify/static';
 import pageRoutes from './routes.mjs';
-import { readFile } from 'node:fs/promises';
-import path from 'node:path';
 import {
   config,
   paintSource,
@@ -165,7 +163,7 @@ app.register(fastifyStatic, {
   decorateReply: false,
 });
 
-// NEVER commit roms due to piracy concerns
+// You should NEVER commit roms, due to piracy concerns.
 app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL('../views/archive/gfiles/rarch/roms', import.meta.url)
@@ -215,8 +213,6 @@ app.register(fastifyStatic, {
   decorateReply: false,
 });
 
-// This combines scripts from the official scramjet repository with local scramjet scripts into
-// one directory path. Local versions of files override the official versions.
 app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL(
@@ -254,10 +250,10 @@ app.register(fastifyStatic, {
   decorateReply: false,
 });
 
-/* If you are trying to add pages or assets in the root folder and 
-NOT entire folders check src/routes.mjs and add it manually. */
-
-/* All website files are stored in the /views directory.
+/* If you are trying to add pages or assets in the root folder and
+ * NOT entire folders, check ./src/routes.mjs and add it manually.
+ *
+ * All website files are stored in the /views directory.
  * This takes one of those files and displays it for a site visitor.
  * Paths like /browsing are converted into paths like /views/pages/surf.html
  * back here. Which path converts to what is defined in routes.mjs.

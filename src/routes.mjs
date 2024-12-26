@@ -1,24 +1,12 @@
 import { readFileSync } from 'fs';
-import path from 'path';
-import { readFile } from 'fs/promises';
-
-const insert = JSON.parse(
-  await readFile(new URL('./data.json', import.meta.url))
-);
-
-const __dirname = path.resolve();
-
-const text404 = readFileSync(
-  path.normalize(__dirname + '/views/error.html'),
-  'utf8'
-);
 
 const pages = {
-  /* If you are trying to add pages or assets in the root folder and 
-NOT entire folders check src/routes.mjs and add it manually. */
-
+  // If you are trying to add pages or assets in the root folder and
+  // NOT entire folders, check the routes below and add it manually.
   index: 'index.html',
   'manifest.json': 'manifest.json',
+
+  // This route for the error page is also used to define text404 down below.
   'test-404': 'error.html',
   /* Main */
   documentation: 'docs.html',
@@ -69,6 +57,14 @@ const externalPages = {
   'titaniumnetwork-documentation': 'https://docs.titaniumnetwork.org',
   'rammerhead-discord': 'https://discord.gg/VNT4E7gN5Y',
 };
+
+const insert = JSON.parse(
+    readFileSync(new URL('./data.json', import.meta.url))
+  ),
+  text404 = readFileSync(
+    new URL('../views/' + pages['test-404'], import.meta.url),
+    'utf8'
+  );
 
 const cookingInserts = insert.content,
   vegetables = insert.keywords,
