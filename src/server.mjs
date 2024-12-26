@@ -24,7 +24,7 @@ const config = Object.freeze(
   ecosystemConfig = Object.freeze(
     ecosystem.apps.find((app) => app.name === 'HolyUB') || ecosystem.apps[0]
   ),
-  { pages, externalPages } = pageRoutes,
+  { pages, externalPages, cacheBustList } = pageRoutes,
   __dirname = path.resolve();
 
 /* Record the server's location as a URL object, including its host and port.
@@ -216,16 +216,13 @@ app.register(fastifyStatic, {
 // This combines scripts from the official scramjet repository with local scramjet scripts into
 // one directory path. Local versions of files override the official versions.
 app.register(fastifyStatic, {
-  root: [
-    fileURLToPath(
-      new URL(
-        // Use the pre-compiled, minified scripts instead, if enabled in config.
-        config.minifyScripts ? '../views/dist/scram' : '../views/scram',
-        import.meta.url
-      )
-    ),
-    uvPath,
-  ],
+  root: fileURLToPath(
+    new URL(
+      // Use the pre-compiled, minified scripts instead, if enabled in config.
+      config.minifyScripts ? '../views/dist/scram' : '../views/scram',
+      import.meta.url
+    )
+  ),
   prefix: '/scram/',
   decorateReply: false,
 });
@@ -355,7 +352,7 @@ const encodingTable = (() => {
           JSON.stringify('__uv$config')
         );
 
-app.get('/assets/js/common-1735118314.js', (req, reply) => {
+app.get('/assets/js/' + cacheBustList['common.js'], (req, reply) => {
   reply
     .type('text/javascript')
     .send(
@@ -377,10 +374,7 @@ app.get('/uv/:file.js', (req, reply) => {
       randomizeGlobal(destination).replace(
         /(["'`])\{\{ultraviolet-error\}\}\1/g,
         JSON.stringify(
-          tryReadFile(
-            '../views/pages/proxnav/ultraviolet-error.html',
-            import.meta.url
-          )
+          tryReadFile('../views/' + pages['uverror'], import.meta.url)
         )
       )
     );
