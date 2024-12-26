@@ -98,10 +98,7 @@ const sx = 'startpage.com/sp' + '/search?query=',
   // Parse a URL to use with Ultraviolet.
   uvUrl = (url) => {
     try {
-      url =
-        location.origin +
-        uvConfig.prefix +
-        uvConfig.encodeUrl(search(url));
+      url = location.origin + uvConfig.prefix + uvConfig.encodeUrl(search(url));
     } catch (e) {
       // This is for cases where the Ultraviolet scripts have not been loaded.
       url = search(url);
@@ -111,10 +108,7 @@ const sx = 'startpage.com/sp' + '/search?query=',
   // Parse a URL to use with Scramjet.
   sjUrl = (url) => {
     try {
-      url =
-        location.origin +
-        "/scram/service/" +
-        search(url);
+      url = location.origin + '/scram/service/' + search(url);
     } catch (e) {
       // This is for cases where the SJ scripts have not been loaded.
       url = search(url);
@@ -395,11 +389,17 @@ addEventListener('DOMContentLoaded', async () => {
 
     glife: urlHandler(sjUrl('https://now.gg/apps/lunime/5767/gacha-life.html')),
 
-    roblox: urlHandler(sjUrl('https://now.gg/apps/roblox-corporation/5349/roblox.html')),
+    roblox: urlHandler(
+      sjUrl('https://now.gg/apps/roblox-corporation/5349/roblox.html')
+    ),
 
-    amongus: urlHandler(sjUrl('https://now.gg/apps/innersloth-llc/4047/among-us.html')),
+    amongus: urlHandler(
+      sjUrl('https://now.gg/apps/innersloth-llc/4047/among-us.html')
+    ),
 
-    pubg: urlHandler(sjUrl('https://now.gg/apps/proxima-beta/2609/pubg-mobile-resistance.html')),
+    pubg: urlHandler(
+      sjUrl('https://now.gg/apps/proxima-beta/2609/pubg-mobile-resistance.html')
+    ),
 
     train: urlHandler(sjUrl('https://hby.itch.io/last-train-home')),
 
