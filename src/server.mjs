@@ -12,20 +12,22 @@ import fastifyStatic from '@fastify/static';
 import pageRoutes from './routes.mjs';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { paintSource, preloaded404, tryReadFile } from './randomization.mjs';
+import {
+  config,
+  paintSource,
+  randomizeGlobal,
+  preloaded404,
+  tryReadFile,
+} from './randomization.mjs';
 import loadTemplates from './templates.mjs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { existsSync, unlinkSync } from 'node:fs';
 import ecosystem from '../ecosystem.config.js';
 
-const config = Object.freeze(
-    JSON.parse(await readFile(new URL('../config.json', import.meta.url)))
-  ),
-  ecosystemConfig = Object.freeze(
+const ecosystemConfig = Object.freeze(
     ecosystem.apps.find((app) => app.name === 'HolyUB') || ecosystem.apps[0]
   ),
-  { pages, externalPages, cacheBustList } = pageRoutes,
-  __dirname = path.resolve();
+  { pages, externalPages, cacheBustList } = pageRoutes;
 
 /* Record the server's location as a URL object, including its host and port.
  * The host can be modified at /src/config.json, whereas the ports can be modified
@@ -315,42 +317,6 @@ app.get('/github/:redirect', (req, reply) => {
     reply.redirect(externalPages.github[req.params.redirect]);
   else reply.code(404).type('text/html').send(preloaded404);
 });
-
-const encodingTable = (() => {
-    let yummyOneBytes = '';
-    for (let i = 0; i < 128; i++)
-      if (
-        JSON.stringify(JSON.stringify(String.fromCodePoint(i)).slice(1, -1))
-          .length < 6
-      )
-        yummyOneBytes += String.fromCodePoint(i);
-    return yummyOneBytes;
-  })(),
-  randomValue = crypto
-    .randomUUID()
-    .split('-')
-    .map((gibberish) => {
-      let randomNumber = parseInt(gibberish, 16),
-        output = '';
-      while (randomNumber >= encodingTable.length) {
-        output +=
-          encodingTable[Math.floor(randomNumber) % encodingTable.length];
-        randomNumber = randomNumber / encodingTable.length;
-      }
-      return output + Math.floor(randomNumber);
-    })
-    .join(''),
-  randomizeGlobal = config.randomizeIdentifiers
-    ? (file) =>
-        tryReadFile(file, import.meta.url).replace(
-          /(["'`])\{\{__uv\$config\}\}\1/g,
-          JSON.stringify(randomValue)
-        )
-    : (file) =>
-        tryReadFile(file, import.meta.url).replace(
-          /(["'`])\{\{__uv\$config\}\}\1/g,
-          JSON.stringify('__uv$config')
-        );
 
 app.get('/assets/js/' + cacheBustList['common.js'], (req, reply) => {
   reply

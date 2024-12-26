@@ -27,8 +27,8 @@ jobs:
 
       - name: Allow AppArmor sandbox to work on Ubuntu
         run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
-        # Use this if manually running proxyServiceValidator.js on a local client
-        # run: echo -e "\nexport CHROME_DEVEL_SANDBOX=/opt/google/chrome/chrome-sandbox" >> ~/.bashrc
+        # A safer option to fix sandboxes if Chrome is installed on a local client:
+        # echo -e "\nexport CHROME_DEVEL_SANDBOX=/opt/google/chrome/chrome-sandbox" >> ~/.bashrc
 
       - name: Start server
         run: npm run workflow-test

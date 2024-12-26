@@ -1,7 +1,7 @@
 import pkg from './routes.mjs';
 import { existsSync, readFileSync } from 'fs';
 import { fileURLToPath } from 'node:url';
-export { paintSource, preloaded404, tryReadFile };
+export { config, paintSource, randomizeGlobal, preloaded404, tryReadFile };
 const {
   cookingInserts,
   vegetables,
@@ -12,11 +12,15 @@ const {
   text404,
 } = pkg;
 
-/* Below are lots of function definitions used to obfuscate the website.
- * This makes the website harder to properly categorize, as its source code
- * changes with each time it is loaded.
- */
-const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
+// For customizing source code transformation and more, see the config.json file.
+const config = Object.freeze(
+    JSON.parse(readFileSync(new URL('../config.json', import.meta.url)))
+  ),
+  /* Below are lots of function definitions used to obfuscate the website.
+   * This makes the website harder to properly categorize, as its source code
+   * changes with each time it is loaded.
+   */
+  randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
   charset = /&#173;|&#8203;|&shy;|<wbr>/gi,
   getRandomChar = randomListItem(charRandom),
   insertCharset = (str) => str.replace(charset, getRandomChar),
@@ -30,6 +34,41 @@ const randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
       '<!-- IMPORTANT-HUTAOCOOKINGINSERT-DONOTDELETE -->',
       getCookingText
     ),
+  encodingTable = (() => {
+    let yummyOneBytes = '';
+    for (let i = 0; i < 128; i++)
+      if (
+        JSON.stringify(JSON.stringify(String.fromCodePoint(i)).slice(1, -1))
+          .length < 6
+      )
+        yummyOneBytes += String.fromCodePoint(i);
+    return yummyOneBytes;
+  })(),
+  randomValue = crypto
+    .randomUUID()
+    .split('-')
+    .map((gibberish) => {
+      let randomNumber = parseInt(gibberish, 16),
+        output = '';
+      while (randomNumber >= encodingTable.length) {
+        output +=
+          encodingTable[Math.floor(randomNumber) % encodingTable.length];
+        randomNumber = randomNumber / encodingTable.length;
+      }
+      return output + Math.floor(randomNumber);
+    })
+    .join(''),
+  randomizeGlobal = config.randomizeIdentifiers
+    ? (file) =>
+        tryReadFile(file, import.meta.url).replace(
+          /(["'`])\{\{__uv\$config\}\}\1/g,
+          JSON.stringify(randomValue)
+        )
+    : (file) =>
+        tryReadFile(file, import.meta.url).replace(
+          /(["'`])\{\{__uv\$config\}\}\1/g,
+          JSON.stringify('__uv$config')
+        ),
   // This one isn't for obfuscation; it's just for dealing with cache issues.
   cacheBusting = (str) => {
     for (let item of Object.entries(cacheBustList))
