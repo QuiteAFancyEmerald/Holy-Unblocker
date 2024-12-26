@@ -1,5 +1,6 @@
 import pkg from './routes.mjs';
-import { existsSync, readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 export { config, paintSource, randomizeGlobal, preloaded404, tryReadFile };
 const {
   cookingInserts,
@@ -81,7 +82,7 @@ const config = Object.freeze(
   preloaded404 = paintSource(text404),
   // Grab the text content of a file. Ensure the file is a string.
   tryReadFile = (file, baseUrl) => {
-    file = new URL(file, baseUrl);
+    file = fileURLToPath(new URL(file, baseUrl));
     return existsSync(file + '')
       ? readFileSync(
           file + '',
