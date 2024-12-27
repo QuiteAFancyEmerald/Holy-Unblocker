@@ -354,7 +354,7 @@ const encodingTable = (() => {
           JSON.stringify('__uv$config')
         );
 
-app.get('/assets/js/common-16451543478.js', (req, reply) => {
+app.get('/assets/js/common-1735118314.js', (req, reply) => {
   reply
     .type('text/javascript')
     .send(
