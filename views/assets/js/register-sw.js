@@ -84,9 +84,8 @@
 
   const initializeScramjet = async () => {
     try {
-
       await waitForScramjetController();
-
+  
       const scramjet = new ScramjetController({
         prefix: '/scram/service/',
         files: {
@@ -97,13 +96,15 @@
           sync: '/scram/scramjet.sync.js',
         }
       });
-
+  
       console.log('Initializing ScramjetController');
-      scramjet.init('/scram/scramjet.sw.js');
+      scramjet.init(); 
+  
+      await navigator.serviceWorker.register('/scram/scramjet.sw.js');
     } catch (err) {
       console.error('Scramjet initialization failed:', err);
     }
-  };
+  };  
 
   const initialize = async () => {
     try {
