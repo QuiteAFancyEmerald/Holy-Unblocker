@@ -739,7 +739,7 @@ input[type='text'] {
   box-sizing: border-box;
 }
 
-#csel {
+#csel, .settings-content {
   color: var(--nord4);
   display: flex;
   flex-direction: column;
