@@ -98,13 +98,11 @@
       });
   
       console.log('Initializing ScramjetController');
-      scramjet.init(); 
-  
-      await navigator.serviceWorker.register('/scram/scramjet.sw.js');
+      scramjet.init('/scram/scramjet.sw.js');
     } catch (err) {
       console.error('Scramjet initialization failed:', err);
     }
-  };  
+  };
 
   const initialize = async () => {
     try {
