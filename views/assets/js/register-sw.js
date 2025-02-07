@@ -87,7 +87,7 @@
       await waitForScramjetController();
   
       const scramjet = new ScramjetController({
-        prefix: '/scram/service/',
+        prefix: '/scram/network/',
         files: {
           wasm: '/scram/scramjet.wasm.js',
           worker: '/scram/scramjet.worker.js',

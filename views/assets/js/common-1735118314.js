@@ -108,7 +108,7 @@ const sx = 'duckduckgo.com/?q=',
   // Parse a URL to use with Scramjet.
   sjUrl = (url) => {
     try {
-      url = location.origin + '/scram/service/' + search(url);
+      url = location.origin + '/scram/network/' + search(url);
     } catch (e) {
       // This is for cases where the SJ scripts have not been loaded.
       url = search(url);
