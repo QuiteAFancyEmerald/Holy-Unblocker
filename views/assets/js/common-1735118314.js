@@ -61,10 +61,18 @@ const setAuthCookie = (s, lax) => {
 
 /* OMNIBOX */
 
+const searchEngines = Object.freeze({
+    Google: 'google.com/search?q=',
+    Bing: 'bing.com/search?q=',
+    DuckDuckGo: 'duckduckgo.com/?q=',
+    Startpage: 'startpage.com/sp/search?query=',
+  }),
+  defaultSearch = searchEngines['DuckDuckGo'];
+
 // Search engine is set to DuckDuckGo. Intended to work just like the usual
 // bar at the top of a browser.
-const sx = 'duckduckgo.com/?q=',
-  /*
+const sx = defaultSearch,
+/*
   omnibox = url =>
     (url.indexOf("http")
       ? "https://" + (url.indexOf(".") < 1 ? sx : "")
