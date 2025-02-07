@@ -63,7 +63,7 @@
   
   // Search engine is set to Bing. Intended to work just like the usual
   // bar at the top of a browser.
-  const sx = 'startpage.com/sp' + '/search?query=',
+  const sx = 'duckduckgo.com/?q=',
     /*
     omnibox = url =>
       (url.indexOf("http")
