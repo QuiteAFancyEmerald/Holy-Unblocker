@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { readFileSync } from 'node:fs';
 
 const pages = {
   // If you are trying to add pages or assets in the root folder and

@@ -61,7 +61,7 @@ const setAuthCookie = (s, lax) => {
 
 /* OMNIBOX */
 
-// Search engine is set to Bing. Intended to work just like the usual
+// Search engine is set to DuckDuckGo. Intended to work just like the usual
 // bar at the top of a browser.
 const sx = 'duckduckgo.com/?q=',
   /*
@@ -75,11 +75,11 @@ const sx = 'duckduckgo.com/?q=',
   // Another omnibox function. Unsure if the version above is needed.
   search = (input, template = `https://${sx}%s`) => {
     try {
-      //    Return the input if it is already a valid URL.
-      //    eg: https://example.com, https://example.com/test?q=param
+      // Return the input if it is already a valid URL.
+      // eg: https://example.com, https://example.com/test?q=param
       return new URL(input) + '';
     } catch (e) {
-      //    Continue if it is invalid.
+      // Continue if it is invalid.
     }
 
     try {
@@ -241,9 +241,9 @@ const RammerheadEncode = async (baseUrl) => {
         });
       },
     },
-    /*  Organize Rammerhead sessions via the browser's local storage.
-     *  Local data consists of session creation timestamps and session IDs.
-     *  The rest of the data is stored on the server.
+    /* Organize Rammerhead sessions via the browser's local storage.
+     * Local data consists of session creation timestamps and session IDs.
+     * The rest of the data is stored on the server.
      */
     localStorageKey = 'rammerhead_sessionids',
     localStorageKeyDefault = 'rammerhead_default_sessionid',
