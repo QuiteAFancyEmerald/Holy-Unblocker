@@ -1,6 +1,5 @@
 services:
   - type: web
-    name: holy-forest-1234
-    env: node
+    name: project
+    env: docker
     plan: free
-    startCommand: npm start
