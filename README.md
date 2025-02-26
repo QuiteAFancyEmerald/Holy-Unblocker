@@ -38,7 +38,6 @@ Also has a good amount of locally hosted games featured on the site.
 | Youtube                     | Built-in variety of open source web proxies with both a focus on speed and/or security                                 |
 | CoolMathGames               | Features "Source Randomization" to circumvent major filters effectively along with randomizations to proxy globals    |
 | Discord                     | Tab title + icon customization using the Settings Menu for improved browsing stealth                                   |
-| Now.gg                      | Adblocking support across all websites while surfing                                                                   |
 | Reddit.com                  | SOCKS5 and Onion routing support with Tor within the Settings Menu. Use Tor/Onion sites in any browser!                                                    |
 | GeForce NOW                 | Game library with moderately decent titles and open-source emulation projects                                          |
 | Spotify                     | Has frequent support articles for issues relating to various proxy instances                                           |
