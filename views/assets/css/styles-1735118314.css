@@ -389,7 +389,7 @@ details[open] summary {
   background-image: url('/assets/svg/new.svg');
   background-size: contain; 
   background-repeat: no-repeat;
-  image-rendering: -webkit-optimize-contrast; /* Better SVG rendering */
+  image-rendering: -webkit-optimize-contrast;
   vertical-align: middle; 
 }
 
@@ -527,9 +527,9 @@ details[open] summary {
   font-family: 'Figtree', sans-serif;
   display: flex;
   flex-direction: column;
-  backdrop-filter: blur(10px); /* Frosted glass effect */
-  -webkit-backdrop-filter: blur(10px); /* For Safari */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow for depth */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .settings-header {
@@ -970,10 +970,10 @@ input[type='text'] {
 .no-select,
 .comment,
 .mac-content br {
-  user-select: none; /* Prevent text selection */
-  -webkit-user-select: none; /* For Safari */
-  -moz-user-select: none; /* For Firefox */
-  -ms-user-select: none; /* For Internet Explorer/Edge */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .mac-content {
@@ -1330,8 +1330,8 @@ iner .splashstrokeheader {
   overflow: hidden;
   text-align: left;
   box-sizing: border-box;
-  backdrop-filter: blur(10px); /* Frosted glass effect */
-  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .box-card::after {
@@ -1615,18 +1615,35 @@ iner .splashstrokeheader {
 /* -----------------------------------------------
 /* Proxy Pages
 /* ----------------------------------------------- */
+.pr-logo {
+  width: 100%;
+  max-width: 310px;
+  height: auto;
+  margin: 0 auto 30px auto;
+}
+
+.pr-tippy {
+  color: rgb(255, 136, 142);
+}
+
+.advanced-settings, label {
+  vertical-align: auto;
+  margin-inline-end: 20px;
+}
 
 .pr-form {
+  margin-top: 30px;
   margin-bottom: 16px;
 }
 
 .pr-form input {
   background-color: var(--nord0);
-  border: 1px solid var(--nord0);
+  border: 1px solid var(--nord1);
 }
 
 .pr-form input,
-.pr-form a {
+.pr-form a,
+.pr-form select {
   vertical-align: baseline;
   outline: none;
   border-radius: 5px;
@@ -1656,12 +1673,47 @@ iner .splashstrokeheader {
   text-decoration: none;
   display: inline-block;
   background-color: var(--nord0);
+  border: 1px solid var(--nord1) !important;
   transition: 0.3s ease-in-out;
   -webkit-transition: 0.3s ease-in-out;
 }
 
 .pr-button:hover {
   background-color: var(--nord2);
+}
+
+#wisp-box .table-header {
+  display: flex;
+  background-color: #f0f0f0;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+#wisp-box .table-row {
+  display: flex;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+#wisp-box .table-cell {
+  flex: 1;
+  padding: 8px;
+}
+
+#wisp-box .table-cell:nth-child(1) {
+  width: 20%;
+}
+
+#wisp-box .table-cell:nth-child(2) {
+  width: 40%;
+}
+
+#wisp-box .table-cell:nth-child(3) {
+  width: 20%;
+}
+
+#wisp-box .table-cell:nth-child(4) {
+  width: 20%;
 }
 
 /* Used on the Games and YouTube pages. */

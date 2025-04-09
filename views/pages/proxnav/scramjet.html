@@ -98,34 +98,101 @@
     <script src="
     https://cdn.jsdelivr.net/npm/tsparticles@3.5/tsparticles.bundle.min.js
     "></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
   </head>
 
   <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <div id="header" class="fullwidth"><!--HEADER--></div>
     <div id="particles-js" class="fullwidth"></div>
+    <div data-aos="fade-right" class="hero-grid-container">
+      <div class="box-hero">
+        <div class="hero-content">
+          <div class="proxy-header text-center">
+            <img class="pr-logo" src="/assets/img/scramjet.png" alt="Scramjet Web Proxy" />
+            <p>
+              Scramjet is a web proxy designed with performance and security in mind to evade internet censorship,<br>bypass arbitrary web browser restrictions and innovate web proxy technologies.<br><br>
+              This allows you to browse various websites with higher level of privacy<br> and access popular resources like Discord, GeForce NOW, Twitter and YouTube on restricted networks.
+            </p>
+          </div>
+          <div class="proxy-form text-center">
+            <div id="pr-sj" class="pr-form">
+              <select id="engine" class="pr-button glowbutton">
+                <option value="google">Google</option>
+                <option value="duckduckgo">DuckDuckGo</option>
+                <option value="bing">Bing</option>
+                <option value="brave">Brave</option>
+              </select>
+
+              <input
+                      type="text"
+                      spellcheck="false"
+                      autocomplete="off"
+                      placeholder="Type a URL here or enter a search query!"
+                      id="search-input"
+              />
+
+              <a href="#" class="pr-button glowbutton pr-go2" id="search-btn">SEARCH</a>
+            </div>
+
+            <h3>Advanced Settings ▼</h3>
+            <div id="settings-panel" class="pr-settings">
+              <div class="advanced-settings"></div>
+              <label>
+                Tor Browsing Mode <span class="pr-tippy" data-tippy-content="Choose your Tor browsing mode. This allows you to use Tor routing in any browser. TLDR: You can access any .onion link in any browser.">(?) </span>
+                <select>
+                  <option value="off">Off</option>
+                  <option value="safe">Enabled</option>
+                </select>
+              </label>
+              <label>
+                Hide Ads <span class="pr-tippy" data-tippy-content="Enable or disable ad blocking.">(?) </span>
+                <select>
+                  <option value="off">Off</option>
+                  <option value="safe">Enabled</option>
+                </select>
+              </label>
+              <label>
+                Region Selection <span class="pr-tippy" data-tippy-content="Enable or select regional proxies.">(?) </span>
+                <select>
+                  <option value="off">Off</option>
+                  <option value="safe">Enabled</option>
+                </select>
+              </label>
+
+              <div class="wisp-box">
+                <p class="cseltitle">Wisp Protocol Transport <span class="pr-tippy" data-tippy-content="Wisp is designed to be a low-overhead, easy to implement protocol for proxying multiple TCP sockets over a single websocket connection. TLDR: Selecting a specific option will provide a focus on either speed, security or both at once. Just options for the user to select when utilizing Scramjet.">(?) </span></p>
+                <div class="box-hero radio-group" id="uv-transport-list">
+                  <label>
+                    <p>
+                      Libcurl <span class="pr-tippy" data-tippy-content="Libcurl transport focuses on full TLS encryption but has slightly slower speeds than Epoxy. [ALTERNATIVE/FIREFOX DEFAULT]">(?) </span>
+                      <span class="default-badge">Cross-Browser/Secure (Firefox)</span>
+                    </p>
+                    <input type="radio" name="uv-transport" value="libcurl" checked />
+                  </label>
+                  <label>
+                    <p>
+                      Epoxy <span class="pr-tippy" data-tippy-content="Expoxy allows you to make requests that bypass CORS without compromising security by running SSL/TLS inside webassembly with incredible performance. [HIGHLY RECOMMEND AND OPTIMIZED FOR SPEED].">(?) </span>
+                      <span class="bare-badge">Fastest/Secure (Chromium, Apple)</span>
+                    </p>
+                    <input type="radio" name="uv-transport" value="epoxy" />
+                  </label>
+                  <label>
+                    <p>Bare <span class="pr-tippy" data-tippy-content="Bare is NOT recommend and a last resort for unsupported sites.">(?) </span>
+                      <span class="beta-badge">Least Secure (All)</span></p>
+                    <input type="radio" name="uv-transport" value="bare" />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="mainbody" class="fullwidth">
-      <div class="ad" id="ad-left"></div>
-      <div class="ad" id="ad-right"></div>
       <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
       <div class="box box-medium text-center textm">
-        <h1 class="bigtitle">Scramjet (Beta)</h1>
-        <p>
-          Scramjet is an experimental interception based web proxy that aims to
-          be the successor to Ultraviolet.<br>
-        </p>
-        <div id="pr-sj" class="pr-form">
-          <input
-            type="text"
-            spellcheck="false"
-            autocomplete="off"
-            placeholder="Search or enter in a target site!"
-          />
-          <a href="#" style="display: none" class="pr-button glowbutton pr-go1"
-            >Stea&#173;lth</a
-          >
-          <a href="#" class="pr-button glowbutton pr-go2">Stea&#173;lth</a>
-        </div>
         <h3>
           N<wbr />etwo<wbr />rk fi<wbr />x i<wbr />f erro<wbr />rs occ<wbr />urs
           or bla<wbr />nk pa<wbr />ge:
@@ -162,6 +229,13 @@
     </div>
     <div id="footer" class="fullwidth"><!--FOOTER--></div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+    <script>
+      tippy('.pr-tippy', {
+        delay: 50,
+        animateFill: true,
+        placement: 'bottom'
+      });
+    </script>
     <script src="/scram/scramjet.controller.js"></script>
     <script src="assets/js/common.js"></script>
     <script src="assets/js/csel.js"></script>

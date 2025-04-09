@@ -36,6 +36,9 @@
     <script src="
     https://cdn.jsdelivr.net/npm/tsparticles@3.5/tsparticles.bundle.min.js
     "></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/backdrop.css">
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css">
+
   </head>
 
   <body>
@@ -59,10 +62,28 @@
             customizable blacklist settings, leak prevention mechanisms, and
             advanced security measures.
           </h2>
+          <h2 class="box-description">
+            Select a proxy service below to get started!
+          </h2>
           <div class="box-button-container">
-            <a href="/scramjet" class="box-button">Scramjet (Beta)</a>
-            <a href="/ultraviolet" class="box-button">Ultraviolet</a>
-            <a href="/rammerhead" class="box-button">Rammerhead</a>
+            <a id="sjtooltip" href="/scramjet" class="box-button">Scramjet (BETA)</a>
+            <a id="uvtooltip" href="/ultraviolet" class="box-button">Ultraviolet</a>
+            <a id="rhtooltip" href="/rammerhead" class="box-button">Rammerhead</a>
+            <script src="https://unpkg.com/@popperjs/core@2"></script>
+            <script src="https://unpkg.com/tippy.js@6"></script>
+            <script>
+              const tooltipContent = {
+                sjtooltip: 'Scramjet [Recommended]: Fast, secure, and frequently updated.',
+                uvtooltip: 'Ultraviolet [Fallback]: Popular, but use as fallback for CAPTCHA support.',
+                rhtooltip: 'Rammerhead [Optional]: Not secure and has many leaks. Use as alternative fallback.',
+              };
+
+              tippy.setDefaultProps({delay: 50, animateFill: true, placement: 'bottom'});
+
+              tippy('#sjtooltip', { content: tooltipContent.sjtooltip });
+              tippy('#uvtooltip', { content: tooltipContent.uvtooltip });
+              tippy('#rhtooltip', { content: tooltipContent.rhtooltip });
+            </script>
           </div>
         </div>
         <div class="box-image-container">

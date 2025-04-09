@@ -1,7 +1,7 @@
 {
   "title": "HU LTS",
   "host": "0.0.0.0",
-  "minifyScripts": true,
+  "minifyScripts": false,
   "randomizeIdentifiers": true,
   "production": false
 }
