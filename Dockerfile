@@ -2,6 +2,9 @@ FROM node:20
 
 WORKDIR /app
 
+# Install Python and build tools for node-gyp
+RUN apt-get update && apt-get install -y python3 build-essential
+
 COPY package.json ./
 
 RUN npm config set unsafe-perm true
@@ -17,9 +20,3 @@ EXPOSE 8080
 
 # Start the app
 CMD ["npm", "start"]
-
-
-# Build and Run Commands
-
-# docker build -t holyunblocker .
-# docker run -p 8080:8080 holyunblocker
