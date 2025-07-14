@@ -98,7 +98,8 @@
       });
   
       console.log('Initializing ScramjetController');
-      scramjet.init('/scram/scramjet.sw.js');
+      scramjet.init();
+      navigator.serviceWorker.register("/scram/scramjet.sw.js");
     } catch (err) {
       console.error('Scramjet initialization failed:', err);
     }
