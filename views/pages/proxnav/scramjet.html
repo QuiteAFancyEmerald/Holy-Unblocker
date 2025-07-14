@@ -112,7 +112,7 @@
           <div class="proxy-header text-center">
             <img class="pr-logo" src="/assets/img/scramjet.png" alt="Scramjet Web Proxy" />
             <p>
-              Scramjet is a web proxy designed with performance and security in mind to evade internet censorship,<br>bypass arbitrary web browser restrictions and innovate web proxy technologies.<br><br>
+              <a href="/github/scramjet"><strong>Scramjet</strong></a> is a web proxy designed with performance and security in mind to evade internet censorship,<br>bypass arbitrary web browser restrictions and innovate web proxy technologies.<br><br>
               This allows you to browse various websites with higher level of privacy<br> and access popular resources like Discord, GeForce NOW, Twitter and YouTube on restricted networks.
             </p>
           </div>
@@ -143,87 +143,70 @@
                 Tor Browsing Mode <span class="pr-tippy" data-tippy-content="Choose your Tor browsing mode. This allows you to use Tor routing in any browser. TLDR: You can access any .onion link in any browser.">(?) </span>
                 <select>
                   <option value="off">Off</option>
-                  <option value="safe">Enabled</option>
+                  <option value="trenabled">Enabled</option>
                 </select>
               </label>
               <label>
                 Hide Ads <span class="pr-tippy" data-tippy-content="Enable or disable ad blocking.">(?) </span>
                 <select>
                   <option value="off">Off</option>
-                  <option value="safe">Enabled</option>
+                  <option value="haenabled" selected>Enabled</option>
                 </select>
               </label>
               <label>
                 Region Selection <span class="pr-tippy" data-tippy-content="Enable or select regional proxies.">(?) </span>
                 <select>
                   <option value="off">Off</option>
-                  <option value="safe">Enabled</option>
+                  <option value="eu">Europe</option>
+                  <option value="uswest">US-West</option>
+                  <option value="useast">US-East</option>
+                  <option value="jp">Japan</option>
                 </select>
               </label>
 
               <div class="wisp-box">
                 <p class="cseltitle">Wisp Protocol Transport <span class="pr-tippy" data-tippy-content="Wisp is designed to be a low-overhead, easy to implement protocol for proxying multiple TCP sockets over a single websocket connection. TLDR: Selecting a specific option will provide a focus on either speed, security or both at once. Just options for the user to select when utilizing Scramjet.">(?) </span></p>
-                <div class="box-hero radio-group" id="uv-transport-list">
-                  <label>
-                    <p>
-                      Libcurl <span class="pr-tippy" data-tippy-content="Libcurl transport focuses on full TLS encryption but has slightly slower speeds than Epoxy. [ALTERNATIVE/FIREFOX DEFAULT]">(?) </span>
-                      <span class="default-badge">Cross-Browser/Secure (Firefox)</span>
-                    </p>
-                    <input type="radio" name="uv-transport" value="libcurl" checked />
-                  </label>
-                  <label>
-                    <p>
-                      Epoxy <span class="pr-tippy" data-tippy-content="Expoxy allows you to make requests that bypass CORS without compromising security by running SSL/TLS inside webassembly with incredible performance. [HIGHLY RECOMMEND AND OPTIMIZED FOR SPEED].">(?) </span>
-                      <span class="bare-badge">Fastest/Secure (Chromium, Apple)</span>
-                    </p>
-                    <input type="radio" name="uv-transport" value="epoxy" />
-                  </label>
-                  <label>
-                    <p>Bare <span class="pr-tippy" data-tippy-content="Bare is NOT recommend and a last resort for unsupported sites.">(?) </span>
-                      <span class="beta-badge">Least Secure (All)</span></p>
-                    <input type="radio" name="uv-transport" value="bare" />
-                  </label>
-                </div>
+                  <table class="transport-table" id="uv-transport-list">
+                    <tr>
+                      <td class="transport-label">
+                        <label>
+                          Libcurl
+                          <span class="pr-tippy" data-tippy-content="Libcurl transport focuses on full TLS encryption but has slightly slower speeds than Epoxy. [ALTERNATIVE/FIREFOX DEFAULT]">(?)</span>
+                          <span class="default-badge">Cross-Browser/Secure (Firefox)</span>
+                        </label>
+                      </td>
+                      <td class="transport-radio">
+                        <input type="radio" name="uv-transport" value="libcurl" checked />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="transport-label">
+                        <label>
+                          Epoxy
+                          <span class="pr-tippy" data-tippy-content="Expoxy allows you to make requests that bypass CORS without compromising security by running SSL/TLS inside webassembly with incredible performance. [HIGHLY RECOMMEND AND OPTIMIZED FOR SPEED].">(?)</span>
+                          <span class="bare-badge">Fastest/Secure (Chromium, Apple)</span>
+                        </label>
+                      </td>
+                      <td class="transport-radio">
+                        <input type="radio" name="uv-transport" value="epoxy" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="transport-label">
+                        <label>
+                          Bare
+                          <span class="pr-tippy" data-tippy-content="Bare is NOT recommend and a last resort for unsupported sites.">(?)</span>
+                          <span class="beta-badge">Least Secure (All)</span>
+                        </label>
+                      </td>
+                      <td class="transport-radio">
+                        <input type="radio" name="uv-transport" value="bare" />
+                      </td>
+                    </tr>
+                  </table>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div id="mainbody" class="fullwidth">
-      <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-      <div class="box box-medium text-center textm">
-        <h3>
-          N<wbr />etwo<wbr />rk fi<wbr />x i<wbr />f erro<wbr />rs occ<wbr />urs
-          or bla<wbr />nk pa<wbr />ge:
-        </h3>
-        <button id="reload" class="homebutton glowbutton">
-          Ref<wbr />re<wbr />sh
-        </button>
-        <br /><br />
-        <h3>More Information:</h3>
-        <div class="font3">
-          <p class="accented">
-            Scramjet works with almost all sites including Google, Youtube, Spotify, Discord,
-            Reddit, GeForce NOW, and now.gg!
-            <br><br />Scramjet is highly recommended due
-            to security, developer friendliness, and performance along enhanced
-            support for almost every site making it one of the most advanced web
-            proxies. <br />
-          </p>
-          <p class="accented">
-            Common Errors with Solutions:
-            <br />- Having issues with CAPTCHAs? It will take trial and error
-            but try to go slow when it comes to solving them. CAPTCHA is a given
-            but will take a few attempts.<br />- You may not be able to login
-            normally into a number of sites. Phone verification on a select
-            number of sites may occur also with no real soluion.
-          </p>
-          <p>
-            GitHub:&nbsp;<a class="bluelink" href="/github/scramjet"
-              ><strong>https://github.com/MercuryWorkshop/scramjet</strong></a
-            >
-          </p>
         </div>
       </div>
     </div>

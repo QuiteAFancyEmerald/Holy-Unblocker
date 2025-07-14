@@ -173,6 +173,14 @@ img {
   }
 }
 
+input[type='radio'] {
+  accent-color: #88c0d0;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background-color: #3b4252;
+}
+
 .text-center {
   text-align: center;
 }
@@ -588,6 +596,30 @@ details[open] summary {
   margin: 10px 0;
 }
 
+.transport-table {
+  display: flex;
+  justify-content: center;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.transport-table td {
+  vertical-align: middle;
+  padding: 6px 10px;
+}
+
+.transport-table label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+}
+
+.transport-table input[type="radio"] {
+  transform: scale(1.2);
+  margin-left: 8px;
+}
+
 .radio-group {
   display: flex;
   flex-direction: column;
@@ -607,6 +639,7 @@ details[open] summary {
 .radio-group p {
   margin: 0;
   flex: 1; 
+  float: left;
 }
 
 .radio-group input[type='radio'] {
@@ -661,9 +694,9 @@ details[open] summary {
 }
 
 select {
-  margin: 0;
+  margin: 0 0 0 10px;
   padding: 10px;
-  background-color: #3b4252;
+  background-color: var(--nord0);
   border: 1px solid #4c566a;
   border-radius: 5px;
   color: #eceff4;
