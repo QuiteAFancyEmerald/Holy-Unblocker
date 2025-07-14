@@ -51,10 +51,12 @@ const externalPages = {
     'font-awesome': 'https://github.com/FortAwesome/Font-Awesome',
     'libcurl-js': 'https://github.com/ading2210/libcurl.js',
     'nord-theme': 'https://github.com/nordtheme',
+    scramjet: 'https://github.com/MercuryWorkshop/scramjet',
     ultraviolet: 'https://github.com/titaniumnetwork-dev/Ultraviolet',
     wisp: 'https://github.com/MercuryWorkshop/wisp-protocol',
   },
   'titaniumnetwork-documentation': 'https://docs.titaniumnetwork.org',
+  'titaniumnetwork-discord': 'https://discord.gg/CwWpdGkuWY',
   'rammerhead-discord': 'https://discord.gg/VNT4E7gN5Y',
 };
 
