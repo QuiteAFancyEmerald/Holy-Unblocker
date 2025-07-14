@@ -88,7 +88,6 @@ const testServerResponse = async () => {
     'http://localhost:8080/questions',
     'http://localhost:8080/s',
     'http://localhost:8080/credits',
-    'http://localhost:8080/bookmarklets',
     'http://localhost:8080/terms',
     'http://localhost:8080/games',
     'http://localhost:8080/web-games',

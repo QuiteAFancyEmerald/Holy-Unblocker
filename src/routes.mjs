@@ -14,7 +14,6 @@ const pages = {
   s: 'pages/frame.html',
   browsing: 'pages/surf.html',
   credits: 'pages/nav/credits.html',
-  bookmarklets: 'pages/nav/bookmarklets.html',
   terms: 'pages/nav/terms.html',
   /* Games */
   games: 'pages/nav/gtools.html',
