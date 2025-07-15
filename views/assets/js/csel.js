@@ -109,7 +109,7 @@ const storageId = 'hu-lts-storage',
             updateTarget.selectedIndex = mappedIndex;
           else children[mappedIndex].checked = true;
         } else
-          updateTarget.checked = ['on', 'enabled', 'true', '1'].includes(state);
+          updateTarget.checked = onStateKeywords.includes(state);
       });
     },
   // These titles and icons are used as autofill templates by settings.html.
