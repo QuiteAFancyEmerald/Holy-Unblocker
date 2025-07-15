@@ -7,6 +7,9 @@
 // Encase everything in a new scope so that variables are not accidentally
 // attached to the global scope.
 (() => {
+
+/* GENERAL URL HANDLERS */
+
 // To be defined after the document has fully loaded.
 let uvConfig = {};
 // Get the preferred apex domain name. Not exactly apex, as any
@@ -15,7 +18,7 @@ const getDomain = () =>
     location.host.replace(/^(?:www|edu|cooking|beta)\./, ''),
   // This is used for stealth mode when visiting external sites.
   goFrame = (url) => {
-    localStorage.setItem('huframesrc', url);
+    localStorage.setItem('hu-lts-frame-url', url);
     location.href = '/s';
   },
   /* Used to set functions for the goProx object at the bottom.
@@ -51,13 +54,11 @@ const getDomain = () =>
     else return url;
   };
 
-/* COOKIE AUTH DEMO */
+/* READ SETTINGS */
 
-const setAuthCookie = (s, lax) => {
-  document.cookie =
-    s +
-    `; expires=${Date.now() + 259200}; SameSite=${lax ? 'Lax' : 'None'}; domain=.${getDomain()}; path=/; Secure;`;
-};
+const storageId = 'hu-lts-storage',
+  storageObject = () => JSON.parse(localStorage.getItem(storageId)) || {},
+  readStorage = (name) => storageObject()[name];
 
 /* OMNIBOX */
 
@@ -67,21 +68,15 @@ const searchEngines = Object.freeze({
     DuckDuckGo: 'duckduckgo.com/?q=',
     Startpage: 'startpage.com/sp/search?query=',
   }),
-  defaultSearch = searchEngines['DuckDuckGo'];
+  defaultSearch = searchEngines['Google'];
 
-// Search engine is set to DuckDuckGo. Intended to work just like the usual
+// Default search engine is set to Google. Intended to work just like the usual
 // bar at the top of a browser.
-const sx = defaultSearch,
-/*
-  omnibox = url =>
-    (url.indexOf("http")
-      ? "https://" + (url.indexOf(".") < 1 ? sx : "")
-      : "")
-    + url;
-*/
-
-  // Another omnibox function. Unsure if the version above is needed.
-  search = (input, template = `https://${sx}%s`) => {
+const getSearchTemplate = (searchEngine = readStorage('SearchEngine')) =>
+    `https://${searchEngine || defaultSearch}%s`,
+  // Like an omnibox, return the results of a search engine if search terms are
+  // provided instead of a URL.
+  search = (input) => {
     try {
       // Return the input if it is already a valid URL.
       // eg: https://example.com, https://example.com/test?q=param
@@ -101,7 +96,7 @@ const sx = defaultSearch,
     }
 
     // Treat the input as a search query instead of a website.
-    return template.replace('%s', encodeURIComponent(input));
+    return getSearchTemplate().replace('%s', encodeURIComponent(input));
   },
   // Parse a URL to use with Ultraviolet.
   uvUrl = (url) => {

@@ -28,7 +28,6 @@ const storageId = 'hu-lts-storage',
   },
   readStorage = (name) => storageObject()[name],
   useStorageArgs = (name, func) => func(readStorage(name)),
-  
   // All cookies should be secure and are intended to work in IFrames.
   setCookie = (name, value) => {
     document.cookie =
@@ -79,6 +78,40 @@ const storageId = 'hu-lts-storage',
   pageHideAds = () => {
     (document.getElementById('advertising') || new Text()).remove();
   },
+  offStateKeywords = ['off', 'disabled', 'false', '0'],
+  onStateKeywords = ['on', 'enabled', 'true', '1'],
+  checkBooleanState = (element) =>
+    onStateKeywords.includes(
+      `${(element.querySelector('input:checked,option:checked') || []).value || element.checked}`.toLowerCase()
+    ),
+  classUpdateHandler =
+    (targetElementList, stateFunction, ...params) =>
+    () => {
+      const state =
+        'function' === typeof stateFunction
+          ? `${stateFunction(...params)}`.toLowerCase()
+          : `${stateFunction}`.toLowerCase();
+      [...targetElementList].forEach((updateTarget) => {
+        if (updateTarget.children.length > 0) {
+          let children = updateTarget.querySelectorAll('input,option');
+          const values = Array.from(children, (child) => {
+            const childText = `${child.value}`.toLowerCase();
+            return offStateKeywords.includes(childText)
+              ? offStateKeywords.concat(child.value)
+              : onStateKeywords.includes(childText)
+                ? onStateKeywords.concat(child.value)
+                : [childText];
+          });
+          const mappedIndex = values.findIndex((possibleValues) =>
+            possibleValues.includes(state)
+          );
+          if ('number' === typeof updateTarget.selectedIndex)
+            updateTarget.selectedIndex = mappedIndex;
+          else children[mappedIndex].checked = true;
+        } else
+          updateTarget.checked = ['on', 'enabled', 'true', '1'].includes(state);
+      });
+    },
   // These titles and icons are used as autofill templates by settings.html.
   // The icon URLs and tab titles may need to be updated over time.
   presetIcons = Object.freeze({
@@ -104,34 +137,31 @@ useStorageArgs('Icon', (s) => {
   s != undefined && pageIcon(s);
 });
 
-// Load the UV transport mode that was last used, or use the default.
+// Load the Wisp transport mode that was last used, or use the default.
 useStorageArgs('Transport', (s) => {
-  let transportMode = document.querySelector(
-    `#uv-transport-list input[value="${s || defaultMode}"]`
-  );
-  if (transportMode) transportMode.click();
+  classUpdateHandler(
+    document.getElementsByClassName('wisp-transport-list'),
+    s || defaultMode
+  )();
 });
 
 // Ads are disabled by default. Load ads if ads were enabled previously.
 // Change !== to === here if ads should be enabled by default.
-useStorageArgs('HBHideAds', (s) => {
-  s !== 'false'
-    ? pageHideAds()
-    : pageShowAds(((document.getElementById('hideads') || {}).checked = 0));
+useStorageArgs('HideAds', (s) => {
+  if (s !== false) pageHideAds();
+  else {
+    pageShowAds();
+    classUpdateHandler(document.getElementsByClassName('hideads'), 'off')();
+  }
 });
 
 // Tor is disabled by default. Enable Tor if it was enabled previously.
 useStorageArgs('UseOnion', (s) => {
-  if (s === 'true') {
-    let torCheck = document.getElementById('useonion') || {
-      dispatchEvent: () => {},
-    };
-    torCheck.checked = 1;
-    torCheck.dispatchEvent(new Event('change'));
-  }
+  if (s === true)
+    classUpdateHandler(document.getElementsByClassName('useonion'), 'on')();
 });
 
-// All code below is used by the Settings UI in the navigation bar.
+// All code below is used by menu items that adjust website settings.
 if (document.getElementById('csel')) {
   const attachEventListener = (selector, ...args) =>
       (
@@ -140,6 +170,33 @@ if (document.getElementById('csel')) {
     focusElement = document
       .getElementsByClassName('dropdown-settings')[0]
       .parentElement.querySelector("a[href='#']");
+
+  // TODO: Add functionality to adapt listeners for the Wisp Transport List.
+  // TODO: Properly comment this code.
+  const attachClassEventListener = (classSelector, ...args) => {
+    const eventTrigger = args[0],
+      selectorList = [...document.getElementsByClassName(classSelector)];
+    selectorList.forEach((element, index) => {
+      let otherElements = [...selectorList];
+      otherElements.splice(index, 1);
+      const elementValue = () =>
+        (element.querySelector('input:checked,option:checked') || []).value ||
+        element.checked;
+      const listeners = ['input', 'select'].includes(
+        element.tagName.toLowerCase()
+      )
+        ? [element]
+        : element.querySelectorAll('input');
+
+      listeners.forEach((listener) => {
+        listener.addEventListener(...args);
+        listener.addEventListener(
+          eventTrigger,
+          classUpdateHandler(otherElements, elementValue)
+        );
+      });
+    });
+  };
 
   attachEventListener('.dropdown-settings .close-settings-btn', 'click', () => {
     document.activeElement.blur();
@@ -201,24 +258,22 @@ if (document.getElementById('csel')) {
     ).split(' \n ');
   });
 
-  // Allow users to change the UV transport mode, for proxying, with the UI.
-  const uvTransportList = document.getElementById('uv-transport-list');
-  uvTransportList.querySelectorAll('input').forEach((element) => {
-    element.addEventListener('change', (e) => {
-      !uvTransportList.querySelector('input:checked') ||
-      e.target.value === defaultMode
-        ? removeStorage('Transport')
-        : setStorage('Transport', e.target.value);
+  // Allow users to change the Wisp transport mode, for proxying, with the UI.
+  attachClassEventListener('wisp-transport-list', 'change', (e) => {
+    let wispTransportList = e.target.closest('.wisp-transport-list');
+    !wispTransportList.querySelector('input:checked') ||
+    e.target.value === defaultMode
+      ? removeStorage('Transport')
+      : setStorage('Transport', e.target.value);
 
-      // Only the libcurl transport mode supports Tor at the moment.
-      let torCheck = document.getElementById('useonion');
-      if (e.target.value !== 'libcurl' && torCheck.checked) torCheck.click();
-    });
+    // Only the libcurl transport mode supports Tor at the moment.
+    let torCheck = document.getElementsByClassName('useonion')[0];
+    if (e.target.value !== 'libcurl' && torCheck.checked) torCheck.click();
   });
 
   // Allow users to toggle ads with the UI.
-  attachEventListener('hideads', 'change', (e) => {
-    if (e.target.checked) {
+  attachClassEventListener('hideads', 'change', (e) => {
+    if (checkBooleanState(e.target)) {
       pageHideAds();
       setStorage('HideAds', true);
     } else {
@@ -231,13 +286,13 @@ if (document.getElementById('csel')) {
    * the libcurl transport mode supports Tor at the moment, so ensure that
    * users are aware that they cannot use Tor with other modes.
    */
-  attachEventListener('useonion', 'change', (e) => {
+  attachClassEventListener('useonion', 'change', (e) => {
     let unselectedModes = document.querySelectorAll(
-      '#uv-transport-list input:not([value=libcurl])'
+      '.wisp-transport-list input:not([value=libcurl])'
     );
-    if (e.target.checked) {
+    if (checkBooleanState(e.target)) {
       let selectedMode = document.querySelector(
-        '#uv-transport-list input[value=libcurl]'
+        '.wisp-transport-list input[value=libcurl]'
       );
       unselectedModes.forEach((e) => {
         e.setAttribute('disabled', 'true');

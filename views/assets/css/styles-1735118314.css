@@ -1659,8 +1659,8 @@ iner .splashstrokeheader {
   color: rgb(255, 136, 142);
 }
 
-.advanced-settings, label {
-  vertical-align: auto;
+#settings-panel label {
+  display: inline-block;
   margin-inline-end: 20px;
 }
 
