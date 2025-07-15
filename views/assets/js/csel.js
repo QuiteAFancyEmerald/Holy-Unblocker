@@ -13,8 +13,24 @@ let date = new Date();
 date.setFullYear(date.getFullYear() + 100);
 date = date.toUTCString();
 
-// All cookies should be secure and are intended to work in iframes.
-const setCookie = (name, value) => {
+// Cookies will not be used unless necessary. The localStorage API will be used instead.
+const storageId = 'hu-lts-storage',
+  storageObject = () => JSON.parse(localStorage.getItem(storageId)) || {},
+  setStorage = (name, value) => {
+    let mainStorage = storageObject();
+    mainStorage[name] = value;
+    localStorage.setItem(storageId, JSON.stringify(mainStorage));
+  },
+  removeStorage = (name) => {
+    let mainStorage = storageObject();
+    delete mainStorage[name];
+    localStorage.setItem(storageId, JSON.stringify(mainStorage));
+  },
+  readStorage = (name) => storageObject()[name],
+  useStorageArgs = (name, func) => func(readStorage(name)),
+  
+  // All cookies should be secure and are intended to work in IFrames.
+  setCookie = (name, value) => {
     document.cookie =
       name +
       `=${encodeURIComponent(value)}; expires=${date}; SameSite=None; Secure;`;
@@ -81,15 +97,15 @@ const setCookie = (name, value) => {
     : 'libcurl';
 
 // Load a custom page title and favicon if it was previously stored.
-readCookie('HBTitle').then((s) => {
+useStorageArgs('Title', (s) => {
   s != undefined && pageTitle(s);
 });
-readCookie('HBIcon').then((s) => {
+useStorageArgs('Icon', (s) => {
   s != undefined && pageIcon(s);
 });
 
 // Load the UV transport mode that was last used, or use the default.
-readCookie('HBTransport').then((s) => {
+useStorageArgs('Transport', (s) => {
   let transportMode = document.querySelector(
     `#uv-transport-list input[value="${s || defaultMode}"]`
   );
@@ -98,14 +114,14 @@ readCookie('HBTransport').then((s) => {
 
 // Ads are disabled by default. Load ads if ads were enabled previously.
 // Change !== to === here if ads should be enabled by default.
-readCookie('HBHideAds').then((s) => {
+useStorageArgs('HBHideAds', (s) => {
   s !== 'false'
     ? pageHideAds()
     : pageShowAds(((document.getElementById('hideads') || {}).checked = 0));
 });
 
 // Tor is disabled by default. Enable Tor if it was enabled previously.
-readCookie('HBUseOnion').then((s) => {
+useStorageArgs('UseOnion', (s) => {
   if (s === 'true') {
     let torCheck = document.getElementById('useonion') || {
       dispatchEvent: () => {},
@@ -135,12 +151,12 @@ if (document.getElementById('csel')) {
     e = e.target.firstElementChild;
     if (e.value) {
       pageTitle(e.value);
-      setCookie('HBTitle', e.value);
+      setStorage('Title', e.value);
       e.value = '';
     } else if (confirm('Reset the title to default?')) {
       // Allow users to reset the title to default if nothing is entered.
       focusElement.focus();
-      removeCookie('HBTitle');
+      removeStorage('Title');
       pageTitle('Holy Unblocker LTS');
     }
   });
@@ -151,12 +167,12 @@ if (document.getElementById('csel')) {
     e = e.target.firstElementChild;
     if (e.value) {
       pageIcon(e.value);
-      setCookie('HBIcon', e.value);
+      setStorage('Icon', e.value);
       e.value = '';
     } else if (confirm('Reset the icon to default?')) {
       //    Allow users to reset the favicon to default if nothing is entered.
       focusElement.focus();
-      removeCookie('HBIcon');
+      removeStorage('Icon');
       pageIcon('assets/img/icon.png');
     }
   });
@@ -191,8 +207,8 @@ if (document.getElementById('csel')) {
     element.addEventListener('change', (e) => {
       !uvTransportList.querySelector('input:checked') ||
       e.target.value === defaultMode
-        ? removeCookie('HBTransport')
-        : setCookie('HBTransport', e.target.value);
+        ? removeStorage('Transport')
+        : setStorage('Transport', e.target.value);
 
       // Only the libcurl transport mode supports Tor at the moment.
       let torCheck = document.getElementById('useonion');
@@ -204,10 +220,10 @@ if (document.getElementById('csel')) {
   attachEventListener('hideads', 'change', (e) => {
     if (e.target.checked) {
       pageHideAds();
-      setCookie('HBHideAds', 'true');
+      setStorage('HideAds', true);
     } else {
       pageShowAds();
-      setCookie('HBHideAds', 'false');
+      setStorage('HideAds', false);
     }
   });
 
@@ -227,7 +243,7 @@ if (document.getElementById('csel')) {
         e.setAttribute('disabled', 'true');
       });
       selectedMode.click();
-      setCookie('HBUseOnion', 'true');
+      setStorage('UseOnion', true);
     } else {
       unselectedModes.forEach((e) => {
         e.removeAttribute('disabled');
@@ -235,7 +251,7 @@ if (document.getElementById('csel')) {
 
       // Tor will likely never be enabled by default, so removing the cookie
       // here may be better than setting it to false.
-      removeCookie('HBUseOnion');
+      removeStorage('UseOnion');
     }
   });
 }

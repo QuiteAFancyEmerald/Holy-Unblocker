@@ -13,6 +13,9 @@
       libcurl: '/libcurl/index.mjs',
       bare: '/baremux/index.mjs',
     },
+    storageId = 'hu-lts-storage',
+    storageObject = () => JSON.parse(localStorage.getItem(storageId)) || {},
+    readStorage = (name) => storageObject()[name],
     readCookie = async (name) => {
       for (let cookie of document.cookie.split('; ')) {
         if (!cookie.indexOf(name + '=')) {
@@ -51,10 +54,10 @@
 
     // Set the transport mode
     const transportMode =
-      transports[await readCookie('HBTransport')] || transports.default;
+      transports[readStorage('Transport')] || transports.default;
     let transportOptions = { wisp: wispUrl };
 
-    if ((await readCookie('HBUseOnion')) === 'true') {
+    if (readStorage('UseOnion') === true) {
       transportOptions.proxy = proxyUrl;
       console.log('Using Onion Proxy:', proxyUrl);
     }
@@ -66,7 +69,7 @@
 
     const registrations = await navigator.serviceWorker.getRegistrations(),
       usedSW =
-        (await readCookie('HBHideAds')) !== 'false' ? blacklistSW : stockSW;
+        readStorage('HideAds') !== false ? blacklistSW : stockSW;
 
     console.log('Service Worker being registered:', usedSW);
 
