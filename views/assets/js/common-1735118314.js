@@ -67,13 +67,15 @@ const searchEngines = Object.freeze({
     Bing: 'bing.com/search?q=',
     DuckDuckGo: 'duckduckgo.com/?q=',
     Startpage: 'startpage.com/sp/search?query=',
+    Brave: 'https://search.brave.com/search?q='
   }),
-  defaultSearch = searchEngines['Google'];
+  defaultSearch = 'Google';
 
 // Default search engine is set to Google. Intended to work just like the usual
 // bar at the top of a browser.
-const getSearchTemplate = (searchEngine = readStorage('SearchEngine')) =>
-    `https://${searchEngine || defaultSearch}%s`,
+const getSearchTemplate = (
+    searchEngine = searchEngines[readStorage('SearchEngine') || defaultSearch]
+  ) => `https://${searchEngine}%s`,
   // Like an omnibox, return the results of a search engine if search terms are
   // provided instead of a URL.
   search = (input) => {

@@ -127,7 +127,14 @@ const storageId = 'hu-lts-storage',
   // Firefox is not supported by epoxy yet, which is why this is implemented.
   defaultMode = /(?:Chrome|AppleWebKit)\//.test(navigator.userAgent)
     ? 'epoxy'
-    : 'libcurl';
+    : 'libcurl',
+  searchEngines = Object.freeze({
+    Google: 'google.com/search?q=',
+    Bing: 'bing.com/search?q=',
+    DuckDuckGo: 'duckduckgo.com/?q=',
+    Startpage: 'startpage.com/sp/search?query=',
+  }),
+  defaultSearch = 'Google';
 
 // Load a custom page title and favicon if it was previously stored.
 useStorageArgs('Title', (s) => {
@@ -135,6 +142,13 @@ useStorageArgs('Title', (s) => {
 });
 useStorageArgs('Icon', (s) => {
   s != undefined && pageIcon(s);
+});
+
+useStorageArgs('SearchEngine', (s) => {
+  classUpdateHandler(
+    document.getElementsByClassName('search-engine-list'),
+    s || defaultSearch
+  )();
 });
 
 // Load the Wisp transport mode that was last used, or use the default.
@@ -256,6 +270,12 @@ if (document.getElementById('csel')) {
     [titleform.firstElementChild.value, iconform.firstElementChild.value] = (
       presetIcons[e.target.value] || ' \n '
     ).split(' \n ');
+  });
+
+  attachClassEventListener('search-engine-list', 'change', (e) => {
+    e.target.value === defaultSearch
+      ? removeStorage('SearchEngine')
+      : setStorage('SearchEngine', e.target.value);
   });
 
   // Allow users to change the Wisp transport mode, for proxying, with the UI.
