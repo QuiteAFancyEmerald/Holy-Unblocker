@@ -85,12 +85,25 @@
       const scramjet = new ScramjetController({
         prefix: '/scram/network/',
         files: {
-          wasm: '/scram/scramjet.wasm.js',
+          wasm: '/scram/scramjet.wasm.wasm',
           worker: '/scram/scramjet.worker.js',
           client: '/scram/scramjet.client.js',
           shared: '/scram/scramjet.shared.js',
           sync: '/scram/scramjet.sync.js',
-        }
+        },
+        flags: {
+          rewriterLogs: false,
+          naiiveRewriter: false,
+          scramitize: false,
+        },
+        siteFlags: {
+          "https://www.google.com/(search|sorry).*": {
+            naiiveRewriter: true,
+          },
+          "https://worker-playground.glitch.me/.*": {
+            serviceworkers: true,
+          },
+        },
       });
   
       console.log('Initializing ScramjetController');
