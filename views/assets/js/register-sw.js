@@ -16,13 +16,6 @@
     storageId = 'hu-lts-storage',
     storageObject = () => JSON.parse(localStorage.getItem(storageId)) || {},
     readStorage = (name) => storageObject()[name],
-    readCookie = async (name) => {
-      for (let cookie of document.cookie.split('; ')) {
-        if (!cookie.indexOf(name + '=')) {
-          return decodeURIComponent(cookie.slice(name.length + 1));
-        }
-      }
-    },
     defaultMode = /(?:Chrome|AppleWebKit)\//.test(navigator.userAgent)
       ? 'epoxy'
       : 'libcurl';
