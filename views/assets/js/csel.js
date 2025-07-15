@@ -128,12 +128,6 @@ const storageId = 'hu-lts-storage',
   defaultMode = /(?:Chrome|AppleWebKit)\//.test(navigator.userAgent)
     ? 'epoxy'
     : 'libcurl',
-  searchEngines = Object.freeze({
-    Google: 'google.com/search?q=',
-    Bing: 'bing.com/search?q=',
-    DuckDuckGo: 'duckduckgo.com/?q=',
-    Startpage: 'startpage.com/sp/search?query=',
-  }),
   defaultSearch = 'Google';
 
 // Load a custom page title and favicon if it was previously stored.
