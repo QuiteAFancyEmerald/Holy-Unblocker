@@ -1,0 +1,181 @@
+<html>
+                <head>
+                    <meta charset="utf-8" />
+                    <title>Scramjet</title>
+                    <link
+                    rel="stylesheet"
+                    href="https://www.nerdfonts.com/assets/css/webfont.css"
+                    />
+                    <link
+                    href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+                    rel="stylesheet"
+                    />
+                    <link
+                    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+                    rel="stylesheet"
+                    />
+                    <style>
+                    *,
+                    body {
+                        color: #eceff4;
+                        background-color: #1d232a;
+                        font-family: "Figtree", sans-serif;
+                        font-optical-sizing: auto;
+                        background-image: radial-gradient(circle, rgba(131, 131, 131, 0.02) 1px, transparent 1px), radial-gradient(circle, rgba(148, 148, 148, 0.02) 1px, transparent 1px);
+                        background-position: 0 0, 5px 5px;
+                        background-size: 10px 10px;
+                    }
+
+                    h1 {
+                        color: #ff5861;
+                        font-size: 64px;
+                        font-weight: 900;
+                        margin-top: 0.8%;
+                    }
+
+                    code, i {
+                        color: #e5e9f0;
+                        font-size: 24px;
+                        font-weight: 500;
+                    }
+
+                    .uv-small {
+                        color: #e5e9f0;
+                        font-size: 20px;
+                        font-weight: 500;
+                    }
+
+                    i {
+                        color: #e5e9f0;
+                        font-size: 20px;
+                        font-weight: 900;
+                        text-decoration: none;
+                        font-style: normal;
+                    }
+                    
+                    .footer-spacing {
+                        margin-top: 0.5%;
+                    }
+
+                    button {
+                        display: inline-block;
+                        text-decoration: none;
+                        padding: 15px 50px;
+                        border-radius: 8px;
+                        margin: 10px;
+                        margin-top: 20px;
+                        transition: 0.3s ease-in-out;
+                        -webkit-transition: 0.3s ease-in-out;
+                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                        -webkit-backdrop-filter: blur(10px);
+                        backdrop-filter: blur(10px);
+                    }
+
+                    button:hover {
+                        background-color: #434c5e;
+                    }
+
+                    textarea {
+                        border-radius: 18px;
+                        outline: none;
+                        resize: none;
+                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                        padding: 25px;
+                        box-sizing: border-box;
+                        width: 450px;
+                    }
+
+                    .nf-fa-heart {
+                        color: #ff5861;
+                    }
+
+                    body,
+                    html,
+                    #inner {
+                        display: flex;
+                        align-items: center;
+                        flex-direction: column;
+                        gap: 1em;
+                        overflow: hidden;
+                    }
+
+                    #inner {
+                        z-index: 100;
+                    }
+
+                    #cover {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background-color: color-mix(in srgb, var(--deep) 70%, transparent);
+                        z-index: 99;
+                    }
+
+                    #info {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: flex-start;
+                        gap: 1em;
+                    }
+
+                    #errorTrace-wrapper {
+                        position: relative;
+                        width: fit-content;
+                    }
+
+                    #copy-button {
+                        position: absolute;
+                        top: 0.5em;
+                        right: 0.5em;
+                        padding: 0.23em;
+                        cursor: pointer;
+                        opacity: 0;
+                        transition: opacity 0.4s;
+                        font-size: 0.9em;
+                    }
+
+                    #errorTrace-wrapper:hover #copy-button {
+                        opacity: 1;
+                    }
+                    </style>
+                </head>
+                <body>
+                    <div id="cover"></div>
+                    <div id="inner">
+                        <h1 id="errorTitle">Netwo<wbr>rk Er<wbr>ror</h1>
+                        <code>Fa<wbr>iled to l<wbr>oad: <b id="fetchedURL"></b></code>
+                        <br>
+                        <!-- <p id="errorMessage">Internal Server Error</p> -->
+
+                        <div id="info">
+                            <div id="errorTrace-wrapper">
+                                <textarea id="errorTrace" cols="40" rows="10" readonly></textarea>
+                                <button id="copy-button" class="primary">Copy</button>
+                            </div>
+                            <div id="troubleshooting">
+                                <p>Try:</p>
+                                <ul>
+                                    <li>Checking your internet connection</li>
+                                    <li>Verifying you entered the correct address</li>
+                                    <li>Clear<wbr>ing your bro<wbr>wser or site cache data via Ctr<wbr>l+Sh<wbr>ift+<wbr>R and b<wbr>rowser setti<wbr>ngs</li>
+                                    <li>In t<wbr>he case of web<wbr>site ma<wbr />inte<wbr>nan<wbr />ce or updates, please wait for the issue to be resol<wbr>ved.</li>
+                                    <li>Verif<wbr>ying you ente<wbr>red the cor<wbr>rect add<wbr>ress</li>
+                                    <li>Verify the server isn't censored</li>
+                                    <li>If the iss<wbr>ue per<wbr>sists be su<wbr>re to m<wbr>ention t<wbr>his in the Ti<wbr />ta<wbr />nium Net<wbr />work D<wbr>is<wbr />cor<wbr />d.</li>
+                                    <li>View the F<wbr />AQ page for specific si<wbr>te compa<wbr>tibility issues.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <code><i>Ref<wbr>res<wbr>h the net<wbr>work serv<wbr>ice | Scramjet v<span id="version"></span> (build <span id="build"></span>).</i></code>
+                        <br>
+                        <button id="reload">Ref<wbr>resh</button>
+                        <br />
+                        <p class="footer-spacing">
+                            <i>Ho<wbr>ly Unbloc<wbr>ke<wbr>r LT<wbr>S © 20<wbr>2<wbr>0-202<wbr>5 | Ma<wbr>de Wit<wbr>h Lov<wbr>e </i><i class="nf nf-fa-heart"></i>
+                        </p>
+                    </div>
+                    <script src="${"data:application/javascript,"+encodeURIComponent(r)}"></script>
+                </body>
+            </html>

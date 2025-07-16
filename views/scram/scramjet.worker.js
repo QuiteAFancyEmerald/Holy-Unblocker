@@ -26,57 +26,97 @@
                     btn.textContent = 'Copied!';
                     setTimeout(() => btn.textContent = 'Copy', 2000);
                 });
-        `;return`<!DOCTYPE html>
-            <html>
+        `;return`<html>
                 <head>
                     <meta charset="utf-8" />
                     <title>Scramjet</title>
+                    <link
+                    rel="stylesheet"
+                    href="https://www.nerdfonts.com/assets/css/webfont.css"
+                    />
+                    <link
+                    href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+                    rel="stylesheet"
+                    />
+                    <link
+                    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+                    rel="stylesheet"
+                    />
                     <style>
-                    :root {
-                        --deep: #080602;
-                        --shallow: #181412;
-                        --beach: #f1e8e1;
-                        --shore: #b1a8a1;
-                        --accent: #ffa938;
-                        --font-sans: -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
-                        --font-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+                    *,
+                    body {
+                        color: #eceff4;
+                        background-color: #1d232a;
+                        font-family: "Figtree", sans-serif;
+                        font-optical-sizing: auto;
+                        background-image: radial-gradient(circle, rgba(131, 131, 131, 0.02) 1px, transparent 1px), radial-gradient(circle, rgba(148, 148, 148, 0.02) 1px, transparent 1px);
+                        background-position: 0 0, 5px 5px;
+                        background-size: 10px 10px;
                     }
 
-                    *:not(div,p,span,ul,li,i,span) {
-                        background-color: var(--deep);
-                        color: var(--beach);
-                        font-family: var(--font-sans);
+                    h1 {
+                        color: #ff5861;
+                        font-size: 64px;
+                        font-weight: 900;
+                        margin-top: 0.8%;
                     }
 
-                    textarea,
+                    code, i {
+                        color: #e5e9f0;
+                        font-size: 24px;
+                        font-weight: 500;
+                    }
+
+                    .uv-small {
+                        color: #e5e9f0;
+                        font-size: 20px;
+                        font-weight: 500;
+                    }
+
+                    i {
+                        color: #e5e9f0;
+                        font-size: 20px;
+                        font-weight: 900;
+                        text-decoration: none;
+                        font-style: normal;
+                    }
+                    
+                    .footer-spacing {
+                        margin-top: 0.5%;
+                    }
+
                     button {
-                        background-color: var(--shallow);
-                        border-radius: 0.6em;
-                        padding: 0.6em;
-                        border: none;
-                        appearance: none;
-                        font-family: var(--font-sans);
-                        color: var(--beach);
+                        display: inline-block;
+                        text-decoration: none;
+                        padding: 15px 50px;
+                        border-radius: 8px;
+                        margin: 10px;
+                        margin-top: 20px;
+                        transition: 0.3s ease-in-out;
+                        -webkit-transition: 0.3s ease-in-out;
+                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                        -webkit-backdrop-filter: blur(10px);
+                        backdrop-filter: blur(10px);
                     }
 
-                    button.primary {
-                        background-color: var(--accent);
-                        color: var(--deep);
-                        font-weight: bold;
+                    button:hover {
+                        background-color: #434c5e;
                     }
 
                     textarea {
+                        border-radius: 18px;
+                        outline: none;
                         resize: none;
-                        height: 20em;
-                        text-align: left;
-                        font-family: var(--font-monospace);
+                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                        padding: 25px;
+                        box-sizing: border-box;
+                        width: 450px;
                     }
 
-                    body {
-                        width: 100vw;
-                        height: 100vh;
-                        justify-content: center;
-                        align-items: center;
+                    .nf-fa-heart {
+                        color: #ff5861;
                     }
 
                     body,
@@ -85,7 +125,7 @@
                         display: flex;
                         align-items: center;
                         flex-direction: column;
-                        gap: 0.5em;
+                        gap: 1em;
                         overflow: hidden;
                     }
 
@@ -106,22 +146,6 @@
                         flex-direction: row;
                         align-items: flex-start;
                         gap: 1em;
-                    }
-
-                    #version-wrapper {
-                        width: auto;
-                        text-align: right;
-                        position: absolute;
-                        top: 0.5rem;
-                        right: 0.5rem;
-                        font-size: 0.8rem;
-                        color: var(--shore)!important;
-                        i {
-                            background-color: color-mix(in srgb, var(--deep), transparent 50%);
-                            border-radius: 9999px;
-                            padding: 0.2em 0.5em;
-                        }
-                        z-index: 101;
                     }
 
                     #errorTrace-wrapper {
@@ -148,8 +172,9 @@
                 <body>
                     <div id="cover"></div>
                     <div id="inner">
-                        <h1 id="errorTitle">Uh oh!</h1>
-                        <p>There was an error loading <b id="fetchedURL"></b></p>
+                        <h1 id="errorTitle">Netwo<wbr>rk Er<wbr>ror</h1>
+                        <code>Fa<wbr>iled to l<wbr>oad: <b id="fetchedURL"></b></code>
+                        <br>
                         <!-- <p id="errorMessage">Internal Server Error</p> -->
 
                         <div id="info">
@@ -162,22 +187,23 @@
                                 <ul>
                                     <li>Checking your internet connection</li>
                                     <li>Verifying you entered the correct address</li>
-                                    <li>Clearing the site data</li>
-                                    <li>Contacting <b id="hostname"></b>'s administrator</li>
+                                    <li>Clear<wbr>ing your bro<wbr>wser or site cache data via Ctr<wbr>l+Sh<wbr>ift+<wbr>R and b<wbr>rowser setti<wbr>ngs</li>
+                                    <li>In t<wbr>he case of web<wbr>site ma<wbr />inte<wbr>nan<wbr />ce or updates, please wait for the issue to be resol<wbr>ved.</li>
+                                    <li>Verif<wbr>ying you ente<wbr>red the cor<wbr>rect add<wbr>ress</li>
                                     <li>Verify the server isn't censored</li>
-                                </ul>
-                                <p>If you're the administrator of <b id="hostname"></b>, try:</p>
-                                    <ul>
-                                    <li>Restarting your server</li>
-                                    <li>Updating Scramjet</li>
-                                    <li>Troubleshooting the error on the <a href="https://github.com/MercuryWorkshop/scramjet" target="_blank">GitHub repository</a></li>
+                                    <li>If the iss<wbr>ue per<wbr>sists be su<wbr>re to m<wbr>ention t<wbr>his in the Ti<wbr />ta<wbr />nium Net<wbr />work D<wbr>is<wbr />cor<wbr />d.</li>
+                                    <li>View the F<wbr />AQ page for specific si<wbr>te compa<wbr>tibility issues.</li>
                                 </ul>
                             </div>
                         </div>
+                        <code><i>Ref<wbr>res<wbr>h the net<wbr>work serv<wbr>ice | Scramjet v<span id="version"></span> (build <span id="build"></span>).</i></code>
                         <br>
-                        <button id="reload" class="primary">Reload</button>
+                        <button id="reload">Ref<wbr>resh</button>
+                        <br />
+                        <p class="footer-spacing">
+                            <i>Ho<wbr>ly Unbloc<wbr>ke<wbr>r LT<wbr>S © 20<wbr>2<wbr>0-202<wbr>5 | Ma<wbr>de Wit<wbr>h Lov<wbr>e </i><i class="nf nf-fa-heart"></i>
+                        </p>
                     </div>
-                    <p id="version-wrapper"><i>Scramjet v<span id="version"></span> (build <span id="build"></span>)</i></p>
                     <script src="${"data:application/javascript,"+encodeURIComponent(r)}"></script>
                 </body>
             </html>

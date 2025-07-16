@@ -25,6 +25,7 @@ const pages = {
   ultraviolet: 'pages/proxnav/ultraviolet.html',
   scramjet: 'pages/proxnav/scramjet.html',
   uverror: 'pages/proxnav/ultraviolet-error.html',
+  sjerror: 'pages/proxnav/scramjet-error.html',
   rammerhead: 'pages/proxnav/rammerhead.html',
   /* Proxy Presets */
   youtube: 'pages/proxnav/preset/youtube.html',
