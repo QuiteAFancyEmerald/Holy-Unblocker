@@ -257,11 +257,11 @@ if (document.getElementById('csel')) {
         ? removeStorage('Transport')
         : setStorage('Transport', e.target.value);
 
-      // Only the libcurl transport mode supports Tor at the moment.
+      // Only the libcurl transport mode supports TOR at the moment.
       let torCheck = document.getElementsByClassName('useonion');
       if (
         e.target.value !== 'libcurl' &&
-        checkBooleanState(torCheck[0]) === false
+        checkBooleanState(torCheck[0]) === true
       )
         classUpdateHandler(torCheck, 'off', classEvent(torCheck, 'change'))();
     }
@@ -279,8 +279,8 @@ if (document.getElementById('csel')) {
   });
 
   /* Allow users to toggle onion routing in Ultraviolet with the UI. Only
-   * the libcurl transport mode supports Tor at the moment, so ensure that
-   * users are aware that they cannot use Tor with other modes.
+   * the libcurl transport mode supports TOR at the moment, so ensure that
+   * users are aware that they cannot use TOR with other modes.
    */
   attachClassEventListener('useonion', 'change', (e) => {
     let unselectedModes = document.querySelectorAll(
@@ -319,9 +319,9 @@ if (document.getElementById('csel')) {
       ? removeStorage('UseSocks5')
       : setStorage('UseSocks5', e.target.value);
 
-    // Only the libcurl transport mode supports Tor at the moment.
+    // TOR cannot be used at the same time as a regional selection.
     let torCheck = document.getElementsByClassName('useonion');
-    if (isOff && checkBooleanState(torCheck[0]) === false)
+    if (isOff && checkBooleanState(torCheck[0]) === true)
       classUpdateHandler(torCheck, 'off', classEvent(torCheck, 'change'))();
   });
 }
@@ -363,7 +363,7 @@ useStorageArgs('HideAds', (s) => {
   }
 });
 
-// Tor is disabled by default. Enable Tor if it was enabled previously.
+// TOR is disabled by default. Enable TOR if it was enabled previously.
 useStorageArgs('UseSocks5', (s) => {
   const tor = document.getElementsByClassName('useonion'),
     regionList = document.getElementsByClassName('region-list');
