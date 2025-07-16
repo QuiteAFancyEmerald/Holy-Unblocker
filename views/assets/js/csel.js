@@ -320,9 +320,10 @@ if (document.getElementById('csel')) {
       : setStorage('UseSocks5', e.target.value);
 
     // TOR cannot be used at the same time as a regional selection.
+    // This is because they both run on the socks5 protocol.
     let torCheck = document.getElementsByClassName('useonion');
-    if (isOff && checkBooleanState(torCheck[0]) === true)
-      classUpdateHandler(torCheck, 'off', classEvent(torCheck, 'change'))();
+    if (!isOff && checkBooleanState(torCheck[0]) === true)
+      classUpdateHandler(torCheck, 'off')();
   });
 }
 
