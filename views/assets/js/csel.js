@@ -116,8 +116,13 @@ const storageId = 'hu-lts-storage',
           else children[mappedIndex].checked = true;
         } else updateTarget.checked = onStateKeywords.includes(state);
       });
-      if (manualEvent instanceof Event && targetElementList.length > 0)
-        targetElementList[0].dispatchEvent(manualEvent);
+      let eventTarget = targetElementList[0];
+      if (manualEvent instanceof Event && eventTarget)
+        ['input', 'select'].includes(eventTarget.tagName.toLowerCase())
+          ? eventTarget.dispatchEvent(manualEvent)
+          : eventTarget.querySelectorAll('input').forEach((child) => {
+              child.dispatchEvent(manualEvent);
+            });
     },
   // These titles and icons are used as autofill templates by settings.html.
   // The icon URLs and tab titles may need to be updated over time.
@@ -245,19 +250,21 @@ if (document.getElementById('csel')) {
 
   // Allow users to change the Wisp transport mode, for proxying, with the UI.
   attachClassEventListener('wisp-transport-list', 'change', (e) => {
-    let wispTransportList = e.target.closest('.wisp-transport-list');
-    !wispTransportList.querySelector('input:checked') ||
-    e.target.value === defaultMode
-      ? removeStorage('Transport')
-      : setStorage('Transport', e.target.value);
+    if (e.target.checked) {
+      let wispTransportList = e.target.closest('.wisp-transport-list');
+      !wispTransportList.querySelector('input:checked') ||
+      e.target.value === defaultMode
+        ? removeStorage('Transport')
+        : setStorage('Transport', e.target.value);
 
-    // Only the libcurl transport mode supports Tor at the moment.
-    let torCheck = document.getElementsByClassName('useonion');
-    if (
-      e.target.value !== 'libcurl' &&
-      checkBooleanState(torCheck[0]) === false
-    )
-      classUpdateHandler(torCheck, 'off')();
+      // Only the libcurl transport mode supports Tor at the moment.
+      let torCheck = document.getElementsByClassName('useonion');
+      if (
+        e.target.value !== 'libcurl' &&
+        checkBooleanState(torCheck[0]) === false
+      )
+        classUpdateHandler(torCheck, 'off', classEvent(torCheck, 'change'))();
+    }
   });
 
   // Allow users to toggle ads with the UI.
@@ -294,6 +301,7 @@ if (document.getElementById('csel')) {
         e.setAttribute('disabled', 'true');
       });
       setStorage('UseSocks5', 'tor');
+      classUpdateHandler(document.getElementsByClassName('useonion'), 'on')();
     } else {
       unselectedModes.forEach((e) => {
         e.removeAttribute('disabled');
