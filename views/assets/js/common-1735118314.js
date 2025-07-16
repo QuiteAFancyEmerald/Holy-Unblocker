@@ -443,8 +443,14 @@ addEventListener('DOMContentLoaded', async () => {
         : (mode) => () => {
             goProx[type](mode);
           },
-      // Ultraviolet is currently incompatible with window mode.
-      searchMode = type === 'ultraviolet' ? 'stealth' : 'window';
+      // Ultraviolet and Scramjet are currently incompatible with window mode.
+      defaultModes = {
+        'globalDefault': 'window',
+        'ultraviolet': 'stealth',
+        'scramjet': 'stealth',
+        'rammerhead': 'window',
+      },
+      searchMode = defaultModes[type] || defaultModes['globalDefault'];
 
     if (prUrl)
       prUrl.addEventListener('keydown', async (e) => {

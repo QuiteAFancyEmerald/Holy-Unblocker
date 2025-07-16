@@ -1,7 +1,6 @@
-import { readFile, writeFile, unlink, mkdir, rm, cp } from 'node:fs/promises';
+import { readFile, writeFile, unlink, mkdir, rm } from 'node:fs/promises';
 import { exec, fork } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import path from 'path';
 import { build } from 'esbuild';
 import ecosystem from './ecosystem.config.js';
 
@@ -124,6 +123,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
         entryPoints: [
           './views/uv/**/*.js',
           './views/scram/**/*.js',
+          './views/scram/**/*.wasm.wasm',
           './views/assets/js/**/*.js',
           './views/assets/css/**/*.css',
         ],
@@ -131,10 +131,10 @@ commands: for (let i = 2; i < process.argv.length; i++)
         sourcemap: true,
         bundle: true,
         minify: true,
+        loader: {'.wasm.wasm': 'copy'},
         external: ['*.png', '*.jpg', '*.jpeg', '*.webp', '*.svg'],
         outdir: dist,
       }); 
-      await cp('./views/scram/scramjet.wasm.wasm', path.join(dist, 'scram/scramjet.wasm.wasm'));
 
       break;
     }
