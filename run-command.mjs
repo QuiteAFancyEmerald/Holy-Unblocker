@@ -1,6 +1,7 @@
-import { readFile, writeFile, unlink, mkdir, rm } from 'node:fs/promises';
+import { readFile, writeFile, unlink, mkdir, rm, cp } from 'node:fs/promises';
 import { exec, fork } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import path from 'path';
 import { build } from 'esbuild';
 import ecosystem from './ecosystem.config.js';
 
@@ -132,7 +133,9 @@ commands: for (let i = 2; i < process.argv.length; i++)
         minify: true,
         external: ['*.png', '*.jpg', '*.jpeg', '*.webp', '*.svg'],
         outdir: dist,
-      });
+      }); 
+      await cp('./views/scram/scramjet.wasm.wasm', path.join(dist, 'scram/scramjet.wasm.wasm'));
+
       break;
     }
 
