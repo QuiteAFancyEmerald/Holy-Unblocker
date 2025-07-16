@@ -7,7 +7,13 @@
       '://' +
       location.host +
       '/wisp/',
-    proxyUrl = 'socks5h://localhost:9050', // Replace with your TOR proxy URL
+    proxyUrl = {
+      tor: 'socks5h://localhost:9050',
+      eu: 'socks5h://localhost:7000',
+      usWest: 'socks5h://localhost:7001',
+      usEast: 'socks5h://localhost:7002',
+      japan: 'socks5h://localhost:7003',
+    },
     transports = {
       epoxy: '/epoxy/index.mjs',
       libcurl: '/libcurl/index.mjs',
@@ -58,9 +64,21 @@
       transports[readStorage('Transport')] || transports.default;
     let transportOptions = { wisp: wispUrl };
 
-    if (readStorage('UseOnion') === true) {
-      transportOptions.proxy = proxyUrl;
-      console.log('Using Onion Proxy:', proxyUrl);
+    // Socks5 Proxy Options
+    const proxysets = {
+      UseOnion: 'tor',
+      UseEU: 'eu',
+      UseUSWest: 'usWest',
+      UseUSEast: 'usEast',
+      UseJapan: 'japan',
+    };
+
+    for (const [storeage, proxyoption] of Object.entries(proxysets)) {
+      if (readStorage(storeage) === true) {
+        transportOptions.proxy = proxyUrl[proxyoption];
+        console.log('Using Proxy:', proxyUrl[proxyoption]);
+        break;
+      }
     }
 
     console.log('Transport mode:', transportMode);
