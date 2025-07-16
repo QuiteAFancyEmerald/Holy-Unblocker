@@ -32,7 +32,7 @@
           resolve();
         }
       }, 50);
-    });
+  });
 
   const registerSW = async () => {
     if (!navigator.serviceWorker) {
@@ -43,6 +43,14 @@
         throw new Error('Service workers cannot be registered without https.');
 
       throw new Error("Your browser doesn't support service workers.");
+    }
+
+    // Fix for Firefox
+    if (navigator.userAgent.includes('Firefox')) {
+      Object.defineProperty(globalThis, 'crossOriginIsolated', {
+          value: true,
+          writable: false,
+      });
     }
 
     // Set the transport mode
@@ -99,9 +107,6 @@
         siteFlags: {
           "https://www.google.com/(search|sorry).*": {
             naiiveRewriter: true,
-          },
-          "https://worker-playground.glitch.me/.*": {
-            serviceworkers: true,
           },
         },
       });
