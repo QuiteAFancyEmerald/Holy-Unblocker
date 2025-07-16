@@ -80,12 +80,18 @@ const storageId = 'hu-lts-storage',
   },
   offStateKeywords = ['off', 'disabled', 'false', '0'],
   onStateKeywords = ['on', 'enabled', 'true', '1'],
-  checkBooleanState = (element) =>
-    onStateKeywords.includes(
-      `${(element.querySelector('input:checked,option:checked') || []).value || element.checked}`.toLowerCase()
-    ),
+  checkBooleanState = (element) => {
+    const state =
+      `${(element.querySelector('input:checked,option:checked') || []).value || element.checked}`.toLowerCase();
+    return (
+      onStateKeywords.includes(state) ||
+      (!offStateKeywords.includes(state) && state)
+    );
+  },
+  classEvent = (targetElementList, eventTrigger, eventConstructor = Event) =>
+    new eventConstructor(eventTrigger, { target: targetElementList[0] }),
   classUpdateHandler =
-    (targetElementList, stateFunction, ...params) =>
+    (targetElementList, stateFunction, manualEvent = false, ...params) =>
     () => {
       const state =
         'function' === typeof stateFunction
@@ -108,9 +114,10 @@ const storageId = 'hu-lts-storage',
           if ('number' === typeof updateTarget.selectedIndex)
             updateTarget.selectedIndex = mappedIndex;
           else children[mappedIndex].checked = true;
-        } else
-          updateTarget.checked = onStateKeywords.includes(state);
+        } else updateTarget.checked = onStateKeywords.includes(state);
       });
+      if (manualEvent instanceof Event && targetElementList.length > 0)
+        targetElementList[0].dispatchEvent(manualEvent);
     },
   // These titles and icons are used as autofill templates by settings.html.
   // The icon URLs and tab titles may need to be updated over time.
@@ -130,46 +137,10 @@ const storageId = 'hu-lts-storage',
     : 'libcurl',
   defaultSearch = 'Google';
 
-// Load a custom page title and favicon if it was previously stored.
-useStorageArgs('Title', (s) => {
-  s != undefined && pageTitle(s);
-});
-useStorageArgs('Icon', (s) => {
-  s != undefined && pageIcon(s);
-});
+// All code in this block is used by menu items that adjust website settings.
 
-useStorageArgs('SearchEngine', (s) => {
-  classUpdateHandler(
-    document.getElementsByClassName('search-engine-list'),
-    s || defaultSearch
-  )();
-});
+/* BEGIN WEBSITE SETTINGS */
 
-// Load the Wisp transport mode that was last used, or use the default.
-useStorageArgs('Transport', (s) => {
-  classUpdateHandler(
-    document.getElementsByClassName('wisp-transport-list'),
-    s || defaultMode
-  )();
-});
-
-// Ads are disabled by default. Load ads if ads were enabled previously.
-// Change !== to === here if ads should be enabled by default.
-useStorageArgs('HideAds', (s) => {
-  if (s !== false) pageHideAds();
-  else {
-    pageShowAds();
-    classUpdateHandler(document.getElementsByClassName('hideads'), 'off')();
-  }
-});
-
-// Tor is disabled by default. Enable Tor if it was enabled previously.
-useStorageArgs('UseOnion', (s) => {
-  if (s === true)
-    classUpdateHandler(document.getElementsByClassName('useonion'), 'on')();
-});
-
-// All code below is used by menu items that adjust website settings.
 if (document.getElementById('csel')) {
   const attachEventListener = (selector, ...args) =>
       (
@@ -281,13 +252,17 @@ if (document.getElementById('csel')) {
       : setStorage('Transport', e.target.value);
 
     // Only the libcurl transport mode supports Tor at the moment.
-    let torCheck = document.getElementsByClassName('useonion')[0];
-    if (e.target.value !== 'libcurl' && torCheck.checked) torCheck.click();
+    let torCheck = document.getElementsByClassName('useonion');
+    if (
+      e.target.value !== 'libcurl' &&
+      checkBooleanState(torCheck[0]) === false
+    )
+      classUpdateHandler(torCheck, 'off')();
   });
 
   // Allow users to toggle ads with the UI.
   attachClassEventListener('hideads', 'change', (e) => {
-    if (checkBooleanState(e.target)) {
+    if (checkBooleanState(e.target) === true) {
       pageHideAds();
       setStorage('HideAds', true);
     } else {
@@ -302,17 +277,23 @@ if (document.getElementById('csel')) {
    */
   attachClassEventListener('useonion', 'change', (e) => {
     let unselectedModes = document.querySelectorAll(
-      '.wisp-transport-list input:not([value=libcurl])'
+      '.wisp-transport-list input:not([value=libcurl]),.region-list'
     );
-    if (checkBooleanState(e.target)) {
-      let selectedMode = document.querySelector(
-        '.wisp-transport-list input[value=libcurl]'
-      );
+    const wispTransportList = document.getElementsByClassName(
+        'wisp-transport-list'
+      ),
+      regionList = document.getElementsByClassName('region-list');
+    if (checkBooleanState(e.target) === true) {
+      classUpdateHandler(
+        wispTransportList,
+        'libcurl',
+        classEvent(wispTransportList, 'change')
+      )();
+      classUpdateHandler(regionList, 'off', classEvent(regionList, 'change'))();
       unselectedModes.forEach((e) => {
         e.setAttribute('disabled', 'true');
       });
-      selectedMode.click();
-      setStorage('UseOnion', true);
+      setStorage('UseSocks5', 'tor');
     } else {
       unselectedModes.forEach((e) => {
         e.removeAttribute('disabled');
@@ -320,8 +301,65 @@ if (document.getElementById('csel')) {
 
       // Tor will likely never be enabled by default, so removing the cookie
       // here may be better than setting it to false.
-      removeStorage('UseOnion');
+      removeStorage('UseSocks5');
     }
   });
+
+  attachClassEventListener('region-list', 'change', (e) => {
+    const isOff = checkBooleanState(e.target) === false;
+    isOff
+      ? removeStorage('UseSocks5')
+      : setStorage('UseSocks5', e.target.value);
+
+    // Only the libcurl transport mode supports Tor at the moment.
+    let torCheck = document.getElementsByClassName('useonion');
+    if (isOff && checkBooleanState(torCheck[0]) === false)
+      classUpdateHandler(torCheck, 'off', classEvent(torCheck, 'change'))();
+  });
 }
+
+/* END WEBSITE SETTINGS */
+
+/* LOAD USER-SAVED SETTINGS */
+
+// Load a custom page title and favicon if it was previously stored.
+useStorageArgs('Title', (s) => {
+  s != undefined && pageTitle(s);
+});
+useStorageArgs('Icon', (s) => {
+  s != undefined && pageIcon(s);
+});
+
+useStorageArgs('SearchEngine', (s) => {
+  classUpdateHandler(
+    document.getElementsByClassName('search-engine-list'),
+    s || defaultSearch
+  )();
+});
+
+// Load the Wisp transport mode that was last used, or use the default.
+useStorageArgs('Transport', (s) => {
+  classUpdateHandler(
+    document.getElementsByClassName('wisp-transport-list'),
+    s || defaultMode
+  )();
+});
+
+// Ads are disabled by default. Load ads if ads were enabled previously.
+// Change !== to === here if ads should be enabled by default.
+useStorageArgs('HideAds', (s) => {
+  if (s !== false) pageHideAds();
+  else {
+    pageShowAds();
+    classUpdateHandler(document.getElementsByClassName('hideads'), 'off')();
+  }
+});
+
+// Tor is disabled by default. Enable Tor if it was enabled previously.
+useStorageArgs('UseSocks5', (s) => {
+  const tor = document.getElementsByClassName('useonion'),
+    regionList = document.getElementsByClassName('region-list');
+  if (s === 'tor') classUpdateHandler(tor, 'on', classEvent(tor, 'change'))();
+  else if ('string' === typeof s) classUpdateHandler(regionList, s)();
+});
 })();

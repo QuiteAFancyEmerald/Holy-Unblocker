@@ -69,7 +69,7 @@ const searchEngines = Object.freeze({
     Bing: 'bing.com/search?q=',
     DuckDuckGo: 'duckduckgo.com/?q=',
     Startpage: 'startpage.com/sp/search?query=',
-    Brave: 'https://search.brave.com/search?q='
+    Brave: 'search.brave.com/search?q=',
   }),
   defaultSearch = 'Google';
 
@@ -373,7 +373,7 @@ addEventListener('DOMContentLoaded', async () => {
   uvConfig = self['{{__uv$config}}'];
   delete self['{{__uv$config}}'];
   sjConfig = self['$scramjet'];
-  if(sjConfig !== undefined) {
+  if (sjConfig !== undefined) {
     const waitForScramjetInit = () =>
       new Promise((resolve) => {
         const interval = setInterval(() => {
@@ -386,7 +386,6 @@ addEventListener('DOMContentLoaded', async () => {
     await waitForScramjetInit();
     sjCodec = sjConfig.codec;
     sjConfig = sjConfig.config;
-    console.log(sjConfig);
   }
 
   // Object.freeze prevents goProx from accidentally being edited.
@@ -464,10 +463,10 @@ addEventListener('DOMContentLoaded', async () => {
           },
       // Ultraviolet and Scramjet are currently incompatible with window mode.
       defaultModes = {
-        'globalDefault': 'window',
-        'ultraviolet': 'stealth',
-        'scramjet': 'stealth',
-        'rammerhead': 'window',
+        globalDefault: 'window',
+        ultraviolet: 'stealth',
+        scramjet: 'stealth',
+        rammerhead: 'window',
       },
       searchMode = defaultModes[type] || defaultModes['globalDefault'];
 

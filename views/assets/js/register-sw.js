@@ -12,7 +12,7 @@
       eu: 'socks5h://localhost:7000',
       usWest: 'socks5h://localhost:7001',
       usEast: 'socks5h://localhost:7002',
-      japan: 'socks5h://localhost:7003',
+      jp: 'socks5h://localhost:7003',
     },
     transports = {
       epoxy: '/epoxy/index.mjs',
@@ -38,7 +38,7 @@
           resolve();
         }
       }, 50);
-  });
+    });
 
   const registerSW = async () => {
     if (!navigator.serviceWorker) {
@@ -54,8 +54,8 @@
     // Fix for Firefox
     if (navigator.userAgent.includes('Firefox')) {
       Object.defineProperty(globalThis, 'crossOriginIsolated', {
-          value: true,
-          writable: false,
+        value: true,
+        writable: false,
       });
     }
 
@@ -64,31 +64,18 @@
       transports[readStorage('Transport')] || transports.default;
     let transportOptions = { wisp: wispUrl };
 
-    // Socks5 Proxy Options
-    const proxysets = {
-      UseOnion: 'tor',
-      UseEU: 'eu',
-      UseUSWest: 'usWest',
-      UseUSEast: 'usEast',
-      UseJapan: 'japan',
-    };
+    // Socks5 proxy options
+    if ('string' === typeof readStorage('UseSocks5'))
+      transportOptions.proxy = proxyUrl[readStorage('UseSocks5')];
 
-    for (const [storeage, proxyoption] of Object.entries(proxysets)) {
-      if (readStorage(storeage) === true) {
-        transportOptions.proxy = proxyUrl[proxyoption];
-        console.log('Using Proxy:', proxyUrl[proxyoption]);
-        break;
-      }
-    }
-
+    console.log('Using proxy:', transportOptions.proxy);
     console.log('Transport mode:', transportMode);
 
     const connection = new BareMux.BareMuxConnection('/baremux/worker.js');
     await connection.setTransport(transportMode, [transportOptions]);
 
     const registrations = await navigator.serviceWorker.getRegistrations(),
-      usedSW =
-        readStorage('HideAds') !== false ? blacklistSW : stockSW;
+      usedSW = readStorage('HideAds') !== false ? blacklistSW : stockSW;
 
     console.log('Service Worker being registered:', usedSW);
 
@@ -107,7 +94,7 @@
   const initializeScramjet = async () => {
     try {
       await waitForScramjetController();
-  
+
       const scramjet = new ScramjetController({
         prefix: '/scram/network/',
         files: {
@@ -123,15 +110,15 @@
           scramitize: false,
         },
         siteFlags: {
-          "https://www.google.com/(search|sorry).*": {
+          'https://www.google.com/(search|sorry).*': {
             naiiveRewriter: true,
           },
         },
       });
-  
+
       console.log('Initializing ScramjetController');
       scramjet.init();
-      navigator.serviceWorker.register("/scram/scramjet.sw.js");
+      navigator.serviceWorker.register('/scram/scramjet.sw.js');
     } catch (err) {
       console.error('Scramjet initialization failed:', err);
     }
