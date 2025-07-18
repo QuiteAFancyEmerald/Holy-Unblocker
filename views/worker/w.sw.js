@@ -1,6 +1,6 @@
 importScripts(
-    "/scram/scramjet.shared.js",
-    "/scram/scramjet.worker.js"
+    "/worker/w.shared.js",
+    "/worker/w.worker.js"
 );
 const scramjet = new ScramjetServiceWorker();
 

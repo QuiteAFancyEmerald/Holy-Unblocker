@@ -1,6 +1,6 @@
 (() => {
-  const stockSW = '/uv/sw.js',
-    blacklistSW = '/uv/sw-blacklist.js',
+  const stockSW = '/network/sw.js',
+    blacklistSW = '/network/sw-blacklist.js',
     swAllowedHostnames = ['localhost', '127.0.0.1'],
     wispUrl =
       (location.protocol === 'https:' ? 'wss' : 'ws') +
@@ -15,9 +15,9 @@
       jp: 'socks5h://localhost:7003',
     },
     transports = {
-      epoxy: '/epoxy/index.mjs',
-      libcurl: '/libcurl/index.mjs',
-      bare: '/baremux/index.mjs',
+      epoxy: '/ep/index.mjs',
+      libcurl: '/lc/index.mjs',
+      bare: '/bm/index.mjs',
     },
     storageId = 'hu-lts-storage',
     storageObject = () => JSON.parse(localStorage.getItem(storageId)) || {},
@@ -96,13 +96,13 @@
       await waitForScramjetController();
 
       const scramjet = new ScramjetController({
-        prefix: '/scram/network/',
+        prefix: '/worker/service/',
         files: {
-          wasm: '/scram/scramjet.wasm.wasm',
-          worker: '/scram/scramjet.worker.js',
-          client: '/scram/scramjet.client.js',
-          shared: '/scram/scramjet.shared.js',
-          sync: '/scram/scramjet.sync.js',
+          wasm: '/worker/w.wasm.wasm',
+          worker: '/worker/w.worker.js',
+          client: '/worker/w.client.js',
+          shared: '/worker/w.shared.js',
+          sync: '/worker/w.sync.js',
         },
         flags: {
           rewriterLogs: false,
@@ -118,7 +118,7 @@
 
       console.log('Initializing ScramjetController');
       scramjet.init();
-      navigator.serviceWorker.register('/scram/scramjet.sw.js');
+      navigator.serviceWorker.register('/worker/w.sw.js');
     } catch (err) {
       console.error('Scramjet initialization failed:', err);
     }

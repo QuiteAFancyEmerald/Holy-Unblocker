@@ -203,13 +203,13 @@ app.register(fastifyStatic, {
     fileURLToPath(
       new URL(
         // Use the pre-compiled, minified scripts instead, if enabled in config.
-        config.minifyScripts ? '../views/dist/uv' : '../views/uv',
+        config.minifyScripts ? '../views/dist/network' : '../views/network',
         import.meta.url
       )
     ),
     uvPath,
   ],
-  prefix: '/uv/',
+  prefix: '/network/',
   decorateReply: false,
 });
 
@@ -217,36 +217,36 @@ app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL(
       // Use the pre-compiled, minified scripts instead, if enabled in config.
-      config.minifyScripts ? '../views/dist/scram' : '../views/scram',
+      config.minifyScripts ? '../views/dist/worker' : '../views/worker',
       import.meta.url
     )
   ),
-  prefix: '/scram/',
+  prefix: '/worker/',
   decorateReply: false,
 });
 
 // Register proxy paths to the website.
 app.register(fastifyStatic, {
   root: epoxyPath,
-  prefix: '/epoxy/',
+  prefix: '/ep/',
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
   root: libcurlPath,
-  prefix: '/libcurl/',
+  prefix: '/lc/',
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
   root: bareModulePath,
-  prefix: '/bareasmodule/',
+  prefix: '/bam/',
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
   root: baremuxPath,
-  prefix: '/baremux/',
+  prefix: '/bm/',
   decorateReply: false,
 });
 

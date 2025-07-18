@@ -16,17 +16,15 @@ const pages = {
   credits: 'pages/nav/credits.html',
   terms: 'pages/nav/terms.html',
   /* Games */
-  games: 'pages/nav/gtools.html',
+  archive: 'pages/nav/gtools.html',
   'web-games': 'pages/nav/games5.html',
   emulators: 'pages/nav/emulators.html',
   'flash-games': 'pages/nav/flash.html',
   'retro-games': 'pages/nav/emulibrary.html',
   /* Proxies */
-  ultraviolet: 'pages/proxnav/ultraviolet.html',
-  scramjet: 'pages/proxnav/scramjet.html',
-  uverror: 'pages/proxnav/ultraviolet-error.html',
-  sjerror: 'pages/proxnav/scramjet-error.html',
-  rammerhead: 'pages/proxnav/rammerhead.html',
+  history: 'pages/proxnav/ultraviolet.html',
+  search: 'pages/proxnav/scramjet.html',
+  tabs: 'pages/proxnav/rammerhead.html',
   /* Proxy Presets */
   youtube: 'pages/proxnav/preset/youtube.html',
   apps: 'pages/proxnav/preset/applications.html',

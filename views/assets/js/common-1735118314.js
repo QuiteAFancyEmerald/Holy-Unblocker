@@ -71,9 +71,9 @@ const searchEngines = Object.freeze({
     Startpage: 'startpage.com/sp/search?query=',
     Brave: 'search.brave.com/search?q=',
   }),
-  defaultSearch = 'Google';
+  defaultSearch = 'Startpage';
 
-// Default search engine is set to Google. Intended to work just like the usual
+// Default search engine is set to Startpage. Intended to work just like the usual
 // bar at the top of a browser.
 const getSearchTemplate = (
     searchEngine = searchEngines[readStorage('SearchEngine') || defaultSearch]
