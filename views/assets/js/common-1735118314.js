@@ -438,9 +438,19 @@ addEventListener('DOMContentLoaded', async () => {
 
     youtube: urlHandler(sjUrl('https://youtube.com')),
 
-    discordUV: urlHandler(sjUrl('https://discord.com/app')),
+    chatgpt: urlHandler(sjUrl('https://chat.openai.com/chat')),
 
-    discordRH: urlHandler(await RammerheadEncode('https://discord.com/app')),
+    discord: urlHandler(sjUrl('https://discord.com/app')),
+
+    geforcenow: urlHandler(sjUrl('https://play.geforcenow.com/mall')),
+
+    spotify: urlHandler(sjUrl('https://open.spotify.com')),
+
+    tiktok: urlHandler(sjUrl('https://www.tiktok.com')),
+
+    hianime: urlHandler(sjUrl('https://www.hianime.to')),
+
+    twitter: urlHandler(sjUrl('https://twitter.com')),
   });
 
   // Attach event listeners using goProx to specific app menus that need it.
@@ -492,8 +502,13 @@ addEventListener('DOMContentLoaded', async () => {
   prSet('pr-sj', 'scramjet');
   prSet('pr-rh', 'rammerhead');
   prSet('pr-yt', 'youtube');
-  prSet('pr-rh-dc', 'discordRH');
-  prSet('pr-uv-dc', 'discordUV');
+  prSet('pr-cg', 'chatgpt');
+  prSet('pr-dc', 'discord');
+  prSet('pr-gf', 'geforcenow');
+  prSet('pr-sp', 'spotify');
+  prSet('pr-tt', 'tiktok');
+  prSet('pr-ha', 'hianime');
+  prSet('pr-tw', 'twitter');
 
   // Load in relevant JSON files used to organize large sets of data.
   // This first one is for links, whereas the rest are for navigation menus.

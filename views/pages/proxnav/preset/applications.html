@@ -32,9 +32,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <script src="/scram/scramjet.controller.js" defer></script>
     <script src="/baremux/index.js" defer></script>
-    <script src="/uv/uv.bundle.js" defer></script>
-    <script src="/uv/uv.config.js" defer></script>
+    <link rel="prefetch" href="/scram/scramjet.worker.js" />
+    <link rel="prefetch" href="/scram/scramjet.shared.js" />
     <script src="/assets/js/register-sw.js" defer></script>
     <script src="
     https://cdn.jsdelivr.net/npm/tsparticles@3.5/tsparticles.bundle.min.js
@@ -45,47 +46,107 @@
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <div id="header" class="fullwidth"><!--HEADER--></div>
     <div id="particles-js" class="fullwidth"></div>
-    <div id="mainbody" class="fullwidth">
-      <div class="ad" id="ad-left"></div>
-      <div class="ad" id="ad-right"></div>
-      <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-      <div class="box box-medium text-center textm">
-        <h1 class="bigtitle">Di&#173;sc&#173;ord Pr&#173;oxy (To Be Replaced)</h1>
-        <p class="responsive-fix">
-          Choose which proxy you would like to use. Below is some information.
-        </p>
-        <h3>Having Issues?</h3>
-        <p class="font3 accented">
-          Read the <a href="/questions">FAQ page</a> for more information.
-          <br />Sometimes the proxies are under high load so things may be slow,
-          sorry. In that case simply wait for the page to load.
-        </p>
-        <div>
-          <div id="pr-rh-dc">
-            <a href="#" class="fancybutton glowbutton pr-go1"
-              >Ra&#173;mmer&#173;head (Classic)</a
-            >
-            <a href="#" class="fancybutton glowbutton pr-go2"
-              >Ra&#173;mmer&#173;head (Stealth)</a
-            >
+    <div data-aos="fade-right" class="hero-grid-container">
+      <div class="box-hero">
+        <div class="hero-content">
+          <div class="proxy-header text-center">
+            <h1 class="bigtitle">Applications</h1>
+            <p>Select an exclusively supported website that is proxied. Be sure to avoid logging in with primary accounts, as this is a public proxy service.<br>If you are self-hosting however feel free.</p><br><br>Please do CTRL+Shift+Del if you have any issues.
           </div>
-          <div id="pr-uv-dc">
-            <a
-              href="#"
-              style="display: none"
-              class="fancybutton glowbutton pr-go1"
-              >Ultr&#173;av&#173;iol&#173;et (Classic)</a
-            >
-            <a href="#" class="fancybutton glowbutton pr-go2"
-              >Ultr&#173;avi&#173;ole&#173;t (Stealth)</a
-            >
+          <div class="proxy-form text-center">
+            <div class="glist">
+              <a href="#" id="pr-cg" class="fancybutton glowbutton pr-go2">ChatGPT</a>
+              <a href="#" id="pr-dc" class="fancybutton glowbutton pr-go2">Discord</a>
+              <a href="#" id="pr-gf" class="fancybutton glowbutton pr-go2">GeForce NOW</a>
+              <a href="#" id="pr-sp" class="fancybutton glowbutton pr-go2">Spotify</a>
+              <a href="#" id="pr-tt" class="fancybutton glowbutton pr-go2">TikTok</a>
+              <a href="#" id="pr-ha" class="fancybutton glowbutton pr-go2">HiAnime</a>
+              <a href="#" id="pr-tw" class="fancybutton glowbutton pr-go2">Twitter</a>
+            </div>
+            <h3>Advanced Settings ▼</h3>
+            <div id="settings-panel" class="pr-settings">
+              <div class="advanced-settings"></div>
+              <label>
+                Tor Browsing Mode <span class="pr-tippy" data-tippy-content="Choose your Tor browsing mode. This allows you to use Tor routing in any browser. TLDR: You can access any .onion link in any browser.">(?) </span>
+                <select class="useonion">
+                  <option>Off</option>
+                  <option>Enabled</option>
+                </select>
+              </label>
+              <label>
+                Hide Ads <span class="pr-tippy" data-tippy-content="Enable or disable ad blocking.">(?) </span>
+                <select class="hideads">
+                  <option>Off</option>
+                  <option selected>Enabled</option>
+                </select>
+              </label>
+              <label>
+                Region Selection <span class="pr-tippy" data-tippy-content="Enable or select regional proxies.">(?) </span>
+                <select class="region-list">
+                  <option value="off">Off</option>
+                  <option value="eu">Europe</option>
+                  <option value="usWest">US-West</option>
+                  <option value="usEast">US-East</option>
+                  <option value="jp">Japan</option>
+                </select>
+              </label>
+
+              <div class="wisp-box">
+                <p class="cseltitle">Wisp Protocol Transport <span class="pr-tippy" data-tippy-content="Wisp is designed to be a low-overhead, easy to implement protocol for proxying multiple TCP sockets over a single websocket connection. TLDR: Selecting a specific option will provide a focus on either speed, security or both at once. Just options for the user to select when utilizing Scramjet.">(?) </span></p>
+                  <table class="transport-table wisp-transport-list">
+                    <tr>
+                      <td class="transport-label">
+                        <label>
+                          Libcurl
+                          <span class="pr-tippy" data-tippy-content="Libcurl transport focuses on full TLS encryption but has slightly slower speeds than Epoxy. [ALTERNATIVE/FIREFOX DEFAULT]">(?)</span>
+                          <span class="default-badge">Cross-Browser/Secure (Firefox)</span>
+                        </label>
+                      </td>
+                      <td class="transport-radio">
+                        <input type="radio" name="wisp-transport-2" value="libcurl" checked />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="transport-label">
+                        <label>
+                          Epoxy
+                          <span class="pr-tippy" data-tippy-content="Expoxy allows you to make requests that bypass CORS without compromising security by running SSL/TLS inside webassembly with incredible performance. [HIGHLY RECOMMEND AND OPTIMIZED FOR SPEED].">(?)</span>
+                          <span class="bare-badge">Fastest/Secure (Chromium, Apple)</span>
+                        </label>
+                      </td>
+                      <td class="transport-radio">
+                        <input type="radio" name="wisp-transport-2" value="epoxy" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="transport-label">
+                        <label>
+                          Bare
+                          <span class="pr-tippy" data-tippy-content="Bare is NOT recommend and a last resort for unsupported sites.">(?)</span>
+                          <span class="beta-badge">Least Secure (All)</span>
+                        </label>
+                      </td>
+                      <td class="transport-radio">
+                        <input type="radio" name="wisp-transport-2" value="bare" />
+                      </td>
+                    </tr>
+                  </table>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div id="mainbody" class="fullwidth">
+      <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+      <div class="box box-medium text-center textm">
+
       </div>
     </div>
     <div id="footer" class="fullwidth"><!--FOOTER--></div>
     <script src="assets/js/common.js"></script>
     <script src="assets/js/csel.js"></script>
+    <script src="{{src}}"></script>
     <script defer="defer" src="assets/js/particlesjs/particles.js"></script>
   </body>
 </html>
