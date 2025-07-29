@@ -1,8 +1,10 @@
 import { readFileSync } from 'node:fs';
 
 const pages = {
-  // If you are trying to add pages or assets in the root folder and
-  // NOT entire folders, check the routes below and add it manually.
+  /* If you are trying to add pages or assets in the root folder and
+   * NOT entire folders, check the routes below and add it manually.
+   * If you change route names here, also check the altPaths variable below.
+   */
   index: 'index.html',
   'manifest.json': 'manifest.json',
 
@@ -60,6 +62,40 @@ const externalPages = {
   'rammerhead-discord': 'https://discord.gg/VNT4E7gN5Y',
 };
 
+// Override the route names below when usingSEO is disabled in config.json.
+const altPaths = {
+  games: '',
+  'web-games': '',
+  emulators: '',
+  'flash-games': '',
+  'retro-games': '',
+  uv: 'network',
+  scramjet: 'worker',
+  uverror: 'network-error',
+  sjerror: 'worker-error',
+  rammerhead: '',
+  youtube: '',
+  apps: '',
+  flash: '',
+  webretro: '',
+  'vibe-os': '',
+  github: {
+    'bare-module': 'module',
+    'bare-mux': '',
+    epoxy: '',
+    fastify: '',
+    'libcurl-js': '',
+    scramjet: '',
+    ultraviolet: '',
+    wisp: 'router',
+  },
+  'titaniumnetwork-documentation': '',
+  'titaniumnetwork-discord': '',
+  'rammerhead-discord': '',
+  /* Image Paths */
+  '': ''
+};
+
 const insert = JSON.parse(
     readFileSync(new URL('./data.json', import.meta.url))
   ),
@@ -83,6 +119,7 @@ const cookingInserts = insert.content,
 export default {
   pages,
   externalPages,
+  altPaths,
   text404,
   cookingInserts,
   vegetables,
