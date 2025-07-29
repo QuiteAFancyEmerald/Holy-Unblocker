@@ -1,4 +1,4 @@
-<img align="left" width="70px" src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/logo_github.png"></img>
+<img align="left" width="60px" src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/logo_github.png"></img>
 
 # Holy Unblocker LTS (v6.x.x)
 
