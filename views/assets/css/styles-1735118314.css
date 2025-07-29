@@ -6,12 +6,11 @@
 /* HU CSS
 /* ----------------------------------------------- */
 
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic');
 @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates');
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700');
-@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 @import url('https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css');
 
 /*
@@ -209,7 +208,7 @@ details[open] summary {
 }
 
 .font2 {
-  font-family: 'Titillium Web', sans-serif;
+  font-family: 'Rethink Sans', sans-serif;
 }
 
 .font3 {
@@ -262,7 +261,7 @@ details[open] summary {
   font-weight: bold;
   font-size: 15px;
   padding: 15px;
-  font-family: 'Figtree', sans-serif;
+  font-family: 'Rethink Sans', sans-serif;
   font-weight: 600;
   z-index: 1;
   animation: fadeInAnimation ease-in-out 0.3s;
@@ -457,7 +456,7 @@ details[open] summary {
   cursor: auto;
   padding: 15px 25px;
   margin-top: 15px;
-  font-family: 'Titillium Web', sans-serif;
+  font-family: 'Rethink Sans', sans-serif;
   opacity: 0;
   transform: translateY(-20px); 
   transition: opacity 0.3s ease, transform 0.3s ease; 
@@ -1097,7 +1096,7 @@ input[type='text'] {
 
 /* NOTE: Currently unused. */
 .buttonlink {
-  font-family: 'Titillium Web', sans-serif;
+  font-family: 'Figtree', sans-serif;
   font-weight: bold;
   display: inline-block;
   text-decoration: none;
