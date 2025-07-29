@@ -437,6 +437,8 @@ addEventListener('DOMContentLoaded', async () => {
 
     youtube: urlHandler(sjUrl('https://youtube.com')),
 
+    invidious: urlHandler(sjUrl('https://invidious.snopyta.org')),
+
     chatgpt: urlHandler(sjUrl('https://chat.openai.com/chat')),
 
     discord: urlHandler(sjUrl('https://discord.com/app')),
@@ -501,6 +503,7 @@ addEventListener('DOMContentLoaded', async () => {
   prSet('pr-sj', 'scramjet');
   prSet('pr-rh', 'rammerhead');
   prSet('pr-yt', 'youtube');
+  prSet('pr-iv', 'invidious');
   prSet('pr-cg', 'chatgpt');
   prSet('pr-dc', 'discord');
   prSet('pr-gf', 'geforcenow');

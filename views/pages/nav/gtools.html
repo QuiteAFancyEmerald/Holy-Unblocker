@@ -33,39 +33,60 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <script src="
-    https://cdn.jsdelivr.net/npm/tsparticles@3.5/tsparticles.bundle.min.js
-    "></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.5/tsparticles.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/backdrop.css">
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css">
   </head>
 
   <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <div id="header" class="fullwidth"><!--HEADER--></div>
     <div id="particles-js" class="fullwidth"></div>
-    <div id="mainbody" class="fullwidth">
-      <div class="ad" id="ad-left"></div>
-      <div class="ad" id="ad-right"></div>
-      <div class="box box-medium text-center textm">
-        <h1 class="bigtitle">Games Directory</h1>
-        <p class="responsive-fix">
-          Choose where you would like to go. Below is some information.
-        </p>
-        <div class="font3">
-          <h3>Information:</h3>
-          <p class="accented">
-            Here you can find cool stuff like emulators and games!<br />
-            <br />Emulators Featured: GB(A/C), N64(Broken), NES, SNES, Genesis
-            <br />EmuLibrary: Collection of games you can play with the various
-            emulators here. (WIP) <br />Games Featured: Lots. Flash support is
-            spotty.
-          </p>
-          <p>Most of the games here should hopefully be updated.</p>
+        <div id="mainbody" class="fullwidth">
+      <div class="box-main-container">
+        <div class="box-image-container">
+          <img
+            class="box-pr-logo"
+            src="/assets/img/browsing_splash.png"
+            alt="Holy Unblocker Browsing Splash"
+          />
         </div>
-        <div class="responsive-fix">
-          <a class="fancybutton glowbutton" href="/emulators">Emulators</a>
-          <a class="fancybutton glowbutton" href="/retro-games">EmuLibrary</a>
-          <a class="fancybutton glowbutton" href="/web-games">Web Games</a>
-          <a class="fancybutton glowbutton" href="/flash-games">Flash Games</a>
+        <div class="box-text-container">
+          <p class="box-badge">
+            <span class="box-default-badge">New</span>Holy Unblocker LTS now features updated games from 2025!
+          </p>
+          <h1>
+            Holy Unblocker LTS features a wide selection of games, emulators and utilities.
+          </h1>
+          <h2 class="box-description">
+            Here you can find cool stuff like emulators and games! Using projects like webretro and Ruffle you can now play emulated games in your browser from legacy consoles or flash.<br />
+          </h2>
+          <h2 class="box-description">
+            Select a directory below to get started!
+          </h2>
+          <div class="box-button-container">
+            <a id="emtooltip" href="/emulators" class="box-button">Emulators</a>
+            <a id="eltooltip" href="/retro-games" class="box-button">EmuLibrary</a>
+            <a id="wgtooltip" href="/web-games" class="box-button">Web Games</a>
+            <a id="fgtooltip" href="/flash-games" class="box-button">Flash Games</a>
+            <script src="https://unpkg.com/@popperjs/core@2"></script>
+            <script src="https://unpkg.com/tippy.js@6"></script>
+            <script>
+              const tooltipContent = {
+                emtooltip: 'Emulators [Webretro v6.5]: Fully ported RetroArch with over 20 emulators featured!',
+                eltooltip: 'EmuLibrary [Collection]: Popular collection of games sourced from other websites. You can set this via the settings menu.',
+                wgtooltip: 'Web Games [Collection]: Collection of popular web games, including WebGL and HTML5 games.',
+                fgtooltip: 'Flash Games [Collection]: Collection of Flash games emulated via Ruffle.',
+              };
+
+              tippy.setDefaultProps({delay: 50, animateFill: true, placement: 'bottom'});
+
+              tippy('#emtooltip', { content: tooltipContent.emtooltip });
+              tippy('#eltooltip', { content: tooltipContent.eltooltip });
+              tippy('#wgtooltip', { content: tooltipContent.wgtooltip });
+              tippy('#fgtooltip', { content: tooltipContent.fgtooltip });
+            </script>
+          </div>
         </div>
       </div>
     </div>
