@@ -10,6 +10,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates');
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700');
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 @import url('https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css');
 
@@ -79,7 +80,7 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
 
 html {
   color: white;
-  font-family: 'Figtree', sans-serif;
+  font-family: 'Rethink Sans', sans-serif;
   font-weight: 300;
   scroll-behavior: smooth;
 }
@@ -333,11 +334,11 @@ details[open] summary {
 }
 
 .logo {
-  width: 60px;
-  height: 60px;
-  margin-right: 20px;
-  background-image: url('/assets/img/icon.png');
-  background-size: cover;
+  width: 70px;
+  height: 70px;
+  background-image: url('/assets/img/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .brand-logo-container > i {
