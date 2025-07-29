@@ -118,7 +118,6 @@ const getSearchTemplate = (
       url = location.origin + sjConfig.prefix + sjCodec.encode(search(url));
     } catch (e) {
       // This is for cases where the SJ scripts have not been loaded.
-      console.log(e, sjCodec);
       url = search(url);
     }
     return url;

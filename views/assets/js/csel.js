@@ -55,12 +55,14 @@ const storageId = 'hu-lts-storage',
   },
   // Set the page's favicon to a new URL.
   pageIcon = (value) => {
-    let tag =
-      document.querySelector("link[rel*='icon']") ||
-      document.createElement('link');
-    tag.rel = 'icon';
-    tag.href = value;
-    document.head.appendChild(tag);
+    let tags =
+      document.querySelectorAll("link[rel*='icon']") ||
+      [document.createElement('link')];
+    tags.forEach((element) => {
+      element.rel = 'icon';
+      element.href = value;
+      document.head.appendChild(element);
+    });
   },
   // Make a small stylesheet to override a setting from the main stylesheet.
   pageShowAds = () => {

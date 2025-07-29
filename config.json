@@ -3,5 +3,6 @@
   "host": "0.0.0.0",
   "minifyScripts": false,
   "randomizeIdentifiers": true,
-  "production": false
+  "production": false,
+  "usingSEO": true
 }

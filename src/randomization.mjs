@@ -5,6 +5,8 @@ const {
   cookingInserts,
   vegetables,
   charRandom,
+  delimiter,
+  textMasks,
   splashRandom,
   cacheBustList,
   VersionValue,
@@ -19,9 +21,56 @@ const config = Object.freeze(
    * This makes the website harder to properly categorize, as its source code
    * changes with each time it is loaded.
    */
+  applyInsert = (str, insertFunction, numArgs = 0) => {
+    const mode = 'function' === typeof insertFunction,
+      keyword = mode ? insertFunction.name : insertFunction,
+      replaceParams = new RegExp(
+        `{{${keyword}}}` + '{{([^]*?)}}'.repeat(numArgs),
+        'g'
+      );
+    return str.replace(replaceParams, (text, ...captures) =>
+      mode ? insertFunction(...captures.splice(0, numArgs)) : insertFunction
+    );
+  },
+  ifSEO = (text) => (config.usingSEO ? text : ''),
   randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
   charset = /&#173;|&#8203;|&shy;|<wbr>/gi,
   getRandomChar = randomListItem(charRandom),
+  subtermsByCaps = /[A-Z]?[^A-Z]+|[A-Z]/g,
+  subtermsByVowels = /(?=[AEIOUYaeiouy])/g,
+  termsBySpaces = /\S+/g,
+  containsMask = /&#\d+;|&[A-z]+;/,
+  // Text masks, found in src/data.json, are meant to be variations of the
+  // same term. Using a different term as a mask will break the spelling.
+  parsedTextMasks = Object.freeze(
+    Object.entries(textMasks).map((entry) => [
+      entry[0],
+      randomListItem(entry[1]),
+      entry[0].match(subtermsByCaps),
+    ])
+  ),
+  maskTerm = (term) => {
+    if (config.usingSEO) return term;
+    const altList = parsedTextMasks.find(
+      (entry) => entry[0].toLowerCase() === term.toLowerCase()
+    );
+    let capitals = altList[2].map((word) => {
+      const letter = term[0];
+      term = term.slice(word.length);
+      return letter;
+    });
+    return altList[1]()
+      .replace(subtermsByCaps, (word) => capitals.shift() + word.slice(1))
+      .replaceAll(delimiter, getRandomChar);
+  },
+  autoMask = (text) =>
+    config.usingSEO
+      ? text
+      : text.replace(termsBySpaces, (term) =>
+          containsMask.test(term)
+            ? term
+            : term.replace(subtermsByVowels, getRandomChar)
+        ),
   insertCharset = (str) => str.replace(charset, getRandomChar),
   getRandomSplash = randomListItem(splashRandom),
   hutaoInsert = (str) => str.replaceAll('<!--HUTAOWOA-->', getRandomSplash),
@@ -74,18 +123,28 @@ const config = Object.freeze(
       str = str.replaceAll(item[0], item[1]);
     return str;
   },
+  orderedTransforms = [
+    [ifSEO, 1],
+    [maskTerm, 1],
+    [autoMask, 1],
+  ],
   // Apply the final obfuscation changes to an entire file.
-  paintSource = (str) =>
-    insertCharset(hutaoInsert(versionInsert(insertCooking(cacheBusting(str))))),
+  paintSource = (str) => {
+    let appliedPaint = insertCharset(
+      hutaoInsert(versionInsert(insertCooking(cacheBusting(str))))
+    );
+    orderedTransforms.forEach((transform) => {
+      appliedPaint = applyInsert(appliedPaint, ...transform);
+    });
+    return appliedPaint;
+  },
   // Use this instead of text404 for a preloaded error page.
   preloaded404 = paintSource(text404),
+  isImage = /\.(?:ico|png|jpg|jpeg)$/,
   // Grab the text content of a file. Use the root directory if no base is supplied.
   tryReadFile = (file, baseUrl = new URL('../', import.meta.url)) => {
     file = new URL(file, baseUrl);
     return existsSync(file)
-      ? readFileSync(
-          file,
-          /\.(?:ico|png|jpg|jpeg)$/.test(file) ? undefined : 'utf8'
-        )
+      ? readFileSync(file, isImage.test(file) ? undefined : 'utf8')
       : preloaded404;
   };

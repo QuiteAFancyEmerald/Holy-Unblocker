@@ -15,6 +15,12 @@
     "Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1Example1",
     "Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2Example2"
   ],
+  "delimiter": "*",
+  "textMasks": {
+    "Holy Unblocker": ["H*ol*y *Un*b*lo*c*k*er"],
+    "Proxies": ["Pr*ox*i*es", "P*ro*x*ies", "Pro*x*i*es", "Pr*ox*ie*s"],
+    "Proxy": ["Pr*ox*y", "P*ro*x*y", "Pro*x*y"]
+  },
   "splash": [
     "This version is the public HU LTS build of the web proxy service project and being worked on (master branch)! Stuff will NOT work!"
   ],

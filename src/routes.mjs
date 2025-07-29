@@ -71,6 +71,8 @@ const insert = JSON.parse(
 const cookingInserts = insert.content,
   vegetables = insert.keywords,
   charRandom = insert.chars,
+  delimiter = insert.delimiter,
+  textMasks = insert.textMasks,
   splashRandom = insert.splash,
   VersionValue = insert.version,
   cacheBustList = {
@@ -85,6 +87,8 @@ export default {
   cookingInserts,
   vegetables,
   charRandom,
+  delimiter,
+  textMasks,
   splashRandom,
   VersionValue,
   cacheBustList,
