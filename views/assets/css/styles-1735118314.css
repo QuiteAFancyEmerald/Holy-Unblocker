@@ -335,6 +335,7 @@ details[open] summary {
 .logo {
   width: 70px;
   height: 70px;
+  margin-right: 10px;
   background-image: url('/assets/img/logo.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1023,6 +1024,7 @@ input[type='text'] {
 
 .downarrowgroup {
   color: var(--nord3);
+  font-size: 35px;
   margin-left: 80%;
 }
 
@@ -1319,9 +1321,7 @@ iner .splashstrokeheader {
 
 .hero {
   width: 100%; 
-  max-width: 300px; 
-  height: auto;
-  border-radius: 50%;
+  max-width: 250px; 
 }
 
 .text-wrap {
@@ -1464,7 +1464,7 @@ iner .splashstrokeheader {
 .box-badge {
   padding: 10px 0;
   border-radius: 3px;
-  background-color: #ffffff;
+  background-color: var(--nord5);
   color: #000;
   margin-bottom: 50px;
 }
@@ -1509,7 +1509,7 @@ iner .splashstrokeheader {
   border-radius: 5px;
   text-decoration: none;
   color: #fff !important;
-  background-color: var(--nord2);
+  background-color: #22262f;
   font-size: 1em;
   transition: background-color 0.3s ease;
 }
@@ -1524,7 +1524,8 @@ iner .splashstrokeheader {
 .box-pr-logo {
   max-width: 100%;
   height: auto;
-  width: 600px; 
+  width: 500px; 
+  border-radius: 35px;
 }
 
 .box-line-divider {
