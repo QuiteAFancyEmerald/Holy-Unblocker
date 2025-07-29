@@ -113,6 +113,31 @@ app.register(fastifyHelmet, {
   xPoweredBy: false,
 });
 
+// change CSP on uv pages to add protection against IP leaking
+app.addHook('onRequest', (req, reply, done) => {
+  if (req.url.startsWith('/uv/service/')) {
+    reply.header('Content-Security-Policy', [
+      "default-src 'none'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "style-src 'self' 'unsafe-inline'",
+      "style-src-elem 'self' 'unsafe-inline'",
+      "font-src 'self'",
+      "img-src 'self'",
+      "connect-src 'self'",
+      "object-src 'none'",
+      "base-uri 'none'",
+      "form-action 'self'",
+      "worker-src 'self'",
+      "manifest-src 'self'",
+      "frame-ancestors 'none'",
+      "block-all-mixed-content",
+      "upgrade-insecure-requests"
+    ].join('; '));
+  }
+  done();
+});
+
+
 // Assign server file paths to different paths, for serving content on the website.
 app.register(fastifyStatic, {
   root: fileURLToPath(new URL('../views/pages', import.meta.url)),

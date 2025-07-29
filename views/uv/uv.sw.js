@@ -2,9 +2,9 @@
 /* Authors: Titanium Network
 /* GNU Affero General Public License v3.0: https://www.gnu.org/licenses/agpl-3.0.en.html
 /* Modified by Yoct to remove __uv$config and serve custom error pages.
-/* Modified by Segfault to add CSP that prevents IP leaks
 /* Ultraviolet Service Worker Script (v3.2.7)
 /* ----------------------------------------------- */
+
 
 /*globals __uv$config*/
 // Users must import the config (and bundle) prior to importing uv.sw.js
@@ -291,25 +291,6 @@ class UVServiceWorker extends Ultraviolet.EventEmitter {
 				responseCtx.headers['Cross-Origin-Embedder-Policy'] = 'require-corp';
 			}
 
-			// Add strong protection against IP leaks via CSP
-			if (request.url.startsWith(location.origin + this.config.prefix)) {
-				responseCtx.headers['content-security-policy'] = [
-					"default-src 'self'",
-					"script-src 'self' 'unsafe-inline' 'unsafe-eval'",
-					"style-src 'self' 'unsafe-inline'",
-					"style-src-elem 'self' 'unsafe-inline'",
-					"font-src 'self'",
-					"img-src 'self' data:",
-					"connect-src 'self'",
-					"object-src 'self'",
-					"base-uri 'self'",
-					"form-action 'self'",
-					"worker-src 'self'",
-					"manifest-src 'self'",
-					'upgrade-insecure-requests',
-				].join('; ');
-			}
-
 			this.emit('response', resEvent);
 			if (resEvent.intercepted) return resEvent.returnValue;
 
@@ -430,22 +411,26 @@ class HookEvent {
  * @param {string} fetchedURL
  * @returns
  */
-function errorTemplate(trace, fetchedURL) {
-	// turn script into a data URI so we don't have to escape any HTML values
-	const script = `
+function errorTemplate(
+    trace,
+    fetchedURL,
+) {
+    // turn script into a data URI so we don't have to escape any HTML values
+    const script = `
         errorTrace.value = ${JSON.stringify(trace)};
         fetchedURL.textContent = ${JSON.stringify(fetchedURL)};
         for (const node of document.querySelectorAll('#uvHostname')) node.textContent = ${JSON.stringify(
-					location.hostname
-				)};
+            location.hostname
+        )};
         reload.addEventListener('click', () => location.reload());
-        uvVersion.textContent = ${JSON.stringify('3.2.7')};
-    `;
+        uvVersion.textContent = ${JSON.stringify(
+            '3.2.7'
+        )};
+    `
 
-	return '{{ultraviolet-error}}'.replace(
-		'{{src}}',
-		'data:application/javascript,' + encodeURIComponent(script)
-	);
+    return (
+       '{{ultraviolet-error}}'.replace('{{src}}', 'data:application/javascript,' + encodeURIComponent(script))
+    );
 }
 
 /**
