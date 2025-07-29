@@ -2,7 +2,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 
 ## Code Cleanup
 
-- [ ] Remove all current obfuscation in the source code. It needs to be dynamically obfuscated if anything, or not obfuscated at all. This option will be a config option on the server side before rendering with Express for a performance focus. Meta elements will have an additonal attribute indicating if they should be moved. This is to ensure a SEO source can be served by config or a source focused on pure censorship evasion.
+- [ ] Remove all current obfuscation in the source code. It needs to be dynamically obfuscated if anything, or not obfuscated at all. This option will be a config option on the server side before rendering with Fastify for a performance focus. Meta elements will have an additonal attribute indicating if they should be moved. This is to ensure a SEO source can be served by config or a source focused on pure censorship evasion.
 - [ ] Optimize the stylesheets and the HTML layout. Add more proper commenting and redivide the code so that it's less hard on the eyes.
 - [ ] Optimize the JS. This time it won't be in one line and will be somewhat thoroughly commented.
 - [ ] Restructure navigation scripts to ensure updated proxy functionality is sanitized and effective
@@ -15,24 +15,27 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [x] Mobile support - (welcome screen only, partial/needs work)
 - [ ] SEO overhaul adapted from the v3 SEO Guide format - partial
 - [x] Fastify routes modified to ensure perfect SEO. This means absolute paths such as /example instead of ?z - done
-- [ ] Randomize the \_\_uv$config global, and optionally randomize the UV prefix and URL encoding via cookies
+- [x] Randomize the \_\_uv$config global, and optionally randomize the UV prefix and URL encoding via cookies
 
 ## Proxy/Site Functionality
 
 - [x] Ensure Ultraviolet is updated to support bare-mux and wisp - done
+- [x] Ensure Scramjet is added and works together with UV's implementation - done
+= [x] Refactor register-sw.js - done
 - [x] Add Rammerhead support - done
 - [x] Fix slow Ultraviolet speeds despite being local; something on the backend?? - done
 - [x] Fix Ultraviolet on Firefox - (partial/needs work)
 - [ ] Adapt Applications page to use either Rammerhead or UV (for Reddit, YouTube, Discord)
 - [x] libcurl, epoxy and all that fun stuff - done
 - [x] socks5/tor routing option that can be configured (enabled) via either a cookie or pathname as a settings meny option - done
+- [x] socks5 regional proxy implementation - done
 - [ ] Update games page content to 10000 games
 - [ ] Update Applications page to reflect modern fast links (use examples from the modern web proxy base)
-- [ ] Update settings menu again to make more room for more features
+- [x] Update settings menu again to make more room for more features
 - [x] Update csel.js (after Setting menu redesign) to support custom transports, icon swap, routing - done
 - [x] Update csel.js to support network based adblocking (partial/needs work)
 - [ ] Add a "website self-destruct" button to the settings menu
-- [ ] Flesh out and rework the UV / bare client error page - partial. function implementation done however styles not
+- [x] Flesh out and rework the UV / Scramjet / bare client error page - done
 - [x] Update sw.js to support workerware (https://github.com/MercuryWorkshop/workerware)-- This is not done however we have our own middleware system implemented for adblocking, etc. 
 - [ ] Omnibox autoupdate script (for the Google/Bing style auto suggest feature)
 - [ ] Games library will feature 10000 items; 5000 flash games and 5000 other game types
@@ -49,16 +52,16 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Add subtle noise to background elements
 - [ ] Update colors + add themes
 - [ ] Toggle elements
-- [ ] Other card options
+- [x] Other card options
 - [ ] Radial blur elements
 - [ ] Code standard examples
 - [ ] Horizontal/general movement on scroll with AOS
-- [ ] Showcase dev dependencies
+- [x] Showcase dev dependencies
 - [ ] Update icons
 - [x] Landing Page - (partial/needs work)
 - [x] Settings Menu - (partial/needs work)
-- [ ] More Dropdown Menu
-- [ ] Web Proxies page
+- [x] More Dropdown Menu
+- [x] Web Proxies page
 - [ ] Application page
 - [ ] Hosting page
 - [ ] Resources page
