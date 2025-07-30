@@ -65,13 +65,13 @@ const storageId = 'hu-lts-storage',
 /* OMNIBOX */
 
 const searchEngines = Object.freeze({
+    Startpage: 'startpage.com/sp/search?query=',
     Google: 'google.com/search?q=',
     Bing: 'bing.com/search?q=',
     DuckDuckGo: 'duckduckgo.com/?q=',
-    Startpage: 'startpage.com/sp/search?query=',
     Brave: 'search.brave.com/search?q=',
   }),
-  defaultSearch = 'Google';
+  defaultSearch = 'Startpage';
 
 // Default search engine is set to Google. Intended to work just like the usual
 // bar at the top of a browser.
@@ -437,6 +437,8 @@ addEventListener('DOMContentLoaded', async () => {
 
     youtube: urlHandler(sjUrl('https://youtube.com')),
 
+    invidious: urlHandler(sjUrl('https://invidious.snopyta.org')),
+
     chatgpt: urlHandler(sjUrl('https://chat.openai.com/chat')),
 
     discord: urlHandler(sjUrl('https://discord.com/app')),
@@ -501,6 +503,7 @@ addEventListener('DOMContentLoaded', async () => {
   prSet('pr-sj', 'scramjet');
   prSet('pr-rh', 'rammerhead');
   prSet('pr-yt', 'youtube');
+  prSet('pr-iv', 'invidious');
   prSet('pr-cg', 'chatgpt');
   prSet('pr-dc', 'discord');
   prSet('pr-gf', 'geforcenow');

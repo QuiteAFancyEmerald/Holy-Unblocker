@@ -121,7 +121,6 @@ img {
   display: block;
 }
 
-/* For WebKit/Blink Browsers */
 ::selection {
   background: rgba(180, 142, 173, 0.513);
 }
@@ -159,8 +158,6 @@ img {
   background: var(--nord10);
 }
 
-
-/* For Gecko Browsers (Firefox) */
 ::-moz-selection {
   background: rgba(180, 142, 173, 0.513);
 }
@@ -185,17 +182,8 @@ input[type='radio'] {
   text-align: center;
 }
 
-a:not(.bluelink) {
+a {
   color: rgb(255, 88, 97);
-}
-
-a.bluelink {
-  color: var(--cyan);
-  text-decoration: inherit;
-}
-
-a.bluelink:hover {
-  text-decoration: underline;
 }
 
 details summary {
@@ -336,7 +324,7 @@ details[open] summary {
   width: 70px;
   height: 70px;
   margin-right: 10px;
-  background-image: url('/assets/img/logo.png');
+  background-image: url('/assets/img/logo.webp');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -383,7 +371,6 @@ details[open] summary {
   display: inline-block; 
 }
 
-/* New badge styling */
 .new {
   position: relative;
 }
@@ -401,8 +388,6 @@ details[open] summary {
   image-rendering: -webkit-optimize-contrast;
   vertical-align: middle; 
 }
-
-/* Secondary Navigation Menu w/ Dropdown */
 
 .subnavbar {
   list-style: none;
@@ -951,8 +936,6 @@ input[type='text'] {
   display: block;
 }
 
-/* Command Terminal Home Page */
-
 .mac-window {
   flex: 1;
   max-width: 1100px;
@@ -961,7 +944,7 @@ input[type='text'] {
   border-radius: 12px;
   overflow: hidden;
   background-color: var(--nord0);
-  background-image: url('/assets/img/noise.png'),
+  background-image: url('/assets/img/noise.webp'),
     linear-gradient(
       145deg,
       rgba(34, 38, 47, 0.9) 0%,
@@ -1074,47 +1057,6 @@ input[type='text'] {
   background-color: var(--nord2);
 }
 
-/* NOTE: Currently unused. */
-.hovermessage:hover {
-  transition:
-    color 0.3s ease-in,
-    font-size 0s linear 0.3s;
-}
-
-/* NOTE: Currently unused. */
-.hovermessage::before {
-  font-size: 0;
-  content: attr(data-hover-text);
-  text-decoration: inherit;
-}
-
-/* NOTE: Currently unused. */
-.hovermessage:hover::before {
-  font-size: 16px;
-  transition:
-    font-size 0s linear 0.3s,
-    color 0.3s ease-in 0.3s;
-}
-
-/* NOTE: Currently unused. */
-.buttonlink {
-  font-family: 'Figtree', sans-serif;
-  font-weight: bold;
-  display: inline-block;
-  text-decoration: none;
-  width: 120px;
-  padding: 10px 15px;
-  border: 2px solid var(--nord6);
-  border-radius: 3px;
-}
-
-/* NOTE: Currently unused. */
-.startbutton {
-  margin: 25px;
-  background: var(--nord15);
-  color: var(--nord4) !important;
-}
-
 .fancybutton {
   display: inline-block;
   text-decoration: none;
@@ -1158,7 +1100,8 @@ input[type='text'] {
 .text-center {
   text-align: center;
 }
-iner .splashstrokeheader {
+
+.splashstrokeheader {
   position: relative;
   display: inline-block;
   font-size: 36px;
@@ -1225,7 +1168,7 @@ iner .splashstrokeheader {
 
 .dependencylogo img {
   width: 50px;
-  height: auto;
+  height: 50;
   padding: 10px;
   border-radius: 20px;
   background-color: var(--nord2);
@@ -1242,6 +1185,14 @@ iner .splashstrokeheader {
 
 #scrollfix {
   margin-bottom: 20px;
+}
+
+/* -----------------------------------------------
+/* Cards, Buttons and Forms
+/* ----------------------------------------------- */
+
+.box-hero>.box-noflex {
+  display: inline;
 }
 
 .box-hero {
@@ -1262,7 +1213,7 @@ iner .splashstrokeheader {
   width: 100%;
   height: 100%;
   background:
-    url('/assets/img/noise.png') repeat,
+    url('/assets/img/noise.webp') repeat,
     rgba(255, 255, 255, 0.03);
   opacity: var(--noise-opacity, 0.02);
   pointer-events: none;
@@ -1324,6 +1275,11 @@ iner .splashstrokeheader {
   max-width: 250px; 
 }
 
+.image-container > .hero {
+  width: 100%; 
+  max-width: 250px; 
+}
+
 .text-wrap {
   max-width: 46ch;
 }
@@ -1341,8 +1297,6 @@ iner .splashstrokeheader {
 .box-hero h3 {
   margin: 10px 0;
 }
-
-/* Shimmer Noise Cards */
 
 .grid-container {
   display: grid;
@@ -1375,7 +1329,7 @@ iner .splashstrokeheader {
   width: 100%;
   height: 100%;
   background:
-    url('/assets/img/noise.png') repeat,
+    url('/assets/img/noise.webp') repeat,
     rgba(46, 52, 64, 0.03);
   opacity: var(--noise-opacity, 0.02);
   pointer-events: none;
@@ -1418,11 +1372,11 @@ iner .splashstrokeheader {
   width: 30%;
   max-width: 180px;
   height: auto;
-  background-color: var(--nord0m3);
+  background-color: #f2575c0c;
   border-radius: 10px;
-  padding: 5px;
+  padding: 15px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
-  border: 1px solid transparent;
+  border: 1px solid #ff9192;
 }
 
 .image-container:hover {
@@ -1460,7 +1414,6 @@ iner .splashstrokeheader {
   position: relative;
 }
 
-/* Badge styling */
 .box-badge {
   padding: 10px 0;
   border-radius: 3px;
@@ -1500,7 +1453,6 @@ iner .splashstrokeheader {
   margin-top: 20px;
 }
 
-/* Button styling */
 .box-button {
   display: inline-block;
   padding: 15px 25px;
@@ -1514,7 +1466,6 @@ iner .splashstrokeheader {
   transition: background-color 0.3s ease;
 }
 
-/* Image container */
 .box-image-container {
   display: flex;
   align-items: center; 
@@ -1539,7 +1490,6 @@ iner .splashstrokeheader {
   opacity: 0.2;
 }
 
-/* Media queries for responsiveness */
 @media (max-width: 768px) {
   .box-main-container {
     flex-direction: column; 
@@ -1750,29 +1700,6 @@ iner .splashstrokeheader {
   width: 20%;
 }
 
-/* Used on the Games and YouTube pages. */
-
-.responsive-fix {
-  padding: 20px;
-}
-
-/* Used on the UV page. */
-#cor-logo {
-  border-radius: 50%;
-  padding: 20px;
-  width: 150px;
-}
-
-/* Used on the Bookmarklets and FAQ pages, and icons.html. */
-#bks-parent {
-  margin-bottom: 8px;
-}
-
-/* Used exclusively on the Web Proxies page. */
-.buttonrow {
-  margin-bottom: 16px;
-}
-
 /* Stealth Mode IFrame */
 
 #frame {
@@ -1820,15 +1747,15 @@ iner .splashstrokeheader {
   width: 200px;
   padding: 20px;
   margin: 10px;
-  border: 2px solid var(--nord9);
-  border-radius: 5% 15%;
+  border: 1px solid var(--nord9);
+  border-radius: 15%;
   transition: ease-in-out 0.5s;
   flex-grow: 0;
   flex-shrink: 0;
 }
 
 .glist > a:hover {
-  border: 2px solid var(--nord11);
+  border: 1px solid var(--nord11);
 }
 
 .glist > a img {
@@ -1843,10 +1770,12 @@ iner .splashstrokeheader {
 
 .glist > a h3 {
   margin: 16px 0;
+  color: #ff5861;
 }
 
 .glist > a p {
   margin-bottom: 0;
+  color: var(--nord4);
 }
 
 /* Flash Games Search Bar */
@@ -1872,23 +1801,26 @@ iner .splashstrokeheader {
 .flist {
   font-family: 'Lato', sans-serif;
   background-color: var(--nord0);
-  width: 400px;
+  width: 700px;
   height: calc(100vh - 92px);
   overflow-y: auto;
   overflow-x: hidden;
   margin: 0 auto;
   border: 2px solid var(--nord1);
   padding-bottom: 2px;
+  border-radius: 15px;
 }
 
 .flist > a {
   display: block;
   text-decoration: none;
   text-transform: capitalize;
-  padding: 5px;
+  padding: 20px;
   background-color: var(--nord1);
   border: 2px solid var(--nord0);
+  border-radius: 15px;;
   border-bottom: none;
+  color: var(--nord4);
 }
 
 .flist > a:hover {
@@ -2013,6 +1945,11 @@ iner .splashstrokeheader {
 
 /* Mobile Header Dropdown Menu */
 
+/* For mobile-exclusive versions of certain UI elements. */
+.mobile {
+  display: none;
+}
+
 .mnave {
   display: none;
   width: 50px;
@@ -2076,86 +2013,76 @@ iner .splashstrokeheader {
   transform: rotate(45deg);
 }
 
-/* For mobile-exclusive versions of certain UI elements. */
-.mobile {
-  display: none;
-}
-
 /* -----------------------------------------------
 /* CSS Media Queries (largely for mobile support)
 /* ----------------------------------------------- */
 
 @media (max-width: 1400px) {
   #header {
-    padding: 15px 50px; /* Adjust padding for larger screens */
+    padding: 15px 50px; 
   }
 
   .brand {
-    font-size: 21px; /* Restore font size for larger screens */
+    font-size: 21px;
   }
 
   .logo {
-    width: 50px; /* Restore logo size for larger screens */
-    height: 50px; /* Restore logo size for larger screens */
+    width: 50px;
+    height: 50px; 
   }
 
   .navbar {
-    display: flex; /* Display navbar on larger screens */
+    display: flex;
   }
 
   .navbar-1 {
-    justify-content: flex-end; /* Align navbar-1 to the right on larger screens */
-    flex-grow: 1; /* Allow navbar-1 to take up remaining space */
+    justify-content: flex-end;
+    flex-grow: 1;
   }
 
   .navbar-1 > li {
-    margin-left: 30px; /* Adjust spacing between items for larger screens */
+    margin-left: 30px;
   }
 
   .navbar-1 > li:last-child {
-    margin-right: 0; /* Remove right margin from the last item */
+    margin-right: 0;
   }
 }
 
 @media (max-width: 1170px) {
   #header {
-    padding: 15px 40px; /* Adjust padding for larger screens */
+    padding: 15px 40px;
   }
 
   .brand {
-    font-size: 21px; /* Restore font size for larger screens */
+    font-size: 21px;
   }
 
   .logo {
-    width: 50px; /* Restore logo size for larger screens */
-    height: 50px; /* Restore logo size for larger screens */
+    width: 50px;
+    height: 50px;
   }
 
   .navbar {
-    display: flex; /* Display navbar on larger screens */
+    display: flex;
   }
 
   .navbar-1 {
-    justify-content: flex-end; /* Align navbar-1 to the right on larger screens */
-    flex-grow: 1; /* Allow navbar-1 to take up remaining space */
+    justify-content: flex-end;
+    flex-grow: 1;
   }
 
   .navbar-1 > li {
-    margin-left: 20px; /* Adjust spacing between items for larger screens */
+    margin-left: 20px;
   }
 
   .navbar-1 > li:last-child {
-    margin-right: 0; /* Remove right margin from the last item */
+    margin-right: 0;
   }
 
   #banner {
     display: none;
   }
-  /*
-  .mnave {
-    display: none !important;
-  }
-*/
 }
 
 @media (min-width: 1160px) {
@@ -2170,8 +2097,8 @@ iner .splashstrokeheader {
   }
 
   .navbar-1 {
-    justify-content: flex-start; /* Align navbar-1 to the left on smaller screens */
-    flex: 0 0 100%; /* Force navbar-1 to be on a new row */
+    justify-content: flex-start;
+    flex: 0 0 100%;
   }
 
   .navbar {

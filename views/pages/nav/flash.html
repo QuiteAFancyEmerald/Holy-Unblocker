@@ -32,32 +32,19 @@
     <link rel="icon" href="assets/ico/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://unpkg.com" />
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <script src="
-    https://cdn.jsdelivr.net/npm/tsparticles@3.5/tsparticles.bundle.min.js
-    "></script>
+    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
   </head>
 
   <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <div id="header" class="fullwidth"><!--HEADER--></div>
     <div id="particles-js" class="fullwidth"></div>
-    <div id="mainbody" class="fullwidth">
-      <div class="box-g text-center textm">
-        <input
-          type="text"
-          id="fsearchbar"
-          onkeyup="document.querySelectorAll('#flist>a').forEach(l=>l.style.display=l.textContent.toUpperCase().includes(this.value.toUpperCase().replace(/ /g,''))?'block':'none')"
-          spellcheck="false"
-          autocomplete="off"
-          placeholder="Search"
-        />
-        <div id="flash-nav" class="flist"></div>
-        <div class="gfooter-only">
-          <p>
-            Have a game request? Contact us on <a href="/titaniumnetwork-discord">discord</a> or
-            make a <a href="/github">pull request or issue</a>!
-          </p>
+    <div id="mainbody" class="box-hero">
+      <div id="documentation" class="hero-grid-container">
+        <div class="box-hero">
+          <div id="flash-nav" class="flist"></div>
         </div>
       </div>
     </div>
@@ -65,6 +52,7 @@
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <script src="assets/js/common.js"></script>
     <script src="assets/js/csel.js"></script>
+    <script src="assets/js/card.js"></script>
     <script defer="defer" src="assets/js/particlesjs/particles.js"></script>
   </body>
 </html>

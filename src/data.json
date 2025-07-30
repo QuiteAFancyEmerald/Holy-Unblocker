@@ -24,5 +24,5 @@
   "splash": [
     "This version is the public HU LTS build of the web proxy service project and being worked on (master branch)! Stuff will NOT work!"
   ],
-  "version": ["6.5.2"]
+  "version": ["6.5.3"]
 }

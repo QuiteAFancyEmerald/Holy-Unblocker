@@ -32,14 +32,13 @@
     <link rel="icon" href="assets/ico/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://unpkg.com" />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <script src="/baremux/index.js" defer></script>
     <script src="/uv/uv.bundle.js" defer></script>
     <script src="/uv/uv.config.js" defer></script>
     <script src="/assets/js/register-sw.js" defer></script>
-    <script src="
-    https://cdn.jsdelivr.net/npm/tsparticles@3.5/tsparticles.bundle.min.js
-    "></script>
+    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
   </head>
 
   <body>
@@ -50,9 +49,10 @@
       <div class="box-hero">
         <div class="hero-content">
           <div class="proxy-header text-center">
-            <img class="pr-logo" src="/assets/img/uv.png" alt="Ultraviolet Web Proxy" />
+            <img class="pr-logo" src="/assets/img/uv.webp" alt="Ultraviolet Web Proxy" />
             <p>
-              <a href="/github/ultraviolet"><strong>Ultraviolet</strong></a> is a proxy of Titanium Network using technologies such as service workers and sophisticated rewriting techniques with CAPTCHA support.
+              <a href="/github/ultraviolet"><strong>Ultraviolet</strong></a> is a proxy of Titanium Network using technologies such as service workers and with CAPTCHA support.<br>This is the most recent legacy project of Titanium Network. You can use this as a fallback in case Scramjet does not have support for your site.
+              <br><br>If you have any issues with Ultraviolet, please report them on the <a href="/github/ultraviolet/issues">Ultraviolet GitHub repository</a>.<br><br
             </p>
           </div>
           <div class="proxy-form text-center">
@@ -155,6 +155,7 @@
     <script src="/scram/scramjet.controller.js"></script>
     <script src="assets/js/common.js"></script>
     <script src="assets/js/csel.js"></script>
+    <script src="assets/js/card.js"></script>
     <script src="{{src}}"></script>
     <script defer="defer" src="assets/js/particlesjs/particles.js"></script>
   </body>
