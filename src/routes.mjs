@@ -18,7 +18,7 @@ const pages = {
   credits: 'pages/nav/credits.html',
   terms: 'pages/nav/terms.html',
   /* Games */
-  games: 'pages/nav/gtools.html',
+  games: 'pages/nav/directory.html',
   'web-games': 'pages/nav/games5.html',
   emulators: 'pages/nav/emulators.html',
   'flash-games': 'pages/nav/flash.html',
