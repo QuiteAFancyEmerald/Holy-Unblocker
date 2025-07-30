@@ -143,21 +143,23 @@
                 </head>
                 <body>
                     <div id="cover"></div>
-                    <div id="inner">
+                    <div id="inner" class="container-fluid text-center">
                         <h1 id="errorTitle">Netwo<wbr>rk Er<wbr>ror</h1>
                         <code>Fa<wbr>iled to l<wbr>oad: <b id="fetchedURL"></b></code>
                         <br>
                         <!-- <p id="errorMessage">Internal Server Error</p> -->
-
+                        <button id="reload">Ref<wbr>resh</button>
+                        <br />
                         <div id="info">
-                            <div id="errorTrace-wrapper">
+                            <div id="errorTrace-wrapper" class="container">
                                 <textarea id="errorTrace" cols="40" rows="10" readonly></textarea>
                                 <button id="copy-button" class="primary">Copy</button>
                             </div>
-                            <div id="troubleshooting">
+                            <div id="troubleshooting" class="container text-wrap">
                                 <p>Try:</p>
                                 <ul>
                                     <li>Checking your internet connection</li>
+                                    <li>In the ca<wbr>se of an I<wbr>DBData<wbr>base er<wbr>ror plea<wbr>se cle<wbr>ar your site data by click<wbr>ing on the lo<wbr>ck ic<wbr>on i<wbr>n the ad<wbr>dres<wbr>s bar an<wbr>d selec<wbr>ting "Si<wbr>te set<wbr>tings" or "Si<wbr>te d<wbr>ata" and th<wbr>en cl<wbr>ick<wbr>ing "Cl<wbr>ear sit<wbr>e d<wbr>ata"</li>
                                     <li>Verifying you entered the correct address</li>
                                     <li>Clear<wbr>ing your bro<wbr>wser or site cache data via Ctr<wbr>l+Sh<wbr>ift+<wbr>R and b<wbr>rowser setti<wbr>ngs</li>
                                     <li>In t<wbr>he case of web<wbr>site ma<wbr />inte<wbr>nan<wbr />ce or updates, please wait for the issue to be resol<wbr>ved.</li>
@@ -169,9 +171,6 @@
                             </div>
                         </div>
                         <code><i>Ref<wbr>res<wbr>h the net<wbr>work serv<wbr>ice | Scramjet v<span id="version"></span> (build <span id="build"></span>).</i></code>
-                        <br>
-                        <button id="reload">Ref<wbr>resh</button>
-                        <br />
                         <p class="footer-spacing">
                             <i>Ho<wbr>ly Unbloc<wbr>ke<wbr>r LT<wbr>S © 20<wbr>2<wbr>0-202<wbr>5 | Ma<wbr>de Wit<wbr>h Lov<wbr>e </i><i class="nf nf-fa-heart"></i>
                         </p>
