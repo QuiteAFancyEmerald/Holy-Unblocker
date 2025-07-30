@@ -65,13 +65,13 @@ const storageId = 'hu-lts-storage',
 /* OMNIBOX */
 
 const searchEngines = Object.freeze({
+    Startpage: 'startpage.com/sp/search?query=',
     Google: 'google.com/search?q=',
     Bing: 'bing.com/search?q=',
     DuckDuckGo: 'duckduckgo.com/?q=',
-    Startpage: 'startpage.com/sp/search?query=',
     Brave: 'search.brave.com/search?q=',
   }),
-  defaultSearch = 'Google';
+  defaultSearch = 'Startpage';
 
 // Default search engine is set to Google. Intended to work just like the usual
 // bar at the top of a browser.
