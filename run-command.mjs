@@ -145,7 +145,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
           if (ignoredDirectories.includes(file)) return;
           const targetPath = fileURLToPath(
             new URL(
-              dist + '/' + (base + dir + '/').replace('./views/', '') + file,
+              './views/dist/' + (base + dir + '/').replace('./views/', '') + file,
               import.meta.url
             )
           );
