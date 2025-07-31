@@ -145,8 +145,7 @@ const getAltPrefix = (prefix) =>
     for (let [key, value] of Object.entries(pathObject)) {
       if ('object' === typeof value)
         inserts = inserts.concat(getPathEntries(value, key));
-      else
-        inserts.push([prefix + key, prefix.replace(/^prefixes\//, '') + value]);
+      else inserts.push([prefix + key, prefix.replace(/^prefixes\//, '') + value]);
     }
     return inserts;
   },
