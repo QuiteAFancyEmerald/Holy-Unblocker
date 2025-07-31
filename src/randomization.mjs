@@ -26,7 +26,7 @@ const applyInsert = (str, insertFunction, numArgs = 0) => {
       keyword = mode ? insertFunction.name : insertFunction,
       replaceParams1 = new RegExp(
         (numArgs > 0 ? `[^\\S\\n]*{{${keyword}}}\\s*` : `{{${keyword}}}`) +
-          '\\s*{{\\s*\\n((?:(?!}})[^])*)\\n\\s*}}[^\\S\\n]*'.repeat(numArgs),
+          '\\s*{{\\s*\\n((?:(?!}})[^])*\\n)\\s*}}\\s*?\\n?'.repeat(numArgs),
         'g'
       ),
       replaceParams2 = new RegExp(
