@@ -6,11 +6,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
-    <title>Holy Unblocker</title>
+    <title>{{maskTerm}}{{Holy Unblocker}} LTS</title>
+    {{ifSEO}}{{
     <meta
       name="description"
       content="Holy Unblocker is a secure web proxy service with support for many sites. Bypass filters and freely enjoy a safer private browsing experience or unblock websites on devices such as Chromebooks and at places like school or work without downloading anything."
     />
+    }}
     <meta
       name="theme-color"
       media="(prefers-color-scheme: dark)"
@@ -33,10 +35,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <script src="/scram/scramjet.controller.js" defer></script>
-    <script src="/baremux/index.js" defer></script>
-    <script src="/uv/uv.bundle.js" defer></script>
-    <script src="/uv/uv.config.js" defer></script>
+    <script src="/{{prefixes/scram}}/{{scramjet}}.controller.js" defer></script>
+    <script src="/{{prefixes/baremux}}/index.js" defer></script>
+    <script src="/{{prefixes/uv}}/{{prefixes/uv}}.bundle.js" defer></script>
+    <script src="/{{prefixes/uv}}/{{prefixes/uv}}.config.js" defer></script>
     <script src="/assets/js/register-sw.js" defer></script>
     <!-- Arc widget causes lag on some gams, so it is created by js below if &nolag isn't specified in the querystring -->
   </head>

@@ -1,13 +1,24 @@
-import { readFile, writeFile, unlink, mkdir, rm } from 'node:fs/promises';
+import {
+  readFileSync,
+  writeFileSync,
+  unlinkSync,
+  mkdirSync,
+  readdirSync,
+  lstatSync,
+  copyFileSync,
+  rmSync,
+} from 'node:fs';
 import { exec, fork } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
 import ecosystem from './ecosystem.config.js';
+import { paintSource, tryReadFile } from './src/randomization.mjs';
+import loadTemplates from './src/templates.mjs';
 
 // Some necessary constants are copied over from /src/server.mjs.
 
 const config = Object.freeze(
-    JSON.parse(await readFile(new URL('./config.json', import.meta.url)))
+    JSON.parse(readFileSync(new URL('./config.json', import.meta.url)))
   ),
   ecosystemConfig = Object.freeze(
     ecosystem.apps.find((app) => app.name === 'HolyUB') || ecosystem.apps[0]
@@ -67,7 +78,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
     // Stop the server. Make a temporary file that the server will check for if told
     // to shut down. This is done by sending a GET request to the server.
     case 'stop': {
-      await writeFile(shutdown, '');
+      writeFileSync(shutdown, '');
       let timeoutId,
         hasErrored = false;
       try {
@@ -87,7 +98,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
         if (response === 'Error') throw new Error('Server is unresponsive.');
       } catch (e) {
         // Remove the temporary shutdown file since the server didn't remove it.
-        await unlink(shutdown);
+        unlinkSync(shutdown);
         // Check if this is the error thrown by the fetch request for an unused port.
         // Don't print the unused port error, since nothing has actually broken.
         if (e instanceof TypeError) clearTimeout(timeoutId);
@@ -117,24 +128,61 @@ commands: for (let i = 2; i < process.argv.length; i++)
 
     case 'build': {
       const dist = fileURLToPath(new URL('./views/dist', import.meta.url));
-      await rm(dist, { force: true, recursive: true });
-      await mkdir(dist);
+      const min = fileURLToPath(new URL('./views/min-dist', import.meta.url));
+      rmSync(dist, { force: true, recursive: true });
+      rmSync(min, { force: true, recursive: true });
+      mkdirSync(dist);
+      mkdirSync(min);
+
+      const ignoredDirectories = ['dist', 'min-dist', 'archive'];
+
+      const compile = (dir, base = dir, initial = false) =>
+        readdirSync(base + dir).forEach((file) => {
+          let oldLocation = new URL(
+            file,
+            new URL(base + dir + '/', import.meta.url)
+          );
+          if (ignoredDirectories.includes(file)) return;
+          const targetPath = fileURLToPath(
+            new URL(
+              dist + '/' + (base + dir + '/').replace('views/', '') + file,
+              import.meta.url
+            )
+          );
+          if (lstatSync(oldLocation).isFile())
+            if (/\.(?:html|js)$/.test(file))
+              writeFileSync(
+                targetPath,
+                paintSource(
+                  loadTemplates(
+                    tryReadFile(base + dir + '/' + file, import.meta.url)
+                  )
+                )
+              );
+            else copyFileSync(base + dir + '/' + file, targetPath);
+          else if (lstatSync(oldLocation).isDirectory()) {
+            mkdirSync(targetPath);
+            compile(file, base + dir + '/');
+          }
+        });
+      compile('./views', '', true);
+
       await build({
         entryPoints: [
-          './views/uv/**/*.js',
-          './views/scram/**/*.js',
-          './views/scram/**/*.wasm.wasm',
-          './views/assets/js/**/*.js',
-          './views/assets/css/**/*.css',
+          './views/dist/uv/**/*.js',
+          './views/dist/scram/**/*.js',
+          './views/dist/scram/**/*.wasm.wasm',
+          './views/dist/assets/js/**/*.js',
+          './views/dist/assets/css/**/*.css',
         ],
         platform: 'browser',
         sourcemap: true,
         bundle: true,
         minify: true,
-        loader: {'.wasm.wasm': 'copy'},
+        loader: { '.wasm.wasm': 'copy' },
         external: ['*.png', '*.jpg', '*.jpeg', '*.webp', '*.svg'],
-        outdir: dist,
-      }); 
+        outdir: min,
+      });
 
       break;
     }

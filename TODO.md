@@ -5,7 +5,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Remove all current obfuscation in the source code. It needs to be dynamically obfuscated if anything, or not obfuscated at all. This option will be a config option on the server side before rendering with Fastify for a performance focus. Meta elements will have an additonal attribute indicating if they should be moved. This is to ensure a SEO source can be served by config or a source focused on pure censorship evasion.
 - [ ] Optimize the stylesheets and the HTML layout. Add more proper commenting and redivide the code so that it's less hard on the eyes.
 - [ ] Optimize the JS. This time it won't be in one line and will be somewhat thoroughly commented.
-- [ ] Restructure navigation scripts to ensure updated proxy functionality is sanitized and effective
+- [x] Restructure navigation scripts to ensure updated proxy functionality is sanitized and effective
 - [x] Particles.js automatically adjusting per display size - done
 - [x] Fix routes.mjs throwing with incorrect paths - done
 - [x] Create test script - done

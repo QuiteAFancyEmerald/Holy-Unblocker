@@ -1,7 +1,9 @@
 import pkg from './routes.mjs';
 import { existsSync, readFileSync } from 'node:fs';
-export { config, paintSource, randomizeGlobal, preloaded404, tryReadFile };
+export { paintSource, randomizeGlobal, preloaded404, tryReadFile };
 const {
+  config,
+  flatAltPaths,
   cookingInserts,
   vegetables,
   charRandom,
@@ -13,23 +15,39 @@ const {
   text404,
 } = pkg;
 
-// For customizing source code transformation and more, see the config.json file.
-const config = Object.freeze(
-    JSON.parse(readFileSync(new URL('../config.json', import.meta.url)))
-  ),
-  /* Below are lots of function definitions used to obfuscate the website.
-   * This makes the website harder to properly categorize, as its source code
-   * changes with each time it is loaded.
-   */
-  applyInsert = (str, insertFunction, numArgs = 0) => {
+/* Below are lots of function definitions used to obfuscate the website.
+ * This makes the website harder to properly categorize, as its source code
+ * changes with each time it is loaded.
+ *
+ * For customizing source code transformation and more, see the config.json file.
+ */
+const applyInsert = (str, insertFunction, numArgs = 0) => {
     const mode = 'function' === typeof insertFunction,
       keyword = mode ? insertFunction.name : insertFunction,
-      replaceParams = new RegExp(
+      replaceParams1 = new RegExp(
+        (numArgs > 0 ? `[^\\S\\n]*{{${keyword}}}\\s*` : `{{${keyword}}}`) +
+          '\\s*{{\\s*\\n((?:(?!}})[^])*)\\n\\s*}}[^\\S\\n]*'.repeat(numArgs),
+        'g'
+      ),
+      replaceParams2 = new RegExp(
         `{{${keyword}}}` + '{{([^]*?)}}'.repeat(numArgs),
         'g'
-      );
-    return str.replace(replaceParams, (text, ...captures) =>
-      mode ? insertFunction(...captures.splice(0, numArgs)) : insertFunction
+      ),
+      replaceFunc = (text, ...captures) =>
+        mode
+          ? insertFunction(...captures.splice(0, numArgs))
+          : flatAltPaths[keyword] || text;
+    return str
+      .replace(replaceParams1, replaceFunc)
+      .replace(replaceParams2, replaceFunc);
+  },
+  applyMassInsert = (str, flatPathObject) => {
+    const replaceParams = new RegExp(
+      `{{(${Object.keys(flatPathObject).join('|')})}}`,
+      'g'
+    );
+    return str.replace(replaceParams, (text, capture) =>
+      config.usingSEO ? capture : flatPathObject[capture] || text
     );
   },
   ifSEO = (text) => (config.usingSEO ? text : ''),
@@ -130,13 +148,13 @@ const config = Object.freeze(
   ],
   // Apply the final obfuscation changes to an entire file.
   paintSource = (str) => {
-    let appliedPaint = insertCharset(
+    let paintedSource = insertCharset(
       hutaoInsert(versionInsert(insertCooking(cacheBusting(str))))
     );
-    orderedTransforms.forEach((transform) => {
-      appliedPaint = applyInsert(appliedPaint, ...transform);
-    });
-    return appliedPaint;
+    paintedSource = applyMassInsert(paintedSource, flatAltPaths);
+    for (let i = 0, total = orderedTransforms.length; i < total; i++)
+      paintedSource = applyInsert(paintedSource, ...orderedTransforms[i]);
+    return paintedSource;
   },
   // Use this instead of text404 for a preloaded error page.
   preloaded404 = paintSource(text404),

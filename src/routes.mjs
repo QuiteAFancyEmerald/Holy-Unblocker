@@ -1,9 +1,15 @@
 import { readFileSync } from 'node:fs';
 
-const pages = {
+// For toggling SEO display and more, see the config.json file.
+const config = Object.freeze(
+  JSON.parse(readFileSync(new URL('../config.json', import.meta.url)))
+);
+
+let pages = {
   /* If you are trying to add pages or assets in the root folder and
    * NOT entire folders, check the routes below and add it manually.
    * If you change route names here, also check the altPaths variable below.
+   * Also, please don't use RegEx symbols in the names.
    */
   index: 'index.html',
   'manifest.json': 'manifest.json',
@@ -42,7 +48,7 @@ const pages = {
   'favicon.ico': 'favicon.ico',
 };
 
-const externalPages = {
+let externalPages = {
   github: {
     default: 'https://github.com/QuiteAFancyEmerald/Holy-Unblocker',
     aos: 'https://github.com/michalsnik/aos',
@@ -63,14 +69,14 @@ const externalPages = {
 };
 
 // Override the route names below when usingSEO is disabled in config.json.
-const altPaths = {
+let altPaths = {
   games: 'books',
   'web-games': 'dictionary',
   emulators: 'catalogue',
   'flash-games': 'textbook',
   'retro-games': 'math',
-  uv: 'network',
-  scramjet: 'worker',
+  ultraviolet: 'networking',
+  scramjet: 'working',
   uverror: 'network-error',
   sjerror: 'worker-error',
   rammerhead: 'physics',
@@ -95,8 +101,64 @@ const altPaths = {
   /* Image Paths */
   'uv.webp': 'nt.webp',
   'sj.webp': 'wr.webp',
-  'rammerhead.webp': 'physics.webp'
+  'rammerhead.webp': 'physics.webp',
+  /* Prefixes */
+  prefixes: {
+    roms: 'ms',
+    uv: 'network',
+    scram: 'worker',
+    epoxy: 'epoch',
+    libcurl: 'unix',
+    bareasmodule: 'utc',
+    baremux: 'gmt',
+  },
 };
+
+const useAltPaths = (altPaths, targetPaths, ancestor, tempKey = '') => {
+  if ('object' === typeof altPaths) {
+    for (const [key, value] of Object.entries(altPaths)) {
+      if (key in targetPaths) {
+        delete altPaths[
+          useAltPaths(
+            value,
+            'object' === typeof value ? targetPaths[key] : targetPaths,
+            altPaths,
+            key
+          )
+        ];
+        delete targetPaths[key];
+      }
+    }
+    if ('object' === typeof ancestor) delete ancestor[tempKey];
+  } else {
+    targetPaths[altPaths] = targetPaths[tempKey];
+    return tempKey;
+  }
+  return altPaths;
+};
+
+const getAltPrefix = (prefix) =>
+    `/${(!config.usingSEO && altPaths.prefixes[prefix]) || prefix}/`,
+  getPathEntries = (pathObject, prefix = '') => {
+    if (prefix) prefix += '/';
+    let inserts = [];
+    for (let [key, value] of Object.entries(pathObject)) {
+      if ('object' === typeof value)
+        inserts = inserts.concat(getPathEntries(value, key));
+      else
+        inserts.push([prefix + key, prefix.replace(/^prefixes\//, '') + value]);
+    }
+    return inserts;
+  },
+  normalizePaths = (pathObject) =>
+    Object.fromEntries(getPathEntries(pathObject));
+
+const flatAltPaths = normalizePaths(altPaths);
+
+if (!config.usingSEO) {
+  useAltPaths(altPaths, pages);
+  useAltPaths(altPaths, externalPages);
+}
 
 const insert = JSON.parse(
     readFileSync(new URL('./data.json', import.meta.url))
@@ -119,9 +181,11 @@ const cookingInserts = insert.content,
   };
 
 export default {
+  config,
   pages,
   externalPages,
-  altPaths,
+  flatAltPaths,
+  getAltPrefix,
   text404,
   cookingInserts,
   vegetables,

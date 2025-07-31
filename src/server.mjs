@@ -11,21 +11,19 @@ import fastifyHelmet from '@fastify/helmet';
 import fastifyStatic from '@fastify/static';
 import pageRoutes from './routes.mjs';
 import {
-  config,
-  paintSource,
   randomizeGlobal,
   preloaded404,
   tryReadFile,
 } from './randomization.mjs';
-import loadTemplates from './templates.mjs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { existsSync, unlinkSync } from 'node:fs';
 import ecosystem from '../ecosystem.config.js';
 
 const ecosystemConfig = Object.freeze(
-    ecosystem.apps.find((app) => app.name === 'HolyUB') || ecosystem.apps[0]
-  ),
-  { pages, externalPages, cacheBustList } = pageRoutes;
+  ecosystem.apps.find((app) => app.name === 'HolyUB') || ecosystem.apps[0]
+);
+const { config, pages, externalPages, getAltPrefix, cacheBustList } =
+  pageRoutes;
 
 /* Record the server's location as a URL object, including its host and port.
  * The host can be modified at /src/config.json, whereas the ports can be modified
@@ -95,7 +93,8 @@ const serverFactory = (handler) => {
     })
     .on('upgrade', (req, socket, head) => {
       if (shouldRouteRh(req)) routeRhUpgrade(req, socket, head);
-      else if (req.url.endsWith('/wisp/')) wisp.routeRequest(req, socket, head);
+      else if (req.url.endsWith(getAltPrefix('wisp')))
+        wisp.routeRequest(req, socket, head);
     });
 };
 
@@ -115,19 +114,19 @@ app.register(fastifyHelmet, {
 
 // Assign server file paths to different paths, for serving content on the website.
 app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/pages', import.meta.url)),
+  root: fileURLToPath(new URL('../views/dist/pages', import.meta.url)),
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/assets', import.meta.url)),
-  prefix: '/assets/',
+  root: fileURLToPath(new URL('../views/dist/assets', import.meta.url)),
+  prefix: getAltPrefix('assets'),
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
   root: fileURLToPath(new URL('../views/archive', import.meta.url)),
-  prefix: '/archive/',
+  prefix: getAltPrefix('archive'),
   decorateReply: false,
 });
 
@@ -135,7 +134,7 @@ app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL('../views/archive/gfiles/rarch', import.meta.url)
   ),
-  prefix: '/serving/',
+  prefix: getAltPrefix('serving'),
   decorateReply: false,
 });
 
@@ -143,7 +142,7 @@ app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL('../views/archive/gfiles/rarch/cores', import.meta.url)
   ),
-  prefix: '/cores/',
+  prefix: getAltPrefix('cores'),
   decorateReply: false,
 });
 
@@ -151,7 +150,7 @@ app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL('../views/archive/gfiles/rarch/info', import.meta.url)
   ),
-  prefix: '/info/',
+  prefix: getAltPrefix('info'),
   decorateReply: false,
 });
 
@@ -159,7 +158,7 @@ app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL('../views/archive/gfiles/rarch/cores', import.meta.url)
   ),
-  prefix: '/uauth/',
+  prefix: getAltPrefix('uauth'),
   decorateReply: false,
 });
 
@@ -168,7 +167,7 @@ app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL('../views/archive/gfiles/rarch/roms', import.meta.url)
   ),
-  prefix: '/roms/',
+  prefix: getAltPrefix('roms'),
   decorateReply: false,
 });
 
@@ -176,11 +175,13 @@ app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL(
       // Use the pre-compiled, minified scripts instead, if enabled in config.
-      config.minifyScripts ? '../views/dist/assets/js' : '../views/assets/js',
+      config.minifyScripts
+        ? '../views/min-dist/assets/js'
+        : '../views/dist/assets/js',
       import.meta.url
     )
   ),
-  prefix: '/assets/js/',
+  prefix: getAltPrefix('assets/js'),
   decorateReply: false,
 });
 
@@ -188,11 +189,13 @@ app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL(
       // Use the pre-compiled, minified stylesheets instead, if enabled in config.
-      config.minifyScripts ? '../views/dist/assets/css' : '../views/assets/css',
+      config.minifyScripts
+        ? '../views/min-dist/assets/css'
+        : '../views/dist/assets/css',
       import.meta.url
     )
   ),
-  prefix: '/assets/css/',
+  prefix: getAltPrefix('assets/css'),
   decorateReply: false,
 });
 
@@ -203,13 +206,13 @@ app.register(fastifyStatic, {
     fileURLToPath(
       new URL(
         // Use the pre-compiled, minified scripts instead, if enabled in config.
-        config.minifyScripts ? '../views/dist/uv' : '../views/uv',
+        config.minifyScripts ? '../views/min-dist/uv' : '../views/dist/uv',
         import.meta.url
       )
     ),
     uvPath,
   ],
-  prefix: '/uv/',
+  prefix: getAltPrefix('uv'),
   decorateReply: false,
 });
 
@@ -217,36 +220,36 @@ app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL(
       // Use the pre-compiled, minified scripts instead, if enabled in config.
-      config.minifyScripts ? '../views/dist/scram' : '../views/scram',
+      config.minifyScripts ? '../views/min-dist/scram' : '../views/dist/scram',
       import.meta.url
     )
   ),
-  prefix: '/scram/',
+  prefix: getAltPrefix('scram'),
   decorateReply: false,
 });
 
 // Register proxy paths to the website.
 app.register(fastifyStatic, {
   root: epoxyPath,
-  prefix: '/epoxy/',
+  prefix: getAltPrefix('epoxy'),
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
   root: libcurlPath,
-  prefix: '/libcurl/',
+  prefix: getAltPrefix('libcurl'),
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
   root: bareModulePath,
-  prefix: '/bareasmodule/',
+  prefix: getAltPrefix('bareasmodule'),
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
   root: baremuxPath,
-  prefix: '/baremux/',
+  prefix: getAltPrefix('baremux'),
   decorateReply: false,
 });
 
@@ -300,12 +303,8 @@ app.get('/:path', (req, reply) => {
 
   reply.type(type);
   if (type === supportedTypes.default)
-    reply.send(
-      paintSource(
-        loadTemplates(tryReadFile('../views/' + fileName, import.meta.url))
-      )
-    );
-  else reply.send(tryReadFile('../views/' + fileName, import.meta.url));
+    reply.send(tryReadFile('../views/dist/' + fileName, import.meta.url));
+  else reply.send(tryReadFile('../views/dist/' + fileName, import.meta.url));
 });
 
 app.get('/github/:redirect', (req, reply) => {
@@ -314,21 +313,24 @@ app.get('/github/:redirect', (req, reply) => {
   else reply.code(404).type('text/html').send(preloaded404);
 });
 
-app.get('/assets/js/' + cacheBustList['common.js'], (req, reply) => {
-  reply
-    .type('text/javascript')
-    .send(
-      randomizeGlobal(
-        '../views' + (config.minifyScripts ? '/dist' : '') + req.url
-      )
-    );
-});
+app.get(
+  getAltPrefix('assets/js') + cacheBustList['common.js'],
+  (req, reply) => {
+    reply
+      .type('text/javascript')
+      .send(
+        randomizeGlobal(
+          '../views' + (config.minifyScripts ? '/min-dist' : '/dist') + req.url
+        )
+      );
+  }
+);
 
-app.get('/uv/:file.js', (req, reply) => {
+app.get(getAltPrefix('uv') + ':file.js', (req, reply) => {
   const destination = existsSync(
-    fileURLToPath(new URL('../views' + req.url, import.meta.url))
+    fileURLToPath(new URL('../views/dist' + req.url, import.meta.url))
   )
-    ? '../views' + (config.minifyScripts ? '/dist' : '') + req.url
+    ? '../views' + (config.minifyScripts ? '/min-dist' : '/dist') + req.url
     : pathToFileURL(uvPath) + `/${req.params.file}.js`;
   reply
     .type('text/javascript')
@@ -336,7 +338,7 @@ app.get('/uv/:file.js', (req, reply) => {
       randomizeGlobal(destination).replace(
         /(["'`])\{\{ultraviolet-error\}\}\1/g,
         JSON.stringify(
-          tryReadFile('../views/' + pages['uverror'], import.meta.url)
+          tryReadFile('../views/dist/' + pages['uverror'], import.meta.url)
         )
       )
     );
