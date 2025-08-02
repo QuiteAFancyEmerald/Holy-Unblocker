@@ -1,6 +1,4 @@
 (() => {
-  const { ScramjetController } = $scramjetLoadController();
-  
   const stockSW = '/uv/sw.js',
     blacklistSW = '/uv/sw-blacklist.js',
     swAllowedHostnames = ['localhost', '127.0.0.1'],
@@ -31,16 +29,6 @@
   transports.default = transports[defaultMode];
 
   Object.freeze(transports);
-
-  const waitForScramjetController = () =>
-    new Promise((resolve) => {
-      const interval = setInterval(() => {
-        if (typeof ScramjetController !== 'undefined') {
-          clearInterval(interval);
-          resolve();
-        }
-      }, 50);
-    });
 
   const registerSW = async () => {
     if (!navigator.serviceWorker) {
@@ -87,7 +75,7 @@
 
   const initializeScramjet = async () => {
     try {
-      await waitForScramjetController();
+      const { ScramjetController } = await $scramjetLoadController();
 
       const scramjet = new ScramjetController({
         prefix: '/scram/network/',
