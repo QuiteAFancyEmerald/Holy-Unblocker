@@ -1,4 +1,6 @@
 (() => {
+  const { ScramjetController } = $scramjetLoadController();
+  
   const stockSW = '/uv/sw.js',
     blacklistSW = '/uv/sw-blacklist.js',
     swAllowedHostnames = ['localhost', '127.0.0.1'],
@@ -51,14 +53,6 @@
       throw new Error("Your browser doesn't support service workers.");
     }
 
-    // Fix for Firefox
-    if (navigator.userAgent.includes('Firefox')) {
-      Object.defineProperty(globalThis, 'crossOriginIsolated', {
-        value: true,
-        writable: false,
-      });
-    }
-
     // Set the transport mode
     const transportMode =
       transports[readStorage('Transport')] || transports.default;
@@ -99,9 +93,7 @@
         prefix: '/scram/network/',
         files: {
           wasm: '/scram/scramjet.wasm.wasm',
-          worker: '/scram/scramjet.worker.js',
-          client: '/scram/scramjet.client.js',
-          shared: '/scram/scramjet.shared.js',
+          all: '/scram/scramjet.all.js',
           sync: '/scram/scramjet.sync.js',
         },
         flags: {
