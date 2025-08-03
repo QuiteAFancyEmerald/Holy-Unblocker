@@ -70,7 +70,7 @@ const searchEngines = Object.freeze({
     DuckDuckGo: 'duckduckgo.com/?q=',
     Brave: 'search.brave.com/search?q=',
   }),
-  defaultSearch = 'Startpage';
+  defaultSearch = 'Brave';
 
 // Default search engine is set to Google. Intended to work just like the usual
 // bar at the top of a browser.

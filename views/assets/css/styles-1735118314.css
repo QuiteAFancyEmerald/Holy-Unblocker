@@ -1188,6 +1188,152 @@ input[type='text'] {
 }
 
 /* -----------------------------------------------
+/* Proxy Frame Page */
+/* ----------------------------------------------- */
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1d232a;
+  background-image: radial-gradient(circle, rgba(131, 131, 131, 0.02) 1px, transparent 1px), radial-gradient(circle, rgba(148, 148, 148, 0.02) 1px, transparent 1px);
+  background-position: 0 0, 5px 5px;
+  background-size: 10px 10px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-w {
+  width: 80px;
+  aspect-ratio: 1;
+  box-shadow: 0 0 0 3px #fff inset;
+  border-radius: 50%;
+  position: relative;
+  animation: l11 7s infinite;
+}
+
+.loader-w:before,
+.loader-w:after {
+  content: "";
+  position: absolute;
+  top: calc(100% + 3px);
+  left: calc(50% - 20px);
+  box-shadow: inherit;
+  width: 40px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform-origin: 50% -45px;
+  animation: l11 1.5s infinite;
+}
+
+.loader-w:after {
+  animation-delay: -0.75s;
+}
+
+@keyframes l11 {
+  100% {
+    transform: rotate(360deg);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.omnibar>.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+
+.omnibar {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  width: 40vw;
+  background-color: #1d232a;
+  background-image: radial-gradient(circle, rgba(131, 131, 131, 0.02) 1px, transparent 1px), radial-gradient(circle, rgba(148, 148, 148, 0.02) 1px, transparent 1px);
+  background-position: 0 0, 5px 5px;
+  background-size: 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  z-index: 2;
+  border: 1px solid #ff919369;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transform: translateX(-50%);
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+@media (max-width: 800px) {
+  .omnibar {
+    display: none;
+  }
+}
+
+.omnibar input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--nord1);
+  background: var(--nord0);
+  color: var(--nord4);
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1rem;
+}
+
+.omnibar input[type='text'] {
+  max-width: 700px;
+  width: calc(100% - 44px);
+}
+
+.omnibar input[type='text']:focus {
+  outline: none;
+  animation: glowshadow 2s linear infinite;
+}
+
+.omnibar button {
+  background: none;
+  border: none;
+  color: var(--nord4);
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.omnibar button:hover {
+  background: var(--nord0m3);
+}
+
+.omnibar-hidden {
+  transform: translate(-50%, -100%);
+}
+
+.omnibar-s {
+  position: fixed;
+  left: 50%;
+  transform: translateX(240px); 
+  z-index: 3;
+  background: var(--nord0);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid #ff919369;
+  padding: 6px 18px;
+  color: var(--nord4);
+  transition: top 0.3s, left 0.3s, transform 0.3s;
+}
+
+.omnibar-s:hover {
+  background: var(--nord0m3);
+}
+
+/* -----------------------------------------------
 /* Cards, Buttons and Forms
 /* ----------------------------------------------- */
 

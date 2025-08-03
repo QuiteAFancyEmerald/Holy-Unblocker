@@ -142,7 +142,7 @@ const storageId = 'hu-lts-storage',
   defaultMode = /(?:Chrome|AppleWebKit)\//.test(navigator.userAgent)
     ? 'epoxy'
     : 'libcurl',
-  defaultSearch = 'Startpage';
+  defaultSearch = 'Brave';
 
 // All code in this block is used by menu items that adjust website settings.
 

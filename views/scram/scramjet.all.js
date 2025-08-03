@@ -69,7 +69,7 @@
                         color: #ff5861;
                         font-size: 64px;
                         font-weight: 900;
-                        margin-top: 0.8%;
+                        margin-top: 6%;
                     }
 
                     code, i {
@@ -178,6 +178,98 @@
                     #errorTrace-wrapper:hover #copy-button {
                         opacity: 1;
                     }
+
+                    #troubleshooting, .text-wrap {
+                        text-align: left;
+                        width: 100%;
+                        max-width: 100vw;
+                    }
+                    #troubleshooting ul {
+                        margin-left: 1.2em;
+                        padding-left: 0.8em;
+                        list-style-position: outside;
+                    }
+                    #troubleshooting li {
+                        text-align: left;
+                        margin-bottom: 0.5em;
+                    }
+
+                    @media (max-width: 900px) {
+                        h1 {
+                            font-size: 40px;
+                            margin-top: 10%;
+                        }
+                        code, i {
+                            font-size: 18px;
+                        }
+                        .uv-small {
+                            font-size: 16px;
+                        }
+                        button {
+                            padding: 10px 30px;
+                            font-size: 1em;
+                        }
+                        textarea {
+                            width: 90vw;
+                            padding: 15px;
+                            font-size: 1em;
+                        }
+                        #info {
+                            flex-direction: column;
+                            align-items: stretch;
+                        }
+                        .container, .text-wrap {
+                            width: 100%;
+                            max-width: 100vw;
+                        }
+                    }
+                    @media (max-width: 600px) {
+                        h1 {
+                            font-size: 28px;
+                        }
+                        code, i {
+                            font-size: 14px;
+                        }
+                        .uv-small {
+                            font-size: 12px;
+                        }
+                        button {
+                            padding: 8px 18px;
+                            font-size: 0.95em;
+                        }
+                        textarea {
+                            width: 98vw;
+                            padding: 10px;
+                            font-size: 0.95em;
+                        }
+                        #info {
+                            gap: 0.5em;
+                        }
+                        .container, .text-wrap {
+                            width: 100%;
+                            max-width: 100vw;
+                        }
+                        .footer-spacing {
+                            font-size: 0.9em;
+                        }
+                    }
+                    @media (max-width: 400px) {
+                        h1 {
+                            font-size: 18px;
+                        }
+                        button {
+                            padding: 6px 10px;
+                            font-size: 0.85em;
+                        }
+                        textarea {
+                            width: 96vw;
+                            padding: 6px;
+                            font-size: 0.85em;
+                        }
+                        .footer-spacing {
+                            font-size: 0.8em;
+                        }
+                    }
                     </style>
                 </head>
                 <body>
@@ -185,9 +277,10 @@
                     <div id="inner" class="container-fluid text-center">
                         <h1 id="errorTitle">Netwo<wbr>rk Er<wbr>ror</h1>
                         <code>Fa<wbr>iled to l<wbr>oad: <b id="fetchedURL"></b></code>
+                        <h2>Reloading the page will fix your problem.</h2>
                         <br>
                         <!-- <p id="errorMessage">Internal Server Error</p> -->
-                        <button id="reload">Ref<wbr>resh</button>
+                        <button id="reload">Ref<wbr>resh Page</button>
                         <br />
                         <div id="info">
                             <div id="errorTrace-wrapper" class="container">
@@ -197,19 +290,19 @@
                             <div id="troubleshooting" class="container text-wrap">
                                 <p>Try:</p>
                                 <ul>
-                                    <li>Checking your internet connection</li>
-                                    <li>In the ca<wbr>se of an I<wbr>DBData<wbr>base er<wbr>ror plea<wbr>se cle<wbr>ar your site data by click<wbr>ing on the lo<wbr>ck ic<wbr>on i<wbr>n the ad<wbr>dres<wbr>s bar an<wbr>d selec<wbr>ting "Si<wbr>te set<wbr>tings" or "Si<wbr>te d<wbr>ata" and th<wbr>en cl<wbr>ick<wbr>ing "Cl<wbr>ear sit<wbr>e d<wbr>ata"</li>
-                                    <li>Verifying you entered the correct address</li>
+                                    <li>Re<wbr>lo<wbr>ading th<wbr>e pa<wbr>ge; th<wbr>is is a kn<wbr>own is<wbr>sue with o<wbr>ur pro<wbr>xies</li>
+                                    <li>In the ca<wbr>se of an I<wbr>DB Data<wbr>base er<wbr>ror plea<wbr>se cle<wbr>ar your site data by click<wbr>ing on the lo<wbr>ck ic<wbr>on i<wbr>n the ad<wbr>dres<wbr>s bar an<wbr>d selec<wbr>ting "Si<wbr>te set<wbr>tings" or "Si<wbr>te d<wbr>ata" and th<wbr>en cl<wbr>ick<wbr>ing "Cl<wbr>ear sit<wbr>e d<wbr>ata"</li>
                                     <li>Clear<wbr>ing your bro<wbr>wser or site cache data via Ctr<wbr>l+Sh<wbr>ift+<wbr>R and b<wbr>rowser setti<wbr>ngs</li>
+                                    <li>Verifying you entered the correct address</li>
                                     <li>In t<wbr>he case of web<wbr>site ma<wbr />inte<wbr>nan<wbr />ce or updates, please wait for the issue to be resol<wbr>ved.</li>
                                     <li>Verif<wbr>ying you ente<wbr>red the cor<wbr>rect add<wbr>ress</li>
-                                    <li>Verify the server isn't censored</li>
-                                    <li>If the iss<wbr>ue per<wbr>sists be su<wbr>re to m<wbr>ention t<wbr>his in the Ti<wbr />ta<wbr />nium Net<wbr />work D<wbr>is<wbr />cor<wbr />d.</li>
+                                    <li>Ver<wbr>ify t<wbr>he serv<wbr>er is<wbr>n't censor<wbr>ed</li>
                                     <li>View the F<wbr />AQ page for specific si<wbr>te compa<wbr>tibility issues.</li>
+                                                                        <li>If the iss<wbr>ue per<wbr>sists be su<wbr>re to m<wbr>ention t<wbr>his in the Ti<wbr />ta<wbr />nium Net<wbr />work D<wbr>is<wbr />cor<wbr />d.</li>
                                 </ul>
                             </div>
                         </div>
-                        <code><i>Ref<wbr>res<wbr>h the net<wbr>work serv<wbr>ice | Scramjet v<span id="version"></span> (build <span id="build"></span>).</i></code>
+                        <code><i>Ref<wbr>res<wbr>h the net<wbr>work serv<wbr>ice | Scramjet v1.0.2 - build 21a1c47.</i></code>
                         <p class="footer-spacing">
                             <i>Ho<wbr>ly Unbloc<wbr>ke<wbr>r LT<wbr>S © 20<wbr>2<wbr>0-202<wbr>5 | Ma<wbr>de Wit<wbr>h Lov<wbr>e </i><i class="nf nf-fa-heart"></i>
                         </p>
