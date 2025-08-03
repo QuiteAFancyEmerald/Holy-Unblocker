@@ -35,7 +35,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://unpkg.com" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/{{styles.css}}" />
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/backdrop.css">
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css">
@@ -49,33 +49,39 @@
       <div class="box-main-container">
         <div class="box-text-container">
           <p class="box-badge">
-            <span class="box-default-badge">New</span>Holy Unblocker LTS now
-            features adblock support!
+            <span class="box-default-badge">New</span>{{autoMask}}{{Holy Unblocker LTS now
+            features adblock support!}}
           </p>
           <h1>
+            {{autoMask}}{{
             Holy Unblocker LTS sets the standard for fast, secure, and highly
             advanced web proxy services.
+            }}
           </h1>
           <h2 class="box-description">
+            {{autoMask}}{{
             Experience rapid and reliable proxy performance with Holy Unblocker
             LTS. Our robust feature set includes CAPTCHA integration,
             customizable blacklist settings, leak prevention mechanisms, and
             advanced security measures.
+            }}
           </h2>
           <h2 class="box-description">
+            {{autoMask}}{{
             Select a proxy service below to get started!
+            }}
           </h2>
           <div class="box-button-container">
-            <a id="sjtooltip" href="/{{scramjet}}" class="box-button">Scramjet (LATEST)</a>
-            <a id="uvtooltip" href="/{{ultraviolet}}" class="box-button">Ultraviolet</a>
-            <a id="rhtooltip" href="/{{rammerhead}}" class="box-button">Rammerhead</a>
+            <a id="sjtooltip" href="/{{scramjet}}" class="box-button">{{autoMask}}{{Scramjet (LATEST)}}</a>
+            <a id="uvtooltip" href="/{{ultraviolet}}" class="box-button">{{autoMask}}{{Ultraviolet}}</a>
+            <a id="rhtooltip" href="/{{rammerhead}}" class="box-button">{{autoMask}}{{Rammerhead}}</a>
             <script src="https://unpkg.com/@popperjs/core@2"></script>
             <script src="https://unpkg.com/tippy.js@6"></script>
             <script>
               const tooltipContent = {
-                sjtooltip: 'Scramjet [Recommended]: Fast, secure, and frequently updated.',
-                uvtooltip: 'Ultraviolet [Fallback]: Popular, but use as fallback for CAPTCHA support.',
-                rhtooltip: 'Rammerhead [Optional]: Not secure and has many leaks. Use as alternative fallback.',
+                sjtooltip: '{{autoMask}}{{Scramjet [Recommended]: Fast, secure, and frequently updated.}}',
+                uvtooltip: '{{autoMask}}{{Ultraviolet [Fallback]: Popular, but use as fallback for CAPTCHA support.}}',
+                rhtooltip: '{{autoMask}}{{Rammerhead [Optional]: Not secure and has many leaks. Use as alternative fallback.}}',
               };
 
               tippy.setDefaultProps({delay: 50, animateFill: true, placement: 'bottom'});
@@ -90,14 +96,14 @@
           <img
             class="box-pr-logo"
             src="/assets/img/browsing_splash.webp"
-            alt="Holy Unblocker Browsing Splash"
+            alt="{{maskTerm}}{{Holy Unblocker}} Browsing Splash"
           />
         </div>
       </div>
     </div>
     <div id="footer" class="fullwidth"><!--FOOTER--></div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <script src="assets/js/common.js"></script>
+    <script src="assets/js/{{common.js}}"></script>
     <script src="assets/js/csel.js"></script>
     <script defer="defer" src="assets/js/particlesjs/particles.js"></script>
   </body>

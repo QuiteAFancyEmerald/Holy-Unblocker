@@ -9,7 +9,6 @@ let pages = {
   /* If you are trying to add pages or assets in the root folder and
    * NOT entire folders, check the routes below and add it manually.
    * If you change route names here, also check the altPaths variable below.
-   * Also, please don't use RegEx symbols in the names.
    */
   index: 'index.html',
   'manifest.json': 'manifest.json',
@@ -100,7 +99,7 @@ let altPaths = {
   'rammerhead-discord': 'rdis',
   /* Image Paths */
   'uv.webp': 'nt.webp',
-  'sj.webp': 'wr.webp',
+  'scramjet.webp': 'wr.webp',
   'rammerhead.webp': 'physics.webp',
   /* Prefixes */
   prefixes: {
@@ -145,19 +144,15 @@ const getAltPrefix = (prefix) =>
     for (let [key, value] of Object.entries(pathObject)) {
       if ('object' === typeof value)
         inserts = inserts.concat(getPathEntries(value, key));
-      else inserts.push([prefix + key, prefix.replace(/^prefixes\//, '') + value]);
+      else
+        inserts.push([prefix + key, prefix.replace(/^prefixes\//, '') + value]);
     }
     return inserts;
   },
   normalizePaths = (pathObject) =>
     Object.fromEntries(getPathEntries(pathObject));
 
-const flatAltPaths = normalizePaths(altPaths);
-
-if (!config.usingSEO) {
-  useAltPaths(altPaths, pages);
-  useAltPaths(altPaths, externalPages);
-}
+const flatAltPaths = Object.freeze(normalizePaths(altPaths));
 
 const insert = JSON.parse(
     readFileSync(new URL('./data.json', import.meta.url))
@@ -165,7 +160,18 @@ const insert = JSON.parse(
   text404 = readFileSync(
     new URL('../views/' + pages['test-404'], import.meta.url),
     'utf8'
+  ),
+  uvError = JSON.stringify(
+    readFileSync(
+      new URL('../views/' + pages['uverror'], import.meta.url),
+      'utf8'
+    )
   );
+
+if (!config.usingSEO) {
+  useAltPaths(altPaths, pages);
+  useAltPaths(altPaths, externalPages);
+}
 
 const cookingInserts = insert.content,
   vegetables = insert.keywords,
@@ -186,6 +192,7 @@ export default {
   flatAltPaths,
   getAltPrefix,
   text404,
+  uvError,
   cookingInserts,
   vegetables,
   charRandom,

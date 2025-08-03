@@ -36,7 +36,7 @@ const cspHeaders = [
 const emptyMethods = ['GET', 'HEAD'];
 
 class UVServiceWorker extends Ultraviolet.EventEmitter {
-	constructor(config = self['{{__uv$config}}']) {
+	constructor(config = self[{{__uv$config}}]) {
 		super();
 		if (!config.prefix) config.prefix = '/service/';
 		this.config = config;

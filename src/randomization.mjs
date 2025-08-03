@@ -1,6 +1,6 @@
 import pkg from './routes.mjs';
 import { existsSync, readFileSync } from 'node:fs';
-export { paintSource, randomizeGlobal, preloaded404, tryReadFile };
+export { paintSource, preloaded404, tryReadFile };
 const {
   config,
   flatAltPaths,
@@ -13,19 +13,22 @@ const {
   cacheBustList,
   VersionValue,
   text404,
+  uvError,
 } = pkg;
 
 /* Below are lots of function definitions used to obfuscate the website.
  * This makes the website harder to properly categorize, as its source code
- * changes with each time it is loaded.
+ * changes with each time it is compiled using npm run build.
  *
  * For customizing source code transformation and more, see the config.json file.
+ * For automatically recompiling in production mode, see ecosystem.config.js.
  */
-const applyInsert = (str, insertFunction, numArgs = 0) => {
+const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
+  applyInsert = (str, insertFunction, numArgs = 0) => {
     const mode = 'function' === typeof insertFunction,
       keyword = mode ? insertFunction.name : insertFunction,
       replaceParams1 = new RegExp(
-        (numArgs > 0 ? `[^\\S\\n]*{{${keyword}}}\\s*` : `{{${keyword}}}`) +
+        `[^\\S\\n]*{{${keyword}}}\\s*` +
           '\\s*{{\\s*\\n((?:(?!}})[^])*\\n)\\s*}}\\s*?\\n?'.repeat(numArgs),
         'g'
       ),
@@ -33,29 +36,31 @@ const applyInsert = (str, insertFunction, numArgs = 0) => {
         `{{${keyword}}}` + '{{([^]*?)}}'.repeat(numArgs),
         'g'
       ),
-      replaceFunc = (text, ...captures) =>
-        mode
-          ? insertFunction(...captures.splice(0, numArgs))
-          : flatAltPaths[keyword] || text;
-    return str
-      .replace(replaceParams1, replaceFunc)
-      .replace(replaceParams2, replaceFunc);
+      replaceFunc = mode
+        ? (text, ...captures) => insertFunction(...captures.splice(0, numArgs))
+        : (text) => flatAltPaths[keyword] || text;
+    return numArgs > 0
+      ? str
+          .replace(replaceParams1, replaceFunc)
+          .replace(replaceParams2, replaceFunc)
+      : str.replace(replaceParams2, replaceFunc);
   },
-  applyMassInsert = (str, flatPathObject) => {
+  applyMassInsert = (str, flatPathObject, shouldIgnore = false) => {
     const replaceParams = new RegExp(
-      `{{(${Object.keys(flatPathObject).join('|')})}}`,
-      'g'
-    );
-    return str.replace(replaceParams, (text, capture) =>
-      config.usingSEO ? capture : flatPathObject[capture] || text
-    );
+        `{{(${Object.keys(flatPathObject).join('|').replace(regExpEscape, '\\$&')})}}`,
+        'g'
+      ),
+      replaceFunc = shouldIgnore
+        ? (text, capture) => capture
+        : (text, capture) => flatPathObject[capture] || text;
+    return str.replace(replaceParams, replaceFunc);
   },
   ifSEO = (text) => (config.usingSEO ? text : ''),
   randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
   charset = /&#173;|&#8203;|&shy;|<wbr>/gi,
   getRandomChar = randomListItem(charRandom),
   subtermsByCaps = /[A-Z]?[^A-Z]+|[A-Z]/g,
-  subtermsByVowels = /(?=[AEIOUYaeiouy])/g,
+  subtermsByVowels = /(?<=[AEIOUYaeiouy])/g,
   termsBySpaces = /\S+/g,
   containsMask = /&#\d+;|&[A-z]+;/,
   // Text masks, found in src/data.json, are meant to be variations of the
@@ -110,48 +115,43 @@ const applyInsert = (str, insertFunction, numArgs = 0) => {
         yummyOneBytes += String.fromCodePoint(i);
     return yummyOneBytes;
   })(),
-  randomValue = crypto
-    .randomUUID()
-    .split('-')
-    .map((gibberish) => {
-      let randomNumber = parseInt(gibberish, 16),
-        output = '';
-      while (randomNumber >= encodingTable.length) {
-        output +=
-          encodingTable[Math.floor(randomNumber) % encodingTable.length];
-        randomNumber = randomNumber / encodingTable.length;
-      }
-      return output + Math.floor(randomNumber);
-    })
-    .join(''),
-  randomizeGlobal = config.randomizeIdentifiers
-    ? (file) =>
-        tryReadFile(file, import.meta.url).replace(
-          /(["'`])\{\{__uv\$config\}\}\1/g,
-          JSON.stringify(randomValue)
-        )
-    : (file) =>
-        tryReadFile(file, import.meta.url).replace(
-          /(["'`])\{\{__uv\$config\}\}\1/g,
-          JSON.stringify('__uv$config')
-        ),
-  // This one isn't for obfuscation; it's just for dealing with cache issues.
-  cacheBusting = (str) => {
-    for (let item of Object.entries(cacheBustList))
-      str = str.replaceAll(item[0], item[1]);
-    return str;
-  },
+  createRandomID = () =>
+    crypto
+      .randomUUID()
+      .split('-')
+      .map((gibberish) => {
+        let randomNumber = parseInt(gibberish, 16),
+          output = '';
+        while (randomNumber >= encodingTable.length) {
+          output +=
+            encodingTable[Math.floor(randomNumber) % encodingTable.length];
+          randomNumber = randomNumber / encodingTable.length;
+        }
+        return output + Math.floor(randomNumber);
+      })
+      .join(''),
   orderedTransforms = [
     [ifSEO, 1],
     [maskTerm, 1],
     [autoMask, 1],
   ],
+  namedEntries = Object.freeze({
+    'ultraviolet-error': uvError,
+    __uv$config: JSON.stringify(
+      config.randomizeIdentifiers ? createRandomID() : '__uv$config'
+    ),
+    // This is purely for dealing with cached file loading issues.
+    ...cacheBustList,
+  }),
   // Apply the final obfuscation changes to an entire file.
   paintSource = (str) => {
     let paintedSource = insertCharset(
-      hutaoInsert(versionInsert(insertCooking(cacheBusting(str))))
+      hutaoInsert(versionInsert(insertCooking(str)))
     );
-    paintedSource = applyMassInsert(paintedSource, flatAltPaths);
+    paintedSource = applyMassInsert(
+      applyMassInsert(paintedSource, flatAltPaths, config.usingSEO),
+      namedEntries
+    );
     for (let i = 0, total = orderedTransforms.length; i < total; i++)
       paintedSource = applyInsert(paintedSource, ...orderedTransforms[i]);
     return paintedSource;

@@ -10,11 +10,7 @@ import { uvPath } from '@titaniumnetwork-dev/ultraviolet';
 import fastifyHelmet from '@fastify/helmet';
 import fastifyStatic from '@fastify/static';
 import pageRoutes from './routes.mjs';
-import {
-  randomizeGlobal,
-  preloaded404,
-  tryReadFile,
-} from './randomization.mjs';
+import { preloaded404, tryReadFile } from './randomization.mjs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { existsSync, unlinkSync } from 'node:fs';
 import ecosystem from '../ecosystem.config.js';
@@ -172,29 +168,13 @@ app.register(fastifyStatic, {
 });
 
 app.register(fastifyStatic, {
-  root: fileURLToPath(
-    new URL(
-      // Use the pre-compiled, minified scripts instead, if enabled in config.
-      config.minifyScripts
-        ? '../views/min-dist/assets/js'
-        : '../views/dist/assets/js',
-      import.meta.url
-    )
-  ),
+  root: fileURLToPath(new URL('../views/dist/assets/js', import.meta.url)),
   prefix: getAltPrefix('assets/js'),
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
-  root: fileURLToPath(
-    new URL(
-      // Use the pre-compiled, minified stylesheets instead, if enabled in config.
-      config.minifyScripts
-        ? '../views/min-dist/assets/css'
-        : '../views/dist/assets/css',
-      import.meta.url
-    )
-  ),
+  root: fileURLToPath(new URL('../views/dist/assets/css', import.meta.url)),
   prefix: getAltPrefix('assets/css'),
   decorateReply: false,
 });
@@ -202,28 +182,13 @@ app.register(fastifyStatic, {
 // This combines scripts from the official UV repository with local UV scripts into
 // one directory path. Local versions of files override the official versions.
 app.register(fastifyStatic, {
-  root: [
-    fileURLToPath(
-      new URL(
-        // Use the pre-compiled, minified scripts instead, if enabled in config.
-        config.minifyScripts ? '../views/min-dist/uv' : '../views/dist/uv',
-        import.meta.url
-      )
-    ),
-    uvPath,
-  ],
+  root: [fileURLToPath(new URL('../views/dist/uv', import.meta.url)), uvPath],
   prefix: getAltPrefix('uv'),
   decorateReply: false,
 });
 
 app.register(fastifyStatic, {
-  root: fileURLToPath(
-    new URL(
-      // Use the pre-compiled, minified scripts instead, if enabled in config.
-      config.minifyScripts ? '../views/min-dist/scram' : '../views/dist/scram',
-      import.meta.url
-    )
-  ),
+  root: fileURLToPath(new URL('../views/dist/scram', import.meta.url)),
   prefix: getAltPrefix('scram'),
   decorateReply: false,
 });
@@ -302,9 +267,7 @@ app.get('/:path', (req, reply) => {
       supportedTypes.default;
 
   reply.type(type);
-  if (type === supportedTypes.default)
-    reply.send(tryReadFile('../views/dist/' + fileName, import.meta.url));
-  else reply.send(tryReadFile('../views/dist/' + fileName, import.meta.url));
+  reply.send(tryReadFile('../views/dist/' + fileName, import.meta.url));
 });
 
 app.get('/github/:redirect', (req, reply) => {
@@ -313,35 +276,13 @@ app.get('/github/:redirect', (req, reply) => {
   else reply.code(404).type('text/html').send(preloaded404);
 });
 
-app.get(
-  getAltPrefix('assets/js') + cacheBustList['common.js'],
-  (req, reply) => {
-    reply
-      .type('text/javascript')
-      .send(
-        randomizeGlobal(
-          '../views' + (config.minifyScripts ? '/min-dist' : '/dist') + req.url
-        )
-      );
-  }
-);
-
 app.get(getAltPrefix('uv') + ':file.js', (req, reply) => {
   const destination = existsSync(
     fileURLToPath(new URL('../views/dist' + req.url, import.meta.url))
   )
-    ? '../views' + (config.minifyScripts ? '/min-dist' : '/dist') + req.url
+    ? '../views/dist' + req.url
     : pathToFileURL(uvPath) + `/${req.params.file}.js`;
-  reply
-    .type('text/javascript')
-    .send(
-      randomizeGlobal(destination).replace(
-        /(["'`])\{\{ultraviolet-error\}\}\1/g,
-        JSON.stringify(
-          tryReadFile('../views/dist/' + pages['uverror'], import.meta.url)
-        )
-      )
-    );
+  reply.type('text/javascript').send(tryReadFile(destination, import.meta.url));
 });
 
 // Set an error page for invalid paths outside the query string system.

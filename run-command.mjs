@@ -12,8 +12,11 @@ import { exec, fork } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
 import ecosystem from './ecosystem.config.js';
+import routes from './src/routes.mjs';
 import { paintSource, tryReadFile } from './src/randomization.mjs';
 import loadTemplates from './src/templates.mjs';
+
+const { flatAltPaths } = routes;
 
 // Some necessary constants are copied over from /src/server.mjs.
 
@@ -128,13 +131,10 @@ commands: for (let i = 2; i < process.argv.length; i++)
 
     case 'build': {
       const dist = fileURLToPath(new URL('./views/dist', import.meta.url));
-      const min = fileURLToPath(new URL('./views/min-dist', import.meta.url));
       rmSync(dist, { force: true, recursive: true });
-      rmSync(min, { force: true, recursive: true });
       mkdirSync(dist);
-      mkdirSync(min);
 
-      const ignoredDirectories = ['dist', 'min-dist', 'archive'];
+      const ignoredDirectories = ['dist', 'archive'];
 
       const compile = (dir, base = dir, initial = false) =>
         readdirSync(base + dir).forEach((file) => {
@@ -145,12 +145,14 @@ commands: for (let i = 2; i < process.argv.length; i++)
           if (ignoredDirectories.includes(file)) return;
           const targetPath = fileURLToPath(
             new URL(
-              './views/dist/' + (base + dir + '/').replace('./views/', '') + file,
+              './views/dist/' +
+                (base + dir + '/').replace('./views/', '') +
+                ((!config.usingSEO && flatAltPaths[file]) || file),
               import.meta.url
             )
           );
           if (lstatSync(oldLocation).isFile())
-            if (/\.(?:html|js)$/.test(file))
+            if (/\.(?:html|js|css|json|txt|xml)$/.test(file))
               writeFileSync(
                 targetPath,
                 paintSource(
@@ -167,22 +169,26 @@ commands: for (let i = 2; i < process.argv.length; i++)
         });
       compile('./views', '', true);
 
-      await build({
-        entryPoints: [
-          './views/dist/uv/**/*.js',
-          './views/dist/scram/**/*.js',
-          './views/dist/scram/**/*.wasm.wasm',
-          './views/dist/assets/js/**/*.js',
-          './views/dist/assets/css/**/*.css',
-        ],
-        platform: 'browser',
-        sourcemap: true,
-        bundle: true,
-        minify: true,
-        loader: { '.wasm.wasm': 'copy' },
-        external: ['*.png', '*.jpg', '*.jpeg', '*.webp', '*.svg'],
-        outdir: min,
-      });
+      // Minify the scripts and stylesheets upon compiling, if enabled in config.
+      if (config.minifyScripts) {
+        await build({
+          entryPoints: [
+            './views/dist/uv/**/*.js',
+            './views/dist/scram/**/*.js',
+            './views/dist/scram/**/*.wasm.wasm',
+            './views/dist/assets/js/**/*.js',
+            './views/dist/assets/css/**/*.css',
+          ],
+          platform: 'browser',
+          sourcemap: true,
+          bundle: true,
+          minify: true,
+          loader: { '.wasm.wasm': 'copy' },
+          external: ['*.png', '*.jpg', '*.jpeg', '*.webp', '*.svg'],
+          outdir: dist,
+          allowOverwrite: true,
+        });
+      }
 
       break;
     }
