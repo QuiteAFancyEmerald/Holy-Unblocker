@@ -132,8 +132,12 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
         return output + Math.floor(randomNumber);
       })
       .join(''),
+  // To be used for {{insertions}} that are also encased in string literals.
   escapeStr = (str) =>
-    str.replace(basicStrEscape, '\\$&').replaceAll('\n', '\\n'),
+    str
+      .replace(basicStrEscape, '\\$&')
+      .replaceAll('\r', '\\r')
+      .replaceAll('\n', '\\n'),
   orderedTransforms = [
     [ifSEO, 1],
     [maskTerm, 1],
