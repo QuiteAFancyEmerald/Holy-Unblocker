@@ -370,7 +370,10 @@ addEventListener('DOMContentLoaded', async () => {
   // This won't break the service workers as they store the variable separately.
   uvConfig = self['{{__uv$config}}'];
   delete self['{{__uv$config}}'];
-  sjEncode = new (self['$scramjetLoadController']()).ScramjetController({prefix: '/scram/network/'}).encodeUrl;
+  if (self['$scramjetLoadController'])
+    sjEncode = new (self['$scramjetLoadController']().ScramjetController)({
+      prefix: '/scram/network/',
+    }).encodeUrl;
 
   // Object.freeze prevents goProx from accidentally being edited.
   const goProx = Object.freeze({
