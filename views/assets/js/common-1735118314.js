@@ -12,8 +12,7 @@
 
 // To be defined after the document has fully loaded.
 let uvConfig = {};
-let sjConfig = {};
-let sjCodec = {};
+let sjEncode = {};
 // Get the preferred apex domain name. Not exactly apex, as any
 // subdomain other than those listed will be ignored.
 const getDomain = () =>
@@ -115,7 +114,7 @@ const getSearchTemplate = (
   // Parse a URL to use with Scramjet.
   sjUrl = (url) => {
     try {
-      url = location.origin + sjConfig.prefix + sjCodec.encode(search(url));
+      url = location.origin + sjEncode(search(url));
     } catch (e) {
       // This is for cases where the SJ scripts have not been loaded.
       url = search(url);
@@ -371,21 +370,7 @@ addEventListener('DOMContentLoaded', async () => {
   // This won't break the service workers as they store the variable separately.
   uvConfig = self['{{__uv$config}}'];
   delete self['{{__uv$config}}'];
-  sjConfig = self['$scramjet'];
-  if (sjConfig !== undefined) {
-    const waitForScramjetInit = () =>
-      new Promise((resolve) => {
-        const interval = setInterval(() => {
-          if (sjConfig.config !== undefined) {
-            clearInterval(interval);
-            resolve();
-          }
-        }, 50);
-      });
-    await waitForScramjetInit();
-    sjCodec = sjConfig.codec;
-    sjConfig = sjConfig.config;
-  }
+  sjEncode = new (self['$scramjetLoadController']()).ScramjetController({prefix: '/scram/network/'}).encodeUrl;
 
   // Object.freeze prevents goProx from accidentally being edited.
   const goProx = Object.freeze({
