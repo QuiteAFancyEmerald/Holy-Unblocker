@@ -161,11 +161,9 @@ const insert = JSON.parse(
     new URL('../views/' + pages['test-404'], import.meta.url),
     'utf8'
   ),
-  uvError = JSON.stringify(
-    readFileSync(
-      new URL('../views/' + pages['uverror'], import.meta.url),
-      'utf8'
-    )
+  uvError = readFileSync(
+    new URL('../views/' + pages['uverror'], import.meta.url),
+    'utf8'
   );
 
 if (!config.usingSEO) {

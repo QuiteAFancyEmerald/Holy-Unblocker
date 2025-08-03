@@ -368,8 +368,8 @@ const RammerheadEncode = async (baseUrl) => {
  */
 addEventListener('DOMContentLoaded', async () => {
   // This won't break the service workers as they store the variable separately.
-  uvConfig = self[{{__uv$config}}];
-  delete self[{{__uv$config}}];
+  uvConfig = self['{{__uv$config}}'];
+  delete self['{{__uv$config}}'];
   if (self['$scramjetLoadController'])
     sjEncode = new (self['$scramjetLoadController']().ScramjetController)({
       prefix: '/scram/network/',

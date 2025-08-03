@@ -24,6 +24,13 @@ const {
  * For automatically recompiling in production mode, see ecosystem.config.js.
  */
 const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
+  basicStrEscape = /["'`\\]/g,
+  charset = /&#173;|&#8203;|&shy;|<wbr>/gi,
+  subtermsByCaps = /[A-Z]?[^A-Z]+|[A-Z]/g,
+  subtermsByVowels = /(?<=[AEIOUYaeiouy])/g,
+  termsBySpaces = /\S+/g,
+  containsMask = /&#\d+;|&[A-z]+;/,
+  isImage = /\.(?:ico|png|jpg|jpeg)$/,
   applyInsert = (str, insertFunction, numArgs = 0) => {
     const mode = 'function' === typeof insertFunction,
       keyword = mode ? insertFunction.name : insertFunction,
@@ -57,12 +64,7 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
   },
   ifSEO = (text) => (config.usingSEO ? text : ''),
   randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
-  charset = /&#173;|&#8203;|&shy;|<wbr>/gi,
   getRandomChar = randomListItem(charRandom),
-  subtermsByCaps = /[A-Z]?[^A-Z]+|[A-Z]/g,
-  subtermsByVowels = /(?<=[AEIOUYaeiouy])/g,
-  termsBySpaces = /\S+/g,
-  containsMask = /&#\d+;|&[A-z]+;/,
   // Text masks, found in src/data.json, are meant to be variations of the
   // same term. Using a different term as a mask will break the spelling.
   parsedTextMasks = Object.freeze(
@@ -130,14 +132,16 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
         return output + Math.floor(randomNumber);
       })
       .join(''),
+  escapeStr = (str) =>
+    str.replace(basicStrEscape, '\\$&').replaceAll('\n', '\\n'),
   orderedTransforms = [
     [ifSEO, 1],
     [maskTerm, 1],
     [autoMask, 1],
   ],
   namedEntries = Object.freeze({
-    'ultraviolet-error': uvError,
-    __uv$config: JSON.stringify(
+    'ultraviolet-error': escapeStr(uvError),
+    __uv$config: escapeStr(
       config.randomizeIdentifiers ? createRandomID() : '__uv$config'
     ),
     // This is purely for dealing with cached file loading issues.
@@ -158,7 +162,6 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
   },
   // Use this instead of text404 for a preloaded error page.
   preloaded404 = paintSource(text404),
-  isImage = /\.(?:ico|png|jpg|jpeg)$/,
   // Grab the text content of a file. Use the root directory if no base is supplied.
   tryReadFile = (file, baseUrl = new URL('../', import.meta.url)) => {
     file = new URL(file, baseUrl);
