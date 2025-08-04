@@ -5,6 +5,7 @@ const __dirname = '../views/pages/misc/deobf',
   getLineHeads = /^/gm,
   regExpEscape2 = /[-[\]{}()*+?.,\\^$|#\s]/g,
   templateNames = [
+    'head-content',
     'header',
     'footer',
     'docs',
