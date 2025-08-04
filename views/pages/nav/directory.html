@@ -6,11 +6,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
-    <title>Holy Unblocker LTS | Web Emulation</title>
+    <title>{{maskTerm}}{{Holy Unblocker}} LTS | {{autoMask}}{{Web Emulation}}</title>
+    {{ifSEO}}{{
     <meta
       name="description"
       content="Holy Unblocker is a secure web proxy service with support for many sites. Bypass filters and freely enjoy a safer private browsing experience or unblock websites on devices such as Chromebooks and at places like school or work without downloading anything."
     />
+    }}
     <meta
       name="theme-color"
       media="(prefers-color-scheme: dark)"
@@ -48,36 +50,40 @@
         <div class="box-image-container">
           <img
             class="box-pr-logo"
-            src="/assets/img/directory_splash.webp"
-            alt="Holy Unblocker Browsing Splash"
+            src="/assets/img/directory_splash.webp"{{ifSEO}}{{
+            alt="Holy Unblocker Browsing Splash"}}
           />
         </div>
         <div class="box-text-container">
           <p class="box-badge">
-            <span class="box-default-badge">New</span>Holy Unblocker LTS now features updated games from 2025!
+            <span class="box-default-badge">New</span>{{autoMask}}{{Holy Unblocker LTS now features updated games from 2025!}}
           </p>
           <h1>
+            {{autoMask}}{{
             Holy Unblocker LTS features a wide selection of games, emulators and utilities.
+            }}
           </h1>
-          <h2 class="box-description">
-            Here you can find cool stuff like emulators and games! Using projects like webretro and Ruffle you can now play emulated games in your browser from legacy consoles or flash.<br />
+          <h2 class="box-description">{{autoMask}}{{
+            Here you can find cool stuff like emulators and games! Using projects like webretro and Ruffle you can now play emulated games in your browser from legacy consoles or flash.}}<br />
           </h2>
           <h2 class="box-description">
+            {{autoMask}}{{
             Select a directory below to get started!
+            }}
           </h2>
           <div class="box-button-container">
-            <a id="emtooltip" href="/emulators" class="box-button">Emulators</a>
-            <a id="eltooltip" href="/retro-games" class="box-button">EmuLibrary</a>
-            <a id="wgtooltip" href="/web-games" class="box-button">Web Games</a>
-            <a id="fgtooltip" href="/flash-games" class="box-button">Flash Games</a>
+            <a id="emtooltip" href="/{{emulators}}" class="box-button">{{autoMask}}{{Emulators}}</a>
+            <a id="eltooltip" href="/{{retro-games}}" class="box-button">{{autoMask}}{{EmuLibrary}}</a>
+            <a id="wgtooltip" href="/{{web-games}}" class="box-button">{{autoMask}}{{Web Games}}</a>
+            <a id="fgtooltip" href="/{{flash-games}}" class="box-button">{{autoMask}}{{Flash Games}}</a>
             <script src="https://unpkg.com/@popperjs/core@2"></script>
             <script src="https://unpkg.com/tippy.js@6"></script>
             <script>
               const tooltipContent = {
-                emtooltip: 'Emulators [Webretro v6.5]: Fully ported RetroArch with over 20 emulators featured!',
-                eltooltip: 'EmuLibrary [Collection]: Popular collection of games sourced from other websites. You can set this via the settings menu.',
-                wgtooltip: 'Web Games [Collection]: Collection of popular web games, including WebGL and HTML5 games.',
-                fgtooltip: 'Flash Games [Collection]: Collection of Flash games emulated via Ruffle.',
+                emtooltip: '{{autoMask}}{{Emulators [Webretro v6.5]: Fully ported RetroArch with over 20 emulators featured!}}',
+                eltooltip: '{{autoMask}}{{EmuLibrary [Collection]: Popular collection of games sourced from other websites. You can set this via the settings menu.}}',
+                wgtooltip: '{{autoMask}}{{Web Games [Collection]: Collection of popular web games, including WebGL and HTML5 games.}}',
+                fgtooltip: '{{autoMask}}{{Flash Games [Collection]: Collection of Flash games emulated via Ruffle.}}',
               };
 
               tippy.setDefaultProps({delay: 50, animateFill: true, placement: 'bottom'});

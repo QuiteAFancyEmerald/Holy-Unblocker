@@ -97,10 +97,21 @@ let altPaths = {
   'titaniumnetwork-documentation': 'docs',
   'titaniumnetwork-discord': 'social',
   'rammerhead-discord': 'rdis',
-  /* Image Paths */
-  'uv.webp': 'nt.webp',
-  'scramjet.webp': 'wr.webp',
-  'rammerhead.webp': 'physics.webp',
+  /* Raw File Names */
+  files: {
+    'scramjet.all.js': 'working.all.js',
+    'scramjet.sw.js': 'working.sw.js',
+    'scramjet.sync.js': 'working.sync.js',
+    'scramjet.wasm.wasm': 'working.wasm.wasm',
+    'uv.handler.js': 'networking.handler.js',
+    'uv.client.js': 'networking.client.js',
+    'uv.bundle.js': 'networking.bundle.js',
+    'uv.config.js': 'networking.config.js',
+    'uv.sw.js': 'networking.sw.js',
+    'uv.webp': 'nt.webp',
+    'scramjet.webp': 'wr.webp',
+    'rammerhead.webp': 'physics.webp',
+  },
   /* Prefixes */
   prefixes: {
     roms: 'ms',
@@ -110,6 +121,7 @@ let altPaths = {
     libcurl: 'unix',
     bareasmodule: 'utc',
     baremux: 'gmt',
+    wisp: 'cron',
   },
 };
 
@@ -117,15 +129,16 @@ const useAltPaths = (altPaths, targetPaths, ancestor, tempKey = '') => {
   if ('object' === typeof altPaths) {
     for (const [key, value] of Object.entries(altPaths)) {
       if (key in targetPaths) {
+        const isEndPoint = 'object' !== typeof value;
         delete altPaths[
           useAltPaths(
             value,
-            'object' === typeof value ? targetPaths[key] : targetPaths,
+            isEndPoint ? targetPaths : targetPaths[key],
             altPaths,
             key
           )
         ];
-        delete targetPaths[key];
+        if (isEndPoint) delete targetPaths[key];
       }
     }
     if ('object' === typeof ancestor) delete ancestor[tempKey];
@@ -145,7 +158,11 @@ const getAltPrefix = (prefix) =>
       if ('object' === typeof value)
         inserts = inserts.concat(getPathEntries(value, key));
       else
-        inserts.push([prefix + key, prefix.replace(/^prefixes\//, '') + value]);
+        inserts.push([
+          prefix + key,
+          prefix.replace(/^(?:prefixes|files)\//, '') +
+            (config.usingSEO ? key : value),
+        ]);
     }
     return inserts;
   },
@@ -163,6 +180,10 @@ const insert = JSON.parse(
   ),
   uvError = readFileSync(
     new URL('../views/' + pages['uverror'], import.meta.url),
+    'utf8'
+  ),
+  sjError = readFileSync(
+    new URL('../views/' + pages['sjerror'], import.meta.url),
     'utf8'
   );
 
@@ -191,6 +212,7 @@ export default {
   getAltPrefix,
   text404,
   uvError,
+  sjError,
   cookingInserts,
   vegetables,
   charRandom,

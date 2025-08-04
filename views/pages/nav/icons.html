@@ -6,11 +6,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
-    <title>Holy Unblocker LTS</title>
+    <title>{{maskTerm}}{{Holy Unblocker}} LTS</title>
+    {{ifSEO}}{{
     <meta
       name="description"
       content="Holy Unblocker is a secure web proxy service with support for many sites. Bypass filters and freely enjoy a safer private browsing experience or unblock websites on devices such as Chromebooks and at places like school or work without downloading anything."
     />
+    }}
     <meta
       name="theme-color"
       media="(prefers-color-scheme: dark)"
@@ -47,8 +49,10 @@
         <h1 class="bigtitle">Icon Information</h1>
         <h3>How to find the Icon URL of a Site</h3>
         <p>
+          {{autoMask}}{{
           Go to the website you want an icon from, then use this bookmarklet
           (drag it to your bookmarks bar):
+          }}
         </p>
         <div id="bks-parent">
           <a id="iconfinder" class="fancybutton fb-l glowbutton"
@@ -60,8 +64,10 @@
             `javascript:alert((Array.from(document.head.querySelectorAll("link[rel*='icon']")).slice(-1)[0]||0).href||location.origin+"/favicon.ico")`;
         </script>
         <p>
-          Copy the URL that the bookmarklet gives you. Then go back to HU and
+          {{autoMask}}{{
+          Copy the URL that the bookmarklet gives you. Then go back to HU LTS and
           enter in the URL for the Icon URL in Settings. Enjoy!
+          }}
         </p>
       </div>
     </div>

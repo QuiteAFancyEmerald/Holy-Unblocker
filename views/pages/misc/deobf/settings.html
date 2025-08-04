@@ -5,7 +5,7 @@
   </div>
   <div class="settings-content-body">
     <div class="csel-container-left">
-      <p class="cseltitle">Tab Cloak</p>
+      <p class="cseltitle">{{autoMask}}{{Tab Cloak}}</p>
       <form id="titleform" class="cloakform">
         <input type="text" placeholder="Tab Title" spellcheck="false" />
         <input type="submit" value="Apply" />
@@ -14,35 +14,35 @@
         <input type="text" placeholder="Icon URL" spellcheck="false" />
         <input type="submit" value="Apply" />
       </form>
-      <p class="cseltitle">Wisp Protocol Transport</p>
-      <div class="radio-group wisp-transport-list">
+      <p class="cseltitle">{{autoMask}}{{Wisp Protocol Transport}}</p>
+      <div class="radio-group {{wisp-transport}}-list">
         <label>
           <p>
-            Libcurl
-            <span class="default-badge">Cross-Browser/Secure (Firefox)</span>
+            {{autoMask}}{{Libcurl}}
+            <span class="default-badge">{{autoMask}}{{Cross-Browser/Secure (Firefox)}}</span>
           </p>
-          <input type="radio" name="wisp-transport" value="libcurl" checked />
+          <input type="radio" name="{{wisp-transport}}" value="{{libcurl}}" checked />
         </label>
         <label>
           <p>
-            Epoxy
-            <span class="bare-badge">Fastest/Secure (Chromium, Apple)</span>
+            {{autoMask}}{{Epoxy}}
+            <span class="{{bare}}-badge">{{autoMask}}{{Fastest/Secure (Chromium, Apple)}}</span>
           </p>
-          <input type="radio" name="wisp-transport" value="epoxy" />
+          <input type="radio" name="{{wisp-transport}}" value="{{epoxy}}" />
         </label>
         <label>
-          <p>Bare <span class="beta-badge">Least Secure (All)</span></p>
-          <input type="radio" name="wisp-transport" value="bare" />
+          <p>{{autoMask}}{{Bare}} <span class="beta-badge">{{autoMask}}{{Least Secure (All)}}</span></p>
+          <input type="radio" name="{{wisp-transport}}" value="{{bare}}" />
         </label>
       </div>
       <p class="cseltitle">Advanced Options</p>
       <div class="radio-group">
         <label>
-          <p>Hide Ads <span class="default-badge">AdGuard</span></p>
+          <p>Hide Ads <span class="default-badge">{{autoMask}}{{AdGuard}}</span></p>
           <input type="checkbox" class="switch hideads" checked />
         </label>
         <label>
-          <p>Enable Tor <span class="bare-badge">SOCKS5 Onion Routing</span></p>
+          <p>{{autoMask}}{{Enable Tor}} <span class="{{bare}}-badge">{{autoMask}}{{SOCKS5 Onion Routing}}</span></p>
           <input type="checkbox" class="switch useonion" />
         </label>
       </div>
@@ -50,15 +50,15 @@
     <div class="settings-right-column">
       <p class="cseltitle">Search Engine</p>
       <select class="search-engine-list">
-        <option>Google</option>
-        <option>Bing</option>
-        <option>Brave</option>
-        <option>DuckDuckGo</option>
-        <option>Startpage</option>
+        <option>{{Google}}</option>
+        <option>{{Bing}}</option>
+        <option>{{Brave}}</option>
+        <option>{{DuckDuckGo}}</option>
+        <option>{{Startpage}}</option>
       </select>
       <p class="cseltitle">About:Blank</p>
       <div class="switch-container">
-        <p>Stealth Tab <span class="default-badge">Default</span></p>
+        <p>{{autoMask}}{{Stealth Tab}} <span class="default-badge">Default</span></p>
         <input type="checkbox" class="switch" />
       </div>
       <p class="cseltitle">Select Theme</p>
@@ -75,15 +75,15 @@
       <p class="cseltitle">Icon Presets</p>
       <select id="icon-list">
         <option><!-- Leave this blank to avoid a bug. --></option>
-        <option>Google</option>
-        <option>Bing</option>
-        <option>Google Drive</option>
+        <option>{{Google}}</option>
+        <option>{{Bing}}</option>
+        <option>{{Google}} Drive</option>
         <option>Gmail</option>
       </select>
-      <p class="cseltitle">Enable Devtools</p>
+      <p class="cseltitle">{{autoMask}}{{Enable Devtools}}</p>
       <div class="radio-group">
         <label>
-          <p>Eruda Devtools<span class="bare-badge">CTRL+SHIFT+I</span></p>
+          <p>{{autoMask}}{{Eruda Devtools}}<span class="{{bare}}-badge">{{autoMask}}{{CTRL+SHIFT+I}}</span></p>
           <input type="radio" name="theme" value="lighttheme" checked />
         </label>
       </div>

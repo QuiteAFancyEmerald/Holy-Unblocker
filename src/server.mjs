@@ -2,24 +2,18 @@ import Fastify from 'fastify';
 import { createServer } from 'node:http';
 import wisp from 'wisp-server-node';
 import createRammerhead from '../lib/rammerhead/src/server/index.js';
-import { epoxyPath } from '@mercuryworkshop/epoxy-transport';
-import { libcurlPath } from '@mercuryworkshop/libcurl-transport';
-import { bareModulePath } from '@mercuryworkshop/bare-as-module3';
-import { baremuxPath } from '@mercuryworkshop/bare-mux/node';
-import { uvPath } from '@titaniumnetwork-dev/ultraviolet';
 import fastifyHelmet from '@fastify/helmet';
 import fastifyStatic from '@fastify/static';
 import pageRoutes from './routes.mjs';
 import { preloaded404, tryReadFile } from './randomization.mjs';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 import { existsSync, unlinkSync } from 'node:fs';
 import ecosystem from '../ecosystem.config.js';
 
 const ecosystemConfig = Object.freeze(
   ecosystem.apps.find((app) => app.name === 'HolyUB') || ecosystem.apps[0]
 );
-const { config, pages, externalPages, getAltPrefix, cacheBustList } =
-  pageRoutes;
+const { config, pages, externalPages, getAltPrefix } = pageRoutes;
 
 /* Record the server's location as a URL object, including its host and port.
  * The host can be modified at /src/config.json, whereas the ports can be modified
@@ -114,11 +108,17 @@ app.register(fastifyStatic, {
   decorateReply: false,
 });
 
-app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/dist/assets', import.meta.url)),
-  prefix: getAltPrefix('assets'),
-  decorateReply: false,
-});
+// All entries in the dist folder are created with source rewrites.
+// Minified scripts are also served here, if minification is enabled.
+['assets', 'uv', 'scram', 'epoxy', 'libcurl', 'bareasmodule', 'baremux'].forEach(
+  (prefix) => {
+    app.register(fastifyStatic, {
+      root: fileURLToPath(new URL('../views/dist/' + prefix, import.meta.url)),
+      prefix: getAltPrefix(prefix),
+      decorateReply: false,
+    });
+  }
+);
 
 app.register(fastifyStatic, {
   root: fileURLToPath(new URL('../views/archive', import.meta.url)),
@@ -134,21 +134,16 @@ app.register(fastifyStatic, {
   decorateReply: false,
 });
 
-app.register(fastifyStatic, {
-  root: fileURLToPath(
-    new URL('../views/archive/gfiles/rarch/cores', import.meta.url)
-  ),
-  prefix: getAltPrefix('cores'),
-  decorateReply: false,
-});
-
-app.register(fastifyStatic, {
-  root: fileURLToPath(
-    new URL('../views/archive/gfiles/rarch/info', import.meta.url)
-  ),
-  prefix: getAltPrefix('info'),
-  decorateReply: false,
-});
+// You should NEVER commit roms, due to piracy concerns.
+['cores', 'info', 'roms'].forEach(
+  (prefix) => {
+    app.register(fastifyStatic, {
+      root: fileURLToPath(new URL('../views/archive/gfiles/rarch' + prefix, import.meta.url)),
+      prefix: getAltPrefix(prefix),
+      decorateReply: false,
+    });
+  }
+);
 
 app.register(fastifyStatic, {
   root: fileURLToPath(
@@ -158,72 +153,12 @@ app.register(fastifyStatic, {
   decorateReply: false,
 });
 
-// You should NEVER commit roms, due to piracy concerns.
-app.register(fastifyStatic, {
-  root: fileURLToPath(
-    new URL('../views/archive/gfiles/rarch/roms', import.meta.url)
-  ),
-  prefix: getAltPrefix('roms'),
-  decorateReply: false,
-});
-
-app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/dist/assets/js', import.meta.url)),
-  prefix: getAltPrefix('assets/js'),
-  decorateReply: false,
-});
-
-app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/dist/assets/css', import.meta.url)),
-  prefix: getAltPrefix('assets/css'),
-  decorateReply: false,
-});
-
-// This combines scripts from the official UV repository with local UV scripts into
-// one directory path. Local versions of files override the official versions.
-app.register(fastifyStatic, {
-  root: [fileURLToPath(new URL('../views/dist/uv', import.meta.url)), uvPath],
-  prefix: getAltPrefix('uv'),
-  decorateReply: false,
-});
-
-app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/dist/scram', import.meta.url)),
-  prefix: getAltPrefix('scram'),
-  decorateReply: false,
-});
-
-// Register proxy paths to the website.
-app.register(fastifyStatic, {
-  root: epoxyPath,
-  prefix: getAltPrefix('epoxy'),
-  decorateReply: false,
-});
-
-app.register(fastifyStatic, {
-  root: libcurlPath,
-  prefix: getAltPrefix('libcurl'),
-  decorateReply: false,
-});
-
-app.register(fastifyStatic, {
-  root: bareModulePath,
-  prefix: getAltPrefix('bareasmodule'),
-  decorateReply: false,
-});
-
-app.register(fastifyStatic, {
-  root: baremuxPath,
-  prefix: getAltPrefix('baremux'),
-  decorateReply: false,
-});
-
 /* If you are trying to add pages or assets in the root folder and
  * NOT entire folders, check ./src/routes.mjs and add it manually.
  *
  * All website files are stored in the /views directory.
  * This takes one of those files and displays it for a site visitor.
- * Paths like /browsing are converted into paths like /views/pages/surf.html
+ * Paths like /browsing are converted into paths like /views/dist/pages/surf.html
  * back here. Which path converts to what is defined in routes.mjs.
  */
 app.get('/:path', (req, reply) => {
@@ -274,15 +209,6 @@ app.get('/github/:redirect', (req, reply) => {
   if (req.params.redirect in externalPages.github)
     reply.redirect(externalPages.github[req.params.redirect]);
   else reply.code(404).type('text/html').send(preloaded404);
-});
-
-app.get(getAltPrefix('uv') + ':file.js', (req, reply) => {
-  const destination = existsSync(
-    fileURLToPath(new URL('../views/dist' + req.url, import.meta.url))
-  )
-    ? '../views/dist' + req.url
-    : pathToFileURL(uvPath) + `/${req.params.file}.js`;
-  reply.type('text/javascript').send(tryReadFile(destination, import.meta.url));
 });
 
 // Set an error page for invalid paths outside the query string system.
