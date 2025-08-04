@@ -173,8 +173,8 @@ commands: for (let i = 2; i < process.argv.length; i++)
                 )
               );
             else copyFileSync(base + dir + '/' + file, targetPath);
-          else if (fileStats.isDirectory() && !existsSync(targetPath)) {
-            mkdirSync(targetPath);
+          else if (fileStats.isDirectory()) {
+            if (!existsSync(targetPath)) mkdirSync(targetPath);
             compile(file, base + dir + '/', outDir, initialDir);
           }
         });
