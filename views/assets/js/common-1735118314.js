@@ -64,13 +64,13 @@ const storageId = 'hu-lts-storage',
 /* OMNIBOX */
 
 const searchEngines = Object.freeze({
-    Startpage: 'startpage.com/sp/search?query=',
-    Google: 'google.com/search?q=',
-    Bing: 'bing.com/search?q=',
-    DuckDuckGo: 'duckduckgo.com/?q=',
-    Brave: 'search.brave.com/search?q=',
+    '{{Startpage}}': 'startpage.com/sp/search?query=',
+    '{{Google}}': 'google.com/search?q=',
+    '{{Bing}}': 'bing.com/search?q=',
+    '{{DuckDuckGo}}': 'duckduckgo.com/?q=',
+    '{{Brave}}': 'search.brave.com/search?q=',
   }),
-  defaultSearch = 'Brave';
+  defaultSearch = '{{Brave}}';
 
 // Default search engine is set to Google. Intended to work just like the usual
 // bar at the top of a browser.
@@ -372,7 +372,7 @@ addEventListener('DOMContentLoaded', async () => {
   delete self['{{__uv$config}}'];
   if (self['$scramjetLoadController'])
     sjEncode = new (self['$scramjetLoadController']().ScramjetController)({
-      prefix: '/scram/network/',
+      prefix: '/{{prefixes/scram}}/network/',
     }).encodeUrl;
 
   // Object.freeze prevents goProx from accidentally being edited.
@@ -580,7 +580,7 @@ addEventListener('DOMContentLoaded', async () => {
             // the corresponding location/index in the dirnames object.
             const functionsList = [
               () => goFrame(item.path),
-              () => goFrame('/webretro?core=' + item.core + '&rom=' + item.rom),
+              () => goFrame('/{{webretro}}?core=' + item.core + '&rom=' + item.rom),
               item.custom
                 ? () => goProx[item.custom]('stealth')
                 : () => goFrame('/archive/g/' + item.path),
@@ -610,7 +610,7 @@ addEventListener('DOMContentLoaded', async () => {
 
             a.addEventListener('click', (e) => {
               e.preventDefault();
-              goFrame('/flash?swf=' + item);
+              goFrame('/{{flash}}?swf=' + item);
             });
 
             navList.appendChild(a);

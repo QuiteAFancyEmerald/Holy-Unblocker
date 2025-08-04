@@ -14,6 +14,7 @@ const {
   VersionValue,
   text404,
   uvError,
+  sjError,
 } = pkg;
 
 /* Below are lots of function definitions used to obfuscate the website.
@@ -24,7 +25,7 @@ const {
  * For automatically recompiling in production mode, see ecosystem.config.js.
  */
 const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
-  basicStrEscape = /["'`\\]/g,
+  basicStrEscape = /["'`$\\]/g,
   charset = /&#173;|&#8203;|&shy;|<wbr>/gi,
   subtermsByCaps = /[A-Z]?[^A-Z]+|[A-Z]/g,
   subtermsByVowels = /(?<=[AEIOUYaeiouy])/g,
@@ -144,28 +145,47 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
     [autoMask, 1],
   ],
   namedEntries = Object.freeze({
-    'ultraviolet-error': escapeStr(uvError),
     __uv$config: escapeStr(
       config.randomizeIdentifiers ? createRandomID() : '__uv$config'
     ),
+    ...flatAltPaths,
     // This is purely for dealing with cached file loading issues.
     ...cacheBustList,
   }),
-  // Apply the final obfuscation changes to an entire file.
-  paintSource = (str) => {
+  // List of manual censors for unavoidable cases.
+  manualCensors = Object.freeze({
+    'Google': '1E100',
+    'Bing': 'Bell Sound',
+    'Brave': 'Courage',
+    'DuckDuckGo': '2x Waterfowl Moves',
+    'Startpage': 'Beginning Sheet',
+    'wisp-transport': 'wst',
+    'libcurl': 'unix',
+    'epoxy': 'epoch',
+    'bare': 'time',
+  }),
+  // Apply most obfuscation changes to an entire file's text content.
+  prePaint = (str) => {
     let paintedSource = insertCharset(
       hutaoInsert(versionInsert(insertCooking(str)))
     );
     paintedSource = applyMassInsert(
-      applyMassInsert(paintedSource, flatAltPaths, config.usingSEO),
+      applyMassInsert(paintedSource, manualCensors, config.usingSEO),
       namedEntries
     );
     for (let i = 0, total = orderedTransforms.length; i < total; i++)
       paintedSource = applyInsert(paintedSource, ...orderedTransforms[i]);
     return paintedSource;
   },
+  // Functionally similar to templates.mjs, but requires more situational formatting.
+  specialTemplates = {
+    'ultraviolet-error': escapeStr(prePaint(uvError)),
+    'scramjet-error': escapeStr(prePaint(sjError)),
+  },
+  // Apply final changes to a given file's text content.
+  paintSource = (str) => applyMassInsert(prePaint(str), specialTemplates),
   // Use this instead of text404 for a preloaded error page.
-  preloaded404 = paintSource(text404),
+  preloaded404 = prePaint(text404),
   // Grab the text content of a file. Use the root directory if no base is supplied.
   tryReadFile = (file, baseUrl = new URL('../', import.meta.url)) => {
     file = new URL(file, baseUrl);

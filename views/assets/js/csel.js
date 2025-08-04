@@ -130,9 +130,9 @@ const storageId = 'hu-lts-storage',
   // The icon URLs and tab titles may need to be updated over time.
   presetIcons = Object.freeze({
     '': ' \n ',
-    Google: 'Google \n https://www.google.com/favicon.ico',
-    Bing: 'Bing \n https://www.bing.com/sa/simg/favicon-trans-bg-blue-mg-28.ico',
-    'Google Drive':
+    '{{Google}}': 'Google \n https://www.google.com/favicon.ico',
+    '{{Bing}}': 'Bing \n https://www.bing.com/sa/simg/favicon-trans-bg-blue-mg-28.ico',
+    '{{Google}} Drive':
       'Home - Google Drive \n https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png',
     Gmail:
       'Inbox - Gmail \n https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico',
@@ -140,9 +140,9 @@ const storageId = 'hu-lts-storage',
   // Choose the default transport mode, for proxying, based on the browser.
   // Firefox is not supported by epoxy yet, which is why this is implemented.
   defaultMode = /(?:Chrome|AppleWebKit)\//.test(navigator.userAgent)
-    ? 'epoxy'
-    : 'libcurl',
-  defaultSearch = 'Brave';
+    ? '{{epoxy}}'
+    : '{{libcurl}}',
+  defaultSearch = '{{Brave}}';
 
 // All code in this block is used by menu items that adjust website settings.
 
@@ -251,9 +251,9 @@ if (document.getElementById('csel')) {
   });
 
   // Allow users to change the Wisp transport mode, for proxying, with the UI.
-  attachClassEventListener('wisp-transport-list', 'change', (e) => {
+  attachClassEventListener('{{wisp-transport}}-list', 'change', (e) => {
     if (e.target.checked) {
-      let wispTransportList = e.target.closest('.wisp-transport-list');
+      let wispTransportList = e.target.closest('.{{wisp-transport}}-list');
       !wispTransportList.querySelector('input:checked') ||
       e.target.value === defaultMode
         ? removeStorage('Transport')
@@ -286,16 +286,16 @@ if (document.getElementById('csel')) {
    */
   attachClassEventListener('useonion', 'change', (e) => {
     let unselectedModes = document.querySelectorAll(
-      '.wisp-transport-list input:not([value=libcurl]),.region-list'
+      '.{{wisp-transport}}-list input:not([value={{libcurl}}]),.region-list'
     );
     const wispTransportList = document.getElementsByClassName(
-        'wisp-transport-list'
+        '{{wisp-transport}}-list'
       ),
       regionList = document.getElementsByClassName('region-list');
     if (checkBooleanState(e.target) === true) {
       classUpdateHandler(
         wispTransportList,
-        'libcurl',
+        '{{libcurl}}',
         classEvent(wispTransportList, 'change')
       )();
       classUpdateHandler(regionList, 'off', classEvent(regionList, 'change'))();
@@ -351,7 +351,7 @@ useStorageArgs('SearchEngine', (s) => {
 // Load the Wisp transport mode that was last used, or use the default.
 useStorageArgs('Transport', (s) => {
   classUpdateHandler(
-    document.getElementsByClassName('wisp-transport-list'),
+    document.getElementsByClassName('{{wisp-transport}}-list'),
     s || defaultMode
   )();
 });

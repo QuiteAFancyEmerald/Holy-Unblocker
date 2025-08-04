@@ -6,11 +6,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
-    <title>Holy Unblocker LTS | Applications</title>
+    <title>{{maskTerm}}{{Holy Unblocker}} LTS | {{autoMask}}{{Applications}}</title>
+    {{ifSEO}}{{
     <meta
       name="description"
-      content="Ho&#173;ly Unbl&#173;o&#173;c&#173;ker is a se&#173;c&#173;ure we&#173;b pr&#173;ox&#173;y se&#173;rvi&#173;ce with sup&#173;po&#173;rt for many sit&#173;es. By&#173;pa&#173;ss fi&#173;l&#173;ter&#173;s and fr&#173;ee&#173;ly enj&#173;oy a saf&#173;er pr&#173;iva&#173;te b&#173;rowsi&#173;ng expe&#173;ri&#173;ence or u&#173;nblo&#173;ck webs&#173;ites on de&#173;vices such as Chr&#173;omebo&#173;oks and at plac&#173;es li&#173;ke sch&#173;o&#173;ol or wor&#173;k with&#173;out do&#173;wnload&#173;ing anythi&#173;ng."
+      content="Holy Unblocker is a secure web proxy service with support for many sites. Bypass filters and freely enjoy a safer private browsing experience or unblock websites on devices such as Chromebooks and at places like school or work without downloading anything."
     />
+    }}
     <meta
       name="theme-color"
       media="(prefers-color-scheme: dark)"
@@ -33,8 +35,8 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://unpkg.com" />
     <link rel="stylesheet" href="assets/css/{{styles.css}}" />
-    <script src="/scram/scramjet.all.js" defer></script>
-    <script src="/baremux/index.js" defer></script>
+    <script src="/{{prefixes/scram}}/{{files/scramjet.all.js}}" defer></script>
+    <script src="/{{prefixes/baremux}}/index.js" defer></script>
     <script src="/assets/js/register-sw.js" defer></script>
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
@@ -49,38 +51,38 @@
       <div class="box-hero">
         <div class="hero-content">
           <div class="proxy-header text-center">
-            <h1 class="bigtitle">Applications</h1>
-            <p>Select an exclusively supported website that is proxied. Be sure to avoid logging in with primary accounts, as this is a public proxy service.<br>If you are self-hosting however feel free.</p><br><br>Please do CTRL+Shift+Del if you have any issues.
+            <h1 class="bigtitle">{{autoMask}}{{Applications}}</h1>
+            <p>{{autoMask}}{{Select an exclusively supported website that is proxied. Be sure to avoid logging in with primary accounts, as this is a public proxy service.}}<br>{{autoMask}}{{If you are self-hosting however feel free.}}</p><br><br>{{autoMask}}{{Please do CTRL+Shift+Del if you have any issues.}}
           </div>
           <div class="proxy-form text-center">
             <div class="glist">
-              <a href="#" id="pr-cg" class="fancybutton glowbutton pr-go2">ChatGPT</a>
-              <a href="#" id="pr-dc" class="fancybutton glowbutton pr-go2">Discord</a>
-              <a href="#" id="pr-gf" class="fancybutton glowbutton pr-go2">GeForce NOW</a>
-              <a href="#" id="pr-sp" class="fancybutton glowbutton pr-go2">Spotify</a>
-              <a href="#" id="pr-tt" class="fancybutton glowbutton pr-go2">TikTok</a>
-              <a href="#" id="pr-ha" class="fancybutton glowbutton pr-go2">HiAnime</a>
-              <a href="#" id="pr-tw" class="fancybutton glowbutton pr-go2">Twitter</a>
+              <a href="#" id="pr-cg" class="fancybutton glowbutton pr-go2">{{autoMask}}{{ChatGPT}}</a>
+              <a href="#" id="pr-dc" class="fancybutton glowbutton pr-go2">{{autoMask}}{{Discord}}</a>
+              <a href="#" id="pr-gf" class="fancybutton glowbutton pr-go2">{{autoMask}}{{GeForce NOW}}</a>
+              <a href="#" id="pr-sp" class="fancybutton glowbutton pr-go2">{{autoMask}}{{Spotify}}</a>
+              <a href="#" id="pr-tt" class="fancybutton glowbutton pr-go2">{{autoMask}}{{TikTok}}</a>
+              <a href="#" id="pr-ha" class="fancybutton glowbutton pr-go2">{{autoMask}}{{HiAnime}}</a>
+              <a href="#" id="pr-tw" class="fancybutton glowbutton pr-go2">{{autoMask}}{{Twitter}}</a>
             </div>
             <h3>Advanced Settings ▼</h3>
             <div id="settings-panel" class="pr-settings">
               <div class="advanced-settings"></div>
               <label>
-                Tor Browsing Mode <span class="pr-tippy" data-tippy-content="Choose your Tor browsing mode. This allows you to use Tor routing in any browser. TLDR: You can access any .onion link in any browser.">(?) </span>
+                {{autoMask}}{{Tor Browsing Mode}} <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Choose your Tor browsing mode. This allows you to use Tor routing in any browser. TLDR: You can access any .onion link in any browser.}}">(?) </span>
                 <select class="useonion">
                   <option>Off</option>
                   <option>Enabled</option>
                 </select>
               </label>
               <label>
-                Hide Ads <span class="pr-tippy" data-tippy-content="Enable or disable ad blocking.">(?) </span>
+                Hide Ads <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Enable or disable ad blocking.}}">(?) </span>
                 <select class="hideads">
                   <option>Off</option>
                   <option selected>Enabled</option>
                 </select>
               </label>
               <label>
-                Region Selection <span class="pr-tippy" data-tippy-content="Enable or select regional proxies.">(?) </span>
+                Region Selection <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Enable or select regional proxies.}}">(?) </span>
                 <select class="region-list">
                   <option value="off">Off</option>
                   <option value="eu">Europe</option>
@@ -91,42 +93,42 @@
               </label>
 
               <div class="wisp-box">
-                <p class="cseltitle">Wisp Protocol Transport <span class="pr-tippy" data-tippy-content="Wisp is designed to be a low-overhead, easy to implement protocol for proxying multiple TCP sockets over a single websocket connection. TLDR: Selecting a specific option will provide a focus on either speed, security or both at once. Just options for the user to select when utilizing Scramjet.">(?) </span></p>
-                  <table class="transport-table wisp-transport-list">
+                <p class="cseltitle">{{autoMask}}{{Wisp Protocol Transport}} <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Wisp is designed to be a low-overhead, easy to implement protocol for proxying multiple TCP sockets over a single websocket connection. TLDR: Selecting a specific option will provide a focus on either speed, security or both at once. Just options for the user to select when utilizing Scramjet.}}">(?) </span></p>
+                  <table class="transport-table {{wisp-transport}}-list">
                     <tr>
                       <td class="transport-label">
                         <label>
-                          Libcurl
-                          <span class="pr-tippy" data-tippy-content="Libcurl transport focuses on full TLS encryption but has slightly slower speeds than Epoxy. [ALTERNATIVE/FIREFOX DEFAULT]">(?)</span>
-                          <span class="default-badge">Cross-Browser/Secure (Firefox)</span>
+                          {{autoMask}}{{Libcurl}}
+                          <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Libcurl transport focuses on full TLS encryption but has slightly slower speeds than Epoxy. [ALTERNATIVE/FIREFOX DEFAULT]}}">(?)</span>
+                          <span class="default-badge">{{autoMask}}{{Cross-Browser/Secure (Firefox)}}</span>
                         </label>
                       </td>
                       <td class="transport-radio">
-                        <input type="radio" name="wisp-transport-2" value="libcurl" checked />
+                        <input type="radio" name="{{wisp-transport}}-2" value="{{libcurl}}" checked />
                       </td>
                     </tr>
                     <tr>
                       <td class="transport-label">
                         <label>
-                          Epoxy
-                          <span class="pr-tippy" data-tippy-content="Expoxy allows you to make requests that bypass CORS without compromising security by running SSL/TLS inside webassembly with incredible performance. [HIGHLY RECOMMEND AND OPTIMIZED FOR SPEED].">(?)</span>
-                          <span class="bare-badge">Fastest/Secure (Chromium, Apple)</span>
+                          {{autoMask}}{{Epoxy}}
+                          <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Expoxy allows you to make requests that bypass CORS without compromising security by running SSL/TLS inside webassembly with incredible performance. [HIGHLY RECOMMEND AND OPTIMIZED FOR SPEED].}}">(?)</span>
+                          <span class="{{bare}}-badge">{{autoMask}}{{Fastest/Secure (Chromium, Apple)}}</span>
                         </label>
                       </td>
                       <td class="transport-radio">
-                        <input type="radio" name="wisp-transport-2" value="epoxy" />
+                        <input type="radio" name="{{wisp-transport}}-2" value="{{epoxy}}" />
                       </td>
                     </tr>
                     <tr>
                       <td class="transport-label">
                         <label>
-                          Bare
-                          <span class="pr-tippy" data-tippy-content="Bare is NOT recommend and a last resort for unsupported sites.">(?)</span>
-                          <span class="beta-badge">Least Secure (All)</span>
+                          {{autoMask}}{{Bare}}
+                          <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Bare is NOT recommend and a last resort for unsupported sites.}}">(?)</span>
+                          <span class="beta-badge">{{autoMask}}{{Least Secure (All)}}</span>
                         </label>
                       </td>
                       <td class="transport-radio">
-                        <input type="radio" name="wisp-transport-2" value="bare" />
+                        <input type="radio" name="{{wisp-transport}}-2" value="{{bare}}" />
                       </td>
                     </tr>
                   </table>

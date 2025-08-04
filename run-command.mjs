@@ -7,16 +7,22 @@ import {
   lstatSync,
   copyFileSync,
   rmSync,
+  existsSync,
 } from 'node:fs';
 import { exec, fork } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
 import ecosystem from './ecosystem.config.js';
-import routes from './src/routes.mjs';
+import pageRoutes from './src/routes.mjs';
+import { epoxyPath } from '@mercuryworkshop/epoxy-transport';
+import { libcurlPath } from '@mercuryworkshop/libcurl-transport';
+import { bareModulePath } from '@mercuryworkshop/bare-as-module3';
+import { baremuxPath } from '@mercuryworkshop/bare-mux/node';
+import { uvPath } from '@titaniumnetwork-dev/ultraviolet';
 import { paintSource, tryReadFile } from './src/randomization.mjs';
 import loadTemplates from './src/templates.mjs';
 
-const { flatAltPaths } = routes;
+const { flatAltPaths } = pageRoutes;
 
 // Some necessary constants are copied over from /src/server.mjs.
 
@@ -136,22 +142,24 @@ commands: for (let i = 2; i < process.argv.length; i++)
 
       const ignoredDirectories = ['dist', 'archive'];
 
-      const compile = (dir, base = dir, initial = false) =>
+      const compile = (dir, base = '', outDir = '', initialDir = dir) =>
         readdirSync(base + dir).forEach((file) => {
           let oldLocation = new URL(
             file,
             new URL(base + dir + '/', import.meta.url)
           );
-          if (ignoredDirectories.includes(file)) return;
-          const targetPath = fileURLToPath(
-            new URL(
-              './views/dist/' +
-                (base + dir + '/').replace('./views/', '') +
-                ((!config.usingSEO && flatAltPaths[file]) || file),
-              import.meta.url
-            )
-          );
-          if (lstatSync(oldLocation).isFile())
+          if (ignoredDirectories.includes(file) || /\.map$/.test(file)) return;
+          const fileStats = lstatSync(oldLocation),
+            targetPath = fileURLToPath(
+              new URL(
+                './views/dist/' +
+                  outDir +
+                  (base + dir + '/').slice(initialDir.length + 1) +
+                  ((!config.usingSEO && flatAltPaths['files/' + file]) || file),
+                import.meta.url
+              )
+            );
+          if (fileStats.isFile() && !existsSync(targetPath))
             if (/\.(?:html|js|css|json|txt|xml)$/.test(file))
               writeFileSync(
                 targetPath,
@@ -162,12 +170,28 @@ commands: for (let i = 2; i < process.argv.length; i++)
                 )
               );
             else copyFileSync(base + dir + '/' + file, targetPath);
-          else if (lstatSync(oldLocation).isDirectory()) {
+          else if (fileStats.isDirectory() && !existsSync(targetPath)) {
             mkdirSync(targetPath);
-            compile(file, base + dir + '/');
+            compile(file, base + dir + '/', outDir, initialDir);
           }
         });
-      compile('./views', '', true);
+      compile('./views');
+
+      // Combine scripts from the corresponding node modules into the same
+      // dist-generated directories for compiling, and avoid overwriting files.
+      const compilePaths = {
+        epoxy: epoxyPath,
+        libcurl: libcurlPath,
+        bareasmodule: bareModulePath,
+        baremux: baremuxPath,
+        uv: uvPath,
+      };
+      for (const path of Object.entries(compilePaths)) {
+        const prefix = path[0] + '/',
+          prefixUrl = new URL('./views/dist/' + prefix, import.meta.url);
+        if (!existsSync(prefixUrl)) mkdirSync(prefixUrl);
+        compile(path[1].slice(path[1].indexOf('node_modules')), '', prefix);
+      }
 
       // Minify the scripts and stylesheets upon compiling, if enabled in config.
       if (config.minifyScripts) {
