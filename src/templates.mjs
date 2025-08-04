@@ -16,17 +16,19 @@ const __dirname = '../views/pages/misc/deobf',
   ],
   readTemplate = (identifier) =>
     tryReadFile(__dirname + `/${identifier}.html`, import.meta.url),
-  templates = templateNames.map((name) => [
-    name.toUpperCase(),
-    readTemplate(name).replace(/\s+$/, ''),
-  ]),
   locateTemplate = (key) =>
-    new RegExp(`([^\\S\\n]*)<!--(${key.replace(regExpEscape2, '\\$&')})-->`, 'gm'),
+    new RegExp(
+      `([^\\S\\n]*)<!--(${key.replace(regExpEscape2, '\\$&')})-->`,
+      'gm'
+    ),
   preserveIndentation = (template) => (line, leadingSpaces) =>
     template.replace(getLineHeads, leadingSpaces),
+  templates = templateNames.map((name) => [
+    locateTemplate(name.toUpperCase()),
+    preserveIndentation(readTemplate(name).replace(/\s+$/, '')),
+  ]),
   loadTemplates = (str) =>
     templates.reduce(
-      (updatedStr, [key, template]) =>
-        updatedStr.replace(locateTemplate(key), preserveIndentation(template)),
+      (updatedStr, [key, template]) => updatedStr.replace(key, template),
       str
     );
