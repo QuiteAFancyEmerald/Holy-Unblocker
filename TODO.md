@@ -25,12 +25,12 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [x] Add Rammerhead support - done
 - [x] Fix slow Ultraviolet speeds despite being local; something on the backend?? - done
 - [x] Fix Ultraviolet on Firefox - (partial/needs work)
-- [ ] Adapt Applications page to use either Rammerhead or UV (for Reddit, YouTube, Discord)
+- [x] Adapt Applications page to use Scramjet (for Reddit, YouTube, Discord) - done
 - [x] libcurl, epoxy and all that fun stuff - done
 - [x] socks5/tor routing option that can be configured (enabled) via either a cookie or pathname as a settings meny option - done
 - [x] socks5 regional proxy implementation - done
 - [ ] Update games page content to 10000 games
-- [ ] Update Applications page to reflect modern fast links (use examples from the modern web proxy base)
+- [x] Update Applications page to reflect modern fast links (use examples from the modern web proxy base) - done. can be expanded later
 - [x] Update settings menu again to make more room for more features
 - [x] Update csel.js (after Setting menu redesign) to support custom transports, icon swap, routing - done
 - [x] Update csel.js to support network based adblocking (partial/needs work)
@@ -41,7 +41,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Games library will feature 10000 items; 5000 flash games and 5000 other game types
 - [ ] Attach proxyvalidatorscript to a status page > have this be served via Fastify, etc. etc; config option disabled as it will cause issues potentially unless if we refactor it slightly.
 - [ ] Improve adblocking functions on site using AnuraOS standards
-- [ ] Revamp the Stealth Frame with a slight animation (ease in and then the wheeling loading with a gradient fading away once its loaded or shows the error page LOL), a loading wheel/page and lastly a omnibox widget. It will have like nav buttons, some of the settings from the settings menu, a home button, a button that brings up the Setting menu and be in a designed position. Intent is to reduce the back/forth nature that users have to do currently making it more tedious to use the site.
+- [x] Revamp the Stealth Frame with a slight animation (ease in and then the wheeling loading with a gradient fading away once its loaded or shows the error page LOL), a loading wheel/page and lastly a omnibox widget. It will have like nav buttons, some of the settings from the settings menu, a home button, a button that brings up the Setting menu and be in a designed position. Intent is to reduce the back/forth nature that users have to do currently making it more tedious to use the site. - partial. needs functionality. 
 
 
 ## Site Redesign
@@ -49,7 +49,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [x] Landing Cards - done
 - [x] Change fonts to cleaner look
 - [ ] Add more AOS interactions on scroll or hover
-- [ ] Add subtle noise to background elements
+- [x] Add subtle noise to background elements
 - [ ] Update colors + add themes
 - [ ] Toggle elements
 - [x] Other card options
@@ -62,7 +62,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [x] Settings Menu - (partial/needs work)
 - [x] More Dropdown Menu
 - [x] Web Proxies page
-- [ ] Application page
+- [x] Application page
 - [ ] Hosting page
 - [ ] Resources page
 - [ ] Games Library page
