@@ -5,7 +5,7 @@ import createRammerhead from '../lib/rammerhead/src/server/index.js';
 import fastifyHelmet from '@fastify/helmet';
 import fastifyStatic from '@fastify/static';
 import pageRoutes from './routes.mjs';
-import { preloaded404, tryReadFile } from './randomization.mjs';
+import { preloaded404, tryReadFile } from './source-rewrites.mjs';
 import { fileURLToPath } from 'node:url';
 import { existsSync, unlinkSync } from 'node:fs';
 import ecosystem from '../ecosystem.config.js';

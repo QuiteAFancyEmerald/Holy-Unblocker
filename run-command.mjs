@@ -19,7 +19,7 @@ import { libcurlPath } from '@mercuryworkshop/libcurl-transport';
 import { bareModulePath } from '@mercuryworkshop/bare-as-module3';
 import { baremuxPath } from '@mercuryworkshop/bare-mux/node';
 import { uvPath } from '@titaniumnetwork-dev/ultraviolet';
-import { paintSource, tryReadFile } from './src/randomization.mjs';
+import { paintSource, tryReadFile } from './src/source-rewrites.mjs';
 import loadTemplates from './src/templates.mjs';
 
 const { flatAltPaths } = pageRoutes;

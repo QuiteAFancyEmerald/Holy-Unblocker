@@ -45,7 +45,9 @@
 
   <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <div id="header" class="fullwidth"><!--HEADER--></div>
+    <div id="header" class="fullwidth">
+      <!--HEADER-->
+    </div>
     <div id="particles-js" class="fullwidth"></div>
     <div data-aos="fade-right" class="hero-grid-container">
       <div class="box-hero">
@@ -77,82 +79,14 @@
 
               <a href="#" class="pr-button glowbutton pr-go2" id="search-btn">SEARCH</a>
             </div>
-
-            <h3>Advanced Settings ▼</h3>
-            <div id="settings-panel" class="pr-settings">
-              <div class="advanced-settings"></div>
-              <label>
-                {{autoMask}}{{Tor Browsing Mode}} <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Choose your Tor browsing mode. This allows you to use Tor routing in any browser. TLDR: You can access any .onion link in any browser.}}">(?) </span>
-                <select class="useonion">
-                  <option>Off</option>
-                  <option>Enabled</option>
-                </select>
-              </label>
-              <label>
-                Hide Ads <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Enable or disable ad blocking.}}">(?) </span>
-                <select class="hideads">
-                  <option>Off</option>
-                  <option selected>Enabled</option>
-                </select>
-              </label>
-              <label>
-                Region Selection <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Enable or select regional proxies.}}">(?) </span>
-                <select class="region-list">
-                  <option value="off">Off</option>
-                  <option value="eu">Europe</option>
-                  <option value="usWest">US-West</option>
-                  <option value="usEast">US-East</option>
-                  <option value="jp">Japan</option>
-                </select>
-              </label>
-
-              <div class="wisp-box">
-                <p class="cseltitle">{{autoMask}}{{Wisp Protocol Transport}} <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Wisp is designed to be a low-overhead, easy to implement protocol for proxying multiple TCP sockets over a single websocket connection. TLDR: Selecting a specific option will provide a focus on either speed, security or both at once. Just options for the user to select when utilizing Scramjet.}}">(?) </span></p>
-                  <table class="transport-table {{wisp-transport}}-list">
-                    <tr>
-                      <td class="transport-label">
-                        <label>
-                          {{autoMask}}{{Libcurl}}
-                          <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Libcurl transport focuses on full TLS encryption but has slightly slower speeds than Epoxy. [ALTERNATIVE/FIREFOX DEFAULT]}}">(?)</span>
-                          <span class="default-badge">{{autoMask}}{{Cross-Browser/Secure (Firefox)}}</span>
-                        </label>
-                      </td>
-                      <td class="transport-radio">
-                        <input type="radio" name="{{wisp-transport}}-2" value="{{libcurl}}" checked />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="transport-label">
-                        <label>
-                          {{autoMask}}{{Epoxy}}
-                          <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Epoxy allows you to make requests that bypass CORS without compromising security by running SSL/TLS inside webassembly with incredible performance. [HIGHLY RECOMMEND AND OPTIMIZED FOR SPEED].}}">(?)</span>
-                          <span class="{{bare}}-badge">{{autoMask}}{{Fastest/Secure (Chromium, Apple)}}</span>
-                        </label>
-                      </td>
-                      <td class="transport-radio">
-                        <input type="radio" name="{{wisp-transport}}-2" value="{{epoxy}}" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="transport-label">
-                        <label>
-                          {{autoMask}}{{Bare}}
-                          <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Bare is NOT recommend and a last resort for unsupported sites.}}">(?)</span>
-                          <span class="beta-badge">{{autoMask}}{{Least Secure (All)}}</span>
-                        </label>
-                      </td>
-                      <td class="transport-radio">
-                        <input type="radio" name="{{wisp-transport}}-2" value="{{bare}}" />
-                      </td>
-                    </tr>
-                  </table>
-              </div>
-            </div>
+            <!--PROXNAV-SETTINGS-->
           </div>
         </div>
       </div>
     </div>
-    <div id="footer" class="fullwidth"><!--FOOTER--></div>
+    <div id="footer" class="fullwidth">
+      <!--FOOTER-->
+    </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <script src="assets/js/{{common.js}}"></script>
     <script src="assets/js/csel.js"></script>

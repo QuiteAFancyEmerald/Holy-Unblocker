@@ -1,24 +1,31 @@
-import { tryReadFile } from './randomization.mjs';
+import { tryReadFile } from './source-rewrites.mjs';
 export { loadTemplates as default };
 
-const __dirname = '../views/pages/misc/deobf';
-
-const header = tryReadFile(__dirname + '/header.html', import.meta.url),
-  footer = tryReadFile(__dirname + '/footer.html', import.meta.url),
-  documentation = tryReadFile(__dirname + '/docs.html', import.meta.url),
-  faq = tryReadFile(__dirname + '/faq.html', import.meta.url),
-  terms = tryReadFile(__dirname + '/tos.html', import.meta.url),
-  settings = tryReadFile(__dirname + '/settings.html', import.meta.url),
+const __dirname = '../views/pages/misc/deobf',
+  getLineHeads = /^/gm,
+  regExpEscape2 = /[-[\]{}()*+?.,\\^$|#\s]/g,
+  templateNames = [
+    'header',
+    'footer',
+    'docs',
+    'faq',
+    'tos',
+    'settings',
+    'proxnav-settings',
+  ],
+  readTemplate = (identifier) =>
+    tryReadFile(__dirname + `/${identifier}.html`, import.meta.url),
+  templates = templateNames.map((name) => [
+    name.toUpperCase(),
+    readTemplate(name).replace(/\s+$/, ''),
+  ]),
+  locateTemplate = (key) =>
+    new RegExp(`([^\\S\\n]*)<!--(${key.replace(regExpEscape2, '\\$&')})-->`, 'gm'),
+  preserveIndentation = (template) => (line, leadingSpaces) =>
+    template.replace(getLineHeads, leadingSpaces),
   loadTemplates = (str) =>
-    str
-      .replace('<!--HEADER-->', header)
-      .replace('<!--FOOTER-->', footer)
-
-      // Used only on docs.html
-      .replace('<!--DOCS-->', documentation)
-      // Used only on faq.html
-      .replace('<!--FAQ-->', faq)
-      // Used only on terms.html
-      .replace('<!--TOS-->', terms)
-      // Used only on header.html
-      .replace('<!--SETTINGS-->', settings);
+    templates.reduce(
+      (updatedStr, [key, template]) =>
+        updatedStr.replace(locateTemplate(key), preserveIndentation(template)),
+      str
+    );

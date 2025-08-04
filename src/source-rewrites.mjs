@@ -178,10 +178,10 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
     return paintedSource;
   },
   // Functionally similar to templates.mjs, but requires more situational formatting.
-  specialTemplates = {
+  specialTemplates = Object.freeze({
     'ultraviolet-error': escapeStr(prePaint(uvError)),
     'scramjet-error': escapeStr(prePaint(sjError)),
-  },
+  }),
   // Apply final changes to a given file's text content.
   paintSource = (str) => applyMassInsert(prePaint(str), specialTemplates),
   // Use this instead of text404 for a preloaded error page.
