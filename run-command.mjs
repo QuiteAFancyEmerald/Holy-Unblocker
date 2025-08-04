@@ -160,7 +160,10 @@ commands: for (let i = 2; i < process.argv.length; i++)
               )
             );
           if (fileStats.isFile() && !existsSync(targetPath))
-            if (/\.(?:html|js|css|json|txt|xml)$/.test(file))
+            if (
+              /\.(?:html|js|css|json|txt|xml)$/.test(file) &&
+              initialDir === './views'
+            )
               writeFileSync(
                 targetPath,
                 paintSource(
