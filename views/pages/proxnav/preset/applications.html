@@ -9,9 +9,9 @@
     />
     }}
     <!--HEAD-CONTENT-->
-    <script src="/{{prefixes/scram}}/{{files/scramjet.all.js}}" defer></script>
-    <script src="/{{prefixes/baremux}}/index.js" defer></script>
-    <script src="/assets/js/register-sw.js" defer></script>
+    <script src="{{route}}{{/scram/scramjet.all.js}}" defer></script>
+    <script src="{{route}}{{/baremux/index.js}}" defer></script>
+    <script src="{{route}}{{/assets/js/register-sw.js}}" defer></script>
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
@@ -55,9 +55,9 @@
         placement: 'bottom'
       });
     </script>
-    <script src="assets/js/{{common.js}}"></script>
-    <script src="assets/js/csel.js"></script>
-    <script src="assets/js/card.js"></script>
-    <script defer="defer" src="assets/js/particlesjs/particles.js"></script>
+    <script src="{{route}}{{assets/js/common.js}}"></script>
+    <script src="{{route}}{{assets/js/csel.js}}"></script>
+    <script src="{{route}}{{assets/js/card.js}}"></script>
+    <script defer="defer" src="{{route}}{{assets/js/particlesjs/particles.js}}"></script>
   </body>
 </html>

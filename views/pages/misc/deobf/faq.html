@@ -24,7 +24,7 @@
   </div>
   <script>
     document.getElementById('iconfinder').href =
-      `javascript:alert((Array.from(document.head.querySelectorAll("link[rel*='icon']")).slice(-1)[0]||0).href||location.origin+"/favicon.ico")`;
+      `javascript:alert((Array.from(document.head.querySelectorAll("link[rel*='icon']")).slice(-1)[0]||0).href||location.origin+"{{route}}{{/favicon.ico}}")`;
   </script>
   <p>
     {{autoMask}}{{

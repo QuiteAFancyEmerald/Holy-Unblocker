@@ -3,6 +3,7 @@ import { existsSync, readFileSync } from 'node:fs';
 export { paintSource, preloaded404, tryReadFile };
 const {
   config,
+  serverUrl,
   flatAltPaths,
   cookingInserts,
   vegetables,
@@ -31,6 +32,9 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
   subtermsByVowels = /(?<=[AEIOUYaeiouy])/g,
   termsBySpaces = /\S+/g,
   containsMask = /&#\d+;|&[A-z]+;/,
+  getEndPoint = /((?<![^\/])github\/)?[^\/]+$/,
+  getPaths = /[^\/]+(?!\/?$)/g,
+  getAbsoluteRoot = /^~?\/+|^~$|^(?!\.\/)/,
   isImage = /\.(?:ico|png|jpg|jpeg)$/,
   applyInsert = (str, insertFunction, numArgs = 0) => {
     const mode = 'function' === typeof insertFunction,
@@ -97,6 +101,24 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
             ? term
             : term.replace(subtermsByVowels, getRandomChar)
         ),
+  route = (text) =>
+    text
+      .replace(
+        getEndPoint,
+        // cacheBustList is purely for dealing with cached file loading issues.
+        (name, ancestor) =>
+          ancestor
+            ? flatAltPaths[name] || name
+            : flatAltPaths['files/' + name] ||
+              cacheBustList[name] ||
+              flatAltPaths[name] ||
+              name
+      )
+      .replace(
+        getPaths,
+        (path) => flatAltPaths['prefixes/' + path] || flatAltPaths[path] || path
+      )
+      .replace(getAbsoluteRoot, serverUrl.pathname),
   insertCharset = (str) => str.replace(charset, getRandomChar),
   getRandomSplash = randomListItem(splashRandom),
   hutaoInsert = (str) => str.replaceAll('<!--HUTAOWOA-->', getRandomSplash),
@@ -140,6 +162,7 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
       .replaceAll('\r', '\\r')
       .replaceAll('\n', '\\n'),
   orderedTransforms = [
+    [route, 1],
     [ifSEO, 1],
     [maskTerm, 1],
     [autoMask, 1],
@@ -148,21 +171,18 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
     __uv$config: escapeStr(
       config.randomizeIdentifiers ? createRandomID() : '__uv$config'
     ),
-    ...flatAltPaths,
-    // This is purely for dealing with cached file loading issues.
-    ...cacheBustList,
   }),
   // List of manual censors for unavoidable cases.
   manualCensors = Object.freeze({
-    'Google': '1E100',
-    'Bing': 'Bell Sound',
-    'Brave': 'Courage',
-    'DuckDuckGo': '2x Waterfowl Moves',
-    'Startpage': 'Beginning Sheet',
+    Google: '1E100',
+    Bing: 'Bell Sound',
+    Brave: 'Courage',
+    DuckDuckGo: '2x Waterfowl Moves',
+    Startpage: 'Beginning Sheet',
     'wisp-transport': 'wst',
-    'libcurl': 'unix',
-    'epoxy': 'epoch',
-    'bare': 'time',
+    libcurl: 'unix',
+    epoxy: 'epoch',
+    bare: 'time',
   }),
   // Apply most obfuscation changes to an entire file's text content.
   prePaint = (str) => {

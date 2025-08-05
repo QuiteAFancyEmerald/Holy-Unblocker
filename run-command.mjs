@@ -1,5 +1,4 @@
 import {
-  readFileSync,
   writeFileSync,
   unlinkSync,
   mkdirSync,
@@ -12,7 +11,6 @@ import {
 import { exec, fork } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
-import ecosystem from './ecosystem.config.js';
 import pageRoutes from './src/routes.mjs';
 import { epoxyPath } from '@mercuryworkshop/epoxy-transport';
 import { libcurlPath } from '@mercuryworkshop/libcurl-transport';
@@ -22,29 +20,9 @@ import { uvPath } from '@titaniumnetwork-dev/ultraviolet';
 import { paintSource, tryReadFile } from './src/source-rewrites.mjs';
 import loadTemplates from './src/templates.mjs';
 
-const { flatAltPaths } = pageRoutes;
+const { config, serverUrl, flatAltPaths } = pageRoutes;
 
-// Some necessary constants are copied over from /src/server.mjs.
-
-const config = Object.freeze(
-    JSON.parse(readFileSync(new URL('./config.json', import.meta.url)))
-  ),
-  ecosystemConfig = Object.freeze(
-    ecosystem.apps.find((app) => app.name === 'HolyUB') || ecosystem.apps[0]
-  );
-
-const serverUrl = ((base) => {
-  try {
-    base = new URL(config.host);
-  } catch (e) {
-    base = new URL('http://a');
-    base.host = config.host;
-  }
-  base.port =
-    ecosystemConfig[config.production ? 'env_production' : 'env'].PORT;
-  return Object.freeze(base);
-})();
-
+// This constant is copied over from /src/server.mjs.
 const shutdown = fileURLToPath(new URL('./src/.shutdown', import.meta.url));
 
 // Run each command line argument passed after node run-command.mjs.
@@ -96,7 +74,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
          * immediately if checking the server on localhost and the port is unused.
          */
         const response = await Promise.race([
-          fetch(new URL('/test-shutdown', serverUrl)),
+          fetch(new URL(serverUrl.pathname + 'test-shutdown', serverUrl)),
           new Promise((resolve) => {
             timeoutId = setTimeout(() => {
               resolve('Error');

@@ -47,9 +47,9 @@
             }}
           </h2>
           <div class="box-button-container">
-            <a id="sjtooltip" href="/{{scramjet}}" class="box-button">{{autoMask}}{{Scramjet (LATEST)}}</a>
-            <a id="uvtooltip" href="/{{ultraviolet}}" class="box-button">{{autoMask}}{{Ultraviolet}}</a>
-            <a id="rhtooltip" href="/{{rammerhead}}" class="box-button">{{autoMask}}{{Rammerhead}}</a>
+            <a id="sjtooltip" href="{{route}}{{/scramjet}}" class="box-button">{{autoMask}}{{Scramjet (LATEST)}}</a>
+            <a id="uvtooltip" href="{{route}}{{/ultraviolet}}" class="box-button">{{autoMask}}{{Ultraviolet}}</a>
+            <a id="rhtooltip" href="{{route}}{{/rammerhead}}" class="box-button">{{autoMask}}{{Rammerhead}}</a>
             <script src="https://unpkg.com/@popperjs/core@2"></script>
             <script src="https://unpkg.com/tippy.js@6"></script>
             <script>
@@ -70,7 +70,7 @@
         <div class="box-image-container">
           <img
             class="box-pr-logo"
-            src="/assets/img/browsing_splash.webp"
+            src="{{route}}{{/assets/img/browsing_splash.webp}}"
             alt="{{maskTerm}}{{Holy Unblocker}} Browsing Splash"
           />
         </div>
@@ -80,8 +80,8 @@
       <!--FOOTER-->
     </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <script src="assets/js/{{common.js}}"></script>
-    <script src="assets/js/csel.js"></script>
-    <script defer="defer" src="assets/js/particlesjs/particles.js"></script>
+    <script src="{{route}}{{assets/js/common.js}}"></script>
+    <script src="{{route}}{{assets/js/csel.js}}"></script>
+    <script defer="defer" src="{{route}}{{assets/js/particlesjs/particles.js}}"></script>
   </body>
 </html>

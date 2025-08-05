@@ -25,7 +25,7 @@
         <div class="box-image-container">
           <img
             class="box-pr-logo"
-            src="/assets/img/directory_splash.webp"{{ifSEO}}{{
+            src="{{route}}{{/assets/img/directory_splash.webp}}"{{ifSEO}}{{
             alt="Holy Unblocker Browsing Splash"}}
           />
         </div>
@@ -47,10 +47,10 @@
             }}
           </h2>
           <div class="box-button-container">
-            <a id="emtooltip" href="/{{emulators}}" class="box-button">{{autoMask}}{{Emulators}}</a>
-            <a id="eltooltip" href="/{{retro-games}}" class="box-button">{{autoMask}}{{EmuLibrary}}</a>
-            <a id="wgtooltip" href="/{{web-games}}" class="box-button">{{autoMask}}{{Web Games}}</a>
-            <a id="fgtooltip" href="/{{flash-games}}" class="box-button">{{autoMask}}{{Flash Games}}</a>
+            <a id="emtooltip" href="{{route}}{{/emulators}}" class="box-button">{{autoMask}}{{Emulators}}</a>
+            <a id="eltooltip" href="{{route}}{{/retro-games}}" class="box-button">{{autoMask}}{{EmuLibrary}}</a>
+            <a id="wgtooltip" href="{{route}}{{/web-games}}" class="box-button">{{autoMask}}{{Web Games}}</a>
+            <a id="fgtooltip" href="{{route}}{{/flash-games}}" class="box-button">{{autoMask}}{{Flash Games}}</a>
             <script src="https://unpkg.com/@popperjs/core@2"></script>
             <script src="https://unpkg.com/tippy.js@6"></script>
             <script>
@@ -76,8 +76,8 @@
       <!--FOOTER-->
     </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <script src="assets/js/{{common.js}}"></script>
-    <script src="assets/js/csel.js"></script>
-    <script defer="defer" src="assets/js/particlesjs/particles.js"></script>
+    <script src="{{route}}{{assets/js/common.js}}"></script>
+    <script src="{{route}}{{assets/js/csel.js}}"></script>
+    <script defer="defer" src="{{route}}{{assets/js/particlesjs/particles.js}}"></script>
   </body>
 </html>

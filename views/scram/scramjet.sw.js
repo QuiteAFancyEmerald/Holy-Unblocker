@@ -1,4 +1,4 @@
-importScripts("/{{prefixes/scram}}/{{files/scramjet.all.js}}");
+importScripts("{{route}}{{/scram/scramjet.all.js}}");
 const { ScramjetServiceWorker } = $scramjetLoadWorker();
 const scramjet = new ScramjetServiceWorker();
 

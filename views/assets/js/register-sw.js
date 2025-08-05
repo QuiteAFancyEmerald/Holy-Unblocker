@@ -1,12 +1,12 @@
 (() => {
-  const stockSW = '/{{prefixes/uv}}/sw.js',
-    blacklistSW = '/{{prefixes/uv}}/sw-blacklist.js',
+  const stockSW = '{{route}}{{/uv/sw.js}}',
+    blacklistSW = '{{route}}{{/uv/sw-blacklist.js}}',
     swAllowedHostnames = ['localhost', '127.0.0.1'],
     wispUrl =
       (location.protocol === 'https:' ? 'wss' : 'ws') +
       '://' +
       location.host +
-      '/{{prefixes/wisp}}/',
+      '{{route}}{{/wisp/}}',
     proxyUrl = {
       tor: 'socks5h://localhost:9050',
       eu: 'socks5h://localhost:7000',
@@ -15,9 +15,9 @@
       jp: 'socks5h://localhost:7003',
     },
     transports = {
-      '{{epoxy}}': '/{{prefixes/epoxy}}/index.mjs',
-      '{{libcurl}}': '/{{prefixes/libcurl}}/index.mjs',
-      '{{bare}}': '/{{prefixes/baremux}}/index.mjs',
+      '{{epoxy}}': '{{route}}{{/epoxy/index.mjs}}',
+      '{{libcurl}}': '{{route}}{{/libcurl/index.mjs}}',
+      '{{bare}}': '{{route}}{{/baremux/index.mjs}}',
     },
     storageId = 'hu-lts-storage',
     storageObject = () => JSON.parse(localStorage.getItem(storageId)) || {},
@@ -53,7 +53,7 @@
     console.log('Using proxy:', transportOptions.proxy);
     console.log('Transport mode:', transportMode);
 
-    const connection = new BareMux.BareMuxConnection('/{{prefixes/baremux}}/worker.js');
+    const connection = new BareMux.BareMuxConnection('{{route}}{{/baremux/worker.js}}');
     await connection.setTransport(transportMode, [transportOptions]);
 
     const registrations = await navigator.serviceWorker.getRegistrations(),
@@ -78,11 +78,11 @@
       const { ScramjetController } = await $scramjetLoadController();
 
       const scramjet = new ScramjetController({
-        prefix: '/{{prefixes/scram}}/network/',
+        prefix: '{{route}}{{/scram/network/}}',
         files: {
-          wasm: '/{{prefixes/scram}}/{{files/scramjet.wasm.wasm}}',
-          all: '/{{prefixes/scram}}/{{files/scramjet.all.js}}',
-          sync: '/{{prefixes/scram}}/{{files/scramjet.sync.js}}',
+          wasm: '{{route}}{{/scram/scramjet.wasm.wasm}}',
+          all: '{{route}}{{/scram/scramjet.all.js}}',
+          sync: '{{route}}{{/scram/scramjet.sync.js}}',
         },
         flags: {
           rewriterLogs: false,
@@ -98,7 +98,7 @@
 
       console.log('Initializing ScramjetController');
       scramjet.init();
-      navigator.serviceWorker.register('/{{prefixes/scram}}/{{files/scramjet.sw.js}}');
+      navigator.serviceWorker.register('{{route}}{{/scram/scramjet.sw.js}}');
     } catch (err) {
       console.error('Scramjet initialization failed:', err);
     }

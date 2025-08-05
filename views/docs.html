@@ -31,10 +31,10 @@
       <!--FOOTER-->
     </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <script src="assets/js/{{common.js}}"></script>
-    <script src="assets/js/csel.js"></script>
-    <script src="assets/js/card.js"></script>
-    <script src="assets/js/particlesjs/particles.js"></script>
+    <script src="{{route}}{{assets/js/common.js}}"></script>
+    <script src="{{route}}{{assets/js/csel.js}}"></script>
+    <script src="{{route}}{{assets/js/card.js}}"></script>
+    <script src="{{route}}{{assets/js/particlesjs/particles.js}}"></script>
     <script>
       (function () {
         var v = document.getElementById('vsc');
@@ -45,7 +45,7 @@
             t = setTimeout(function () {
               if (!a) {
                 a = true;
-                var e = new Audio('assets/misc/visualstudiocode.mp3');
+                var e = new Audio('{{route}}{{assets/misc/visualstudiocode.mp3}}');
                 e.play();
                 e.addEventListener(
                   'ended',

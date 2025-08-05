@@ -20,7 +20,7 @@ const getDomain = () =>
   // This is used for stealth mode when visiting external sites.
   goFrame = (url) => {
     localStorage.setItem('hu-lts-frame-url', url);
-    location.href = '/s';
+    location.href = '{{route}}{{/s}}';
   },
   /* Used to set functions for the goProx object at the bottom.
    * See the goProx object at the bottom for some usage examples
@@ -227,12 +227,12 @@ const RammerheadEncode = async (baseUrl) => {
     api = {
       // Make a new Rammerhead session and do something with it.
       newsession(callback) {
-        get('/newsession', callback);
+        get('{{route}}{{/newsession}}', callback);
       },
 
       // Check if a session with the specified ID exists, then do something.
       sessionexists(id, callback) {
-        get('/sessionexists?id=' + encodeURIComponent(id), (res) => {
+        get('{{route}}{{/sessionexists}}?id=' + encodeURIComponent(id), (res) => {
           if (res === 'exists') return callback(true);
           if (res === 'not found') return callback(false);
           console.log('Unexpected response from server. Received ' + res);
@@ -242,7 +242,7 @@ const RammerheadEncode = async (baseUrl) => {
       // Request a brand new encoding table to use for Rammerhead.
       shuffleDict(id, callback) {
         console.log('Shuffling', id);
-        get('/api/shuffleDict?id=' + encodeURIComponent(id), (res) => {
+        get('{{route}}{{/api/shuffleDict}}?id=' + encodeURIComponent(id), (res) => {
           callback(JSON.parse(res));
         });
       },
@@ -372,7 +372,7 @@ addEventListener('DOMContentLoaded', async () => {
   delete self['{{__uv$config}}'];
   if (self['$scramjetLoadController'])
     sjEncode = new (self['$scramjetLoadController']().ScramjetController)({
-      prefix: '/{{prefixes/scram}}/network/',
+      prefix: '{{route}}{{/scram/network/}}',
     }).encodeUrl;
 
   // Object.freeze prevents goProx from accidentally being edited.
@@ -393,7 +393,7 @@ addEventListener('DOMContentLoaded', async () => {
 
     rnav: urlHandler(location.protocol + '//client.' + getDomain()),
 
-    osu: urlHandler(location.origin + '/archive/osu'),
+    osu: urlHandler(location.origin + '{{route}}{{/archive/osu}}'),
 
     mcnow: urlHandler(sjUrl('https://now.gg/play/a/10010/b')),
 
@@ -502,7 +502,7 @@ addEventListener('DOMContentLoaded', async () => {
 
   // Load in relevant JSON files used to organize large sets of data.
   // This first one is for links, whereas the rest are for navigation menus.
-  const huLinks = await fetch('/assets/json/links.json', {
+  const huLinks = await fetch('{{route}}{{/assets/json/links.json}}', {
     mode: 'same-origin',
   }).then((response) => response.json());
 
@@ -523,7 +523,7 @@ addEventListener('DOMContentLoaded', async () => {
 
     if (navList) {
       // List items stored in JSON format will be returned as a JS object.
-      const data = await fetch(`/assets/json/${filename}.json`, {
+      const data = await fetch(`{{route}}{{/assets/json/}}${filename}.json`, {
         mode: 'same-origin',
       }).then((response) => response.json());
 
@@ -559,7 +559,7 @@ addEventListener('DOMContentLoaded', async () => {
               desc = document.createElement('p');
 
             a.href = '#';
-            img.src = `/assets/img/${dir}/` + item.img;
+            img.src = `{{route}}{{/assets/img/}}${dir}/` + item.img;
             title.textContent = item.name;
             desc.textContent = item.description;
 
@@ -580,10 +580,10 @@ addEventListener('DOMContentLoaded', async () => {
             // the corresponding location/index in the dirnames object.
             const functionsList = [
               () => goFrame(item.path),
-              () => goFrame('/{{webretro}}?core=' + item.core + '&rom=' + item.rom),
+              () => goFrame('{{route}}{{/webretro}}?core=' + item.core + '&rom=' + item.rom),
               item.custom
                 ? () => goProx[item.custom]('stealth')
-                : () => goFrame('/archive/g/' + item.path),
+                : () => goFrame('{{route}}{{/archive/g/}}' + item.path),
             ];
 
             a.addEventListener(
@@ -610,7 +610,7 @@ addEventListener('DOMContentLoaded', async () => {
 
             a.addEventListener('click', (e) => {
               e.preventDefault();
-              goFrame('/{{flash}}?swf=' + item);
+              goFrame('{{route}}{{/flash}}?swf=' + item);
             });
 
             navList.appendChild(a);

@@ -36,7 +36,7 @@
         </div>
         <script>
           document.getElementById('iconfinder').href =
-            `javascript:alert((Array.from(document.head.querySelectorAll("link[rel*='icon']")).slice(-1)[0]||0).href||location.origin+"/favicon.ico")`;
+            `javascript:alert((Array.from(document.head.querySelectorAll("link[rel*='icon']")).slice(-1)[0]||0).href||location.origin+"{{route}}{{/favicon.ico}}")`;
         </script>
         <p>
           {{autoMask}}{{
@@ -50,8 +50,8 @@
       <!--FOOTER-->
     </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <script src="assets/js/{{common.js}}"></script>
-    <script src="assets/js/csel.js"></script>
-    <script defer="defer" src="assets/js/particlesjs/particles.js"></script>
+    <script src="{{route}}{{assets/js/common.js}}"></script>
+    <script src="{{route}}{{assets/js/csel.js}}"></script>
+    <script defer="defer" src="{{route}}{{assets/js/particlesjs/particles.js}}"></script>
   </body>
 </html>

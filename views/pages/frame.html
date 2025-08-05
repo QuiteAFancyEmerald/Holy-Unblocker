@@ -9,11 +9,11 @@
     />
     }}
     <!--HEAD-CONTENT-->
-    <script src="/{{prefixes/scram}}/{{files/scramjet.all.js}}"></script>
-    <script src="/{{prefixes/baremux}}/index.js"></script>
-    <script src="/{{prefixes/uv}}/{{files/uv.bundle.js}}"></script>
-    <script src="/{{prefixes/uv}}/{{files/uv.config.js}}"></script>
-    <script src="/assets/js/register-sw.js"></script>
+    <script src="{{route}}{{/scram/scramjet.all.js}}"></script>
+    <script src="{{route}}{{/baremux/index.js}}"></script>
+    <script src="{{route}}{{/uv/uv.bundle.js}}"></script>
+    <script src="{{route}}{{/uv/uv.config.js}}"></script>
+    <script src="{{route}}{{/assets/js/register-sw.js}}"></script>
   </head>
 
   <body>
@@ -54,7 +54,7 @@
         loader && (loader.style.opacity = '0', setTimeout(() => loader.remove()));
       }, 2500);
     </script>
-    <script src="assets/js/{{common.js}}"></script>
-    <script src="assets/js/csel.js"></script>
+    <script src="{{route}}{{assets/js/common.js}}"></script>
+    <script src="{{route}}{{assets/js/csel.js}}"></script>
   </body>
 </html>

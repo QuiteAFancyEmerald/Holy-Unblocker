@@ -10,12 +10,12 @@
     }}
     <!--HEAD-CONTENT-->
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
-    <script src="/{{prefixes/scram}}/{{files/scramjet.all.js}}" defer></script>
-    <script src="/{{prefixes/baremux}}/index.js" defer></script>
-    <script src="/{{prefixes/epoxy}}/index.js" defer></script>
-    <script src="/{{prefixes/uv}}/{{files/uv.bundle.js}}" defer></script>
-    <script src="/{{prefixes/uv}}/{{files/uv.config.js}}" defer></script>
-    <script src="/assets/js/register-sw.js" defer></script>
+    <script src="{{route}}{{/scram/scramjet.all.js}}" defer></script>
+    <script src="{{route}}{{/baremux/index.js}}" defer></script>
+    <script src="{{route}}{{/epoxy/index.js}}" defer></script>
+    <script src="{{route}}{{/uv/uv.bundle.js}}" defer></script>
+    <script src="{{route}}{{/uv/uv.config.js}}" defer></script>
+    <script src="{{route}}{{/assets/js/register-sw.js}}" defer></script>
   </head>
 
   <body>
@@ -45,9 +45,9 @@
       <!--FOOTER-->
     </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <script src="assets/js/{{common.js}}"></script>
-    <script src="assets/js/csel.js"></script>
-    <script src="assets/js/card.js"></script>
-    <script defer="defer" src="assets/js/particlesjs/particles.js"></script>
+    <script src="{{route}}{{assets/js/common.js}}"></script>
+    <script src="{{route}}{{assets/js/csel.js}}"></script>
+    <script src="{{route}}{{assets/js/card.js}}"></script>
+    <script defer="defer" src="{{route}}{{assets/js/particlesjs/particles.js}}"></script>
   </body>
 </html>

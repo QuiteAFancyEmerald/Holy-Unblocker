@@ -1,6 +1,7 @@
 {
   "title": "HU LTS",
   "host": "0.0.0.0",
+  "pathname": "/",
   "minifyScripts": false,
   "randomizeIdentifiers": true,
   "production": false,

@@ -36,8 +36,8 @@
       content="Holy Unblocker LTS is a top-tier web proxy service that bypasses network and browser restrictions to access blocked websites securely. Enjoy a seamless browsing experience with robust security and advanced features."
     />
     }}
-    <meta property="og:image" content="assets/img/hero.webp" />
-    <meta property="og:image:secure_url" content="assets/img/hero.webp" />
+    <meta property="og:image" content="{{route}}{{assets/img/hero.webp}}" />
+    <meta property="og:image:secure_url" content="{{route}}{{assets/img/hero.webp}}" />
     {{ifSEO}}{{
     <meta property="og:image:alt" content="Holy Unblocker Logo" />
     <meta property="og:locale" content="en_US" />
@@ -52,11 +52,11 @@
       name="twitter:description"
       content="Discover Holy Unblocker LTS, a premier web proxy service that bypasses censorship and filters to provide secure access to blocked websites. Ideal for private browsing and overcoming network restrictions on devices like Chromebooks."
     />
-    <meta name="twitter:image" content="assets/img/hero.webp" />
+    <meta name="twitter:image" content="{{route}}{{assets/img/hero.webp}}" />
     <meta name="twitter:image:alt" content="Holy Unblocker Icon" />
     }}
     <meta name="msapplication-TileColor" content="#b4213b" />
-    <meta name="msapplication-TileImage" content="assets/ico/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="{{route}}{{assets/ico/ms-icon-144x144.png}}">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta
       name="apple-mobile-web-app-status-bar-style"
@@ -67,8 +67,8 @@
     }}
     <!--HEAD-CONTENT-->
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
-    <link rel="mask-icon" href="new.svg" color="#b4213b" />
-    <link rel="manifest" href="manifest.json" />
+    <link rel="mask-icon" href="{{route}}{{new.svg}}" color="#b4213b" />
+    <link rel="manifest" href="{{route}}{{manifest.json}}" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="rating" content="general" />
@@ -279,7 +279,7 @@
           <a class="homebutton" href="#scrollfix"{{ifSEO}}{{ aria-label="Bypass now"}}
             >{{autoMask}}{{Bypass now?}}</a
           >
-          <a class="homebutton mobile" href="/browsing"{{ifSEO}}{{ aria-label="Browse now"}}
+          <a class="homebutton mobile" href="{{route}}{{/browsing}}"{{ifSEO}}{{ aria-label="Browse now"}}
             >{{autoMask}}{{Bypass now?}}</a
           >
         </div>
@@ -370,10 +370,10 @@
             </div>
           </div>
           <div class="image-container-hero">
-            <img class="hero" src="/assets/img/hero.webp" alt="icon" />
+            <img class="hero" src="{{route}}{{/assets/img/hero.webp}}" alt="icon" />
             <h1>Holy Unblocker LTS</h1>
             <h2>Free and transparent for use</h2>
-            <a class="fancybutton glowbutton" href="/browsing">Browse Now</a>
+            <a class="fancybutton glowbutton" href="{{route}}{{/browsing}}">Browse Now</a>
           </div>
         </div>
       </div>
@@ -382,52 +382,52 @@
           <div class="carousel">
             <div class="carousel-inner">
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/fastify.webp" alt="Fastify" />
+                <img loading="lazy" src="{{route}}{{/assets/img/fastify.webp}}" alt="Fastify" />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/nordtheme.webp" alt="Nord Theme" />
+                <img loading="lazy" src="{{route}}{{/assets/img/nordtheme.webp}}" alt="Nord Theme" />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/nodejs.webp" alt="Nodejs" />
+                <img loading="lazy" src="{{route}}{{/assets/img/nodejs.webp}}" alt="Nodejs" />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/fontawesome.webp" alt="Font Awesome" />
+                <img loading="lazy" src="{{route}}{{/assets/img/fontawesome.webp}}" alt="Font Awesome" />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/webretro.webp" alt="Webretro" />
+                <img loading="lazy" src="{{route}}{{/assets/img/webretro.webp}}" alt="Webretro" />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/ruffle.webp" alt="Ruffle" />
+                <img loading="lazy" src="{{route}}{{/assets/img/ruffle.webp}}" alt="Ruffle" />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/{{files/uv.webp}}" alt="{{autoMask}}{{Ultraviolet}}" />
+                <img loading="lazy" src="{{route}}{{/assets/img/uv.webp}}" alt="{{autoMask}}{{Ultraviolet}}" />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/{{files/rammerhead.webp}}" alt="{{autoMask}}{{Rammerhead}}" />
+                <img loading="lazy" src="{{route}}{{/assets/img/rammerhead.webp}}" alt="{{autoMask}}{{Rammerhead}}" />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/fastify.webp" alt="Fastify" />
+                <img loading="lazy" src="{{route}}{{/assets/img/fastify.webp}}" alt="Fastify" />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/nordtheme.webp" alt="Nord Theme" />
+                <img loading="lazy" src="{{route}}{{/assets/img/nordtheme.webp}}" alt="Nord Theme" />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/nodejs.webp" alt="Nodejs" />
+                <img loading="lazy" src="{{route}}{{/assets/img/nodejs.webp}}" alt="Nodejs" />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/fontawesome.webp" alt="Font Awesome" />
+                <img loading="lazy" src="{{route}}{{/assets/img/fontawesome.webp}}" alt="Font Awesome" />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/webretro.webp" alt="Webretro" />
+                <img loading="lazy" src="{{route}}{{/assets/img/webretro.webp}}" alt="Webretro" />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/ruffle.webp" alt="Ruffle" />
+                <img loading="lazy" src="{{route}}{{/assets/img/ruffle.webp}}" alt="Ruffle" />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/{{files/uv.webp}}" alt="{{autoMask}}{{Ultraviolet}}" />
+                <img loading="lazy" src="{{route}}{{/assets/img/uv.webp}}" alt="{{autoMask}}{{Ultraviolet}}" />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="/assets/img/{{files/rammerhead.webp}}" alt="{{autoMask}}{{Rammerhead}}" />
+                <img loading="lazy" src="{{route}}{{/assets/img/rammerhead.webp}}" alt="{{autoMask}}{{Rammerhead}}" />
               </div>
             </div>
           </div>
@@ -492,7 +492,7 @@
           <div class="image-container">
             <img
               class="hero"
-              src="/assets/img/server.webp"
+              src="{{route}}{{/assets/img/server.webp}}"
               alt="Server Icon"
             />
           </div>
@@ -522,7 +522,7 @@
           <div class="image-container">
             <img
               class="hero"
-              src="/assets/img/filecode.webp"
+              src="{{route}}{{/assets/img/filecode.webp}}"
               alt="File Code Icon"
             />
           </div>
@@ -532,7 +532,7 @@
             <div class="text-wrap">
               <h1>Usage</h1>
               <p>
-                Head to the <a href="/browsing">{{autoMask}}{{Web Proxies}}</a> {{autoMask}}{{page and select
+                Head to the <a href="{{route}}{{/browsing}}">{{autoMask}}{{Web Proxies}}</a> {{autoMask}}{{page and select
                 one of the proxies featured! Afterwards, type out the site you
                 wish to access in the search box. Each web proxy has its own
                 level of effectiveness, speed and security. It is recommended to
@@ -542,7 +542,7 @@
             </div>
           </div>
           <div class="image-container">
-            <img class="hero" src="/assets/img/shield.webp" alt="Shield Icon" />
+            <img class="hero" src="{{route}}{{/assets/img/shield.webp}}" alt="Shield Icon" />
           </div>
         </div>
         <div data-aos="fade-left" id="info2" class="box-card">
@@ -554,8 +554,8 @@
                 HU LTS features a collection of pre-linked applications,
                 including YouTube, Spotify,
                 }}
-                <a href="/{{emulators}}">{{autoMask}}{{Webretro}}</a> {{autoMask}}{{(an online everything
-                emulator),}} <a href="/{{flash-games}}">{{autoMask}}{{Ruffle.fs}}</a> {{autoMask}}{{(Adobe Flash
+                <a href="{{route}}{{/emulators}}">{{autoMask}}{{Webretro}}</a> {{autoMask}}{{(an online everything
+                emulator),}} <a href="{{route}}{{/flash-games}}">{{autoMask}}{{Ruffle.fs}}</a> {{autoMask}}{{(Adobe Flash
                 Emulator), and an expansive library for each respective app.}}
               </p>
               <p>{{autoMask}}{{This project is soon to support the Anura games library.}}</p>
@@ -564,7 +564,7 @@
           <div class="image-container">
             <img
               class="hero"
-              src="/assets/img/apps.webp"
+              src="{{route}}{{/assets/img/apps.webp}}"
               alt="Application Icon"
             />
           </div>
@@ -581,20 +581,20 @@
                 source randomization, and advanced proxy navigation.}}<br /><br />
                 {{autoMask}}{{For comprehensive setup instructions, visit our official}}
                 <a
-                  href="/github"
+                  href="{{route}}{{/github}}"
                   title="{{maskTerm}}{{Holy Unblocker}} LTS GitHub Repository"
                   target="_blank"
                   rel="noopener noreferrer"
                   >GitHub repository</a
                 >, the
                 <a
-                  href="/{{titaniumnetwork-documentation}}"
+                  href="{{route}}{{/titaniumnetwork-documentation}}"
                   title="Titanium Network Documentation"
                   target="_blank"
                   rel="noopener noreferrer"
                   >{{autoMask}}{{Titanium Network Docs}}</a
                 >, or
-                <a href="/documentation" title="{{autoMask}}{{Additional Hosting Information}}"
+                <a href="{{route}}{{/documentation}}" title="{{autoMask}}{{Additional Hosting Information}}"
                   >{{autoMask}}{{linked here on the main site}}</a
                 >.
               </p>
@@ -618,7 +618,7 @@
           <div class="image-container">
             <img
               class="hero"
-              src="/assets/img/hosting.webp"
+              src="{{route}}{{/assets/img/hosting.webp}}"
               alt="{{autoMask}}{{Hosting and Deployment Icon}}"
               title="{{autoMask}}{{Hosting and Deployment for Holy Unblocker LTS}}"
             />
@@ -652,7 +652,7 @@
               <p>
                 To start contributing, visit our
                 <a
-                  href="/github"
+                  href="{{route}}{{/github}}"
                   title="{{autoMask}}{{Holy Unblocker LTS GitHub Repository}}"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -660,7 +660,7 @@
                 >
                 and join our
                 <a
-                  href="/{{titaniumnetwork-discord}}"
+                  href="{{route}}{{/titaniumnetwork-discord}}"
                   title="{{autoMask}}{{Holy Unblocker LTS Discord Server}}"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -673,7 +673,7 @@
           <div class="image-container">
             <img
               class="hero"
-              src="/assets/img/git.webp"
+              src="{{route}}{{/assets/img/git.webp}}"
               alt="Contributing GitHub Icon"
               title="{{autoMask}}{{Contribute to Holy Unblocker LTS on GitHub}}"
             />
@@ -723,27 +723,27 @@
           </div>
           <div class="image-container-hero">
             <h1>Long Term Support FOSS Project</h1>
-            <a class="fancybutton glowbutton" href="/browsing">{{autoMask}}{{Bypass Now}}</a>
+            <a class="fancybutton glowbutton" href="{{route}}{{/browsing}}">{{autoMask}}{{Bypass Now}}</a>
           </div>
         </div>
       </div>
       <div class="box-home text-center splashend">
         <h1>{{autoMask}}{{It's time to browse the internet freely.}}</h1>
         <a class="homebutton" href="#scrollfix">{{autoMask}}{{Try HU LTS For Free}}</a>
-        <a class="homebutton mobile" href="/browsing">{{autoMask}}{{Try HU LTS For Free}}</a>
+        <a class="homebutton mobile" href="{{route}}{{/browsing}}">{{autoMask}}{{Try HU LTS For Free}}</a>
       </div>
     </div>
     <div id="footer" class="fullwidth">
       <!--FOOTER-->
     </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <script src="assets/js/{{common.js}}"></script>
-    <script src="assets/js/csel.js"></script>
-    <script src="assets/js/card.js"></script>
+    <script src="{{route}}{{assets/js/common.js}}"></script>
+    <script src="{{route}}{{assets/js/csel.js}}"></script>
+    <script src="{{route}}{{assets/js/card.js}}"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();
     </script>
-    <script defer="defer" src="assets/js/particlesjs/particles.js"></script>
+    <script defer="defer" src="{{route}}{{assets/js/particlesjs/particles.js}}"></script>
   </body>
 </html>

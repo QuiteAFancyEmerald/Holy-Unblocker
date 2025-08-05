@@ -1,9 +1,32 @@
 import { readFileSync } from 'node:fs';
+import ecosystem from '../ecosystem.config.js';
 
 // For toggling SEO display and more, see the config.json file.
 const config = Object.freeze(
   JSON.parse(readFileSync(new URL('../config.json', import.meta.url)))
 );
+
+const ecosystemConfig = Object.freeze(
+  ecosystem.apps.find((app) => app.name === 'HolyUB') || ecosystem.apps[0]
+);
+
+/* Record the server's location as a URL object, including its host and port.
+ * The host can be modified at /src/config.json, whereas the ports can be modified
+ * at /ecosystem.config.js.
+ */
+const serverUrl = ((base) => {
+  try {
+    base = new URL(config.host);
+  } catch (e) {
+    base = new URL('http://a');
+    base.host = config.host;
+  }
+  base.port =
+    ecosystemConfig[config.production ? 'env_production' : 'env'].PORT;
+  base.pathname =
+    (config.pathname || '/').replace(/\/+$|[^\w\/\.-]+/g, '') + '/';
+  return Object.freeze(base);
+})();
 
 let pages = {
   /* If you are trying to add pages or assets in the root folder and
@@ -149,8 +172,10 @@ const useAltPaths = (altPaths, targetPaths, ancestor, tempKey = '') => {
   return altPaths;
 };
 
-const getAltPrefix = (prefix) =>
-    `/${(!config.usingSEO && altPaths.prefixes[prefix]) || prefix}/`,
+const getAltPrefix = (prefix, serverPathname = '/') =>
+    serverPathname +
+    ((!config.usingSEO && altPaths.prefixes[prefix]) || prefix) +
+    '/',
   getPathEntries = (pathObject, prefix = '') => {
     if (prefix) prefix += '/';
     let inserts = [];
@@ -206,6 +231,7 @@ const cookingInserts = insert.content,
 
 export default {
   config,
+  serverUrl,
   pages,
   externalPages,
   flatAltPaths,

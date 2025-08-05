@@ -9,9 +9,9 @@
     />
     }}
     <!--HEAD-CONTENT-->
-    <script src="/{{prefixes/scram}}/{{files/scramjet.all.js}}" defer></script>
-    <script src="/{{prefixes/baremux}}/index.js" defer></script>
-    <script src="/assets/js/register-sw.js" defer></script>
+    <script src="{{route}}{{/scram/scramjet.all.js}}" defer></script>
+    <script src="{{route}}{{/baremux/index.js}}" defer></script>
+    <script src="{{route}}{{/assets/js/register-sw.js}}" defer></script>
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
@@ -27,9 +27,9 @@
       <div class="box-hero">
         <div class="hero-content">
           <div class="proxy-header text-center">
-            <img class="pr-logo" src="/assets/img/{{files/scramjet.webp}}" alt="{{autoMask}}{{Scramjet Web Proxy}}" />
+            <img class="pr-logo" src="{{route}}{{/assets/img/scramjet.webp}}" alt="{{autoMask}}{{Scramjet Web Proxy}}" />
             <p>
-              <a href="/{{github/scramjet}}"><strong>{{autoMask}}{{Scramjet}}</strong></a> {{autoMask}}{{is a web proxy designed with performance and security in mind to evade internet censorship,}}<br>{{autoMask}}{{bypass arbitrary web browser restrictions and innovate web proxy technologies.}}<br><br>
+              <a href="{{route}}{{/github/scramjet}}"><strong>{{autoMask}}{{Scramjet}}</strong></a> {{autoMask}}{{is a web proxy designed with performance and security in mind to evade internet censorship,}}<br>{{autoMask}}{{bypass arbitrary web browser restrictions and innovate web proxy technologies.}}<br><br>
               {{autoMask}}{{This allows you to browse various websites with higher level of privacy}}<br> {{autoMask}}{{and access popular resources like Discord, GeForce NOW, Twitter and YouTube on restricted networks.}}<br><br>{{autoMask}}{{For CAPTCHA challenges please solve them slowly. SJ is so fast you might get stuck in a loop.}}
             </p>
           </div>
@@ -69,9 +69,9 @@
         placement: 'bottom'
       });
     </script>
-    <script src="assets/js/{{common.js}}"></script>
-    <script src="assets/js/csel.js"></script>
-    <script src="assets/js/card.js"></script>
-    <script defer="defer" src="assets/js/particlesjs/particles.js"></script>
+    <script src="{{route}}{{assets/js/common.js}}"></script>
+    <script src="{{route}}{{assets/js/csel.js}}"></script>
+    <script src="{{route}}{{assets/js/card.js}}"></script>
+    <script defer="defer" src="{{route}}{{assets/js/particlesjs/particles.js}}"></script>
   </body>
 </html>

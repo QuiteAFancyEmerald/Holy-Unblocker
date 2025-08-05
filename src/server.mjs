@@ -8,28 +8,13 @@ import pageRoutes from './routes.mjs';
 import { preloaded404, tryReadFile } from './source-rewrites.mjs';
 import { fileURLToPath } from 'node:url';
 import { existsSync, unlinkSync } from 'node:fs';
-import ecosystem from '../ecosystem.config.js';
 
-const ecosystemConfig = Object.freeze(
-  ecosystem.apps.find((app) => app.name === 'HolyUB') || ecosystem.apps[0]
-);
-const { config, pages, externalPages, getAltPrefix } = pageRoutes;
+const { serverUrl, pages, externalPages, getAltPrefix } = pageRoutes;
 
 /* Record the server's location as a URL object, including its host and port.
  * The host can be modified at /src/config.json, whereas the ports can be modified
  * at /ecosystem.config.js.
  */
-const serverUrl = ((base) => {
-  try {
-    base = new URL(config.host);
-  } catch (e) {
-    base = new URL('http://a');
-    base.host = config.host;
-  }
-  base.port =
-    ecosystemConfig[config.production ? 'env_production' : 'env'].PORT;
-  return Object.freeze(base);
-})();
 console.log(serverUrl);
 
 // The server will check for the existence of this file when a shutdown is requested.
@@ -53,9 +38,11 @@ const rammerheadScopes = [
   '/syncLocalStorage',
   '/api/shuffleDict',
   '/mainport',
-];
+].map((pathname) => pathname.replace('/', serverUrl.pathname));
 
-const rammerheadSession = /^\/[a-z0-9]{32}/,
+const rammerheadSession = new RegExp(
+    `^${serverUrl.pathname.replaceAll('.', '\\.')}[a-z0-9]{32}`
+  ),
   shouldRouteRh = (req) => {
     try {
       const url = new URL(req.url, serverUrl);
@@ -83,7 +70,7 @@ const serverFactory = (handler) => {
     })
     .on('upgrade', (req, socket, head) => {
       if (shouldRouteRh(req)) routeRhUpgrade(req, socket, head);
-      else if (req.url.endsWith(getAltPrefix('wisp')))
+      else if (req.url.endsWith(getAltPrefix('wisp', serverUrl.pathname)))
         wisp.routeRequest(req, socket, head);
     });
 };
@@ -105,24 +92,31 @@ app.register(fastifyHelmet, {
 // Assign server file paths to different paths, for serving content on the website.
 app.register(fastifyStatic, {
   root: fileURLToPath(new URL('../views/dist/pages', import.meta.url)),
+  prefix: serverUrl.pathname,
   decorateReply: false,
 });
 
 // All entries in the dist folder are created with source rewrites.
 // Minified scripts are also served here, if minification is enabled.
-['assets', 'uv', 'scram', 'epoxy', 'libcurl', 'bareasmodule', 'baremux'].forEach(
-  (prefix) => {
-    app.register(fastifyStatic, {
-      root: fileURLToPath(new URL('../views/dist/' + prefix, import.meta.url)),
-      prefix: getAltPrefix(prefix),
-      decorateReply: false,
-    });
-  }
-);
+[
+  'assets',
+  'uv',
+  'scram',
+  'epoxy',
+  'libcurl',
+  'bareasmodule',
+  'baremux',
+].forEach((prefix) => {
+  app.register(fastifyStatic, {
+    root: fileURLToPath(new URL('../views/dist/' + prefix, import.meta.url)),
+    prefix: getAltPrefix(prefix, serverUrl.pathname),
+    decorateReply: false,
+  });
+});
 
 app.register(fastifyStatic, {
   root: fileURLToPath(new URL('../views/archive', import.meta.url)),
-  prefix: getAltPrefix('archive'),
+  prefix: getAltPrefix('archive', serverUrl.pathname),
   decorateReply: false,
 });
 
@@ -130,26 +124,26 @@ app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL('../views/archive/gfiles/rarch', import.meta.url)
   ),
-  prefix: getAltPrefix('serving'),
+  prefix: getAltPrefix('serving', serverUrl.pathname),
   decorateReply: false,
 });
 
 // You should NEVER commit roms, due to piracy concerns.
-['cores', 'info', 'roms'].forEach(
-  (prefix) => {
-    app.register(fastifyStatic, {
-      root: fileURLToPath(new URL('../views/archive/gfiles/rarch' + prefix, import.meta.url)),
-      prefix: getAltPrefix(prefix),
-      decorateReply: false,
-    });
-  }
-);
+['cores', 'info', 'roms'].forEach((prefix) => {
+  app.register(fastifyStatic, {
+    root: fileURLToPath(
+      new URL('../views/archive/gfiles/rarch/' + prefix, import.meta.url)
+    ),
+    prefix: getAltPrefix(prefix, serverUrl.pathname),
+    decorateReply: false,
+  });
+});
 
 app.register(fastifyStatic, {
   root: fileURLToPath(
     new URL('../views/archive/gfiles/rarch/cores', import.meta.url)
   ),
-  prefix: getAltPrefix('uauth'),
+  prefix: getAltPrefix('uauth', serverUrl.pathname),
   decorateReply: false,
 });
 
@@ -161,7 +155,16 @@ app.register(fastifyStatic, {
  * Paths like /browsing are converted into paths like /views/dist/pages/surf.html
  * back here. Which path converts to what is defined in routes.mjs.
  */
-app.get('/:path', (req, reply) => {
+
+const supportedTypes = {
+  default: 'text/html',
+  html: 'text/html',
+  txt: 'text/plain',
+  xml: 'application/xml',
+  ico: 'image/vnd.microsoft.icon',
+};
+
+app.get(serverUrl.pathname + ':path', (req, reply) => {
   // Testing for future features that need cookies to deliver alternate source files.
   if (req.raw.rawHeaders.includes('Cookie'))
     console.log(req.raw.rawHeaders[req.raw.rawHeaders.indexOf('Cookie') + 1]);
@@ -190,13 +193,6 @@ app.get('/:path', (req, reply) => {
 
   // Set the index the as the default page. Serve as an html file by default.
   const fileName = reqPath ? pages[reqPath] : pages.index,
-    supportedTypes = {
-      default: 'text/html',
-      html: 'text/html',
-      txt: 'text/plain',
-      xml: 'application/xml',
-      ico: 'image/vnd.microsoft.icon',
-    },
     type =
       supportedTypes[fileName.slice(fileName.lastIndexOf('.') + 1)] ||
       supportedTypes.default;
@@ -205,16 +201,27 @@ app.get('/:path', (req, reply) => {
   reply.send(tryReadFile('../views/dist/' + fileName, import.meta.url));
 });
 
-app.get('/github/:redirect', (req, reply) => {
+app.get(serverUrl.pathname + 'github/:redirect', (req, reply) => {
   if (req.params.redirect in externalPages.github)
     reply.redirect(externalPages.github[req.params.redirect]);
   else reply.code(404).type('text/html').send(preloaded404);
 });
 
-// Set an error page for invalid paths outside the query string system.
-app.setNotFoundHandler((req, reply) => {
-  reply.code(404).type('text/html').send(preloaded404);
-});
+if (serverUrl.pathname === '/')
+  // Set an error page for invalid paths outside the query string system.
+  // If the server URL has a prefix, then avoid doing this for stealth reasons.
+  app.setNotFoundHandler((req, reply) => {
+    reply.code(404).type('text/html').send(preloaded404);
+  });
+else {
+  // Apply the following patch(es) if the server URL has a prefix.
+
+  // Patch to fix serving index.html.
+  app.get(serverUrl.pathname, (req, reply) => {
+    reply.type(supportedTypes.html);
+    reply.send(tryReadFile('../views/dist/' + pages.index, import.meta.url));
+  });
+}
 
 app.listen({ port: serverUrl.port, host: serverUrl.hostname });
 console.log(`Holy Unblocker is listening on port ${serverUrl.port}.`);
