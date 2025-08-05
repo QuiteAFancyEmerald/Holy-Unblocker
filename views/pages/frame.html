@@ -21,12 +21,14 @@
     <div class="loader">
       <div class="loader-w"></div>
     </div>
-    <div class="omnibar" id="omnibar">
+    <div class="omnibar" id="pr-sj">
       <div class="logo" role="img" aria-label="Holy Unblocker Logo"></div>
       <button title="Back"><i class="fas fa-arrow-left"></i></button>
       <button title="Forward"><i class="fas fa-arrow-right"></i></button>
-      <input id="pr-sj" class="glowbutton" id="search-input" type="text" placeholder="Type a URL or search..." spellcheck="false" autocomplete="off">
-      <button title="Settings"><i id="csel" class="fas fa-cog"></i></button>
+      <input  class="glowbutton" id="search-input" type="text" placeholder="Type a URL or search..." spellcheck="false" autocomplete="off">
+      <button class="dropdown-settings" title="Settings">      
+        <a href="#"><i class="fas fa-cog pulse" aria-hidden="true"></i></a>
+      </button>
       <button id="omnibar-toggle" title="Hide Bar"><i class="fas fa-chevron-up"></i></button>
     </div>
     <iframe id="frame" allow="fullscreen" autofocus></iframe>
@@ -34,7 +36,7 @@
       document.getElementById('frame').src = localStorage.getItem('hu-lts-frame-url');
     </script>
     <script>
-      const omnibar = document.getElementById('omnibar');
+      const omnibar = document.getElementById('pr-sj');
       const toggle = document.getElementById('omnibar-toggle');
       let hidden = false;
 
@@ -52,6 +54,7 @@
         loader && (loader.style.opacity = '0', setTimeout(() => loader.remove()));
       }, 2500);
     </script>
+    <script src="assets/js/{{common.js}}"></script>
     <script src="assets/js/csel.js"></script>
   </body>
 </html>
