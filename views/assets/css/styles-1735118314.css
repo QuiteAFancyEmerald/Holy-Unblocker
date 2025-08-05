@@ -1719,18 +1719,22 @@ input[type='text'] {
 
 .faq-search {
   outline: none;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: #22262f !important;
   border: 2px solid var(--nord4);
   color: white;
   padding: 6px 8px;
   font-size: 16px;
   margin: 20px auto 10px auto;
   display: block;
-  width: 30%;
+  max-width: 50%;
 }
 
 .faq-search::placeholder {
   color: var(--gray);
+}
+
+.faq-text {
+  margin-bottom: 10px;
 }
 
 .faq-text *:not(h4, strong) {
