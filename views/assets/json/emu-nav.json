@@ -28,11 +28,5 @@
     "path": "{{route}}{{/webretro}}?core=mupen64plus_next",
     "img": "nintendo64.webp",
     "description": "Emulate N64 games! Click to upload a ROM."
-  },
-  {
-    "name": "VibeOS",
-    "path": "{{route}}{{/vibe-os}}",
-    "img": "vibeos.webp",
-    "description": "JavaScript based Desktop Environment that runs in your browser."
   }
 ]
