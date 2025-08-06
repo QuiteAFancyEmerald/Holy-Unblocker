@@ -12,6 +12,8 @@
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/backdrop.css">
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css">
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
   </head>
 
   <body>
@@ -47,24 +49,9 @@
             }}
           </h2>
           <div class="box-button-container">
-            <a id="sjtooltip" href="{{route}}{{/scramjet}}" class="box-button">{{autoMask}}{{Scramjet (LATEST)}}</a>
-            <a id="uvtooltip" href="{{route}}{{/ultraviolet}}" class="box-button">{{autoMask}}{{Ultraviolet}}</a>
-            <a id="rhtooltip" href="{{route}}{{/rammerhead}}" class="box-button">{{autoMask}}{{Rammerhead}}</a>
-            <script src="https://unpkg.com/@popperjs/core@2"></script>
-            <script src="https://unpkg.com/tippy.js@6"></script>
-            <script>
-              const tooltipContent = {
-                sjtooltip: '{{autoMask}}{{Scramjet [Recommended]: Fast, secure, and frequently updated.}}',
-                uvtooltip: '{{autoMask}}{{Ultraviolet [Fallback]: Popular, but use as fallback for CAPTCHA support.}}',
-                rhtooltip: '{{autoMask}}{{Rammerhead [Optional]: Not secure and has many leaks. Use as alternative fallback.}}',
-              };
-
-              tippy.setDefaultProps({delay: 50, animateFill: true, placement: 'bottom'});
-
-              tippy('#sjtooltip', { content: tooltipContent.sjtooltip });
-              tippy('#uvtooltip', { content: tooltipContent.uvtooltip });
-              tippy('#rhtooltip', { content: tooltipContent.rhtooltip });
-            </script>
+            <a href="{{route}}{{/scramjet}}" class="box-button tippy-button" data-tippy-content="{{autoMask}}{{Scramjet [Recommended]: Fast, secure, and frequently updated.}}">{{autoMask}}{{Scramjet (LATEST)}}</a>
+            <a id="uvtooltip" href="{{route}}{{/ultraviolet}}" class="box-button tippy-button" data-tippy-content="{{autoMask}}{{Ultraviolet [Fallback]: Popular, but use as fallback for CAPTCHA support.}}">{{autoMask}}{{Ultraviolet}}</a>
+            <a id="rhtooltip" href="{{route}}{{/rammerhead}}" class="box-button tippy-button" data-tippy-content="{{autoMask}}{{Rammerhead [Optional]: Not secure and has many leaks. Use as alternative fallback.}}">{{autoMask}}{{Rammerhead}}</a>
           </div>
         </div>
         <div class="box-image-container">
@@ -80,6 +67,13 @@
       <!--FOOTER-->
     </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+    <script>
+      tippy('.tippy-button', {
+        delay: 50,
+        animateFill: true,
+        placement: 'bottom'
+      });
+    </script>
     <script src="{{route}}{{assets/js/common.js}}"></script>
     <script src="{{route}}{{assets/js/csel.js}}"></script>
     <script defer="defer" src="{{route}}{{assets/js/particlesjs/particles.js}}"></script>

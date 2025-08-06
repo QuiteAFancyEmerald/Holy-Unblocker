@@ -81,6 +81,7 @@ html {
   color: white;
   font-family: 'Rethink Sans', sans-serif;
   font-weight: 300;
+  text-wrap: balance;
   scroll-behavior: smooth;
 }
 
@@ -368,7 +369,7 @@ details[open] summary {
 .navbar-1 > li > a {
   text-decoration: none;
   color: var(--nord4);
-  display: inline-block; 
+  display: inline-block;
 }
 
 .new {
