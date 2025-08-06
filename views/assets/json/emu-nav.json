@@ -1,37 +1,37 @@
 [
   {
     "name": "Webretro Collection",
-    "path": "/webretro",
+    "path": "{{route}}{{/webretro}}",
     "img": "genesis.webp",
     "description": "Search through the collection of emulators featured!"
   },
   {
     "name": "GBA Emulator",
-    "path": "/webretro?core=mgba",
+    "path": "{{route}}{{/webretro}}?core=mgba",
     "img": "gba.webp",
     "description": "Emulate GBA, GB, and GBC games! Click to upload a ROM."
   },
   {
     "name": "NES Emulator",
-    "path": "/webretro?core=nestopia",
+    "path": "{{route}}{{/webretro}}?core=nestopia",
     "img": "nes.webp",
     "description": "Emulate NES games! Click to upload a ROM."
   },
   {
     "name": "SNES Emulator",
-    "path": "/webretro?core=snes9x",
+    "path": "{{route}}{{/webretro}}?core=snes9x",
     "img": "snes.webp",
     "description": "Emulate SNES games! Click to upload a ROM."
   },
   {
     "name": "N64 Emulator",
-    "path": "/webretro?core=mupen64plus_next",
+    "path": "{{route}}{{/webretro}}?core=mupen64plus_next",
     "img": "nintendo64.webp",
     "description": "Emulate N64 games! Click to upload a ROM."
   },
   {
     "name": "VibeOS",
-    "path": "/vibe-os",
+    "path": "{{route}}{{/vibe-os}}",
     "img": "vibeos.webp",
     "description": "JavaScript based Desktop Environment that runs in your browser."
   }

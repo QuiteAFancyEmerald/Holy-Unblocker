@@ -580,7 +580,7 @@ addEventListener('DOMContentLoaded', async () => {
             // the corresponding location/index in the dirnames object.
             const functionsList = [
               () => goFrame(item.path),
-              () => goFrame('{{route}}{{/webretro}}?core=' + item.core + '&rom=' + item.rom),
+              () => goFrame('{{route}}{{/webretro/}}?core=' + item.core + '&rom=' + item.rom),
               item.custom
                 ? () => goProx[item.custom]('stealth')
                 : () => goFrame('{{route}}{{/archive/g/}}' + item.path),
@@ -610,7 +610,7 @@ addEventListener('DOMContentLoaded', async () => {
 
             a.addEventListener('click', (e) => {
               e.preventDefault();
-              goFrame('{{route}}{{/flash}}?swf=' + item);
+              goFrame('{{route}}{{/flash/}}?swf=' + item);
             });
 
             navList.appendChild(a);

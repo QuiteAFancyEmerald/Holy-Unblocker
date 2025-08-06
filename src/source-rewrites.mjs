@@ -33,7 +33,7 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
   termsBySpaces = /\S+/g,
   containsMask = /&#\d+;|&[A-z]+;/,
   getEndPoint = /((?<![^\/])github\/)?[^\/]+$/,
-  getPaths = /[^\/]+(?!\/?$)/g,
+  getPaths = /[^\/]+(?=\/)/g,
   getAbsoluteRoot = /^~?\/+|^~$|^(?!\.\/)/,
   isImage = /\.(?:ico|png|jpg|jpeg)$/,
   applyInsert = (str, insertFunction, numArgs = 0) => {
