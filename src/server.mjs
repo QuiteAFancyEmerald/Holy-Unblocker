@@ -22,7 +22,6 @@ console.log(serverUrl);
 const shutdown = fileURLToPath(new URL('./.shutdown', import.meta.url));
 
 const rh = createRammerhead();
-console.log(rh.emit.toString());
 const rammerheadScopes = [
   '/rammerhead.js',
   '/hammerhead.js',
@@ -41,7 +40,9 @@ const rammerheadScopes = [
   '/mainport',
 ].map((pathname) => pathname.replace('/', serverUrl.pathname));
 
-const rammerheadSession = /^\/[a-z0-9]{32}/,
+const rammerheadSession = new RegExp(
+    `^${serverUrl.pathname.replaceAll('.', '\\.')}[a-z0-9]{32}`
+  ),
   shouldRouteRh = (req) => {
     try {
       const url = new URL(req.url, serverUrl);
@@ -54,13 +55,11 @@ const rammerheadSession = /^\/[a-z0-9]{32}/,
     }
   },
   routeRhRequest = (req, res) => {
-    if (!rammerheadSession.test(req.url))
-      req.url = req.url.slice(serverUrl.pathname.length - 1);
+    req.url = req.url.slice(serverUrl.pathname.length - 1);
     rh.emit('request', req, res);
   },
   routeRhUpgrade = (req, socket, head) => {
-    if (!rammerheadSession.test(req.url))
-      req.url = req.url.slice(serverUrl.pathname.length - 1);
+    req.url = req.url.slice(serverUrl.pathname.length - 1);
     rh.emit('upgrade', req, socket, head);
   };
 

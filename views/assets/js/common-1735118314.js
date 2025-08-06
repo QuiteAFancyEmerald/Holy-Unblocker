@@ -328,7 +328,7 @@ const RammerheadEncode = async (baseUrl) => {
       new Promise((resolve) => {
         api.shuffleDict(id, (shuffleDict) => {
           // Encode the URL with Rammerhead's encoding table and return the URL.
-          resolve(`/${id}/` + new StrShuffler(shuffleDict).shuffle(baseUrl));
+          resolve(`{{route}}{{/}}${id}/` + new StrShuffler(shuffleDict).shuffle(baseUrl));
         });
       })
   );
