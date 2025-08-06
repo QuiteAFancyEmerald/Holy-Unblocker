@@ -22,6 +22,7 @@ console.log(serverUrl);
 const shutdown = fileURLToPath(new URL('./.shutdown', import.meta.url));
 
 const rh = createRammerhead();
+console.log(rh.emit.toString());
 const rammerheadScopes = [
   '/rammerhead.js',
   '/hammerhead.js',
@@ -40,9 +41,7 @@ const rammerheadScopes = [
   '/mainport',
 ].map((pathname) => pathname.replace('/', serverUrl.pathname));
 
-const rammerheadSession = new RegExp(
-    `^${serverUrl.pathname.replaceAll('.', '\\.')}[a-z0-9]{32}`
-  ),
+const rammerheadSession = /^\/[a-z0-9]{32}/,
   shouldRouteRh = (req) => {
     try {
       const url = new URL(req.url, serverUrl);
@@ -55,9 +54,13 @@ const rammerheadSession = new RegExp(
     }
   },
   routeRhRequest = (req, res) => {
+    if (!rammerheadSession.test(req.url))
+      req.url = req.url.slice(serverUrl.pathname.length - 1);
     rh.emit('request', req, res);
   },
   routeRhUpgrade = (req, socket, head) => {
+    if (!rammerheadSession.test(req.url))
+      req.url = req.url.slice(serverUrl.pathname.length - 1);
     rh.emit('upgrade', req, socket, head);
   };
 
@@ -167,7 +170,7 @@ const supportedTypes = {
 app.get(serverUrl.pathname + ':path', (req, reply) => {
   // Testing for future features that need cookies to deliver alternate source files.
   if (req.raw.rawHeaders.includes('Cookie'))
-    console.log(req.raw.rawHeaders[req.raw.rawHeaders.indexOf('Cookie') + 1]);
+    console.log('cookie:', req.raw.rawHeaders[req.raw.rawHeaders.indexOf('Cookie') + 1]);
 
   const reqPath = req.params.path;
 
