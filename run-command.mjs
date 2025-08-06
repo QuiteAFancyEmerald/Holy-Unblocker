@@ -14,7 +14,6 @@ import { build } from 'esbuild';
 import pageRoutes from './src/routes.mjs';
 import { epoxyPath } from '@mercuryworkshop/epoxy-transport';
 import { libcurlPath } from '@mercuryworkshop/libcurl-transport';
-import { bareModulePath } from '@mercuryworkshop/bare-as-module3';
 import { baremuxPath } from '@mercuryworkshop/bare-mux/node';
 import { uvPath } from '@titaniumnetwork-dev/ultraviolet';
 import { paintSource, tryReadFile } from './src/source-rewrites.mjs';
@@ -163,7 +162,6 @@ commands: for (let i = 2; i < process.argv.length; i++)
       const compilePaths = {
         epoxy: epoxyPath,
         libcurl: libcurlPath,
-        bareasmodule: bareModulePath,
         baremux: baremuxPath,
         uv: uvPath,
       };

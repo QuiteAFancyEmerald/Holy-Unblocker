@@ -63,7 +63,7 @@ const rammerheadSession = new RegExp(
     rh.emit('upgrade', req, socket, head);
   };
 
-// Create a server factory for RH, and wisp (and bare if you please).
+// Create a server factory for Rammerhead and Wisp
 const serverFactory = (handler) => {
   return createServer()
     .on('request', (req, res) => {
@@ -106,7 +106,6 @@ app.register(fastifyStatic, {
   'scram',
   'epoxy',
   'libcurl',
-  'bareasmodule',
   'baremux',
 ].forEach((prefix) => {
   app.register(fastifyStatic, {

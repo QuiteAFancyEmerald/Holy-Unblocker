@@ -29,7 +29,6 @@
   "dependencies": {
     "@fastify/helmet": "^13.0.1",
     "@fastify/static": "^8.2.0",
-    "@mercuryworkshop/bare-as-module3": "^2.2.2",
     "@mercuryworkshop/bare-mux": "^2.1.7",
     "@mercuryworkshop/epoxy-transport": "^2.1.28",
     "@mercuryworkshop/libcurl-transport": "^1.5.0",

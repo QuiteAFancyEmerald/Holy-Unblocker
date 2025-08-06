@@ -17,7 +17,6 @@
     transports = {
       '{{epoxy}}': '{{route}}{{/epoxy/index.mjs}}',
       '{{libcurl}}': '{{route}}{{/libcurl/index.mjs}}',
-      '{{bare}}': '{{route}}{{/baremux/index.mjs}}',
     },
     storageId = 'hu-lts-storage',
     storageObject = () => JSON.parse(localStorage.getItem(storageId)) || {},
