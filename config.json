@@ -5,5 +5,5 @@
   "minifyScripts": true,
   "randomizeIdentifiers": true,
   "production": false,
-  "usingSEO": false
+  "usingSEO": true
 }
