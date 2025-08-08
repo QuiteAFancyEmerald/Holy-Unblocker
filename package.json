@@ -27,7 +27,6 @@
   "author": "Titanium Network",
   "license": "GNU AFFERO",
   "dependencies": {
-    "@esbuild/darwin-arm64": "^0.25.8",
     "@fastify/helmet": "^13.0.1",
     "@fastify/static": "^8.2.0",
     "@mercuryworkshop/bare-mux": "^2.1.7",
