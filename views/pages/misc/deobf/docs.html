@@ -1,82 +1,23 @@
 <h1 id="holy-unblocker-lts-v6-x-x-">Holy Unblocker LTS (v6.x.x)</h1>
 {{ifSEO}}{{<p><img src="https://github.com/QuiteAFancyEmerald/Holy-Unblocker/workflows/CI-Production/badge.svg" alt="GitHub Actions Status">
 <img src="https://github.com/QuiteAFancyEmerald/Holy-Unblocker/workflows/CI-Win/badge.svg" alt="GitHub Actions Status"></p>}}
-<p>{{autoMask}}{{Holy Unblocker LTS, an experimental web proxy service, can bypass web filters or "blockers" regardless of whether the method of censorship is client-side or network-based. This includes the potential ability to bypass content blockers overseas, Chrome extensions, localized client firewalls, and network-related filters. The project even allows the ability to browser Tor/Onion sites in any browser!}}</p>
-<h2{{ifSEO}}{{ id="you-can-support-holy-unblocker-by-starring-the-repository-"}}>{{autoMask}}{{You can support Holy Unblocker by starring the repository!}}</h2>
-<p>{{autoMask}}{{This project serves mostly as a proof of concept for the ideal clientless solution to bypassing censorship. Being a secure web proxy service, it supports numerous sites while being updated frequently and concentrating on detail with design, mechanics, and features.}}</p>
-<p>{{autoMask}}{{Works with a large number of sites, including YouTube, Discord, and more!
-Also has a good amount of locally hosted games featured on the site.}}</p>
-<h3{{ifSEO}}{{ id="over-20m-users-since-2020-thank-you-so-much-for-the-support-i-could-have-never-imagined-how-massive-the-web-proxy-community-has-become-"}}>{{autoMask}}{{Over 20M+ users since 2020. Thank you so much for the support I could have never imagined how massive the web proxy community has become.}}</h3>
-<h4 id="current-branch-latest">Current Branch: Latest</h4>
-<details><summary>Branch Types</summary>
-{{autoMask}}{{
-
-- Latest (master; built for FOSS and SEO)
-- Beta (pending changes; changes that may break things)
-- Stable (v4, v5, v6; stable version of Holy Unblocker LTS)
-- Production (changes for self hosting in production settings; max filtering evasion and request handling)
-}}
-</details>
-
-<h4{{ifSEO}}{{ id="considering-switching-branches-for-self-hosting-to-a-production-branch-"}}>{{autoMask}}{{Considering switching branches for self-hosting to a production branch!}}</h4>
-<p><br></p>
-<table>
-<thead>
-<tr>
-<th><strong>Supported Sites</strong></th>
-<th><strong>Features</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>{{autoMask}}{{YouTube}}</td>
-<td>{{autoMask}}{{Built-in variety of open source web proxies with both a focus on speed and/or security}}</td>
-</tr>
-<tr>
-<td>{{autoMask}}{{CoolMathGames}}</td>
-<td>{{autoMask}}{{Features "Source Randomization" to circumvent major filters effectively along with randomizations to proxy globals}}</td>
-</tr>
-<tr>
-<td>{{autoMask}}{{Discord}}</td>
-<td>{{autoMask}}{{Tab title + icon customization using the Settings Menu for improved browsing stealth}}</td>
-</tr>
-<tr>
-<td>{{autoMask}}{{Now.gg}}</td>
-<td>{{autoMask}}{{Adblocking support across all websites while surfing}}</td>
-</tr>
-<tr>
-<td>{{autoMask}}{{Reddit.com}}</td>
-<td>{{autoMask}}{{SOCKS5 and Onion routing support with Tor within the Settings Menu. Use Tor/Onion sites in any browser!}}</td>
-</tr>
-<tr>
-<td>{{autoMask}}{{GeForce NOW}}</td>
-<td>{{autoMask}}{{Game library with moderately decent titles and open-source emulation projects}}</td>
-</tr>
-<tr>
-<td>{{autoMask}}{{Spotify}}</td>
-<td>{{autoMask}}{{Has frequent support articles for issues relating to various proxy instances}}</td>
-</tr>
-<tr>
-<td>And essentially all sites!</td>
-<td>Built for intensive production loads and speed</td>
-</tr>
-</tbody>
-</table>
+<br>
 <p>{{autoMask}}{{Read below for information if the official site is blocked or for obtaining more links. Can't deploy using any of the free options below? Check out Railway or look into cheap, paid VPS hosting solutions.}}</p>
 <p><strong>{{autoMask}}{{Be sure to join Titanium Network's Discord for more official site links:}}</strong> <a href="https://discord.gg/unblock">https://discord.gg/unblock</a></p>
+<br>
 <h3 id="github-codespaces">GitHub Codespaces</h3>
 <details><summary>Setup Instructions</summary>
 
-- Fork (and star!) this repository to your GitHub account
-- Head to the official <a href="https://github.com/codespaces">Codespaces</a> website (ensure you have a GitHub account already made)
-- Select <strong>New Codespaces</strong> and look for <em>{{autoMask}}{{[USERNAME]/Holy-Unblocker}}</em> on your account
-- Ensure the branch is set to <code>master</code> and the dev container configuration is set to <strong>{{maskTerm}}{{Holy Unblocker}} LTS</strong>
-- Select <strong>Create Codespace</strong> and allow the container to setup
-- Type <code>npm install</code> and <code>npm start</code> in the terminal
-- Click "Make public" on the application popup, then access the deployed website via the ports tab.
+- Fork (and star!) this repository to your GitHub account<br>
+- Head to the official <a href="https://github.com/codespaces">Codespaces</a> website (ensure you have a GitHub account already made)<br>
+- Select <strong>New Codespaces</strong> and look for <em>{{autoMask}}{{[USERNAME]/Holy-Unblocker}}</em> on your account<br>
+- Ensure the branch is set to <code>master</code> and the dev container configuration is set to <strong>{{maskTerm}}{{Holy Unblocker}} LTS</strong><br>
+- Select <strong>Create Codespace</strong> and allow the container to setup<br>
+- Type <code>npm install</code> and <code>npm start</code> in the terminal<br>
+- Click "Make public" on the application popup, then access the deployed website via the ports tab.<br>
 
 </details>
-
+<br>
 <h2 id="table-of-contents-">Table of contents:</h2>
 <ul>
 <li><a href="#how-to-setup">Setup</a><ul>
@@ -135,9 +76,11 @@ npm <span class="hljs-keyword">run</span><span class="bash"> proxy-validator</sp
 <h3 id="configuration">Configuration</h3>
 <h4 id="server-configuration-setup">Server Configuration Setup</h4>
 <p>The default place for the proxy when its started is <code>http://localhost:8080</code>, but you can change it if needed in <code>./ecosystem.config.js</code>. You can also modify the other configuration values at <code>./config.json</code>. To clarify you change the PORT and other production metrics via <code>./ecosystem.config.js</code>. Localized changes for source randomization, auto-minify, etc. are located in <code>./config.json</code>.</p>
+<br>
 <h4 id="tor-onion-routing-setup">Tor/Onion Routing Setup</h4>
 <p>Simply host Tor using this guide: <a href="https://tb-manual.torproject.org/installation/">https://tb-manual.torproject.org/installation/</a></p>
 <p>If you are hosting Holy Unblocker LTS on a VPS utilizing Ubuntu consider attaching Tor to systemctl for easier production management. Once Tor is up and running on either Linux or Windows it will work automatically with Holy Unblocker LTS when enabled by the user via the Settings menu.</p>
+<br>
 <h4 id="proxy-configuration">Proxy Configuration</h4>
 <p>The primary location for tweaking any web proxy related settings assigned via the Settings menu is <code>./views/assets/js/register-sw.js</code>. Here you can modify the provided transport options set locally via a cookie, swap out SOCKS5 proxies, change Onion routing ports, specify a blacklist, and more.</p>
 <ul>
@@ -248,118 +191,7 @@ WIP
 <li><code>particles.js</code> is the animated background effect that&#39;s present on all pages.</li>
 <li><code>register-sw.js</code> creates and manages service workers that allow Ultraviolet to function, and also uses bare transport.</li>
 </ul>
-<h2 id="future-additions">Future Additions</h2>
-<p>This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above.</p>
-<h2 id="code-cleanup">Code Cleanup</h2>
-<ul>
-<li>[ ] Remove all current obfuscation in the source code. It needs to be dynamically obfuscated if anything, or not obfuscated at all. This option will be a config option on the server side before rendering with Fastify for a performance focus. Meta elements will have an additonal attribute indicating if they should be moved. This is to ensure a SEO source can be served by config or a source focused on pure censorship evasion.</li>
-<li>[ ] Optimize the stylesheets and the HTML layout. Add more proper commenting and redivide the code so that it&#39;s less hard on the eyes.</li>
-<li>[ ] Optimize the JS. This time it won&#39;t be in one line and will be somewhat thoroughly commented.</li>
-<li>[ ] Restructure navigation scripts to ensure updated proxy functionality is sanitized and effective</li>
-<li>[x] Particles.js automatically adjusting per display size - done</li>
-<li>[x] Fix routes.mjs throwing with incorrect paths - done</li>
-<li>[x] Create test script - done</li>
-<li>[x] XSS and fingerprinting protection (may need updates) - done</li>
-<li>[x] Update games navigation JS and page/change to JSON object system - done</li>
-<li>[ ] Ensure all the original submodules get added back to HU-Archive</li>
-<li>[x] Mobile support - (welcome screen only, partial/needs work)</li>
-<li>[ ] SEO overhaul adapted from the v3 SEO Guide format - partial</li>
-<li>[x] Fastify routes modified to ensure perfect SEO. This means absolute paths such as /example instead of ?z - done</li>
-<li>[x] Randomize the __uv$config global, and optionally randomize the UV prefix and URL encoding via cookies</li>
-</ul>
-<h2 id="proxy-site-functionality">Proxy/Site Functionality</h2>
-<ul>
-<li>[x] Ensure Ultraviolet is updated to support bare-mux and wisp - done</li>
-<li>[x] Ensure Scramjet is added and works together with UV&#39;s implementation - done
-= [x] Refactor register-sw.js - done</li>
-<li>[x] Add Rammerhead support - done</li>
-<li>[x] Fix slow Ultraviolet speeds despite being local; something on the backend?? - done</li>
-<li>[x] Fix Ultraviolet on Firefox - (partial/needs work)</li>
-<li>[ ] Adapt Applications page to use either Rammerhead or UV (for Reddit, YouTube, Discord)</li>
-<li>[x] libcurl, epoxy and all that fun stuff - done</li>
-<li>[x] socks5/tor routing option that can be configured (enabled) via either a cookie or pathname as a settings meny option - done</li>
-<li>[x] socks5 regional proxy implementation - done</li>
-<li>[ ] Update games page content to 10000 games</li>
-<li>[ ] Update Applications page to reflect modern fast links (use examples from the modern web proxy base)</li>
-<li>[x] Update settings menu again to make more room for more features</li>
-<li>[x] Update csel.js (after Setting menu redesign) to support custom transports, icon swap, routing - done</li>
-<li>[x] Update csel.js to support network based adblocking (partial/needs work)</li>
-<li>[ ] Add a &quot;website self-destruct&quot; button to the settings menu</li>
-<li>[x] Flesh out and rework the UV / Scramjet / bare client error page - done</li>
-<li>[x] Update sw.js to support workerware (<a href="https://github.com/MercuryWorkshop/workerware)--">https://github.com/MercuryWorkshop/workerware)--</a> This is not done however we have our own middleware system implemented for adblocking, etc. </li>
-<li>[ ] Omnibox autoupdate script (for the Google/Bing style auto suggest feature)</li>
-<li>[ ] Games library will feature 10000 items; 5000 flash games and 5000 other game types</li>
-<li>[ ] Attach proxyvalidatorscript to a status page &gt; have this be served via Fastify, etc. etc; config option disabled as it will cause issues potentially unless if we refactor it slightly.</li>
-<li>[ ] Improve adblocking functions on site using AnuraOS standards</li>
-<li>[ ] Revamp the Stealth Frame with a slight animation (ease in and then the wheeling loading with a gradient fading away once its loaded or shows the error page LOL), a loading wheel/page and lastly a omnibox widget. It will have like nav buttons, some of the settings from the settings menu, a home button, a button that brings up the Setting menu and be in a designed position. Intent is to reduce the back/forth nature that users have to do currently making it more tedious to use the site.</li>
-</ul>
-<h2 id="site-redesign">Site Redesign</h2>
-<ul>
-<li>[x] Landing Cards - done</li>
-<li>[x] Change fonts to cleaner look</li>
-<li>[ ] Add more AOS interactions on scroll or hover</li>
-<li>[ ] Add subtle noise to background elements</li>
-<li>[ ] Update colors + add themes</li>
-<li>[ ] Toggle elements</li>
-<li>[x] Other card options</li>
-<li>[ ] Radial blur elements</li>
-<li>[ ] Code standard examples</li>
-<li>[ ] Horizontal/general movement on scroll with AOS</li>
-<li>[x] Showcase dev dependencies</li>
-<li>[ ] Update icons</li>
-<li>[x] Landing Page - (partial/needs work)</li>
-<li>[x] Settings Menu - (partial/needs work)</li>
-<li>[x] More Dropdown Menu</li>
-<li>[x] Web Proxies page</li>
-<li>[ ] Application page</li>
-<li>[ ] Hosting page</li>
-<li>[ ] Resources page</li>
-<li>[ ] Games Library page</li>
-<li>[ ] Emulators Library page</li>
-<li>[ ] Emu Library page</li>
-<li>[ ] Web Games page</li>
-<li>[ ] Flash Games page</li>
-<li>[ ] Documentation on-site + Getting Started information updated (Tor, etc.)</li>
-<li>[ ] FAQ page</li>
-<li>[ ] Credits page</li>
-<li>[ ] TOS page</li>
-<li>[x] Footer Design - (partial/needs work)</li>
-<li>[x] Header Design - (partial/needs work)</li>
-</ul>
-<h2 id="community-requests">Community Requests</h2>
-<ul>
-<li>[ ] Add <a href="https://github.com/GMH-Code/Quake-WASM">Quake WASM</a></li>
-<li>[ ] Celeste WASM</li>
-<li>[ ] Doom WASM</li>
-</ul>
-<h2 id="changelog">Changelog</h2>
-<ul>
-<li>Improved web proxy pages</li>
-<li>Added regional socks5 proxy options</li>
-<li>Added wisp support</li>
-<li>Fixed AD config setting being opt-out; ads are not implemented in the project however</li>
-<li>Added Rammerhead support (locally)</li>
-<li>Drastically updated visuals across the service and refactored stylesheets</li>
-<li>Bumped games page functionality</li>
-<li>Updated randomization scripts to ES6 syntax and implemented the alternative to RegEx string replacement</li>
-<li>Helmet for express implemented into backend</li>
-<li>Improved component handling via templates.mjs along with deletion of obsolete files that previously handled this standard in a poor format</li>
-<li>Fixed oddly slow speeds with Ultraviolet (as well as a general version bump to support epoxy-tls and bare-mux)</li>
-<li>Implemented testing scripts for an improved GitHub actions workflow by doing a quick test on proxy + site functionality</li>
-<li>Greatly optimized client-side scripts across the site with a new standard, and generally reworked to no longer leave global variables</li>
-<li>Changes to server.mjs with path logic and error handling</li>
-<li>Updated standards for common scripts</li>
-<li>libcurl, epoxy and bare-as-module support added</li>
-<li>Deleted 5 JS scripts and moved lots of data into JSON files. Big reorganization. Games menu core scripts now nested inside of common.js utilizing a JSON system</li>
-<li>Massive updates to the Settings menu visually and functionality wise; added Bare-Mux support for swapping transports to work with Ultraviolet, default icons and selective adblocking + Tor on any proxy instances</li>
-<li>CSS Has been partially restructured for mobile support, and is now properly arranged into clearly labeled sections (for the most part)</li>
-<li>Incorporated makeshift domain blacklisting functionality into Ultraviolet, currently used for blocking ads if ads are disabled in settings</li>
-<li>Fleshed out the SEO with more descriptions and better labeling</li>
-<li>Switched to Fastify for serving content from the backend</li>
-<li>Rammerhead is now locally built into the HU LTS repository</li>
-<li>Simplified the HU LTS setup process and added more default npm commands</li>
-<li>Filter focus via <a href="https://gist.github.com/BinBashBanana/a1fd7345e2d86e69d5a532f16cbdbdaa">https://gist.github.com/BinBashBanana/a1fd7345e2d86e69d5a532f16cbdbdaa</a></li>
-</ul>
+<br>
 <h2 id="vague-explanation-for-beginners-with-external-proxies-and-hosting">Vague Explanation for Beginners With External Proxies and Hosting</h2>
 <p>You will first want to host your proxies locally or externally. OUTDATED</p>
 <h4 id="list-of-some-good-hosting-options-">List of some good hosting options:</h4>

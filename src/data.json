@@ -19,10 +19,14 @@
   "textMasks": {
     "Holy Unblocker": ["H*ol*y *Un*b*lo*c*k*er"],
     "Proxies": ["Pr*ox*i*es", "P*ro*x*ies", "Pro*x*i*es", "Pr*ox*ie*s"],
-    "Proxy": ["Pr*ox*y", "P*ro*x*y", "Pro*x*y"]
+    "Proxy": ["Pr*ox*y", "P*ro*x*y", "Pro*x*y"],
+    "Unblocker": ["Un*b*lo*c*k*er", "Un*bl*o*c*k*er", "Unb*lo*c*k*er"],
+    "Unblock": ["Un*b*lo*c*k", "Un*bl*o*c*k", "Unb*lo*c*k"],
+    "Unblockers": ["Un*blo*c*k*ers", "Un*bl*o*c*k*ers", "Unblo*c*k*ers"],
+    "Bypass": ["By*pa*ss", "By*pa*ss*es", "Byp*as*s", "B*y*p*a*s*s"]
   },
   "splash": [
-    "This version is the public HU LTS build of the web proxy service project and being worked on (master branch)! Stuff will NOT work!"
+    "This version is the public build of the HU LTS project and its being worked on via the master branch! Stuff will NOT work!"
   ],
-  "version": ["6.5.6"]
+  "version": ["6.6.0"]
 }

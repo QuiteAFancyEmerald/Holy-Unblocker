@@ -16,6 +16,8 @@
     <script src="{{route}}{{/uv/uv.bundle.js}}" defer></script>
     <script src="{{route}}{{/uv/uv.config.js}}" defer></script>
     <script src="{{route}}{{/assets/js/register-sw.js}}" defer></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
   </head>
 
   <body>
@@ -29,7 +31,7 @@
         <div class="hero-content">
           <div class="proxy-header text-center">
             <h1 class="bigtitle">{{autoMask}}{{Youtube Proxy}}</h1>
-            <p>{{autoMask}}{{YouTube now has enhanced support with onsite navigation with Scramjet! Simply use the buttons below to access YouTube under a proxy.}}<br><br>{{autoMask}}{{Be sure to avoid logging in with primary accounts, as this is a public proxy service.}}<br>{{autoMask}}{{If you are self-hosting however feel free.}}</p><br><br>{{autoMask}}{{Please do CTRL+Shift+Del if you have any issues.}}
+            <p>{{autoMask}}{{YouTube now has enhanced support with onsite navigation with Scramjet! Simply use the buttons below to access YouTube under a proxy.}}<br><br>{{autoMask}}{{Be sure to avoid logging in with primary accounts, as this is a public proxy service.}}<br>{{autoMask}}{{If you are self-hosting however feel free.}}</p><br><br>{{autoMask}}{{Please do CTRL+Shift+Del if you have any issues.}}<br><br>{{autoMask}}{{View the <a href="{{route}}{{/questions}}">FAQ</a> page if you have any issues with the proxy.}}</p>
           </div>
           <div class="proxy-form text-center">
             <div class="glist">
@@ -45,6 +47,13 @@
       <!--FOOTER-->
     </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+    <script>
+      tippy('.pr-tippy', {
+        delay: 50,
+        animateFill: true,
+        placement: 'bottom'
+      });
+    </script>
     <script src="{{route}}{{assets/js/common.js}}"></script>
     <script src="{{route}}{{assets/js/csel.js}}"></script>
     <script src="{{route}}{{assets/js/card.js}}"></script>

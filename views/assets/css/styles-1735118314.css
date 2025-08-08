@@ -229,6 +229,7 @@ details[open] summary {
 /* Used on a lot of navigation pages. */
 .bigtitle {
   font-size: 42px;
+  color: rgb(255, 88, 97);
 }
 
 #header {
@@ -1603,6 +1604,7 @@ input[type='text'] {
 .box-button {
   display: inline-block;
   padding: 15px 25px;
+  margin-top: 10px;
   margin-right: 10px;
   border: none;
   border-radius: 5px;
@@ -1735,7 +1737,7 @@ input[type='text'] {
 }
 
 .faq-text {
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .faq-text *:not(h4, strong) {
