@@ -16,7 +16,7 @@ This project serves mostly as a proof of concept for the ideal clientless soluti
 Works with a large number of sites, including YouTube, Discord, and more!
 Also has a good amount of locally hosted games featured on the site.
 
-### Over 20M+ users since 2020. Thank you so much for the support I could have never imagined how massive the web proxy community has become.
+### Over 30M+ users since 2020. Thank you so much for the support I could have never imagined how massive the web proxy community has become.
 #### Current Branch: Latest
 <details><summary>Branch Types</summary>
 
@@ -276,9 +276,11 @@ WIP
 
 This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above.
 
+This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above. Release for production will be v8.x.x and above.
+
 ## Code Cleanup
 
-- [ ] Remove all current obfuscation in the source code. It needs to be dynamically obfuscated if anything, or not obfuscated at all. This option will be a config option on the server side before rendering with Fastify for a performance focus. Meta elements will have an additonal attribute indicating if they should be moved. This is to ensure a SEO source can be served by config or a source focused on pure censorship evasion.
+- [x] Remove all current obfuscation in the source code. It needs to be dynamically obfuscated if anything, or not obfuscated at all. This option will be a config option on the server side before rendering with Fastify for a performance focus. Meta elements will have an additonal attribute indicating if they should be moved. This is to ensure a SEO source can be served by config or a source focused on pure censorship evasion.
 - [ ] Optimize the stylesheets and the HTML layout. Add more proper commenting and redivide the code so that it's less hard on the eyes.
 - [ ] Optimize the JS. This time it won't be in one line and will be somewhat thoroughly commented.
 - [x] Restructure navigation scripts to ensure updated proxy functionality is sanitized and effective
@@ -301,12 +303,12 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [x] Add Rammerhead support - done
 - [x] Fix slow Ultraviolet speeds despite being local; something on the backend?? - done
 - [x] Fix Ultraviolet on Firefox - (partial/needs work)
-- [ ] Adapt Applications page to use either Rammerhead or UV (for Reddit, YouTube, Discord)
+- [x] Adapt Applications page to use Scramjet (for Reddit, YouTube, Discord) - done
 - [x] libcurl, epoxy and all that fun stuff - done
 - [x] socks5/tor routing option that can be configured (enabled) via either a cookie or pathname as a settings meny option - done
 - [x] socks5 regional proxy implementation - done
 - [ ] Update games page content to 10000 games
-- [ ] Update Applications page to reflect modern fast links (use examples from the modern web proxy base)
+- [x] Update Applications page to reflect modern fast links (use examples from the modern web proxy base) - done. can be expanded later
 - [x] Update settings menu again to make more room for more features
 - [x] Update csel.js (after Setting menu redesign) to support custom transports, icon swap, routing - done
 - [x] Update csel.js to support network based adblocking (partial/needs work)
@@ -314,44 +316,44 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [x] Flesh out and rework the UV / Scramjet / bare client error page - done
 - [x] Update sw.js to support workerware (https://github.com/MercuryWorkshop/workerware)-- This is not done however we have our own middleware system implemented for adblocking, etc. 
 - [ ] Omnibox autoupdate script (for the Google/Bing style auto suggest feature)
+- [ ] Omnibar functionality (back and forward navigation, settings menu and create new stealth page with URL)
 - [ ] Games library will feature 10000 items; 5000 flash games and 5000 other game types
-- [ ] Attach proxyvalidatorscript to a status page > have this be served via Fastify, etc. etc; config option disabled as it will cause issues potentially unless if we refactor it slightly.
 - [ ] Improve adblocking functions on site using AnuraOS standards
-- [ ] Revamp the Stealth Frame with a slight animation (ease in and then the wheeling loading with a gradient fading away once its loaded or shows the error page LOL), a loading wheel/page and lastly a omnibox widget. It will have like nav buttons, some of the settings from the settings menu, a home button, a button that brings up the Setting menu and be in a designed position. Intent is to reduce the back/forth nature that users have to do currently making it more tedious to use the site.
+- [x] Revamp the Stealth Frame with a slight animation (ease in and then the wheeling loading with a gradient fading away once its loaded or shows the error page LOL), a loading wheel/page and lastly a omnibox widget. It will have like nav buttons, some of the settings from the settings menu, a home button, a button that brings up the Setting menu and be in a designed position. Intent is to reduce the back/forth nature that users have to do currently making it more tedious to use the site. - partial. needs functionality. 
 
 
 ## Site Redesign
 
 - [x] Landing Cards - done
 - [x] Change fonts to cleaner look
-- [ ] Add more AOS interactions on scroll or hover
-- [ ] Add subtle noise to background elements
+- [x] Add more AOS interactions on scroll or hover
+- [x] Add subtle noise to background elements
 - [ ] Update colors + add themes
-- [ ] Toggle elements
+- [x] Toggle elements
 - [x] Other card options
-- [ ] Radial blur elements
+- [x] Radial blur elements
 - [ ] Code standard examples
-- [ ] Horizontal/general movement on scroll with AOS
+- [x] Horizontal/general movement on scroll with AOS
 - [x] Showcase dev dependencies
 - [ ] Update icons
 - [x] Landing Page - (partial/needs work)
 - [x] Settings Menu - (partial/needs work)
 - [x] More Dropdown Menu
 - [x] Web Proxies page
-- [ ] Application page
+- [x] Application page
 - [ ] Hosting page
 - [ ] Resources page
 - [ ] Games Library page
 - [ ] Emulators Library page
 - [ ] Emu Library page
 - [ ] Web Games page
-- [ ] Flash Games page
+- [x] Flash Games page
 - [ ] Documentation on-site + Getting Started information updated (Tor, etc.)
-- [ ] FAQ page
-- [ ] Credits page
-- [ ] TOS page
-- [x] Footer Design - (partial/needs work)
-- [x] Header Design - (partial/needs work)
+- [x] FAQ page
+- [x] Credits page
+- [x] TOS page
+- [x] Footer Design
+- [x] Header Design
 
 ## Community Requests
 
@@ -359,10 +361,8 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Celeste WASM
 - [ ] Doom WASM
 
-## Changelog
+## Changelog (Old; too lazy to type it all out now)
 
-- Improved web proxy pages
-- Added regional socks5 proxy options
 - Added wisp support
 - Fixed AD config setting being opt-out; ads are not implemented in the project however
 - Added Rammerhead support (locally)
@@ -376,16 +376,15 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - Greatly optimized client-side scripts across the site with a new standard, and generally reworked to no longer leave global variables
 - Changes to server.mjs with path logic and error handling
 - Updated standards for common scripts
-- libcurl, epoxy and bare-as-module support added
+- libcurl and bare-as-module support added
 - Deleted 5 JS scripts and moved lots of data into JSON files. Big reorganization. Games menu core scripts now nested inside of common.js utilizing a JSON system
 - Massive updates to the Settings menu visually and functionality wise; added Bare-Mux support for swapping transports to work with Ultraviolet, default icons and selective adblocking + Tor on any proxy instances
 - CSS Has been partially restructured for mobile support, and is now properly arranged into clearly labeled sections (for the most part)
 - Incorporated makeshift domain blacklisting functionality into Ultraviolet, currently used for blocking ads if ads are disabled in settings
 - Fleshed out the SEO with more descriptions and better labeling
-- Switched to Fastify for serving content from the backend
+- Switched to Fastify for serving content from the backend; a separate Express backend file is kept in case it's still needed
 - Rammerhead is now locally built into the HU LTS repository
 - Simplified the HU LTS setup process and added more default npm commands
-- Filter focus via https://gist.github.com/BinBashBanana/a1fd7345e2d86e69d5a532f16cbdbdaa
 
 ## Vague Explanation for Beginners With External Proxies and Hosting
 
