@@ -1,7 +1,4 @@
-import pkg from './routes.mjs';
-import { existsSync, readFileSync } from 'node:fs';
-export { paintSource, preloaded404, tryReadFile };
-const {
+import {
   config,
   serverUrl,
   flatAltPaths,
@@ -13,10 +10,10 @@ const {
   splashRandom,
   cacheBustList,
   VersionValue,
-  text404,
   uvError,
   sjError,
-} = pkg;
+} from './routes.mjs';
+export { paintSource as default };
 
 /* Below are lots of function definitions used to obfuscate the website.
  * This makes the website harder to properly categorize, as its source code
@@ -35,7 +32,6 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
   getEndPoint = /((?<![^\/])github\/)?[^\/]+$/,
   getPaths = /[^\/]+(?=\/)/g,
   getAbsoluteRoot = /^~?\/+|^~$|^(?!\.\/)/,
-  isImage = /\.(?:ico|png|jpg|jpeg)$/,
   applyInsert = (str, insertFunction, numArgs = 0) => {
     const mode = 'function' === typeof insertFunction,
       keyword = mode ? insertFunction.name : insertFunction,
@@ -203,13 +199,4 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
     'scramjet-error': escapeStr(prePaint(sjError)),
   }),
   // Apply final changes to a given file's text content.
-  paintSource = (str) => applyMassInsert(prePaint(str), specialTemplates),
-  // Use this instead of text404 for a preloaded error page.
-  preloaded404 = prePaint(text404),
-  // Grab the text content of a file. Use the root directory if no base is supplied.
-  tryReadFile = (file, baseUrl = new URL('../', import.meta.url)) => {
-    file = new URL(file, baseUrl);
-    return existsSync(file)
-      ? readFileSync(file, isImage.test(file) ? undefined : 'utf8')
-      : preloaded404;
-  };
+  paintSource = (str) => applyMassInsert(prePaint(str), specialTemplates);

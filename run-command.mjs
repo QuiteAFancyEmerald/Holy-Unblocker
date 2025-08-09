@@ -11,15 +11,13 @@ import {
 import { exec, fork } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
-import pageRoutes from './src/routes.mjs';
+import { config, serverUrl, flatAltPaths } from './src/routes.mjs';
 import { epoxyPath } from '@mercuryworkshop/epoxy-transport';
 import { libcurlPath } from '@mercuryworkshop/libcurl-transport';
 import { baremuxPath } from '@mercuryworkshop/bare-mux/node';
 import { uvPath } from '@titaniumnetwork-dev/ultraviolet';
-import { paintSource, tryReadFile } from './src/source-rewrites.mjs';
-import loadTemplates from './src/templates.mjs';
-
-const { config, serverUrl, flatAltPaths } = pageRoutes;
+import paintSource from './src/source-rewrites.mjs';
+import { loadTemplates, tryReadFile } from './src/templates.mjs';
 
 // This constant is copied over from /src/server.mjs.
 const shutdown = fileURLToPath(new URL('./src/.shutdown', import.meta.url));

@@ -1,9 +1,12 @@
-import { tryReadFile } from './source-rewrites.mjs';
-export { loadTemplates as default };
+import { existsSync, readFileSync } from 'node:fs';
+import { text404 } from './routes.mjs';
+import paintSource from './source-rewrites.mjs';
+export { loadTemplates, tryReadFile, preloaded404 };
 
 const __dirname = '../views/pages/misc/deobf',
   getLineHeads = /^/gm,
   regExpEscape2 = /[-[\]{}()*+?.,\\^$|#\s]/g,
+  isImage = /\.(?:ico|png|jpg|jpeg)$/,
   templateNames = [
     'head-content',
     'header',
@@ -15,7 +18,10 @@ const __dirname = '../views/pages/misc/deobf',
     'proxnav-settings',
   ],
   readTemplate = (identifier) =>
-    tryReadFile(__dirname + `/${identifier}.html`, import.meta.url),
+    readFileSync(
+      new URL(__dirname + `/${identifier}.html`, import.meta.url),
+      'utf8'
+    ),
   locateTemplate = (key) =>
     new RegExp(
       `([^\\S\\n]*)<!--(${key.replace(regExpEscape2, '\\$&')})-->`,
@@ -31,4 +37,12 @@ const __dirname = '../views/pages/misc/deobf',
     templates.reduce(
       (updatedStr, [key, template]) => updatedStr.replace(key, template),
       str
-    );
+    ),
+  preloaded404 = paintSource(loadTemplates(text404)),
+  // Grab the text content of a file. Use the root directory if no base is supplied.
+  tryReadFile = (file, baseUrl = new URL('../', import.meta.url)) => {
+    file = new URL(file, baseUrl);
+    return existsSync(file)
+      ? readFileSync(file, isImage.test(file) ? undefined : 'utf8')
+      : preloaded404;
+  };

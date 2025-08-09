@@ -4,12 +4,10 @@ import wisp from 'wisp-server-node';
 import createRammerhead from '../lib/rammerhead/src/server/index.js';
 import fastifyHelmet from '@fastify/helmet';
 import fastifyStatic from '@fastify/static';
-import pageRoutes from './routes.mjs';
-import { preloaded404, tryReadFile } from './source-rewrites.mjs';
+import { serverUrl, pages, externalPages, getAltPrefix } from './routes.mjs';
+import { tryReadFile, preloaded404 } from './templates.mjs';
 import { fileURLToPath } from 'node:url';
 import { existsSync, unlinkSync } from 'node:fs';
-
-const { serverUrl, pages, externalPages, getAltPrefix } = pageRoutes;
 
 /* Record the server's location as a URL object, including its host and port.
  * The host can be modified at /src/config.json, whereas the ports can be modified
@@ -100,14 +98,7 @@ app.register(fastifyStatic, {
 
 // All entries in the dist folder are created with source rewrites.
 // Minified scripts are also served here, if minification is enabled.
-[
-  'assets',
-  'uv',
-  'scram',
-  'epoxy',
-  'libcurl',
-  'baremux',
-].forEach((prefix) => {
+['assets', 'uv', 'scram', 'epoxy', 'libcurl', 'baremux'].forEach((prefix) => {
   app.register(fastifyStatic, {
     root: fileURLToPath(new URL('../views/dist/' + prefix, import.meta.url)),
     prefix: getAltPrefix(prefix, serverUrl.pathname),
@@ -168,7 +159,10 @@ const supportedTypes = {
 app.get(serverUrl.pathname + ':path', (req, reply) => {
   // Testing for future features that need cookies to deliver alternate source files.
   if (req.raw.rawHeaders.includes('Cookie'))
-    console.log('cookie:', req.raw.rawHeaders[req.raw.rawHeaders.indexOf('Cookie') + 1]);
+    console.log(
+      'cookie:',
+      req.raw.rawHeaders[req.raw.rawHeaders.indexOf('Cookie') + 1]
+    );
 
   const reqPath = req.params.path;
 

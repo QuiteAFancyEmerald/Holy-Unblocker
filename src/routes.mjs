@@ -229,7 +229,7 @@ const cookingInserts = insert.content,
     'common.js': 'common-1735118314.js',
   };
 
-export default {
+export {
   config,
   serverUrl,
   pages,
