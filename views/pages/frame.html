@@ -92,14 +92,15 @@
 
       // Refresh the IFrame if the error page has displayed up to 1 time(s) before.
       const errorRefresh = () => {
-        const shouldRefresh = statusObject.timesErrored <= 1 && 
-          windowFrame.contentWindow.document.head
-            .querySelector("meta[itemprop='http-status'][content='404']");
+        const shouldRefresh =
+          statusObject.timesErrored <= 1 &&
+          windowFrame.contentWindow.document.head.querySelector(
+            "meta[itemprop='http-status'][content='404']"
+          );
         if (shouldRefresh) {
           statusObject.timesErrored++;
           windowFrame.contentWindow.location.reload();
-        }
-        else statusObject.timesErrored = 0;
+        } else statusObject.timesErrored = 0;
         return shouldRefresh;
       };
 
@@ -115,13 +116,10 @@
         // Do not remove the loading screen if the page is an error page
         // and should be reloaded.
         if (!statusObject.isLoading && errorRefresh())
-          return statusObject.isLoading = true;
+          return (statusObject.isLoading = true);
 
         // Display the loading screen if statusObject.isLoading is true.
-        loader.classList.toggle(
-          'loader-active',
-          statusObject.isLoading
-        );
+        loader.classList.toggle('loader-active', statusObject.isLoading);
 
         // Remove the loading screen if it takes longer than 5 seconds.
         if (statusObject.isLoading) loaderTimeout(5000);
