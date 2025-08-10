@@ -25,33 +25,63 @@
       <div class="logo" role="img" aria-label="Holy Unblocker Logo"></div>
       <button title="Back"><i class="fas fa-arrow-left"></i></button>
       <button title="Forward"><i class="fas fa-arrow-right"></i></button>
-      <input  class="glowbutton" id="search-input" type="text" placeholder="Type a URL or search..." spellcheck="false" autocomplete="off">
-      <button class="dropdown-settings" title="Settings">      
+      <input
+        class="glowbutton"
+        id="search-input"
+        type="text"
+        placeholder="Type a URL or search..."
+        spellcheck="false"
+        autocomplete="off"
+      />
+      <div title="Settings" class="dropdown-parent">
         <a href="#"><i class="fas fa-cog pulse" aria-hidden="true"></i></a>
+        <div
+          class="dropdown-settings"
+          tabindex="0"
+          role="menu"
+          aria-label="Settings menu"
+        >
+          <div id="csel">
+            <!--SETTINGS-->
+          </div>
+        </div>
+      </div>
+      <button id="omnibar-toggle" title="Hide Bar">
+        <i class="fas fa-chevron-up"></i>
       </button>
-      <button id="omnibar-toggle" title="Hide Bar"><i class="fas fa-chevron-up"></i></button>
     </div>
     <iframe id="frame" allow="fullscreen" autofocus></iframe>
     <script>
-      document.getElementById('frame').src = localStorage.getItem('hu-lts-frame-url');
+      document.getElementById('frame').src =
+        localStorage.getItem('hu-lts-frame-url');
     </script>
     <script>
       const omnibar = document.getElementById('pr-sj');
       const toggle = document.getElementById('omnibar-toggle');
+      const backArrow = omnibar.querySelector("[title='Back' i]");
+      const forwardArrow = omnibar.querySelector("[title='Forward' i]");
       let hidden = false;
 
-      toggle.onclick = () => {
+      toggle.addEventListener('click', () => {
         hidden = !hidden;
         omnibar.classList.toggle('omnibar-hidden', hidden);
         toggle.classList.toggle('omnibar-s', hidden);
         toggle.innerHTML = `<i class="fas fa-chevron-${hidden ? 'down' : 'up'}"></i>`;
         (hidden ? document.body : omnibar).appendChild(toggle);
         toggle.title = hidden ? 'Show Bar' : 'Hide Bar';
-      };
+      });
+
+      backArrow.addEventListener('click', () => {
+        history.back();
+      });
+      forwardArrow.addEventListener('click', () => {
+        history.forward();
+      });
 
       setTimeout(() => {
         const loader = document.querySelector('.loader');
-        loader && (loader.style.opacity = '0', setTimeout(() => loader.remove()));
+        loader &&
+          ((loader.style.opacity = '0'), setTimeout(() => loader.remove()));
       }, 2500);
     </script>
     <script src="{{route}}{{assets/js/common.js}}"></script>

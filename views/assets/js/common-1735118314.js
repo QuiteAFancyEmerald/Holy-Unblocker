@@ -20,7 +20,8 @@ const getDomain = () =>
   // This is used for stealth mode when visiting external sites.
   goFrame = (url) => {
     localStorage.setItem('hu-lts-frame-url', url);
-    location.href = '{{route}}{{/s}}';
+    if (location.pathname !== '{{route}}{{/s}}') location.href = '{{route}}{{/s}}';
+    else document.getElementById('frame').src = url;
   },
   /* Used to set functions for the goProx object at the bottom.
    * See the goProx object at the bottom for some usage examples
@@ -469,7 +470,7 @@ addEventListener('DOMContentLoaded', async () => {
       },
       searchMode = defaultModes[type] || defaultModes['globalDefault'];
 
-    if (prUrl)
+    if (prUrl) {
       prUrl.addEventListener('keydown', async (e) => {
         if (e.code === 'Enter') goProxMethod(searchMode)();
         // This is exclusively used for the validator script.
@@ -478,6 +479,10 @@ addEventListener('DOMContentLoaded', async () => {
           e.target.dispatchEvent(new Event('change'));
         }
       });
+      prUrl.addEventListener('focus', () => {
+        prUrl.select();
+      });
+    }
 
     prGo1.forEach((element) => {
       element.addEventListener('click', goProxMethod('window'));

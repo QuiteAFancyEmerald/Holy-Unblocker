@@ -476,7 +476,7 @@ details[open] summary {
   color: var(--nord0);
 }
 
-.navbar .dropdown-settings {
+.navbar .dropdown-settings, .omnibar .dropdown-settings {
   display: none;
   pointer-events: none;
   position: fixed;
@@ -521,6 +521,7 @@ details[open] summary {
   margin: 5vh auto;
   color: #eceff4;
   font-family: 'Figtree', sans-serif;
+  letter-spacing: 1px;
   display: flex;
   flex-direction: column;
   backdrop-filter: blur(10px);
@@ -1252,7 +1253,8 @@ input[type='text'] {
 .omnibar {
   position: fixed;
   top: 10px;
-  left: 50%;
+  /* 50% - (width/2 + padding width + border width), i.e., omnibar total width */
+  left: calc(50% - 20vw - 17px);
   width: 40vw;
   background-color: #1d232a;
   background-image: radial-gradient(circle, rgba(131, 131, 131, 0.02) 1px, transparent 1px), radial-gradient(circle, rgba(148, 148, 148, 0.02) 1px, transparent 1px);
@@ -1267,7 +1269,6 @@ input[type='text'] {
   border: 1px solid #ff919369;
   border-radius: 15px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transform: translateX(-50%);
   transition: transform 0.3s cubic-bezier(.4,0,.2,1);
 }
 
@@ -1277,7 +1278,7 @@ input[type='text'] {
   }
 }
 
-.omnibar input {
+.omnibar #search-input {
   flex: 1;
   padding: 8px 12px;
   border-radius: 6px;
@@ -1288,12 +1289,12 @@ input[type='text'] {
   font-size: 1rem;
 }
 
-.omnibar input[type='text'] {
+.omnibar #search-input {
   max-width: 700px;
   width: calc(100% - 44px);
 }
 
-.omnibar input[type='text']:focus {
+.omnibar #search-input:focus {
   outline: none;
   animation: glowshadow 2s linear infinite;
 }
@@ -1314,7 +1315,7 @@ input[type='text'] {
 }
 
 .omnibar-hidden {
-  transform: translate(-50%, -100%);
+  transform: translateY(-100%);
 }
 
 .omnibar-s {
