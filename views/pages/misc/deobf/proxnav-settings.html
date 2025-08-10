@@ -2,21 +2,21 @@
 <div id="settings-panel" class="pr-settings">
     <div class="advanced-settings"></div>
     <label>
-    {{autoMask}}{{Tor Browsing Mode}} <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Choose your Tor browsing mode. This allows you to use Tor routing in any browser. TLDR: You can access any .onion link in any browser.}}">(?) </span>
+    {{mask}}{{Tor Browsing Mode}} <span class="pr-tippy" data-tippy-content="{{mask}}{{Choose your Tor browsing mode. This allows you to use Tor routing in any browser. TLDR: You can access any .onion link in any browser.}}">(?) </span>
     <select class="useonion">
         <option>Off</option>
         <option>Enabled</option>
     </select>
     </label>
     <label>
-    Hide Ads <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Enable or disable ad blocking.}}">(?) </span>
+    Hide Ads <span class="pr-tippy" data-tippy-content="{{mask}}{{Enable or disable ad blocking.}}">(?) </span>
     <select class="hideads">
         <option>Off</option>
         <option selected>Enabled</option>
     </select>
     </label>
     <label>
-    Region Selection <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Enable or select regional proxies.}}">(?) </span>
+    Region Selection <span class="pr-tippy" data-tippy-content="{{mask}}{{Enable or select regional proxies.}}">(?) </span>
     <select class="region-list">
         <option value="off">Off</option>
         <option value="eu">Europe</option>
@@ -27,14 +27,14 @@
     </label>
 
     <div class="wisp-box">
-    <p class="cseltitle">{{autoMask}}{{Wisp Protocol Transport}} <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Wisp is designed to be a low-overhead, easy to implement protocol for proxying multiple TCP sockets over a single websocket connection. TLDR: Selecting a specific option will provide a focus on either speed, security or both at once. Just options for the user to select when utilizing Scramjet.}}">(?) </span></p>
+    <p class="cseltitle">{{mask}}{{Wisp Protocol Transport}} <span class="pr-tippy" data-tippy-content="{{mask}}{{Wisp is designed to be a low-overhead, easy to implement protocol for proxying multiple TCP sockets over a single websocket connection. TLDR: Selecting a specific option will provide a focus on either speed, security or both at once. Just options for the user to select when utilizing Scramjet.}}">(?) </span></p>
         <table class="transport-table {{wisp-transport}}-list">
         <tr>
             <td class="transport-label">
             <label>
-                {{autoMask}}{{Libcurl}}
-                <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Libcurl transport focuses on full TLS encryption but has slightly slower speeds than Epoxy. [ALTERNATIVE/FIREFOX DEFAULT]}}">(?)</span>
-                <span class="default-badge">{{autoMask}}{{Cross-Browser/Secure (Firefox)}}</span>
+                {{mask}}{{Libcurl}}
+                <span class="pr-tippy" data-tippy-content="{{mask}}{{Libcurl transport focuses on full TLS encryption but has slightly slower speeds than Epoxy. [ALTERNATIVE/FIREFOX DEFAULT]}}">(?)</span>
+                <span class="default-badge">{{mask}}{{Cross-Browser/Secure (Firefox)}}</span>
             </label>
             </td>
             <td class="transport-radio">
@@ -44,9 +44,15 @@
         <tr>
             <td class="transport-label">
             <label>
+<<<<<<< HEAD
                 {{autoMask}}{{Epoxy}}
                 <span class="pr-tippy" data-tippy-content="{{autoMask}}{{Epoxy allows you to make requests that bypass CORS without compromising security by running SSL/TLS inside webassembly with incredible performance. [HIGHLY RECOMMEND AND OPTIMIZED FOR SPEED].}}">(?)</span>
                 <span class="alt-badge">{{autoMask}}{{Fastest/Secure (Chromium, Apple)}}</span>
+=======
+                {{mask}}{{Epoxy}}
+                <span class="pr-tippy" data-tippy-content="{{mask}}{{Epoxy allows you to make requests that bypass CORS without compromising security by running SSL/TLS inside webassembly with incredible performance. [HIGHLY RECOMMEND AND OPTIMIZED FOR SPEED].}}">(?)</span>
+                <span class="{{bare}}-badge">{{mask}}{{Fastest/Secure (Chromium, Apple)}}</span>
+>>>>>>> d2e659b8597a0a44182bb862b77f6306e4336329
             </label>
             </td>
             <td class="transport-radio">

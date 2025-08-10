@@ -66,14 +66,23 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
   ifSEO = (text) => (config.usingSEO ? text : ''),
   randomListItem = (lis) => () => lis[(Math.random() * lis.length) | 0],
   getRandomChar = randomListItem(charRandom),
-  // Text masks, found in src/data.json, are meant to be variations of the
-  // same term. Using a different term as a mask will break the spelling.
+  /* Text masks, found in src/data.json, are meant to be variations of the
+   * same term. Using a different term as a mask will break the spelling.
+   * HTML entities may also break if their names are used as terms.
+   */
   parsedTextMasks = Object.freeze(
     Object.entries(textMasks).map((entry) => [
       entry[0],
       randomListItem(entry[1]),
       entry[0].match(subtermsByCaps),
     ])
+  ),
+  matchTextMasks = new RegExp(
+    Object.keys(textMasks)
+      .sort((term1, term2) => term2.length - term1.length)
+      .join('|')
+      .replace(regExpEscape, '\\$&'),
+    'gi'
   ),
   maskTerm = (term) => {
     if (config.usingSEO) return term;
@@ -89,14 +98,16 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
       .replace(subtermsByCaps, (word) => capitals.shift() + word.slice(1))
       .replaceAll(delimiter, getRandomChar);
   },
-  autoMask = (text) =>
+  mask = (text) =>
     config.usingSEO
       ? text
-      : text.replace(termsBySpaces, (term) =>
-          containsMask.test(term)
-            ? term
-            : term.replace(subtermsByVowels, getRandomChar)
-        ),
+      : text
+          .replace(matchTextMasks, maskTerm)
+          .replace(termsBySpaces, (term) =>
+            containsMask.test(term)
+              ? term
+              : term.replace(subtermsByVowels, getRandomChar)
+          ),
   route = (text) =>
     text
       .replace(
@@ -160,8 +171,7 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
   orderedTransforms = [
     [route, 1],
     [ifSEO, 1],
-    [maskTerm, 1],
-    [autoMask, 1],
+    [mask, 1],
   ],
   namedEntries = Object.freeze({
     __uv$config: escapeStr(
