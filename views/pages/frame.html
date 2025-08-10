@@ -79,15 +79,28 @@
         history.forward();
       });
 
-      let statusObject = { isLoading: true };
+      let statusObject = { isLoading: true, timesErrored: 0 };
 
       // Remove the loading screen if it takes too long.
-      const loaderTimeout = (statusObject, timeout) => {
+      const loaderTimeout = (timeout) => {
         statusObject.isLoading = true;
         setTimeout(() => {
           if (statusObject.isLoading)
             loader.classList.toggle('loader-active', false);
         }, timeout);
+      };
+
+      // Refresh the IFrame if the error page has displayed up to 1 time(s) before.
+      const errorRefresh = () => {
+        const shouldRefresh = statusObject.timesErrored <= 1 && 
+          windowFrame.contentWindow.document.head
+            .querySelector("meta[itemprop='http-status'][content='404']");
+        if (shouldRefresh) {
+          statusObject.timesErrored++;
+          windowFrame.contentWindow.location.reload();
+        }
+        else statusObject.timesErrored = 0;
+        return shouldRefresh;
       };
 
       // Display loading screen.
@@ -98,13 +111,20 @@
 
         statusObject.isLoading =
           windowFrame.contentWindow.document.readyState === 'loading';
+
+        // Do not remove the loading screen if the page is an error page
+        // and should be reloaded.
+        if (!statusObject.isLoading && errorRefresh())
+          return statusObject.isLoading = true;
+
+        // Display the loading screen if statusObject.isLoading is true.
         loader.classList.toggle(
           'loader-active',
           statusObject.isLoading
         );
 
         // Remove the loading screen if it takes longer than 5 seconds.
-        if (statusObject.isLoading) loaderTimeout(statusObject, 5000);
+        if (statusObject.isLoading) loaderTimeout(5000);
       };
 
       // Reattach load events whenever the content window has changed.
@@ -112,6 +132,7 @@
         setTimeout(() => {
           windowFrame.contentWindow.addEventListener('beforeunload', () => {
             loader.classList.toggle('loader-active', true);
+            loaderTimeout(5000);
           });
           windowFrame.contentWindow.addEventListener('unload', loadHandler);
           windowFrame.contentWindow.addEventListener(
@@ -122,7 +143,7 @@
         });
       };
 
-      // The load event is a backup in case readystatechange fails.
+      // The IFrame load event is a backup in case the main load handler fails.
       windowFrame.addEventListener('load', updateLoader);
       loadHandler();
     </script>
