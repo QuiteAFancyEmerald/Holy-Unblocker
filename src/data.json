@@ -18,6 +18,7 @@
   "delimiter": "*",
   "textMasks": {
     "Holy Unblocker": ["H*ol*y *Un*b*lo*c*k*er"],
+    "Holy Unblocker LTS": ["H*ol*y *Un*b*lo*c*k*er *L*T*S"],
     "Proxies": ["Pr*ox*i*es", "P*ro*x*ies", "Pro*x*i*es", "Pr*ox*ie*s"],
     "Proxy": ["Pr*ox*y", "P*ro*x*y", "Pro*x*y"],
     "Unblocker": ["Un*b*lo*c*k*er", "Un*bl*o*c*k*er", "Unb*lo*c*k*er"],
@@ -26,7 +27,7 @@
     "Bypass": ["By*pa*ss", "By*pa*ss*es", "Byp*as*s", "B*y*p*a*s*s"]
   },
   "splash": [
-    "This version is the public build of the HU LTS project and its being worked on via the master branch! Stuff will NOT work!"
+    "{{autoMask}}{{This version is the public build of the HU LTS project and its being worked on via the master branch! Stuff will NOT work!}}"
   ],
   "version": ["6.6.0"]
 }

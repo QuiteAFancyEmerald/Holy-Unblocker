@@ -697,7 +697,7 @@ select:hover {
 }
 
 .default-badge,
-.bare-badge,
+.alt-badge,
 .beta-badge {
   display: inline-block;
   padding: 2px 5px;
@@ -711,7 +711,7 @@ select:hover {
   color: #2e3440;
 }
 
-.bare-badge {
+.alt-badge {
   background-color: #d08770;
   color: #2e3440;
 }

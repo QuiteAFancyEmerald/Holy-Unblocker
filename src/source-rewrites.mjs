@@ -170,9 +170,9 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
   }),
   // List of manual censors for unavoidable cases.
   manualCensors = Object.freeze({
-    Google: '1E100',
+    Google: 'Glasses',
     Bing: 'Bell Sound',
-    Brave: 'Courage',
+    Brave: 'Brave',
     DuckDuckGo: '2x Waterfowl Moves',
     Startpage: 'Beginning Sheet',
     'wisp-transport': 'wst',
