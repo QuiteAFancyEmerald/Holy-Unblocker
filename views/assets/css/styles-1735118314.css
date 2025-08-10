@@ -261,7 +261,7 @@ details[open] summary {
 
 #mainbody {
   position: relative;
-  animation: fadeInAnimation ease-in-out 0.6s; 
+  animation: fadeInAnimation ease-in-out 0.6s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   overflow-x: clip;
@@ -1205,9 +1205,19 @@ input[type='text'] {
   background-position: 0 0, 5px 5px;
   background-size: 10px 10px;
   z-index: 3;
-  display: flex;
   align-items: center;
   justify-content: center;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity ease-in-out 0.3s;
+  transition-delay: 0.3s, 0s;
+}
+
+.loader-active {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s, 0.6s;
 }
 
 .loader-w {

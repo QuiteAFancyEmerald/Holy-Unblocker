@@ -18,7 +18,7 @@
 
   <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <div class="loader">
+    <div class="loader loader-active">
       <div class="loader-w"></div>
     </div>
     <div class="omnibar" id="pr-sj">
@@ -52,10 +52,11 @@
     </div>
     <iframe id="frame" allow="fullscreen" autofocus></iframe>
     <script>
-      document.getElementById('frame').src =
-        localStorage.getItem('hu-lts-frame-url');
-    </script>
-    <script>
+      // Display the window.
+      const windowFrame = document.getElementById('frame');
+      windowFrame.src = localStorage.getItem('hu-lts-frame-url');
+
+      // Functionality for the omnibox.
       const omnibar = document.getElementById('pr-sj');
       const toggle = document.getElementById('omnibar-toggle');
       const backArrow = omnibar.querySelector("[title='Back' i]");
@@ -78,11 +79,52 @@
         history.forward();
       });
 
-      setTimeout(() => {
-        const loader = document.querySelector('.loader');
-        loader &&
-          ((loader.style.opacity = '0'), setTimeout(() => loader.remove()));
-      }, 2500);
+      let statusObject = { isLoading: true };
+
+      // Remove the loading screen if it takes too long.
+      const loaderTimeout = (statusObject, timeout) => {
+        statusObject.isLoading = true;
+        setTimeout(() => {
+          if (statusObject.isLoading)
+            loader.classList.toggle('loader-active', false);
+        }, timeout);
+      };
+
+      // Display loading screen.
+      const loader = document.getElementsByClassName('loader')[0];
+      const updateLoader = () => {
+        // Ignore about:blank pages that IFrames load prior to the actual URL.
+        if (windowFrame.contentWindow.location.href === 'about:blank') return;
+
+        statusObject.isLoading =
+          windowFrame.contentWindow.document.readyState === 'loading';
+        loader.classList.toggle(
+          'loader-active',
+          statusObject.isLoading
+        );
+
+        // Remove the loading screen if it takes longer than 5 seconds.
+        if (statusObject.isLoading) loaderTimeout(statusObject, 5000);
+      };
+
+      // Reattach load events whenever the content window has changed.
+      const loadHandler = () => {
+        setTimeout(() => {
+          windowFrame.contentWindow.addEventListener('beforeunload', () => {
+            loader.classList.toggle('loader-active', true);
+          });
+          windowFrame.contentWindow.addEventListener('unload', loadHandler);
+          windowFrame.contentWindow.addEventListener(
+            'readystatechange',
+            updateLoader
+          );
+          updateLoader();
+        });
+      };
+
+      // The load event is a backup in case readystatechange fails.
+      windowFrame.addEventListener('load', updateLoader);
+      loadHandler();
     </script>
     <script src="{{route}}{{assets/js/common.js}}"></script>
     <script src="{{route}}{{assets/js/csel.js}}"></script>
