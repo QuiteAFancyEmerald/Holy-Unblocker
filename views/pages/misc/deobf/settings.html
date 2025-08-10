@@ -5,7 +5,7 @@
   </div>
   <div class="settings-content-body">
     <div class="csel-container-left">
-      <p class="cseltitle">{{autoMask}}{{Tab Cloak}}</p>
+      <p class="cseltitle">{{mask}}{{Tab Cloak}}</p>
       <form id="titleform" class="cloakform">
         <input type="text" placeholder="Tab Title" spellcheck="false" />
         <input type="submit" value="Apply" />
@@ -14,35 +14,35 @@
         <input type="text" placeholder="Icon URL" spellcheck="false" />
         <input type="submit" value="Apply" />
       </form>
-      <p class="cseltitle">{{autoMask}}{{Wisp Protocol Transport}}</p>
+      <p class="cseltitle">{{mask}}{{Wisp Protocol Transport}}</p>
       <div class="radio-group {{wisp-transport}}-list">
         <label>
           <p>
-            {{autoMask}}{{Libcurl}}
-            <span class="default-badge">{{autoMask}}{{Cross-Browser/Secure (Firefox)}}</span>
+            {{mask}}{{Libcurl}}
+            <span class="default-badge">{{mask}}{{Cross-Browser/Secure (Firefox)}}</span>
           </p>
           <input type="radio" name="{{wisp-transport}}" value="{{libcurl}}" checked />
         </label>
         <label>
           <p>
-            {{autoMask}}{{Epoxy}}
-            <span class="{{bare}}-badge">{{autoMask}}{{Fastest/Secure (Chromium, Apple)}}</span>
+            {{mask}}{{Epoxy}}
+            <span class="{{bare}}-badge">{{mask}}{{Fastest/Secure (Chromium, Apple)}}</span>
           </p>
           <input type="radio" name="{{wisp-transport}}" value="{{epoxy}}" />
         </label>
         <label>
-          <p>{{autoMask}}{{Bare}} <span class="beta-badge">{{autoMask}}{{Least Secure (All)}}</span></p>
+          <p>{{mask}}{{Bare}} <span class="beta-badge">{{mask}}{{Least Secure (All)}}</span></p>
           <input type="radio" name="{{wisp-transport}}" value="{{bare}}" />
         </label>
       </div>
       <p class="cseltitle">Advanced Options</p>
       <div class="radio-group">
         <label>
-          <p>Hide Ads <span class="default-badge">{{autoMask}}{{AdGuard}}</span></p>
+          <p>Hide Ads <span class="default-badge">{{mask}}{{AdGuard}}</span></p>
           <input type="checkbox" class="switch hideads" checked />
         </label>
         <label>
-          <p>{{autoMask}}{{Enable Tor}} <span class="{{bare}}-badge">{{autoMask}}{{SOCKS5 Onion Routing}}</span></p>
+          <p>{{mask}}{{Enable Tor}} <span class="{{bare}}-badge">{{mask}}{{SOCKS5 Onion Routing}}</span></p>
           <input type="checkbox" class="switch useonion" />
         </label>
       </div>
@@ -58,7 +58,7 @@
       </select>
       <p class="cseltitle">About:Blank</p>
       <div class="switch-container">
-        <p>{{autoMask}}{{Stealth Tab}} <span class="default-badge">Default</span></p>
+        <p>{{mask}}{{Stealth Tab}} <span class="default-badge">Default</span></p>
         <input type="checkbox" class="switch" />
       </div>
       <p class="cseltitle">Select Theme</p>
@@ -80,10 +80,10 @@
         <option>{{Google}} Drive</option>
         <option>Gmail</option>
       </select>
-      <p class="cseltitle">{{autoMask}}{{Enable Devtools}}</p>
+      <p class="cseltitle">{{mask}}{{Enable Devtools}}</p>
       <div class="radio-group">
         <label>
-          <p>{{autoMask}}{{Eruda Devtools}}<span class="{{bare}}-badge">{{autoMask}}{{CTRL+SHIFT+I}}</span></p>
+          <p>{{mask}}{{Eruda Devtools}}<span class="{{bare}}-badge">{{mask}}{{CTRL+SHIFT+I}}</span></p>
           <input type="radio" name="theme" value="lighttheme" checked />
         </label>
       </div>
