@@ -8,6 +8,7 @@ import { serverUrl, pages, externalPages, getAltPrefix } from './routes.mjs';
 import { tryReadFile, preloaded404 } from './templates.mjs';
 import { fileURLToPath } from 'node:url';
 import { existsSync, unlinkSync } from 'node:fs';
+import { rm } from 'node:fs/promises';
 
 /* Record the server's location as a URL object, including its host and port.
  * The host can be modified at /src/config.json, whereas the ports can be modified
@@ -74,6 +75,21 @@ const serverFactory = (handler) => {
         wisp.routeRequest(req, socket, head);
     });
 };
+
+// Purge Rammerhead cache files once a week
+
+const cacheJsPath = fileURLToPath(new URL('../lib/rammerhead/cache-js', import.meta.url));
+
+setInterval(async () => {
+  try {
+    if (existsSync(cacheJsPath)) {
+      await rm(cacheJsPath, { recursive: true, force: true });
+      console.log(`[Cache Purge] Cleared cache-js at ${new Date().toISOString()}`);
+    }
+  } catch (err) {
+    console.error(`[Cache Purge Error] ${err}`);
+  }
+}, 1000 * 60 * 60 * 24 * 7);
 
 // Set logger to true for logs.
 const app = Fastify({
