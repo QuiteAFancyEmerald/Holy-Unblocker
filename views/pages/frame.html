@@ -90,10 +90,10 @@
         }, timeout);
       };
 
-      // Refresh the IFrame if the error page has displayed up to 1 time(s) before.
+      // Refresh the IFrame if the error page has displayed up to 5 time(s) before.
       const errorRefresh = () => {
         const shouldRefresh =
-          statusObject.timesErrored <= 1 &&
+          statusObject.timesErrored <= 5 &&
           windowFrame.contentWindow.document.head.querySelector(
             "meta[itemprop='http-status'][content='404']"
           );
