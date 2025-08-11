@@ -315,6 +315,11 @@ if (document.getElementById('csel')) {
     }
   });
 
+  attachClassEventListener('useac', 'change', (e) => {
+    if (checkBooleanState(e.target) === false) setStorage('UseAC', false);
+    else removeStorage('UseAC');
+  })
+
   attachClassEventListener('region-list', 'change', (e) => {
     const isOff = checkBooleanState(e.target) === false;
     isOff
@@ -372,5 +377,10 @@ useStorageArgs('UseSocks5', (s) => {
     regionList = document.getElementsByClassName('region-list');
   if (s === 'tor') classUpdateHandler(tor, 'on', classEvent(tor, 'change'))();
   else if ('string' === typeof s) classUpdateHandler(regionList, s)();
+});
+
+useStorageArgs('UseAC', (s) => {
+  if (s === false)
+    classUpdateHandler(document.getElementsByClassName('useac'), 'off')();
 });
 })();

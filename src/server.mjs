@@ -174,11 +174,13 @@ const supportedTypes = {
 
 app.get(serverUrl.pathname + ':path', (req, reply) => {
   // Testing for future features that need cookies to deliver alternate source files.
+  /*
   if (req.raw.rawHeaders.includes('Cookie'))
     console.log(
       'cookie:',
       req.raw.rawHeaders[req.raw.rawHeaders.indexOf('Cookie') + 1]
     );
+  */
 
   const reqPath = req.params.path;
 

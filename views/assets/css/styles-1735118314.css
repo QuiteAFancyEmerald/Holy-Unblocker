@@ -226,6 +226,10 @@ details[open] summary {
   padding: 0;
 }
 
+.display-off {
+  display: none;
+}
+
 /* Used on a lot of navigation pages. */
 .bigtitle {
   font-size: 42px;
@@ -1299,9 +1303,39 @@ input[type='text'] {
   font-size: 1rem;
 }
 
-.omnibar #search-input {
+.search-box {
+  display: inline-block;
+  position: relative;
   max-width: 700px;
   width: calc(100% - 44px);
+}
+
+#autocomplete {
+  position: absolute;
+  background-color: var(--nord0);
+  color: white;
+  list-style-type: none;
+  margin: 0 3px;
+  padding: 0;
+  z-index: 2;
+}
+
+#autocomplete li {
+  border: 1px solid var(--nord1);
+}
+
+#autocomplete li:hover {
+  background-color: #b48ead83;
+  cursor: pointer;
+}
+
+#autocomplete li:active {
+  background-color: #1d2029;
+  color: white;
+}
+
+.search-box input[type='text'], .search-box #autocomplete {
+  width: 100%;
 }
 
 .omnibar #search-input:focus {
@@ -1801,11 +1835,6 @@ input[type='text'] {
   font-family: 'Montserrat Alternates', sans-serif;
   font-size: 20px;
   margin: 3px;
-}
-
-.pr-form input[type='text'] {
-  max-width: 700px;
-  width: calc(100% - 44px);
 }
 
 .pr-form input[type='text']:focus {

@@ -71,12 +71,77 @@ const searchEngines = Object.freeze({
     '{{DuckDuckGo}}': 'duckduckgo.com/?q=',
     '{{Brave}}': 'search.brave.com/search?q=',
   }),
-  defaultSearch = '{{Brave}}';
+  defaultSearch = '{{Brave}}',
+
+  autocompletes = Object.freeze({
+    // Startpage has used both Google's and Bing's autocomplete.
+    // For now, just use Bing.
+    '{{Startpage}}': 'www.bing.com/AS/Suggestions?csr=1&cvid=0&qry=',
+    '{{Google}}': 'www.google.com/complete/search?client=gws-wiz&callback=_&q=',
+    '{{Bing}}': 'www.bing.com/AS/Suggestions?csr=1&cvid=0&qry=',
+    '{{DuckDuckGo}}': 'duckduckgo.com/ac/?q=',
+    '{{Brave}}': 'search.brave.com/api/suggest?q=',
+  }),
+
+  autocompleteUrls = Object.values(autocompletes).map((url) => 'https://' + url),
+
+  responseDelimiter = '\ue000',
+  formatSuggestion =
+    (suggestion, delimiters, newDelimiters = [responseDelimiter]) => {
+      for (let i = 0; i < delimiters.length; i++)
+        suggestion = suggestion.replaceAll(
+          delimiters[i],
+          newDelimiters[i] || newDelimiters[0]
+        );
+      return suggestion;
+    },
+
+  responseHandlers = Object.freeze({
+    '{{Startpage}}': (jsonData) => responseHandlers['{{Bing}}'](jsonData),
+    '{{Google}}': (jsonData) => jsonData[0].map(
+        ([suggestion]) => formatSuggestion(suggestion, ['<b>', '</b>'])
+      ),
+    '{{Bing}}': (jsonData) => jsonData.s.map(
+        ({q}) => formatSuggestion(q, ['\ue000', '\ue001'])
+      ),
+    '{{DuckDuckGo}}': (jsonData) => jsonData.map(({phrase}) => phrase),
+    '{{Brave}}': (jsonData) => jsonData[1],
+  });
+
+// Get the autocomplete results for a given search query in JSON format.
+const requestAC = async (baseUrl, query, parserFunc = (url) => url) => {
+  const response = await fetch(
+      await parserFunc(baseUrl + encodeURIComponent(query))
+    ),
+    responseType = response.headers.get('content-type');
+  let responseJSON = {};
+  if (responseType && responseType.indexOf('application/json') !== -1)
+    responseJSON = await response.json();
+  else
+    try {
+      responseJSON = await response.text();
+      if (parserFunc === rhUrl) try {
+        responseJSON = responseJSON.match(
+          /(?<=\/\*hammerhead\|.*header-end\*\/)[^]+?(?=\/\*hammerhead\|.*end\*\/)/i
+        )[0];
+      } catch (e) {
+        // In case Rammerhead chose not to encode the response.
+      }
+      try {
+        responseJSON = JSON.parse(responseJSON);
+      } catch (e) {
+        responseJSON = JSON.parse(responseJSON.replace(/^[^[{]*|[^\]}]*$/g, ''));
+      }
+    } catch (e) {
+      // responseJSON will be an empty object if everything was invalid.
+    }
+  return responseJSON;
+};
 
 // Default search engine is set to Google. Intended to work just like the usual
 // bar at the top of a browser.
 const getSearchTemplate = (
-    searchEngine = searchEngines[readStorage('SearchEngine') || defaultSearch]
+    searchEngine = searchEngines[readStorage('SearchEngine')] || searchEngines[defaultSearch]
   ) => `https://${searchEngine}%s`,
   // Like an omnibox, return the results of a search engine if search terms are
   // provided instead of a URL.
@@ -121,9 +186,14 @@ const getSearchTemplate = (
       url = search(url);
     }
     return url;
-  };
+  },
+  rhUrl = async (url) => location.origin + (await RammerheadEncode(search(url)));
 
 /* RAMMERHEAD CONFIGURATION */
+
+// Store the search autocomplete string shuffler until reloaded.
+// The ID must be a string containing 32 alphanumerical characters.
+let rhACDict = {id: 'collectsearchautocompleteresults', dict: ''};
 
 // Parse a URL to use with Rammerhead. Only usable if the server is active.
 const RammerheadEncode = async (baseUrl) => {
@@ -301,8 +371,11 @@ const RammerheadEncode = async (baseUrl) => {
       sessionIdsStore.set(data);
     },
     // Attempt to load an existing session that has been stored on the server.
-    getSessionId = () => {
+    getSessionId = (baseUrl) => {
       return new Promise((resolve) => {
+        for (let i = 0; i < autocompleteUrls.length; i++)
+          if (baseUrl.indexOf(autocompleteUrls[i]) === 0)
+            return resolve(rhACDict.id);
         // Check if the browser has stored an existing session.
         const id = localStorage.getItem('session-string');
         api.sessionexists(id, (value) => {
@@ -324,14 +397,23 @@ const RammerheadEncode = async (baseUrl) => {
     };
 
   // Load the URL that was last visited in the Rammerhead session.
-  return getSessionId().then(
-    (id) =>
-      new Promise((resolve) => {
+  return getSessionId(baseUrl).then(
+    (id) => {
+      if (id === rhACDict.id && rhACDict.dict)
+          return new Promise((resolve) => {
+            resolve(
+              `{{route}}{{/}}${id}/` +
+              new StrShuffler(rhACDict.dict).shuffle(baseUrl)
+            );
+          });
+      return new Promise((resolve) => {
         api.shuffleDict(id, (shuffleDict) => {
+          if (id === rhACDict.id) rhACDict.dict = shuffleDict;
           // Encode the URL with Rammerhead's encoding table and return the URL.
           resolve(`{{route}}{{/}}${id}/` + new StrShuffler(shuffleDict).shuffle(baseUrl));
         });
       })
+    }
   );
 };
 
@@ -384,9 +466,7 @@ addEventListener('DOMContentLoaded', async () => {
 
     scramjet: urlHandler(sjUrl),
 
-    rammerhead: asyncUrlHandler(
-      async (url) => location.origin + (await RammerheadEncode(search(url)))
-    ),
+    rammerhead: asyncUrlHandler(rhUrl),
 
     searx: urlHandler(location.protocol + `//c.${getDomain()}/engine/`),
 
@@ -449,6 +529,7 @@ addEventListener('DOMContentLoaded', async () => {
     if (!formElement) return;
 
     let prUrl = formElement.querySelector('input[type=text]'),
+      prAC = document.getElementById('autocomplete'),
       prGo1 = document.querySelectorAll(`#${id}.pr-go1, #${id} .pr-go1`),
       prGo2 = document.querySelectorAll(`#${id}.pr-go2, #${id} .pr-go2`);
 
@@ -471,6 +552,8 @@ addEventListener('DOMContentLoaded', async () => {
       searchMode = defaultModes[type] || defaultModes['globalDefault'];
 
     if (prUrl) {
+      let enableSearch = false, onCooldown = false;
+
       prUrl.addEventListener('keydown', async (e) => {
         if (e.code === 'Enter') goProxMethod(searchMode)();
         // This is exclusively used for the validator script.
@@ -479,9 +562,88 @@ addEventListener('DOMContentLoaded', async () => {
           e.target.dispatchEvent(new Event('change'));
         }
       });
-      prUrl.addEventListener('focus', () => {
-        prUrl.select();
-      });
+
+      if (prAC) {
+        // Get autocomplete search results when typing in the omnibox.
+        prUrl.addEventListener('input', async (e) => {
+          // Prevent excessive fetch requests by restricting when requests are made.
+          if (enableSearch && !onCooldown) {
+            if (!e.target.value) {
+              prAC.textContent = '';
+              return;
+            }
+            const query = e.target.value;
+            if (e.isTrusted) {
+              onCooldown = true;
+              setTimeout(() => {
+                onCooldown = false;
+                // Refresh the autocomplete results after the cooldown ends.
+                if (query !== e.target.value)
+                  e.target.dispatchEvent(new Event('input'));
+              }, 600);
+            }
+
+            // Get autocomplete results from the selected search engine.
+            let searchType = readStorage('SearchEngine');
+            if (!(searchType in autocompletes)) searchType = defaultSearch;
+            const responseJSON = await requestAC(
+              'https://' + autocompletes[searchType],
+              query,
+              rhUrl
+            );
+
+            // Update the data for the results.
+            const results = responseHandlers[searchType](responseJSON);
+            console.log(results);
+
+            prAC.textContent = '';
+
+            for (let i = 0; i < results.length; i++) {
+              let suggestion = document.createElement('li');
+              suggestion.tabIndex = 0;
+              suggestion.append(
+                ...results[i].split(responseDelimiter).map((text, bolded) => {
+                  if (bolded % 2) {
+                    let node = document.createElement('b');
+                    node.textContent = text;
+                    return node;
+                  }
+                  return text;
+                })
+              );
+              prAC.appendChild(suggestion);
+            }
+          }
+        });
+
+        // Show autocomplete results only if the omnibox is in focus.
+        prUrl.addEventListener('focus', () => {
+          // Don't show results if they were disabled by the user.
+          if (readStorage('UseAC') !== false) {
+            enableSearch = true;
+            prAC.classList.toggle('display-off', false);
+          }
+          prUrl.select();
+        });
+        prUrl.addEventListener('blur', (e) => {
+          enableSearch = false;
+
+          // Do not remove the autocomplete result list if it was being clicked.
+          if (e.relatedTarget) {
+            e.relatedTarget.focus();
+            if (document.activeElement.parentNode === prAC) return;
+          }
+
+          prAC.classList.toggle('display-off', true);
+        });
+
+        // Make the corresponding search query if a given suggestion was clicked.
+        prAC.addEventListener('click', (e) => {
+          e.target.focus();
+          prUrl.value = document.activeElement.textContent;
+          goProxMethod(searchMode)();
+        });
+      }
     }
 
     prGo1.forEach((element) => {

@@ -44,13 +44,16 @@
                 <option>{{Bing}}</option>
               </select>
 
-              <input
-                      type="text"
-                      spellcheck="false"
-                      autocomplete="off"
-                      placeholder="Type a URL here or enter a search query!"
-                      id="search-input"
-              />
+              <div class="search-box">
+                <input
+                        type="text"
+                        spellcheck="false"
+                        autocomplete="off"
+                        placeholder="Type a URL here or enter a search query!"
+                        id="search-input"
+                />
+                <ul id="autocomplete"></ul>
+              </div>
 
               <a href="#" class="pr-button glowbutton pr-go2" id="search-btn">SEARCH</a>
             </div>

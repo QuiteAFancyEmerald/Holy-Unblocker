@@ -25,14 +25,17 @@
       <div class="logo" role="img" aria-label="Holy Unblocker Logo"></div>
       <button title="Back"><i class="fas fa-arrow-left"></i></button>
       <button title="Forward"><i class="fas fa-arrow-right"></i></button>
-      <input
-        class="glowbutton"
-        id="search-input"
-        type="text"
-        placeholder="Type a URL or search..."
-        spellcheck="false"
-        autocomplete="off"
-      />
+      <div class="search-box">
+        <input
+          class="glowbutton"
+          id="search-input"
+          type="text"
+          placeholder="Type a URL or search..."
+          spellcheck="false"
+          autocomplete="off"
+        />
+        <ul id="autocomplete"></ul>
+      </div>
       <div title="Settings" class="dropdown-parent">
         <a href="#"><i class="fas fa-cog pulse" aria-hidden="true"></i></a>
         <div
@@ -115,8 +118,10 @@
 
         // Do not remove the loading screen if the page is an error page
         // and should be reloaded.
-        if (!statusObject.isLoading && errorRefresh())
-          return (statusObject.isLoading = true);
+        if (!statusObject.isLoading && errorRefresh()) {
+          statusObject.isLoading = true;
+          return;
+        }
 
         // Display the loading screen if statusObject.isLoading is true.
         loader.classList.toggle('loader-active', statusObject.isLoading);
