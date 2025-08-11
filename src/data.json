@@ -27,7 +27,7 @@
     "Bypass": ["By*pa*ss", "By*pa*ss*es", "Byp*as*s", "B*y*p*a*s*s"]
   },
   "splash": [
-    "{{autoMask}}{{This version is the public build of the HU LTS project and its being worked on via the master branch! Stuff will NOT work!}}"
+    "{{mask}}{{This version is the public build of the HU LTS project, and it's being worked on via the master branch! Stuff will NOT work!}}"
   ],
   "version": ["6.6.0"]
 }

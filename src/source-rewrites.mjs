@@ -188,7 +188,6 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
     'wisp-transport': 'wst',
     libcurl: 'unix',
     epoxy: 'epoch',
-    bare: 'time',
   }),
   // Apply most obfuscation changes to an entire file's text content.
   prePaint = (str) => {
