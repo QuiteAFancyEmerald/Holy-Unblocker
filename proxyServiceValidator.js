@@ -9,7 +9,7 @@ const testEndpoint = async (url) => {
     const response = await axios.get(url);
     return response.status === 200;
   } catch (error) {
-    console.error(`Error while testing ${url}:`, error);
+    console.error(`Error ${error.code} while testing ${url}:`, error.message);
     return false;
   }
 };

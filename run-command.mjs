@@ -255,7 +255,8 @@ commands: for (let i = 2; i < process.argv.length; i++)
       tempServer.stderr.on('data', (stderr) => {
         // The temporary server will print startup errors that aren't deprecation
         // warnings; stop the process and return an error exit code upon doing so.
-        if (stderr.toString().indexOf('DeprecationWarning') >= 0) return;
+        if (stderr.toString().indexOf('DeprecationWarning') >= 0)
+          return console.log(stderr.toString());
         console.error(stderr.toString());
         tempServer.kill();
         process.exitCode = 1;
