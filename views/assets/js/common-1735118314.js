@@ -20,7 +20,8 @@ const getDomain = () =>
   // This is used for stealth mode when visiting external sites.
   goFrame = (url) => {
     localStorage.setItem('hu-lts-frame-url', url);
-    if (location.pathname !== '{{route}}{{/s}}') location.href = '{{route}}{{/s}}';
+    if (location.pathname !== '{{route}}{{/s}}')
+      location.href = '{{route}}{{/s}}';
     else document.getElementById('frame').src = url;
   },
   /* Used to set functions for the goProx object at the bottom.
@@ -72,7 +73,6 @@ const searchEngines = Object.freeze({
     '{{Brave}}': 'search.brave.com/search?q=',
   }),
   defaultSearch = '{{Brave}}',
-
   autocompletes = Object.freeze({
     // Startpage has used both Google's and Bing's autocomplete.
     // For now, just use Bing.
@@ -82,29 +82,31 @@ const searchEngines = Object.freeze({
     '{{DuckDuckGo}}': 'duckduckgo.com/ac/?q=',
     '{{Brave}}': 'search.brave.com/api/suggest?q=',
   }),
-
-  autocompleteUrls = Object.values(autocompletes).map((url) => 'https://' + url),
-
+  autocompleteUrls = Object.values(autocompletes).map(
+    (url) => 'https://' + url
+  ),
   responseDelimiter = '\ue000',
-  formatSuggestion =
-    (suggestion, delimiters, newDelimiters = [responseDelimiter]) => {
-      for (let i = 0; i < delimiters.length; i++)
-        suggestion = suggestion.replaceAll(
-          delimiters[i],
-          newDelimiters[i] || newDelimiters[0]
-        );
-      return suggestion;
-    },
-
+  formatSuggestion = (
+    suggestion,
+    delimiters,
+    newDelimiters = [responseDelimiter]
+  ) => {
+    for (let i = 0; i < delimiters.length; i++)
+      suggestion = suggestion.replaceAll(
+        delimiters[i],
+        newDelimiters[i] || newDelimiters[0]
+      );
+    return suggestion;
+  },
   responseHandlers = Object.freeze({
     '{{Startpage}}': (jsonData) => responseHandlers['{{Bing}}'](jsonData),
-    '{{Google}}': (jsonData) => jsonData[0].map(
-        ([suggestion]) => formatSuggestion(suggestion, ['<b>', '</b>'])
+    '{{Google}}': (jsonData) =>
+      jsonData[0].map(([suggestion]) =>
+        formatSuggestion(suggestion, ['<b>', '</b>'])
       ),
-    '{{Bing}}': (jsonData) => jsonData.s.map(
-        ({q}) => formatSuggestion(q, ['\ue000', '\ue001'])
-      ),
-    '{{DuckDuckGo}}': (jsonData) => jsonData.map(({phrase}) => phrase),
+    '{{Bing}}': (jsonData) =>
+      jsonData.s.map(({ q }) => formatSuggestion(q, ['\ue000', '\ue001'])),
+    '{{DuckDuckGo}}': (jsonData) => jsonData.map(({ phrase }) => phrase),
     '{{Brave}}': (jsonData) => jsonData[1],
   });
 
@@ -120,17 +122,20 @@ const requestAC = async (baseUrl, query, parserFunc = (url) => url) => {
   else
     try {
       responseJSON = await response.text();
-      if (parserFunc === rhUrl) try {
-        responseJSON = responseJSON.match(
-          /(?<=\/\*hammerhead\|.*header-end\*\/)[^]+?(?=\/\*hammerhead\|.*end\*\/)/i
-        )[0];
-      } catch (e) {
-        // In case Rammerhead chose not to encode the response.
-      }
+      if (parserFunc === rhUrl)
+        try {
+          responseJSON = responseJSON.match(
+            /(?<=\/\*hammerhead\|.*header-end\*\/)[^]+?(?=\/\*hammerhead\|.*end\*\/)/i
+          )[0];
+        } catch (e) {
+          // In case Rammerhead chose not to encode the response.
+        }
       try {
         responseJSON = JSON.parse(responseJSON);
       } catch (e) {
-        responseJSON = JSON.parse(responseJSON.replace(/^[^[{]*|[^\]}]*$/g, ''));
+        responseJSON = JSON.parse(
+          responseJSON.replace(/^[^[{]*|[^\]}]*$/g, '')
+        );
       }
     } catch (e) {
       // responseJSON will be an empty object if everything was invalid.
@@ -141,7 +146,8 @@ const requestAC = async (baseUrl, query, parserFunc = (url) => url) => {
 // Default search engine is set to Google. Intended to work just like the usual
 // bar at the top of a browser.
 const getSearchTemplate = (
-    searchEngine = searchEngines[readStorage('SearchEngine')] || searchEngines[defaultSearch]
+    searchEngine = searchEngines[readStorage('SearchEngine')] ||
+      searchEngines[defaultSearch]
   ) => `https://${searchEngine}%s`,
   // Like an omnibox, return the results of a search engine if search terms are
   // provided instead of a URL.
@@ -187,13 +193,14 @@ const getSearchTemplate = (
     }
     return url;
   },
-  rhUrl = async (url) => location.origin + (await RammerheadEncode(search(url)));
+  rhUrl = async (url) =>
+    location.origin + (await RammerheadEncode(search(url)));
 
 /* RAMMERHEAD CONFIGURATION */
 
 // Store the search autocomplete string shuffler until reloaded.
 // The ID must be a string containing 32 alphanumerical characters.
-let rhACDict = {id: 'collectsearchautocompleteresults', dict: ''};
+let rhACDict = { id: 'collectsearchautocompleteresults', dict: '' };
 
 // Parse a URL to use with Rammerhead. Only usable if the server is active.
 const RammerheadEncode = async (baseUrl) => {
@@ -303,19 +310,25 @@ const RammerheadEncode = async (baseUrl) => {
 
       // Check if a session with the specified ID exists, then do something.
       sessionexists(id, callback) {
-        get('{{route}}{{/sessionexists}}?id=' + encodeURIComponent(id), (res) => {
-          if (res === 'exists') return callback(true);
-          if (res === 'not found') return callback(false);
-          console.log('Unexpected response from server. Received ' + res);
-        });
+        get(
+          '{{route}}{{/sessionexists}}?id=' + encodeURIComponent(id),
+          (res) => {
+            if (res === 'exists') return callback(true);
+            if (res === 'not found') return callback(false);
+            console.log('Unexpected response from server. Received ' + res);
+          }
+        );
       },
 
       // Request a brand new encoding table to use for Rammerhead.
       shuffleDict(id, callback) {
         console.log('Shuffling', id);
-        get('{{route}}{{/api/shuffleDict}}?id=' + encodeURIComponent(id), (res) => {
-          callback(JSON.parse(res));
-        });
+        get(
+          '{{route}}{{/api/shuffleDict}}?id=' + encodeURIComponent(id),
+          (res) => {
+            callback(JSON.parse(res));
+          }
+        );
       },
     },
     /* Organize Rammerhead sessions via the browser's local storage.
@@ -397,24 +410,24 @@ const RammerheadEncode = async (baseUrl) => {
     };
 
   // Load the URL that was last visited in the Rammerhead session.
-  return getSessionId(baseUrl).then(
-    (id) => {
-      if (id === rhACDict.id && rhACDict.dict)
-          return new Promise((resolve) => {
-            resolve(
-              `{{route}}{{/}}${id}/` +
-              new StrShuffler(rhACDict.dict).shuffle(baseUrl)
-            );
-          });
+  return getSessionId(baseUrl).then((id) => {
+    if (id === rhACDict.id && rhACDict.dict)
       return new Promise((resolve) => {
-        api.shuffleDict(id, (shuffleDict) => {
-          if (id === rhACDict.id) rhACDict.dict = shuffleDict;
-          // Encode the URL with Rammerhead's encoding table and return the URL.
-          resolve(`{{route}}{{/}}${id}/` + new StrShuffler(shuffleDict).shuffle(baseUrl));
-        });
-      })
-    }
-  );
+        resolve(
+          `{{route}}{{/}}${id}/` +
+            new StrShuffler(rhACDict.dict).shuffle(baseUrl)
+        );
+      });
+    return new Promise((resolve) => {
+      api.shuffleDict(id, (shuffleDict) => {
+        if (id === rhACDict.id) rhACDict.dict = shuffleDict;
+        // Encode the URL with Rammerhead's encoding table and return the URL.
+        resolve(
+          `{{route}}{{/}}${id}/` + new StrShuffler(shuffleDict).shuffle(baseUrl)
+        );
+      });
+    });
+  });
 };
 
 /* To use:
@@ -552,7 +565,8 @@ addEventListener('DOMContentLoaded', async () => {
       searchMode = defaultModes[type] || defaultModes['globalDefault'];
 
     if (prUrl) {
-      let enableSearch = false, onCooldown = false;
+      let enableSearch = false,
+        onCooldown = false;
 
       prUrl.addEventListener('keydown', async (e) => {
         if (e.code === 'Enter') goProxMethod(searchMode)();
@@ -747,7 +761,13 @@ addEventListener('DOMContentLoaded', async () => {
             // the corresponding location/index in the dirnames object.
             const functionsList = [
               () => goFrame(item.path),
-              () => goFrame('{{route}}{{/webretro}}?core=' + item.core + '&rom=' + item.rom),
+              () =>
+                goFrame(
+                  '{{route}}{{/webretro}}?core=' +
+                    item.core +
+                    '&rom=' +
+                    item.rom
+                ),
               item.custom
                 ? () => goProx[item.custom]('stealth')
                 : () => goFrame('{{route}}{{/archive/g/}}' + item.path),

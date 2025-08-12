@@ -1318,10 +1318,14 @@ input[type='text'] {
   margin: 0 3px;
   padding: 0;
   z-index: 2;
+  max-height: calc(10 * (1.5em + 2px));
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 #autocomplete li {
   border: 1px solid var(--nord1);
+  line-height: 1.5;
 }
 
 #autocomplete li:hover {
