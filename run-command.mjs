@@ -34,7 +34,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
           'npx pm2 start ecosystem.config.js --env production',
           (error, stdout) => {
             if (error) throw error;
-            console.log(stdout);
+            console.log('[Start]', stdout);
           }
         );
       // Handle setup on Windows differently from platforms with POSIX-compliant
@@ -42,10 +42,10 @@ commands: for (let i = 2; i < process.argv.length; i++)
       else if (process.platform === 'win32')
         exec('START /MIN "" node backend.js', (error, stdout) => {
           if (error) {
-            console.error(error);
+            console.error('[Start Error]', error);
             process.exitCode = 1;
           }
-          console.log(stdout);
+          console.log('[Start]', stdout);
         });
       // The following approach (and similar approaches) will not work on Windows,
       // because exiting this program will also terminate backend.js on Windows.
@@ -87,7 +87,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
         // Don't print the unused port error, since nothing has actually broken.
         if (e instanceof TypeError) clearTimeout(timeoutId);
         else {
-          console.error(e);
+          console.error('[Stop Error]', e);
           // Stop here unless Node will be killed later.
           if (!process.argv.slice(i + 1).includes('kill')) hasErrored = true;
         }
@@ -96,10 +96,10 @@ commands: for (let i = 2; i < process.argv.length; i++)
       if (config.production && !process.argv.slice(i + 1).includes('kill'))
         exec('npx pm2 stop ecosystem.config.js', (error, stdout) => {
           if (error) {
-            console.error(error);
+            console.error('[Stop Error]', error);
             hasErrored = true;
           }
-          console.log(stdout);
+          console.log('[Stop]', stdout);
         });
       // Do not continue executing commands since the server was unable to be stopped.
       // Mostly implemented to prevent duplicating Node instances with npm restart.
@@ -194,6 +194,29 @@ commands: for (let i = 2; i < process.argv.length; i++)
       break;
     }
 
+    // Delete all files in target locations. This is primarily used to manage
+    // Rammerhead's cache output.
+    case 'clean': {
+      // If including Rammerhead sessions, be careful to not let the global
+      // autocomplete session be deleted without restarting the server.
+      const targetDirs = ['./lib/rammerhead/cache-js'].map((relPath) => [
+        relPath,
+        fileURLToPath(new URL(relPath, import.meta.url)),
+      ]);
+      for (const targetDir of targetDirs)
+        try {
+          rmSync(targetDir[1], { force: true, recursive: true });
+          mkdirSync(targetDir[1]);
+          console.log(
+            '[Clean]',
+            `Reset folder ${targetDir[0]} at ${new Date().toISOString()}.`
+          );
+        } catch (e) {
+          console.error('[Clean Error]', e);
+        }
+      break;
+    }
+
     /* Kill all node processes and fully reset PM2. To be used for debugging.
      * Using npx pm2 monit, or npx pm2 list in the terminal will also bring up
      * more PM2 debugging tools.
@@ -203,14 +226,14 @@ commands: for (let i = 2; i < process.argv.length; i++)
         exec(
           '( npx pm2 delete ecosystem.config.js ) ; taskkill /F /IM node*',
           (error, stdout) => {
-            console.log(stdout);
+            console.log('[Kill]', stdout);
           }
         );
       else
         exec(
           'npx pm2 delete ecosystem.config.js; pkill node',
           (error, stdout) => {
-            console.log(stdout);
+            console.log('[Kill]', stdout);
           }
         );
       break;

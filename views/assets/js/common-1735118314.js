@@ -608,8 +608,6 @@ addEventListener('DOMContentLoaded', async () => {
 
             // Update the data for the results.
             const results = responseHandlers[searchType](responseJSON);
-            console.log(results);
-
             prAC.textContent = '';
 
             for (let i = 0; i < results.length; i++) {

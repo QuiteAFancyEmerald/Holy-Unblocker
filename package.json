@@ -15,6 +15,8 @@
     "manual-start": "node run-command.mjs start",
     "kill": "node run-command.mjs stop kill",
     "build": "node run-command.mjs build && cd lib/rammerhead && npm install && npm run build",
+    "clear": "node run-command.mjs clean",
+    "clean": "node run-command.mjs clean",
     "proxy-validator": "node proxyServiceValidator.js",
     "workflow-test": "node run-command.mjs workflow",
     "deployment": "npm install && npm run build && node backend.js"
