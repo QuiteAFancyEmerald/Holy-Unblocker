@@ -7,10 +7,13 @@ views/archive
 ngrok.exe
 pnpm-lock.yaml
 debug.log
-lib/rammerhead/sessions/*
-lib/rammerhead/cache-js/*
-views/dist/*
-src/.shutdown
+/lib/rammerhead/sessions/*
+!/lib/rammerhead/sessions/.gitignore
+/lib/rammerhead/cache-js/*
+!/lib/rammerhead/cache-js/.gitignore
+/views/dist/*
+/views/min-dist/*
+/src/.shutdown
 lib/rammerhead/src/client/hammerhead.min.js
 lib/rammerhead/src/client/rammerhead.min.js
 views/archive/gfiles/rarch/roms
