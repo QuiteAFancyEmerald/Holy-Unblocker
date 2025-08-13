@@ -587,11 +587,11 @@ addEventListener('DOMContentLoaded', async () => {
     urls,
     callback,
     afterHowMany = 1,
-    tries = 0,
+    tries = 10,
     ...params
   ) => {
-    // Stop after 10 seconds of no response from workers.
-    if (tries >= 10) return;
+    // For 10 tries, stop after 10 seconds of no response from workers.
+    if (tries <= 0) return;
     const workers = await Promise.all(
       urls.map((url) => navigator.serviceWorker.getRegistration(url))
     );
@@ -609,7 +609,7 @@ addEventListener('DOMContentLoaded', async () => {
         navigator.serviceWorker.ready,
         new Promise((resolve) => {
           setTimeout(() => {
-            tries++;
+            tries--;
             resolve();
           }, 1000);
         }),
