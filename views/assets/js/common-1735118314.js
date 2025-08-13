@@ -111,36 +111,80 @@ const searchEngines = Object.freeze({
   });
 
 // Get the autocomplete results for a given search query in JSON format.
-const requestAC = async (baseUrl, query, parserFunc = (url) => url) => {
-  const response = await fetch(
-      await parserFunc(baseUrl + encodeURIComponent(query))
-    ),
-    responseType = response.headers.get('content-type');
-  let responseJSON = {};
-  if (responseType && responseType.indexOf('application/json') !== -1)
-    responseJSON = await response.json();
-  else
-    try {
-      responseJSON = await response.text();
-      if (parserFunc === rhUrl)
-        try {
-          responseJSON = responseJSON.match(
-            /(?<=\/\*hammerhead\|.*header-end\*\/)[^]+?(?=\/\*hammerhead\|.*end\*\/)/i
-          )[0];
-        } catch (e) {
-          // In case Rammerhead chose not to encode the response.
-        }
-      try {
-        responseJSON = JSON.parse(responseJSON);
-      } catch (e) {
-        responseJSON = JSON.parse(
-          responseJSON.replace(/^[^[{]*|[^\]}]*$/g, '')
-        );
-      }
-    } catch (e) {
-      // responseJSON will be an empty object if everything was invalid.
+const requestAC = async (
+  baseUrl,
+  query,
+  parserFunc = (url) => url,
+  params = {}
+) => {
+  switch (parserFunc) {
+    case sjUrl: {
+      // Ask Scramjet to process the autocomplete request. Processed results will
+      // be returned to an event handler and are updated from there.
+      params.port.postMessage({
+        type: params.searchType,
+        request: {
+          url: parserFunc(baseUrl + encodeURIComponent(query)),
+          headers: [],
+        },
+      });
+      break;
     }
-  return responseJSON;
+    case rhUrl: {
+      // Have Rammerhead process the autocomplete request.
+      const response = await fetch(
+          await parserFunc(baseUrl + encodeURIComponent(query))
+        ),
+        responseType = response.headers.get('content-type');
+      let responseJSON = {};
+      if (responseType && responseType.indexOf('application/json') !== -1)
+        responseJSON = await response.json();
+      else
+        try {
+          responseJSON = await response.text();
+          try {
+            responseJSON = responseJSON.match(
+              /(?<=\/\*hammerhead\|.*header-end\*\/)[^]+?(?=\/\*hammerhead\|.*end\*\/)/i
+            )[0];
+          } catch (e) {
+            // In case Rammerhead chose not to encode the response.
+          }
+          try {
+            responseJSON = JSON.parse(responseJSON);
+          } catch (e) {
+            responseJSON = JSON.parse(
+              responseJSON.replace(/^[^[{]*|[^\]}]*$/g, '')
+            );
+          }
+        } catch (e) {
+          // responseJSON will be an empty object if everything was invalid.
+        }
+
+      // Update the autocomplete results directly.
+      updateAC(params.prAC, responseHandlers[params.searchType](responseJSON));
+      break;
+    }
+  }
+};
+
+const updateAC = (listElement, searchResults) => {
+  // Update the data for the results.
+  listElement.textContent = '';
+  for (let i = 0; i < searchResults.length; i++) {
+    let suggestion = document.createElement('li');
+    suggestion.tabIndex = 0;
+    suggestion.append(
+      ...searchResults[i].split(responseDelimiter).map((text, bolded) => {
+        if (bolded % 2) {
+          let node = document.createElement('b');
+          node.textContent = text;
+          return node;
+        }
+        return text;
+      })
+    );
+    listElement.appendChild(suggestion);
+  }
 };
 
 // Default search engine is set to Google. Intended to work just like the usual
@@ -466,8 +510,9 @@ addEventListener('DOMContentLoaded', async () => {
   // This won't break the service workers as they store the variable separately.
   uvConfig = self['{{__uv$config}}'];
   delete self['{{__uv$config}}'];
-  if (self['$scramjetLoadController'])
-    sjEncode = new (self['$scramjetLoadController']().ScramjetController)({
+  sjObject = self['$scramjetLoadController'];
+  if (sjObject)
+    sjEncode = new (sjObject().ScramjetController)({
       prefix: '{{route}}{{/scram/network/}}',
     }).encodeUrl;
 
@@ -578,6 +623,33 @@ addEventListener('DOMContentLoaded', async () => {
       });
 
       if (prAC) {
+        // Set up a message channel to communicate with Scramjet, if it exists.
+        let autocompleteChannel = {};
+        if (sjObject) {
+          autocompleteChannel = new MessageChannel();
+          const checkSJ = () =>
+            navigator.serviceWorker
+              .getRegistration('{{route}}{{/scram/scramjet.sw.js}}')
+              .then((worker) => {
+                if (worker && worker.active)
+                  worker.active.postMessage({ type: 'requestAC' }, [
+                    autocompleteChannel.port2,
+                  ]);
+                else setTimeout(checkSJ, 1000);
+              });
+          checkSJ();
+
+          // Update the autocomplete results if Scramjet has processed them.
+          autocompleteChannel.port1.addEventListener('message', ({ data }) => {
+            updateAC(
+              prAC,
+              responseHandlers[data.searchType](data.responseJSON)
+            );
+          });
+
+          autocompleteChannel.port1.start();
+        }
+
         // Get autocomplete search results when typing in the omnibox.
         prUrl.addEventListener('input', async (e) => {
           // Prevent excessive fetch requests by restricting when requests are made.
@@ -600,31 +672,16 @@ addEventListener('DOMContentLoaded', async () => {
             // Get autocomplete results from the selected search engine.
             let searchType = readStorage('SearchEngine');
             if (!(searchType in autocompletes)) searchType = defaultSearch;
-            const responseJSON = await requestAC(
-              'https://' + autocompletes[searchType],
-              query,
-              rhUrl
-            );
-
-            // Update the data for the results.
-            const results = responseHandlers[searchType](responseJSON);
-            prAC.textContent = '';
-
-            for (let i = 0; i < results.length; i++) {
-              let suggestion = document.createElement('li');
-              suggestion.tabIndex = 0;
-              suggestion.append(
-                ...results[i].split(responseDelimiter).map((text, bolded) => {
-                  if (bolded % 2) {
-                    let node = document.createElement('b');
-                    node.textContent = text;
-                    return node;
-                  }
-                  return text;
-                })
-              );
-              prAC.appendChild(suggestion);
-            }
+            if (sjObject)
+              requestAC('https://' + autocompletes[searchType], query, sjUrl, {
+                searchType: searchType,
+                port: autocompleteChannel.port1,
+              });
+            else
+              requestAC('https://' + autocompletes[searchType], query, rhUrl, {
+                searchType: searchType,
+                prAC: prAC,
+              });
           }
         });
 
