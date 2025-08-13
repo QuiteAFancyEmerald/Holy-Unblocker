@@ -667,7 +667,8 @@ addEventListener('DOMContentLoaded', async () => {
 
       if (prAC) {
         // Set up a message channel to communicate with Scramjet, if it exists.
-        let autocompleteChannel = {}, sjLoaded = false;
+        let autocompleteChannel = {},
+          sjLoaded = false;
         if (sjObject) {
           autocompleteChannel = new MessageChannel();
           callAfterWorkers(['{{route}}{{/scram/scramjet.sw.js}}'], (worker) => {
@@ -778,18 +779,20 @@ addEventListener('DOMContentLoaded', async () => {
   const windowFrame = document.getElementById('frame'),
     loadFrame = () => {
       windowFrame.src = localStorage.getItem('hu-lts-frame-url');
+      return true;
     };
   if (windowFrame) {
     if (uvConfig && sjObject)
-      callAfterWorkers(
+      (await callAfterWorkers(
         [
           '{{route}}{{/scram/scramjet.sw.js}}',
           '{{route}}{{/uv/sw.js}}',
           '{{route}}{{/uv/sw-blacklist.js}}',
         ],
         loadFrame,
-        2
-      );
+        2,
+        3
+      )) || loadFrame();
     else loadFrame();
   }
 
