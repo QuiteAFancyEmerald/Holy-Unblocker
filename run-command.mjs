@@ -199,17 +199,19 @@ commands: for (let i = 2; i < process.argv.length; i++)
     case 'clean': {
       // If including Rammerhead sessions, be careful to not let the global
       // autocomplete session be deleted without restarting the server.
-      const targetDirs = ['./lib/rammerhead/cache-js'].map((relPath) => [
-        relPath,
-        fileURLToPath(new URL(relPath, import.meta.url)),
-      ]);
+      const targetDirs = ['./lib/rammerhead/cache-js'];
       for (const targetDir of targetDirs)
         try {
-          rmSync(targetDir[1], { force: true, recursive: true });
-          mkdirSync(targetDir[1]);
+          const targetPath = fileURLToPath(new URL(targetDir, import.meta.url));
+          rmSync(targetPath, { force: true, recursive: true });
+          mkdirSync(targetPath);
+          writeFileSync(
+            fileURLToPath(new URL(targetDir + '/.gitkeep', import.meta.url)), 
+            ''
+          );
           console.log(
             '[Clean]',
-            `Reset folder ${targetDir[0]} at ${new Date().toISOString()}.`
+            `Reset folder ${targetDir} at ${new Date().toISOString()}.`
           );
         } catch (e) {
           console.error('[Clean Error]', e);
