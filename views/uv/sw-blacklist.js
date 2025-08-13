@@ -30,17 +30,17 @@ ww.use({
 
 const uv = new UVServiceWorker();
 
-//  Get list of blacklisted domains.
+// Get list of blacklisted domains.
 const blacklist = {};
 fetch('{{route}}{{/assets/json/blacklist.json}}').then((request) => {
   request.json().then((jsonData) => {
-    //  Organize each domain by their tld (top level domain) ending.
+    // Organize each domain by their tld (top level domain) ending.
     jsonData.forEach((domain) => {
       const domainTld = domain.replace(/.+(?=\.\w)/, '');
       if (!blacklist.hasOwnProperty(domainTld)) blacklist[domainTld] = [];
 
-      //    Store each entry in an array. Each tld has its own array, which will
-      //    later be concatenated into a regular expression.
+      // Store each entry in an array. Each tld has its own array, which will
+      // later be concatenated into a regular expression.
       blacklist[domainTld].push(
         encodeURIComponent(domain.slice(0, -domainTld.length))
           .replace(/([()])/g, '\\$1')
@@ -50,8 +50,8 @@ fetch('{{route}}{{/assets/json/blacklist.json}}').then((request) => {
       );
     });
 
-    //  Turn each domain list into a regular expression and prevent this
-    //  from being accidentally modified afterward.
+    // Turn each domain list into a regular expression and prevent this
+    // from being accidentally modified afterward.
     for (let [domainTld, domainList] of Object.entries(blacklist))
       blacklist[domainTld] = new RegExp(`^(?:${domainList.join('|')})$`);
     Object.freeze(blacklist);
@@ -62,7 +62,7 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     (async () => {
       if (uv.route(event)) {
-        //    The one and only ghetto domain blacklist.
+        // The one and only ghetto domain blacklist.
         const domain = new URL(
             uv.config.decodeUrl(
               new URL(event.request.url).pathname.replace(uv.config.prefix, '')
@@ -70,7 +70,7 @@ self.addEventListener('fetch', (event) => {
           ).hostname,
           domainTld = domain.replace(/.+(?=\.\w)/, '');
 
-        //      If the domain is in the blacklist, return a 406 response code.
+        // If the domain is in the blacklist, return a 406 response code.
         if (
           blacklist.hasOwnProperty(domainTld) &&
           blacklist[domainTld].test(domain.slice(0, -domainTld.length))

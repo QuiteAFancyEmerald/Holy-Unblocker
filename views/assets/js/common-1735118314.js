@@ -125,7 +125,7 @@ const requestAC = async (
         type: params.searchType,
         request: {
           url: parserFunc(baseUrl + encodeURIComponent(query)),
-          headers: [],
+          headers: new Map([['Date', params.time]]),
         },
       });
       break;
@@ -161,13 +161,20 @@ const requestAC = async (
         }
 
       // Update the autocomplete results directly.
-      updateAC(params.prAC, responseHandlers[params.searchType](responseJSON));
+      updateAC(
+        params.prAC,
+        responseHandlers[params.searchType](responseJSON),
+        Date.parse(params.time)
+      );
       break;
     }
   }
 };
 
-const updateAC = (listElement, searchResults) => {
+let lastUpdated = Date.parse(new Date().toUTCString());
+const updateAC = (listElement, searchResults, time) => {
+  if (time < lastUpdated) return;
+  else lastUpdated = time;
   // Update the data for the results.
   listElement.textContent = '';
   for (let i = 0; i < searchResults.length; i++) {
@@ -682,7 +689,8 @@ addEventListener('DOMContentLoaded', async () => {
           autocompleteChannel.port1.addEventListener('message', ({ data }) => {
             updateAC(
               prAC,
-              responseHandlers[data.searchType](data.responseJSON)
+              responseHandlers[data.searchType](data.responseJSON),
+              Date.parse(data.time)
             );
             sjLoaded = true;
           });
@@ -712,16 +720,19 @@ addEventListener('DOMContentLoaded', async () => {
             // Get autocomplete results from the selected search engine.
             let searchType = readStorage('SearchEngine');
             if (!(searchType in autocompletes)) searchType = defaultSearch;
+            const requestTime = new Date().toUTCString();
             if (sjLoaded) {
               sjLoaded = false;
               requestAC('https://' + autocompletes[searchType], query, sjUrl, {
                 searchType: searchType,
                 port: autocompleteChannel.port1,
+                time: requestTime,
               });
             } else
               requestAC('https://' + autocompletes[searchType], query, rhUrl, {
                 searchType: searchType,
                 prAC: prAC,
+                time: requestTime,
               });
           }
         });

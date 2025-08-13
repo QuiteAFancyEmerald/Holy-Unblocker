@@ -1,6 +1,11 @@
 (() => {
-  const stockSW = '{{route}}{{/uv/sw.js}}',
-    blacklistSW = '{{route}}{{/uv/sw-blacklist.js}}',
+  const swRoutes = {
+      uv: ['{{route}}{{/uv/sw.js}}', '{{route}}{{/uv/sw-blacklist.js}}'],
+      sj: [
+        '{{route}}{{/scram/scramjet.sw.js}}',
+        '{{route}}{{/scram/scramjet.sw-blacklist.js}}'
+      ],
+    },
     swAllowedHostnames = ['localhost', '127.0.0.1'],
     wispUrl =
       (location.protocol === 'https:' ? 'wss' : 'ws') +
@@ -56,7 +61,7 @@
     await connection.setTransport(transportMode, [transportOptions]);
 
     const registrations = await navigator.serviceWorker.getRegistrations(),
-      usedSW = readStorage('HideAds') !== false ? blacklistSW : stockSW;
+      usedSW = swRoutes.uv[readStorage('HideAds') !== false ? 1 : 0];
 
     console.log('Service Worker being registered:', usedSW);
 
@@ -97,7 +102,9 @@
 
       console.log('Initializing ScramjetController');
       scramjet.init();
-      navigator.serviceWorker.register('{{route}}{{/scram/scramjet.sw.js}}');
+      navigator.serviceWorker.register(
+        swRoutes.sj[readStorage('HideAds') !== false ? 1 : 0]
+      );
     } catch (err) {
       console.error('Scramjet initialization failed:', err);
     }
