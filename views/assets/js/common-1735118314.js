@@ -581,11 +581,22 @@ addEventListener('DOMContentLoaded', async () => {
     twitter: urlHandler(sjUrl('https://twitter.com')),
   });
 
-  const callAfterWorkers = async (urls, callback, afterHowMany = 1, ...params) => {
+  // Call a function after a given number of service workers are active.
+  // Workers are appended as additional arguments to the callback.
+  const callAfterWorkers = async (
+    urls,
+    callback,
+    afterHowMany = 1,
+    tries = 0,
+    ...params
+  ) => {
+    // Stop after 10 seconds of no response from workers.
+    if (tries >= 10) return;
     const workers = await Promise.all(
       urls.map((url) => navigator.serviceWorker.getRegistration(url))
     );
-    let newUrls = [], finishedWorkers = [];
+    let newUrls = [],
+      finishedWorkers = [];
     for (let i = 0; i < workers.length; i++) {
       if (workers[i] && workers[i].active) {
         afterHowMany--;
@@ -593,14 +604,21 @@ addEventListener('DOMContentLoaded', async () => {
       } else newUrls.push(urls[i]);
     }
     if (afterHowMany <= 0) return await callback(...params, ...finishedWorkers);
-    else await Promise.race([
-      navigator.serviceWorker.ready,
-      new Promise((resolve) => { setTimeout(resolve, 1000); })
-    ]);
+    else
+      await Promise.race([
+        navigator.serviceWorker.ready,
+        new Promise((resolve) => {
+          setTimeout(() => {
+            tries++;
+            resolve();
+          }, 1000);
+        }),
+      ]);
     return await callAfterWorkers(
       newUrls,
       callback,
       afterHowMany,
+      tries,
       ...params,
       ...finishedWorkers
     );
@@ -652,14 +670,11 @@ addEventListener('DOMContentLoaded', async () => {
         let autocompleteChannel = {};
         if (sjObject) {
           autocompleteChannel = new MessageChannel();
-          callAfterWorkers(
-            ['{{route}}{{/scram/scramjet.sw.js}}'],
-            (worker) => {
-              worker.active.postMessage({ type: 'requestAC' }, [
-                autocompleteChannel.port2,
-              ]);
-            }
-          );
+          callAfterWorkers(['{{route}}{{/scram/scramjet.sw.js}}'], (worker) => {
+            worker.active.postMessage({ type: 'requestAC' }, [
+              autocompleteChannel.port2,
+            ]);
+          });
 
           // Update the autocomplete results if Scramjet has processed them.
           autocompleteChannel.port1.addEventListener('message', ({ data }) => {
@@ -759,7 +774,7 @@ addEventListener('DOMContentLoaded', async () => {
   prSet('pr-tw', 'twitter');
 
   // Load the frame for stealth mode if it exists.
-  const windowFrame = document.getElementById('frame'), 
+  const windowFrame = document.getElementById('frame'),
     loadFrame = () => {
       windowFrame.src = localStorage.getItem('hu-lts-frame-url');
     };
@@ -767,9 +782,9 @@ addEventListener('DOMContentLoaded', async () => {
     if (uvConfig && sjObject)
       callAfterWorkers(
         [
-        '{{route}}{{/scram/scramjet.sw.js}}',
-        '{{route}}{{/uv/sw.js}}',
-        '{{route}}{{/uv/sw-blacklist.js}}'
+          '{{route}}{{/scram/scramjet.sw.js}}',
+          '{{route}}{{/uv/sw.js}}',
+          '{{route}}{{/uv/sw-blacklist.js}}',
         ],
         loadFrame,
         2
