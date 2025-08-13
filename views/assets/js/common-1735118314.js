@@ -581,13 +581,38 @@ addEventListener('DOMContentLoaded', async () => {
     twitter: urlHandler(sjUrl('https://twitter.com')),
   });
 
+  const callAfterWorkers = async (urls, callback, afterHowMany = 1, ...params) => {
+    const workers = await Promise.all(
+      urls.map((url) => navigator.serviceWorker.getRegistration(url))
+    );
+    let newUrls = [], finishedWorkers = [];
+    for (let i = 0; i < workers.length; i++) {
+      if (workers[i] && workers[i].active) {
+        afterHowMany--;
+        finishedWorkers.push(workers[i]);
+      } else newUrls.push(urls[i]);
+    }
+    if (afterHowMany <= 0) return await callback(...params, ...finishedWorkers);
+    else await Promise.race([
+      navigator.serviceWorker.ready,
+      new Promise((resolve) => { setTimeout(resolve, 1000); })
+    ]);
+    return await callAfterWorkers(
+      newUrls,
+      callback,
+      afterHowMany,
+      ...params,
+      ...finishedWorkers
+    );
+  };
+
   // Attach event listeners using goProx to specific app menus that need it.
   const prSet = (id, type) => {
     const formElement = document.getElementById(id);
     if (!formElement) return;
 
     let prUrl = formElement.querySelector('input[type=text]'),
-      prAC = document.getElementById('autocomplete'),
+      prAC = formElement.querySelector('#autocomplete'),
       prGo1 = document.querySelectorAll(`#${id}.pr-go1, #${id} .pr-go1`),
       prGo2 = document.querySelectorAll(`#${id}.pr-go2, #${id} .pr-go2`);
 
@@ -627,17 +652,14 @@ addEventListener('DOMContentLoaded', async () => {
         let autocompleteChannel = {};
         if (sjObject) {
           autocompleteChannel = new MessageChannel();
-          const checkSJ = () =>
-            navigator.serviceWorker
-              .getRegistration('{{route}}{{/scram/scramjet.sw.js}}')
-              .then((worker) => {
-                if (worker && worker.active)
-                  worker.active.postMessage({ type: 'requestAC' }, [
-                    autocompleteChannel.port2,
-                  ]);
-                else setTimeout(checkSJ, 1000);
-              });
-          checkSJ();
+          callAfterWorkers(
+            ['{{route}}{{/scram/scramjet.sw.js}}'],
+            (worker) => {
+              worker.active.postMessage({ type: 'requestAC' }, [
+                autocompleteChannel.port2,
+              ]);
+            }
+          );
 
           // Update the autocomplete results if Scramjet has processed them.
           autocompleteChannel.port1.addEventListener('message', ({ data }) => {
@@ -735,6 +757,25 @@ addEventListener('DOMContentLoaded', async () => {
   prSet('pr-tt', 'tiktok');
   prSet('pr-ha', 'hianime');
   prSet('pr-tw', 'twitter');
+
+  // Load the frame for stealth mode if it exists.
+  const windowFrame = document.getElementById('frame'), 
+    loadFrame = () => {
+      windowFrame.src = localStorage.getItem('hu-lts-frame-url');
+    };
+  if (windowFrame) {
+    if (uvConfig && sjObject)
+      callAfterWorkers(
+        [
+        '{{route}}{{/scram/scramjet.sw.js}}',
+        '{{route}}{{/uv/sw.js}}',
+        '{{route}}{{/uv/sw-blacklist.js}}'
+        ],
+        loadFrame,
+        2
+      );
+    else loadFrame();
+  }
 
   // Load in relevant JSON files used to organize large sets of data.
   // This first one is for links, whereas the rest are for navigation menus.
