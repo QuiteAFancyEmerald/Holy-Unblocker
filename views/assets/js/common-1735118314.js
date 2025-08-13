@@ -684,6 +684,7 @@ addEventListener('DOMContentLoaded', async () => {
               prAC,
               responseHandlers[data.searchType](data.responseJSON)
             );
+            sjLoaded = true;
           });
 
           autocompleteChannel.port1.start();
@@ -711,12 +712,13 @@ addEventListener('DOMContentLoaded', async () => {
             // Get autocomplete results from the selected search engine.
             let searchType = readStorage('SearchEngine');
             if (!(searchType in autocompletes)) searchType = defaultSearch;
-            if (sjLoaded)
+            if (sjLoaded) {
+              sjLoaded = false;
               requestAC('https://' + autocompletes[searchType], query, sjUrl, {
                 searchType: searchType,
                 port: autocompleteChannel.port1,
               });
-            else
+            } else
               requestAC('https://' + autocompletes[searchType], query, rhUrl, {
                 searchType: searchType,
                 prAC: prAC,
