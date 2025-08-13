@@ -591,7 +591,7 @@ addEventListener('DOMContentLoaded', async () => {
     ...params
   ) => {
     // For 10 tries, stop after 10 seconds of no response from workers.
-    if (tries <= 0) return;
+    if (tries <= 0) return console.log('Failed to recognize service workers.');
     const workers = await Promise.all(
       urls.map((url) => navigator.serviceWorker.getRegistration(url))
     );
@@ -667,13 +667,14 @@ addEventListener('DOMContentLoaded', async () => {
 
       if (prAC) {
         // Set up a message channel to communicate with Scramjet, if it exists.
-        let autocompleteChannel = {};
+        let autocompleteChannel = {}, sjLoaded = false;
         if (sjObject) {
           autocompleteChannel = new MessageChannel();
           callAfterWorkers(['{{route}}{{/scram/scramjet.sw.js}}'], (worker) => {
             worker.active.postMessage({ type: 'requestAC' }, [
               autocompleteChannel.port2,
             ]);
+            sjLoaded = true;
           });
 
           // Update the autocomplete results if Scramjet has processed them.
@@ -709,7 +710,7 @@ addEventListener('DOMContentLoaded', async () => {
             // Get autocomplete results from the selected search engine.
             let searchType = readStorage('SearchEngine');
             if (!(searchType in autocompletes)) searchType = defaultSearch;
-            if (sjObject)
+            if (sjLoaded)
               requestAC('https://' + autocompletes[searchType], query, sjUrl, {
                 searchType: searchType,
                 port: autocompleteChannel.port1,
