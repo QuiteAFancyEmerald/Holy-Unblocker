@@ -8,7 +8,7 @@
     "node": "20.x"
   },
   "scripts": {
-    "start": "npm install && npm run build && npm run manual-start",
+    "start": "npm ci --omit=optional && npm run build && npm run manual-start",
     "restart": "node run-command.mjs stop start",
     "stop": "node run-command.mjs stop",
     "test": "npm run proxy-validator",
