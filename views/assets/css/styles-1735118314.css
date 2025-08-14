@@ -1936,6 +1936,7 @@ input[type='text'] {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  text-align: center;
 }
 
 .glist > a {
@@ -1963,6 +1964,9 @@ input[type='text'] {
   object-position: 50% top;
   object-fit: cover;
   box-shadow: 3px 4px 5px 0 rgba(0, 0, 0, 0.38);
+  animation: fadeInAnimation ease-in-out 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 .glist > a h3 {

@@ -541,29 +541,13 @@ addEventListener('DOMContentLoaded', async () => {
 
     osu: urlHandler(location.origin + '{{route}}{{/archive/osu}}'),
 
-    mcnow: urlHandler(sjUrl('https://now.gg/play/a/10010/b')),
+    celeste: urlHandler(location.origin + '{{route}}{{/archive/celeste}}'),
 
-    glife: urlHandler(sjUrl('https://now.gg/apps/lunime/5767/gacha-life.html')),
+    terraria: urlHandler(location.origin + '{{route}}{{/archive/terraria}}'),
 
-    roblox: urlHandler(
-      sjUrl('https://now.gg/apps/roblox-corporation/5349/roblox.html')
-    ),
-
-    amongus: urlHandler(
-      sjUrl('https://now.gg/apps/innersloth-llc/4047/among-us.html')
-    ),
-
-    pubg: urlHandler(
-      sjUrl('https://now.gg/apps/proxima-beta/2609/pubg-mobile-resistance.html')
-    ),
-
-    train: urlHandler(sjUrl('https://hby.itch.io/last-train-home')),
-
-    village: urlHandler(sjUrl('https://kwoodhouse.itch.io/village-arsonist')),
+    agar: urlHandler(sjUrl('https://agar.io')),
 
     prison: urlHandler(sjUrl('https://vimlark.itch.io/pick-up-prison')),
-
-    rpg: urlHandler(sjUrl('https://alarts.itch.io/die-in-the-dungeon')),
 
     speed: urlHandler(sjUrl('https://captain4lk.itch.io/what-the-road-brings')),
 
@@ -860,30 +844,18 @@ addEventListener('DOMContentLoaded', async () => {
 
           for (let i = 0; i < data.length; i++) {
             // Load each item as an anchor tag with an image, heading,
-            // description, and click event listener.
+            // and click event listener.
             const item = data[i],
               a = document.createElement('a'),
               img = document.createElement('img'),
-              title = document.createElement('h3'),
-              desc = document.createElement('p');
+              title = document.createElement('h3');
 
             a.href = '#';
             img.src = `{{route}}{{/assets/img/}}${dir}/` + item.img;
             title.textContent = item.name;
-            desc.textContent = item.description;
-
-            if (filename === 'h5-nav') {
-              if (item.credits === 'itch')
-                desc.innerHTML +=
-                  '<br>Credits: Game can be found <a target="_blank" href="https://itch.io">here</a>.';
-              if (item.credits === 'nowgg')
-                desc.innerHTML +=
-                  '<br>Credits: Game can be found <a target="_blank" href="https://now.gg">here</a>.';
-            }
 
             a.appendChild(img);
             a.appendChild(title);
-            a.appendChild(desc);
 
             // Which function is used for the click event is determined by
             // the corresponding location/index in the dirnames object.

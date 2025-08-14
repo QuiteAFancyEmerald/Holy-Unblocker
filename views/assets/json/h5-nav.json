@@ -2,223 +2,158 @@
   {
     "name": "A Dark Room",
     "path": "adarkroom/",
-    "img": "darkroom.webp",
-    "description": "A player lights a fire in a dark room. Fun game :D"
+    "img": "darkroom.webp"
   },
   {
-    "name": "Minecraft: Bedrock Edition",
-    "custom": "mcnow",
-    "img": "mcnow.webp",
-    "description": "A trial version of the real Minecraft: Bedrock Edition. Pure credits to now.gg for this.",
-    "credits": "nowgg"
+    "name": "Minecraft: Java Edition (1.12.2)",
+    "path": "mcjava1122/",
+    "img": "mcnow.webp"
   },
   {
-    "name": "Fireboy and Watergirl",
-    "path": "firewater/",
-    "img": "firewater.webp",
-    "description": "Fireboy and Watergirl is the first cooperative platformer game in the Fireboy and Watergirl series."
+    "name": "Celeste Web",
+    "custom": "celeste",
+    "img": "celeste.webp"
   },
   {
-    "name": "Duck Life",
-    "path": "ducklife/",
-    "img": "ducklife.webp",
-    "description": "The future of the farm is in your hands! Train your duck to run, fly and swim its way to victory so you can save the farm with your riches."
+    "name": "Terraria Web",
+    "custom": "terraria",
+    "img": "terraria.webp"
   },
   {
-    "name": "Duck Life 2",
-    "path": "ducklife2/",
-    "img": "ducklife2.webp",
-    "description": "Become a world champion in the successor to Duck Life!"
-  },
-  {
-    "name": "Duck Life 3",
-    "path": "ducklife3/",
-    "img": "ducklife3.webp",
-    "description": "The third game in the Duck Life series!"
-  },
-  {
-    "name": "Duck Life 4",
-    "path": "ducklife4/",
-    "img": "ducklife4.webp",
-    "description": "Super scary... yeah the fourth game. What even happened?"
-  },
-  {
-    "name": "osu!",
-    "custom": "osu",
-    "img": "os1.webp",
-    "description": "Rhythm is just a *click* away! If you experience any input lag be sure to read over the osu! FAQ page."
-  },
-  {
-    "name": "Friendly Fire",
-    "path": "friendlyfire/",
-    "img": "friendlyfire.webp",
-    "description": "What dark secrets does this twisted world hold?"
-  },
-  {
-    "name": "Slope",
-    "path": "slope/",
-    "img": "slope.webp",
-    "description": "Slope game is a fantastic speed run game where you can drive a ball rolling on tons of slopes and obstacles. See how far you can go in this endless course."
-  },
-  {
-    "name": "vex 3",
-    "path": "vex3/",
-    "img": "vex3.webp",
-    "description": "vex 3 is a fascinating game. Your task is to Take Vex through the levels by running, jumping, sliding and swimming while avoiding dangerous obstacles."
-  },
-  {
-    "name": "vex 4",
-    "path": "vex4/",
-    "img": "vex4.webp",
-    "description": "VEX 4 takes Vex to the next level! This fast paced stickman game puts your skills to the test. Run, jump, slide, swim and avoid obstacles, VEX 4 has it all."
-  },
-  {
-    "name": "vex 5",
-    "path": "vex5/",
-    "img": "vex5.webp",
-    "description": "Now, you can meet cute Stickman again in Vex 5. Vex 5 is the 5th platform game in the Vex series. Each level is a labyrinth of deadly devices and traps."
-  },
-  {
-    "name": "PUBG MOBILE: Arcane",
-    "custom": "pubg",
-    "img": "pubg.webp",
-    "description": "Battle royale game thing.",
-    "credits": "nowgg"
-  },
-  {
-    "name": "Gacha Life",
-    "custom": "glife",
-    "img": "gachalife.webp",
-    "description": "Handcraft your very own anime-inspired stories in Gacha Life by Lunime. Wholesome game? Oh no.",
-    "credits": "nowgg"
-  },
-  {
-    "name": "Roblox",
-    "custom": "roblox",
-    "img": "roblox.webp",
-    "description": "Why... well its here now enjoy.",
-    "credits": "nowgg"
-  },
-  {
-    "name": "Among Us",
-    "custom": "amongus",
-    "img": "amongus.webp",
-    "description": "Why must you do this.",
-    "credits": "nowgg"
-  },
-  {
-    "name": "Last Train Home",
-    "custom": "train",
-    "img": "train.webp",
-    "description": "This is a short horror-adventure game about being stuck on a train. May take awhile to load.",
-    "credits": "itch"
-  },
-  {
-    "name": "Village Arsonist",
-    "custom": "village",
-    "img": "village.webp",
-    "description": "Village Arsonist is a 2D physics-based puzzle game. May take awhile to load... a long while.",
-    "credits": "itch"
-  },
-  {
-    "name": "Minecraft JS",
-    "path": "mcjs/",
-    "img": "mc.webp",
-    "description": "Minecraft but made in Javascript."
-  },
-  {
-    "name": "What the Road Brings",
-    "custom": "speed",
-    "img": "speed.webp",
-    "description": "A pseudo, vaporwave 3d racer with an epic soundtrack and art style. May take awhile to load.",
-    "credits": "itch"
-  },
-  {
-    "name": "Snake",
-    "path": "snake/",
-    "img": "snake.webp",
-    "description": "Eat the apples in this classic retro game. But don't hit the wall, or eat your own tail! How long can you survive?"
-  },
-  {
-    "name": "Super Mario 64",
-    "path": "sm64/",
-    "img": "sm64.webp",
-    "description": "A classic. Super Mario 64 is a 1996 platform game for the Nintendo 64 and the first Super Mario game to feature 3D gameplay."
-  },
-  {
-    "name": "Zork Clone",
-    "path": "zork1/",
-    "img": "zork.webp",
-    "description": "Zork is an interactive fiction computer game."
-  },
-  {
-    "name": "Pick Up Prison",
-    "custom": "prison",
-    "img": "prison.webp",
-    "description": "At the beginning... There was nothing... There is a prisoner in a cell with nothing. May take awhile to load.",
-    "credits": "itch"
-  },
-  {
-    "name": "Helo Storm",
-    "custom": "heli",
-    "img": "helo.webp",
-    "description": "Endless helicopter and Jeep shoot 'em up based on the 80's arcade classic 'Silkworm'.",
-    "credits": "itch"
-  },
-  {
-    "name": "Retrohaunt",
-    "path": "retrohaunt/",
-    "img": "retrohaunt.webp",
-    "description": "A creepy retro horror game with interesting graphics and mood."
-  },
-  {
-    "name": "T-Rex Game (chrome://dino)",
-    "path": "dino/",
-    "img": "dino.webp",
-    "description": "The T-Rex Runner game, an Easter Egg in Google Chrome."
-  },
-  {
-    "name": "Run 3",
-    "path": "run3/",
-    "img": "r3.webp",
-    "description": "Use the arrow keys to run and jump. Land on a side wall to rotate the world. (Broken)"
-  },
-  {
-    "name": "Die in the Dungeon",
-    "custom": "rpg",
-    "img": "dd.webp",
-    "description": "Die in the Dungeon is a deck-building, turn-based roguelite. May take awhile to load.",
-    "credits": "itch"
-  },
-  {
-    "name": "Trimps",
-    "path": "trimps/",
-    "img": "trimps.webp",
-    "description": "Pure grind."
+    "name": "Minecraft: Java Edition (1.8.8)",
+    "path": "mcjava188/",
+    "img": "mcnow.webp"
   },
   {
     "name": "Gopher Cart",
     "path": "gopher/",
-    "img": "gopher2.webp",
-    "description": "Fun driving side scroller game with epic gophers."
+    "img": "gopher2.webp"
+  },
+  {
+    "name": "Run 3",
+    "path": "run3/",
+    "img": "r3.webp"
+  },
+  {
+    "name": "Agar.io",
+    "custom": "agar",
+    "img": "agar.webp"
+  },
+  {
+    "name": "Fireboy and Watergirl",
+    "path": "firewater/",
+    "img": "firewater.webp"
+  },
+  {
+    "name": "Duck Life",
+    "path": "ducklife/",
+    "img": "ducklife.webp"
+  },
+  {
+    "name": "osu!",
+    "custom": "osu",
+    "img": "os1.webp"
+  },
+  {
+    "name": "Celeste Pico",
+    "path": "celeste-pico/",
+    "img": "celeste.webp"
+  },
+  {
+    "name": "Friendly Fire",
+    "path": "friendlyfire/",
+    "img": "friendlyfire.webp"
+  },
+  {
+    "name": "Slope",
+    "path": "slope/",
+    "img": "slope.webp"
+  },
+  {
+    "name": "Slope 2",
+    "path": "slope-2/",
+    "img": "slope.webp"
+  },
+  {
+    "name": "vex 3",
+    "path": "vex3/",
+    "img": "vex3.webp"
+  },
+  {
+    "name": "vex 4",
+    "path": "vex4/",
+    "img": "vex4.webp"
+  },
+  {
+    "name": "vex 5",
+    "path": "vex5/",
+    "img": "vex5.webp"
+  },
+  {
+    "name": "Minecraft JS",
+    "path": "mcjs/",
+    "img": "mc.webp"
+  },
+  {
+    "name": "What the Road Brings",
+    "custom": "speed",
+    "img": "speed.webp"
+  },
+  {
+    "name": "Snake",
+    "path": "snake/",
+    "img": "snake.webp"
+  },
+  {
+    "name": "Super Mario 64",
+    "path": "sm64/",
+    "img": "sm64.webp"
+  },
+  {
+    "name": "Pick Up Prison",
+    "custom": "prison",
+    "img": "prison.webp"
+  },
+  {
+    "name": "Helo Storm",
+    "custom": "heli",
+    "img": "helo.webp"
+  },
+  {
+    "name": "Retrohaunt",
+    "path": "retrohaunt/",
+    "img": "retrohaunt.webp"
+  },
+  {
+    "name": "T-Rex Game (chrome://dino)",
+    "path": "dino/",
+    "img": "dino.webp"
+  },
+  {
+    "name": "Run 3",
+    "path": "run3/",
+    "img": "r3.webp"
+  },
+  {
+    "name": "There Is No Game",
+    "path": "there-is-no-game/",
+    "img": "trimps.webp",
+    "description": "Pure grind."
   },
   {
     "name": "Cookie Clicker",
     "path": "cookieclicker/",
-    "img": "cookie.webp",
-    "description": "You feel like making cookies but no one wants to eat them. Click on the cookie to bake and eat."
+    "img": "cookie.webp"
   },
   {
     "name": "Particle Clicker",
     "path": "particle-clicker/",
-    "img": "pclick.webp",
-    "description": "An addictive incremental game that teaches players the history of high energy particle physics."
+    "img": "pclick.webp"
   },
   {
     "name": "Evil Glitch",
     "path": "evilglitch/",
-    "img": "glitch2.webp",
-    "description": "Strange glitches appear in your dimension, can you stop them before they assimilate your world?"
+    "img": "glitch2.webp"
   },
   {
     "name": "Pac-man",
@@ -229,157 +164,131 @@
   {
     "name": "Flappy Bird",
     "path": "flappybird/",
-    "img": "flappybird.webp",
-    "description": "Click on the screen, or use your spacebar to get started. Fly as far as you can without hitting a pipe."
+    "img": "flappybird.webp"
   },
   {
     "name": "Bounce Back",
     "path": "bounceback/",
-    "img": "bounceback.webp",
-    "description": "A charming and addictive little Zelda inspired roguelike adventure game."
+    "img": "bounceback.webp"
   },
   {
     "name": "The Chroma Incident",
     "path": "chromaincident/",
-    "img": "chroma.webp",
-    "description": "The Achromats have taken the world's color offline!"
+    "img": "chroma.webp"
   },
   {
     "name": "Sleeping Beauty",
     "path": "sleepingbeauty/",
-    "img": "sleep.webp",
-    "description": "Into a profound slumber she sank, surrounded only by dense brambles, thorns and roses."
+    "img": "sleep.webp"
   },
   {
     "name": "Tetris",
     "path": "tetris/",
-    "img": "tet.webp",
-    "description": "Tetris ® is the addictive puzzle game that started it all, embracing our universal desire to create order out of chaos."
+    "img": "tet.webp"
   },
   {
     "name": "The House",
     "path": "househorror/",
-    "img": "thehouse.webp",
-    "description": "An interesting horror style game."
+    "img": "thehouse.webp"
   },
   {
     "name": "The Pond",
     "path": "pond/",
-    "img": "thepond.webp",
-    "description": "Use Mouse1 to move around. A game like Slither.io."
+    "img": "thepond.webp"
   },
   {
     "name": "NS Shaft",
     "path": "nsshaft/",
-    "img": "nsshaft.webp",
-    "description": "A fun platformer."
+    "img": "nsshaft.webp"
   },
   {
     "name": "Game Off",
     "path": "house/",
-    "img": "gameoff.webp",
-    "description": "A collection of really fun games, particularly anti-matter which is inspired by Portal."
+    "img": "gameoff.webp"
   },
   {
     "name": "2048",
     "path": "2048/",
-    "img": "2048.webp",
-    "description": "Use your arrow keys to move the tiles. When two tiles with the same number touch, they merge into one. Try to beat your high score!"
+    "img": "2048.webp"
   },
   {
     "name": "Asteroids",
     "path": "asteroids/",
-    "img": "asteroids.webp",
-    "description": "Asteroids is a space-themed multidirectional shooter arcade game!"
+    "img": "asteroids.webp"
   },
   {
     "name": "Breaklock",
     "path": "breaklock/",
-    "img": "breaklock.webp",
-    "description": "Link the dots to find the lock pattern. After every attempt the game will tell you how many dots you got right."
+    "img": "breaklock.webp"
   },
   {
     "name": "Backcountry",
     "path": "backcountry/",
-    "img": "backcountry.webp",
-    "description": "Taking place in the wild west mine and do jobs to earn money! Use your mouse to navigate by clicking."
+    "img": "backcountry.webp"
   },
   {
     "name": "Breakout",
     "path": "breakout/",
-    "img": "breakout.webp",
-    "description": "Break all the bricks and volley the ball back and forth in this skill-based classic styled game!"
+    "img": "breakout.webp"
   },
   {
     "name": "Chess",
     "path": "chess/",
-    "img": "chess2.webp",
-    "description": "Chess is a two-player strategy board game played on a checkered board with 64 squares arranged in an 8x8 square grid."
+    "img": "chess2.webp"
   },
   {
     "name": "Connect 3",
     "path": "connect3/",
-    "img": "connect.webp",
-    "description": "Basically like bejeweled."
+    "img": "connect.webp"
   },
   {
     "name": "Towermaster",
     "path": "towermaster/",
-    "img": "tower.webp",
-    "description": "Build a tower! Stack objects on top of each other without the building falling. How high can you go?"
+    "img": "tower.webp"
   },
   {
     "name": "Geometry Dash",
     "path": "geometrydash/",
-    "img": "geometrydash.webp",
-    "description": "Jump and fly your way through danger in this rhythm-based action platformer!"
+    "img": "geometrydash.webp"
   },
   {
     "name": "Hextris",
     "path": "hextris/",
-    "img": "hextris.webp",
-    "description": "An addictive puzzle game inspired by Tetris."
+    "img": "hextris.webp"
   },
   {
     "name": "Astray",
     "path": "astray/",
-    "img": "astray.webp",
-    "description": "A WebGL maze game built with Three.js and Box2dWeb."
+    "img": "astray.webp"
   },
   {
     "name": "Konnekt",
     "path": "konnekt/",
-    "img": "konnekt.webp",
-    "description": "Fight against nodes and viruses! An interesting puzzle game developed by MONSTERKODI."
+    "img": "konnekt.webp"
   },
   {
     "name": "Push Back",
     "path": "pushback/",
-    "img": "pushback.webp",
-    "description": "A cool physics game!"
+    "img": "pushback.webp"
   },
   {
     "name": "Underrun",
     "path": "underrun/",
-    "img": "underrun.webp",
-    "description": "Explore deep underground in this doom-like game. Kill enemies, explore and progress. Use WASD to move and Mouse1 to shoot."
+    "img": "underrun.webp"
   },
   {
     "name": "JS Racer",
     "path": "racer/",
-    "img": "racer.webp",
-    "description": "Want to race online? Enjoy an old age like racing game!"
+    "img": "racer.webp"
   },
   {
     "name": "xx142-b2.exe",
     "path": "xx142-b2exe/",
-    "img": "142.webp",
-    "description": "It's the year 2413, and aliens have enslaved humanity."
+    "img": "142.webp"
   },
   {
     "name": "Factory Balls Forever",
     "path": "factoryballsforever/",
-    "img": "factory.webp",
-    "description": "A puzzle game where you have to color the balls correctly! Use different tools to cover up the ball before start painting over it."
+    "img": "factory.webp"
   }
 ]
