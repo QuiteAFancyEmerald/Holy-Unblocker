@@ -10,7 +10,7 @@
   "scripts": {
     "fresh-install": "npm cache verify && npm ci && cd lib/rammerhead && npm ci",
     "fresh-start": "npm run fresh-install && npm start",
-    "start": "node run-command.mjs stop build start",
+    "start": "npm run stop && npm run build && npm run manual-start",
     "restart": "node run-command.mjs stop start",
     "stop": "node run-command.mjs stop",
     "test": "npm run proxy-validator",
