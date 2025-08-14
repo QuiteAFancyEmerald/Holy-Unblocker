@@ -1,14 +1,14 @@
 module.exports = {
   apps: [
     {
-      name: 'HolyUBLTS',
+      name: 'HolyUBPROD',
       script: './backend.js',
       env: {
-        PORT: 8080,
+        PORT: 8051,
         NODE_ENV: 'development',
       },
       env_production: {
-        PORT: 8080,
+        PORT: 8051,
         NODE_ENV: 'production',
       },
       instances: '1',
@@ -21,7 +21,7 @@ module.exports = {
       watch: false,
     },
     {
-      name: 'HolyUBLTS-src-refresh',
+      name: 'HolyUBPROD-src-refresh',
       script: './run-command.mjs',
       args: 'build',
       env: {
@@ -39,7 +39,7 @@ module.exports = {
       watch: false,
     },
     {
-      name: 'HolyUBLTS-cache-clean',
+      name: 'HolyUBPROD-cache-clean',
       script: './run-command.mjs',
       args: 'clean',
       env: {

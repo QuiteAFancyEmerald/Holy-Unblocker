@@ -58,7 +58,7 @@ Read below for information if the official site is blocked or for obtaining more
 ## Deploy Holy Unblocker
 
 ### Free Deployments
-[![Deploy to Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?name=holy-unblocker&type=git&repository=QuiteAFancyEmerald%2FHoly-Unblocker&branch=v6.3_production&builder=buildpack&env%5B%5D=&ports=8080%3Bhttp%3B%2F)
+[![Deploy to Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?name=holy-unblocker&type=git&repository=QuiteAFancyEmerald%2FHoly-Unblocker&branch=v6.8_production&builder=buildpack&env%5B%5D=&ports=8051%3Bhttp%3B%2F)
 [![Deploy to Oracle Cloud](https://binbashbanana.github.io/deploy-buttons/buttons/remade/oraclecloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/BinBashBanana/deploy-buttons/archive/refs/heads/main.zip)
 
 <details><summary>More</summary>
@@ -148,7 +148,7 @@ This website is hosted locally with Scramjet, Ultraviolet (Wisp, Bare-Mux, Epoxy
 ### Configuration
 
 #### Server Configuration Setup
-The default place for the proxy when its started is `http://localhost:8080`, but you can change it if needed in `./ecosystem.config.js`. You can also modify the other configuration values at `./config.json`. To clarify you change the PORT and other production metrics via `./ecosystem.config.js`. Localized changes for source randomization, auto-minify, etc. are located in `./config.json`.
+The default place for the proxy when its started is `http://localhost:8051`, but you can change it if needed in `./ecosystem.config.js`. You can also modify the other configuration values at `./config.json`. To clarify you change the PORT and other production metrics via `./ecosystem.config.js`. Localized changes for source randomization, auto-minify, etc. are located in `./config.json`.
 
 #### Tor/Onion Routing Setup
 
