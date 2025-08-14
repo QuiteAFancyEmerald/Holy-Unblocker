@@ -332,6 +332,20 @@ if (document.getElementById('csel')) {
     if (!isOff && checkBooleanState(torCheck[0]) === true)
       classUpdateHandler(torCheck, 'off')();
   });
+
+  attachClassEventListener('eruda', 'change', (e) => {
+    const enabled = checkBooleanState(e.target) === true;
+
+    if (enabled) {
+      setStorage('ErudaEnabled', true);
+
+      import('eruda/eruda.js').then((module) => {
+        module.default.init();
+      });
+    } else {
+      removeStorage('ErudaEnabled');
+    }
+  });
 }
 
 /* END WEBSITE SETTINGS */
@@ -377,6 +391,14 @@ useStorageArgs('UseSocks5', (s) => {
     regionList = document.getElementsByClassName('region-list');
   if (s === 'tor') classUpdateHandler(tor, 'on', classEvent(tor, 'change'))();
   else if ('string' === typeof s) classUpdateHandler(regionList, s)();
+});
+
+useStorageArgs('ErudaEnabled', (s) => {
+  const erudaSwitch = document.getElementsByClassName('eruda');
+
+  if (s === true || s === 'true') {
+    classUpdateHandler(erudaSwitch, 'on', classEvent(erudaSwitch, 'change'))();
+  }
 });
 
 useStorageArgs('UseAC', (s) => {

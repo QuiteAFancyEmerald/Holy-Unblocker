@@ -39,6 +39,7 @@
     "@titaniumnetwork-dev/ultraviolet": "^3.2.10",
     "@tomphttp/bare-server-node": "^2.0.3",
     "axios": "^1.11.0",
+    "eruda": "^3.4.3",
     "fastify": "^5.4.0",
     "pm2": "^6.0.8",
     "puppeteer": "^24.15.0",

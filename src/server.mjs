@@ -96,6 +96,12 @@ app.register(fastifyStatic, {
   decorateReply: false,
 });
 
+app.register(fastifyStatic, {
+  root: fileURLToPath(new URL('../node_modules/eruda', import.meta.url)),
+  prefix: getAltPrefix('eruda', serverUrl.pathname),
+  decorateReply: false,
+});
+
 // All entries in the dist folder are created with source rewrites.
 // Minified scripts are also served here, if minification is enabled.
 ['assets', 'uv', 'scram', 'epoxy', 'libcurl', 'baremux'].forEach((prefix) => {

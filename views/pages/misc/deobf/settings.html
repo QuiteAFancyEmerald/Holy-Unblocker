@@ -56,7 +56,7 @@
         <label>
           <p>
             Enable Autocomplete
-            <span class="default-badge">Search Suggestions</span>
+            <span class="default-badge">Proxied Suggestions</span>
           </p>
           <input type="checkbox" class="switch useac" checked />
         </label>
@@ -71,22 +71,15 @@
         <option>{{DuckDuckGo}}</option>
         <option>{{Startpage}}</option>
       </select>
-      <p class="cseltitle">About:Blank</p>
-      <div class="switch-container">
-        <p>
-          {{mask}}{{Stealth Tab}} <span class="default-badge">Default</span>
-        </p>
-        <input type="checkbox" class="switch" />
-      </div>
       <p class="cseltitle">Select Theme</p>
       <div class="radio-group">
         <label>
           <p>Light</p>
-          <input type="radio" name="theme" value="lighttheme" checked />
+          <input type="radio" name="theme" value="lighttheme" />
         </label>
         <label>
           <p>Dark</p>
-          <input type="radio" name="theme" value="darktheme" />
+          <input type="radio" name="theme" value="darktheme" checked/>
         </label>
       </div>
       <p class="cseltitle">Icon Presets</p>
@@ -101,11 +94,9 @@
       <div class="radio-group">
         <label>
           <p>
-            {{mask}}{{Eruda Devtools}}<span class="alt-badge"
-              >{{mask}}{{CTRL+SHIFT+I}}</span
-            >
+            {{mask}}{{Eruda Devtools}}<span class="alt-badge">{{mask}}{{CTRL+SHIFT+I}}</span>
           </p>
-          <input type="radio" name="theme" value="lighttheme" checked />
+          <input type="checkbox" class="switch eruda" />
         </label>
       </div>
     </div>
