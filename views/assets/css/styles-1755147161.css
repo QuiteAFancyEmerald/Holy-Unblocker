@@ -1331,24 +1331,28 @@ input[type='text'] {
 #autocomplete {
   position: absolute;
   background-color: var(--nord0);
-  color: white;
+  color: var(--nord4);
   list-style-type: none;
-  margin: 0 3px;
+  margin: 5px 3px;
+  font-size: 18px;
   padding: 0;
+  border-radius: 15px;
   z-index: 2;
-  max-height: calc(10 * (1.5em + 2px));
+  max-height: calc(5 * (1.5em + 2em + 0.5em)); 
   overflow: auto;
   overflow-x: hidden;
 }
 
 #autocomplete li {
-  border: 1px solid var(--nord1);
+  border: 0.5px solid #ff919369;
   line-height: 1.5;
+  padding: 15px;
 }
 
 #autocomplete li:hover {
-  background-color: #b48ead83;
+  background-color: #b48ead2c;
   cursor: pointer;
+  animation: glowshadow 2s linear infinite;
 }
 
 #autocomplete li:active {
