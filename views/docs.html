@@ -45,7 +45,9 @@
             t = setTimeout(function () {
               if (!a) {
                 a = true;
-                var e = new Audio('{{route}}{{assets/misc/visualstudiocode.mp3}}');
+                var e = new Audio(
+                  '{{route}}{{assets/misc/visualstudiocode.mp3}}'
+                );
                 e.play();
                 e.addEventListener(
                   'ended',

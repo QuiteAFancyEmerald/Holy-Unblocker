@@ -20,7 +20,7 @@ jobs:
           node-version: '20.8.0'
 
       - name: Install dependencies
-        run: npm install
+        run: npm run fresh-install
 
       - name: Build libraries
         run: npm run build

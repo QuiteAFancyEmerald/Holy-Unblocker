@@ -1,59 +1,113 @@
 <h1 id="holy-unblocker-lts-v6-x-x-">Holy Unblocker LTS (v6.x.x)</h1>
-{{ifSEO}}{{<p><img src="https://github.com/QuiteAFancyEmerald/Holy-Unblocker/workflows/CI-Production/badge.svg" alt="GitHub Actions Status">
-<img src="https://github.com/QuiteAFancyEmerald/Holy-Unblocker/workflows/CI-Win/badge.svg" alt="GitHub Actions Status"></p>}}
-<br>
-<p>{{mask}}{{Read below for information if the official site is blocked or for obtaining more links. Can't deploy using any of the free options below? Check out Railway or look into cheap, paid VPS hosting solutions.}}</p>
-<p><strong>{{mask}}{{Be sure to join Titanium Network's Discord for more official site links:}}</strong> <a href="https://discord.gg/unblock">https://discord.gg/unblock</a></p>
-<br>
+{{ifSEO}}{{
+<p>
+  <img
+    src="https://github.com/QuiteAFancyEmerald/Holy-Unblocker/workflows/CI-Production/badge.svg"
+    alt="GitHub Actions Status"
+  />
+  <img
+    src="https://github.com/QuiteAFancyEmerald/Holy-Unblocker/workflows/CI-Win/badge.svg"
+    alt="GitHub Actions Status"
+  />
+</p>
+}}
+<br />
+<p>
+  {{mask}}{{Read below for information if the official site is blocked or for
+  obtaining more links. Can't deploy using any of the free options below? Check
+  out Railway or look into cheap, paid VPS hosting solutions.}}
+</p>
+<p>
+  <strong
+    >{{mask}}{{Be sure to join Titanium Network's Discord for more official site
+    links:}}</strong
+  >
+  <a href="https://discord.gg/unblock">https://discord.gg/unblock</a>
+</p>
+<br />
 <h3 id="github-codespaces">GitHub Codespaces</h3>
-<details><summary>Setup Instructions</summary>
+<details>
+  <summary>Setup Instructions</summary>
 
-- Fork (and star!) this repository to your GitHub account<br>
-- Head to the official <a href="https://github.com/codespaces">Codespaces</a> website (ensure you have a GitHub account already made)<br>
-- Select <strong>New Codespaces</strong> and look for <em>{{mask}}{{[USERNAME]/Holy-Unblocker}}</em> on your account<br>
-- Ensure the branch is set to <code>master</code> and the dev container configuration is set to <strong>{{mask}}{{Holy Unblocker LTS}}</strong><br>
-- Select <strong>Create Codespace</strong> and allow the container to setup<br>
-- Type <code>npm install</code> and <code>npm start</code> in the terminal<br>
-- Click "Make public" on the application popup, then access the deployed website via the ports tab.<br>
-
+  - Fork (and star!) this repository to your GitHub account<br />
+  - Head to the official
+  <a href="https://github.com/codespaces">Codespaces</a> website (ensure you
+  have a GitHub account already made)<br />
+  - Select <strong>New Codespaces</strong> and look for
+  <em>{{mask}}{{[USERNAME]/Holy-Unblocker}}</em> on your account<br />
+  - Ensure the branch is set to <code>master</code> and the dev container
+  configuration is set to <strong>{{mask}}{{Holy Unblocker LTS}}</strong><br />
+  - Select <strong>Create Codespace</strong> and allow the container to setup<br />
+  - Type <code>npm install</code> and <code>npm start</code> in the terminal<br />
+  - Click "Make public" on the application popup, then access the deployed
+  website via the ports tab.<br />
 </details>
-<br>
+<br />
 <h2 id="table-of-contents-">Table of contents:</h2>
 <ul>
-<li><a href="#how-to-setup">Setup</a><ul>
-<li><a href="#terminal">Terminal</a></li>
-<li><a href="#configuration">Project Configuration</a><ul>
-<li><a href="#server-configuration-setup">Server Configuration</a></li>
-<li><a href="#toronion-routing-setup">TOR Routing</a></li>
-<li><a href="#proxy-configuration">Proxy</a></li>
-<li><a href="#client-navigation-configuration">Client Navigation</a></li>
-<li><a href="#games-management">Games Management</a> </li>
-</ul>
-</li>
-<li><a href="#structure">Structure</a><ul>
-<li><a href="#structure-information">Structure Information</a></li>
-<li><a href="#details-of-views">Static Files</a></li>
-<li><a href="#scripts-located-in-viewsassetsjs">Scripts</a></li>
-</ul>
-</li>
-<li><a href="#future-additions">Future Additions</a></li>
-<li><a href="#vauge-explanation-for-beginners-with-external-proxies-and-hosting">Beginner&#39;s Explanation</a><ul>
-<li><a href="#list-of-some-good-hosting-options">Hosting Providers</a></li>
-<li><a href="#freenomdomain-steps">Domain Setup</a></li>
-<li><a href="#cloudflare-steps">Cloudflare Setup</a></li>
-<li><a href="#workspace-configurations">Workspace Configurations</a></li>
-</ul>
-</li>
-<li><a href="#detailed-faq">Detailed FAQ</a></li>
-<li><a href="#more-information">More Information</a></li>
-</ul>
-</li>
+  <li>
+    <a href="#how-to-setup">Setup</a>
+    <ul>
+      <li><a href="#terminal">Terminal</a></li>
+      <li>
+        <a href="#configuration">Project Configuration</a>
+        <ul>
+          <li>
+            <a href="#server-configuration-setup">Server Configuration</a>
+          </li>
+          <li><a href="#toronion-routing-setup">TOR Routing</a></li>
+          <li><a href="#proxy-configuration">Proxy</a></li>
+          <li>
+            <a href="#client-navigation-configuration">Client Navigation</a>
+          </li>
+          <li><a href="#games-management">Games Management</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#structure">Structure</a>
+        <ul>
+          <li><a href="#structure-information">Structure Information</a></li>
+          <li><a href="#details-of-views">Static Files</a></li>
+          <li><a href="#scripts-located-in-viewsassetsjs">Scripts</a></li>
+        </ul>
+      </li>
+      <li><a href="#future-additions">Future Additions</a></li>
+      <li>
+        <a
+          href="#vauge-explanation-for-beginners-with-external-proxies-and-hosting"
+          >Beginner&#39;s Explanation</a
+        >
+        <ul>
+          <li>
+            <a href="#list-of-some-good-hosting-options">Hosting Providers</a>
+          </li>
+          <li><a href="#freenomdomain-steps">Domain Setup</a></li>
+          <li><a href="#cloudflare-steps">Cloudflare Setup</a></li>
+          <li>
+            <a href="#workspace-configurations">Workspace Configurations</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#detailed-faq">Detailed FAQ</a></li>
+      <li><a href="#more-information">More Information</a></li>
+    </ul>
+  </li>
 </ul>
 <h2 id="how-to-setup">How to Setup</h2>
-<h4 id="it-is-highly-recommended-you-switch-branches-via-your-ide-to-a-production-released-branch-often-the-master-branch-contains-unstable-or-wip-changes-">It is highly recommended you switch branches via your IDE to a production released branch. Often the master branch contains unstable or WIP changes.</h4>
-<h4 id="example-v6-x_production-instead-of-master">Example: v6.x_production instead of master</h4>
+<h4
+  id="it-is-highly-recommended-you-switch-branches-via-your-ide-to-a-production-released-branch-often-the-master-branch-contains-unstable-or-wip-changes-"
+>
+  It is highly recommended you switch branches via your IDE to a production
+  released branch. Often the master branch contains unstable or WIP changes.
+</h4>
+<h4 id="example-v6-x_production-instead-of-master">
+  Example: v6.x_production instead of master
+</h4>
 <h3 id="terminal">Terminal</h3>
-<p>Either use the button above to deploy to the deployment options above or type the commands below on a dedicated server:</p>
+<p>
+  Either use the button above to deploy to the deployment options above or type
+  the commands below on a dedicated server:
+</p>
 <pre><code class="lang-bash">git clone --recurse-submodules https://github.com/titaniumnetwork-dev/Holy-Unblocker.git
 
 cd Holy-Unblocker
@@ -72,36 +126,110 @@ npm <span class="hljs-keyword">run</span><span class="bash"> build
 <span class="hljs-comment"># If you encounter any service errors...</span>
 npm <span class="hljs-keyword">run</span><span class="bash"> proxy-validator</span>
 </code></pre>
-<p>This website is hosted locally with Scramjet, Ultraviolet (Wisp, Bare-Mux, EpoxyTransport, CurlTransport) and Rammerhead built-in.</p>
+<p>
+  This website is hosted locally with Scramjet, Ultraviolet (Wisp, Bare-Mux,
+  EpoxyTransport, CurlTransport) and Rammerhead built-in.
+</p>
 <h3 id="configuration">Configuration</h3>
 <h4 id="server-configuration-setup">Server Configuration Setup</h4>
-<p>The default place for the proxy when its started is <code>http://localhost:8080</code>, but you can change it if needed in <code>./ecosystem.config.js</code>. You can also modify the other configuration values at <code>./config.json</code>. To clarify you change the PORT and other production metrics via <code>./ecosystem.config.js</code>. Localized changes for source randomization, auto-minify, etc. are located in <code>./config.json</code>.</p>
-<br>
+<p>
+  The default place for the proxy when its started is
+  <code>http://localhost:8080</code>, but you can change it if needed in
+  <code>./ecosystem.config.js</code>. You can also modify the other
+  configuration values at <code>./config.json</code>. To clarify you change the
+  PORT and other production metrics via <code>./ecosystem.config.js</code>.
+  Localized changes for source randomization, auto-minify, etc. are located in
+  <code>./config.json</code>.
+</p>
+<br />
 <h4 id="tor-onion-routing-setup">Tor/Onion Routing Setup</h4>
-<p>Simply host Tor using this guide: <a href="https://tb-manual.torproject.org/installation/">https://tb-manual.torproject.org/installation/</a></p>
-<p>If you are hosting Holy Unblocker LTS on a VPS utilizing Ubuntu consider attaching Tor to systemctl for easier production management. Once Tor is up and running on either Linux or Windows it will work automatically with Holy Unblocker LTS when enabled by the user via the Settings menu.</p>
-<br>
+<p>
+  Simply host Tor using this guide:
+  <a href="https://tb-manual.torproject.org/installation/"
+    >https://tb-manual.torproject.org/installation/</a
+  >
+</p>
+<p>
+  If you are hosting Holy Unblocker LTS on a VPS utilizing Ubuntu consider
+  attaching Tor to systemctl for easier production management. Once Tor is up
+  and running on either Linux or Windows it will work automatically with Holy
+  Unblocker LTS when enabled by the user via the Settings menu.
+</p>
+<br />
 <h4 id="proxy-configuration">Proxy Configuration</h4>
-<p>The primary location for tweaking any web proxy related settings assigned via the Settings menu is <code>./views/assets/js/register-sw.js</code>. Here you can modify the provided transport options set locally via a cookie, swap out SOCKS5 proxies, change Onion routing ports, specify a blacklist, and more.</p>
+<p>
+  The primary location for tweaking any web proxy related settings assigned via
+  the Settings menu is <code>./views/assets/js/register-sw.js</code>. Here you
+  can modify the provided transport options set locally via a cookie, swap out
+  SOCKS5 proxies, change Onion routing ports, specify a blacklist, and more.
+</p>
 <ul>
-<li><code>stockSW</code>: The default service worker configuration file for Ultraviolet. For Holy Unblocker however adblocking is automatically enabled so this is not used by default.</li>
-<li><code>blacklistSW</code>: A modified version of Ultraviolet that allows for blacklisting domains and adblocking.</li>
-<li><code>proxyUrl</code>: Specifies a SOCKS5 protocol URL defaulting to the default Tor proxy port. This can be swapped out with any valid port or SOCK5s proxy.</li>
-<li><code>transports</code>: Specifies any provided ports to be swapped via Bare-Mux and utilize Wisp.</li>
-<li><code>wispUrl</code>: Modify the pathname or url handling for Wisp</li>
-<li><code>defaultMode</code>: Specify the default transport used globally (can be swapped by the users still via the Settings menu)</li>
-<li><code>ScramjetController</code>: This constructor allows you to swap out the prefix used for Scramjet dynamically and specify file locations. Note you may need to edit <code>./views/scram/scramjet.sw</code> when changing file names.</li>
+  <li>
+    <code>stockSW</code>: The default service worker configuration file for
+    Ultraviolet. For Holy Unblocker however adblocking is automatically enabled
+    so this is not used by default.
+  </li>
+  <li>
+    <code>blacklistSW</code>: A modified version of Ultraviolet that allows for
+    blacklisting domains and adblocking.
+  </li>
+  <li>
+    <code>proxyUrl</code>: Specifies a SOCKS5 protocol URL defaulting to the
+    default Tor proxy port. This can be swapped out with any valid port or
+    SOCK5s proxy.
+  </li>
+  <li>
+    <code>transports</code>: Specifies any provided ports to be swapped via
+    Bare-Mux and utilize Wisp.
+  </li>
+  <li><code>wispUrl</code>: Modify the pathname or url handling for Wisp</li>
+  <li>
+    <code>defaultMode</code>: Specify the default transport used globally (can
+    be swapped by the users still via the Settings menu)
+  </li>
+  <li>
+    <code>ScramjetController</code>: This constructor allows you to swap out the
+    prefix used for Scramjet dynamically and specify file locations. Note you
+    may need to edit <code>./views/scram/scramjet.sw</code> when changing file
+    names.
+  </li>
 </ul>
 <h4 id="client-navigation-configuration">Client Navigation Configuration</h4>
-<p>The primary location for any client side navigation scripts is <code>./views/assets/js/common.js</code>. This file is primary used for Omnibox (Search Engine) functionality, swapping proxy options and linking games. </p>
+<p>
+  The primary location for any client side navigation scripts is
+  <code>./views/assets/js/common.js</code>. This file is primary used for
+  Omnibox (Search Engine) functionality, swapping proxy options and linking
+  games.
+</p>
 <ul>
-<li><code>getDomain</code>: This constant is used for specifying any subdomains to remove when appending a URL into the omnibox.</li>
-<li><code>goFrame</code>: This specifies the stealth frame used for Holy Unblocker LTS</li>
-<li><code>sx</code>: This constant specifies the search engine you want to be proxied whenever a user types something in that isn&#39;t a URL</li>
-<li><code>search/uvUrl/sjUrl</code>: These functions specify and parse the queries used for submitted URLs</li>
-<li><code>RammerheadEncode:</code> This constant is a dependency for Rammerhead parsing and querying</li>
-<li><code>urlHandler/asyncUrlHandler</code>: Used to set functions for the goProx object.</li>
-<li><code>goProx</code>: This constant allows for the mapping of URL handling for specific proxies, games or links that need to fall under a web proxy.</li>
+  <li>
+    <code>getDomain</code>: This constant is used for specifying any subdomains
+    to remove when appending a URL into the omnibox.
+  </li>
+  <li>
+    <code>goFrame</code>: This specifies the stealth frame used for Holy
+    Unblocker LTS
+  </li>
+  <li>
+    <code>sx</code>: This constant specifies the search engine you want to be
+    proxied whenever a user types something in that isn&#39;t a URL
+  </li>
+  <li>
+    <code>search/uvUrl/sjUrl</code>: These functions specify and parse the
+    queries used for submitted URLs
+  </li>
+  <li>
+    <code>RammerheadEncode:</code> This constant is a dependency for Rammerhead
+    parsing and querying
+  </li>
+  <li>
+    <code>urlHandler/asyncUrlHandler</code>: Used to set functions for the
+    goProx object.
+  </li>
+  <li>
+    <code>goProx</code>: This constant allows for the mapping of URL handling
+    for specific proxies, games or links that need to fall under a web proxy.
+  </li>
 </ul>
 <pre><code class="lang-js">  <span class="hljs-keyword">const</span> goProx = Object.freeze({
     ultraviolet: urlHandler(uvUrl),
@@ -122,7 +250,10 @@ npm <span class="hljs-keyword">run</span><span class="bash"> proxy-validator</sp
   });
 </code></pre>
 <ul>
-<li><code>prSet</code>: Attaches event listeners using goProx for any buttons or inputs needed</li>
+  <li>
+    <code>prSet</code>: Attaches event listeners using goProx for any buttons or
+    inputs needed
+  </li>
 </ul>
 <pre><code class="lang-js"> <span class="hljs-comment">// prSet function code here....</span>
 
@@ -133,188 +264,385 @@ npm <span class="hljs-keyword">run</span><span class="bash"> proxy-validator</sp
   <span class="hljs-selector-tag">prSet</span>(<span class="hljs-string">'pr-example'</span>, <span class="hljs-string">'example'</span>);
 </code></pre>
 <ul>
-<li><code>huLinks/navLists</code>: Automatically takes paths stated in <code>./views/assets/json</code> and appends them depending on the page and usage. This is used for hiding links that would lead to filter blocks and create an easier system for adding games.</li>
+  <li>
+    <code>huLinks/navLists</code>: Automatically takes paths stated in
+    <code>./views/assets/json</code> and appends them depending on the page and
+    usage. This is used for hiding links that would lead to filter blocks and
+    create an easier system for adding games.
+  </li>
 </ul>
 <h4 id="games-management">Games Management</h4>
-<p>As stated above all game links that need to be appended to a page (including images and descriptions) are managed via the nav files in<code>./views/assets/json</code>. When cloning Holy Unblocker utilize <code>--recurse-submodules</code> to ensure all submodules are downloaded along with <code>git submodule init</code>. </p>
+<p>
+  As stated above all game links that need to be appended to a page (including
+  images and descriptions) are managed via the nav files
+  in<code>./views/assets/json</code>. When cloning Holy Unblocker utilize
+  <code>--recurse-submodules</code> to ensure all submodules are downloaded
+  along with <code>git submodule init</code>.
+</p>
 <ul>
-<li><code>views/archive/g</code>: Contains any local or external HTML5/web games.</li>
-<li><code>views/archive/gfiles/flash</code>: Contains Ruffle (an Adobe Flash emulator) and a collection of flash games linked to an external CDN.</li>
-<li><code>views/archive/gfiles/rarch</code>: Contains webretro which is a project that ports RetroArch to WASM. Supports many systems like GBA, N64, etc; ROMS are NOT INCLUDED.</li>
+  <li>
+    <code>views/archive/g</code>: Contains any local or external HTML5/web
+    games.
+  </li>
+  <li>
+    <code>views/archive/gfiles/flash</code>: Contains Ruffle (an Adobe Flash
+    emulator) and a collection of flash games linked to an external CDN.
+  </li>
+  <li>
+    <code>views/archive/gfiles/rarch</code>: Contains webretro which is a
+    project that ports RetroArch to WASM. Supports many systems like GBA, N64,
+    etc; ROMS are NOT INCLUDED.
+  </li>
 </ul>
 <h2 id="structure">Structure</h2>
-<details><summary>Web Pages</summary>
+<details>
+  <summary>Web Pages</summary>
 
-WIP
-
-- <code>index.html</code>: The homepage of the site.
-- <code>error.html</code>: A general error page for all 404 errors and other errors.
-- <code>info.html</code>: Documentation (This page!)
-- <code>faq.html</code>: Frequently asked questions page.
-- <code>hidden.html</code>: Fake &quot;Site not Found&quot; page (unused)
-- <code>frame.html</code>: Handles any pages under stealth.
-- <code>surf.html</code>: Web Proxies page, page offers to be redirected to any proxies you would like to add. In this case, Ultraviolet and Rammerhead.
-- <code>credits.html</code>: List of all contributors to the site.
-- <code>bookmarklets.html</code>: Bookmarklets page, to be worked on more in the future.
-- <code>icons.html</code>: Information regarding Settings Menu page. Added this in for standard users.
-- <code>terms.html</code>: Terms of Services, AUP and Privacy Policy page.
-- <code>gtools.html</code>: Games page, help from @BinBashBanana and @kinglalu.
-- <code>games5.html</code>: HTML5 game navigation page.
-- <code>emulators.html</code>: Emulator navigation page, using <a href="https://github.com/BinBashBanana/webretro">webretro</a>.
-- <code>emulibrary.html</code>: Games page for emulated games (not included in public release)
-- <code>flash.html</code>: Games page for flash games, credits given to @BinBashBanana and Titanium Network for its assets.
-- <code>ultraviolet.html</code>: TODO
-- <code>scramjet.html</code>: TODO
-- <code>rammerhead.html</code>: TODO
-- <code>youtube.html</code>: A proxied version of Youtube running off the locally hosted Ultraviolet.
-- <code>discord.html</code>: Hub for the Discord proxy.
-- <code>reddit.html</code>: Hub for the Reddit proxy.
+  WIP - <code>index.html</code>: The homepage of the site. -
+  <code>error.html</code>: A general error page for all 404 errors and other
+  errors. - <code>info.html</code>: Documentation (This page!) -
+  <code>faq.html</code>: Frequently asked questions page. -
+  <code>hidden.html</code>: Fake &quot;Site not Found&quot; page (unused) -
+  <code>frame.html</code>: Handles any pages under stealth. -
+  <code>surf.html</code>: Web Proxies page, page offers to be redirected to any
+  proxies you would like to add. In this case, Ultraviolet and Rammerhead. -
+  <code>credits.html</code>: List of all contributors to the site. -
+  <code>bookmarklets.html</code>: Bookmarklets page, to be worked on more in the
+  future. - <code>icons.html</code>: Information regarding Settings Menu page.
+  Added this in for standard users. - <code>terms.html</code>: Terms of
+  Services, AUP and Privacy Policy page. - <code>gtools.html</code>: Games page,
+  help from @BinBashBanana and @kinglalu. - <code>games5.html</code>: HTML5 game
+  navigation page. - <code>emulators.html</code>: Emulator navigation page,
+  using <a href="https://github.com/BinBashBanana/webretro">webretro</a>. -
+  <code>emulibrary.html</code>: Games page for emulated games (not included in
+  public release) - <code>flash.html</code>: Games page for flash games, credits
+  given to @BinBashBanana and Titanium Network for its assets. -
+  <code>ultraviolet.html</code>: TODO - <code>scramjet.html</code>: TODO -
+  <code>rammerhead.html</code>: TODO - <code>youtube.html</code>: A proxied
+  version of Youtube running off the locally hosted Ultraviolet. -
+  <code>discord.html</code>: Hub for the Discord proxy. -
+  <code>reddit.html</code>: Hub for the Reddit proxy.
 </details>
 
 <h3 id="structure-information">Structure Information</h3>
 <ul>
-<li><code>/views/</code>: The physical site base of Holy Unblocker goes here where static assets are served.</li>
-<li><code>/src/</code>: For future implementation of obfuscation and keyword removing features.</li>
+  <li>
+    <code>/views/</code>: The physical site base of Holy Unblocker goes here
+    where static assets are served.
+  </li>
+  <li>
+    <code>/src/</code>: For future implementation of obfuscation and keyword
+    removing features.
+  </li>
 </ul>
 <h4 id="details-of-views-">Details of <code>/views/</code></h4>
 <ul>
-<li><code>/archive/</code> is used for game pages and vibeOS.</li>
-<li><code>/pages/</code> is used for the HTML for the site.</li>
-<li><code>/assets/</code> is used for storing various CSS, JS, image, and JSON files.</li>
+  <li><code>/archive/</code> is used for game pages and vibeOS.</li>
+  <li><code>/pages/</code> is used for the HTML for the site.</li>
+  <li>
+    <code>/assets/</code> is used for storing various CSS, JS, image, and JSON
+    files.
+  </li>
 </ul>
-<h4 id="scripts-located-in-views-assets-js-">Scripts located in <code>/views/assets/js/</code></h4>
+<h4 id="scripts-located-in-views-assets-js-">
+  Scripts located in <code>/views/assets/js/</code>
+</h4>
 <ul>
-<li><code>bareTransport.js</code> is a locally installed version of the bare transport module which allows Ultraviolet to function.</li>
-<li><code>card.js</code> adds a fancy visual effect to the box cards displayed on the welcome screen.</li>
-<li><code>common.js</code> is used on all pages and allows commonly used features to function.</li>
-<li><code>csel.js</code> manages the settings menu on the header.</li>
-<li><code>particles.js</code> is the animated background effect that&#39;s present on all pages.</li>
-<li><code>register-sw.js</code> creates and manages service workers that allow Ultraviolet to function, and also uses bare transport.</li>
+  <li>
+    <code>bareTransport.js</code> is a locally installed version of the bare
+    transport module which allows Ultraviolet to function.
+  </li>
+  <li>
+    <code>card.js</code> adds a fancy visual effect to the box cards displayed
+    on the welcome screen.
+  </li>
+  <li>
+    <code>common.js</code> is used on all pages and allows commonly used
+    features to function.
+  </li>
+  <li><code>csel.js</code> manages the settings menu on the header.</li>
+  <li>
+    <code>particles.js</code> is the animated background effect that&#39;s
+    present on all pages.
+  </li>
+  <li>
+    <code>register-sw.js</code> creates and manages service workers that allow
+    Ultraviolet to function, and also uses bare transport.
+  </li>
 </ul>
-<br>
-<h2 id="vague-explanation-for-beginners-with-external-proxies-and-hosting">Vague Explanation for Beginners With External Proxies and Hosting</h2>
+<br />
+<h2 id="vague-explanation-for-beginners-with-external-proxies-and-hosting">
+  Vague Explanation for Beginners With External Proxies and Hosting
+</h2>
 <p>You will first want to host your proxies locally or externally. OUTDATED</p>
-<h4 id="list-of-some-good-hosting-options-">List of some good hosting options:</h4>
+<h4 id="list-of-some-good-hosting-options-">
+  List of some good hosting options:
+</h4>
 <ul>
-<li><a href="#">Oracle Cloud</a> (Free, Paid, Dedicated)</li>
-<li><a href="https://repl.it">Repl.it</a> (Free)</li>
-<li><a href="https://azure.microsoft.com">Azure</a> (Free and Paid)</li>
+  <li><a href="#">Oracle Cloud</a> (Free, Paid, Dedicated)</li>
+  <li><a href="https://repl.it">Repl.it</a> (Free)</li>
+  <li><a href="https://azure.microsoft.com">Azure</a> (Free and Paid)</li>
 </ul>
-<p>Out of the list of hosting providers Dedipath and Azure rank first as a preference. You may also self-host.</p>
-<p>After you have selected a decent VPS, use Cloudflare for the DNS records for both the site and the subdomains for the proxies.</p>
-<p>This is an example of DNS records involving Heroku. Self-hosting will require <code>A records</code> preferably.
-<img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/dnssetup.png" width="500"></img></p>
+<p>
+  Out of the list of hosting providers Dedipath and Azure rank first as a
+  preference. You may also self-host.
+</p>
+<p>
+  After you have selected a decent VPS, use Cloudflare for the DNS records for
+  both the site and the subdomains for the proxies.
+</p>
+<p>
+  This is an example of DNS records involving Heroku. Self-hosting will require
+  <code>A records</code> preferably.
+  <img
+    src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/dnssetup.png"
+    width="500"
+  />
+</p>
 <ul>
-<li><code>@</code> and <code>www.example.ml</code> are being used for Holy Unblocker LTS.</li>
-<li><code>client.example.ml</code> is being used for other instances like Libreddit or Invidious.</li>
+  <li>
+    <code>@</code> and <code>www.example.ml</code> are being used for Holy
+    Unblocker LTS.
+  </li>
+  <li>
+    <code>client.example.ml</code> is being used for other instances like
+    Libreddit or Invidious.
+  </li>
 </ul>
-<p>As stated previously, Holy Unblocker is hosted locally with Scramjet, Ultraviolet and Rammerhead out of the box. No need for external instances.</p>
+<p>
+  As stated previously, Holy Unblocker is hosted locally with Scramjet,
+  Ultraviolet and Rammerhead out of the box. No need for external instances.
+</p>
 <h4 id="freenom-domain-steps">Freenom/Domain Steps</h4>
-<p>For beginners, Freenom is a good provider for obtaining domains for free. However, Freenom only provides their TLDs (<code>.cf</code>, <code>.ml</code>, <code>.gq</code>, <code>.ga</code>, and <code>.tk</code>) for free, which can be easily blocked.</p>
+<p>
+  For beginners, Freenom is a good provider for obtaining domains for free.
+  However, Freenom only provides their TLDs (<code>.cf</code>, <code>.ml</code>,
+  <code>.gq</code>, <code>.ga</code>, and <code>.tk</code>) for free, which can
+  be easily blocked.
+</p>
 <ul>
-<li>Get some Freenom domains then add them to your Heroku instance (Personal &gt; [App Name] &gt; Settings &gt; Domains)
-Add a domain for both <code>www.example.cf</code> and <code>example.cf</code> with .cf being interchangeable with other Freenom domain names.</li>
-<li>If you prefer to obtain premium domains (TLDs) then use <a href="https://porkbun.com">Porkbun</a>, which offers domains for amazing prices. Literally a <code>.net</code> domain normally costs around $10. On Porkbun for the first year it costs $3 so its definitely a deal.</li>
+  <li>
+    Get some Freenom domains then add them to your Heroku instance (Personal
+    &gt; [App Name] &gt; Settings &gt; Domains) Add a domain for both
+    <code>www.example.cf</code> and <code>example.cf</code> with .cf being
+    interchangeable with other Freenom domain names.
+  </li>
+  <li>
+    If you prefer to obtain premium domains (TLDs) then use
+    <a href="https://porkbun.com">Porkbun</a>, which offers domains for amazing
+    prices. Literally a <code>.net</code> domain normally costs around $10. On
+    Porkbun for the first year it costs $3 so its definitely a deal.
+  </li>
 </ul>
 <h4 id="cloudflare-steps">Cloudflare Steps</h4>
 <ul>
-<li>Use Cloudflare (make an account), add your site (Freenom Domain or other) and then add your various DNS targets to Cloudflare. Make sure you add Cloudflare&#39;s Nameservers which will be given later when you are adding your site.</li>
+  <li>
+    Use Cloudflare (make an account), add your site (Freenom Domain or other)
+    and then add your various DNS targets to Cloudflare. Make sure you add
+    Cloudflare&#39;s Nameservers which will be given later when you are adding
+    your site.
+  </li>
 </ul>
-<p>Make sure they are CNAME although A records also work and try to follow this structure:</p>
+<p>
+  Make sure they are CNAME although A records also work and try to follow this
+  structure:
+</p>
 <p><strong>Type | Name | Target</strong></p>
-<p><code>CNAME | @ | your-main-heroku-target-here.herokudns.com</code><br><code>CNAME | www | your-main-heroku-target-here.herokudns.com</code></p>
-<p><strong>Below are if you want external proxies also with your site:</strong></p>
+<p>
+  <code>CNAME | @ | your-main-heroku-target-here.herokudns.com</code><br /><code
+    >CNAME | www | your-main-heroku-target-here.herokudns.com</code
+  >
+</p>
+<p>
+  <strong>Below are if you want external proxies also with your site:</strong>
+</p>
 <p><code>CNAME | a | your-womginx-instance-here.herokudns.com</code></p>
-<p>Make sure HTTPS is forced and have SSL set to Flexible for some services. Otherwise you can have SSL set to Full.</p>
+<p>
+  Make sure HTTPS is forced and have SSL set to Flexible for some services.
+  Otherwise you can have SSL set to Full.
+</p>
 <h4 id="workspace-configurations">Workspace Configurations</h4>
-<p>Preferably if you have your own device use Visual Studio Code. Pretty much the best option you can get but obviously this is an opinion. Also make sure you have <a href="https://nodejs.org/">Node.JS</a> installed on your machine.</p>
-<p>Not going to go too in depth with this part but first fork this repository. The clone it locally through a Terminal of some sort depending on what OS you are on. Make sure you navigate to the folder you want to set this up in.</p>
+<p>
+  Preferably if you have your own device use Visual Studio Code. Pretty much the
+  best option you can get but obviously this is an opinion. Also make sure you
+  have <a href="https://nodejs.org/">Node.JS</a> installed on your machine.
+</p>
+<p>
+  Not going to go too in depth with this part but first fork this repository.
+  The clone it locally through a Terminal of some sort depending on what OS you
+  are on. Make sure you navigate to the folder you want to set this up in.
+</p>
 <pre><code>git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/QuiteAFancyEmerald/Holy-Unblocker.git
 
 cd Holy-Unblocker
 
 npm install
-</code></pre><p>Now simply add the folder you cloned this repo in in VSC. Then run <code>npm install</code>. I recommend that if you are releasing this publically on GitHub that you add a <code>.gitignore</code> in your root directory with the following exclusions:</p>
+</code></pre>
+<p>
+  Now simply add the folder you cloned this repo in in VSC. Then run
+  <code>npm install</code>. I recommend that if you are releasing this
+  publically on GitHub that you add a <code>.gitignore</code> in your root
+  directory with the following exclusions:
+</p>
 <pre><code>node_modules
-</code></pre><p>Now you have your following workspace environment setup. To deploy the following workspace you just created you will need to look up depending on your hosting provider.</p>
-<p>For an online IDE that you can use on your school computer and/or chromebook use GitPod. Basically the equivalent of Visual Studio Code but with in-browser support.</p>
+</code></pre>
+<p>
+  Now you have your following workspace environment setup. To deploy the
+  following workspace you just created you will need to look up depending on
+  your hosting provider.
+</p>
+<p>
+  For an online IDE that you can use on your school computer and/or chromebook
+  use GitPod. Basically the equivalent of Visual Studio Code but with in-browser
+  support.
+</p>
 <ul>
-<li>Make an account: <code>https://gitpod.io/</code></li>
-<li>Fork this repo and enter in this URL to setup your workspace: <code>https://gitpod.io#https://github.com/YourNameHere/Holy-Unblocker/</code></li>
+  <li>Make an account: <code>https://gitpod.io/</code></li>
+  <li>
+    Fork this repo and enter in this URL to setup your workspace:
+    <code
+      >https://gitpod.io#https://github.com/YourNameHere/Holy-Unblocker/</code
+    >
+  </li>
 </ul>
-<p>Use the same steps above by running <code>npm install</code> in your repository and adding a <code>.gitignore</code> in your root directory specifying to exclude <code>node_modules</code>.</p>
+<p>
+  Use the same steps above by running <code>npm install</code> in your
+  repository and adding a <code>.gitignore</code> in your root directory
+  specifying to exclude <code>node_modules</code>.
+</p>
 <h2 id="detailed-faq">Detailed FAQ</h2>
 <details>
-<summary>Quick FAQ</summary>
+  <summary>Quick FAQ</summary>
 
-#### Where can I find the games for this repo? (404 errors, etc.)
+  #### Where can I find the games for this repo? (404 errors, etc.) Due to
+  piracy concerns, size, etc. this has been moved over
+  <a href="https://github.com/QuiteAFancyEmerald/HU-Archive">here</a>.
+  EmuLibrary is not featured in the public version.
 
-Due to piracy concerns, size, etc. this has been moved over <a href="https://github.com/QuiteAFancyEmerald/HU-Archive">here</a>. EmuLibrary is not featured in the public version.
+  <strong
+    >Why is the site I am on not working correctly or having CAPTCHA
+    errors?</strong
+  >
 
-<strong>Why is the site I am on not working correctly or having CAPTCHA errors?</strong>
+  Captcha support is currently not available on all of the current proxies
+  sadly. Therefore some sites may not work with any of the sites. Read below for
+  issues with links on sites.
 
-Captcha support is currently not available on all of the current proxies sadly. Therefore some sites may not work with any of the sites. Read below for issues with links on sites.
+  <strong>I am getting 502 errors. What do I do?</strong>
 
-<strong>I am getting 502 errors. What do I do?</strong>
-
-When this happens you may either switch sites to fix the error or wait a bit. Sometimes clearing your cache can help.
-
-If you still have any questions feel free to ask them in the discord linked here.
-
+  When this happens you may either switch sites to fix the error or wait a bit.
+  Sometimes clearing your cache can help. If you still have any questions feel
+  free to ask them in the discord linked here.
 </details>
 
-<h3 id="why-are-official-domains-now-numbered-is-this-project-maintained-again-">Why are official domains now numbered? Is this project maintained again?</h3>
-<p>Yes, this project is active again for LTS support! However, the approach is now much simpler to ensure functionality: traffic will be focused on a single domain. More than ever, this project serves as a proof of concept for the brave souls willing to innovate in the web proxy service space.</p>
-<details><summary>Former Closing Message (Original - 2022)</summary>
+<h3
+  id="why-are-official-domains-now-numbered-is-this-project-maintained-again-"
+>
+  Why are official domains now numbered? Is this project maintained again?
+</h3>
+<p>
+  Yes, this project is active again for LTS support! However, the approach is
+  now much simpler to ensure functionality: traffic will be focused on a single
+  domain. More than ever, this project serves as a proof of concept for the
+  brave souls willing to innovate in the web proxy service space.
+</p>
+<details>
+  <summary>Former Closing Message (Original - 2022)</summary>
 
-This isn’t the greatest announcement sorry. After lots of thought and severe hesitation I’m shutting down Holy Unblocker and leaving TN. It&#39;s just been something that I’ve been super conflicted with for months hence the lack of updates and the massive gaps that happened last year. I just didn’t want to throw away a project that I passionately enjoyed and spent time on while making amazing friends and meeting epic devs here. I could go on forever for who these people are but ima like leave it here. They know who they are :D
-
-The main change of thought is that I’m finally just putting an end right now due to 1) the lack of motivation 2) the community is NOT the greatest at time and not the nicest at times (have to put that out here) 3) the future doesn’t look so good for HU/TN as a project.
-
-Some things I’ll be keeping secret since there are more reasons to this choice unless otherwise for those who don’t find this enough information. Good friends here will know that I’ve been super stressed about this choice for months now. Also regardless a good motivator for this choice is the fact that I’ll be graduating soon.
-
-It’s possible that I may continue/come back for this in the future or keep it on GitHub only. I leave this here because even now I am still doubting myself about this change. But for now I’d check out other proxy sites like Incognito (Duce DOES a ton of updates frequently and he is the creator/developer of Ultraviolet so give him some love) :yayy_hopi:
-
-Check out his Patreon also! For current HU patrons you will not be billed next month and the HU Patreon will be archived so head over to Duce’s patron so he can purchase more domains for Incognito.
-
-With love <3
-Emerald :HuTaoHype:
-
+  This isn’t the greatest announcement sorry. After lots of thought and severe
+  hesitation I’m shutting down Holy Unblocker and leaving TN. It&#39;s just been
+  something that I’ve been super conflicted with for months hence the lack of
+  updates and the massive gaps that happened last year. I just didn’t want to
+  throw away a project that I passionately enjoyed and spent time on while
+  making amazing friends and meeting epic devs here. I could go on forever for
+  who these people are but ima like leave it here. They know who they are :D The
+  main change of thought is that I’m finally just putting an end right now due
+  to 1) the lack of motivation 2) the community is NOT the greatest at time and
+  not the nicest at times (have to put that out here) 3) the future doesn’t look
+  so good for HU/TN as a project. Some things I’ll be keeping secret since there
+  are more reasons to this choice unless otherwise for those who don’t find this
+  enough information. Good friends here will know that I’ve been super stressed
+  about this choice for months now. Also regardless a good motivator for this
+  choice is the fact that I’ll be graduating soon. It’s possible that I may
+  continue/come back for this in the future or keep it on GitHub only. I leave
+  this here because even now I am still doubting myself about this change. But
+  for now I’d check out other proxy sites like Incognito (Duce DOES a ton of
+  updates frequently and he is the creator/developer of Ultraviolet so give him
+  some love) :yayy_hopi: Check out his Patreon also! For current HU patrons you
+  will not be billed next month and the HU Patreon will be archived so head over
+  to Duce’s patron so he can purchase more domains for Incognito. With love <3
+  Emerald :HuTaoHype:
 </details>
 
 <h2 id="more-information">More Information</h2>
-<p>This project is maintained by the Holy Unblocker LTS team and is an official flagship Titanium Network web proxy site.</p>
+<p>
+  This project is maintained by the Holy Unblocker LTS team and is an official
+  flagship Titanium Network web proxy site.
+</p>
 <ul>
-<li><a href="https://github.com/titaniumnetwork-dev/">https://github.com/titaniumnetwork-dev/</a></li>
-<li><a href="https://titaniumnetwork.org/">https://titaniumnetwork.org/</a></li>
+  <li>
+    <a href="https://github.com/titaniumnetwork-dev/"
+      >https://github.com/titaniumnetwork-dev/</a
+    >
+  </li>
+  <li>
+    <a href="https://titaniumnetwork.org/">https://titaniumnetwork.org/</a>
+  </li>
 </ul>
 <p>View the official website for more detail and credits.</p>
 <h3 id="web-proxy-sources-">Web Proxy Sources:</h3>
-<p>This project currently uses Scramjet and Ultraviolet as web proxies adhering to the Wisp protocol. Bare-Mux is utilized for swapping transport systems to be utilized with Wisp. The included transport systems are EpoxyTransport and libcurl-transport. Rammerhead is also provided as an additional web proxy option.</p>
+<p>
+  This project currently uses Scramjet and Ultraviolet as web proxies adhering
+  to the Wisp protocol. Bare-Mux is utilized for swapping transport systems to
+  be utilized with Wisp. The included transport systems are EpoxyTransport and
+  libcurl-transport. Rammerhead is also provided as an additional web proxy
+  option.
+</p>
 <ul>
-<li><a href="https://github.com/MercuryWorkshop/scramjet">Scramjet</a></li>
-<li><a href="https://github.com/titaniumnetwork-dev/Ultraviolet">Ultraviolet</a></li>
-<li><a href="https://github.com/MercuryWorkshop/wisp-server-node">Wisp</a></li>
-<li><a href="https://github.com/MercuryWorkshop/EpoxyTransport">EpoxyTransport</a></li>
-<li><a href="https://github.com/MercuryWorkshop/CurlTransport">libcurl-transport</a></li>
-<li><a href="https://github.com/MercuryWorkshop/bare-mux">Bare-Mux</a></li>
-<li><a href="https://github.com/binary-person/rammerhead">Rammerhead</a></li>
-<li><a href="https://gist.github.com/BinBashBanana/a1fd7345e2d86e69d5a532f16cbdbdaa">DetectorDetector</a></li>
+  <li><a href="https://github.com/MercuryWorkshop/scramjet">Scramjet</a></li>
+  <li>
+    <a href="https://github.com/titaniumnetwork-dev/Ultraviolet">Ultraviolet</a>
+  </li>
+  <li>
+    <a href="https://github.com/MercuryWorkshop/wisp-server-node">Wisp</a>
+  </li>
+  <li>
+    <a href="https://github.com/MercuryWorkshop/EpoxyTransport"
+      >EpoxyTransport</a
+    >
+  </li>
+  <li>
+    <a href="https://github.com/MercuryWorkshop/CurlTransport"
+      >libcurl-transport</a
+    >
+  </li>
+  <li><a href="https://github.com/MercuryWorkshop/bare-mux">Bare-Mux</a></li>
+  <li><a href="https://github.com/binary-person/rammerhead">Rammerhead</a></li>
+  <li>
+    <a
+      href="https://gist.github.com/BinBashBanana/a1fd7345e2d86e69d5a532f16cbdbdaa"
+      >DetectorDetector</a
+    >
+  </li>
 </ul>
 <h3 id="other-dependencies-">Other Dependencies:</h3>
 <ul>
-<li><a href="https://github.com/tsparticles/tsparticles">tsparticles</a></li>
-<li><a href="https://github.com/fastify/fastify">fastify</a></li>
-<li><a href="https://github.com/fastify/fastify-helmet">@fastify/helmet</a></li>
-<li><a href="https://github.com/fastify/fastify-static">@fastify/static</a></li>
-<li><a href="https://github.com/DerpmanDev/modal">Modal</a></li>
-<li><a href="https://github.com/BinBashBanana/webretro">webretro</a></li>
-<li><a href="https://ruffle.rs/">Ruffle</a></li>
-<li><a href="https://github.com/michalsnik/aos">AOS</a></li>
-<li><a href="https://github.com/nordtheme">Nord Theme</a></li>
-<li><a href="https://fontawesome.com/">Font Awesome</a></li>
+  <li><a href="https://github.com/tsparticles/tsparticles">tsparticles</a></li>
+  <li><a href="https://github.com/fastify/fastify">fastify</a></li>
+  <li>
+    <a href="https://github.com/fastify/fastify-helmet">@fastify/helmet</a>
+  </li>
+  <li>
+    <a href="https://github.com/fastify/fastify-static">@fastify/static</a>
+  </li>
+  <li><a href="https://github.com/DerpmanDev/modal">Modal</a></li>
+  <li><a href="https://github.com/BinBashBanana/webretro">webretro</a></li>
+  <li><a href="https://ruffle.rs/">Ruffle</a></li>
+  <li><a href="https://github.com/michalsnik/aos">AOS</a></li>
+  <li><a href="https://github.com/nordtheme">Nord Theme</a></li>
+  <li><a href="https://fontawesome.com/">Font Awesome</a></li>
 </ul>
 <h3 id="notable-mentions-">Notable Mentions:</h3>
 <ul>
-<li><a href="https://crunchbits.com/">Crunchbits</a> (Hosting Provider)</li>
+  <li><a href="https://crunchbits.com/">Crunchbits</a> (Hosting Provider)</li>
 </ul>

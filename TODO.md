@@ -21,7 +21,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 
 - [x] Ensure Ultraviolet is updated to support bare-mux and wisp - done
 - [x] Ensure Scramjet is added and works together with UV's implementation - done
-= [x] Refactor register-sw.js - done
+- [x] Refactor register-sw.js - done
 - [x] Add Rammerhead support - done
 - [x] Fix slow Ultraviolet speeds despite being local; something on the backend?? - done
 - [x] Fix Ultraviolet on Firefox - (partial/needs work)
@@ -36,13 +36,12 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [x] Update csel.js to support network based adblocking (partial/needs work)
 - [ ] Add a "website self-destruct" button to the settings menu
 - [x] Flesh out and rework the UV / Scramjet / bare client error page - done
-- [x] Update sw.js to support workerware (https://github.com/MercuryWorkshop/workerware)-- This is not done however we have our own middleware system implemented for adblocking, etc. 
+- [x] Update sw.js to support workerware (https://github.com/MercuryWorkshop/workerware)-- This is not done however we have our own middleware system implemented for adblocking, etc.
 - [ ] Omnibox autoupdate script (for the Google/Bing style auto suggest feature)
 - [ ] Omnibar functionality (back and forward navigation, settings menu and create new stealth page with URL)
 - [ ] Games library will feature 10000 items; 5000 flash games and 5000 other game types
 - [ ] Improve adblocking functions on site using AnuraOS standards
-- [x] Revamp the Stealth Frame with a slight animation (ease in and then the wheeling loading with a gradient fading away once its loaded or shows the error page LOL), a loading wheel/page and lastly a omnibox widget. It will have like nav buttons, some of the settings from the settings menu, a home button, a button that brings up the Setting menu and be in a designed position. Intent is to reduce the back/forth nature that users have to do currently making it more tedious to use the site. - partial. needs functionality. 
-
+- [x] Revamp the Stealth Frame with a slight animation (ease in and then the wheeling loading with a gradient fading away once its loaded or shows the error page LOL), a loading wheel/page and lastly a omnibox widget. It will have like nav buttons, some of the settings from the settings menu, a home button, a button that brings up the Setting menu and be in a designed position. Intent is to reduce the back/forth nature that users have to do currently making it more tedious to use the site. - partial. needs functionality.
 
 ## Site Redesign
 

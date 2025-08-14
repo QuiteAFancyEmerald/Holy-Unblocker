@@ -19,14 +19,23 @@
         <label>
           <p>
             {{mask}}{{Libcurl}}
-            <span class="default-badge">{{mask}}{{Cross-Browser/Secure (Firefox)}}</span>
+            <span class="default-badge"
+              >{{mask}}{{Cross-Browser/Secure (Firefox)}}</span
+            >
           </p>
-          <input type="radio" name="{{wisp-transport}}" value="{{libcurl}}" checked />
+          <input
+            type="radio"
+            name="{{wisp-transport}}"
+            value="{{libcurl}}"
+            checked
+          />
         </label>
         <label>
           <p>
             {{mask}}{{Epoxy}}
-            <span class="alt-badge">{{mask}}{{Fastest/Secure (Chromium, Apple)}}</span>
+            <span class="alt-badge"
+              >{{mask}}{{Fastest/Secure (Chromium, Apple)}}</span
+            >
           </p>
           <input type="radio" name="{{wisp-transport}}" value="{{epoxy}}" />
         </label>
@@ -38,11 +47,17 @@
           <input type="checkbox" class="switch hideads" checked />
         </label>
         <label>
-          <p>{{mask}}{{Enable Tor}} <span class="alt-badge">{{mask}}{{SOCKS5 Onion Routing}}</span></p>
+          <p>
+            {{mask}}{{Enable Tor}}
+            <span class="alt-badge">{{mask}}{{SOCKS5 Onion Routing}}</span>
+          </p>
           <input type="checkbox" class="switch useonion" />
         </label>
         <label>
-          <p>Enable Autocomplete <span class="default-badge">Search Suggestions</span></p>
+          <p>
+            Enable Autocomplete
+            <span class="default-badge">Search Suggestions</span>
+          </p>
           <input type="checkbox" class="switch useac" checked />
         </label>
       </div>
@@ -58,7 +73,9 @@
       </select>
       <p class="cseltitle">About:Blank</p>
       <div class="switch-container">
-        <p>{{mask}}{{Stealth Tab}} <span class="default-badge">Default</span></p>
+        <p>
+          {{mask}}{{Stealth Tab}} <span class="default-badge">Default</span>
+        </p>
         <input type="checkbox" class="switch" />
       </div>
       <p class="cseltitle">Select Theme</p>
@@ -83,7 +100,11 @@
       <p class="cseltitle">{{mask}}{{Enable Devtools}}</p>
       <div class="radio-group">
         <label>
-          <p>{{mask}}{{Eruda Devtools}}<span class="alt-badge">{{mask}}{{CTRL+SHIFT+I}}</span></p>
+          <p>
+            {{mask}}{{Eruda Devtools}}<span class="alt-badge"
+              >{{mask}}{{CTRL+SHIFT+I}}</span
+            >
+          </p>
           <input type="radio" name="theme" value="lighttheme" checked />
         </label>
       </div>

@@ -3,7 +3,8 @@ const { ScramjetServiceWorker } = $scramjetLoadWorker();
 const scramjet = new ScramjetServiceWorker();
 
 //  Get list of blacklisted domains.
-const blacklist = {}, nativeFunction = Function;
+const blacklist = {},
+  nativeFunction = Function;
 fetch('{{route}}{{/assets/json/blacklist.json}}').then((request) => {
   request.json().then((jsonData) => {
     // Organize each domain by their tld (top level domain) ending.
@@ -37,7 +38,10 @@ async function handleRequest(event) {
     try {
       const domain = new URL(
           nativeFunction(`return ${scramjet.config.codec.decode}`)()(
-            new URL(event.request.url).pathname.replace(scramjet.config.prefix, '')
+            new URL(event.request.url).pathname.replace(
+              scramjet.config.prefix,
+              ''
+            )
           )
         ).hostname,
         domainTld = domain.replace(/.+(?=\.\w)/, '');

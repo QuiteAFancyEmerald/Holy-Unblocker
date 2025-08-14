@@ -10,8 +10,14 @@
     }}
     <!--HEAD-CONTENT-->
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/backdrop.css">
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tippy.js@6/dist/backdrop.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tippy.js@6/animations/shift-away.css"
+    />
   </head>
 
   <body>
@@ -20,48 +26,72 @@
       <!--HEADER-->
     </div>
     <div id="particles-js" class="fullwidth"></div>
-        <div id="mainbody" class="fullwidth">
+    <div id="mainbody" class="fullwidth">
       <div class="box-main-container">
         <div class="box-image-container">
           <img
             class="box-pr-logo"
-            src="{{route}}{{/assets/img/directory_splash.webp}}"{{ifSEO}}{{
-            alt="Holy Unblocker Browsing Splash"}}
+            src="{{route}}{{/assets/img/directory_splash.webp}}"
+            {{ifSEO}}{{
+            alt="Holy Unblocker Browsing Splash"
+            }}
           />
         </div>
         <div class="box-text-container">
           <p class="box-badge">
-            <span class="box-default-badge">News</span>{{mask}}{{Webretro version has been bumped allowing for more emulators.}}
+            <span class="box-default-badge">News</span>{{mask}}{{Webretro
+            version has been bumped allowing for more emulators.}}
           </p>
           <h1>
-            {{mask}}{{
-            Holy Unblocker LTS features a wide selection of unblocked games, emulators and utilities.
-            }}
+            {{mask}}{{ Holy Unblocker LTS features a wide selection of unblocked
+            games, emulators and utilities. }}
           </h1>
-          <h2 class="box-description">{{mask}}{{
-            Here you can find cool stuff like emulators and games! Using projects like webretro and Ruffle you can now play emulated games in your browser from legacy consoles or flash.}}<br />
+          <h2 class="box-description">
+            {{mask}}{{ Here you can find cool stuff like emulators and games!
+            Using projects like webretro and Ruffle you can now play emulated
+            games in your browser from legacy consoles or flash.}}<br />
           </h2>
           <h2 class="box-description">
-            {{mask}}{{
-            Select a directory below:
-            }}
+            {{mask}}{{ Select a directory below: }}
           </h2>
           <div class="box-button-container">
-            <a id="emtooltip" href="{{route}}{{/emulators}}" class="box-button">{{mask}}{{Emulators}}</a>
-            <a id="eltooltip" href="{{route}}{{/retro-games}}" class="box-button">{{mask}}{{EmuLibrary}}</a>
-            <a id="wgtooltip" href="{{route}}{{/web-games}}" class="box-button">{{mask}}{{Web Games}}</a>
-            <a id="fgtooltip" href="{{route}}{{/flash-games}}" class="box-button">{{mask}}{{Flash Games}}</a>
+            <a id="emtooltip" href="{{route}}{{/emulators}}" class="box-button"
+              >{{mask}}{{Emulators}}</a
+            >
+            <a
+              id="eltooltip"
+              href="{{route}}{{/retro-games}}"
+              class="box-button"
+              >{{mask}}{{EmuLibrary}}</a
+            >
+            <a id="wgtooltip" href="{{route}}{{/web-games}}" class="box-button"
+              >{{mask}}{{Web Games}}</a
+            >
+            <a
+              id="fgtooltip"
+              href="{{route}}{{/flash-games}}"
+              class="box-button"
+              >{{mask}}{{Flash Games}}</a
+            >
             <script src="https://unpkg.com/@popperjs/core@2"></script>
             <script src="https://unpkg.com/tippy.js@6"></script>
             <script>
               const tooltipContent = {
-                emtooltip: '{{mask}}{{Emulators [Webretro v6.5]: Fully ported RetroArch with over 20 emulators featured!}}',
-                eltooltip: '{{mask}}{{EmuLibrary [Collection]: Popular collection of games sourced from other websites. You can set this via the settings menu.}}',
-                wgtooltip: '{{mask}}{{Web Games [Collection]: Collection of popular web games, including WebGL and HTML5 games.}}',
-                fgtooltip: '{{mask}}{{Flash Games [Collection]: Collection of Flash games emulated via Ruffle.}}',
+                emtooltip:
+                  '{{mask}}{{Emulators [Webretro v6.5]: Fully ported RetroArch with over 20 emulators featured!}}',
+                eltooltip:
+                  '{{mask}}{{EmuLibrary [Collection]: Popular collection of games sourced from other websites. You can set this via the settings menu.}}',
+                wgtooltip:
+                  '{{mask}}{{Web Games [Collection]: Collection of popular web games, including WebGL and HTML5 games.}}',
+                fgtooltip:
+                  '{{mask}}{{Flash Games [Collection]: Collection of Flash games emulated via Ruffle.}}',
               };
 
-              tippy.setDefaultProps({delay: 50, animateFill: true, placement: 'bottom'});
+              tippy.setDefaultProps({
+                delay: 50,
+                animateFill: true,
+                placement: 'bottom',
+              });
 
               tippy('#emtooltip', { content: tooltipContent.emtooltip });
               tippy('#eltooltip', { content: tooltipContent.eltooltip });
@@ -78,6 +108,9 @@
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <script src="{{route}}{{assets/js/common.js}}"></script>
     <script src="{{route}}{{assets/js/csel.js}}"></script>
-    <script defer="defer" src="{{route}}{{assets/js/particlesjs/particles.js}}"></script>
+    <script
+      defer="defer"
+      src="{{route}}{{assets/js/particlesjs/particles.js}}"
+    ></script>
   </body>
 </html>

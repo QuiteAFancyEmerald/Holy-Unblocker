@@ -10,8 +10,14 @@
     }}
     <!--HEAD-CONTENT-->
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/backdrop.css">
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tippy.js@6/dist/backdrop.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tippy.js@6/animations/shift-away.css"
+    />
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
   </head>
@@ -26,31 +32,43 @@
       <div class="box-main-container">
         <div class="box-text-container">
           <p class="box-badge">
-            <span class="box-default-badge">News</span>{{mask}}{{Holy Unblocker LTS now
-            features adblock and TOR support!}}
+            <span class="box-default-badge">News</span>{{mask}}{{Holy Unblocker
+            LTS now features adblock and TOR support!}}
           </p>
           <h1>
-            {{mask}}{{
-            Holy Unblocker LTS sets the standard for fast, secure, and highly advanced web proxy services.
-            }}
+            {{mask}}{{ Holy Unblocker LTS sets the standard for fast, secure,
+            and highly advanced web proxy services. }}
           </h1>
           <h2 class="box-description">
-            {{mask}}{{
-            Experience rapid and reliable proxy performance with Holy Unblocker
-            LTS. Our robust feature set includes CAPTCHA integration,
+            {{mask}}{{ Experience rapid and reliable proxy performance with Holy
+            Unblocker LTS. Our robust feature set includes CAPTCHA integration,
             customizable blacklist settings, leak prevention mechanisms, and
-            advanced security measures.
-            }}
+            advanced security measures. }}
           </h2>
           <h2 class="box-description">
-            {{mask}}{{
-            Select a proxy service below to get started!
-            }}
+            {{mask}}{{ Select a proxy service below to get started! }}
           </h2>
           <div class="box-button-container">
-            <a href="{{route}}{{/scramjet}}" class="box-button tippy-button" data-tippy-content="{{mask}}{{Scramjet [Recommended]: Fast, secure, and frequently updated.}}">{{mask}}{{Scramjet (LATEST)}}</a>
-            <a id="uvtooltip" href="{{route}}{{/ultraviolet}}" class="box-button tippy-button" data-tippy-content="{{mask}}{{Ultraviolet [Fallback]: Popular, but use as fallback for CAPTCHA support.}}">{{mask}}{{Ultraviolet}}</a>
-            <a id="rhtooltip" href="{{route}}{{/rammerhead}}" class="box-button tippy-button" data-tippy-content="{{mask}}{{Rammerhead [Optional]: Not secure and has many leaks. Use as alternative fallback.}}">{{mask}}{{Rammerhead}}</a>
+            <a
+              href="{{route}}{{/scramjet}}"
+              class="box-button tippy-button"
+              data-tippy-content="{{mask}}{{Scramjet [Recommended]: Fast, secure, and frequently updated.}}"
+              >{{mask}}{{Scramjet (LATEST)}}</a
+            >
+            <a
+              id="uvtooltip"
+              href="{{route}}{{/ultraviolet}}"
+              class="box-button tippy-button"
+              data-tippy-content="{{mask}}{{Ultraviolet [Fallback]: Popular, but use as fallback for CAPTCHA support.}}"
+              >{{mask}}{{Ultraviolet}}</a
+            >
+            <a
+              id="rhtooltip"
+              href="{{route}}{{/rammerhead}}"
+              class="box-button tippy-button"
+              data-tippy-content="{{mask}}{{Rammerhead [Optional]: Not secure and has many leaks. Use as alternative fallback.}}"
+              >{{mask}}{{Rammerhead}}</a
+            >
           </div>
         </div>
         <div class="box-image-container">
@@ -70,11 +88,14 @@
       tippy('.tippy-button', {
         delay: 50,
         animateFill: true,
-        placement: 'bottom'
+        placement: 'bottom',
       });
     </script>
     <script src="{{route}}{{assets/js/common.js}}"></script>
     <script src="{{route}}{{assets/js/csel.js}}"></script>
-    <script defer="defer" src="{{route}}{{assets/js/particlesjs/particles.js}}"></script>
+    <script
+      defer="defer"
+      src="{{route}}{{assets/js/particlesjs/particles.js}}"
+    ></script>
   </body>
 </html>

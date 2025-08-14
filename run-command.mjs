@@ -206,7 +206,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
           rmSync(targetPath, { force: true, recursive: true });
           mkdirSync(targetPath);
           writeFileSync(
-            fileURLToPath(new URL(targetDir + '/.gitkeep', import.meta.url)), 
+            fileURLToPath(new URL(targetDir + '/.gitkeep', import.meta.url)),
             ''
           );
           console.log(
@@ -216,6 +216,16 @@ commands: for (let i = 2; i < process.argv.length; i++)
         } catch (e) {
           console.error('[Clean Error]', e);
         }
+      break;
+    }
+
+    case 'format': {
+      exec('npx prettier --write .', (error, stdout) => {
+        if (error) {
+          console.error('[Clean Error]', error);
+        }
+        console.log('[Clean]', stdout);
+      });
       break;
     }
 

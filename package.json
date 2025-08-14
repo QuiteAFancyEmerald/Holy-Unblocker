@@ -8,15 +8,17 @@
     "node": "20.x"
   },
   "scripts": {
-    "start": "npm install && npm run build && npm run manual-start",
+    "fresh-install": "npm cache verify && npm ci && cd lib/rammerhead && npm ci",
+    "fresh-start": "npm run fresh-install && npm start",
+    "start": "node run-command.mjs stop build start",
     "restart": "node run-command.mjs stop start",
     "stop": "node run-command.mjs stop",
     "test": "npm run proxy-validator",
     "manual-start": "node run-command.mjs start",
     "kill": "node run-command.mjs stop kill",
-    "build": "node run-command.mjs build && cd lib/rammerhead && npm install && npm run build",
+    "build": "node run-command.mjs build && cd lib/rammerhead && npm run build",
     "clear": "node run-command.mjs clean",
-    "clean": "node run-command.mjs clean",
+    "clean": "node run-command.mjs clean format",
     "proxy-validator": "node proxyServiceValidator.js",
     "workflow-test": "node run-command.mjs workflow",
     "deployment": "npm install && npm run build && node backend.js"

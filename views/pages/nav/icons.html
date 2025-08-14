@@ -24,10 +24,8 @@
         <h1 class="bigtitle">Icon Information</h1>
         <h3>How to find the Icon URL of a Site</h3>
         <p>
-          {{mask}}{{
-          Go to the website you want an icon from, then use this bookmarklet
-          (drag it to your bookmarks bar):
-          }}
+          {{mask}}{{ Go to the website you want an icon from, then use this
+          bookmarklet (drag it to your bookmarks bar): }}
         </p>
         <div id="bks-parent">
           <a id="iconfinder" class="fancybutton fb-l glowbutton"
@@ -39,10 +37,8 @@
             `javascript:alert((Array.from(document.head.querySelectorAll("link[rel*='icon']")).slice(-1)[0]||0).href||location.origin+"{{route}}{{/favicon.ico}}")`;
         </script>
         <p>
-          {{mask}}{{
-          Copy the URL that the bookmarklet gives you. Then go back to HU LTS and
-          enter in the URL for the Icon URL in Settings. Enjoy!
-          }}
+          {{mask}}{{ Copy the URL that the bookmarklet gives you. Then go back
+          to HU LTS and enter in the URL for the Icon URL in Settings. Enjoy! }}
         </p>
       </div>
     </div>
@@ -52,6 +48,9 @@
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <script src="{{route}}{{assets/js/common.js}}"></script>
     <script src="{{route}}{{assets/js/csel.js}}"></script>
-    <script defer="defer" src="{{route}}{{assets/js/particlesjs/particles.js}}"></script>
+    <script
+      defer="defer"
+      src="{{route}}{{assets/js/particlesjs/particles.js}}"
+    ></script>
   </body>
 </html>

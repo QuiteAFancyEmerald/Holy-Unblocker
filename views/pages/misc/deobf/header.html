@@ -1,6 +1,15 @@
-<div class="brand-logo-container"{{ifSEO}}{{ aria-label="Brand Logo"}}>
-  <div class="logo" role="img"{{ifSEO}}{{ aria-label="Holy Unblocker Logo"}}></div>
-    <a href="{{route}}{{/}}" class="brand pulse" title="{{mask}}{{Holy Unblocker Home Page}}"
+<div class="brand-logo-container" {{ifSEO}}{{ aria-label="Brand Logo" }}>
+  <div
+    class="logo"
+    role="img"
+    {{ifSEO}}{{
+    aria-label="Holy Unblocker Logo"
+    }}
+  ></div>
+  <a
+    href="{{route}}{{/}}"
+    class="brand pulse"
+    title="{{mask}}{{Holy Unblocker Home Page}}"
     >{{mask}}{{Holy Unblocker v6.8.x}}</a
   >
 </div>
@@ -44,9 +53,7 @@
 <ul class="navbar" role="list">
   <li class="dropdown-parent">
     <div class="pulse white-text">
-      <a href="#" tabindex="0"
-        >More <i class="fas fa-ellipsis-v"></i
-      ></a>
+      <a href="#" tabindex="0">More <i class="fas fa-ellipsis-v"></i></a>
     </div>
     <div
       class="dropdown-child"
@@ -77,7 +84,9 @@
           >
         </li>
         <li role="menuitem">
-          <a href="{{route}}{{/terms}}" title="Terms of Service - Rules and policies of use"
+          <a
+            href="{{route}}{{/terms}}"
+            title="Terms of Service - Rules and policies of use"
             >TOS</a
           >
         </li>

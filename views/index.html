@@ -14,7 +14,9 @@
     <meta name="application-name" content="Holy Unblocker LTS" />
     <link rel="canonical" href="https://holyunblocker.org/" />
     }}
-    <title>{{mask}}{{Holy Unblocker LTS | Secure & Free Web Proxy Service}}</title>
+    <title>
+      {{mask}}{{Holy Unblocker LTS | Secure & Free Web Proxy Service}}
+    </title>
     {{ifSEO}}{{
     <meta
       name="description"
@@ -37,7 +39,10 @@
     />
     }}
     <meta property="og:image" content="{{route}}{{assets/img/hero.webp}}" />
-    <meta property="og:image:secure_url" content="{{route}}{{assets/img/hero.webp}}" />
+    <meta
+      property="og:image:secure_url"
+      content="{{route}}{{assets/img/hero.webp}}"
+    />
     {{ifSEO}}{{
     <meta property="og:image:alt" content="Holy Unblocker Logo" />
     <meta property="og:locale" content="en_US" />
@@ -56,7 +61,10 @@
     <meta name="twitter:image:alt" content="Holy Unblocker Icon" />
     }}
     <meta name="msapplication-TileColor" content="#b4213b" />
-    <meta name="msapplication-TileImage" content="{{route}}{{assets/ico/ms-icon-144x144.png}}">
+    <meta
+      name="msapplication-TileImage"
+      content="{{route}}{{assets/ico/ms-icon-144x144.png}}"
+    />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta
       name="apple-mobile-web-app-status-bar-style"
@@ -276,18 +284,25 @@
         <div class="home-text" role="banner">
           <h1><span>{{mask}}{{End Internet Censorship.}}</span></h1>
           <h1>{{mask}}{{Privacy right at your fingertips.}}</h1>
-          <a class="homebutton" href="#scrollfix"{{ifSEO}}{{ aria-label="Bypass now"}}
+          <a
+            class="homebutton"
+            href="#scrollfix"
+            {{ifSEO}}{{
+            aria-label="Bypass now"
+            }}
             >{{mask}}{{Bypass now?}}</a
           >
-          <a class="homebutton mobile" href="{{route}}{{/browsing}}"{{ifSEO}}{{ aria-label="Browse now"}}
+          <a
+            class="homebutton mobile"
+            href="{{route}}{{/browsing}}"
+            {{ifSEO}}{{
+            aria-label="Browse now"
+            }}
             >{{mask}}{{Bypass now?}}</a
           >
         </div>
         <div class="mac-window" aria-label="Command Line Instructions">
-          <div
-            class="mac-title-bar"
-            role="banner"
-          >
+          <div class="mac-title-bar" role="banner">
             <div class="mac-buttons">
               <span class="mac-close"></span>
               <span class="mac-minimize"></span>
@@ -296,14 +311,22 @@
           </div>
           <div class="mac-content">
             <p>
-              <span class="cmd">git clone --recurse-submodules<span class="url"> {{mask}}{{https://github.com/QuiteAFancyEmerald/Holy-Unblocker.git}}</span>&#13;</span
+              <span class="cmd"
+                >git clone --recurse-submodules<span class="url">
+                  {{mask}}{{https://github.com/QuiteAFancyEmerald/Holy-Unblocker.git}}</span
+                >&#13;</span
               ><br />
               <span class="cmd">cd {{mask}}{{Holy-Unblocker}}&#13;</span><br />
-              <span class="comment">Recommended you switch branches to a stable released branch such as v6.x instead of master.</span><br />
+              <span class="comment"
+                >Recommended you switch branches to a stable released branch
+                such as v6.x instead of master.</span
+              ><br />
               <span class="cmd">npm start&#13;</span><br />
               <span class="comment">Or on subsequent uses...</span><br />
               <span class="cmd">npm restart&#13;</span><br /><br />
-              <span class="comment">{{mask}}{{Holy Unblocker LTS}} v<!-- VERSION --> // master</span
+              <span class="comment"
+                >{{mask}}{{Holy Unblocker LTS}} v<!-- VERSION -->
+                // master</span
               ><br />
               <span class="comment">Node.js v20.x</span><br />
               <span class="comment">Fastify v5.4.0</span><br /><br />
@@ -323,15 +346,16 @@
             <div class="hero-text-wrap">
               <div class="brand-logo-container">
                 <i class="far fa-window-restore palered"></i>
-                <h2 class="hero-content-header">{{mask}}{{Holy Unblocker is free.}}</h2>
+                <h2 class="hero-content-header">
+                  {{mask}}{{Holy Unblocker is free.}}
+                </h2>
               </div>
               <p>
-                {{mask}}{{
-                Being open source, you can easily fork this repository and self
-                host for maximum privacy control. In contrast to numerous other
-                web proxy services, HU LTS stands out with complete transparency
-                and privacy control. We collect no user data on our official instances.
-                }}
+                {{mask}}{{ Being open source, you can easily fork this
+                repository and self host for maximum privacy control. In
+                contrast to numerous other web proxy services, HU LTS stands out
+                with complete transparency and privacy control. We collect no
+                user data on our official instances. }}
               </p>
               <div class="brand-logo-container">
                 <i class="far fa-window-restore palered"></i>
@@ -340,13 +364,14 @@
                 </h2>
               </div>
               <p>
-                {{mask}}{{
-                HU LTS delivers exceptional web proxy performance. It boasts a
-                robust feature set including CAPTCHA integration, customizable
-                blacklist settings, leak prevention mechanisms, robust security
-                measures, and extensive site compatibility support via
-                Scramjet + Wisp (Paired with Epoxy or Libcurl Transport). Other popular services like CroxyProxy or Proxium often only do half the job of rewriting assets leaking requests while being a privacy concern.
-                }}
+                {{mask}}{{ HU LTS delivers exceptional web proxy performance. It
+                boasts a robust feature set including CAPTCHA integration,
+                customizable blacklist settings, leak prevention mechanisms,
+                robust security measures, and extensive site compatibility
+                support via Scramjet + Wisp (Paired with Epoxy or Libcurl
+                Transport). Other popular services like CroxyProxy or Proxium
+                often only do half the job of rewriting assets leaking requests
+                while being a privacy concern. }}
               </p>
               <div class="brand-logo-container">
                 <i class="far fa-window-restore palered"></i>
@@ -355,21 +380,28 @@
                 </h2>
               </div>
               <p>
-                {{mask}}{{
-                Leveraging our source randomization and projects like
+                {{mask}}{{ Leveraging our source randomization and projects like
                 Epoxy, Wisp, and Scramjet, this project delivers a seamless
                 experience that circumvents web, government and network filters.
-                This is achieved entirely within your browser as a website and our backend
-                (or your own if self-hosting), enabling users to bypass even the most invasive censorship blocks. No need to download anything simply type in the domain for HU LTS and browse anonymously.
-                }}
+                This is achieved entirely within your browser as a website and
+                our backend (or your own if self-hosting), enabling users to
+                bypass even the most invasive censorship blocks. No need to
+                download anything simply type in the domain for HU LTS and
+                browse anonymously. }}
               </p>
             </div>
           </div>
           <div class="image-container-hero">
-            <img class="hero" src="{{route}}{{/assets/img/hero.webp}}" alt="icon" />
+            <img
+              class="hero"
+              src="{{route}}{{/assets/img/hero.webp}}"
+              alt="icon"
+            />
             <h1>{{mask}}{{Holy Unblocker LTS}}</h1>
             <h2>Free and transparent for use</h2>
-            <a class="fancybutton glowbutton" href="{{route}}{{/browsing}}">Browse Now</a>
+            <a class="fancybutton glowbutton" href="{{route}}{{/browsing}}"
+              >Browse Now</a
+            >
           </div>
         </div>
       </div>
@@ -378,52 +410,116 @@
           <div class="carousel">
             <div class="carousel-inner">
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/fastify.webp}}" alt="Fastify" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/fastify.webp}}"
+                  alt="Fastify"
+                />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/nordtheme.webp}}" alt="Nord Theme" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/nordtheme.webp}}"
+                  alt="Nord Theme"
+                />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/nodejs.webp}}" alt="Nodejs" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/nodejs.webp}}"
+                  alt="Nodejs"
+                />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/fontawesome.webp}}" alt="Font Awesome" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/fontawesome.webp}}"
+                  alt="Font Awesome"
+                />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/webretro.webp}}" alt="Webretro" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/webretro.webp}}"
+                  alt="Webretro"
+                />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/ruffle.webp}}" alt="Ruffle" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/ruffle.webp}}"
+                  alt="Ruffle"
+                />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/uv.webp}}" alt="{{mask}}{{Ultraviolet}}" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/uv.webp}}"
+                  alt="{{mask}}{{Ultraviolet}}"
+                />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/rammerhead.webp}}" alt="{{mask}}{{Rammerhead}}" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/rammerhead.webp}}"
+                  alt="{{mask}}{{Rammerhead}}"
+                />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/fastify.webp}}" alt="Fastify" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/fastify.webp}}"
+                  alt="Fastify"
+                />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/nordtheme.webp}}" alt="Nord Theme" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/nordtheme.webp}}"
+                  alt="Nord Theme"
+                />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/nodejs.webp}}" alt="Nodejs" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/nodejs.webp}}"
+                  alt="Nodejs"
+                />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/fontawesome.webp}}" alt="Font Awesome" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/fontawesome.webp}}"
+                  alt="Font Awesome"
+                />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/webretro.webp}}" alt="Webretro" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/webretro.webp}}"
+                  alt="Webretro"
+                />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/ruffle.webp}}" alt="Ruffle" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/ruffle.webp}}"
+                  alt="Ruffle"
+                />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/uv.webp}}" alt="{{mask}}{{Ultraviolet}}" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/uv.webp}}"
+                  alt="{{mask}}{{Ultraviolet}}"
+                />
               </div>
               <div class="dependencylogo">
-                <img loading="lazy" src="{{route}}{{/assets/img/rammerhead.webp}}" alt="{{mask}}{{Rammerhead}}" />
+                <img
+                  loading="lazy"
+                  src="{{route}}{{/assets/img/rammerhead.webp}}"
+                  alt="{{mask}}{{Rammerhead}}"
+                />
               </div>
             </div>
           </div>
@@ -474,14 +570,13 @@
             <div class="text-wrap">
               <h1>Overview</h1>
               <p>
-                {{mask}}{{
-                Holy Unblocker LTS, an experimental web proxy service, can
-                bypass web filters or 'blockers' regardless of whether the
-                method of censorship is client-side or network-based. This
-                includes the ability to bypass content blockers
-                overseas put in place by governments, chrome extensions, localized client firewalls, and
-                network-related filters.
-                }}
+                {{mask}}{{ Holy Unblocker LTS, an experimental web proxy
+                service, can bypass web filters or 'blockers' regardless of
+                whether the method of censorship is client-side or
+                network-based. This includes the ability to bypass content
+                blockers overseas put in place by governments, chrome
+                extensions, localized client firewalls, and network-related
+                filters. }}
               </p>
             </div>
           </div>
@@ -499,13 +594,11 @@
             <div class="text-wrap">
               <h1>Intent</h1>
               <p>
-                {{mask}}{{
-                This project serves mostly as a proof of concept for the ideal
-                clientless solution to bypassing censorship. Being a secure web
-                proxy service, it supports numerous sites while being updated
-                frequently and concentrating on detail with design, mechanics,
-                and features.
-                }}
+                {{mask}}{{ This project serves mostly as a proof of concept for
+                the ideal clientless solution to bypassing censorship. Being a
+                secure web proxy service, it supports numerous sites while being
+                updated frequently and concentrating on detail with design,
+                mechanics, and features. }}
               </p>
               <p>
                 This project's palette is built using
@@ -528,17 +621,23 @@
             <div class="text-wrap">
               <h1>Usage</h1>
               <p>
-                Head to the <a href="{{route}}{{/browsing}}">{{mask}}{{Web Proxies}}</a> {{mask}}{{page and select
-                one of the proxies featured! Afterwards, type out the site you
-                wish to access in the search box. Each web proxy has its own
-                level of effectiveness, speed and security. It is recommended to
-                use Scramjet.}}<br /><br />{{mask}}{{Example Website To Unblock:}}
+                Head to the
+                <a href="{{route}}{{/browsing}}">{{mask}}{{Web Proxies}}</a>
+                {{mask}}{{page and select one of the proxies featured!
+                Afterwards, type out the site you wish to access in the search
+                box. Each web proxy has its own level of effectiveness, speed
+                and security. It is recommended to use Scramjet.}}<br /><br />{{mask}}{{Example
+                Website To Unblock:}}
                 <code>{{mask}}{{https://YouTube.com}}</code>
               </p>
             </div>
           </div>
           <div class="image-container">
-            <img class="hero" src="{{route}}{{/assets/img/shield.webp}}" alt="Shield Icon" />
+            <img
+              class="hero"
+              src="{{route}}{{/assets/img/shield.webp}}"
+              alt="Shield Icon"
+            />
           </div>
         </div>
         <div data-aos="fade-left" id="info2" class="box-card">
@@ -546,15 +645,18 @@
             <div class="text-wrap">
               <h1>{{mask}}{{Apps}}</h1>
               <p>
-                {{mask}}{{
-                HU LTS features a collection of pre-linked applications,
-                including YouTube, Spotify,
-                }}
-                <a href="{{route}}{{/emulators}}">{{mask}}{{Webretro}}</a> {{mask}}{{(an online everything
-                emulator),}} <a href="{{route}}{{/flash-games}}">{{mask}}{{Ruffle.fs}}</a> {{mask}}{{(Adobe Flash
-                Emulator), and an expansive library for each respective app.}}
+                {{mask}}{{ HU LTS features a collection of pre-linked
+                applications, including YouTube, Spotify, }}
+                <a href="{{route}}{{/emulators}}">{{mask}}{{Webretro}}</a>
+                {{mask}}{{(an online everything emulator),}}
+                <a href="{{route}}{{/flash-games}}">{{mask}}{{Ruffle.fs}}</a>
+                {{mask}}{{(Adobe Flash Emulator), and an expansive library for
+                each respective app.}}
               </p>
-              <p>{{mask}}{{This project is soon to support the Anura games library.}}</p>
+              <p>
+                {{mask}}{{This project is soon to support the Anura games
+                library.}}
+              </p>
             </div>
           </div>
           <div class="image-container">
@@ -570,12 +672,14 @@
             <div class="text-wrap">
               <h1>{{mask}}{{Hosting and Deployment}}</h1>
               <p>
-                <strong>{{mask}}{{Holy Unblocker}} LTS</strong> {{mask}}{{is designed with flexibility
-                and ease of deployment in mind. As an open-source solution, it
-                is straightforward to set up on both personal and production
-                environments. Key features include modularity for ad-blocking,
-                source randomization, and advanced proxy navigation.}}<br /><br />
-                {{mask}}{{For comprehensive setup instructions, visit our official}}
+                <strong>{{mask}}{{Holy Unblocker}} LTS</strong> {{mask}}{{is
+                designed with flexibility and ease of deployment in mind. As an
+                open-source solution, it is straightforward to set up on both
+                personal and production environments. Key features include
+                modularity for ad-blocking, source randomization, and advanced
+                proxy navigation.}}<br /><br />
+                {{mask}}{{For comprehensive setup instructions, visit our
+                official}}
                 <a
                   href="{{route}}{{/github}}"
                   title="{{mask}}{{Holy Unblocker}} LTS GitHub Repository"
@@ -590,15 +694,17 @@
                   rel="noopener noreferrer"
                   >{{mask}}{{Titanium Network Docs}}</a
                 >, or
-                <a href="{{route}}{{/documentation}}" title="{{mask}}{{Additional Hosting Information}}"
+                <a
+                  href="{{route}}{{/documentation}}"
+                  title="{{mask}}{{Additional Hosting Information}}"
                   >{{mask}}{{linked here on the main site}}</a
                 >.
               </p>
               <p>
                 {{mask}}{{Additional scripts can be found in}}
                 <code>{{mask}}{{/views/assets/js/}}</code>:<br />
-                - <strong>{{mask}}{{bareTransport.js}}</strong>{{mask}}{{: Locally installed module
-                for Ultraviolet functionality.}}<br />
+                - <strong>{{mask}}{{bareTransport.js}}</strong>{{mask}}{{:
+                Locally installed module for Ultraviolet functionality.}}<br />
                 - <strong>card.js</strong>: Adds visual effects to the box
                 cards.<br />
                 - <strong>common.js</strong>: Provides essential features across
@@ -606,8 +712,8 @@
                 - <strong>csel.js</strong>: Manages the settings menu.<br />
                 - <strong>particles.js</strong>: Creates animated background
                 effects.<br />
-                - <strong>register-sw.js</strong>{{mask}}{{: Handles service workers and
-                Ultraviolet integration.}}
+                - <strong>register-sw.js</strong>{{mask}}{{: Handles service
+                workers and Ultraviolet integration.}}
               </p>
             </div>
           </div>
@@ -625,21 +731,24 @@
             <div class="text-wrap">
               <h1>Contributing</h1>
               <p>
-                <strong>{{mask}}{{Holy Unblocker}} LTS</strong> {{mask}}{{thrives due to the dedicated
-                efforts of our amazing contributors. As an open-source project,}}
-                <strong>{{mask}}{{HU LTS}}</strong> {{mask}}{{relies on the collective skills and
-                passion of its community to drive continuous improvement and
-                deliver the best experience for all users.}}
+                <strong>{{mask}}{{Holy Unblocker}} LTS</strong>
+                {{mask}}{{thrives due to the dedicated efforts of our amazing
+                contributors. As an open-source project,}}
+                <strong>{{mask}}{{HU LTS}}</strong> {{mask}}{{relies on the
+                collective skills and passion of its community to drive
+                continuous improvement and deliver the best experience for all
+                users.}}
               </p>
               <p>
-                {{mask}}{{There are numerous ways to get involved and make a meaningful
-                impact on}} <strong>{{mask}}{{Holy Unblocker LTS}}</strong>:<br /><br />
+                {{mask}}{{There are numerous ways to get involved and make a
+                meaningful impact on}}
+                <strong>{{mask}}{{Holy Unblocker LTS}}</strong>:<br /><br />
                 - <strong>Design</strong>: Contribute to the visual aesthetics
                 and user experience.<br />
                 - <strong>Core Development</strong>: Help enhance the core
                 functionality and performance.<br />
-                - <strong>{{mask}}{{Applications and Games}}</strong>{{mask}}{{: Develop and integrate
-                new features or games.}}<br />
+                - <strong>{{mask}}{{Applications and Games}}</strong>{{mask}}{{:
+                Develop and integrate new features or games.}}<br />
                 - <strong>Documentation</strong>: Assist with creating and
                 refining project documentation.<br />
                 - <strong>Testing and QA</strong>: Ensure the software is
@@ -687,10 +796,14 @@
                 </h2>
               </div>
               <p>
-                {{mask}}{{Great Firewall of China? Censorship? No problem. Holy Unblocker LTS is an open-source}}
-                <strong>{{mask}}{{public web proxy}}</strong>{{mask}}{{. Enjoy unrestricted access to
-                online content and secure browsing with our advanced}}
-                <strong>{{mask}}{{web proxy unblocking}}</strong> {{mask}}{{features. This project grants you the ability to host it anywhere and bypass regional blocks.}}
+                {{mask}}{{Great Firewall of China? Censorship? No problem. Holy
+                Unblocker LTS is an open-source}}
+                <strong>{{mask}}{{public web proxy}}</strong>{{mask}}{{. Enjoy
+                unrestricted access to online content and secure browsing with
+                our advanced}}
+                <strong>{{mask}}{{web proxy unblocking}}</strong>
+                {{mask}}{{features. This project grants you the ability to host
+                it anywhere and bypass regional blocks.}}
               </p>
               <div class="brand-logo-container">
                 <i class="far fa-window-restore palered"></i>
@@ -699,10 +812,12 @@
                 </h2>
               </div>
               <p>
-                {{mask}}{{Benefit from our}} <strong>{{mask}}{{free web proxy service}}</strong> that
-                helps you <strong>{{mask}}{{unblock websites}}</strong> {{mask}}{{and access
-                restricted content. Perfect for bypassing
-                educational and/or workplace filters this project is made to unblock it all.}}
+                {{mask}}{{Benefit from our}}
+                <strong>{{mask}}{{free web proxy service}}</strong> that helps
+                you <strong>{{mask}}{{unblock websites}}</strong> {{mask}}{{and
+                access restricted content. Perfect for bypassing educational
+                and/or workplace filters this project is made to unblock it
+                all.}}
               </p>
               <div class="brand-logo-container">
                 <i class="far fa-window-restore palered"></i>
@@ -711,22 +826,30 @@
                 </h2>
               </div>
               <p>
-                {{mask}}{{
-                Using Holy Unblocker LTS, you can access the Tor network directly within your Chromium-based/Firefox-based browser. This allows you to browse the web anonymously, bypassing any regional restrictions. This project also supports setting custom SOCKS5 proxies to layer.
-                }}
+                {{mask}}{{ Using Holy Unblocker LTS, you can access the Tor
+                network directly within your Chromium-based/Firefox-based
+                browser. This allows you to browse the web anonymously,
+                bypassing any regional restrictions. This project also supports
+                setting custom SOCKS5 proxies to layer. }}
               </p>
             </div>
           </div>
           <div class="image-container-hero">
             <h1>Long Term Support FOSS Project</h1>
-            <a class="fancybutton glowbutton" href="{{route}}{{/browsing}}">{{mask}}{{Bypass Now}}</a>
+            <a class="fancybutton glowbutton" href="{{route}}{{/browsing}}"
+              >{{mask}}{{Bypass Now}}</a
+            >
           </div>
         </div>
       </div>
       <div class="box-home text-center splashend">
         <h1>{{mask}}{{It's time to browse the internet freely.}}</h1>
-        <a class="homebutton" href="#scrollfix">{{mask}}{{Try HU LTS For Free}}</a>
-        <a class="homebutton mobile" href="{{route}}{{/browsing}}">{{mask}}{{Try HU LTS For Free}}</a>
+        <a class="homebutton" href="#scrollfix"
+          >{{mask}}{{Try HU LTS For Free}}</a
+        >
+        <a class="homebutton mobile" href="{{route}}{{/browsing}}"
+          >{{mask}}{{Try HU LTS For Free}}</a
+        >
       </div>
     </div>
     <div id="footer" class="fullwidth">
@@ -740,6 +863,9 @@
     <script>
       AOS.init();
     </script>
-    <script defer="defer" src="{{route}}{{assets/js/particlesjs/particles.js}}"></script>
+    <script
+      defer="defer"
+      src="{{route}}{{assets/js/particlesjs/particles.js}}"
+    ></script>
   </body>
 </html>

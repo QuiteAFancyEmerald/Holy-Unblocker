@@ -1,4 +1,3 @@
-
 <img align="center" src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/github_banner.png"></img>
 
 <img align="left" width="40px" src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/logo_github.png"></img>
@@ -11,13 +10,16 @@
 Holy Unblocker LTS, an experimental web proxy service, can bypass web filters or "blockers" regardless of whether the method of censorship is client-side or network-based. This includes the potential ability to bypass content blockers from governments, chrome extensions, localized client firewalls, and network-related filters. The project even allows the ability to browse Tor/Onion sites in any browser (even Chromium) all through a website!
 
 ## You can support Holy Unblocker by starring the repository!
+
 This project serves mostly as a proof of concept for the ideal clientless solution to bypassing censorship. Simply host this project on any domain and have an alternative solution to a VPN without needing to download anything on said device. Being a secure web proxy service, it supports numerous sites while being updated frequently and concentrating on being easy to self-host.
 
 Works with a large number of sites, including YouTube, Discord, and more!
 Also has a good amount of locally hosted games featured on the site.
 
 ### Over 30M+ users since 2020. Thank you so much for the support I could have never imagined how massive the web proxy community has become.
+
 #### Current Branch: Latest
+
 <details><summary>Branch Types</summary>
 
 - Latest (master; built for FOSS and SEO)
@@ -36,17 +38,16 @@ Also has a good amount of locally hosted games featured on the site.
 > [!TIP]
 > Holy Unblocker LTS is optimized for self-hosting to provide you with maximum privacy control! Fork this repository and consider starring. You can self-host using either free or paid deployment options, or set it up on a dedicated instance (VPS) for enhanced performance.
 
-| **Supported Sites**         | **Features**                                                                                                           |
-|-----------------------------|------------------------------------------------------------------------------------------------------------------------|
-| Youtube                     | Built-in variety of open source web proxies with both a focus on speed and/or security                                 |
-| CoolMathGames               | Features "Source Randomization" to circumvent major filters effectively along with randomizations to proxy globals    |
-| Discord                     | Tab title + icon customization using the Settings Menu for improved browsing stealth                                   |
-| Now.gg                      | Adblocking support across all websites while surfing                                                                   |
-| Reddit.com                  | SOCKS5 and Onion routing support with Tor within the Settings Menu. Use Tor/Onion sites in any browser!                                                    |
-| GeForce NOW                 | Game library with moderately decent titles and open-source emulation projects                                          |
-| Spotify                     | Has frequent support articles for issues relating to various proxy instances                                           |
-| And essentially all sites!  | Built for intensive production loads and speed                                                                          |
-
+| **Supported Sites**        | **Features**                                                                                                       |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Youtube                    | Built-in variety of open source web proxies with both a focus on speed and/or security                             |
+| CoolMathGames              | Features "Source Randomization" to circumvent major filters effectively along with randomizations to proxy globals |
+| Discord                    | Tab title + icon customization using the Settings Menu for improved browsing stealth                               |
+| Now.gg                     | Adblocking support across all websites while surfing                                                               |
+| Reddit.com                 | SOCKS5 and Onion routing support with Tor within the Settings Menu. Use Tor/Onion sites in any browser!            |
+| GeForce NOW                | Game library with moderately decent titles and open-source emulation projects                                      |
+| Spotify                    | Has frequent support articles for issues relating to various proxy instances                                       |
+| And essentially all sites! | Built for intensive production loads and speed                                                                     |
 
 <img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.4.3-preview.png"></img>
 <img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.3.0-preview-settings.png"></img>
@@ -58,6 +59,7 @@ Read below for information if the official site is blocked or for obtaining more
 ## Deploy Holy Unblocker
 
 ### Free Deployments
+
 [![Deploy to Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?name=holy-unblocker&type=git&repository=QuiteAFancyEmerald%2FHoly-Unblocker&branch=v6.3_production&builder=buildpack&env%5B%5D=&ports=8080%3Bhttp%3B%2F)
 [![Deploy to Oracle Cloud](https://binbashbanana.github.io/deploy-buttons/buttons/remade/oraclecloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/BinBashBanana/deploy-buttons/archive/refs/heads/main.zip)
 
@@ -68,12 +70,14 @@ Read below for information if the official site is blocked or for obtaining more
 </details>
 
 ### Production Paid/Free Options (Requires Payment Info)
+
 [![Deploy to Azure](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/azure.svg)](https://deploy.azure.com/?repository=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
 [![Deploy to IBM Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/ibmcloud.svg)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
 [![Deploy to Amplify Console](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/amplifyconsole.svg)](https://console.aws.amazon.com/amplify/home#/deploy?repo=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
 [![Run on Google Cloud](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/googlecloud.svg)](https://deploy.cloud.run/?git_repo=https://github.com/QuiteAFancyEmerald/Holy-Unblocker)
 
 #### What happened to Replit/Heroku Deployment?
+
 Replit is no longer free and Heroku has a set policy against web proxies. Try GitHub Codespaces or Gitpod instead for development on the cloud OR Koyeb for free hosting.
 
 ### GitHub Codespaces
@@ -82,7 +86,7 @@ Replit is no longer free and Heroku has a set policy against web proxies. Try Gi
 
 - Fork (and star!) this repository to your GitHub account
 - Head to the official <a href="https://github.com/codespaces">Codespaces</a> website (ensure you have a GitHub account already made)
-- Select **New Codespaces** and look for *[USERNAME]/Holy-Unblocker* on your account
+- Select **New Codespaces** and look for _[USERNAME]/Holy-Unblocker_ on your account
 - Ensure the branch is set to `master` and the dev container configuration is set to **Holy Unblocker LTS**
 - Select **Create Codespace** and allow the container to setup
 - Type `npm install` and `npm start` in the terminal
@@ -99,7 +103,7 @@ Replit is no longer free and Heroku has a set policy against web proxies. Try Gi
     - [TOR Routing](#toronion-routing-setup)
     - [Proxy](#proxy-configuration)
     - [Client Navigation](#client-navigation-configuration)
-    - [Games Management](#games-management) 
+    - [Games Management](#games-management)
   - [Structure](#structure)
     - [Structure Information](#structure-information)
     - [Static Files](#details-of-views)
@@ -115,7 +119,7 @@ Replit is no longer free and Heroku has a set policy against web proxies. Try Gi
 
 ## How to Setup
 
-#### It is highly recommended you switch branches via your IDE to a production released branch. Often the master branch contains unstable or WIP changes. 
+#### It is highly recommended you switch branches via your IDE to a production released branch. Often the master branch contains unstable or WIP changes.
 
 #### Example: v6.x_production instead of master
 
@@ -148,6 +152,7 @@ This website is hosted locally with Scramjet, Ultraviolet (Wisp, Bare-Mux, Epoxy
 ### Configuration
 
 #### Server Configuration Setup
+
 The default place for the proxy when its started is `http://localhost:8080`, but you can change it if needed in `./ecosystem.config.js`. You can also modify the other configuration values at `./config.json`. To clarify you change the PORT and other production metrics via `./ecosystem.config.js`. Localized changes for source randomization, auto-minify, etc. are located in `./config.json`.
 
 #### Tor/Onion Routing Setup
@@ -170,7 +175,7 @@ The primary location for tweaking any web proxy related settings assigned via th
 
 #### Client Navigation Configuration
 
-The primary location for any client side navigation scripts is `./views/assets/js/common.js`. This file is primary used for Omnibox (Search Engine) functionality, swapping proxy options and linking games. 
+The primary location for any client side navigation scripts is `./views/assets/js/common.js`. This file is primary used for Omnibox (Search Engine) functionality, swapping proxy options and linking games.
 
 - `getDomain`: This constant is used for specifying any subdomains to remove when appending a URL into the omnibox.
 - `goFrame`: This specifies the stealth frame used for Holy Unblocker LTS
@@ -181,42 +186,42 @@ The primary location for any client side navigation scripts is `./views/assets/j
 - `goProx`: This constant allows for the mapping of URL handling for specific proxies, games or links that need to fall under a web proxy.
 
 ```js
-  const goProx = Object.freeze({
-    ultraviolet: urlHandler(uvUrl),
+const goProx = Object.freeze({
+  ultraviolet: urlHandler(uvUrl),
 
-    scramjet: urlHandler(sjUrl),
+  scramjet: urlHandler(sjUrl),
 
-    rammerhead: asyncUrlHandler(
-      async (url) => location.origin + (await RammerheadEncode(search(url)))
-    ),
+  rammerhead: asyncUrlHandler(
+    async (url) => location.origin + (await RammerheadEncode(search(url)))
+  ),
 
-    // `location.protocol + "//" + getDomain()` more like `location.origin`
+  // `location.protocol + "//" + getDomain()` more like `location.origin`
 
-    examplepath: urlHandler(location.protocol + `//c.${getDomain()}/example/`),
+  examplepath: urlHandler(location.protocol + `//c.${getDomain()}/example/`),
 
-    examplesubdomain: urlHandler(location.protocol + '//c.' + getDomain()),
+  examplesubdomain: urlHandler(location.protocol + '//c.' + getDomain()),
 
-    example: urlHandler(sjUrl('https://example.com')),
-  });
+  example: urlHandler(sjUrl('https://example.com')),
+});
 ```
 
 - `prSet`: Attaches event listeners using goProx for any buttons or inputs needed
 
 ```js
- // prSet function code here....
- 
-  prSet('pr-uv', 'ultraviolet');
-  prSet('pr-sj', 'scramjet');
-  prSet('pr-rh', 'rammerhead');
-  prSet('pr-yt', 'youtube');
-  prSet('pr-example', 'example');
+// prSet function code here....
+
+prSet('pr-uv', 'ultraviolet');
+prSet('pr-sj', 'scramjet');
+prSet('pr-rh', 'rammerhead');
+prSet('pr-yt', 'youtube');
+prSet('pr-example', 'example');
 ```
 
 - `huLinks/navLists`: Automatically takes paths stated in `./views/assets/json` and appends them depending on the page and usage. This is used for hiding links that would lead to filter blocks and create an easier system for adding games.
 
 #### Games Management
 
-As stated above all game links that need to be appended to a page (including images and descriptions) are managed via the nav files in`./views/assets/json`. When cloning Holy Unblocker utilize `--recurse-submodules` to ensure all submodules are downloaded along with `git submodule init`. 
+As stated above all game links that need to be appended to a page (including images and descriptions) are managed via the nav files in`./views/assets/json`. When cloning Holy Unblocker utilize `--recurse-submodules` to ensure all submodules are downloaded along with `git submodule init`.
 
 - `views/archive/g`: Contains any local or external HTML5/web games.
 - `views/archive/gfiles/flash`: Contains Ruffle (an Adobe Flash emulator) and a collection of flash games linked to an external CDN.
@@ -299,7 +304,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 
 - [x] Ensure Ultraviolet is updated to support bare-mux and wisp - done
 - [x] Ensure Scramjet is added and works together with UV's implementation - done
-= [x] Refactor register-sw.js - done
+- [x] Refactor register-sw.js - done
 - [x] Add Rammerhead support - done
 - [x] Fix slow Ultraviolet speeds despite being local; something on the backend?? - done
 - [x] Fix Ultraviolet on Firefox - (partial/needs work)
@@ -314,13 +319,12 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [x] Update csel.js to support network based adblocking (partial/needs work)
 - [ ] Add a "website self-destruct" button to the settings menu
 - [x] Flesh out and rework the UV / Scramjet / bare client error page - done
-- [x] Update sw.js to support workerware (https://github.com/MercuryWorkshop/workerware)-- This is not done however we have our own middleware system implemented for adblocking, etc. 
+- [x] Update sw.js to support workerware (https://github.com/MercuryWorkshop/workerware)-- This is not done however we have our own middleware system implemented for adblocking, etc.
 - [ ] Omnibox autoupdate script (for the Google/Bing style auto suggest feature)
 - [ ] Omnibar functionality (back and forward navigation, settings menu and create new stealth page with URL)
 - [ ] Games library will feature 10000 items; 5000 flash games and 5000 other game types
 - [ ] Improve adblocking functions on site using AnuraOS standards
-- [x] Revamp the Stealth Frame with a slight animation (ease in and then the wheeling loading with a gradient fading away once its loaded or shows the error page LOL), a loading wheel/page and lastly a omnibox widget. It will have like nav buttons, some of the settings from the settings menu, a home button, a button that brings up the Setting menu and be in a designed position. Intent is to reduce the back/forth nature that users have to do currently making it more tedious to use the site. - partial. needs functionality. 
-
+- [x] Revamp the Stealth Frame with a slight animation (ease in and then the wheeling loading with a gradient fading away once its loaded or shows the error page LOL), a loading wheel/page and lastly a omnibox widget. It will have like nav buttons, some of the settings from the settings menu, a home button, a button that brings up the Setting menu and be in a designed position. Intent is to reduce the back/forth nature that users have to do currently making it more tedious to use the site. - partial. needs functionality.
 
 ## Site Redesign
 
