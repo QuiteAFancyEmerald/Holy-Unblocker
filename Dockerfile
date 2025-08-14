@@ -4,7 +4,7 @@ WORKDIR /
 
 # Copy files needed for a fresh install
 COPY package*.json ./
-COPY ./lib/rammerhead/package*.json ./
+COPY ./lib/rammerhead/package*.json ./lib/rammerhead/
 
 RUN npm run fresh-install
 
