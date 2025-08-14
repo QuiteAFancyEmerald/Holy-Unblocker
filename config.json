@@ -4,6 +4,6 @@
   "pathname": "/",
   "minifyScripts": true,
   "randomizeIdentifiers": true,
-  "production": true,
+  "production": false,
   "usingSEO": true
 }
