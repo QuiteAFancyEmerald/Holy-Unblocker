@@ -195,7 +195,9 @@ app.get(serverUrl.pathname + ':path', (req, reply) => {
       supportedTypes.default;
 
   reply.type(type);
-  reply.send(tryReadFile('../views/dist/' + fileName, import.meta.url));
+  if (fileName.indexOf('archive/') === 0)
+    reply.send(tryReadFile('../views/' + fileName, import.meta.url));
+  else reply.send(tryReadFile('../views/dist/' + fileName, import.meta.url));
 });
 
 app.get(serverUrl.pathname + 'github/:redirect', (req, reply) => {
