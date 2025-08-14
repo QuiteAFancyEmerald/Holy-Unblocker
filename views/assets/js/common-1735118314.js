@@ -541,10 +541,6 @@ addEventListener('DOMContentLoaded', async () => {
 
     osu: urlHandler(location.origin + '{{route}}{{/archive/osu}}'),
 
-    celeste: urlHandler(location.origin + '{{route}}{{/archive/celeste}}'),
-
-    terraria: urlHandler(location.origin + '{{route}}{{/archive/terraria}}'),
-
     agar: urlHandler(sjUrl('https://agar.io')),
 
     prison: urlHandler(sjUrl('https://vimlark.itch.io/pick-up-prison')),
