@@ -39,7 +39,7 @@ module.exports = {
       watch: false,
     },
     {
-      name: 'HolyUBLTS-src-refresh',
+      name: 'HolyUBLTS-cache-clean',
       script: './run-command.mjs',
       args: 'clean',
       env: {
