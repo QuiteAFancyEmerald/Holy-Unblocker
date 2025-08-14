@@ -10,6 +10,10 @@ RUN npm run fresh-install
 
 COPY . .
 
+RUN npm run build
+
+COPY . .
+
 EXPOSE 8080
 
-CMD ["npm", "start"]
+CMD ["node", "backend.js"]
