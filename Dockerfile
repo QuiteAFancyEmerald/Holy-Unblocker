@@ -9,8 +9,7 @@ COPY ./lib/rammerhead/package*.json ./lib/rammerhead/
 RUN npm run fresh-install
 
 COPY . .
-RUN npm run build
 
 EXPOSE 8080
 
-CMD ["npm", "run", "manual-start"]
+CMD ["npm", "start"]
