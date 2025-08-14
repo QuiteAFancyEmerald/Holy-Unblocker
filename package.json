@@ -8,7 +8,7 @@
     "node": "20.x"
   },
   "scripts": {
-    "start": "npm ci --omit=optional && npm run build && npm run manual-start",
+    "start": "npm install && npm run build && npm run manual-start",
     "restart": "node run-command.mjs stop start",
     "stop": "node run-command.mjs stop",
     "test": "npm run proxy-validator",
@@ -44,7 +44,6 @@
     "ws": "^8.18.3"
   },
   "devDependencies": {
-    "@esbuild/linux-x64": "^0.25.0",
     "@babel/node": "^7.25.0",
     "esbuild": "^0.25.0"
   }
