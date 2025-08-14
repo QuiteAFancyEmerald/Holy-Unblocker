@@ -44,6 +44,7 @@
     "ws": "^8.18.3"
   },
   "devDependencies": {
+    "@esbuild/linux-x64": "^0.25.0",
     "@babel/node": "^7.25.0",
     "esbuild": "^0.25.0"
   }
