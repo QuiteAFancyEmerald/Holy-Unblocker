@@ -4,9 +4,10 @@ WORKDIR /
 
 COPY package*.json ./
 
-COPY . .
 RUN npm run fresh-install
 RUN npm run build
+
+COPY . .
 
 EXPOSE 8080
 
