@@ -1,16 +1,12 @@
-FROM node:20.17.0-bookworm-slim
+FROM node:20-alpine
 
 WORKDIR /
 
 COPY package*.json ./
 
-RUN npm config set unsafe-perm true \
-    && npm set registry https://registry.npmjs.org/ \
-    && npm config set fetch-retries 5 \
-    && npm install --verbose
-
 COPY . .
+RUN npm run fresh-install
 
 EXPOSE 8080
 
-CMD ["npm", "run", "fresh-start"]
+CMD ["npm", "start"]
