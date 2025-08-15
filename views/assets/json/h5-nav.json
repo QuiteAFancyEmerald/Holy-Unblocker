@@ -156,6 +156,11 @@
     "img": "glitch2.webp"
   },
   {
+    "name": "Candybox 2",
+    "path": "candybox/",
+    "img": "candybox2.webp"
+  },
+  {
     "name": "Pac-man",
     "path": "pacman/",
     "img": "pcma.webp",
