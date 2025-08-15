@@ -174,7 +174,10 @@ commands: for (let i = 2; i < process.argv.length; i++)
         const prefix = path[0] + '/',
           prefixUrl = new URL('./views/dist/' + prefix, import.meta.url);
         if (!existsSync(prefixUrl)) mkdirSync(prefixUrl);
-        compile(path[1].slice(path[1].indexOf('node_modules')), '', prefix);
+
+        compile(path[1].slice(path[1].indexOf('node_modules')), '', prefix, undefined, 
+        path[0] === 'scram' ? (file) => file === 'scramjet.all.js' : undefined
+        );
       }
 
       // Minify the scripts and stylesheets upon compiling, if enabled in config.
