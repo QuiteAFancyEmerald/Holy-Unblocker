@@ -18,6 +18,12 @@
     "img": "earthbound.webp"
   },
   {
+    "name": "MOTHER 3",
+    "core": "mgba",
+    "rom": "mother3.gba",
+    "img": "mother3.webp"
+  },
+  {
     "name": "Metroid",
     "core": "nestopia",
     "rom": "metroid.nes",
