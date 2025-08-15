@@ -20,6 +20,8 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 
 ## Proxy/Site Functionality
 
+- [ ] Setting to open multiple stealth frames; basically about:blank but using our system. Pops out in another tab
+- [ ] Omnibox should state what the current site the user is on like a proper URL bar 
 - [ ] Improve adblocking functions on site using Workerware + a pre-bundled uBlock Origin
 - [ ] Add a "website self-destruct" button to the settings menu
 - [ ] Implement wisp python to the project instead of the unreliable wisp-server-node (not good for production)
