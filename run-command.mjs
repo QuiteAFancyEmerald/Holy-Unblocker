@@ -8,6 +8,7 @@ import {
   rmSync,
   existsSync,
 } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { exec, fork } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
@@ -18,6 +19,11 @@ import { baremuxPath } from '@mercuryworkshop/bare-mux/node';
 import { uvPath } from '@titaniumnetwork-dev/ultraviolet';
 import paintSource from './src/source-rewrites.mjs';
 import { loadTemplates, tryReadFile } from './src/templates.mjs';
+
+const scramjetPath = join(
+  dirname(fileURLToPath(import.meta.url)),
+  'node_modules/@mercuryworkshop/scramjet/dist'
+);
 
 // This constant is copied over from /src/server.mjs.
 const shutdown = fileURLToPath(new URL('./src/.shutdown', import.meta.url));
@@ -162,6 +168,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
         libcurl: libcurlPath,
         baremux: baremuxPath,
         uv: uvPath,
+        scram: scramjetPath,
       };
       for (const path of Object.entries(compilePaths)) {
         const prefix = path[0] + '/',
