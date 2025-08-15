@@ -89,7 +89,7 @@ Replit is no longer free and Heroku has a set policy against web proxies. Try Gi
 - Select **New Codespaces** and look for _[USERNAME]/Holy-Unblocker_ on your account
 - Ensure the branch is set to `master` and the dev container configuration is set to **Holy Unblocker LTS**
 - Select **Create Codespace** and allow the container to setup
-- Type `npm install` and `npm start` in the terminal
+- Type `npm run fresh-install` and `npm start` in the terminal
 - Click "Make public" on the application popup, then access the deployed website via the ports tab.
 
 </details>
@@ -135,6 +135,7 @@ cd Holy-Unblocker
 git submodule init
 
 # Using the configuration file you can automatically use pm2 if you are hosting on a VPS!
+npm run fresh-install
 npm start
 
 # Or on subsequent uses...

@@ -38,7 +38,7 @@
   - Ensure the branch is set to <code>master</code> and the dev container
   configuration is set to <strong>{{mask}}{{Holy Unblocker LTS}}</strong><br />
   - Select <strong>Create Codespace</strong> and allow the container to setup<br />
-  - Type <code>npm install</code> and <code>npm start</code> in the terminal<br />
+  - Type <code>npm run fresh-install</code> and <code>npm start</code> in the terminal<br />
   - Click "Make public" on the application popup, then access the deployed
   website via the ports tab.<br />
 </details>
@@ -115,6 +115,9 @@ cd Holy-Unblocker
 git submodule init
 
 <span class="hljs-comment"># Using the configuration file you can automatically use pm2 if you are hosting on a VPS!</span>
+
+npm run fresh-install
+
 npm start
 
 <span class="hljs-comment"># Or on subsequent uses...</span>

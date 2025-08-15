@@ -50,6 +50,9 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
   --nord13: #ebcb8b;
   --nord14: #a3be8c;
   --nord15: #b48ead;
+  --nord16: #abadb1;
+  --nord17: #ff5861;
+  --nord18: #2e3440;
   --blue: #375a7f;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -175,7 +178,7 @@ input[type='radio'] {
   cursor: pointer;
   width: 20px;
   height: 20px;
-  background-color: #d8dee9;
+  background-color: var(--nord2);
 }
 
 .text-center {
@@ -183,7 +186,7 @@ input[type='radio'] {
 }
 
 a {
-  color: rgb(255, 88, 97);
+  color: var(--nord17);
 }
 
 details summary {
@@ -232,7 +235,7 @@ details[open] summary {
 /* Used on a lot of navigation pages. */
 .bigtitle {
   font-size: 42px;
-  color: rgb(255, 88, 97);
+  color: var(--nord17);
 }
 
 #header {
@@ -287,7 +290,7 @@ details[open] summary {
   padding-top: 15vw;
   background:
     url('{{route}}{{/assets/img/waves-light.svg}}'),
-    linear-gradient(to bottom, transparent 0 15vw, #eceef3 15vw 100%);
+    linear-gradient(to bottom, transparent 0 15vw, var(--nord0m3) 15vw 100%);
   background-repeat: no-repeat;
   background-size: 100vw auto;
   position: relative;
@@ -494,7 +497,7 @@ details[open] summary {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(223, 223, 223, 0.5);
+  background: var(--nord0m3) opacity(0.9);
   backdrop-filter: blur(10px);
   z-index: 5;
   align-items: center;
@@ -520,7 +523,7 @@ details[open] summary {
 
 .settings-content {
   pointer-events: auto;
-  background-color: rgba(130, 136, 148, 0.2);
+  background-color: var(--nord3) opacity(0.3);
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 25px;
@@ -549,7 +552,7 @@ details[open] summary {
 
 .cseltitle-main {
   font-size: 35px;
-  color: rgb(255, 88, 97);
+  color: var(--nord17);
   font-weight: 900;
 }
 
@@ -631,7 +634,7 @@ details[open] summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #eceff4;
+  color: var(--nord0);
   font-size: 16px;
   max-width: 100%;
 }
@@ -647,7 +650,7 @@ details[open] summary {
   cursor: pointer;
   width: 20px;
   height: 20px;
-  background-color: #d8dee9;
+  background-color: var(--nord2);
 }
 
 .switch-container {
@@ -669,7 +672,7 @@ details[open] summary {
   height: 20px;
   margin: 0;
   border-radius: 34px;
-  background-color: #4c566a;
+  background-color: var(--nord3);
   transition: 0.4s;
 }
 
@@ -686,7 +689,7 @@ details[open] summary {
 }
 
 .switch:checked {
-  background-color: #81a1c1;
+  background-color: var(--nord9);
 }
 
 .switch:checked::after {
@@ -697,7 +700,7 @@ select {
   margin: 0 0 0 10px;
   padding: 10px;
   background-color: var(--nord0);
-  border: 1px solid #4c566a;
+  border: 1px solid var(--nord3);
   border-radius: 5px;
   color: var(--nord5);
   max-width: 300px;
@@ -705,7 +708,7 @@ select {
 }
 
 select:hover {
-  background-color: #d8dee9;
+  background-color: var(--nord2);
 }
 
 .default-badge,
@@ -719,18 +722,18 @@ select:hover {
 }
 
 .default-badge {
-  background-color: #88c0d0;
-  color: #2e3440;
+  background-color: var(--nord8);
+  color: var(--nord18);
 }
 
 .alt-badge {
-  background-color: #d08770;
-  color: #2e3440;
+  background-color: var(--nord12);
+  color: var(--nord18);
 }
 
 .beta-badge {
   background-color: #b48ead;
-  color: #2e3440;
+  color: var(--nord18);
 }
 
 .cloakform {
@@ -742,7 +745,7 @@ select:hover {
 .cloakform input[type='text'] {
   flex: 1;
   background-color: var(--nord0);
-  border: 1px solid #4c566a;
+  border: 1px solid var(--nord3);
   border-radius: 5px;
   padding: 10px;
   color: var(--nord5);
@@ -1016,7 +1019,7 @@ input[type='text'] {
 }
 
 .downarrowgroup {
-  color: var(--nord3);
+  color: var(--nord2);
   font-size: 35px;
   margin-left: 80%;
 }
@@ -1278,7 +1281,7 @@ input[type='text'] {
   /* 50% - (width/2 + padding width + border width), i.e., omnibar total width */
   left: calc(50% - 20vw - 17px);
   width: 40vw;
-  background-color: #1d232a;
+  background-color: var(--nord2);
   background-image:
     radial-gradient(circle, rgba(131, 131, 131, 0.02) 1px, transparent 1px),
     radial-gradient(circle, rgba(148, 148, 148, 0.02) 1px, transparent 1px);
@@ -1416,6 +1419,7 @@ input[type='text'] {
   display: flex;
   align-items: center;
   padding: 20px;
+  border: 1px var(--nord16) solid;
   border-radius: 10px;
   position: relative;
   overflow: hidden;

@@ -26,7 +26,7 @@
         },
         move: {
           enable: true,
-          speed: 0.8,
+          speed: 0.3,
           direction: 'none',
           outModes: {
             default: 'out',
@@ -40,10 +40,10 @@
           value: 100,
         },
         opacity: {
-          value: { min: 0.1, max: 0.5 },
+          value: { min: 0.1, max: 0.3 },
           animation: {
             enable: true,
-            speed: 0.5,
+            speed: 0.2,
             sync: false,
           },
         },
@@ -54,7 +54,7 @@
           value: { min: 1, max: 5 },
           animation: {
             enable: true,
-            speed: 0.5,
+            speed: 0.3,
             sync: false,
           },
         },
@@ -62,7 +62,7 @@
           enable: true,
           distance: 150,
           color: '#485163',
-          opacity: 0.4,
+          opacity: 0.2,
           width: 1,
         },
       },
