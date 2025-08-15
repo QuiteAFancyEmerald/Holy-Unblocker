@@ -105,6 +105,11 @@
     "img": "snake.webp"
   },
   {
+    "name": "Half Life 1",
+    "path": "halflife/",
+    "img": "halflife.webp"
+  },
+  {
     "name": "Super Mario 64",
     "path": "sm64/",
     "img": "sm64.webp"
