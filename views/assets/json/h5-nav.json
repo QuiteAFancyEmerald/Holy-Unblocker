@@ -247,6 +247,11 @@
     "img": "chess2.webp"
   },
   {
+    "name": "Quake III Arena",
+    "path": "quake3/",
+    "img": "quake3.webp"
+  },
+  {
     "name": "Connect 3",
     "path": "connect3/",
     "img": "connect.webp"

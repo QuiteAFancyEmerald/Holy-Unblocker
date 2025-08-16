@@ -38,8 +38,8 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [x] Fix Ultraviolet on Firefox - (partial/needs work)
 - [x] Adapt Applications page to use Scramjet (for Reddit, YouTube, Discord) - done
 - [x] Added libcurl transport and epoxy transport to meet standards of SJ + Wisp - done
-- [x] socks5/tor routing option that can be configured (enabled) via either a cookie or pathname as a settings meny option - done
-- [x] socks5 regional proxy implementation - done
+- [x] SOCKS5/Tor routing option that can be configured as a settings menu option - done
+- [x] SOCKS5 regional proxy implementation - done
 - [x] Update Applications page to reflect modern fast links (use examples from the modern web proxy base) - done. can be expanded later
 - [x] Update settings menu again to make more room for more features - done
 - [x] Update csel.js (after Setting menu redesign) to support custom transports, icon swap, routing - done
