@@ -225,7 +225,7 @@ prSet('pr-example', 'example');
 
 #### Games Management
 
-As stated above all game links that need to be appended to a page (including images and descriptions) are managed via the nav files in`./views/assets/json`. When cloning Holy Unblocker utilize `--recurse-submodules` to ensure all submodules are downloaded along with `git submodule init`.
+As stated above all game links that need to be appended to a page (including images and descriptions) are managed via the nav files in`./views/assets/json`. Download the latest release <a href="https://github.com/QuiteAFancyEmerald/Holy-Unblocker/blob/master/views/GAMES.md">here</a>.
 
 - `views/archive/g`: Contains any local or external HTML5/web games.
 - `views/archive/gfiles/flash`: Contains Ruffle (an Adobe Flash emulator) and a collection of flash games linked to an external CDN.
