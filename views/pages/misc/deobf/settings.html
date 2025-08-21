@@ -5,15 +5,19 @@
   </div>
   <div class="settings-content-body">
     <div class="csel-container-left">
-      <p class="cseltitle">{{mask}}{{Tab Cloak}}</p>
+      <p class="cseltitle">{{mask}}{{Browser Tab Cloak}}</p>
       <form id="titleform" class="cloakform">
-        <input type="text" placeholder="Tab Title" spellcheck="false" />
+        <input type="text" placeholder="Enter a tab title here..." spellcheck="false" />
         <input type="submit" value="Apply" />
       </form>
       <form id="iconform" class="cloakform">
-        <input type="text" placeholder="Icon URL" spellcheck="false" />
+        <input type="text" placeholder="Enter an icon URL here..." spellcheck="false" />
         <input type="submit" value="Apply" />
       </form>
+      <a
+        href="{{route}}{{/questions}}"
+        >{{mask}}{{Find Icon URL}}</a
+        >
       <p class="cseltitle">{{mask}}{{Wisp Protocol Transport}}</p>
       <div class="radio-group {{wisp-transport}}-list">
         <label>

@@ -843,7 +843,7 @@ select:hover {
 input[type='text'] {
   width: 100%;
   padding: 10px;
-  background-color: var(--cf-bg, var(--nord1));
+  background-color: var(--cf-bg, var(--nord6));
   border: 1px solid var(--nord3);
   border-radius: 5px;
   color: var(--cf-color, var(--nord6));
@@ -865,7 +865,7 @@ input[type='text'] {
   padding: 10px 12px;
   border-radius: 5px;
   margin: 5px 0;
-  background-color: var(--nord1);
+  background-color: var(--nord0);
   border: 1px solid var(--nord9);
   transition:
     background-color 0.3s ease,
@@ -1371,13 +1371,18 @@ input[type='text'] {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 4px;
   padding: 10px 16px;
   z-index: 2;
   border: 1px solid #ff919369;
   border-radius: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.omnibar > button + div,
+.omnibar > button:has(+ div) {
+  margin-right: 4px;
 }
 
 @media (max-width: 800px) {

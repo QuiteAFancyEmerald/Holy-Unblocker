@@ -25,6 +25,7 @@
       <div class="logo" role="img" aria-label="Holy Unblocker Logo"></div>
       <button title="Back"><i class="fas fa-arrow-left"></i></button>
       <button title="Forward"><i class="fas fa-arrow-right"></i></button>
+      <button title="Refresh"><i class="fas fa-redo-alt"></i></button>
       <div class="search-box">
         <input
           class="glowbutton"
@@ -36,6 +37,7 @@
         />
         <ul id="autocomplete"></ul>
       </div>
+      <button title="Bookmarks" id="bookmarks-toggle"><i class="fas fa-bookmark"></i></button>
       <div title="Settings" class="dropdown-parent">
         <a href="#" tabindex="0">
           <i class="fas fa-cog pulse" aria-hidden="true"></i>
@@ -57,14 +59,12 @@
     </div>
     <iframe id="frame" allow="fullscreen" autofocus></iframe>
     <script>
-      // Display the window.
       const windowFrame = document.getElementById('frame');
-
-      // Functionality for the omnibox.
       const omnibar = document.getElementById('pr-sj');
       const toggle = document.getElementById('omnibar-toggle');
       const backArrow = omnibar.querySelector("[title='Back' i]");
       const forwardArrow = omnibar.querySelector("[title='Forward' i]");
+      const reloadArrow = omnibar.querySelector("[title='Refresh' i]");
       let hidden = false;
 
       toggle.addEventListener('click', () => {
@@ -82,10 +82,12 @@
       forwardArrow.addEventListener('click', () => {
         history.forward();
       });
+      reloadArrow.addEventListener('click', () => {
+        windowFrame.contentWindow.location.reload();
+      });
 
       let statusObject = { isLoading: true, timesErrored: 0 };
 
-      // Remove the loading screen if it takes too long.
       const loaderTimeout = (timeout) => {
         statusObject.isLoading = true;
         setTimeout(() => {
@@ -94,7 +96,6 @@
         }, timeout);
       };
 
-      // Refresh the IFrame if the error page has displayed up to 5 time(s) before.
       const errorRefresh = () => {
         const shouldRefresh =
           statusObject.timesErrored <= 5 &&
@@ -108,10 +109,8 @@
         return shouldRefresh;
       };
 
-      // Display loading screen.
       const loader = document.getElementsByClassName('loader')[0];
       const updateLoader = () => {
-        // Ignore about:blank pages that IFrames load prior to the actual URL.
         if (windowFrame.contentWindow.location.href === 'about:blank') return;
 
         statusObject.isLoading =
@@ -147,7 +146,6 @@
         });
       };
 
-      // The IFrame load event is a backup in case the main load handler fails.
       windowFrame.addEventListener('load', updateLoader);
       loadHandler();
     </script>
