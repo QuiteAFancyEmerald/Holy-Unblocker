@@ -72,7 +72,7 @@ const searchEngines = Object.freeze({
     '{{DuckDuckGo}}': 'duckduckgo.com/?q=',
     '{{Brave}}': 'search.brave.com/search?q=',
   }),
-  defaultSearch = '{{Brave}}',
+  defaultSearch = '{{defaultSearch}}',
   autocompletes = Object.freeze({
     // Startpage has used both Google's and Bing's autocomplete.
     // For now, just use Bing.

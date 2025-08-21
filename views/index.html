@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="version" content="<!-- VERSION -->" />
+    <meta name="version" content="{{version}}" />
     {{ifSEO}}{{
     <meta name="googlebot" content="index, follow, snippet" />
     <meta
@@ -275,7 +275,7 @@
     </div>
     <div id="banner" class="fullwidth">
       <p class="text-center">
-        <!--HUTAOWOA-->
+        {{getSplash}}
       </p>
     </div>
     <div id="mainbody" class="fullwidth">
@@ -326,7 +326,7 @@
               <span class="comment">Or on subsequent uses...</span><br />
               <span class="cmd">npm restart&#13;</span><br /><br />
               <span class="comment"
-                >{{mask}}{{Holy Unblocker LTS}} v<!-- VERSION -->
+                >{{mask}}{{Holy Unblocker LTS}} v{{version}}
                 // master</span
               ><br />
               <span class="comment">Node.js v20.x</span><br />

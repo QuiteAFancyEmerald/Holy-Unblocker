@@ -223,7 +223,7 @@ const cookingInserts = insert.content,
   delimiter = insert.delimiter,
   textMasks = insert.textMasks,
   splashRandom = insert.splash,
-  VersionValue = insert.version,
+  versionValue = insert.version,
   cacheBustList = {
     'styles.css': 'styles-1755147161.css',
     'common.js': 'common-1735118314.js',
@@ -245,6 +245,6 @@ export {
   delimiter,
   textMasks,
   splashRandom,
-  VersionValue,
+  versionValue,
   cacheBustList,
 };

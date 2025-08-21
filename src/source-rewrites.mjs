@@ -9,7 +9,7 @@ import {
   textMasks,
   splashRandom,
   cacheBustList,
-  VersionValue,
+  versionValue,
   uvError,
   sjError,
 } from './routes.mjs';
@@ -127,9 +127,7 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
       )
       .replace(getAbsoluteRoot, serverUrl.pathname),
   insertCharset = (str) => str.replace(charset, getRandomChar),
-  getRandomSplash = randomListItem(splashRandom),
-  hutaoInsert = (str) => str.replaceAll('<!--HUTAOWOA-->', getRandomSplash),
-  versionInsert = (str) => str.replaceAll('<!-- VERSION -->', VersionValue),
+  getSplash = () => randomListItem(splashRandom)(),
   getCookingText = () =>
     `<span style="display:none" data-fact="${randomListItem(vegetables)()}">${randomListItem(cookingInserts)()}</span>`,
   insertCooking = (str) =>
@@ -169,6 +167,7 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
       .replaceAll('\r', '\\r')
       .replaceAll('\n', '\\n'),
   orderedTransforms = [
+    [getSplash, 0],
     [route, 1],
     [ifSEO, 1],
     [mask, 1],
@@ -177,6 +176,8 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
     __uv$config: escapeStr(
       config.randomizeIdentifiers ? createRandomID() : '__uv$config'
     ),
+    version: versionValue,
+    defaultSearch: '{{Brave}}',
   }),
   // List of manual censors for unavoidable cases.
   manualCensors = Object.freeze({
@@ -191,12 +192,11 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
   }),
   // Apply most obfuscation changes to an entire file's text content.
   prePaint = (str) => {
-    let paintedSource = insertCharset(
-      hutaoInsert(versionInsert(insertCooking(str)))
-    );
+    let paintedSource = insertCharset(insertCooking(str));
     paintedSource = applyMassInsert(
-      applyMassInsert(paintedSource, manualCensors, config.usingSEO),
-      namedEntries
+      applyMassInsert(paintedSource, namedEntries),
+      manualCensors,
+      config.usingSEO
     );
     for (let i = 0, total = orderedTransforms.length; i < total; i++)
       paintedSource = applyInsert(paintedSource, ...orderedTransforms[i]);
