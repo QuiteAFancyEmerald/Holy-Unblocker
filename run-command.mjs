@@ -7,7 +7,6 @@ import {
   copyFileSync,
   rmSync,
   existsSync,
-  writeFile,
 } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { exec, fork } from 'node:child_process';
@@ -175,6 +174,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
         baremux: baremuxPath,
         uv: uvPath,
         scram: scramjetPath,
+        eruda: 'node_modules/eruda',
       };
       for (const path of Object.entries(compilePaths)) {
         const prefix = path[0] + '/',
