@@ -55,9 +55,9 @@ const storageId = 'hu-lts-storage',
   },
   // Set the page's favicon to a new URL.
   pageIcon = (value) => {
-    let tags =
-      document.querySelectorAll("link[rel*='icon']") ||
-      [document.createElement('link')];
+    let tags = document.querySelectorAll("link[rel*='icon']") || [
+      document.createElement('link'),
+    ];
     tags.forEach((element) => {
       element.rel = 'icon';
       element.href = value;
@@ -131,7 +131,8 @@ const storageId = 'hu-lts-storage',
   presetIcons = Object.freeze({
     '': ' \n ',
     '{{Google}}': 'Google \n https://www.google.com/favicon.ico',
-    '{{Bing}}': 'Bing \n https://www.bing.com/sa/simg/favicon-trans-bg-blue-mg-28.ico',
+    '{{Bing}}':
+      'Bing \n https://www.bing.com/sa/simg/favicon-trans-bg-blue-mg-28.ico',
     '{{Google}} Drive':
       'Home - Google Drive \n https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png',
     Gmail:
@@ -278,104 +279,110 @@ if (document.getElementById('csel')) {
         e.target.value === defaultTheme
       ) {
         const theme = readStorage('Theme');
-        if (theme)
-          document.documentElement.classList.toggle(theme, false);
+        if (theme) document.documentElement.classList.toggle(theme, false);
         removeStorage('Theme');
       } else {
         setStorage('Theme', e.target.value);
         document.documentElement.classList.toggle(e.target.value, true);
       }
-    (async () => {
-      const shouldLoad = await new Promise((resolve) => {
-        let tries = 0;
-        const load = () => {
-          if (!document.getElementById('particles-js')) return resolve(false);
-          if ('function' === typeof self.loadFull) {
-            window.removeEventListener('load', load);
-            resolve(true);
-          } else if (tries < 5) {
-            tries++;
-            setTimeout(load, 1000);
-          }
-        };
-        if (document.readyState === 'complete') load();
-        else window.addEventListener('load', load);
-      });
-      if (!shouldLoad) return;
-      await loadFull(tsParticles);
-      const styles = getComputedStyle(document.documentElement);
+      (async () => {
+        const shouldLoad = await new Promise((resolve) => {
+          let tries = 0;
+          const load = () => {
+            if (!document.getElementById('particles-js')) return resolve(false);
+            if ('function' === typeof self.loadFull) {
+              window.removeEventListener('load', load);
+              resolve(true);
+            } else if (tries < 5) {
+              tries++;
+              setTimeout(load, 1000);
+            }
+          };
+          if (document.readyState === 'complete') load();
+          else window.addEventListener('load', load);
+        });
+        if (!shouldLoad) return;
+        await loadFull(tsParticles);
+        const styles = getComputedStyle(document.documentElement);
 
-      await tsParticles.load({
-        id: 'particles-js',
-        options: {
-          background: {
-            color: { value: styles.getPropertyValue('--particles-bg') || '#1d232a' },
-          },
-          fullScreen: {
-            enable: true,
-            zIndex: -1,
-          },
-          detectRetina: true,
-          fpsLimit: 60,
-          interactivity: {
-            events: {
-              resize: {
-                enable: true,
+        await tsParticles.load({
+          id: 'particles-js',
+          options: {
+            background: {
+              color: {
+                value: styles.getPropertyValue('--particles-bg') || '#1d232a',
               },
             },
-          },
-          particles: {
-            color: {
-              value: styles.getPropertyValue('--particles-color') || '#ffffff',
-            },
-            move: {
+            fullScreen: {
               enable: true,
-              speed: styles.getPropertyValue('--particles-mv-spd') || 0.8,
-              direction: 'none',
-              outModes: {
-                default: 'out',
+              zIndex: -1,
+            },
+            detectRetina: true,
+            fpsLimit: 60,
+            interactivity: {
+              events: {
+                resize: {
+                  enable: true,
+                },
               },
             },
-            number: {
-              density: {
+            particles: {
+              color: {
+                value:
+                  styles.getPropertyValue('--particles-color') || '#ffffff',
+              },
+              move: {
                 enable: true,
-                area: 800,
+                speed: styles.getPropertyValue('--particles-mv-spd') || 0.8,
+                direction: 'none',
+                outModes: {
+                  default: 'out',
+                },
               },
-              value: 100,
-            },
-            opacity: {
-              value: { min: 0.1, max: styles.getPropertyValue('--particles-op-max') || 0.5 },
-              animation: {
+              number: {
+                density: {
+                  enable: true,
+                  area: 800,
+                },
+                value: 100,
+              },
+              opacity: {
+                value: {
+                  min: 0.1,
+                  max: styles.getPropertyValue('--particles-op-max') || 0.5,
+                },
+                animation: {
+                  enable: true,
+                  speed: styles.getPropertyValue('--particles-op-spd') || 0.5,
+                  sync: false,
+                },
+              },
+              shape: {
+                type: 'circle',
+              },
+              size: {
+                value: { min: 1, max: 5 },
+                animation: {
+                  enable: true,
+                  speed: styles.getPropertyValue('--particles-sz-spd') || 0.5,
+                  sync: false,
+                },
+              },
+              links: {
                 enable: true,
-                speed: styles.getPropertyValue('--particles-op-spd') || 0.5,
-                sync: false,
+                distance: 150,
+                color:
+                  styles.getPropertyValue('--particles-links') || '#ffffff66',
+                width: 1,
               },
             },
-            shape: {
-              type: 'circle',
-            },
-            size: {
-              value: { min: 1, max: 5 },
-              animation: {
-                enable: true,
-                speed: styles.getPropertyValue('--particles-sz-spd') || 0.5,
-                sync: false,
-              },
-            },
-            links: {
-              enable: true,
-              distance: 150,
-              color: styles.getPropertyValue('--particles-links') || '#ffffff66',
-              width: 1,
-            },
+            pauseOnBlur: true,
+            pauseOnOutsideViewport: true,
           },
-          pauseOnBlur: true,
-          pauseOnOutsideViewport: true,
-        },
-      });
-    })();
+        });
+      })();
     }
-  })
+  });
 
   // Allow users to toggle ads with the UI.
   attachClassEventListener('hideads', 'change', (e) => {
@@ -426,7 +433,7 @@ if (document.getElementById('csel')) {
   attachClassEventListener('useac', 'change', (e) => {
     if (checkBooleanState(e.target) === false) setStorage('UseAC', false);
     else removeStorage('UseAC');
-  })
+  });
 
   attachClassEventListener('region-list', 'change', (e) => {
     const isOff = checkBooleanState(e.target) === false;
