@@ -789,15 +789,28 @@ addEventListener('DOMContentLoaded', async () => {
     else loadFrame();
   }
 
+  const banner = document.getElementById('banner');
+  if (banner)
+    fetch('{{route}}{{/assets/json/splash.json}}', {
+      mode: 'same-origin',
+    }).then((response) => {
+      response.json().then((splashList) => {
+        banner.firstElementChild.textContent =
+          splashList[(Math.random() * splashList.length) | 0];
+      });
+    });
+
   // Load in relevant JSON files used to organize large sets of data.
   // This first one is for links, whereas the rest are for navigation menus.
-  const huLinks = await fetch('{{route}}{{/assets/json/links.json}}', {
+  fetch('{{route}}{{/assets/json/links.json}}', {
     mode: 'same-origin',
-  }).then((response) => response.json());
-
-  for (let items = Object.entries(huLinks), i = 0; i < items.length; i++)
-    // Replace all placeholder links with the corresponding entry in huLinks.
-    (document.getElementById(items[i][0]) || {}).href = items[i][1];
+  }).then((response) => {
+    response.json().then((huLinks) => {
+      for (let items = Object.entries(huLinks), i = 0; i < items.length; i++)
+        // Replace all placeholder links with the corresponding entry in huLinks.
+        (document.getElementById(items[i][0]) || {}).href = items[i][1];
+    });
+  });
 
   const navLists = {
     // Pair an element ID with a JSON file name. They are identical for now.

@@ -310,7 +310,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Improve adblocking functions on site using Workerware + a pre-bundled uBlock Origin
 - [ ] Add a "website self-destruct" button to the settings menu
 - [ ] Implement wisp python to the project instead of the unreliable wisp-server-node (not good for production)
-- [ ] Fix keyword/descriptor randomisation
+- [x] Fix keyword/descriptor randomisation - done
 - [ ] Added Eruda ensuring users can access a someone crafted devtools while browsing - partial
 - [x] Adapt Wisp protocol replacing bare which is very unsecure - done
 - [x] Improved error handling for proxy errors - done
@@ -339,7 +339,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 ## Site Redesign
 
 - [ ] Documentation on-site + Getting Started information updated (Tor, etc.)
-- [ ] Update colors + add themes - partial
+- [x] Update colors + add themes - done
 - [ ] Hosting page
 - [ ] Resources page
 - [x] Landing Cards - done

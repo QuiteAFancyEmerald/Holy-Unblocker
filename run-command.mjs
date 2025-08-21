@@ -7,12 +7,18 @@ import {
   copyFileSync,
   rmSync,
   existsSync,
+  writeFile,
 } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { exec, fork } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
-import { config, serverUrl, flatAltPaths } from './src/routes.mjs';
+import {
+  config,
+  serverUrl,
+  flatAltPaths,
+  splashRandom,
+} from './src/routes.mjs';
 import { epoxyPath } from '@mercuryworkshop/epoxy-transport';
 import { libcurlPath } from '@mercuryworkshop/libcurl-transport';
 import { baremuxPath } from '@mercuryworkshop/bare-mux/node';
@@ -175,10 +181,23 @@ commands: for (let i = 2; i < process.argv.length; i++)
           prefixUrl = new URL('./views/dist/' + prefix, import.meta.url);
         if (!existsSync(prefixUrl)) mkdirSync(prefixUrl);
 
-        compile(path[1].slice(path[1].indexOf('node_modules')), '', prefix, undefined, 
-        path[0] === 'scram' ? (file) => file === 'scramjet.all.js' : undefined
+        compile(
+          path[1].slice(path[1].indexOf('node_modules')),
+          '',
+          prefix,
+          undefined,
+          path[0] === 'scram' ? (file) => file === 'scramjet.all.js' : undefined
         );
       }
+
+      const createFile = (location, text) => {
+        writeFileSync(
+          fileURLToPath(new URL('./views/dist/' + location, import.meta.url)),
+          paintSource(loadTemplates(text))
+        );
+      };
+
+      createFile('assets/json/splash.json', JSON.stringify(splashRandom));
 
       // Minify the scripts and stylesheets upon compiling, if enabled in config.
       if (config.minifyScripts) {
