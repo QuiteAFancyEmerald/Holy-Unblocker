@@ -50,6 +50,9 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
   --nord13: #ebcb8b;
   --nord14: #a3be8c;
   --nord15: #b48ead;
+  --nord16: #abadb1;
+  --nord17: #ff5861;
+  --nord18: #2e3440;
   --blue: #375a7f;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -71,6 +74,70 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
   --danger: #e74c3c;
   --light: #999;
   --dark: #303030;
+  --dark2: #22262f;
+  --fancy-dark: rgba(46, 52, 64, 0.2);
+}
+
+:root:not(.light) {
+  --radio-accent: var(--nord8);
+  --hero-grid-bg: var(--fancy-dark);
+}
+
+.light:root {
+  --nord0: #eceff4;
+  --nord1: #e5e9f0;
+  --nord2: #d8dee9;
+  /* Don't override nord3. */
+  --nord4: #434c5e;
+  --nord5: #3b4252;
+  --nord6: #1d232a;
+  --nord0m1: #f0f2f7;
+  --nord0m2: #e8ecf4;
+  --nord0m3: #e0e5f0;
+  --html-color: var(--nord5);
+  --radio-bg: var(--nord2);
+  --a-color: var(--nord17);
+  --bigtitle-color: var(--nord17);
+  --banner-bg: var(--nord2);
+  --footer-img: url('{{route}}{{/assets/img/waves-light.svg}}');
+  --footer-grad: var(--nord0m3);
+  --margin-hover: var(--nord11);
+  --logo-img: url('{{route}}{{/assets/img/logo-light.webp}}');
+  /* nord0m3 but with roughly 0.5 opacity in hex. */
+  --dropdown-bg: #e0e5f080;
+  /* nord3 but with roughly 0.3 opacity in hex. */
+  --settings-bg: #4c566a4d;
+  --settings-border: #e0e0e0;
+  --settings-color: var(--nord5);
+  --cseltitle-main-color: var(--nord17);
+  --close-btn-color: var(--nord11);
+  --radio-label-color: var(--nord0);
+  --switch-bg: var(--nord3);
+  --switch-checked-bg: var(--nord9);
+  --select-hover-bg: var(--nord2);
+  --cf-bg: var(--nord0);
+  --cf-color: var(--nord5);
+  --csel-input: var(--nord4);
+  --mac-title-bg: var(--nord2);
+  --mac-ui-bg: var(--nord17);
+  --cmd-color: var(--nord5);
+  --url-color: var(--nord17);
+  --comment-color: var(--nord6);
+  --omnibox-bg: var(--nord2);
+  --ac-bg: var(--nord0m3);
+  --hero-grad: rgba(233, 220, 220, 0.377);
+  --box-badge-bg: var(--nord2);
+  --box-btn-color: var(--dark2);
+  --glowshadow1: var(--nord11);
+  --glowshadow2: var(--nord17);
+  --particles-bg: #ffffff00;
+  --particles-color: #485163;
+  /* Same as above but with 0.2 opacity in hex. */
+  --particles-links: #48516333;
+  --particles-mv-spd: 0.3;
+  --particles-op-max: 0.3;
+  --particles-op-spd: 0.2;
+  --particles-sz-spd: 0.3;
 }
 
 /* -----------------------------------------------
@@ -78,7 +145,7 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
 /* ----------------------------------------------- */
 
 html {
-  color: white;
+  color: var(--html-color, white);
   font-family: 'Rethink Sans', sans-serif;
   font-weight: 300;
   text-wrap: balance;
@@ -106,6 +173,18 @@ h4,
 h5,
 h6 {
   margin: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+select {
+  color: var(--html-color, white);
 }
 
 h1,
@@ -172,11 +251,11 @@ img {
 }
 
 input[type='radio'] {
-  accent-color: #88c0d0;
+  accent-color: var(--radio-accent, initial);
   cursor: pointer;
   width: 20px;
   height: 20px;
-  background-color: #3b4252;
+  background-color: var(--radio-bg, var(--nord1));
 }
 
 .text-center {
@@ -184,7 +263,7 @@ input[type='radio'] {
 }
 
 a {
-  color: rgb(255, 88, 97);
+  color: var(--a-color, rgb(255, 88, 97));
 }
 
 details summary {
@@ -233,7 +312,7 @@ details[open] summary {
 /* Used on a lot of navigation pages. */
 .bigtitle {
   font-size: 42px;
-  color: rgb(255, 88, 97);
+  color: var(--bigtitle-color, rgb(255, 88, 97));
 }
 
 #header {
@@ -249,7 +328,7 @@ details[open] summary {
 }
 
 #banner {
-  background-color: var(--nord0m1);
+  background-color: var(--banner-bg, var(--nord0m1));
   position: sticky;
   top: 0;
   font-weight: bold;
@@ -286,8 +365,8 @@ details[open] summary {
   font-family: 'Lato', sans-serif;
   padding-top: 15vw;
   background:
-    url('{{route}}{{/assets/img/waves.svg}}'),
-    linear-gradient(to bottom, transparent 0 15vw, #1d2029 15vw 100%);
+    var(--footer-img, url('{{route}}{{/assets/img/waves.svg}}')),
+    linear-gradient(to bottom, transparent 0 15vw, var(--footer-grad, #1d2029) 15vw 100%);
   background-repeat: no-repeat;
   background-size: 100vw auto;
   position: relative;
@@ -300,7 +379,7 @@ details[open] summary {
 
 #header a:hover,
 #footer a:hover {
-  color: white;
+  color: var(--margin-hover, white);
 }
 
 /* -----------------------------------------------
@@ -331,7 +410,7 @@ details[open] summary {
   width: 70px;
   height: 70px;
   margin-right: 10px;
-  background-image: url('{{route}}{{/assets/img/logo.webp}}');
+  background-image: var(--logo-img, url('{{route}}{{/assets/img/logo.webp}}'));
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -494,7 +573,7 @@ details[open] summary {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--dropdown-bg, rgba(0, 0, 0, 0.5));
   backdrop-filter: blur(10px);
   z-index: 5;
   align-items: center;
@@ -520,8 +599,8 @@ details[open] summary {
 
 .settings-content {
   pointer-events: auto;
-  background-color: rgba(46, 52, 64, 0.2);
-  border: 1px solid #4c566a;
+  background-color: var(--settings-bg, var(--fancy-dark));
+  border: 1px solid var(--settings-border, var(--nord3));
   border-radius: 10px;
   padding: 25px;
   z-index: 6;
@@ -529,7 +608,8 @@ details[open] summary {
   max-height: 90vh;
   overflow-y: auto;
   margin: 5vh auto;
-  color: #eceff4;
+  color: var(--settings-color, var(--nord6));
+  font-weight: 500;
   font-family: 'Figtree', sans-serif;
   letter-spacing: 1px;
   display: flex;
@@ -548,7 +628,7 @@ details[open] summary {
 
 .cseltitle-main {
   font-size: 35px;
-  color: rgb(255, 88, 97);
+  color: var(--cseltitle-main-color, rgb(255, 88, 97));
   font-weight: 900;
 }
 
@@ -560,7 +640,7 @@ details[open] summary {
 }
 
 .close-settings-btn:hover {
-  color: lightgray;
+  color: var(--close-btn-color, lightgray);
   transition:
     background-color 0.3s ease,
     color 0.3s ease,
@@ -591,7 +671,6 @@ details[open] summary {
 
 .cseltitle {
   font-size: 22px;
-  color: white;
   margin: 10px 0;
 }
 
@@ -630,7 +709,7 @@ details[open] summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #eceff4;
+  color: var(--radio-label-color, var(--nord6));
   font-size: 16px;
   max-width: 100%;
 }
@@ -642,11 +721,11 @@ details[open] summary {
 }
 
 .radio-group input[type='radio'] {
-  accent-color: #88c0d0;
+  accent-color: var(--radio-accent, initial);
   cursor: pointer;
   width: 20px;
   height: 20px;
-  background-color: #3b4252;
+  background-color: var(--radio-bg, var(--nord1));
 }
 
 .switch-container {
@@ -668,7 +747,7 @@ details[open] summary {
   height: 20px;
   margin: 0;
   border-radius: 34px;
-  background-color: #4c566a;
+  background-color: var(--switch-bg, var(--nord3));
   transition: 0.4s;
 }
 
@@ -685,7 +764,7 @@ details[open] summary {
 }
 
 .switch:checked {
-  background-color: #81a1c1;
+  background-color: var(--switch-checked-bg, var(--nord9));
 }
 
 .switch:checked::after {
@@ -696,15 +775,15 @@ select {
   margin: 0 0 0 10px;
   padding: 10px;
   background-color: var(--nord0);
-  border: 1px solid #4c566a;
+  border: 1px solid var(--switch-bg, var(--nord3));
   border-radius: 5px;
-  color: #eceff4;
+  color: var(--settings-color, var(--nord6));
   max-width: 300px;
   box-sizing: border-box;
 }
 
 select:hover {
-  background-color: #4c566a;
+  background-color: var(--select-hover-bg, var(--nord3));
 }
 
 .default-badge,
@@ -718,18 +797,18 @@ select:hover {
 }
 
 .default-badge {
-  background-color: #88c0d0;
-  color: #2e3440;
+  background-color: var(--nord8);
+  color: var(--nord18);
 }
 
 .alt-badge {
-  background-color: #d08770;
-  color: #2e3440;
+  background-color: var(--nord12);
+  color: var(--nord18);
 }
 
 .beta-badge {
-  background-color: #b48ead;
-  color: #2e3440;
+  background-color: var(--nord15);
+  color: var(--nord18);
 }
 
 .cloakform {
@@ -740,34 +819,34 @@ select:hover {
 
 .cloakform input[type='text'] {
   flex: 1;
-  background-color: #3b4252;
-  border: 1px solid #4c566a;
+  background-color: var(--cf-bg, var(--nord1));
+  border: 1px solid var(--nord3);
   border-radius: 5px;
   padding: 10px;
-  color: #eceff4;
+  color: var(--cf-color, var(--nord6));
   box-sizing: border-box;
 }
 
 .cloakform input[type='button'] {
-  background-color: #5e81ac;
+  background-color: var(--nord10);
   border: none;
   border-radius: 5px;
   padding: 10px;
-  color: #eceff4;
+  color: var(--cf-color, var(--nord6));
   cursor: pointer;
 }
 
 .cloakform input[type='button']:hover {
-  background-color: #81a1c1;
+  background-color: var(--nord9);
 }
 
 input[type='text'] {
   width: 100%;
   padding: 10px;
-  background-color: #3b4252;
-  border: 1px solid #4c566a;
+  background-color: var(--cf-bg, var(--nord1));
+  border: 1px solid var(--nord3);
   border-radius: 5px;
-  color: #eceff4;
+  color: var(--cf-color, var(--nord6));
   box-sizing: border-box;
 }
 
@@ -784,7 +863,6 @@ input[type='text'] {
   outline: none;
   box-sizing: border-box;
   padding: 10px 12px;
-  color: white;
   border-radius: 5px;
   margin: 5px 0;
   background-color: var(--nord1);
@@ -796,7 +874,7 @@ input[type='text'] {
 }
 
 #csel input[type='text']:focus {
-  box-shadow: inset 0 0 5px 0 var(--nord3);
+  box-shadow: inset 0 0 5px 0 var(--csel-input, var(--nord3));
   transition: box-shadow 0.15s ease-out;
 }
 
@@ -850,11 +928,6 @@ input[type='text'] {
   text-align: center;
 }
 
-.footersocials > a:hover {
-  animation: pulse 0.6s;
-  animation-composition: add;
-}
-
 .footerflex > div {
   margin: 25px 50px;
 }
@@ -864,8 +937,8 @@ input[type='text'] {
   padding: 25px 0;
 }
 
-.footerbrand h3 a {
-  color: white !important;
+#footer .footerbrand h3 a {
+  color: var(--html-color, white);
 }
 
 .footerbrand h3 a:hover {
@@ -971,7 +1044,7 @@ input[type='text'] {
 
 .mac-title-bar {
   padding: 15px;
-  background-color: #22262f;
+  background-color: var(--mac-title-bg, var(--dark2));
   border-bottom: 1px solid var(--nord0);
 }
 
@@ -988,15 +1061,15 @@ input[type='text'] {
 }
 
 .mac-close {
-  background-color: var(--nord3);
+  background-color: var(--mac-ui-bg, var(--nord3));
 }
 
 .mac-minimize {
-  background-color: var(--nord3);
+  background-color: var(--mac-ui-bg, var(--nord3));
 }
 
 .mac-maximize {
-  background-color: var(--nord3);
+  background-color: var(--mac-ui-bg, var(--nord3));
 }
 
 .no-select,
@@ -1012,6 +1085,9 @@ input[type='text'] {
   color: var(--nord4);
   font-family: 'Source Code Pro', monospace;
   font-optical-sizing: auto;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   padding: 40px 0 0 80px;
   flex: 1;
   display: flex;
@@ -1021,13 +1097,13 @@ input[type='text'] {
 }
 
 .downarrowgroup {
-  color: var(--nord3);
+  color: var(--select-hover-bg, var(--nord3));
   font-size: 35px;
   margin-left: 80%;
 }
 
 .cmd {
-  color: #a4bbd1;
+  color: var(--cmd-color, #a4bbd1);
   white-space: pre-wrap;
 }
 
@@ -1041,11 +1117,11 @@ input[type='text'] {
 }
 
 .url {
-  color: rgb(255, 136, 142);
+  color: var(--url-color, rgb(255, 136, 142));
 }
 
 .comment {
-  color: #616e88;
+  color: var(--comment-color, #616e88);
 }
 
 .comment::before {
@@ -1136,7 +1212,7 @@ input[type='text'] {
   margin: 40px auto;
   width: 90%;
   max-width: 1250px;
-  background-color: rgba(46, 52, 64, 0.2);
+  background-color: var(--hero-grid-bg, initial);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1281,10 +1357,10 @@ input[type='text'] {
 .omnibar {
   position: fixed;
   top: 10px;
-  /* 50% - (width/2 + padding width + border width), i.e., omnibar total width */
+  /* 50% - (width/2 + padding width + border width), i.e., omnibox total width */
   left: calc(50% - 20vw - 17px);
   width: 40vw;
-  background-color: #1d232a;
+  background-color: var(--omnibox-bg, var(--nord0));
   background-image:
     radial-gradient(circle, rgba(131, 131, 131, 0.02) 1px, transparent 1px),
     radial-gradient(circle, rgba(148, 148, 148, 0.02) 1px, transparent 1px);
@@ -1330,17 +1406,22 @@ input[type='text'] {
 
 #autocomplete {
   position: absolute;
-  background-color: var(--nord0);
+  background-color: var(--ac-bg, var(--nord0));
   color: var(--nord4);
   list-style-type: none;
   margin: 5px 3px;
   font-size: 18px;
   padding: 0;
+  border: 0.5px solid #ff919369;
   border-radius: 15px;
   z-index: 2;
-  max-height: calc(5 * (1.5em + 2em + 0.5em)); 
+  max-height: calc(5 * (1.5em + 1px + 30px)); 
   overflow: auto;
   overflow-x: hidden;
+}
+
+#autocomplete:empty {
+  display: none;
 }
 
 #autocomplete li {
@@ -1422,6 +1503,7 @@ input[type='text'] {
   display: flex;
   align-items: center;
   padding: 20px;
+  border: 1px var(--nord16) solid;
   border-radius: 10px;
   position: relative;
   overflow: hidden;
@@ -1447,7 +1529,7 @@ input[type='text'] {
   -webkit-mask-repeat: no-repeat;
   mask-image: radial-gradient(
     closest-side,
-    rgba(37, 35, 35, 0.377) 30%,
+    var(--hero-grad, rgba(37, 35, 35, 0.377)) 30%,
     rgba(255, 255, 255, 0.048) 70%,
     transparent 90%
   );
@@ -1534,7 +1616,7 @@ input[type='text'] {
 .box-card {
   width: 100%;
   padding: 40px;
-  background-color: rgba(46, 52, 64, 0.2);
+  background-color: var(--hero-grid-bg, initial);
   border-radius: 10px;
   position: relative;
   overflow: hidden;
@@ -1640,7 +1722,7 @@ input[type='text'] {
 .box-badge {
   padding: 10px 0;
   border-radius: 3px;
-  background-color: var(--nord5);
+  background-color: var(--box-badge-bg, var(--nord5));
   color: #000;
   margin-bottom: 50px;
 }
@@ -1684,8 +1766,8 @@ input[type='text'] {
   border: none;
   border-radius: 5px;
   text-decoration: none;
-  color: #fff !important;
-  background-color: #22262f;
+  color: var(--box-btn-color, white) !important;
+  background-color: var(--mac-title-bg, var(--dark2));
   font-size: 1em;
   transition: background-color 0.3s ease;
 }
@@ -1797,7 +1879,7 @@ input[type='text'] {
 
 .faq-search {
   outline: none;
-  background-color: #22262f !important;
+  background-color: var(--dark2) !important;
   border: 2px solid var(--nord4);
   color: white;
   padding: 6px 8px;
@@ -1860,8 +1942,8 @@ input[type='text'] {
   outline: none;
   border-radius: 5px;
   padding: 10px 12px;
-  color: white;
-  background-color: #22262f;
+  color: var(--html-color, white);
+  background-color: var(--mac-title-bg, var(--dark2));
   font-family: 'Montserrat Alternates', sans-serif;
   font-size: 20px;
   margin: 3px;
@@ -2119,10 +2201,10 @@ input[type='text'] {
 @keyframes glowshadow {
   0%,
   100% {
-    box-shadow: 0 0 8px 2px var(--nord0);
+    box-shadow: 0 0 8px 2px var(--glowshadow1, var(--nord0));
   }
   50% {
-    box-shadow: 0 0 8px 2px var(--nord1);
+    box-shadow: 0 0 8px 2px var(--glowshadow2, var(--nord1));
   }
 }
 
@@ -2189,7 +2271,10 @@ input[type='text'] {
 }
 
 #mnavecb {
-  display: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+  outline: none;
 }
 
 .mnavebutton,
@@ -2225,6 +2310,10 @@ input[type='text'] {
 
 .mnavebutton::after {
   top: -12px;
+}
+
+#mnavecb:focus-visible + .mnave, :focus-visible {
+  outline: var(--nord17) dashed 3px;
 }
 
 #mnavecb:checked + .mnave .mnavebutton {

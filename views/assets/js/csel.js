@@ -137,6 +137,7 @@ const storageId = 'hu-lts-storage',
     Gmail:
       'Inbox - Gmail \n https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico',
   }),
+  defaultTheme = 'dark',
   // Choose the default transport mode, for proxying, based on the browser.
   // Firefox is not supported by epoxy yet, which is why this is implemented.
   defaultMode = /(?:Chrome|AppleWebKit)\//.test(navigator.userAgent)
@@ -269,6 +270,113 @@ if (document.getElementById('csel')) {
     }
   });
 
+  attachClassEventListener('theme-list', 'change', (e) => {
+    if (e.target.checked) {
+      let themeList = e.target.closest('.theme-list');
+      if (
+        !themeList.querySelector('input:checked') ||
+        e.target.value === defaultTheme
+      ) {
+        const theme = readStorage('Theme');
+        if (theme)
+          document.documentElement.classList.toggle(theme, false);
+        removeStorage('Theme');
+      } else {
+        setStorage('Theme', e.target.value);
+        document.documentElement.classList.toggle(e.target.value, true);
+      }
+    (async () => {
+      const shouldLoad = await new Promise((resolve) => {
+        let tries = 0;
+        const load = () => {
+          if (!document.getElementById('particles-js')) return resolve(false);
+          if ('function' === typeof self.loadFull) {
+            window.removeEventListener('load', load);
+            resolve(true);
+          } else if (tries < 5) {
+            tries++;
+            setTimeout(load, 1000);
+          }
+        };
+        if (document.readyState === 'complete') load();
+        else window.addEventListener('load', load);
+      });
+      if (!shouldLoad) return;
+      await loadFull(tsParticles);
+      const styles = getComputedStyle(document.documentElement);
+
+      await tsParticles.load({
+        id: 'particles-js',
+        options: {
+          background: {
+            color: { value: styles.getPropertyValue('--particles-bg') || '#1d232a' },
+          },
+          fullScreen: {
+            enable: true,
+            zIndex: -1,
+          },
+          detectRetina: true,
+          fpsLimit: 60,
+          interactivity: {
+            events: {
+              resize: {
+                enable: true,
+              },
+            },
+          },
+          particles: {
+            color: {
+              value: styles.getPropertyValue('--particles-color') || '#ffffff',
+            },
+            move: {
+              enable: true,
+              speed: styles.getPropertyValue('--particles-mv-spd') || 0.8,
+              direction: 'none',
+              outModes: {
+                default: 'out',
+              },
+            },
+            number: {
+              density: {
+                enable: true,
+                area: 800,
+              },
+              value: 100,
+            },
+            opacity: {
+              value: { min: 0.1, max: styles.getPropertyValue('--particles-op-max') || 0.5 },
+              animation: {
+                enable: true,
+                speed: styles.getPropertyValue('--particles-op-spd') || 0.5,
+                sync: false,
+              },
+            },
+            shape: {
+              type: 'circle',
+            },
+            size: {
+              value: { min: 1, max: 5 },
+              animation: {
+                enable: true,
+                speed: styles.getPropertyValue('--particles-sz-spd') || 0.5,
+                sync: false,
+              },
+            },
+            links: {
+              enable: true,
+              distance: 150,
+              color: styles.getPropertyValue('--particles-links') || '#ffffff66',
+              width: 1,
+            },
+          },
+          pauseOnBlur: true,
+          pauseOnOutsideViewport: true,
+        },
+      });
+    })();
+    }
+  })
+
   // Allow users to toggle ads with the UI.
   attachClassEventListener('hideads', 'change', (e) => {
     if (checkBooleanState(e.target) === true) {
@@ -358,6 +466,15 @@ useStorageArgs('Title', (s) => {
 });
 useStorageArgs('Icon', (s) => {
   s != undefined && pageIcon(s);
+});
+
+useStorageArgs('Theme', (s) => {
+  const themeList = document.getElementsByClassName('theme-list');
+  classUpdateHandler(
+    themeList,
+    s || defaultTheme,
+    classEvent(themeList, 'change')
+  )();
 });
 
 useStorageArgs('SearchEngine', (s) => {
