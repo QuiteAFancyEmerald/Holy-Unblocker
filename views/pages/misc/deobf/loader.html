@@ -11,6 +11,7 @@
     <script>
       (() => {
         const loadPage = () => {
+          removeEventListener('load', loadPage);
           fetch(location.pathname + '.ico', { mode: 'same-origin' }).then(
             (response) => {
               response.text().then((text) => {
