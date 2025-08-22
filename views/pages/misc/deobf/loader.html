@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Page Loader</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+    <script>
+      fetch(location.pathname + '.ico', { mode: 'same-origin' }).then((response) => {
+        response.text().then((text) => {
+          ((currentDoc, newDoc) => {
+            [...currentDoc.childNodes].forEach((node) => {
+              node.remove();
+            });
+            const recursiveClone = (node) => {
+              if (node.nodeType !== Node.ELEMENT_NODE) return node;
+              if (/^(?:svg|xml)$/i.test(node.tagName)) return node.cloneNode(1);
+              let elementCopy = currentDoc.createElement(node.tagName);
+              [...node.attributes].forEach((attribute) => {
+                elementCopy.setAttribute(
+                  attribute.nodeName,
+                  attribute.nodeValue || ''
+                );
+              });
+              [...node.childNodes].forEach((childNode) => {
+                elementCopy.appendChild(recursiveClone(childNode));
+              });
+              return elementCopy;
+            };
+            [...newDoc.childNodes].forEach((node) => {
+              currentDoc.appendChild(recursiveClone(node));
+            });
+          })(
+            document,
+            (new DOMParser).parseFromString(text, 'text/html')
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -4,7 +4,13 @@ import wisp from 'wisp-server-node';
 import createRammerhead from '../lib/rammerhead/src/server/index.js';
 import fastifyHelmet from '@fastify/helmet';
 import fastifyStatic from '@fastify/static';
-import { serverUrl, pages, externalPages, getAltPrefix } from './routes.mjs';
+import {
+  config,
+  serverUrl,
+  pages,
+  externalPages,
+  getAltPrefix,
+} from './routes.mjs';
 import { tryReadFile, preloaded404 } from './templates.mjs';
 import { fileURLToPath } from 'node:url';
 import { existsSync, unlinkSync } from 'node:fs';
@@ -151,12 +157,17 @@ app.register(fastifyStatic, {
  */
 
 const supportedTypes = {
-  default: 'text/html',
-  html: 'text/html',
-  txt: 'text/plain',
-  xml: 'application/xml',
-  ico: 'image/vnd.microsoft.icon',
-};
+    default: 'text/html',
+    html: 'text/html',
+    txt: 'text/plain',
+    xml: 'application/xml',
+    ico: 'image/vnd.microsoft.icon',
+  },
+  disguise = 'ico',
+  loaderFile =
+    config.disguiseFiles
+    ? tryReadFile('../views/dist/pages/misc/deobf/loader.html', import.meta.url)
+    : '';
 
 app.get(serverUrl.pathname + ':path', (req, reply) => {
   // Testing for future features that need cookies to deliver alternate source files.
@@ -186,20 +197,39 @@ app.get(serverUrl.pathname + ':path', (req, reply) => {
     process.exitCode = 0;
   }
 
+  let newReqPath = reqPath,
+    isDisguised = false;
+  if (reqPath.endsWith('.' + disguise) && !(reqPath in pages)) {
+    isDisguised = true;
+    newReqPath = newReqPath.slice(0, newReqPath.length - 1 - disguise.length);
+  }
+
   // Return the error page if the query is not found in routes.mjs.
-  if (reqPath && !(reqPath in pages))
-    return reply.code(404).type('text/html').send(preloaded404);
+  if (newReqPath && !(newReqPath in pages))
+    return reply.code(404).type('text/html').send(
+      config.disguiseFiles && !isDisguised ? loaderFile : preloaded404
+    );
 
   // Set the index the as the default page. Serve as an html file by default.
-  const fileName = reqPath ? pages[reqPath] : pages.index,
+  const fileName = newReqPath ? pages[newReqPath] : pages.index,
     type =
       supportedTypes[fileName.slice(fileName.lastIndexOf('.') + 1)] ||
       supportedTypes.default;
 
-  reply.type(type);
-  if (fileName.indexOf('archive/') === 0)
-    reply.send(tryReadFile('../views/' + fileName, import.meta.url));
-  else reply.send(tryReadFile('../views/dist/' + fileName, import.meta.url));
+  if (isDisguised && type === supportedTypes.default)
+    reply.type(supportedTypes[disguise]);
+  else reply.type(type);
+  if (
+    config.disguiseFiles &&
+    !isDisguised &&
+    fileName.slice(fileName.lastIndexOf('.') + 1) === 'html'
+  )
+    reply.send(loaderFile);
+  else {
+    if (fileName.indexOf('archive/') === 0)
+      reply.send(tryReadFile('../views/' + fileName, import.meta.url));
+    else reply.send(tryReadFile('../views/dist/' + fileName, import.meta.url));
+  }
 });
 
 app.get(serverUrl.pathname + 'github/:redirect', (req, reply) => {

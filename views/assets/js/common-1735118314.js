@@ -513,7 +513,7 @@ const RammerheadEncode = async (baseUrl) => {
  *
  * goProx.searx();
  */
-addEventListener('DOMContentLoaded', async () => {
+const preparePage = async () => {
   // This won't break the service workers as they store the variable separately.
   uvConfig = self['{{__uv$config}}'];
   delete self['{{__uv$config}}'];
@@ -790,15 +790,29 @@ addEventListener('DOMContentLoaded', async () => {
   }
 
   const banner = document.getElementById('banner');
-  if (banner)
+  if (banner) {
+    let tries = 0;
+    const useAOS = () => {
+      try {
+        AOS.init();
+      } catch (e) {
+        if (tries <= 5) {
+          tries++;
+          setTimeout(useAOS, 600);
+        }
+      }
+    };
+    useAOS();
+
     fetch('{{route}}{{/assets/json/splash.json}}', {
       mode: 'same-origin',
     }).then((response) => {
       response.json().then((splashList) => {
-        banner.firstElementChild.textContent =
+        banner.firstElementChild.innerHTML =
           splashList[(Math.random() * splashList.length) | 0];
       });
     });
+  }
 
   // Load in relevant JSON files used to organize large sets of data.
   // This first one is for links, whereas the rest are for navigation menus.
@@ -917,5 +931,8 @@ addEventListener('DOMContentLoaded', async () => {
       }
     }
   }
-});
+};
+if ('loading' === document.readyState)
+  addEventListener('DOMContentLoaded', preparePage);
+else preparePage();
 })();
