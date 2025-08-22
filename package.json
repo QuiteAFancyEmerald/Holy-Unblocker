@@ -8,7 +8,7 @@
     "node": "20.x"
   },
   "scripts": {
-    "fresh-install": "npm cache verify && npm ci && cd lib/rammerhead && npm ci",
+    "fresh-install": "npm cache verify && npm update && npm ci && cd lib/rammerhead && npm ci",
     "fresh-start": "npm run fresh-install && npm start",
     "start": "npm stop && npm run build && npm run manual-start",
     "restart": "node run-command.mjs stop start",
