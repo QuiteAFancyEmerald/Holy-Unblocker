@@ -164,8 +164,7 @@ const supportedTypes = {
     ico: 'image/vnd.microsoft.icon',
   },
   disguise = 'ico',
-  loaderFile =
-    config.disguiseFiles
+  loaderFile = config.disguiseFiles
     ? tryReadFile('../views/dist/pages/misc/deobf/loader.html', import.meta.url)
     : '';
 
@@ -206,9 +205,10 @@ app.get(serverUrl.pathname + ':path', (req, reply) => {
 
   // Return the error page if the query is not found in routes.mjs.
   if (newReqPath && !(newReqPath in pages))
-    return reply.code(404).type('text/html').send(
-      config.disguiseFiles && !isDisguised ? loaderFile : preloaded404
-    );
+    return reply
+      .code(404)
+      .type('text/html')
+      .send(config.disguiseFiles && !isDisguised ? loaderFile : preloaded404);
 
   // Set the index the as the default page. Serve as an html file by default.
   const fileName = newReqPath ? pages[newReqPath] : pages.index,
@@ -242,15 +242,28 @@ if (serverUrl.pathname === '/')
   // Set an error page for invalid paths outside the query string system.
   // If the server URL has a prefix, then avoid doing this for stealth reasons.
   app.setNotFoundHandler((req, reply) => {
-    reply.code(404).type('text/html').send(preloaded404);
+    reply
+      .code(404)
+      .type(supportedTypes.html)
+      .send(
+        config.disguiseFiles &&
+          !new URL(req.url, serverUrl).pathname.endsWith('.' + disguise)
+          ? loaderFile
+          : preloaded404
+      );
   });
 else {
   // Apply the following patch(es) if the server URL has a prefix.
 
   // Patch to fix serving index.html.
   app.get(serverUrl.pathname, (req, reply) => {
-    reply.type(supportedTypes.html);
-    reply.send(tryReadFile('../views/dist/' + pages.index, import.meta.url));
+    reply
+      .type(supportedTypes.html)
+      .send(
+        config.disguiseFiles
+          ? loaderFile
+          : tryReadFile('../views/dist/' + pages.index, import.meta.url)
+      );
   });
 }
 
