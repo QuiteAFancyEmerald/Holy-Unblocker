@@ -2,10 +2,10 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 
 ## Code Cleanup
 
-- [ ] Optimize the stylesheets and the HTML layout. Add more proper commenting and redivide the code so that it's less hard on the eyes.
 - [ ] Optimize the JS. This time it won't be in one line and will be somewhat thoroughly commented.
-- [ ] Ensure all the original submodules get added back to HU-Archive
-- [ ] SEO overhaul adapted from the v3 SEO Guide format - partial
+- [x] Ensure all the original submodules get added back to HU-Archive
+- [x] SEO overhaul adapted from the v3 SEO Guide format - partial
+- [x] Optimize the stylesheets and the HTML layout. Add more proper commenting and redivide the code so that it's less hard on the eyes.
 - [x] Remove all current obfuscation in the source code. It needs to be dynamically obfuscated if anything, or not obfuscated at all. This option will be a config option on the server side before rendering with Fastify for a performance focus. Meta elements will have an additonal attribute indicating if they should be moved. This is to ensure a SEO source can be served by config or a source focused on pure censorship evasion.
 - [x] Restructure navigation scripts to ensure updated proxy functionality is sanitized and effective - done
 - [x] Particles.js automatically adjusting per display size - done
@@ -25,8 +25,8 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Improve adblocking functions on site using Workerware + a pre-bundled uBlock Origin
 - [ ] Add a "website self-destruct" button to the settings menu
 - [ ] Implement wisp python to the project instead of the unreliable wisp-server-node (not good for production)
-- [x] Fix keyword/descriptor randomisation - done
 - [ ] Added Eruda ensuring users can access a someone crafted devtools while browsing - partial
+- [x] Fix keyword/descriptor randomisation - done
 - [x] Adapt Wisp protocol replacing bare which is very unsecure - done
 - [x] Improved error handling for proxy errors - done
 - [x] Ensure Ultraviolet is updated to support bare-mux and wisp - done
@@ -53,10 +53,8 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 
 ## Site Redesign
 
-- [ ] Documentation on-site + Getting Started information updated (Tor, etc.)
+- [x] Documentation on-site + Getting Started information updated (Tor, etc.) - partial; good enough
 - [x] Update colors + add themes - done
-- [ ] Hosting page
-- [ ] Resources page
 - [x] Landing Cards - done
 - [x] Change fonts to cleaner look
 - [x] Add more AOS interactions on scroll or hover
@@ -86,9 +84,8 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 
 ## Community Requests
 
-- [ ] Add [Quake WASM](https://github.com/GMH-Code/Quake-WASM)
-- [ ] Celeste WASM
-- [ ] Doom WASM
+- [x] Add [Quake WASM](https://github.com/GMH-Code/Quake-WASM)
+- [x] Celeste WASM
 
 ## Changelog (Old; too lazy to type it all out now)
 
