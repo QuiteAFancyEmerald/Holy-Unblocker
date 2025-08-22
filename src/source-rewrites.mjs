@@ -132,7 +132,7 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
     `<span style="display:none" data-fact="${randomListItem(vegetables)()}">${randomListItem(cookingInserts)()}</span>`,
   insertCooking = (str) =>
     str.replaceAll(
-      '<!-- IMPORTANT-HUTAOCOOKINGINSERT-DONOTDELETE -->',
+      '<!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->',
       getCookingText
     ),
   encodingTable = (() => {

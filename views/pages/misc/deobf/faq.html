@@ -14,17 +14,18 @@
 <div class="box-clear text-center textm">
   <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
   <h2 class="bigtitle">Icon Information</h2>
-  <h4>How to find the Icon URL of a Site</h4>
+  <h4>{{mask}}{{How to find the Icon URL of a Site}}</h4>
   <p>
-    Go to the website you want an icon from, then use this bookmarklet (drag it
-    to your bookmarks bar):
+    {{mask}}{{Go to the website you want an icon from, then use this bookmarklet
+    (drag it to your bookmarks bar):}}
   </p>
   <div id="bks-parent">
     <a id="iconfinder" class="fancybutton fb-l glowbutton">Find Icon URL</a>
   </div>
   <script>
-    document.getElementById('iconfinder').href =
-      `javascript:alert((Array.from(document.head.querySelectorAll("link[rel*='icon']")).slice(-1)[0]||0).href||location.origin+"{{route}}{{/favicon.ico}}")`;
+    document.getElementById(
+      'iconfinder'
+    ).href = `javascript:alert((Array.from(document.head.querySelectorAll("link[rel*='icon']")).slice(-1)[0]||0).href||location.origin+"{{route}}{{/favicon.ico}}")`;
   </script>
   <p>
     {{mask}}{{ Copy the URL that the bookmarklet gives you. Then go back to HU
@@ -35,8 +36,8 @@
   <div class="faq-text">
     <h3>
       <strong
-        >I am getting "Network Error" or Site Error every time I use the
-        proxy?</strong
+        >{{mask}}{{I am getting "Network Error" or Site Error every time I use
+        the proxy?}}</strong
       >
     </h3>
     <p>
@@ -51,8 +52,8 @@
   <div class="faq-text">
     <h3>
       <strong
-        >I am getting an error similar to: "'cdn.example.com' cannot be
-        reached."</strong
+        >{{mask}}{{I am getting an error similar to: "'cdn.example.com' cannot be
+        reached."}}</strong
       >
     </h3>
     <p>
@@ -63,7 +64,7 @@
   </div>
   <div class="faq-text">
     <h3>
-      <strong>Why is my site loading in partially or just blank?</strong>
+      <strong>{{mask}}{{Why is my site loading in partially or just blank?}}</strong>
     </h3>
     <p>
       {{mask}}{{ Not all websites are supported. Naturally this is due to the
@@ -127,8 +128,8 @@
   <div class="faq-text">
     <h3>
       <strong
-        >Why is the site I am on not working correctly or having CAPTCHA
-        errors?</strong
+        >{{mask}}{{Why is the site I am on not working correctly or having CAPTCHA
+        errors?}}</strong
       >
     </h3>
     <p>
@@ -145,12 +146,12 @@
         page not load fully or the video is just white?}}</strong
       >
     </h3>
-    <p>There are two methods for fixing this:</p>
+    <p>{{mask}}{{There are two methods for fixing this:}}</p>
     <ul>
       <li>
         <p>
-          Reloading the page normally when the error above happens should load
-          the video.
+          {{mask}}{{Reloading the page normally when the error above happens should load
+          the video.}}
         </p>
       </li>
       <li>

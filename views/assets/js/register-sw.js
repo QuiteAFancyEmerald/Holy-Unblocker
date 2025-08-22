@@ -93,11 +93,6 @@
           naiiveRewriter: false,
           scramitize: false,
         },
-        siteFlags: {
-          'https://www.google.com/(search|sorry).*': {
-            naiiveRewriter: true,
-          },
-        },
       });
 
       console.log('Initializing ScramjetController');

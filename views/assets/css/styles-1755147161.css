@@ -53,6 +53,7 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
   --nord16: #abadb1;
   --nord17: #ff5861;
   --nord18: #2e3440;
+  --nord19: rgba(255, 87, 95, 0.569);
   --blue: #375a7f;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -307,6 +308,15 @@ details[open] summary {
 
 .display-off {
   display: none;
+}
+
+#password-field {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 }
 
 /* Used on a lot of navigation pages. */
@@ -1508,7 +1518,7 @@ input[type='text'] {
   display: flex;
   align-items: center;
   padding: 20px;
-  border: 1px var(--nord16) solid;
+  border: 1px var(--nord19);
   border-radius: 10px;
   position: relative;
   overflow: hidden;
@@ -2276,10 +2286,12 @@ input[type='text'] {
 }
 
 #mnavecb {
-  width: 0;
-  height: 0;
-  margin: 0;
-  outline: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 }
 
 .mnavebutton,

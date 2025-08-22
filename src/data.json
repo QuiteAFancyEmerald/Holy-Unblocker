@@ -19,15 +19,42 @@
   "textMasks": {
     "Holy Unblocker": ["H*ol*y *Un*b*lo*c*k*er"],
     "Holy Unblocker LTS": ["H*ol*y *Un*b*lo*c*k*er *L*T*S"],
-    "Proxies": ["Pr*ox*i*es", "P*ro*x*ies", "Pro*x*i*es", "Pr*ox*ie*s"],
+    "Webretro": ["W*e*b*r*e*t*r*o"],
+    "Ruffle": ["R*u*f*f*l*e"],
+    "Tab Cloaker": ["t*a*b c*l*o*a*k*e*r", "t*a*b c*l*o*a*k*e*rs"],
+    "Search": ["S*e*a*r*c*h", "S*e*a*r*c*h*i*n*g"],
+    "Freely": ["F*r*e*e*l*y", "F*r*e*e"],
+    "Surf": ["S*u*r*f*i*n*g", "S*u*r*f"],
+    "VPN": ["V*P*N", "V*P*N*s"],
+    "Server": ["S*e*r*v*e*r", "S*e*r*v*e*r*s"],
+    "Network": ["N*e*t*w*o*r*k", "N*e*t*w*o*r*k*s"],
+    "Connection": ["C*o*n*n*e*c*t*i*o*n", "C*o*n*n*e*c*t*i*o*n*s"],
+    "Privacy": ["P*r*i*v*a*c*y"],
+    "Private": ["P*r*i*v*a*t*e"],
+    "Games": ["G*a*m*e*s"],
+    "Croxy": ["Cr*o*x*y"],
+    "CroxyProxy": ["Cr*o*x*y*Pr*o*x*y"],
     "Proxy": ["Pr*ox*y", "P*ro*x*y", "Pro*x*y"],
-    "Unblocker": ["Un*b*lo*c*k*er", "Un*bl*o*c*k*er", "Unb*lo*c*k*er"],
+    "Proxies": ["Pr*ox*i*es", "P*ro*x*ies", "Pro*x*i*es", "Pr*ox*ie*s"],
+    "Proxied": ["Pr*ox*i*e*d", "P*ro*x*ied", "Pro*x*i*ed", "Pr*ox*ie*d"],
+    "Proxying": ["Pr*o*x*y*i*n*g", "P*r*o*x*y*i*n*g"],
     "Unblock": ["Un*b*lo*c*k", "Un*bl*o*c*k", "Unb*lo*c*k"],
-    "Unblockers": ["Un*blo*c*k*ers", "Un*bl*o*c*k*ers", "Unblo*c*k*ers"],
-    "Bypass": ["By*pa*ss", "By*pa*ss*es", "Byp*as*s", "B*y*p*a*s*s"]
+    "Unblocked": ["Un*b*lo*c*k*e*d", "Un*bl*o*c*k*e*d", "Unb*lo*c*k*e*d"],
+    "Unblocking": ["Un*b*lo*c*k*i*n*g", "Un*bl*o*c*k*i*n*g", "Unb*lo*c*k*i*n*g"],
+    "Unblocks": ["Un*b*lo*c*k*s", "Un*bl*o*c*k*s", "Unb*lo*c*k*s"],
+    "Unblocker": ["Un*b*lo*c*k*er", "Un*bl*o*c*k*er", "Unb*lo*c*k*er"],
+    "Unblockers": ["Un*b*lo*c*k*ers", "Un*bl*o*c*k*ers", "Unb*lo*c*k*ers"],
+    "Bypass": ["By*pa*ss", "Byp*as*s", "B*y*p*a*s*s"],
+    "Titanium Network": ["Ti*ta*ni*um Ne*tw*or*k"],
+    "Wisp": ["W*i*s*p"],
+    "Tor": ["T*o*r"],
+    "Onion": ["O*n*i*o*n"],
+    "Ultraviolet": ["Ul*t*ra*vi*o*le*t"],
+    "Scramjet": ["Sc*r*a*m*j*e*t"],
+    "Rammerhead": ["Ra*m*m*e*r*h*e*a*d"]
   },
   "splash": [
     "{{mask}}{{This version is the public build of the HU LTS project, and it's being worked on via the master branch! Stuff will NOT work!}}"
   ],
-  "version": ["6.8.2"]
+  "version": ["6.8.5"]
 }

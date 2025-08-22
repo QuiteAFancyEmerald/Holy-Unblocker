@@ -85,6 +85,8 @@ let externalPages = {
     ultraviolet: 'https://github.com/titaniumnetwork-dev/Ultraviolet',
     wisp: 'https://github.com/MercuryWorkshop/wisp-protocol',
   },
+  'codespaces': 'https://github.com/codespaces',
+  'tor-project': 'https://tb-manual.torproject.org/installation',
   'titaniumnetwork-documentation': 'https://docs.titaniumnetwork.org',
   'titaniumnetwork-discord': 'https://discord.gg/CwWpdGkuWY',
   'rammerhead-discord': 'https://discord.gg/VNT4E7gN5Y',
@@ -118,6 +120,8 @@ let altPaths = {
     wisp: 'router',
   },
   'titaniumnetwork-documentation': 'docs',
+  'codespaces': 'codesp',
+  'tor-project': 'tr',
   'titaniumnetwork-discord': 'social',
   'rammerhead-discord': 'rdis',
   /* Raw File Names */

@@ -289,7 +289,7 @@ if (document.getElementById('csel')) {
         const shouldLoad = await new Promise((resolve) => {
           let tries = 0;
           const load = () => {
-            if (!document.getElementById('particles-js')) return resolve(false);
+            if (!document.getElementById('background')) return resolve(false);
             if ('function' === typeof self.loadFull) {
               window.removeEventListener('load', load);
               resolve(true);
@@ -306,7 +306,7 @@ if (document.getElementById('csel')) {
         const styles = getComputedStyle(document.documentElement);
 
         await tsParticles.load({
-          id: 'particles-js',
+          id: 'background',
           options: {
             background: {
               color: {
@@ -328,12 +328,11 @@ if (document.getElementById('csel')) {
             },
             particles: {
               color: {
-                value:
-                  styles.getPropertyValue('--particles-color') || '#ffffff',
+                value: styles.getPropertyValue('--particles-color') || '#ffffff',
               },
               move: {
                 enable: true,
-                speed: styles.getPropertyValue('--particles-mv-spd') || 0.8,
+                speed: parseFloat(styles.getPropertyValue('--particles-mv-spd')) || 0.8,
                 direction: 'none',
                 outModes: {
                   default: 'out',
@@ -349,11 +348,11 @@ if (document.getElementById('csel')) {
               opacity: {
                 value: {
                   min: 0.1,
-                  max: styles.getPropertyValue('--particles-op-max') || 0.5,
+                  max: parseFloat(styles.getPropertyValue('--particles-op-max')) || 0.5,
                 },
                 animation: {
                   enable: true,
-                  speed: styles.getPropertyValue('--particles-op-spd') || 0.5,
+                  speed: parseFloat(styles.getPropertyValue('--particles-op-spd')) || 0.5,
                   sync: false,
                 },
               },
@@ -364,15 +363,15 @@ if (document.getElementById('csel')) {
                 value: { min: 1, max: 5 },
                 animation: {
                   enable: true,
-                  speed: styles.getPropertyValue('--particles-sz-spd') || 0.5,
+                  speed: parseFloat(styles.getPropertyValue('--particles-sz-spd')) || 0.5,
                   sync: false,
                 },
               },
               links: {
                 enable: true,
                 distance: 150,
-                color:
-                  styles.getPropertyValue('--particles-links') || '#ffffff66',
+                color: styles.getPropertyValue('--particles-links') || '#ffffff',
+                opacity: parseFloat(styles.getPropertyValue('--particles-links-opacity')) || 0.4,
                 width: 1,
               },
             },
