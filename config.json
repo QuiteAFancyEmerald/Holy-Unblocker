@@ -5,6 +5,6 @@
   "minifyScripts": true,
   "randomizeIdentifiers": true,
   "production": false,
-  "disguiseFiles": false,
+  "disguiseFiles": true,
   "usingSEO": true
 }

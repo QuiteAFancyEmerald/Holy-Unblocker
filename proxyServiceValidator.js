@@ -17,8 +17,9 @@ const testEndpoint = async (url) => {
 const generateUrl = async (omniboxId, urlPath, errorPrefix = 'failure') => {
   // Wait for the document to load before getting the omnibox.
   await new Promise((resolve) => {
-    if (document.readyState === 'complete') resolve();
-    else window.addEventListener('load', resolve);
+    const waitLonger = () => setTimeout(resolve, 5000);
+    if (document.readyState === 'complete') waitLonger();
+    else window.addEventListener('load', waitLonger);
   });
 
   let omnibox = document.getElementById(omniboxId);
@@ -236,8 +237,9 @@ xx                                                  xx
 
           await new Promise((resolve) => {
             const waitForDocument = () => {
-                if (document.readyState === 'complete') resolve();
-                else window.addEventListener('load', resolve);
+                const waitLonger = () => setTimeout(resolve, 3000);
+                if (document.readyState === 'complete') waitLonger();
+                else window.addEventListener('load', waitLonger);
               },
               // Wait until a service worker is registered before continuing.
               // Also check again to make sure the document is loaded.

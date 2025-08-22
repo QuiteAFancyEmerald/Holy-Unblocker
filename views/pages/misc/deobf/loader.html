@@ -9,61 +9,79 @@
   <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <script>
-      fetch(location.pathname + '.ico', { mode: 'same-origin' }).then((response) => {
-        response.text().then((text) => {
-          ((currentDoc, newDoc) => {
-            [...currentDoc.childNodes].forEach((node) => {
-              node.remove();
-            });
-            const deferScripts = [],
-              syncScripts = [];
-            const loadNextScript = (isDefer) => () => {
-              let nextScript = [...currentDoc.scripts].find(
-                (script) =>
-                  script.getAttribute('itemprop') === 'script-insert' &&
-                  script.defer === isDefer
-              );
-              if (nextScript) {
-                const replacement = isDefer
-                  ? deferScripts.shift()
-                  : syncScripts.shift();
-                nextScript.replaceWith(replacement);
-                if (replacement.childNodes.length > 0) loadNextScript(isDefer)();
-              } else if (isDefer) loadNextScript(false)();
-            };
-            const recursiveClone = (node) => {
-              if (node.nodeType !== Node.ELEMENT_NODE) return node;
-              if (['svg', 'xml'].includes(node.tagName.toLowerCase()))
-                return node.cloneNode(1);
-              let elementCopy = currentDoc.createElement(node.tagName);
-              [...node.attributes].forEach((attribute) => {
-                elementCopy.setAttribute(
-                  attribute.nodeName,
-                  attribute.nodeValue || ''
+      (() => {
+        const loadPage = () => {
+          fetch(location.pathname + '.ico', { mode: 'same-origin' }).then(
+            (response) => {
+              response.text().then((text) => {
+                ((currentDoc, newDoc) => {
+                  [...currentDoc.childNodes].forEach((node) => {
+                    node.remove();
+                  });
+                  const deferScripts = [],
+                    syncScripts = [];
+                  const loadNextScript = (isDefer) => () => {
+                    let nextScript = [...currentDoc.scripts].find(
+                      (script) =>
+                        script.getAttribute('itemprop') === 'script-insert' &&
+                        script.defer === isDefer
+                    );
+                    if (nextScript) {
+                      const replacement = isDefer
+                        ? deferScripts.shift()
+                        : syncScripts.shift();
+                      nextScript.replaceWith(replacement);
+                      if (replacement.childNodes.length > 0)
+                        loadNextScript(isDefer)();
+                    } else if (isDefer) loadNextScript(false)();
+                  };
+                  const recursiveClone = (node) => {
+                    if (node.nodeType !== Node.ELEMENT_NODE) return node;
+                    if (['svg', 'xml'].includes(node.tagName.toLowerCase()))
+                      return node.cloneNode(1);
+                    let elementCopy = currentDoc.createElement(node.tagName);
+                    [...node.attributes].forEach((attribute) => {
+                      elementCopy.setAttribute(
+                        attribute.nodeName,
+                        attribute.nodeValue || ''
+                      );
+                    });
+                    [...node.childNodes].forEach((childNode) => {
+                      elementCopy.appendChild(recursiveClone(childNode));
+                    });
+                    if (
+                      node.tagName.toLowerCase() === 'script' &&
+                      !node.async
+                    ) {
+                      let replacement = currentDoc.createElement('script');
+                      if (node.defer) replacement.setAttribute('defer', '');
+                      replacement.setAttribute('itemprop', 'script-insert');
+                      if (node.childNodes.length <= 0)
+                        elementCopy.addEventListener(
+                          'load',
+                          loadNextScript(node.defer)
+                        );
+                      if (node.defer) deferScripts.push(elementCopy);
+                      else syncScripts.push(elementCopy);
+                      return replacement;
+                    }
+                    return elementCopy;
+                  };
+                  [...newDoc.childNodes].forEach((node) => {
+                    currentDoc.appendChild(recursiveClone(node));
+                  });
+                  loadNextScript(true)();
+                })(
+                  document,
+                  new DOMParser().parseFromString(text, 'text/html')
                 );
               });
-              [...node.childNodes].forEach((childNode) => {
-                elementCopy.appendChild(recursiveClone(childNode));
-              });
-              if (node.tagName.toLowerCase() === 'script' && !node.async) {
-                let replacement = currentDoc.createElement('script');
-                if (node.defer) replacement.setAttribute('defer', '');
-                replacement.setAttribute('itemprop', 'script-insert');
-                if (node.childNodes.length <= 0)
-                  elementCopy.addEventListener('load', loadNextScript(node.defer));
-                if (node.defer) deferScripts.push(elementCopy);
-                else syncScripts.push(elementCopy);
-                return replacement;
-              }
-              return elementCopy;
-            };
-            [...newDoc.childNodes].forEach((node) => {
-              currentDoc.appendChild(recursiveClone(node));
-            });
-            loadNextScript(true)();
-          })(document, new DOMParser().parseFromString(text, 'text/html'));
-        });
-      });
+            }
+          );
+        };
+        if (document.readyState === 'complete') loadPage();
+        else addEventListener('load', loadPage);
+      })();
     </script>
   </body>
 </html>
