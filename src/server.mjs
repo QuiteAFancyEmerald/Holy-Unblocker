@@ -208,7 +208,14 @@ app.get(serverUrl.pathname + ':path', (req, reply) => {
     return reply
       .code(404)
       .type('text/html')
-      .send(config.disguiseFiles && !isDisguised ? loaderFile : preloaded404);
+      .send(
+        config.disguiseFiles && !isDisguised
+          ? loaderFile.replaceAll(
+              '{{location}}',
+              new URL(req.url, serverUrl).pathname
+            )
+          : preloaded404
+      );
 
   // Set the index the as the default page. Serve as an html file by default.
   const fileName = newReqPath ? pages[newReqPath] : pages.index,
@@ -224,7 +231,12 @@ app.get(serverUrl.pathname + ':path', (req, reply) => {
     !isDisguised &&
     fileName.slice(fileName.lastIndexOf('.') + 1) === 'html'
   )
-    reply.send(loaderFile);
+    reply.send(
+      loaderFile.replaceAll(
+        '{{location}}',
+        new URL(req.url, serverUrl).pathname
+      )
+    );
   else {
     if (fileName.indexOf('archive/') === 0)
       reply.send(tryReadFile('../views/' + fileName, import.meta.url));
@@ -248,7 +260,10 @@ if (serverUrl.pathname === '/')
       .send(
         config.disguiseFiles &&
           !new URL(req.url, serverUrl).pathname.endsWith('.' + disguise)
-          ? loaderFile
+          ? loaderFile.replaceAll(
+              '{{location}}',
+              new URL(req.url, serverUrl).pathname
+            )
           : preloaded404
       );
   });
@@ -261,7 +276,10 @@ else {
       .type(supportedTypes.html)
       .send(
         config.disguiseFiles
-          ? loaderFile
+          ? loaderFile.replaceAll(
+              '{{location}}',
+              new URL(req.url, serverUrl).pathname
+            )
           : tryReadFile('../views/dist/' + pages.index, import.meta.url)
       );
   });
