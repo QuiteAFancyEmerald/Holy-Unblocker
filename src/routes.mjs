@@ -138,6 +138,12 @@ let altPaths = {
     'uv.webp': 'nt.webp',
     'scramjet.webp': 'wr.webp',
     'rammerhead.webp': 'physics.webp',
+    'fastify.webp': 'fs.webp',
+    'nordtheme.webp': 'nord.webp',
+    'nodejs.webp': 'node.webp',
+    'fontawesome.webp': 'fa.webp',
+    'webretro.webp': 'notebook.webp',
+    'ruffle.webp': 'rs.webp',
   },
   /* Prefixes */
   prefixes: {
