@@ -68,20 +68,22 @@
                     for (j = 0; j < nodeList.length; j++)
                       elementCopy.appendChild(recursiveClone(nodeList[j]));
                     if ('script' === nodeName && !node.async) {
+                      const isDefer =
+                        node.defer || 'module' === node.type.toLowerCase();
                       let replacement = currentDoc.createElement('script');
-                      if (node.defer) replacement.setAttribute('defer', '');
+                      if (isDefer) replacement.setAttribute('defer', '');
                       replacement.setAttribute('itemprop', 'script-insert');
                       if (node.childNodes.length <= 0) {
                         elementCopy.addEventListener(
                           'load',
-                          loadNextScript(node.defer, elementCopy)
+                          loadNextScript(isDefer, elementCopy)
                         );
                         elementCopy.addEventListener(
                           'error',
-                          loadNextScript(node.defer, elementCopy)
+                          loadNextScript(isDefer, elementCopy)
                         );
                       }
-                      if (node.defer) deferScripts.push(elementCopy);
+                      if (isDefer) deferScripts.push(elementCopy);
                       else {
                         syncScripts.push(elementCopy);
                         if ('head' === node.parentElement.tagName.toLowerCase())
