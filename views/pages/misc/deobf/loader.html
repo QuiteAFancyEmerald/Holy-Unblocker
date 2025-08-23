@@ -16,14 +16,15 @@
                 ((currentDoc, newDoc) => {
                   const deferScripts = [],
                     syncScripts = [];
-                  let waitForHead = false,
+                  let reachedEnd = false,
+                    waitForHead = false,
                     headScripts = 0;
                   const bodyLoader = () => {
                     headScripts--;
                     if (waitForHead && headScripts <= 0) {
                       waitForHead = false;
                       currentDoc.body.replaceWith(recursiveClone(newDoc.body));
-                      setTimeout(loadNextScript(false), 0);
+                      if (reachedEnd) loadNextScript(false)();
                     }
                     return waitForHead;
                   };
@@ -46,9 +47,9 @@
                         : syncScripts.shift();
                       nextScript.replaceWith(replacement);
                       if (replacement.childNodes.length > 0)
-                        setTimeout(loadNextScript(isDefer, replacement), 0);
-                    } else if (!isDefer && !waitForHead)
-                      setTimeout(loadNextScript(true), 0);
+                        loadNextScript(isDefer, replacement)();
+                    } else if (!isDefer && !waitForHead) loadNextScript(true)();
+                    else reachedEnd = true;
                   };
                   const recursiveClone = (node) => {
                     if (node.nodeType !== Node.ELEMENT_NODE) return node;
