@@ -237,7 +237,7 @@ xx                                                  xx
 
           await new Promise((resolve) => {
             const waitForDocument = () => {
-                const waitLonger = () => setTimeout(resolve, 3000);
+                const waitLonger = () => setTimeout(resolve, 5000);
                 if (document.readyState === 'complete') waitLonger();
                 else window.addEventListener('load', waitLonger);
               },

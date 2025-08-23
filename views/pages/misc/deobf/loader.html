@@ -23,7 +23,7 @@
                     if (waitForHead && headScripts <= 0) {
                       waitForHead = false;
                       currentDoc.body.replaceWith(recursiveClone(newDoc.body));
-                      loadNextScript(false)();
+                      setTimeout(loadNextScript(false), 0);
                     }
                     return waitForHead;
                   };
@@ -46,8 +46,9 @@
                         : syncScripts.shift();
                       nextScript.replaceWith(replacement);
                       if (replacement.childNodes.length > 0)
-                        loadNextScript(isDefer, replacement)();
-                    } else if (!isDefer && !waitForHead) loadNextScript(true)();
+                        setTimeout(loadNextScript(isDefer, replacement), 0);
+                    } else if (!isDefer && !waitForHead)
+                      setTimeout(loadNextScript(true), 0);
                   };
                   const recursiveClone = (node) => {
                     if (node.nodeType !== Node.ELEMENT_NODE) return node;
