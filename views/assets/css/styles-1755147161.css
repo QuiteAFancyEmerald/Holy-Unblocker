@@ -139,8 +139,8 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
 /* ----------------------------------------------- */
 
 html {
-  background-color: var(--nord0);
   color: var(--html-color, white);
+  background-color: var(--nord0);
   font-family: 'Rethink Sans', sans-serif;
   font-weight: 300;
   text-wrap: balance;
