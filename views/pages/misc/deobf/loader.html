@@ -3,7 +3,6 @@
   <head>
     <title>Page Loader</title>
     <!--HEAD-CONTENT-->
-    <link rel="preload" as="fetch" href="{{location}}.ico" />
   </head>
   <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
@@ -11,7 +10,7 @@
       (() => {
         const loadPage = () => {
           removeEventListener('load', loadPage);
-          fetch('{{location}}.ico', { mode: 'same-origin' }).then(
+          fetch(location.pathname + '.ico', { mode: 'same-origin' }).then(
             (response) => {
               response.text().then((text) => {
                 ((currentDoc, newDoc) => {
