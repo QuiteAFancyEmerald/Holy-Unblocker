@@ -139,7 +139,7 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
 /* ----------------------------------------------- */
 
 html {
-  color: var(--html-color, white);
+  color: var(--html-color, #1d232a);
   font-family: 'Rethink Sans', sans-serif;
   font-weight: 300;
   text-wrap: balance;
