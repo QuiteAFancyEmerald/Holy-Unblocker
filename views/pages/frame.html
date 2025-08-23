@@ -9,11 +9,12 @@
     />
     }}
     <!--HEAD-CONTENT-->
-    <script src="{{route}}{{/scram/scramjet.all.js}}"></script>
-    <script src="{{route}}{{/baremux/index.js}}"></script>
-    <script src="{{route}}{{/uv/uv.bundle.js}}"></script>
-    <script src="{{route}}{{/uv/uv.config.js}}"></script>
-    <script src="{{route}}{{/assets/js/register-sw.js}}"></script>
+    <script src="{{route}}{{/scram/scramjet.all.js}}" defer></script>
+    <script src="{{route}}{{/baremux/index.js}}" defer></script>
+    <script src="{{route}}{{/uv/uv.bundle.js}}" defer></script>
+    <script src="{{route}}{{/uv/uv.config.js}}" defer></script>
+    <script src="{{route}}{{/assets/js/register-sw.js}}" defer></script>
+    <script src="{{route}}{{assets/js/common.js}}" defer></script>
   </head>
 
   <body>
@@ -37,7 +38,9 @@
         />
         <ul id="autocomplete"></ul>
       </div>
-      <button title="Bookmarks" id="bookmarks-toggle"><i class="fas fa-bookmark"></i></button>
+      <button title="Bookmarks" id="bookmarks-toggle">
+        <i class="fas fa-bookmark"></i>
+      </button>
       <div title="Settings" class="dropdown-parent">
         <a href="#" tabindex="0">
           <i class="fas fa-cog pulse" aria-hidden="true"></i>
@@ -151,7 +154,6 @@
       windowFrame.addEventListener('load', updateLoader);
       loadHandler();
     </script>
-    <script src="{{route}}{{assets/js/common.js}}"></script>
     <script src="{{route}}{{assets/js/csel.js}}"></script>
   </body>
 </html>

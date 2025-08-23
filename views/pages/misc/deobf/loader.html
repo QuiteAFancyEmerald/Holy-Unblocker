@@ -2,9 +2,7 @@
 <html>
   <head>
     <title>Page Loader</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--HEAD-CONTENT-->
   </head>
   <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
@@ -16,9 +14,9 @@
             (response) => {
               response.text().then((text) => {
                 ((currentDoc, newDoc) => {
-                  [...currentDoc.childNodes].forEach((node) => {
-                    node.remove();
-                  });
+                  let i = 0,
+                    childList = [...currentDoc.childNodes];
+                  for (; i < childList.length; i++) childList[i].remove();
                   const deferScripts = [],
                     syncScripts = [];
                   const loadNextScript = (isDefer) => () => {
@@ -34,22 +32,27 @@
                       nextScript.replaceWith(replacement);
                       if (replacement.childNodes.length > 0)
                         loadNextScript(isDefer)();
-                    } else if (isDefer) loadNextScript(false)();
+                    } else if (!isDefer) loadNextScript(true)();
                   };
                   const recursiveClone = (node) => {
                     if (node.nodeType !== Node.ELEMENT_NODE) return node;
                     if (['svg', 'xml'].includes(node.tagName.toLowerCase()))
                       return node.cloneNode(1);
                     let elementCopy = currentDoc.createElement(node.tagName);
-                    [...node.attributes].forEach((attribute) => {
+                    let j = 0,
+                      nodeList = [...node.attributes],
+                      targetNode;
+                    while (j < nodeList.length) {
+                      targetNode = nodeList[j];
                       elementCopy.setAttribute(
-                        attribute.nodeName,
-                        attribute.nodeValue || ''
+                        targetNode.nodeName,
+                        targetNode.nodeValue || ''
                       );
-                    });
-                    [...node.childNodes].forEach((childNode) => {
-                      elementCopy.appendChild(recursiveClone(childNode));
-                    });
+                      j++;
+                    }
+                    nodeList = [...node.childNodes];
+                    for (j = 0; j < nodeList.length; j++)
+                      elementCopy.appendChild(recursiveClone(nodeList[j]));
                     if (
                       node.tagName.toLowerCase() === 'script' &&
                       !node.async
@@ -57,21 +60,26 @@
                       let replacement = currentDoc.createElement('script');
                       if (node.defer) replacement.setAttribute('defer', '');
                       replacement.setAttribute('itemprop', 'script-insert');
-                      if (node.childNodes.length <= 0)
+                      if (node.childNodes.length <= 0) {
                         elementCopy.addEventListener(
                           'load',
                           loadNextScript(node.defer)
                         );
+                        elementCopy.addEventListener(
+                          'error',
+                          loadNextScript(node.defer)
+                        );
+                      }
                       if (node.defer) deferScripts.push(elementCopy);
                       else syncScripts.push(elementCopy);
                       return replacement;
                     }
                     return elementCopy;
                   };
-                  [...newDoc.childNodes].forEach((node) => {
-                    currentDoc.appendChild(recursiveClone(node));
-                  });
-                  loadNextScript(true)();
+                  childList = [...newDoc.childNodes];
+                  for (i = 0; i < childList.length; i++)
+                    currentDoc.appendChild(recursiveClone(childList[i]));
+                  loadNextScript(false)();
                 })(
                   document,
                   new DOMParser().parseFromString(text, 'text/html')
