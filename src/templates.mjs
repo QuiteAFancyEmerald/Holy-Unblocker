@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from 'node:fs';
-import { text404 } from './routes.mjs';
+import { config, text404 } from './routes.mjs';
 import paintSource from './source-rewrites.mjs';
 export { loadTemplates, tryReadFile, preloaded404 };
 
@@ -38,11 +38,24 @@ const __dirname = '../views/pages/misc/deobf',
       (updatedStr, [key, template]) => updatedStr.replace(key, template),
       str
     ),
-  preloaded404 = paintSource(loadTemplates(text404)),
+  preformatted404 = paintSource(loadTemplates(text404)),
+  preloaded404 = config.disguiseFiles
+    ? Buffer.from(
+        await new Response(
+          new Blob([preformatted404])
+            .stream()
+            .pipeThrough(new CompressionStream('gzip'))
+        ).arrayBuffer()
+      )
+    : preloaded404,
   // Grab the text content of a file. Use the root directory if no base is supplied.
-  tryReadFile = (file, baseUrl = new URL('../', import.meta.url)) => {
+  tryReadFile = (
+    file,
+    baseUrl = new URL('../', import.meta.url),
+    isBuffer = config.disguiseFiles
+  ) => {
     file = new URL(file, baseUrl);
     return existsSync(file)
-      ? readFileSync(file, isImage.test(file) ? undefined : 'utf8')
+      ? readFileSync(file, isImage.test(file) || isBuffer ? undefined : 'utf8')
       : preloaded404;
   };

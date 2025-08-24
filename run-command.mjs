@@ -154,7 +154,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
                 targetPath,
                 paintSource(
                   loadTemplates(
-                    tryReadFile(base + dir + '/' + file, import.meta.url)
+                    tryReadFile(base + dir + '/' + file, import.meta.url, false)
                   )
                 )
               );
@@ -189,6 +189,8 @@ commands: for (let i = 2; i < process.argv.length; i++)
           path[0] === 'scram' ? (file) => file === 'scramjet.all.js' : undefined
         );
       }
+      mkdirSync('./views/dist/archive');
+      compile('./views/archive', '', 'archive/');
 
       const createFile = (location, text) => {
         writeFileSync(
@@ -218,6 +220,36 @@ commands: for (let i = 2; i < process.argv.length; i++)
           outdir: dist,
           allowOverwrite: true,
         });
+      }
+
+      if (config.disguiseFiles) {
+        const compress = async (dir, recursive = false) => {
+          for (const file of readdirSync(dir)) {
+            const fileLocation = dir + '/' + file;
+            if (file.endsWith('.html'))
+              writeFileSync(
+                fileLocation,
+                Buffer.from(
+                  await new Response(
+                    new Blob([
+                      tryReadFile(fileLocation, import.meta.url, false),
+                    ])
+                      .stream()
+                      .pipeThrough(new CompressionStream('gzip'))
+                  ).arrayBuffer()
+                )
+              );
+            else if (
+              recursive &&
+              lstatSync(fileLocation).isDirectory() &&
+              file !== 'deobf'
+            )
+              await compress(fileLocation, true);
+          }
+        };
+        await compress('./views/dist');
+        await compress('./views/dist/pages', true);
+        await compress('./views/dist/archive', true);
       }
 
       break;
