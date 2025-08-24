@@ -47,7 +47,7 @@ const __dirname = '../views/pages/misc/deobf',
             .pipeThrough(new CompressionStream('gzip'))
         ).arrayBuffer()
       )
-    : preloaded404,
+    : preformatted404,
   // Grab the text content of a file. Use the root directory if no base is supplied.
   tryReadFile = (
     file,
