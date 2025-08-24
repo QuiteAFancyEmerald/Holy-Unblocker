@@ -126,6 +126,8 @@ commands: for (let i = 2; i < process.argv.length; i++)
       rmSync(dist, { force: true, recursive: true });
       mkdirSync(dist);
 
+      // The archive directory is excluded from this process, since source
+      // rewrites are not intended to be used by any of those files.
       const ignoredDirectories = ['dist', 'archive'];
 
       const compile = (dir, base = '', outDir = '', initialDir = dir) =>
@@ -189,10 +191,11 @@ commands: for (let i = 2; i < process.argv.length; i++)
           path[0] === 'scram' ? (file) => file === 'scramjet.all.js' : undefined
         );
       }
-      if (existsSync('./views/archive')) {
-        mkdirSync('./views/dist/archive');
+
+      // Compile the archive directory separately.
+      mkdirSync('./views/dist/archive');
+      if (existsSync('./views/archive'))
         compile('./views/archive', '', 'archive/');
-      }
 
       const createFile = (location, text) => {
         writeFileSync(
@@ -251,8 +254,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
         };
         await compress('./views/dist');
         await compress('./views/dist/pages', true);
-        if (existsSync('./views/archive'))
-          await compress('./views/dist/archive', true);
+        await compress('./views/dist/archive', true);
       }
 
       break;
