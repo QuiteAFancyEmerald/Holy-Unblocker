@@ -189,8 +189,10 @@ commands: for (let i = 2; i < process.argv.length; i++)
           path[0] === 'scram' ? (file) => file === 'scramjet.all.js' : undefined
         );
       }
-      mkdirSync('./views/dist/archive');
-      compile('./views/archive', '', 'archive/');
+      if (existsSync('./views/archive')) {
+        mkdirSync('./views/dist/archive');
+        compile('./views/archive', '', 'archive/');
+      }
 
       const createFile = (location, text) => {
         writeFileSync(
@@ -249,7 +251,8 @@ commands: for (let i = 2; i < process.argv.length; i++)
         };
         await compress('./views/dist');
         await compress('./views/dist/pages', true);
-        await compress('./views/dist/archive', true);
+        if (existsSync('./views/archive'))
+          await compress('./views/dist/archive', true);
       }
 
       break;
