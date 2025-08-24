@@ -104,25 +104,26 @@ app.register(fastifyStatic, {
 
 // All entries in the dist folder are created with source rewrites.
 // Minified scripts are also served here, if minification is enabled.
-['assets', 'uv', 'scram', 'epoxy', 'libcurl', 'baremux', 'eruda'].forEach(
-  (prefix) => {
-    app.register(fastifyStatic, {
-      root: fileURLToPath(new URL('../views/dist/' + prefix, import.meta.url)),
-      prefix: getAltPrefix(prefix, serverUrl.pathname),
-      decorateReply: false,
-    });
-  }
-);
-
-app.register(fastifyStatic, {
-  root: fileURLToPath(new URL('../views/dist/archive', import.meta.url)),
-  prefix: getAltPrefix('archive', serverUrl.pathname),
-  decorateReply: false,
+[
+  'assets',
+  'archive',
+  'uv',
+  'scram',
+  'epoxy',
+  'libcurl',
+  'baremux',
+  'eruda',
+].forEach((prefix) => {
+  app.register(fastifyStatic, {
+    root: fileURLToPath(new URL('../views/dist/' + prefix, import.meta.url)),
+    prefix: getAltPrefix(prefix, serverUrl.pathname),
+    decorateReply: false,
+  });
 });
 
 app.register(fastifyStatic, {
   root: fileURLToPath(
-    new URL('../views/archive/dist/gfiles/rarch', import.meta.url)
+    new URL('../views/dist/archive/gfiles/rarch', import.meta.url)
   ),
   prefix: getAltPrefix('serving', serverUrl.pathname),
   decorateReply: false,
@@ -132,7 +133,7 @@ app.register(fastifyStatic, {
 ['cores', 'info', 'roms'].forEach((prefix) => {
   app.register(fastifyStatic, {
     root: fileURLToPath(
-      new URL('../views/archive/dist/gfiles/rarch/' + prefix, import.meta.url)
+      new URL('../views/dist/archive/gfiles/rarch/' + prefix, import.meta.url)
     ),
     prefix: getAltPrefix(prefix, serverUrl.pathname),
     decorateReply: false,
@@ -141,7 +142,7 @@ app.register(fastifyStatic, {
 
 app.register(fastifyStatic, {
   root: fileURLToPath(
-    new URL('../views/archive/dist/gfiles/rarch/cores', import.meta.url)
+    new URL('../views/dist/archive/gfiles/rarch/cores', import.meta.url)
   ),
   prefix: getAltPrefix('uauth', serverUrl.pathname),
   decorateReply: false,
