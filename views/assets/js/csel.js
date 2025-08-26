@@ -218,7 +218,7 @@ if (document.getElementById('csel')) {
       //    Allow users to reset the favicon to default if nothing is entered.
       focusElement.focus();
       removeStorage('Icon');
-      pageIcon('{{route}}{{assets/img/icon.png}}');
+      pageIcon('{{route}}{{assets/ico/favicon.ico}}');
     }
   });
 

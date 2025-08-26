@@ -6,5 +6,5 @@
   "randomizeIdentifiers": true,
   "production": false,
   "disguiseFiles": true,
-  "usingSEO": true
+  "usingSEO": false
 }

@@ -1,6 +1,6 @@
 {
   "name": "holyunblocker",
-  "version": "6.8.5",
+  "version": "6.8.7",
   "repository": "https://github.com/QuiteAFancyEmerald/Holy-Unblocker",
   "description": "Holy Unblocker LTS is a web proxy service that helps you access websites that may be blocked by your network, government or policy all within your browser with no download or setup.",
   "main": "backend.js",
@@ -38,17 +38,16 @@
     "@mercuryworkshop/libcurl-transport": "^1.5.0",
     "@mercuryworkshop/scramjet": "https://github.com/MercuryWorkshop/scramjet/releases/download/latest/mercuryworkshop-scramjet-1.0.2-dev.tgz",
     "@titaniumnetwork-dev/ultraviolet": "^3.2.10",
-    "@tomphttp/bare-server-node": "^2.0.3",
     "axios": "^1.11.0",
     "eruda": "^3.4.3",
-    "fastify": "^5.4.0",
+    "fastify": "^5.5.0",
     "pm2": "^6.0.8",
-    "puppeteer": "^24.15.0",
+    "puppeteer": "^24.17.0",
     "wisp-server-node": "^1.1.7",
     "ws": "^8.18.3"
   },
   "devDependencies": {
-    "@babel/node": "^7.25.0",
-    "esbuild": "^0.25.0"
+    "@babel/node": "^7.28.0",
+    "esbuild": "^0.25.9"
   }
 }
