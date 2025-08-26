@@ -13,8 +13,10 @@
     <script src="{{route}}{{/baremux/index.js}}" defer></script>
     <script src="{{route}}{{/uv/uv.bundle.js}}" defer></script>
     <script src="{{route}}{{/uv/uv.config.js}}" defer></script>
-    <script src="{{route}}{{/assets/js/register-sw.js}}" defer></script>
-    <script src="{{route}}{{assets/js/common.js}}" defer></script>
+    {{inline}}{{
+    <script src="{{route}}{{/assets/js/register-sw.js}}{{inline}}" defer></script>
+    <script src="{{route}}{{assets/js/common.js}}{{inline}}" defer></script>
+    }}
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
   </head>
 
@@ -36,7 +38,9 @@
       <!--FOOTER-->
     </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <script src="{{route}}{{assets/js/csel.js}}"></script>
-    <script src="{{route}}{{assets/js/card.js}}"></script>
+    {{inline}}{{
+    <script src="{{route}}{{assets/js/csel.js}}{{inline}}"></script>
+    <script src="{{route}}{{assets/js/card.js}}{{inline}}"></script>
+    }}
   </body>
 </html>

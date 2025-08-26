@@ -126,17 +126,30 @@ commands: for (let i = 2; i < process.argv.length; i++)
       rmSync(dist, { force: true, recursive: true });
       mkdirSync(dist);
 
-      // The archive directory is excluded from this process, since source
-      // rewrites are not intended to be used by any of those files.
-      const ignoredDirectories = ['dist', 'archive'];
+      /* The archive directory is excluded from this process, since source
+       * rewrites are not intended to be used by any of those files.
+       * Assets are compiled separately, before the rest of the files.
+       */
+      const ignoredDirectories = ['dist', 'assets', 'uv', 'scram', 'archive'];
+      const ignoredFileTypes = /\.map$/;
 
-      const compile = (dir, base = '', outDir = '', initialDir = dir) =>
+      const compile = (
+        dir,
+        base = '',
+        outDir = '',
+        initialDir = dir,
+        applyRewrites = initialDir === './views'
+      ) =>
         readdirSync(base + dir).forEach((file) => {
           let oldLocation = new URL(
             file,
             new URL(base + dir + '/', import.meta.url)
           );
-          if (ignoredDirectories.includes(file) || /\.map$/.test(file)) return;
+          if (
+            (ignoredDirectories.includes(file) && applyRewrites) ||
+            ignoredFileTypes.test(file)
+          )
+            return;
           const fileStats = lstatSync(oldLocation),
             targetPath = fileURLToPath(
               new URL(
@@ -148,10 +161,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
               )
             );
           if (fileStats.isFile() && !existsSync(targetPath))
-            if (
-              /\.(?:html|js|css|json|txt|xml)$/.test(file) &&
-              initialDir === './views'
-            )
+            if (/\.(?:html|js|css|json|txt|xml)$/.test(file) && applyRewrites)
               writeFileSync(
                 targetPath,
                 paintSource(
@@ -163,10 +173,15 @@ commands: for (let i = 2; i < process.argv.length; i++)
             else copyFileSync(base + dir + '/' + file, targetPath);
           else if (fileStats.isDirectory()) {
             if (!existsSync(targetPath)) mkdirSync(targetPath);
-            compile(file, base + dir + '/', outDir, initialDir);
+            compile(file, base + dir + '/', outDir, initialDir, applyRewrites);
           }
         });
-      compile('./views');
+
+      const localAssetDirs = ['assets', 'scram', 'uv'];
+      for (const path of localAssetDirs) {
+        mkdirSync('./views/dist/' + path);
+        compile('./views/' + path, '', path + '/', './views/' + path, true);
+      }
 
       // Combine scripts from the corresponding node modules into the same
       // dist-generated directories for compiling, and avoid overwriting files.
@@ -183,28 +198,8 @@ commands: for (let i = 2; i < process.argv.length; i++)
           prefixUrl = new URL('./views/dist/' + prefix, import.meta.url);
         if (!existsSync(prefixUrl)) mkdirSync(prefixUrl);
 
-        compile(
-          path[1].slice(path[1].indexOf('node_modules')),
-          '',
-          prefix,
-          undefined,
-          path[0] === 'scram' ? (file) => file === 'scramjet.all.js' : undefined
-        );
+        compile(path[1].slice(path[1].indexOf('node_modules')), '', prefix);
       }
-
-      // Compile the archive directory separately.
-      mkdirSync('./views/dist/archive');
-      if (existsSync('./views/archive'))
-        compile('./views/archive', '', 'archive/');
-
-      const createFile = (location, text) => {
-        writeFileSync(
-          fileURLToPath(new URL('./views/dist/' + location, import.meta.url)),
-          paintSource(loadTemplates(text))
-        );
-      };
-
-      createFile('assets/json/splash.json', JSON.stringify(splashRandom));
 
       // Minify the scripts and stylesheets upon compiling, if enabled in config.
       if (config.minifyScripts) {
@@ -226,6 +221,22 @@ commands: for (let i = 2; i < process.argv.length; i++)
           allowOverwrite: true,
         });
       }
+
+      compile('./views');
+
+      // Compile the archive directory separately.
+      mkdirSync('./views/dist/archive');
+      if (existsSync('./views/archive'))
+        compile('./views/archive', '', 'archive/');
+
+      const createFile = (location, text) => {
+        writeFileSync(
+          fileURLToPath(new URL('./views/dist/' + location, import.meta.url)),
+          paintSource(loadTemplates(text))
+        );
+      };
+
+      createFile('assets/json/splash.json', JSON.stringify(splashRandom));
 
       if (config.disguiseFiles) {
         const compress = async (dir, recursive = false) => {

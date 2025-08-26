@@ -24,7 +24,7 @@ const __dirname = '../views/pages/misc/deobf',
     ),
   locateTemplate = (key) =>
     new RegExp(
-      `([^\\S\\n]*)<!--(${key.replace(regExpEscape2, '\\$&')})-->`,
+      `([^\\S\\n\\r]*)<!--(${key.replace(regExpEscape2, '\\$&')})-->`,
       'gm'
     ),
   preserveIndentation = (template) => (line, leadingSpaces) =>

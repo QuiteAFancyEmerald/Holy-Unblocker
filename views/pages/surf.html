@@ -94,7 +94,9 @@
         placement: 'bottom',
       });
     </script>
-    <script src="{{route}}{{assets/js/common.js}}"></script>
-    <script src="{{route}}{{assets/js/csel.js}}"></script>
+    {{inline}}{{
+    <script src="{{route}}{{assets/js/common.js}}{{inline}}"></script>
+    <script src="{{route}}{{assets/js/csel.js}}{{inline}}"></script>
+    }}
   </body>
 </html>
