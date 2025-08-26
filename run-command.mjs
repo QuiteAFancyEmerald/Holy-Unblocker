@@ -202,7 +202,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
       }
 
       // Minify the scripts and stylesheets upon compiling, if enabled in config.
-      if (config.minifyScripts) {
+      if (config.minifyScripts)
         await build({
           entryPoints: [
             './views/dist/uv/**/*.js',
@@ -220,7 +220,6 @@ commands: for (let i = 2; i < process.argv.length; i++)
           outdir: dist,
           allowOverwrite: true,
         });
-      }
 
       compile('./views');
 

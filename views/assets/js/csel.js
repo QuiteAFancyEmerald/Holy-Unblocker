@@ -14,7 +14,7 @@ date.setFullYear(date.getFullYear() + 100);
 date = date.toUTCString();
 
 // Cookies will not be used unless necessary. The localStorage API will be used instead.
-const storageId = 'hu-lts-storage',
+const storageId = '{{hu-lts}}-storage',
   storageObject = () => JSON.parse(localStorage.getItem(storageId)) || {},
   setStorage = (name, value) => {
     let mainStorage = storageObject();

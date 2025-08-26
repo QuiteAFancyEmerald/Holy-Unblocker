@@ -180,6 +180,7 @@ if (config.disguiseFiles) {
     const reqPath = new URL(req.url, serverUrl).pathname.slice(
       serverUrl.pathname.length
     );
+    if (reqPath === 'login') return done();
     if (
       (!reqPath.endsWith('.' + disguise) && isNotHtml.test(reqPath)) ||
       reqPath.indexOf('github/') === 0 ||
@@ -234,7 +235,10 @@ app.get(serverUrl.pathname + ':path', (req, reply) => {
   if (reqPath && !(reqPath in pages))
     return reply.code(404).type(supportedTypes.default).send(preloaded404);
 
-  // Set the index the as the default page. Serve as an html file by default.
+  /* Set the index the as the default page. Serve as an html file by default.
+   * Note that you can optionally change pages.index to pages.login to make the
+   * entry point the default page, for the disguiseFiles setting in config.json.
+   */
   const fileName = reqPath ? pages[reqPath] : pages.index,
     type =
       supportedTypes[fileName.slice(fileName.lastIndexOf('.') + 1)] ||
@@ -270,3 +274,7 @@ else {
 
 app.listen({ port: serverUrl.port, host: serverUrl.hostname });
 console.log(`Holy Unblocker is listening on port ${serverUrl.port}.`);
+if (config.disguiseFiles)
+  console.log(
+    'disguiseFiles is enabled. Visit src/routes.mjs to see the entry point, listed within the pages variable.'
+  );

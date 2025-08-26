@@ -1,4 +1,25 @@
 (() => {
+  addEventListener('keydown', (event) => {
+    if (event.ctrlKey && event.code === 'KeyM' && event.isTrusted) {
+      if (localStorage.getItem('{{hu-lts}}-loader-key') !== navigator.userAgent)
+        localStorage.setItem('{{hu-lts}}-loader-key', navigator.userAgent);
+      else localStorage.removeItem('{{hu-lts}}-loader-key');
+      location.reload();
+    }
+  });
+  if (localStorage.getItem('{{hu-lts}}-loader-key') !== navigator.userAgent) {
+    document.body.removeAttribute('style');
+    document.body.insertAdjacentHTML(
+      'afterbegin',
+      '<center><h1>500 Internal Server Error</h1></center>'
+    );
+    let head = document.createElement('head'),
+      title = document.createElement('title');
+    title.textContent = '500 Internal Server Error';
+    head.appendChild(title);
+    document.head.replaceWith(head);
+    return document.currentScript.remove();
+  }
   const loadPage = () => {
     removeEventListener('load', loadPage);
     fetch(location.pathname + '.ico', { mode: 'same-origin' }).then(

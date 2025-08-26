@@ -19,7 +19,7 @@ const getDomain = () =>
     location.host.replace(/^(?:www|edu|cooking|beta)\./, ''),
   // This is used for stealth mode when visiting external sites.
   goFrame = (url) => {
-    localStorage.setItem('hu-lts-frame-url', url);
+    localStorage.setItem('{{hu-lts}}-frame-url', url);
     if (location.pathname !== '{{route}}{{/s}}')
       location.href = '{{route}}{{/s}}';
     else document.getElementById('frame').src = url;
@@ -59,7 +59,7 @@ const getDomain = () =>
 
 /* READ SETTINGS */
 
-const storageId = 'hu-lts-storage',
+const storageId = '{{hu-lts}}-storage',
   storageObject = () => JSON.parse(localStorage.getItem(storageId)) || {},
   readStorage = (name) => storageObject()[name];
 
@@ -771,7 +771,7 @@ const preparePage = async () => {
   // Load the frame for stealth mode if it exists.
   const windowFrame = document.getElementById('frame'),
     loadFrame = () => {
-      windowFrame.src = localStorage.getItem('hu-lts-frame-url');
+      windowFrame.src = localStorage.getItem('{{hu-lts}}-frame-url');
       return true;
     };
   if (windowFrame) {

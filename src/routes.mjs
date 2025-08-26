@@ -36,6 +36,13 @@ let pages = {
   index: 'index.html',
   'manifest.json': 'manifest.json',
 
+  /* Users must visit this route if disguiseFiles is enabled. The page loader only
+   * requests the site's contents if it has a local key, which is given by this page.
+   * Be sure to update the following line in src/server.mjs if you change this
+   * variable:    if (reqPath === 'login') return done();
+   */
+  login: 'pages/misc/deobf/entry-point.html',
+
   // This route for the error page is also used to define text404 down below.
   'test-404': 'error.html',
   /* Main */
@@ -85,7 +92,7 @@ let externalPages = {
     ultraviolet: 'https://github.com/titaniumnetwork-dev/Ultraviolet',
     wisp: 'https://github.com/MercuryWorkshop/wisp-protocol',
   },
-  'codespaces': 'https://github.com/codespaces',
+  codespaces: 'https://github.com/codespaces',
   'tor-project': 'https://tb-manual.torproject.org/installation',
   'titaniumnetwork-documentation': 'https://docs.titaniumnetwork.org',
   'titaniumnetwork-discord': 'https://discord.gg/CwWpdGkuWY',
@@ -120,7 +127,7 @@ let altPaths = {
     wisp: 'router',
   },
   'titaniumnetwork-documentation': 'docs',
-  'codespaces': 'codesp',
+  codespaces: 'codesp',
   'tor-project': 'tr',
   'titaniumnetwork-discord': 'social',
   'rammerhead-discord': 'rdis',
