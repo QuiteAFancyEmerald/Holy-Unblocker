@@ -315,6 +315,7 @@ xx                                                  xx
     };
 
     // Run tests for Rammerhead and Ultraviolet.
+    await page.goto('http://localhost:8080/');
     const rammerheadPassed = await testRammerhead();
     const ultravioletPassed = await testUltraviolet();
 
