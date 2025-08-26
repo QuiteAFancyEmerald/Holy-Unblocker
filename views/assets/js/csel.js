@@ -452,9 +452,12 @@ if (document.getElementById('csel')) {
 
     if (enabled) {
       setStorage('ErudaEnabled', true);
+      const moduleLocation = '{{route}}{{eruda/eruda.js}}';
 
-      import('eruda/eruda.js').then((module) => {
-        module.default.init();
+      import(moduleLocation).then((module) => {
+        if (!self.eruda || !self.eruda.init) return;
+        eruda.init();
+        delete eruda;
       });
     } else {
       removeStorage('ErudaEnabled');
