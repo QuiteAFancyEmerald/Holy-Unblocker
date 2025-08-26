@@ -51,7 +51,7 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
         'g'
       ),
       replaceParams2 = new RegExp(
-        `{{${keyword}}}` + '{{([^}]*?)}}'.repeat(numArgs),
+        `{{${keyword}}}` + '{{((?:(?!}})[^])*?)}}'.repeat(numArgs),
         'g'
       ),
       replaceFunc = mode
@@ -159,7 +159,9 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
             break;
           }
           case 'js': {
-            const parsedNode = htmlStr.replace(getAttrValues, ' ').toLowerCase();
+            const parsedNode = htmlStr
+              .replace(getAttrValues, ' ')
+              .toLowerCase();
             if (
               parsedNode.indexOf(' defer ') !== -1 ||
               parsedNode.indexOf(' defer>') !== -1
