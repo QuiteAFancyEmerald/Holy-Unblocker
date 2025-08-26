@@ -33,13 +33,18 @@ let pages = {
    * NOT entire folders, check the routes below and add it manually.
    * If you change route names here, also check the altPaths variable below.
    */
+
+  // Set the default page for when no pathname is supplied. Be sure to change the
+  // option for disguiseFiles if the entry point should be hidden.
+  default: config.disguiseFiles ? 'login' : 'index',
   index: 'index.html',
   'manifest.json': 'manifest.json',
 
   /* Users must visit this route if disguiseFiles is enabled. The page loader only
    * requests the site's contents if it has a local key, which is given by this page.
    * Be sure to update the following line in src/server.mjs if you change this
-   * variable:    if (reqPath === 'login') return done();
+   * variable:
+   *     if (reqPath === 'login' || reqPath === '' && pages.default === 'login')
    */
   login: 'pages/misc/deobf/entry-point.html',
 
