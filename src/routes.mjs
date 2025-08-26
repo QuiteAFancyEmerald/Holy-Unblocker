@@ -128,6 +128,7 @@ let altPaths = {
   files: {
     'scramjet.all.js': 'working.all.js',
     'scramjet.sw.js': 'working.sw.js',
+    'scramjet.sw-blacklist.js': 'working.sw-blacklist.js',
     'scramjet.sync.js': 'working.sync.js',
     'scramjet.wasm.wasm': 'working.wasm.wasm',
     'uv.handler.js': 'networking.handler.js',

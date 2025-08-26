@@ -83,22 +83,22 @@ const testServerResponse = async () => {
     'http://localhost:8080/',
     'http://localhost:8080/test-404',
     'http://localhost:8080/browsing',
-    'http://localhost:8080/rammerhead',
-    'http://localhost:8080/ultraviolet',
+    'http://localhost:8080/physics', 
+    'http://localhost:8080/networking', 
     'http://localhost:8080/documentation',
     'http://localhost:8080/questions',
     'http://localhost:8080/s',
     'http://localhost:8080/credits',
     'http://localhost:8080/terms',
-    'http://localhost:8080/games',
-    'http://localhost:8080/web-games',
-    'http://localhost:8080/emulators',
-    'http://localhost:8080/flash-games',
-    'http://localhost:8080/retro-games',
-    'http://localhost:8080/youtube',
-    'http://localhost:8080/apps',
-    'http://localhost:8080/flash',
-    'http://localhost:8080/webretro',
+    'http://localhost:8080/books', 
+    'http://localhost:8080/dictionary', 
+    'http://localhost:8080/catalogue', 
+    'http://localhost:8080/textbook',
+    'http://localhost:8080/math', 
+    'http://localhost:8080/wiki', 
+    'http://localhost:8080/software', 
+    'http://localhost:8080/whiteboard', 
+    'http://localhost:8080/notebook',
     'http://localhost:8080/assets/js/card.js',
     'http://localhost:8080/assets/js/common-1735118314.js',
     'http://localhost:8080/assets/js/csel.js',
@@ -109,15 +109,19 @@ const testServerResponse = async () => {
     'http://localhost:8080/assets/json/flash-nav.json',
     'http://localhost:8080/assets/json/h5-nav.json',
     'http://localhost:8080/assets/json/links.json',
-    'http://localhost:8080/baremux/index.js',
-    'http://localhost:8080/baremux/worker.js',
-    'http://localhost:8080/epoxy/index.mjs',
-    'http://localhost:8080/uv/uv.bundle.js',
-    'http://localhost:8080/uv/sw.js',
-    'http://localhost:8080/uv/uv.config.js',
-    'http://localhost:8080/uv/workerware.js',
-    'http://localhost:8080/uv/WWError.js',
+    'http://localhost:8080/gmt/index.js',
+    'http://localhost:8080/gmt/worker.js',
+    'http://localhost:8080/epoch/index.mjs',
+    'http://localhost:8080/worker/working.all.js',
+    'http://localhost:8080/worker/working.sw.js',
+    'http://localhost:8080/worker/working.sw-blacklist.js',
+    'http://localhost:8080/network/networking.bundle.js',
+    'http://localhost:8080/network/networking.sw.js',
+    'http://localhost:8080/network/networking.config.js',
+    'http://localhost:8080/network/workerware.js',
+    'http://localhost:8080/network/WWError.js',
   ];
+
 
   const results = await Promise.all(endpoints.map(testEndpoint));
   const allPassed = results.every((result) => result);
@@ -158,7 +162,7 @@ const testCommonJSOnPage = async () => {
     const testRammerhead = async () => {
       const omniboxId = 'pr-rh',
         urlPath = 'example.com';
-      await page.goto('http://localhost:8080/rammerhead');
+      await page.goto('http://localhost:8080/physics');
       const generatedUrl = await page.evaluate(generateUrl, omniboxId, urlPath);
       const testResults = {};
       testResults.rammerhead = generatedUrl;
@@ -223,7 +227,7 @@ xx                                                  xx
           path: 'example.com',
           title: 'Example Domain',
         });
-      await page.goto('http://localhost:8080/ultraviolet');
+      await page.goto('http://localhost:8080/networking');
       const generatedUrl = await page.evaluate(
         generateUrl,
         omniboxId,
