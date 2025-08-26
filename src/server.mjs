@@ -164,17 +164,17 @@ const supportedTypes = {
     xml: 'application/xml',
     ico: 'image/vnd.microsoft.icon',
   },
-  isNotHtml = /\.(?!html$)[\w-]+$/i,
-  disguise = 'ico',
-  loaderFile = config.disguiseFiles
-    ? tryReadFile(
-        '../views/dist/pages/misc/deobf/loader.html',
-        import.meta.url,
-        false
-      )
-    : '';
+  disguise = 'ico';
 
-if (config.disguiseFiles)
+if (config.disguiseFiles) {
+  const getActualPath = (path) =>
+      path.slice(0, path.length - 1 - disguise.length),
+    isNotHtml = /\.(?!html$)[\w-]+$/i,
+    loaderFile = tryReadFile(
+      '../views/dist/pages/misc/deobf/loader.html',
+      import.meta.url,
+      false
+    );
   app.addHook('preHandler', (req, reply, done) => {
     if (req.params.modified) return done();
     const reqPath = new URL(req.url, serverUrl).pathname.slice(
@@ -193,8 +193,6 @@ if (config.disguiseFiles)
       return done();
     } else if (!(reqPath in pages) && !reqPath.endsWith('favicon.ico')) {
       req.params.modified = true;
-      const getActualPath = (path) =>
-        path.slice(0, path.length - 1 - disguise.length);
       req.raw.url = getActualPath(req.raw.url);
       if (req.params.path) req.params.path = getActualPath(req.params.path);
       if (req.params['*']) req.params['*'] = getActualPath(req.params['*']);
@@ -202,6 +200,7 @@ if (config.disguiseFiles)
     }
     return done();
   });
+}
 
 app.get(serverUrl.pathname + ':path', (req, reply) => {
   // Testing for future features that need cookies to deliver alternate source files.
