@@ -142,7 +142,7 @@
         setTimeout(() => {
           windowFrame.contentWindow.addEventListener('beforeunload', () => {
             loader.classList.toggle('loader-active', true);
-            loaderTimeout(5000);
+            loaderTimeout(3000);
           });
           windowFrame.contentWindow.addEventListener('unload', loadHandler);
           windowFrame.contentWindow.addEventListener(

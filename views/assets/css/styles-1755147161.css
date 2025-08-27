@@ -108,7 +108,7 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
   --radio-label-color: var(--nord0);
   --switch-bg: var(--nord3);
   --switch-checked-bg: var(--nord9);
-  --select-hover-bg: var(--nord2);
+  --select-hover-bg: var(--nord0);
   --cf-bg: var(--nord0);
   --cf-color: var(--nord5);
   --csel-input: var(--nord4);
@@ -210,13 +210,13 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--nord0m1);
+  background-color: var(--nord11);
   border-radius: 5px;
   border: 3px solid var;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--nord0m1);
+  background-color: var(--nord11);
 }
 
 ::-webkit-scrollbar-thumb:active {
@@ -367,9 +367,12 @@ details[open] summary {
 #footer {
   font-family: 'Lato', sans-serif;
   padding-top: 15vw;
-  background:
-    var(--footer-img, url('{{route}}{{/assets/img/waves.svg}}')),
-    linear-gradient(to bottom, transparent 0 15vw, var(--footer-grad, #1d2029) 15vw 100%);
+  background: var(--footer-img, url('{{route}}{{/assets/img/waves.svg}}')),
+    linear-gradient(
+      to bottom,
+      transparent 0 15vw,
+      var(--footer-grad, #1d2029) 15vw 100%
+    );
   background-repeat: no-repeat;
   background-size: 100vw auto;
   position: relative;
@@ -534,9 +537,7 @@ details[open] summary {
   font-family: 'Rethink Sans', sans-serif;
   opacity: 0;
   transform: translateY(-20px);
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .dropdown-parent:focus-within .dropdown-child {
@@ -556,9 +557,7 @@ details[open] summary {
   padding: 5px 15px;
   border-radius: 5px;
   color: var(--nord4);
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
   text-decoration: none !important;
 }
 
@@ -644,10 +643,7 @@ details[open] summary {
 
 .close-settings-btn:hover {
   color: var(--close-btn-color, lightgray);
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease,
-    transform 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
   transform: scale(1.05);
 }
 
@@ -783,10 +779,22 @@ select {
   color: var(--settings-color, var(--nord6));
   max-width: 300px;
   box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 select:hover {
-  background-color: var(--select-hover-bg, var(--nord3));
+  background-color: var(--select-hover-bg, var(--nord1));
+}
+
+select::after {
+  content: '▼';
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
 }
 
 .default-badge,
@@ -870,10 +878,7 @@ input[type='text'] {
   margin: 5px 0;
   background-color: var(--nord0);
   border: 1px solid var(--nord9);
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease,
-    transform 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 #csel input[type='text']:focus {
@@ -882,10 +887,7 @@ input[type='text'] {
 }
 
 #csel input:is([type='submit'], [type='button']):hover {
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease,
-    transform 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
   transform: scale(1.05);
 }
 
@@ -1034,8 +1036,7 @@ input[type='text'] {
   border-radius: 12px;
   overflow: hidden;
   background-color: var(--nord0);
-  background-image:
-    url('{{route}}{{/assets/img/noise.webp}}'),
+  background-image: url('{{route}}{{/assets/img/noise.webp}}'),
     linear-gradient(
       145deg,
       rgba(34, 38, 47, 0.9) 0%,
@@ -1292,12 +1293,13 @@ input[type='text'] {
   width: 100vw;
   height: 100vh;
   background-color: #1d232a;
-  background-image:
-    radial-gradient(circle, rgba(131, 131, 131, 0.02) 1px, transparent 1px),
+  background-image: radial-gradient(
+      circle,
+      rgba(131, 131, 131, 0.02) 1px,
+      transparent 1px
+    ),
     radial-gradient(circle, rgba(148, 148, 148, 0.02) 1px, transparent 1px);
-  background-position:
-    0 0,
-    5px 5px;
+  background-position: 0 0, 5px 5px;
   background-size: 10px 10px;
   z-index: 3;
   align-items: center;
@@ -1305,9 +1307,7 @@ input[type='text'] {
   display: flex;
   visibility: hidden;
   opacity: 0;
-  transition:
-    visibility 0s,
-    opacity ease-in-out 0.3s;
+  transition: visibility 0s, opacity ease-in-out 0.3s;
   transition-delay: 0.3s, 0s;
 }
 
@@ -1364,12 +1364,13 @@ input[type='text'] {
   left: calc(50% - 20vw - 17px);
   width: 40vw;
   background-color: var(--omnibox-bg, var(--nord0));
-  background-image:
-    radial-gradient(circle, rgba(131, 131, 131, 0.02) 1px, transparent 1px),
+  background-image: radial-gradient(
+      circle,
+      rgba(131, 131, 131, 0.02) 1px,
+      transparent 1px
+    ),
     radial-gradient(circle, rgba(148, 148, 148, 0.02) 1px, transparent 1px);
-  background-position:
-    0 0,
-    5px 5px;
+  background-position: 0 0, 5px 5px;
   background-size: 10px 10px;
   display: flex;
   align-items: center;
@@ -1416,20 +1417,46 @@ input[type='text'] {
   position: absolute;
   background-color: var(--ac-bg, var(--nord0));
   color: var(--nord4);
-  list-style-type: none;
+  list-style: none;
   margin: 5px 3px;
   font-size: 18px;
   padding: 0;
   border: 0.5px solid #ff919369;
   border-radius: 15px;
   z-index: 2;
-  max-height: calc(5 * (1.5em + 1px + 30px)); 
+  max-height: calc(5 * (1.5em + 1px + 30px));
   overflow: auto;
   overflow-x: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease,
+    background-color 0.3s ease, border-color 0.3s ease;
+  scrollbar-width: thin;
+  scrollbar-color: #ff919369 transparent;
+  border-radius: 15px;
 }
 
-#autocomplete:empty {
-  display: none;
+#autocomplete::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 15px;
+}
+
+#autocomplete::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 15px;
+}
+
+#autocomplete::-webkit-scrollbar-thumb {
+  background-color: #ff919369;
+  border-radius: 15px;
+  border: 2px solid transparent;
+}
+
+#autocomplete:not(:empty) {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 #autocomplete li {
@@ -1489,10 +1516,7 @@ input[type='text'] {
   border: 1px solid #ff919369;
   padding: 6px 18px;
   color: var(--nord4);
-  transition:
-    top 0.3s,
-    left 0.3s,
-    transform 0.3s;
+  transition: top 0.3s, left 0.3s, transform 0.3s;
 }
 
 .omnibar-s:hover {
@@ -1525,8 +1549,7 @@ input[type='text'] {
   left: 0;
   width: 100%;
   height: 100%;
-  background:
-    url('{{route}}{{/assets/img/noise.webp}}') repeat,
+  background: url('{{route}}{{/assets/img/noise.webp}}') repeat,
     rgba(255, 255, 255, 0.03);
   opacity: var(--noise-opacity, 0.02);
   pointer-events: none;
@@ -1641,8 +1664,7 @@ input[type='text'] {
   left: 0;
   width: 100%;
   height: 100%;
-  background:
-    url('{{route}}{{/assets/img/noise.webp}}') repeat,
+  background: url('{{route}}{{/assets/img/noise.webp}}') repeat,
     rgba(46, 52, 64, 0.03);
   opacity: var(--noise-opacity, 0.02);
   pointer-events: none;
@@ -1771,7 +1793,7 @@ input[type='text'] {
   padding: 15px 25px;
   margin-top: 10px;
   margin-right: 10px;
-  border: none;
+  border: var(--nord11) 1px solid;
   border-radius: 5px;
   text-decoration: none;
   color: var(--box-btn-color, white) !important;
@@ -2047,6 +2069,10 @@ input[type='text'] {
 
 /* Games list for non-flash games */
 
+.proxy-form > .glist > a {
+  border-radius: 10px !important;
+}
+
 .glist {
   font-family: 'Lato', sans-serif;
   display: flex;
@@ -2063,7 +2089,7 @@ input[type='text'] {
   margin: 10px;
   border: 1px solid var(--nord9);
   border-radius: 15%;
-  transition: ease-in-out 0.5s;
+  transition: ease-in-out 0.3s;
   flex-grow: 0;
   flex-shrink: 0;
 }
@@ -2197,10 +2223,7 @@ input[type='text'] {
 }
 
 .pulse:hover {
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease,
-    transform 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
   transform: scale(1.05) translateZ(0);
 }
 
@@ -2252,9 +2275,7 @@ input[type='text'] {
 .glowbutton:active::after {
   background: linear-gradient(90deg, var(--nord7), var(--nord8), var(--nord7));
   background-size: 100px auto;
-  animation:
-    glowshadow 2s linear infinite,
-    glowbg 2s linear infinite;
+  animation: glowshadow 2s linear infinite, glowbg 2s linear infinite;
 }
 
 /* -----------------------------------------------
@@ -2301,9 +2322,7 @@ input[type='text'] {
 .mnavebutton::after {
   content: '';
   position: absolute;
-  transition:
-    transform 0.2s ease-out,
-    top 0.2s ease-out;
+  transition: transform 0.2s ease-out, top 0.2s ease-out;
 }
 
 .mnavebutton {
@@ -2322,7 +2341,8 @@ input[type='text'] {
   top: -12px;
 }
 
-#mnavecb:focus-visible + .mnave, :focus-visible {
+#mnavecb:focus-visible + .mnave,
+:focus-visible {
   outline: var(--nord17) dashed 3px;
 }
 
