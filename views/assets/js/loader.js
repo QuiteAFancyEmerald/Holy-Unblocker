@@ -11,7 +11,7 @@
     document.body.removeAttribute('style');
     document.body.insertAdjacentHTML(
       'afterbegin',
-      '<center><h1>500 Internal Server Error</h1></center>'
+      '<center><h1>500 Internal Server Error</h1></center><hr><center>nginx</center>'
     );
     let head = document.createElement('head'),
       title = document.createElement('title');
