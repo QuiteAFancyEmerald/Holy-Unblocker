@@ -142,8 +142,10 @@ html {
   color: var(--html-color, white);
   font-family: 'Rethink Sans', sans-serif;
   font-weight: 300;
-  text-wrap: balance;
   scroll-behavior: smooth;
+  text-wrap: balance;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 body {
