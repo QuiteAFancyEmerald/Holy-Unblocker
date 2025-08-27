@@ -7,7 +7,7 @@
       location.reload();
     }
   });
-  if (localStorage.getItem('{{hu-lts}}-loader-key') !== navigator.userAgent) {
+  const displayErrorPage = () => {
     document.body.removeAttribute('style');
     document.body.insertAdjacentHTML(
       'afterbegin',
@@ -18,12 +18,14 @@
     title.textContent = '500 Internal Server Error';
     head.appendChild(title);
     document.head.replaceWith(head);
-    return document.currentScript.remove();
-  }
+    document.currentScript.remove();
+  };
+  if (localStorage.getItem('{{hu-lts}}-loader-key') !== navigator.userAgent)
+    return displayErrorPage();
   const loadPage = () => {
     removeEventListener('load', loadPage);
-    fetch(location.pathname + '.ico', { mode: 'same-origin' }).then(
-      (response) => {
+    fetch(location.pathname + '.ico', { mode: 'same-origin' })
+      .then((response) => {
         response.blob().then((blob) => {
           new Response(
             blob.stream().pipeThrough(new DecompressionStream('gzip'))
@@ -156,8 +158,11 @@
               })(document, new DOMParser().parseFromString(text, 'text/html'));
             });
         });
-      }
-    );
+      })
+      .catch((error) => {
+        console.log(error);
+        displayErrorPage();
+      });
   };
   if (document.readyState === 'complete') loadPage();
   else addEventListener('load', loadPage);
