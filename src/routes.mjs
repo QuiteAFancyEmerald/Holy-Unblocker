@@ -42,9 +42,10 @@ let pages = {
 
   /* Users must visit this route if disguiseFiles is enabled. The page loader only
    * requests the site's contents if it has a local key, which is given by this page.
-   * Be sure to update the following line in src/server.mjs if you change this
+   * Be sure to update the following line(s) in src/server.mjs if you change this
    * variable:
-   *     if (reqPath === 'login' || reqPath === '' && pages.default === 'login')
+   *   let exemptPages = ['login', .........];
+   *   if (pages.default === 'login') exemptPages.push('');
    */
   login: 'pages/misc/deobf/entry-point.html',
 

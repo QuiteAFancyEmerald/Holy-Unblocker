@@ -170,23 +170,23 @@ if (config.disguiseFiles) {
   const getActualPath = (path) =>
       path.slice(0, path.length - 1 - disguise.length),
     isNotHtml = /\.(?!html$)[\w-]+$/i,
+    exemptDirs = ['github/', 'assets/ico/'],
     loaderFile = tryReadFile(
       '../views/dist/pages/misc/deobf/loader.html',
       import.meta.url,
       false
     );
+  let exemptPages = ['login', 'test-shutdown'];
+  if (pages.default === 'login') exemptPages.push('');
   app.addHook('preHandler', (req, reply, done) => {
     if (req.params.modified) return done();
     const reqPath = new URL(req.url, serverUrl).pathname.slice(
       serverUrl.pathname.length
     );
-    if (reqPath === 'login' || reqPath === '' && pages.default === 'login')
-      return done();
     if (
       (!reqPath.endsWith('.' + disguise) && isNotHtml.test(reqPath)) ||
-      reqPath.indexOf('github/') === 0 ||
-      reqPath.indexOf('assets/ico/') === 0 ||
-      reqPath === 'test-shutdown'
+      exemptDirs.some((dir) => reqPath.indexOf(dir) === 0) ||
+      exemptPages.includes(reqPath)
     )
       return done();
     if (!reqPath.endsWith('.' + disguise) || reqPath in pages) {
