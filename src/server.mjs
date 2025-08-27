@@ -170,7 +170,7 @@ if (config.disguiseFiles) {
   const getActualPath = (path) =>
       path.slice(0, path.length - 1 - disguise.length),
     isNotHtml = /\.(?!html$)[\w-]+$/i,
-    exemptDirs = ['github/', 'assets/ico/'],
+    exemptDirs = ['github', 'assets/ico'],
     loaderFile = tryReadFile(
       '../views/dist/pages/misc/deobf/loader.html',
       import.meta.url,
@@ -185,7 +185,9 @@ if (config.disguiseFiles) {
     );
     if (
       (!reqPath.endsWith('.' + disguise) && isNotHtml.test(reqPath)) ||
-      exemptDirs.some((dir) => reqPath.indexOf(dir) === 0) ||
+      exemptDirs.some(
+        (dir) => reqPath.indexOf(dir + '/') === 0 || reqPath === dir
+      ) ||
       exemptPages.includes(reqPath)
     )
       return done();
