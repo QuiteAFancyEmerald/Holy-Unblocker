@@ -32,6 +32,11 @@ Also has a good amount of locally hosted games featured on the site.
 
 #### Considering switching branches for self-hosting to a production branch!
 
+Read below for information if the official site is blocked or for obtaining more links. Can't deploy using any of the free options below? Check out Railway or look into cheap, paid VPS hosting solutions.
+
+**Be sure to join Titanium Network's Discord for more official site links:** <a href="https://discord.gg/unblock">https://discord.gg/unblock</a>
+
+
 <br>
 
 > [!CAUTION]
@@ -53,10 +58,6 @@ Also has a good amount of locally hosted games featured on the site.
 
 <img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.4.3-preview.png"></img>
 <img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/preview/hu-v6.3.0-preview-settings.png"></img>
-
-Read below for information if the official site is blocked or for obtaining more links. Can't deploy using any of the free options below? Check out Railway or look into cheap, paid VPS hosting solutions.
-
-**Be sure to join Titanium Network's Discord for more official site links:** <a href="https://discord.gg/unblock">https://discord.gg/unblock</a>
 
 ## Deploy Holy Unblocker
 
@@ -131,11 +132,9 @@ Replit is no longer free and Heroku has a set policy against web proxies. Try Gi
 Either use the button above to deploy to the deployment options above or type the commands below on a dedicated server:
 
 ```bash
-git clone --recurse-submodules https://github.com/titaniumnetwork-dev/Holy-Unblocker.git
+git clone https://github.com/titaniumnetwork-dev/Holy-Unblocker.git
 
 cd Holy-Unblocker
-
-git submodule init
 
 # Using the configuration file you can automatically use pm2 if you are hosting on a VPS!
 npm run fresh-install
@@ -152,6 +151,46 @@ npm run proxy-validator
 ```
 
 This website is hosted locally with Scramjet, Ultraviolet (Wisp, Bare-Mux, EpoxyTransport, CurlTransport) and Rammerhead built-in.
+
+You will need Node.js and Git installed; below is an example for Debian/Ubuntu.
+
+<details>
+
+```
+sudo apt update
+sudo apt upgrade
+sudo apt install curl git nginx 
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+nvm install 20
+nvm use 20
+
+git clone https://github.com/QuiteAFancyEmerald/Holy-Unblocker.git
+cd Holy-Unblocker
+
+npm run fresh-install
+
+# Then edit config.json to change production to true to automatically use pm2
+
+npm start
+
+# Then setup a reverse proxy using NGINX; use the link below for the NGINX guide. You can edit the file in /etc/nginx
+
+sudo systemctl restart nginx
+
+# For Tor look it up if you need it setup
+```
+</details>
+
+Resources:
+- https://github.com/nvm-sh/nvm
+- https://docs.titaniumnetwork.org/guides/nginx/
+- https://docs.titaniumnetwork.org/guides/vps-hosting/
+- https://docs.titaniumnetwork.org/guides/dns-setup/
 
 ### Configuration
 
@@ -283,122 +322,7 @@ WIP
 
 ## Future Additions
 
-This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above. Release for production will be v8.x.x and above.
-
-## Code Cleanup
-
-- [ ] Optimize the stylesheets and the HTML layout. Add more proper commenting and redivide the code so that it's less hard on the eyes.
-- [ ] Optimize the JS. This time it won't be in one line and will be somewhat thoroughly commented.
-- [ ] Ensure all the original submodules get added back to HU-Archive
-- [ ] SEO overhaul adapted from the v3 SEO Guide format - partial
-- [x] Remove all current obfuscation in the source code. It needs to be dynamically obfuscated if anything, or not obfuscated at all. This option will be a config option on the server side before rendering with Fastify for a performance focus. Meta elements will have an additonal attribute indicating if they should be moved. This is to ensure a SEO source can be served by config or a source focused on pure censorship evasion.
-- [x] Restructure navigation scripts to ensure updated proxy functionality is sanitized and effective - done
-- [x] Particles.js automatically adjusting per display size - done
-- [x] Fix routes.mjs throwing with incorrect paths - done
-- [x] Create test script - done
-- [x] XSS and fingerprinting protection (may need updates) - done
-- [x] Greatly improved native source rewrites and routing - done
-- [x] Update games navigation JS and page/change to JSON object system - done
-- [x] Mobile support - (welcome screen only, partial/needs work)
-- [x] Fastify routes modified to ensure perfect SEO. This means absolute paths such as /example instead of ?z - done
-- [x] Randomize the \_\_uv$config global, and optionally randomize the UV prefix and URL encoding via cookies
-
-## Proxy/Site Functionality
-
-- [ ] Setting to open multiple stealth frames; basically about:blank but using our system. Pops out in another tab
-- [ ] Omnibox should state what the current site the user is on like a proper URL bar 
-- [ ] Improve adblocking functions on site using Workerware + a pre-bundled uBlock Origin
-- [ ] Add a "website self-destruct" button to the settings menu
-- [ ] Implement wisp python to the project instead of the unreliable wisp-server-node (not good for production)
-- [x] Fix keyword/descriptor randomisation - done
-- [ ] Added Eruda ensuring users can access a someone crafted devtools while browsing - partial
-- [x] Adapt Wisp protocol replacing bare which is very unsecure - done
-- [x] Improved error handling for proxy errors - done
-- [x] Ensure Ultraviolet is updated to support bare-mux and wisp - done
-- [x] Ensure Scramjet is added and works together with UV's implementation - done
-- [x] Adapt Scramjet as main proxy for the project - done
-- [x] Refactor register-sw.js - done
-- [x] Add Rammerhead support - done
-- [x] Fix slow Ultraviolet speeds despite being local; something on the backend?? - done
-- [x] Fix Ultraviolet on Firefox - (partial/needs work)
-- [x] Adapt Applications page to use Scramjet (for Reddit, YouTube, Discord) - done
-- [x] Added libcurl transport and epoxy transport to meet standards of SJ + Wisp - done
-- [x] socks5/tor routing option that can be configured (enabled) via either a cookie or pathname as a settings meny option - done
-- [x] socks5 regional proxy implementation - done
-- [x] Update Applications page to reflect modern fast links (use examples from the modern web proxy base) - done. can be expanded later
-- [x] Update settings menu again to make more room for more features - done
-- [x] Update csel.js (after Setting menu redesign) to support custom transports, icon swap, routing - done
-- [x] Flesh out and rework the UV / Scramjet / bare client error page - done
-- [x] Update sw.js to support workerware (https://github.com/MercuryWorkshop/workerware)-- This is not done however we have our own middleware system implemented for adblocking, etc.
-- [x] Omnibox autoupdate script (for the Google/Bing style auto suggest feature) - done
-- [x] Omnibar functionality (back and forward navigation, settings menu and create new stealth page with URL) - done
-- [x] Games library will feature new games - done
-- [x] Servers now utilise NextDNS w/ ads and malware blocked; anycast + low latency - done
-- [x] Revamp the Stealth Frame with a slight animation (ease in and then the wheeling loading with a gradient fading away once its loaded or shows the error page LOL), a loading wheel/page and lastly a omnibox widget. It will have like nav buttons, some of the settings from the settings menu, a home button, a button that brings up the Setting menu and be in a designed position. Intent is to reduce the back/forth nature that users have to do currently making it more tedious to use the site. - partial. needs functionality.
-
-## Site Redesign
-
-- [ ] Documentation on-site + Getting Started information updated (Tor, etc.)
-- [x] Update colors + add themes - done
-- [ ] Hosting page
-- [ ] Resources page
-- [x] Landing Cards - done
-- [x] Change fonts to cleaner look
-- [x] Add more AOS interactions on scroll or hover
-- [x] Add subtle noise to background elements
-- [x] Toggle elements
-- [x] Other card options
-- [x] Radial blur elements
-- [x] Code standard examples - in source
-- [x] Horizontal/general movement on scroll with AOS
-- [x] Showcase dev dependencies
-- [x] Update branding and icons
-- [x] Landing Page 
-- [x] Settings Menu - partial I want to fix some colours
-- [x] More Dropdown Menu
-- [x] Web Proxies page
-- [x] Application page
-- [x] Games Library page
-- [x] Emulators Library page
-- [x] Emu Library page
-- [x] Web Games page
-- [x] Flash Games page
-- [x] FAQ page
-- [x] Credits page
-- [x] TOS page
-- [x] Footer Design
-- [x] Header Design
-
-## Community Requests
-
-- [ ] Add [Quake WASM](https://github.com/GMH-Code/Quake-WASM)
-- [ ] Celeste WASM
-- [ ] Doom WASM
-
-## Changelog (Old; too lazy to type it all out now)
-
-- Added wisp support
-- Fixed AD config setting being opt-out; ads are not implemented in the project however
-- Added Rammerhead support (locally)
-- Drastically updated visuals across the service and refactored stylesheets
-- Bumped games page functionality
-- Updated randomization scripts to ES6 syntax and implemented the alternative to RegEx string replacement
-- Helmet for express implemented into backend
-- Improved component handling via templates.mjs along with deletion of obsolete files that previously handled this standard in a poor format
-- Fixed oddly slow speeds with Ultraviolet (as well as a general version bump to support epoxy-tls and bare-mux)
-- Implemented testing scripts for an improved GitHub actions workflow by doing a quick test on proxy + site functionality
-- Greatly optimized client-side scripts across the site with a new standard, and generally reworked to no longer leave global variables
-- Changes to server.mjs with path logic and error handling
-- Updated standards for common scripts
-- libcurl and bare-as-module support added
-- Deleted 5 JS scripts and moved lots of data into JSON files. Big reorganization. Games menu core scripts now nested inside of common.js utilizing a JSON system
-- Massive updates to the Settings menu visually and functionality wise; added Bare-Mux support for swapping transports to work with Ultraviolet, default icons and selective adblocking + Tor on any proxy instances
-- CSS Has been partially restructured for mobile support, and is now properly arranged into clearly labeled sections (for the most part)
-- Incorporated makeshift domain blacklisting functionality into Ultraviolet, currently used for blocking ads if ads are disabled in settings
-- Fleshed out the SEO with more descriptions and better labeling
-- Switched to Fastify for serving content from the backend; a separate Express backend file is kept in case it's still needed
-- Rammerhead is now locally built into the HU LTS repository
-- Simplified the HU LTS setup process and added more default npm commands
+<a href="https://github.com/QuiteAFancyEmerald/Holy-Unblocker/blob/master/TODO.md">This</a> is our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above. Release for production will be v7.x.x and above.
 
 ## Vague Explanation for Beginners With External Proxies and Hosting
 
@@ -487,7 +411,7 @@ Due to piracy concerns, size, etc. this has been moved over <a href="https://git
 
 **Why is the site I am on not working correctly or having CAPTCHA errors?**
 
-Captcha support is currently not available on all of the current proxies sadly. Therefore some sites may not work with any of the sites. Read below for issues with links on sites.
+Captcha support is spotty on all of the current proxies sadly. It is primarily supported by Scramjet. Therefore some sites may not work with any of the sites.
 
 **I am getting 502 errors. What do I do?**
 
@@ -499,7 +423,7 @@ If you still have any questions feel free to ask them in the discord linked here
 
 ### Why are official domains now numbered? Is this project maintained again?
 
-Yes, this project is active again for LTS support! However, the approach is now much simpler to ensure functionality: traffic will be focused on a single domain. More than ever, this project serves as a proof of concept for the brave souls willing to innovate in the web proxy service space.
+Yes, this project is active again for LTS support! However, the approach is now much simpler to ensure functionality: domain restocks as needed and a highly maintained source. More than ever, this project serves as a proof of concept for the brave souls willing to innovate in the web proxy service space.
 
 <details><summary>Former Closing Message (Original - 2022)</summary>
 
