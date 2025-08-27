@@ -20,7 +20,7 @@ Also has a good amount of locally hosted games featured on the site.
 
 ### Over 30M+ users since 2020. Thank you so much for the support I could have never imagined how massive the web proxy community has become.
 
-#### Current Branch: Latest
+#### Current Branch: v6.8.7-production
 
 <details><summary>Branch Types</summary>
 
