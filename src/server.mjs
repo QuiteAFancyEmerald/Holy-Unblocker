@@ -176,7 +176,7 @@ if (config.disguiseFiles) {
       import.meta.url,
       false
     );
-  let exemptPages = ['login', 'test-shutdown'];
+  let exemptPages = ['login', 'test-shutdown', 'favicon.ico'];
   if (pages.default === 'login') exemptPages.push('');
   app.addHook('preHandler', (req, reply, done) => {
     if (req.params.modified) return done();
@@ -191,7 +191,8 @@ if (config.disguiseFiles) {
       exemptPages.includes(reqPath)
     )
       return done();
-    if (!reqPath.endsWith('.' + disguise) || reqPath in pages) {
+
+    if (!reqPath.endsWith('.' + disguise)) {
       reply.type(supportedTypes.html).send(loaderFile);
       reply.hijack();
       return done();
@@ -217,6 +218,13 @@ app.get(serverUrl.pathname + ':path', (req, reply) => {
   */
 
   const reqPath = req.params.path;
+
+  // Ignore browsers' automatic requests to favicon.ico, since it does not exist.
+  // This approach is needed for certain pages to not have an icon.
+  if (reqPath === 'favicon.ico') {
+    reply.send();
+    return reply.hijack();
+  }
 
   if (reqPath in externalPages) {
     let externalRoute = externalPages[reqPath];

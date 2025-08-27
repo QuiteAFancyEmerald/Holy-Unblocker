@@ -80,7 +80,6 @@ let pages = {
   'robots.txt': 'robots.txt',
   'sitemap.xml': 'sitemap.xml',
   'browserconfig.xml': 'browserconfig.xml',
-  'favicon.ico': 'favicon.ico',
 };
 
 let externalPages = {
