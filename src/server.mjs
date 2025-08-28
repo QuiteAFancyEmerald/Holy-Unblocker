@@ -83,8 +83,10 @@ const serverFactory = (handler) => {
 
 // Set logger to true for logs.
 const app = Fastify({
-  ignoreDuplicateSlashes: true,
-  ignoreTrailingSlash: true,
+  routerOptions: {
+    ignoreDuplicateSlashes: true,
+    ignoreTrailingSlash: true,
+  },
   logger: false,
   serverFactory: serverFactory,
 });

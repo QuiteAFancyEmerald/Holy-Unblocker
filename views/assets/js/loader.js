@@ -26,7 +26,10 @@
     (destination = location, pushState = true) =>
     () => {
       removeEventListener('load', loadPage);
-      fetch(destination.pathname + '.ico', { mode: 'same-origin' })
+      fetch(
+        destination.pathname.replace(/\/+/g, '/').replace(/\/$/g, '') + '.ico',
+        { mode: 'same-origin' }
+      )
         .then((response) => {
           if (destination !== location && pushState) {
             console.clear();
