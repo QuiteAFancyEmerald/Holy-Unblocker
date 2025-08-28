@@ -113,6 +113,7 @@ app.register(fastifyStatic, {
   'libcurl',
   'baremux',
   'eruda',
+  'wisp',
 ].forEach((prefix) => {
   app.register(fastifyStatic, {
     root: fileURLToPath(new URL('../views/dist/' + prefix, import.meta.url)),
