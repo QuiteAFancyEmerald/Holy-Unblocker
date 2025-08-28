@@ -227,6 +227,8 @@ app.get(serverUrl.pathname + ':path', (req, reply) => {
   }
 
   if (reqPath in externalPages) {
+    if (req.params.modified)
+      return reply.code(404).type(supportedTypes.html).send(preloaded404);
     let externalRoute = externalPages[reqPath];
     if (typeof externalRoute !== 'string')
       externalRoute = externalRoute.default;
