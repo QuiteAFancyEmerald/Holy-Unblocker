@@ -56,48 +56,42 @@
             {{mask}}{{ Select a directory below: }}
           </h2>
           <div class="box-button-container">
-            <a id="emtooltip" href="{{route}}{{/emulators}}" class="box-button"
+            <a
+              id="emtooltip"
+              href="{{route}}{{/emulators}}"
+              class="box-button tippy-button"
+              data-tippy-content="{{mask}}{{Emulators [Webretro v6.5]: Fully ported RetroArch with over 20 emulators featured!}}"
               >{{mask}}{{Emulators}}</a
             >
             <a
               id="eltooltip"
               href="{{route}}{{/retro-games}}"
-              class="box-button"
+              class="box-button tippy-button"
+              data-tippy-content="{{mask}}{{EmuLibrary [Collection]: Popular collection of games sourced from other websites. You can set this via the settings menu.}}"
               >{{mask}}{{EmuLibrary}}</a
             >
-            <a id="wgtooltip" href="{{route}}{{/web-games}}" class="box-button"
+            <a
+              id="wgtooltip"
+              href="{{route}}{{/web-games}}"
+              class="box-button tippy-button"
+              data-tippy-content="{{mask}}{{Web Games [Collection]: Collection of popular web games, including WebGL and HTML5 games.}}"
               >{{mask}}{{Web Games}}</a
             >
             <a
               id="fgtooltip"
               href="{{route}}{{/flash-games}}"
-              class="box-button"
+              class="box-button tippy-button"
+              data-tippy-content="{{mask}}{{Flash Games [Collection]: Collection of Flash games emulated via Ruffle.}}"
               >{{mask}}{{Flash Games}}</a
             >
             <script src="https://unpkg.com/@popperjs/core@2"></script>
             <script src="https://unpkg.com/tippy.js@6"></script>
             <script>
-              const tooltipContent = {
-                emtooltip:
-                  '{{mask}}{{Emulators [Webretro v6.5]: Fully ported RetroArch with over 20 emulators featured!}}',
-                eltooltip:
-                  '{{mask}}{{EmuLibrary [Collection]: Popular collection of games sourced from other websites. You can set this via the settings menu.}}',
-                wgtooltip:
-                  '{{mask}}{{Web Games [Collection]: Collection of popular web games, including WebGL and HTML5 games.}}',
-                fgtooltip:
-                  '{{mask}}{{Flash Games [Collection]: Collection of Flash games emulated via Ruffle.}}',
-              };
-
-              tippy.setDefaultProps({
+              tippy('.tippy-button', {
                 delay: 50,
                 animateFill: true,
                 placement: 'bottom',
               });
-
-              tippy('#emtooltip', { content: tooltipContent.emtooltip });
-              tippy('#eltooltip', { content: tooltipContent.eltooltip });
-              tippy('#wgtooltip', { content: tooltipContent.wgtooltip });
-              tippy('#fgtooltip', { content: tooltipContent.fgtooltip });
             </script>
           </div>
         </div>
