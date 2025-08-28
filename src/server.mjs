@@ -169,17 +169,27 @@ const supportedTypes = {
 if (config.disguiseFiles) {
   const getActualPath = (path) =>
       path.slice(0, path.length - 1 - disguise.length),
-    isNotHtml = /\.(?!html$)[\w-]+$/i,
+    shouldNotHandle = new RegExp(`\\.(?!html$|${disguise}$)[\\w-]+$`, 'i'),
     loaderFile = tryReadFile(
       '../views/dist/pages/misc/deobf/loader.html',
       import.meta.url,
       false
     );
-  let exemptDirs = ['assets/ico'],
+  let exemptDirs = [
+      'assets',
+      'uv',
+      'scram',
+      'epoxy',
+      'libcurl',
+      'baremux',
+      'eruda',
+    ].map((dir) => getAltPrefix(dir, serverUrl.pathname).slice(1, -1)),
     exemptPages = ['login', 'test-shutdown', 'favicon.ico'];
   for (const [key, value] of Object.entries(externalPages))
     if ('string' === typeof value) exemptPages.push(key);
     else exemptDirs.push(key);
+  for (const path of rammerheadScopes)
+    if (!shouldNotHandle.test(path)) exemptDirs.push(path.slice(1));
   exemptPages = exemptPages.concat(exemptDirs);
   if (pages.default === 'login') exemptPages.push('');
   app.addHook('preHandler', (req, reply, done) => {
@@ -188,9 +198,10 @@ if (config.disguiseFiles) {
       serverUrl.pathname.length
     );
     if (
-      (!reqPath.endsWith('.' + disguise) && isNotHtml.test(reqPath)) ||
+      shouldNotHandle.test(reqPath) ||
       exemptDirs.some((dir) => reqPath.indexOf(dir + '/') === 0) ||
-      exemptPages.includes(reqPath)
+      exemptPages.includes(reqPath) ||
+      rammerheadSession.test(serverUrl.pathname + reqPath)
     )
       return done();
 
