@@ -177,10 +177,10 @@ if (config.disguiseFiles) {
     );
   let exemptDirs = ['assets/ico'],
     exemptPages = ['login', 'test-shutdown', 'favicon.ico'];
-  Object.entries(externalPages).forEach(([key, value]) => {
-      if ('string' === typeof value)  exemptPages.push(key);
-      else exemptDirs.push(key);
-    });
+  for (const [key, value] of Object.entries(externalPages))
+    if ('string' === typeof value) exemptPages.push(key);
+    else exemptDirs.push(key);
+  exemptPages = exemptPages.concat(exemptDirs);
   if (pages.default === 'login') exemptPages.push('');
   app.addHook('preHandler', (req, reply, done) => {
     if (req.params.modified) return done();
@@ -189,9 +189,7 @@ if (config.disguiseFiles) {
     );
     if (
       (!reqPath.endsWith('.' + disguise) && isNotHtml.test(reqPath)) ||
-      exemptDirs.some(
-        (dir) => reqPath.indexOf(dir + '/') === 0 || reqPath === dir
-      ) ||
+      exemptDirs.some((dir) => reqPath.indexOf(dir + '/') === 0) ||
       exemptPages.includes(reqPath)
     )
       return done();
