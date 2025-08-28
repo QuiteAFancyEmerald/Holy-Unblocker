@@ -93,7 +93,10 @@
                         try {
                           new URL(attrValue);
                         } catch (e) {
-                          if (attrValue[0] === '.' || attrValue[0] === '/')
+                          if (
+                            (attrValue[0] === '.' || attrValue[0] === '/') &&
+                            attrValue.indexOf('#') === -1
+                          )
                             elementCopy.addEventListener('click', (event) => {
                               event.preventDefault();
                               if (attrValue === '{{route}}{{/}}')
@@ -195,6 +198,7 @@
   if (document.readyState === 'complete') loadPage()();
   else addEventListener('load', loadPage());
   addEventListener('popstate', () => {
+    if (location.href.includes('#')) return;
     console.clear();
     loadPage(location, false)();
   });
