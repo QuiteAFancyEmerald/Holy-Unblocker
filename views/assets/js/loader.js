@@ -29,6 +29,7 @@
       fetch(destination.pathname + '.ico', { mode: 'same-origin' })
         .then((response) => {
           if (destination !== location && pushState) {
+            console.clear();
             if (response.status === 200) history.pushState({}, '', destination);
             else return location.assign(new URL(destination, location));
           }
@@ -194,6 +195,7 @@
   if (document.readyState === 'complete') loadPage()();
   else addEventListener('load', loadPage());
   addEventListener('popstate', () => {
+    console.clear();
     loadPage(location, false)();
   });
 })();
