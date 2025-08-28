@@ -170,13 +170,17 @@ if (config.disguiseFiles) {
   const getActualPath = (path) =>
       path.slice(0, path.length - 1 - disguise.length),
     isNotHtml = /\.(?!html$)[\w-]+$/i,
-    exemptDirs = ['github', 'assets/ico'],
     loaderFile = tryReadFile(
       '../views/dist/pages/misc/deobf/loader.html',
       import.meta.url,
       false
     );
-  let exemptPages = ['login', 'test-shutdown', 'favicon.ico'];
+  let exemptDirs = ['assets/ico'],
+    exemptPages = ['login', 'test-shutdown', 'favicon.ico'];
+  Object.entries(externalPages).forEach(([key, value]) => {
+      if ('string' === typeof value)  exemptPages.push(key);
+      else exemptDirs.push(key);
+    });
   if (pages.default === 'login') exemptPages.push('');
   app.addHook('preHandler', (req, reply, done) => {
     if (req.params.modified) return done();
