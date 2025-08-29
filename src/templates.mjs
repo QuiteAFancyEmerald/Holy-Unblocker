@@ -8,6 +8,7 @@ const __dirname = '../views/pages/misc/deobf',
   regExpEscape2 = /[-[\]{}()*+?.,\\^$|#\s]/g,
   isImage = /\.(?:ico|png|jpg|jpeg)$/,
   templateNames = [
+    'anti-exfil',
     'head-content',
     'header',
     'footer',

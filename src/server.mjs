@@ -184,8 +184,8 @@ if (config.disguiseFiles) {
       'epoxy',
       'libcurl',
       'baremux',
-      'eruda',
       'wisp',
+      'eruda',
     ].map((dir) => getAltPrefix(dir, serverUrl.pathname).slice(1, -1)),
     exemptPages = ['login', 'test-shutdown', 'favicon.ico'];
   for (const [key, value] of Object.entries(externalPages))

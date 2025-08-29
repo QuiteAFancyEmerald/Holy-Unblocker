@@ -7,8 +7,9 @@
       location.reload();
     }
   });
-  const displayErrorPage = () => {
+  const displayErrorPage = (overwrite = false) => {
     document.body.removeAttribute('style');
+    if (overwrite) document.body.replaceWith(document.createElement('body'));
     document.body.insertAdjacentHTML(
       'afterbegin',
       '<center><h1>500 Internal Server Error</h1></center><hr><center>nginx</center>'
@@ -27,7 +28,7 @@
     () => {
       removeEventListener('load', loadPage);
       fetch(
-        destination.pathname.replace(/\/+/g, '/').replace(/\/$/g, '') + '.ico',
+        destination.pathname.replace(/\/+/g, '/').replace(/\/$/, '') + '.ico',
         { mode: 'same-origin' }
       )
         .then((response) => {
@@ -195,7 +196,7 @@
         })
         .catch((error) => {
           console.log(error);
-          displayErrorPage();
+          displayErrorPage(true);
         });
     };
   if (document.readyState === 'complete') loadPage()();
