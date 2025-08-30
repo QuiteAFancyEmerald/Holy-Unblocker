@@ -1,5 +1,8 @@
 services:
   - type: web
-    name: project
-    env: docker
+    runtime: docker
+    name: hu-lts
+    repo: https://github.com/QuiteAFancyEmerald/Holy-Unblocker
+    region: oregon
     plan: free
+    branch: master
