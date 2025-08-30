@@ -245,7 +245,7 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
       config.randomizeIdentifiers ? createRandomID() : '__uv$config'
     ),
     version: versionValue,
-    defaultSearch: '{{Startpage}}',
+    defaultSearch: '{{DuckDuckGo}}',
   }),
   // List of manual censors for unavoidable cases.
   manualCensors = Object.freeze({
