@@ -1,31 +1,16 @@
 This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above. Release for production will be v8.x.x and above.
 
-## Code Cleanup
-
-- [ ] Optimize the JS. This time it won't be in one line and will be somewhat thoroughly commented.
-- [x] Ensure all the original submodules get added back to HU-Archive
-- [x] SEO overhaul adapted from the v3 SEO Guide format - partial
-- [x] Optimize the stylesheets and the HTML layout. Add more proper commenting and redivide the code so that it's less hard on the eyes.
-- [x] Remove all current obfuscation in the source code. It needs to be dynamically obfuscated if anything, or not obfuscated at all. This option will be a config option on the server side before rendering with Fastify for a performance focus. Meta elements will have an additonal attribute indicating if they should be moved. This is to ensure a SEO source can be served by config or a source focused on pure censorship evasion.
-- [x] Restructure navigation scripts to ensure updated proxy functionality is sanitized and effective - done
-- [x] Particles.js automatically adjusting per display size - done
-- [x] Fix routes.mjs throwing with incorrect paths - done
-- [x] Create test script - done
-- [x] XSS and fingerprinting protection (may need updates) - done
-- [x] Greatly improved native source rewrites and routing - done
-- [x] Update games navigation JS and page/change to JSON object system - done
-- [x] Mobile support - (welcome screen only, partial/needs work)
-- [x] Fastify routes modified to ensure perfect SEO. This means absolute paths such as /example instead of ?z - done
-- [x] Randomize the \_\_uv$config global, and optionally randomize the UV prefix and URL encoding via cookies
-
 ## Proxy/Site Functionality
 
+- [ ] Update to use scramjetFrame instead of our own window handling
+- [ ] Implement wisp python to the project instead of the unreliable wisp-server-node
+- [ ] Add booksmark menu (source wise already present pretty much)
+- [ ] Add Chii + ensuring users can access devtools while browsing - partial
 - [ ] Setting to open multiple stealth frames; basically about:blank but using our system. Pops out in another tab
 - [ ] Omnibox should state what the current site the user is on like a proper URL bar 
 - [ ] Improve adblocking functions on site using Workerware + a pre-bundled uBlock Origin
 - [ ] Add a "website self-destruct" button to the settings menu
-- [ ] Implement wisp python to the project instead of the unreliable wisp-server-node (not good for production)
-- [ ] Added Eruda ensuring users can access a someone crafted devtools while browsing - partial
+- [ ] Transport Options Swapping on Frame (Settings Menu doesn't swap)
 - [x] Fix keyword/descriptor randomisation - done
 - [x] Adapt Wisp protocol replacing bare which is very unsecure - done
 - [x] Improved error handling for proxy errors - done
@@ -50,6 +35,24 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [x] Games library will feature new games - done
 - [x] Servers now utilise NextDNS w/ ads and malware blocked; anycast + low latency - done
 - [x] Revamp the Stealth Frame with a slight animation (ease in and then the wheeling loading with a gradient fading away once its loaded or shows the error page LOL), a loading wheel/page and lastly a omnibox widget. It will have like nav buttons, some of the settings from the settings menu, a home button, a button that brings up the Setting menu and be in a designed position. Intent is to reduce the back/forth nature that users have to do currently making it more tedious to use the site. - partial. needs functionality.
+
+## Code Cleanup
+
+- [x] Optimize the JS. This time it won't be in one line and will be somewhat thoroughly commented.
+- [x] Ensure all the original submodules get added back to HU-Archive
+- [x] SEO overhaul adapted from the v3 SEO Guide format - partial
+- [x] Optimize the stylesheets and the HTML layout. Add more proper commenting and redivide the code so that it's less hard on the eyes.
+- [x] Remove all current obfuscation in the source code. It needs to be dynamically obfuscated if anything, or not obfuscated at all. This option will be a config option on the server side before rendering with Fastify for a performance focus. Meta elements will have an additonal attribute indicating if they should be moved. This is to ensure a SEO source can be served by config or a source focused on pure censorship evasion.
+- [x] Restructure navigation scripts to ensure updated proxy functionality is sanitized and effective - done
+- [x] Particles.js automatically adjusting per display size - done
+- [x] Fix routes.mjs throwing with incorrect paths - done
+- [x] Create CI testing script - done
+- [x] XSS and fingerprinting protection (may need updates) - done
+- [x] Greatly improved native source rewrites and routing - done
+- [x] Update games navigation JS and page/change to JSON object system - done
+- [x] Mobile support - (partial)
+- [x] Fastify routes modified to ensure perfect SEO. This means absolute paths such as /example instead of ?z - done
+- [x] Randomize the \_\_uv$config global, and optionally randomize the UV prefix and URL encoding via cookies
 
 ## Site Redesign
 
