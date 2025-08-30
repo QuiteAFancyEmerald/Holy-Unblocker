@@ -39,7 +39,7 @@
     "@mercuryworkshop/scramjet": "https://github.com/MercuryWorkshop/scramjet/releases/download/latest/mercuryworkshop-scramjet-1.0.2-dev.tgz",
     "@titaniumnetwork-dev/ultraviolet": "^3.2.10",
     "axios": "^1.11.0",
-    "eruda": "^3.4.3",
+    "chii": "^1.15.5",
     "fastify": "^5.5.0",
     "pm2": "^6.0.8",
     "puppeteer": "^24.17.0",
