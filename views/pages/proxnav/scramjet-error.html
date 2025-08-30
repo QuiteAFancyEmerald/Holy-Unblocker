@@ -53,12 +53,6 @@
         font-weight: 500;
       }
 
-      .uv-small {
-        color: #e5e9f0;
-        font-size: 20px;
-        font-weight: 500;
-      }
-
       i {
         color: #e5e9f0;
         font-size: 20px;
@@ -179,9 +173,6 @@
         i {
           font-size: 18px;
         }
-        .uv-small {
-          font-size: 16px;
-        }
         button {
           padding: 10px 30px;
           font-size: 1em;
@@ -208,9 +199,6 @@
         code,
         i {
           font-size: 14px;
-        }
-        .uv-small {
-          font-size: 12px;
         }
         button {
           padding: 8px 18px;
@@ -257,7 +245,7 @@
     <!--ANTI-EXFIL-->
     <div id="cover"></div>
     <div id="inner" class="container-fluid text-center">
-      <h1 id="errorTitle">{{mask}}{{Network Error}}</h1>
+      <h1 id="errorTitle">{{mask}}{{Scramjet Network Error}}</h1>
       <code>Failed to load: <b id="fetchedURL"></b></code>
       <h2>{{mask}}{{Reloading the page will fix your problem.}}</h2>
       <br />
@@ -298,6 +286,12 @@
               issues.}}
             </li>
             <li>
+              {{mask}}{{Troubleshooting the error on the }}<a href="{{route}}{{/github/scramjet}}" target="_blank">{{mask}}{{Scramjet GitHub.}}</a>
+            </li>
+            <li>
+              {{mask}}{{Try a different proxy engine via the settings panel.}}
+            </li>
+            <li>
               {{mask}}{{If the issue persists be sure to mention this in the
               Titanium Network Discord.}}
             </li>
@@ -307,7 +301,7 @@
       <code
         ><i
           >{{mask}}{{Refresh the network service | Scramjet v1.0.2 - build
-          ec0c298.}}</i
+          8a4a72f.}}</i
         ></code
       >
       <p class="footer-spacing">

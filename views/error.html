@@ -12,6 +12,36 @@
     }}
     <!--HEAD-CONTENT-->
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
+    <style>
+      body {
+        color: #eceff4;
+        background-color: #1d232a;
+        font-family: 'Figtree', sans-serif;
+        font-optical-sizing: auto;
+        background-image:
+          radial-gradient(
+            circle,
+            rgba(131, 131, 131, 0.02) 1px,
+            transparent 1px
+          ),
+          radial-gradient(
+            circle,
+            rgba(148, 148, 148, 0.02) 1px,
+            transparent 1px
+          );
+        background-position:
+          0 0,
+          5px 5px;
+        background-size: 10px 10px;
+      }
+
+      h1 {
+        color: #ff5861;
+        font-size: 84px;
+        font-weight: 900;
+        margin-top: 6%;
+      }
+    </style>
   </head>
 
   <body>
@@ -24,6 +54,9 @@
         <h1>{{mask}}{{Site Error!}}</h1>
         <h2>
           {{mask}}{{Reload the page or do Ctrl+R!!! This fixes a lot of issues}}
+        </h2>
+        <h2>
+          {{mask}}{{Blame BareMux! There are no bare clients.... reloading the page will resolve this issue.}}
         </h2>
         <p>
           {{mask}}{{Might be doing some maintenance or the web server is down.}}
