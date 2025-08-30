@@ -101,6 +101,7 @@ let externalPages = {
   'tor-project': 'https://tb-manual.torproject.org/installation',
   'titaniumnetwork-documentation': 'https://docs.titaniumnetwork.org',
   'titaniumnetwork-discord': 'https://discord.gg/CwWpdGkuWY',
+  'truffled': 'https://truffled.lol',
   'rammerhead-discord': 'https://discord.gg/VNT4E7gN5Y',
 };
 
@@ -135,6 +136,7 @@ let altPaths = {
   codespaces: 'codesp',
   'tor-project': 'tr',
   'titaniumnetwork-discord': 'social',
+  'truffled': 'educational',
   'rammerhead-discord': 'rdis',
   /* Raw File Names */
   files: {

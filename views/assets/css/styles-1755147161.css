@@ -2119,7 +2119,7 @@ input[type='text'] {
 }
 
 .glist > a p {
-  margin-bottom: 0;
+  margin: 5px 0 0 0;
   color: var(--nord4);
 }
 

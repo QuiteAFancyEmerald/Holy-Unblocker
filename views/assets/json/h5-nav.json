@@ -5,11 +5,6 @@
     "img": "darkroom.webp"
   },
   {
-    "name": "Minecraft: Java Edition (1.12.2)",
-    "path": "mcjava1122/",
-    "img": "mcnow.webp"
-  },
-  {
     "name": "Celeste Web",
     "path": "webleste/",
     "img": "celeste.webp"
@@ -18,11 +13,6 @@
     "name": "Terraria Web",
     "path": "terraria/",
     "img": "terraria.webp"
-  },
-  {
-    "name": "Minecraft: Java Edition (1.8.8)",
-    "path": "mcjava188/",
-    "img": "mcnow.webp"
   },
   {
     "name": "Gopher Cart",

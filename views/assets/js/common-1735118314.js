@@ -543,6 +543,8 @@ const preparePage = async () => {
 
     agar: urlHandler(sjUrl('https://agar.io')),
 
+    tru: urlHandler(sjUrl('https://truffled.lol/g')),
+
     prison: urlHandler(sjUrl('https://vimlark.itch.io/pick-up-prison')),
 
     speed: urlHandler(sjUrl('https://captain4lk.itch.io/what-the-road-brings')),
@@ -566,6 +568,16 @@ const preparePage = async () => {
     hianime: urlHandler(sjUrl('https://www.hianime.to')),
 
     twitter: urlHandler(sjUrl('https://twitter.com')),
+
+    twitch: urlHandler(sjUrl('https://www.twitch.tv')),
+
+    instagram: urlHandler(sjUrl('https://www.instagram.com')),
+
+    reddit: urlHandler(sjUrl('https://www.reddit.com')),
+
+    wikipedia: urlHandler(sjUrl('https://www.wikiwand.com')),
+
+    newgrounds: urlHandler(sjUrl('https://www.newgrounds.com')),
   });
 
   // Call a function after a given number of service workers are active.
@@ -767,6 +779,11 @@ const preparePage = async () => {
   prSet('pr-tt', 'tiktok');
   prSet('pr-ha', 'hianime');
   prSet('pr-tw', 'twitter');
+  prSet('pr-tc', 'twitch');
+  prSet('pr-ig', 'instagram');
+  prSet('pr-rt', 'reddit');
+  prSet('pr-wa', 'wikipedia');
+  prSet('pr-ng', 'newgrounds');
 
   // Load the frame for stealth mode if it exists.
   const windowFrame = document.getElementById('frame'),
@@ -832,6 +849,7 @@ const preparePage = async () => {
     'emulib-nav': 'emulib-nav',
     'flash-nav': 'flash-nav',
     'h5-nav': 'h5-nav',
+    'par-nav': 'par-nav',
   };
 
   for (const [listId, filename] of Object.entries(navLists)) {
@@ -848,12 +866,14 @@ const preparePage = async () => {
       switch (filename) {
         case 'emu-nav':
         case 'emulib-nav':
+        case 'par-nav':
         case 'h5-nav': {
           const dirnames = {
               // Set the directory of where each item of the corresponding JSON
               // list will be retrieved from.
               'emu-nav': 'emu',
               'emulib-nav': 'emulib',
+              'par-nav': 'par',
               'h5-nav': 'h5g',
             },
             dir = dirnames[filename],
@@ -872,26 +892,45 @@ const preparePage = async () => {
               a = document.createElement('a'),
               img = document.createElement('img'),
               title = document.createElement('h3');
+              desc = document.createElement('p'),
+              credits = document.createElement('p');
 
             a.href = '#';
             img.src = `{{route}}{{/assets/img/}}${dir}/` + item.img;
             title.textContent = item.name;
+            desc.textContent = item.description;
+            credits.textContent = item.credits;
+
+            if (filename === 'par-nav') {
+              if (item.credits === 'truf')
+                desc.innerHTML +=
+                  '<br>{{mask}}{{Credits: Check out the full site at }}<a target="_blank" href="{{route}}{{/truffled}}">{{mask}}{{truffled.lol}}</a> //{{mask}}{{ discord.gg/vVqY36mzvj}}';
+            }
 
             a.appendChild(img);
             a.appendChild(title);
+            a.appendChild(desc);
+  
 
             // Which function is used for the click event is determined by
             // the corresponding location/index in the dirnames object.
             const functionsList = [
+              // emu-nav
               () => goFrame(item.path),
+              // emulib-nav
               () =>
                 goFrame(
                   '{{route}}{{/webretro}}?core=' +
                     item.core +
                     '&rom=' +
                     item.rom
-                ),
-              item.custom
+                ), 
+              // par-nav
+              item.custom && goProx[item.custom]
+                ? () => goProx[item.custom]('stealth')
+                : () => {}, 
+              // h5-nav
+              item.custom && goProx[item.custom]
                 ? () => goProx[item.custom]('stealth')
                 : () => goFrame('{{route}}{{/archive/g/}}' + item.path),
             ];
