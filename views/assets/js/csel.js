@@ -447,6 +447,7 @@ if (document.getElementById('csel')) {
       classUpdateHandler(torCheck, 'off')();
   });
 
+  /* The Eruda devtools are an alternative to the Chii devtools.
   attachClassEventListener('eruda', 'change', (e) => {
     const enabled = checkBooleanState(e.target) === true;
 
@@ -463,6 +464,7 @@ if (document.getElementById('csel')) {
       removeStorage('ErudaEnabled');
     }
   });
+  */
 }
 
 /* END WEBSITE SETTINGS */
@@ -519,6 +521,7 @@ useStorageArgs('UseSocks5', (s) => {
   else if ('string' === typeof s) classUpdateHandler(regionList, s)();
 });
 
+/*
 useStorageArgs('ErudaEnabled', (s) => {
   const erudaSwitch = document.getElementsByClassName('eruda');
 
@@ -526,6 +529,7 @@ useStorageArgs('ErudaEnabled', (s) => {
     classUpdateHandler(erudaSwitch, 'on', classEvent(erudaSwitch, 'change'))();
   }
 });
+*/
 
 useStorageArgs('UseAC', (s) => {
   if (s === false)
