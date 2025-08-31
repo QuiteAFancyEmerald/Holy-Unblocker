@@ -58,7 +58,7 @@
               let capturedLink = new URL(destination),
                 timestamp = Date.now();
               capturedLink.search = capturedLink.search
-                ? capturecLink.search + '&cache=' + timestamp
+                ? capturedLink.search + '&cache=' + timestamp
                 : '?cache=' + timestamp;
               history.pushState({}, '', capturedLink);
             }
