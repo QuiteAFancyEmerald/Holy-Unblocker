@@ -54,7 +54,15 @@
           }
           if (destination !== location && pushState) {
             console.clear();
-            if (response.status === 200) history.pushState({}, '', destination);
+            if (response.status === 200) {
+              let capturedLink = new URL(destination),
+                timestamp = Date.now();
+              capturedLink.search = capturedLink.search
+                ? capturecLink.search + '&cache=' + timestamp
+                : '?cache=' + timestamp;
+              console.log(capturedLink);
+              history.pushState({}, '', capturedLink);
+            }
             else return location.assign(new URL(destination, location));
           }
           response.blob().then((blob) => {
@@ -118,7 +126,7 @@
                           new URL(attrValue);
                         } catch (e) {
                           if (
-                            (attrValue[0] === '.' || attrValue[0] === '/') &&
+                            './?'.indexOf(attrValue[0]) !== -1 &&
                             attrValue.indexOf('#') === -1
                           )
                             elementCopy.addEventListener('click', (event) => {
@@ -133,8 +141,14 @@
                     for (j = 0; j < nodeList.length; j++)
                       elementCopy.appendChild(recursiveClone(nodeList[j]));
                     if ('script' === nodeName) {
-                      if (node.async || 'module' === node.type.toLowerCase() || node.hasAttribute('data-module')) {
-                        if (loadedModules.includes(node.src || node.textContent))
+                      if (
+                        node.async ||
+                        'module' === node.type.toLowerCase() ||
+                        node.hasAttribute('data-module')
+                      ) {
+                        if (
+                          loadedModules.includes(node.src || node.textContent)
+                        )
                           return document.createElement('script');
                         loadedModules.push(node.src || node.textContent);
                         if (node.async) return elementCopy;
