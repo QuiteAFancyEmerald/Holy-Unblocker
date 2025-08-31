@@ -24,7 +24,7 @@
     if (overwrite) document.body.replaceWith(document.createElement('body'));
     document.body.insertAdjacentHTML(
       'afterbegin',
-      '<center><h1>500 Internal Server Error</h1></center><hr><center>nginx</center>'
+      '<center><h1>403 Forbidden</h1></center><center>You don’t have permission to access this page.</center><hr><center>nginx</center>'
     );
     let head = document.createElement('head'),
       title = document.createElement('title');

@@ -476,7 +476,7 @@ details[open] summary {
 }
 
 .navbar-1 > li {
-  margin-left: 25px;
+  margin-left: 45px;
 }
 
 .navbar-1 > li > a.line {
@@ -530,6 +530,12 @@ details[open] summary {
   display: flex;
   align-items: center;
   order: 3;
+}
+
+.navbar > .dmenu {
+  margin-left: 30px;
+  margin-top: 2px;
+  font-size: 18px;
 }
 
 .navbar > .smenu {
@@ -1792,7 +1798,7 @@ input[type='text'] {
 }
 
 .box-text-container {
-  max-width: 600px;
+  max-width: 610px;
   padding: 20px;
 }
 
@@ -2315,8 +2321,6 @@ input[type='text'] {
 /* Mobile Support
 /* ----------------------------------------------- */
 
-/* Mobile Header Dropdown Menu */
-
 /* For mobile-exclusive versions of certain UI elements. */
 .mobile {
   display: none;
@@ -2393,9 +2397,68 @@ input[type='text'] {
   transform: rotate(45deg);
 }
 
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: calc(10% + 90px);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+#mnavecb:checked ~ .mobile-overlay {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.mobile-overlay .navbar-1 {
+  display: flex !important;
+  flex-direction: column;
+  text-align: center;
+}
+
+.mobile-overlay .navbar-1 > li {
+  margin: 10px 0;
+}
+
+.mobile-overlay a {
+  display: block;
+  width: 110px;
+  padding: 15px;
+  text-decoration: none;
+  color: var(--nord4);
+  padding: 15px 25px;
+  border: var(--nord11) 1px solid;
+  border-radius: 5px;
+  color: var(--box-btn-color, white) !important;
+  background-color: var(--mac-title-bg, var(--dark2));
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
 /* -----------------------------------------------
 /* CSS Media Queries (largely for mobile support)
 /* ----------------------------------------------- */
+
+@media (max-width: 1160px) {
+  .navbar-1 {
+    display: none !important; 
+  }
+
+  .mnave {
+    display: inline-block;
+  }
+}
 
 @media (max-width: 1400px) {
   #header {
