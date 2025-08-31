@@ -60,7 +60,6 @@
               capturedLink.search = capturedLink.search
                 ? capturecLink.search + '&cache=' + timestamp
                 : '?cache=' + timestamp;
-              console.log(capturedLink);
               history.pushState({}, '', capturedLink);
             }
             else return location.assign(new URL(destination, location));
