@@ -51,11 +51,6 @@
     </li>
   </ul>
 
-  <input id="mnavecb" type="checkbox" aria-hidden="true" />
-  <label for="mnavecb" class="mnave" aria-label="Toggle navigation menu">
-    <span class="mnavebutton" aria-hidden="true"></span>
-  </label>
-
   <ul class="navbar" role="list">
     <li class="dropdown-parent">
       <div class="pulse white-text">
@@ -116,5 +111,23 @@
         </div>
       </div>
     </li>
+  </ul>
+</div>
+
+<input id="mnavecb" type="checkbox" aria-hidden="true" />
+<label for="mnavecb" class="mnave" aria-label="Toggle navigation menu">
+  <span class="mnavebutton" aria-hidden="true"></span>
+</label>
+
+<div class="mobile-overlay">
+  <ul class="navbar-1">
+    <li><a href="{{route}}{{/browsing}}">Web Proxies</a></li>
+    <li><a href="{{route}}{{/games}}">Games</a></li>
+    <li><a href="{{route}}{{/youtube}}">YouTube</a></li>
+    <li><a href="{{route}}{{/apps}}">Applications</a></li>
+    <li><a href="{{route}}{{/documentation}}">Docs</a></li>
+    <li><a href="{{route}}{{/questions}}">FAQ</a></li>
+    <li><a href="{{route}}{{/credits}}">Credits</a></li>
+    <li><a href="{{route}}{{/terms}}">TOS</a></li>
   </ul>
 </div>
