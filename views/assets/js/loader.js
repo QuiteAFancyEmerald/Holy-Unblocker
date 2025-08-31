@@ -56,7 +56,7 @@
             console.clear();
             if (response.status === 200) {
               let capturedLink = new URL(destination),
-                cacheVal = crypto.getRandomValues(new Uint32Array(1))[0];
+                cacheVal = (Math.random() * 1e10 | 0);
               capturedLink.search = capturedLink.search
                 ? capturedLink.search + '&cache=' + cacheVal
                 : '?cache=' + cacheVal;

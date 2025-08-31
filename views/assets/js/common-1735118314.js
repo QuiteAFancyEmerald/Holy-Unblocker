@@ -24,7 +24,7 @@ const getDomain = () =>
       location.href =
         '{{route}}{{/s}}' +
         '?cache=' +
-        crypto.getRandomValues(new Uint32Array(1))[0];
+        (Math.random() * 1e10 | 0);
     else document.getElementById('frame').src = url;
   },
   /* Used to set functions for the goProx object at the bottom.
