@@ -248,7 +248,7 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
       config.randomizeIdentifiers ? createRandomID() : '__uv$config'
     ),
     version: versionValue,
-    cacheVal: (Math.random() * 1e10) | 0,
+    cacheVal: crypto.getRandomValues(new Uint32Array(1))[0],
     defaultSearch: '{{DuckDuckGo}}',
   }),
   // List of manual censors for unavoidable cases.
