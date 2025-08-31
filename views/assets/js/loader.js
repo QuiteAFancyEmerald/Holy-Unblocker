@@ -36,7 +36,7 @@
   if (localStorage.getItem('{{hu-lts}}-loader-key') !== navigator.userAgent)
     return displayErrorPage();
   const lastUpdated = '{{timestamp}}',
-    cacheVal = (Math.random() * 1e10 | 0),
+    cacheVal = (Math.random() * 1e10) | 0,
     retrieveUrl = (pathname, force = false) => {
       let capturedUrl = new URL(pathname, location),
         capturedParams = new URLSearchParams(capturedUrl.search);
@@ -49,7 +49,9 @@
     (destination = location, pushState = true) =>
     () => {
       fetch(
-        destination.pathname.replace(/\/+/g, '/').replace(/\/$/, '') + '.ico',
+        retrieveUrl(
+          destination.pathname.replace(/\/+/g, '/').replace(/\/$/, '') + '.ico'
+        ),
         { mode: 'same-origin' }
       )
         .then((response) => {
@@ -115,10 +117,16 @@
                   const recursiveClone = (node) => {
                     if (node.nodeType !== Node.ELEMENT_NODE) return node;
                     const nodeName = node.tagName.toLowerCase();
-                    let src = {pathname: node.src || ''};
-                    if (node.src && './'.indexOf(node.getAttribute('src')[0]) >= 0) {
+                    let src = { pathname: node.src || '' };
+                    if (
+                      node.src &&
+                      './'.indexOf(node.getAttribute('src')[0]) >= 0
+                    ) {
                       src = retrieveUrl(node.src);
-                      node.setAttribute('src', src.pathname + src.search + src.hash);
+                      node.setAttribute(
+                        'src',
+                        src.pathname + src.search + src.hash
+                      );
                     }
                     if (['svg', 'xml'].includes(nodeName))
                       return node.cloneNode(1);
@@ -134,7 +142,10 @@
                           new URL(attrValue);
                         } catch (e) {
                           if ('./?'.indexOf(attrValue[0]) !== -1)
-                            if (nodeName === 'a' && attrValue.indexOf('#') === -1)
+                            if (
+                              nodeName === 'a' &&
+                              attrValue.indexOf('#') === -1
+                            )
                               elementCopy.addEventListener('click', (event) => {
                                 event.preventDefault();
                                 if (attrValue === '{{route}}{{/}}')
@@ -143,7 +154,10 @@
                               });
                             else if (nodeName === 'link') {
                               src = retrieveUrl(node.href);
-                              elementCopy.setAttribute('href', src.pathname + src.search + src.hash);
+                              elementCopy.setAttribute(
+                                'href',
+                                src.pathname + src.search + src.hash
+                              );
                             }
                         }
                     }
@@ -157,7 +171,9 @@
                         node.hasAttribute('data-module')
                       ) {
                         if (
-                          loadedModules.includes(src.pathname || node.textContent)
+                          loadedModules.includes(
+                            src.pathname || node.textContent
+                          )
                         )
                           return currentDoc.createElement('script');
                         loadedModules.push(src.pathname || node.textContent);
