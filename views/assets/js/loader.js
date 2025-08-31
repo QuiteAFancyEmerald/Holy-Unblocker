@@ -35,12 +35,11 @@
   };
   if (localStorage.getItem('{{hu-lts}}-loader-key') !== navigator.userAgent)
     return displayErrorPage();
-  const lastUpdated = '{{timestamp}}',
-    cacheVal = (Math.random() * 1e10) | 0,
-    retrieveUrl = (pathname, force = false) => {
+  const lastUpdated = '{{cacheVal}}',
+    retrieveUrl = (pathname) => {
       let capturedUrl = new URL(pathname, location),
         capturedParams = new URLSearchParams(capturedUrl.search);
-      capturedParams.set('cache', force ? cacheVal : lastUpdated);
+      capturedParams.set('cache', lastUpdated);
       capturedUrl.search = capturedParams.toString();
       return capturedUrl;
     };
@@ -67,7 +66,7 @@
           if (destination !== location && pushState) {
             console.clear();
             if (response.status === 200) {
-              history.pushState({}, '', retrieveUrl(destination, true));
+              history.pushState({}, '', retrieveUrl(destination));
             } else return location.assign(new URL(destination, location));
           }
           response.blob().then((blob) => {

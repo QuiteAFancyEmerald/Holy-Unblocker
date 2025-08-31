@@ -21,10 +21,7 @@ const getDomain = () =>
   goFrame = (url) => {
     localStorage.setItem('{{hu-lts}}-frame-url', url);
     if (location.pathname !== '{{route}}{{/s}}')
-      location.href =
-        '{{route}}{{/s}}' +
-        '?cache=' +
-        (Math.random() * 1e10 | 0);
+      location.href = '{{route}}{{/s}}?cache={{cacheVal}}';
     else document.getElementById('frame').src = url;
   },
   /* Used to set functions for the goProx object at the bottom.

@@ -91,11 +91,7 @@
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <script>
       localStorage.setItem('{{hu-lts}}-loader-key', navigator.userAgent);
-      location.replace(
-        '{{route}}{{/index}}' +
-          '?cache=' +
-          (Math.random() * 1e10 | 0)
-      );
+      location.replace('{{route}}{{/index}}?cache={{cacheVal}}');
     </script>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
