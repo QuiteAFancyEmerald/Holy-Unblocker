@@ -9,7 +9,7 @@
     />
     }}
     <!--HEAD-CONTENT-->
-    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
+    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js" defer data-module></script>
     <link
       rel="stylesheet"
       href="https://unpkg.com/tippy.js@6/dist/backdrop.css"
@@ -18,6 +18,12 @@
       rel="stylesheet"
       href="https://unpkg.com/tippy.js@6/animations/shift-away.css"
     />
+    <script src="https://unpkg.com/@popperjs/core@2" defer data-module></script>
+    <script src="https://unpkg.com/tippy.js@6" defer data-module></script>
+    {{inline}}{{
+    <script src="{{route}}{{assets/js/csel.js}}{{inline}}" defer></script>
+    <script src="{{route}}{{assets/js/common.js}}{{inline}}" defer></script>
+    }}
   </head>
 
   <body>
@@ -85,15 +91,6 @@
               data-tippy-content="{{mask}}{{Flash Games [Collection]: Collection of Flash games emulated via Ruffle.}}"
               >{{mask}}{{Flash Games}}</a
             >
-            <script src="https://unpkg.com/@popperjs/core@2"></script>
-            <script src="https://unpkg.com/tippy.js@6"></script>
-            <script>
-              tippy('.tippy-button', {
-                delay: 50,
-                animateFill: true,
-                placement: 'bottom',
-              });
-            </script>
           </div>
         </div>
       </div>
@@ -102,9 +99,5 @@
       <!--FOOTER-->
     </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    {{inline}}{{
-    <script src="{{route}}{{assets/js/common.js}}{{inline}}"></script>
-    <script src="{{route}}{{assets/js/csel.js}}{{inline}}"></script>
-    }}
   </body>
 </html>

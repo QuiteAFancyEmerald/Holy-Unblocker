@@ -9,7 +9,10 @@
     />
     }}
     <!--HEAD-CONTENT-->
-    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
+    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js" defer data-module></script>
+    {{inline}}{{
+    <script src="{{route}}{{assets/js/csel.js}}{{inline}}" defer></script>
+    }}
   </head>
 
   <body>
@@ -117,9 +120,6 @@
     <div id="footer" class="fullwidth">
       <!--FOOTER-->
     </div>
-    {{inline}}{{
-    <script src="{{route}}{{assets/js/csel.js}}{{inline}}"></script>
-    }}
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
   </body>
 </html>

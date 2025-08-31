@@ -1,7 +1,8 @@
 (() => {
   const _addEventListener = addEventListener,
     windowEventListeners = [],
-    documentEventListeners = [];
+    documentEventListeners = [],
+    loadedModules = [];
   _addEventListener('keydown', (event) => {
     if (event.ctrlKey && event.code === 'KeyM' && event.isTrusted) {
       if (localStorage.getItem('{{hu-lts}}-loader-key') !== navigator.userAgent)
@@ -131,7 +132,13 @@
                     nodeList = [...node.childNodes];
                     for (j = 0; j < nodeList.length; j++)
                       elementCopy.appendChild(recursiveClone(nodeList[j]));
-                    if ('script' === nodeName && !node.async) {
+                    if ('script' === nodeName) {
+                      if (node.async || 'module' === node.type.toLowerCase() || node.hasAttribute('data-module')) {
+                        if (loadedModules.includes(node.src || node.textContent))
+                          return document.createElement('script');
+                        loadedModules.push(node.src || node.textContent);
+                        if (node.async) return elementCopy;
+                      }
                       const isDefer =
                         node.defer || 'module' === node.type.toLowerCase();
                       let replacement = currentDoc.createElement('script');

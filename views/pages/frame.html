@@ -9,12 +9,13 @@
     />
     }}
     <!--HEAD-CONTENT-->
-    <script src="{{route}}{{/scram/scramjet.all.js}}" defer></script>
-    <script src="{{route}}{{/baremux/index.js}}" defer></script>
-    <script src="{{route}}{{/uv/uv.bundle.js}}" defer></script>
-    <script src="{{route}}{{/uv/uv.config.js}}" defer></script>
+    <script src="{{route}}{{/scram/scramjet.all.js}}" defer data-module></script>
+    <script src="{{route}}{{/baremux/index.js}}" defer data-module></script>
+    <script src="{{route}}{{/uv/uv.bundle.js}}" defer data-module></script>
+    <script src="{{route}}{{/uv/uv.config.js}}" defer data-module></script>
     {{inline}}{{
     <script src="{{route}}{{/assets/js/register-sw.js}}{{inline}}" defer></script>
+    <script src="{{route}}{{assets/js/csel.js}}{{inline}}" defer></script>
     <script src="{{route}}{{assets/js/common.js}}{{inline}}" defer></script>
     }}
   </head>
@@ -157,8 +158,5 @@
       windowFrame.addEventListener('load', updateLoader);
       loadHandler();
     </script>
-    {{inline}}{{
-    <script src="{{route}}{{assets/js/csel.js}}{{inline}}"></script>
-    }}
   </body>
 </html>

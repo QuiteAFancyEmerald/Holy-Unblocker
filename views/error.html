@@ -11,7 +11,10 @@
     />
     }}
     <!--HEAD-CONTENT-->
-    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
+    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js" defer data-module></script>
+    {{inline}}{{
+    <script src="{{route}}{{assets/js/csel.js}}{{inline}}" defer></script>
+    }}
     <style>
       body {
         color: #eceff4;
@@ -74,8 +77,5 @@
       <!--FOOTER-->
     </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    {{inline}}{{
-    <script src="{{route}}{{assets/js/csel.js}}{{inline}}"></script>
-    }}
   </body>
 </html>

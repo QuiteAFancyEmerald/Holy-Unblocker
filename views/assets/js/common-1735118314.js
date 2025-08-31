@@ -516,7 +516,6 @@ const RammerheadEncode = async (baseUrl) => {
 const preparePage = async () => {
   // This won't break the service workers as they store the variable separately.
   uvConfig = self['{{__uv$config}}'];
-  delete self['{{__uv$config}}'];
   sjObject = self['$scramjetLoadController'];
   if (sjObject)
     sjEncode = new (sjObject().ScramjetController)({
@@ -806,20 +805,39 @@ const preparePage = async () => {
     else loadFrame();
   }
 
+  const useModule = (moduleFunc, tries = 0) => {
+    try {
+      moduleFunc();
+    } catch (e) {
+      if (tries <= 5)
+        setTimeout(() => {
+          useModule(moduleFunc, tries + 1);
+        }, 600);
+    }
+  };
+
+  if (document.getElementsByClassName('tippy-button').length >= 0)
+    useModule(() => {
+      tippy('.tippy-button', {
+        delay: 50,
+        animateFill: true,
+        placement: 'bottom',
+      });
+    });
+  if (document.getElementsByClassName('pr-tippy').length >= 0)
+    useModule(() => {
+      tippy('.pr-tippy', {
+        delay: 50,
+        animateFill: true,
+        placement: 'bottom',
+      });
+    });
+
   const banner = document.getElementById('banner');
   if (banner) {
-    let tries = 0;
-    const useAOS = () => {
-      try {
-        AOS.init();
-      } catch (e) {
-        if (tries <= 5) {
-          tries++;
-          setTimeout(useAOS, 600);
-        }
-      }
-    };
-    useAOS();
+    useModule(() => {
+      AOS.init();
+    });
 
     fetch('{{route}}{{/assets/json/splash.json}}', {
       mode: 'same-origin',

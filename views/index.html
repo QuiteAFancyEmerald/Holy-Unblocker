@@ -74,7 +74,12 @@
     <meta name="apple-mobile-web-app-title" content="Holy Unblocker LTS" />
     }}
     <!--HEAD-CONTENT-->
-    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
+    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js" defer data-module></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer data-module></script>
+    {{inline}}{{
+    <script src="{{route}}{{assets/js/csel.js}}{{inline}}" defer></script>
+    <script src="{{route}}{{assets/js/common.js}}{{inline}}" defer></script>
+    }}
     <link rel="mask-icon" href="{{route}}{{new.svg}}" color="#b4213b" />
     <link rel="manifest" href="{{route}}{{manifest.json}}" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -861,10 +866,7 @@
     </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     {{inline}}{{
-    <script src="{{route}}{{assets/js/common.js}}{{inline}}"></script>
-    <script src="{{route}}{{assets/js/csel.js}}{{inline}}"></script>
     <script src="{{route}}{{assets/js/card.js}}{{inline}}"></script>
     }}
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   </body>
 </html>

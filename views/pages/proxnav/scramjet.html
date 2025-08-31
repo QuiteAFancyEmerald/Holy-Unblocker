@@ -9,15 +9,18 @@
     />
     }}
     <!--HEAD-CONTENT-->
-    <script src="{{route}}{{/scram/scramjet.all.js}}" defer></script>
-    <script src="{{route}}{{/baremux/index.js}}" defer></script>
+    <script src="{{route}}{{/scram/scramjet.all.js}}" defer data-module></script>
+    <script src="{{route}}{{/baremux/index.js}}" defer data-module></script>
     {{inline}}{{
     <script src="{{route}}{{/assets/js/register-sw.js}}{{inline}}" defer></script>
+    }}
+    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js" defer data-module></script>
+    <script src="https://unpkg.com/@popperjs/core@2" defer data-module></script>
+    <script src="https://unpkg.com/tippy.js@6" defer data-module></script>
+    {{inline}}{{
+    <script src="{{route}}{{assets/js/csel.js}}{{inline}}" defer></script>
     <script src="{{route}}{{assets/js/common.js}}{{inline}}" defer></script>
     }}
-    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://unpkg.com/tippy.js@6"></script>
   </head>
 
   <body>
@@ -89,15 +92,7 @@
       <!--FOOTER-->
     </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <script>
-      tippy('.pr-tippy', {
-        delay: 50,
-        animateFill: true,
-        placement: 'bottom',
-      });
-    </script>
     {{inline}}{{
-    <script src="{{route}}{{assets/js/csel.js}}{{inline}}"></script>
     <script src="{{route}}{{assets/js/card.js}}{{inline}}"></script>
     }}
   </body>

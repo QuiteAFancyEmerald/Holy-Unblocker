@@ -9,7 +9,11 @@
     />
     }}
     <!--HEAD-CONTENT-->
-    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"></script>
+    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js" defer data-module></script>
+    {{inline}}{{
+    <script src="{{route}}{{assets/js/csel.js}}{{inline}}" defer></script>
+    <script src="{{route}}{{assets/js/common.js}}{{inline}}" defer></script>
+    }}
   </head>
 
   <body>
@@ -83,8 +87,6 @@
     </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     {{inline}}{{
-    <script src="{{route}}{{assets/js/common.js}}{{inline}}"></script>
-    <script src="{{route}}{{assets/js/csel.js}}{{inline}}"></script>
     <script src="{{route}}{{assets/js/card.js}}{{inline}}"></script>
     }}
   </body>
