@@ -56,13 +56,12 @@
             console.clear();
             if (response.status === 200) {
               let capturedLink = new URL(destination),
-                timestamp = Date.now();
+                cacheVal = crypto.getRandomValues(new Uint32Array(1))[0];
               capturedLink.search = capturedLink.search
-                ? capturedLink.search + '&cache=' + timestamp
-                : '?cache=' + timestamp;
+                ? capturedLink.search + '&cache=' + cacheVal
+                : '?cache=' + cacheVal;
               history.pushState({}, '', capturedLink);
-            }
-            else return location.assign(new URL(destination, location));
+            } else return location.assign(new URL(destination, location));
           }
           response.blob().then((blob) => {
             new Response(

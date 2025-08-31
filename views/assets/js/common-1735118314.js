@@ -21,7 +21,10 @@ const getDomain = () =>
   goFrame = (url) => {
     localStorage.setItem('{{hu-lts}}-frame-url', url);
     if (location.pathname !== '{{route}}{{/s}}')
-      location.href = '{{route}}{{/s}}';
+      location.href =
+        '{{route}}{{/s}}' +
+        '?cache=' +
+        crypto.getRandomValues(new Uint32Array(1))[0];
     else document.getElementById('frame').src = url;
   },
   /* Used to set functions for the goProx object at the bottom.
@@ -910,8 +913,8 @@ const preparePage = async () => {
               a = document.createElement('a'),
               img = document.createElement('img'),
               title = document.createElement('h3');
-              desc = document.createElement('p'),
-              credits = document.createElement('p');
+            ((desc = document.createElement('p')),
+              (credits = document.createElement('p')));
 
             a.href = '#';
             img.src = `{{route}}{{/assets/img/}}${dir}/` + item.img;
@@ -928,7 +931,6 @@ const preparePage = async () => {
             a.appendChild(img);
             a.appendChild(title);
             a.appendChild(desc);
-  
 
             // Which function is used for the click event is determined by
             // the corresponding location/index in the dirnames object.
@@ -942,11 +944,11 @@ const preparePage = async () => {
                     item.core +
                     '&rom=' +
                     item.rom
-                ), 
+                ),
               // par-nav
               item.custom && goProx[item.custom]
                 ? () => goProx[item.custom]('stealth')
-                : () => {}, 
+                : () => {},
               // h5-nav
               item.custom && goProx[item.custom]
                 ? () => goProx[item.custom]('stealth')
