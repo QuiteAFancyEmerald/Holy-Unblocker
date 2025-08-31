@@ -1,5 +1,8 @@
 (() => {
-  addEventListener('keydown', (event) => {
+  const _addEventListener = addEventListener,
+    windowEventListeners = [],
+    documentEventListeners = [];
+  _addEventListener('keydown', (event) => {
     if (event.ctrlKey && event.code === 'KeyM' && event.isTrusted) {
       if (localStorage.getItem('{{hu-lts}}-loader-key') !== navigator.userAgent)
         localStorage.setItem('{{hu-lts}}-loader-key', navigator.userAgent);
@@ -7,6 +10,14 @@
       location.reload();
     }
   });
+  Window.prototype.addEventListener = (...args) => {
+    windowEventListeners.push([...args]);
+    return _addEventListener(...args);
+  };
+  Document.prototype.addEventListener = (...args) => {
+    documentEventListeners.push([...args]);
+    return _addEventListener.bind(document)(...args);
+  };
   const displayErrorPage = (overwrite = false) => {
     document.body.removeAttribute('style');
     if (overwrite) document.body.replaceWith(document.createElement('body'));
@@ -19,19 +30,27 @@
     title.textContent = '500 Internal Server Error';
     head.appendChild(title);
     document.head.replaceWith(head);
-    document.currentScript.remove();
+    if (document.currentScript) document.currentScript.remove();
   };
   if (localStorage.getItem('{{hu-lts}}-loader-key') !== navigator.userAgent)
     return displayErrorPage();
   const loadPage =
     (destination = location, pushState = true) =>
     () => {
-      removeEventListener('load', loadPage);
       fetch(
         destination.pathname.replace(/\/+/g, '/').replace(/\/$/, '') + '.ico',
         { mode: 'same-origin' }
       )
         .then((response) => {
+          let i = windowEventListeners.length - 1;
+          for (; i >= 0; i--) {
+            removeEventListener(...windowEventListeners[i]);
+            windowEventListeners.pop();
+          }
+          for (i = documentEventListeners.length - 1; i >= 0; i--) {
+            document.removeEventListener(...documentEventListeners[i]);
+            documentEventListeners.pop();
+          }
           if (destination !== location && pushState) {
             console.clear();
             if (response.status === 200) history.pushState({}, '', destination);
@@ -201,7 +220,7 @@
     };
   if (document.readyState === 'complete') loadPage()();
   else addEventListener('load', loadPage());
-  addEventListener('popstate', () => {
+  _addEventListener('popstate', () => {
     if (location.href.includes('#')) return;
     console.clear();
     loadPage(location, false)();
