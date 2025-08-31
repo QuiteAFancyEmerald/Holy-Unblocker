@@ -35,6 +35,21 @@
   };
   if (localStorage.getItem('{{hu-lts}}-loader-key') !== navigator.userAgent)
     return displayErrorPage();
+  const cachedUrls = JSON.parse(localStorage.getItem('{{hu-lts}}-cache')) || {},
+    lastUpdated = '{{timestamp}}',
+    cacheVal = (Math.random() * 1e10 | 0),
+    retrieveUrl = (pathname, force = false) => {
+      if (!force && cachedUrls[pathname.toString()] === lastUpdated)
+        return new URL(pathname, location);
+      let capturedUrl = new URL(pathname, location),
+        capturedParams = new URLSearchParams(capturedUrl.search);
+      capturedParams.set('cache', cacheVal);
+      capturedUrl.search = capturedParams.toString();
+      cachedUrls[pathname.toString()] = lastUpdated;
+      localStorage.setItem('{{hu-lts}}-cache', JSON.stringify(cachedUrls));
+      return capturedUrl;
+    };
+
   const loadPage =
     (destination = location, pushState = true) =>
     () => {
@@ -55,12 +70,7 @@
           if (destination !== location && pushState) {
             console.clear();
             if (response.status === 200) {
-              let capturedLink = new URL(destination),
-                cacheVal = (Math.random() * 1e10 | 0);
-              capturedLink.search = capturedLink.search
-                ? capturedLink.search + '&cache=' + cacheVal
-                : '?cache=' + cacheVal;
-              history.pushState({}, '', capturedLink);
+              history.pushState({}, '', retrieveUrl(destination, true));
             } else return location.assign(new URL(destination, location));
           }
           response.blob().then((blob) => {
@@ -110,6 +120,11 @@
                   const recursiveClone = (node) => {
                     if (node.nodeType !== Node.ELEMENT_NODE) return node;
                     const nodeName = node.tagName.toLowerCase();
+                    let src = {pathname: node.src || ''};
+                    if (node.src && './'.indexOf(node.getAttribute('src')[0]) >= 0) {
+                      src = retrieveUrl(node.src);
+                      node.setAttribute('src', src.pathname + src.search + src.hash);
+                    }
                     if (['svg', 'xml'].includes(nodeName))
                       return node.cloneNode(1);
                     let elementCopy = currentDoc.createElement(nodeName);
@@ -123,16 +138,18 @@
                         try {
                           new URL(attrValue);
                         } catch (e) {
-                          if (
-                            './?'.indexOf(attrValue[0]) !== -1 &&
-                            attrValue.indexOf('#') === -1
-                          )
-                            elementCopy.addEventListener('click', (event) => {
-                              event.preventDefault();
-                              if (attrValue === '{{route}}{{/}}')
-                                attrValue = '{{route}}{{/index}}';
-                              loadPage(new URL(attrValue, location))();
-                            });
+                          if ('./?'.indexOf(attrValue[0]) !== -1)
+                            if (nodeName === 'a' && attrValue.indexOf('#') === -1)
+                              elementCopy.addEventListener('click', (event) => {
+                                event.preventDefault();
+                                if (attrValue === '{{route}}{{/}}')
+                                  attrValue = '{{route}}{{/index}}';
+                                loadPage(new URL(attrValue, location))();
+                              });
+                            else if (nodeName === 'link') {
+                              src = retrieveUrl(node.href);
+                              elementCopy.setAttribute('href', src.pathname + src.search + src.hash);
+                            }
                         }
                     }
                     nodeList = [...node.childNodes];
@@ -145,10 +162,10 @@
                         node.hasAttribute('data-module')
                       ) {
                         if (
-                          loadedModules.includes(node.src || node.textContent)
+                          loadedModules.includes(src.pathname || node.textContent)
                         )
-                          return document.createElement('script');
-                        loadedModules.push(node.src || node.textContent);
+                          return currentDoc.createElement('script');
+                        loadedModules.push(src.pathname || node.textContent);
                         if (node.async) return elementCopy;
                       }
                       const isDefer =

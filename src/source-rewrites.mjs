@@ -120,8 +120,11 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
               : term.replace(subtermsByVowels, getRandomChar)
           ),
   route = (text, conditionalRoute = false) =>
-    conditionalRoute && !routeConditions[conditionalRoute]
-      ? text.replace(getEndPoint, (name) => cacheBustList[name] || name)
+    conditionalRoute && routeConditions[conditionalRoute]
+      ? text.replace(
+          getEndPoint,
+          (name) => cacheBustList[name] || flatAltPaths['files/' + name] || name
+        )
       : text
           .replace(
             getEndPoint,
@@ -245,6 +248,7 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
       config.randomizeIdentifiers ? createRandomID() : '__uv$config'
     ),
     version: versionValue,
+    timestamp: Date.now(),
     defaultSearch: '{{DuckDuckGo}}',
   }),
   // List of manual censors for unavoidable cases.
