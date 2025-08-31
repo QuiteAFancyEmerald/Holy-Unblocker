@@ -35,18 +35,13 @@
   };
   if (localStorage.getItem('{{hu-lts}}-loader-key') !== navigator.userAgent)
     return displayErrorPage();
-  const cachedUrls = JSON.parse(localStorage.getItem('{{hu-lts}}-cache')) || {},
-    lastUpdated = '{{timestamp}}',
+  const lastUpdated = '{{timestamp}}',
     cacheVal = (Math.random() * 1e10 | 0),
     retrieveUrl = (pathname, force = false) => {
-      if (!force && cachedUrls[pathname.toString()] === lastUpdated)
-        return new URL(pathname, location);
       let capturedUrl = new URL(pathname, location),
         capturedParams = new URLSearchParams(capturedUrl.search);
-      capturedParams.set('cache', cacheVal);
+      capturedParams.set('cache', force ? cacheVal : lastUpdated);
       capturedUrl.search = capturedParams.toString();
-      cachedUrls[pathname.toString()] = lastUpdated;
-      localStorage.setItem('{{hu-lts}}-cache', JSON.stringify(cachedUrls));
       return capturedUrl;
     };
 
