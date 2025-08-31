@@ -332,7 +332,7 @@ if (document.getElementById('csel')) {
               },
               move: {
                 enable: true,
-                speed: parseFloat(styles.getPropertyValue('--particles-mv-spd')) || 0.8,
+                speed: parseFloat(styles.getPropertyValue('--particles-mv-spd')) || 0.3,
                 direction: 'none',
                 outModes: {
                   default: 'out',
@@ -348,11 +348,11 @@ if (document.getElementById('csel')) {
               opacity: {
                 value: {
                   min: 0.1,
-                  max: parseFloat(styles.getPropertyValue('--particles-op-max')) || 0.5,
+                  max: parseFloat(styles.getPropertyValue('--particles-op-max')) || 0.3,
                 },
                 animation: {
                   enable: true,
-                  speed: parseFloat(styles.getPropertyValue('--particles-op-spd')) || 0.5,
+                  speed: parseFloat(styles.getPropertyValue('--particles-op-spd')) || 0.3,
                   sync: false,
                 },
               },
@@ -363,7 +363,7 @@ if (document.getElementById('csel')) {
                 value: { min: 1, max: 5 },
                 animation: {
                   enable: true,
-                  speed: parseFloat(styles.getPropertyValue('--particles-sz-spd')) || 0.5,
+                  speed: parseFloat(styles.getPropertyValue('--particles-sz-spd')) || 0.3,
                   sync: false,
                 },
               },

@@ -193,6 +193,10 @@ h6 {
   font-weight: 900;
 }
 
+h2 {
+  font-size: 28px;
+}
+
 img {
   display: block;
 }
@@ -327,7 +331,7 @@ details[open] summary {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.274);
-  padding: 15px 200px;
+  padding: 25px 180px 25px 180px;
   z-index: 2;
   position: relative;
 }
@@ -417,7 +421,6 @@ details[open] summary {
 .logo {
   width: 70px;
   height: 70px;
-  margin-right: 10px;
   background-image: var(--logo-img, url('{{route}}{{/assets/img/logo.webp}}'));
   background-size: contain;
   background-repeat: no-repeat;
@@ -445,6 +448,23 @@ details[open] summary {
   color: var(--nord4) !important;
 }
 
+.smenu .white-text > a {
+  background-color: var(--nord17);
+  padding: 10px 20px 10px 20px;
+  border-radius: 30px;
+  transition: background-color .3s ease;
+}
+
+.smenu .white-text > a:hover {
+  background-color: #d5484f;
+}
+
+.navbar-group {
+  display: flex;
+  gap: 20px;
+  font-size: 15px;
+}
+
 .navbar-1 {
   list-style: none;
   padding: 0;
@@ -456,31 +476,34 @@ details[open] summary {
 }
 
 .navbar-1 > li {
-  margin-left: 30px;
+  margin-left: 25px;
 }
 
-.navbar-1 > li > a {
+.navbar-1 > li > a.line {
   text-decoration: none;
   color: var(--nord4);
-  display: inline-block;
-}
-
-.new {
   position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 0.35em;
 }
 
-.new::after {
+.navbar-1 > li > a.line::after {
   content: '';
-  display: inline-block;
-  width: 84px;
-  height: 45px;
-  margin-left: 8px;
-  margin-top: 2px;
-  background-image: url('{{route}}{{/assets/svg/new.svg}}');
-  background-size: contain;
-  background-repeat: no-repeat;
-  image-rendering: -webkit-optimize-contrast;
-  vertical-align: middle;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px; 
+  background-color: var(--nord17);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+}
+
+.navbar-1 > li > a.line:hover::after,
+.navbar-1 > li > a.line:focus::after {
+  transform: scaleX(1);
 }
 
 .subnavbar {
@@ -506,12 +529,11 @@ details[open] summary {
   margin: 0;
   display: flex;
   align-items: center;
-  letter-spacing: 1px;
   order: 3;
 }
 
-.navbar > li {
-  margin-left: 50px;
+.navbar > .smenu {
+  margin-left: 25px;
 }
 
 .navbar > li > a {
@@ -538,7 +560,6 @@ details[open] summary {
   margin-top: 15px;
   font-family: 'Rethink Sans', sans-serif;
   opacity: 0;
-  transform: translateY(-20px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -546,7 +567,7 @@ details[open] summary {
   display: block;
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateY(10px) translateX(-30px);
 }
 
 .subnavbar {
@@ -621,6 +642,7 @@ details[open] summary {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity .3s ease;
 }
 
 .settings-header {
@@ -1592,12 +1614,12 @@ input[type='text'] {
 }
 
 .hero-text-wrap {
-  max-width: 53ch;
-  margin-right: 25%;
+  margin-right: 15%;
 }
 
 .hero-text-wrap p {
   margin-bottom: 50px;
+  font-size: 17px;
   color: var(--nord4);
 }
 
@@ -1606,6 +1628,7 @@ input[type='text'] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-right: 10%;
 }
 
 .hero {
@@ -1804,6 +1827,10 @@ input[type='text'] {
   transition: background-color 0.3s ease;
 }
 
+.box-button:hover {
+  background-color: var(--mac-title-bg, var(--nord18));
+}
+
 .box-image-container {
   display: flex;
   align-items: center;
@@ -1813,7 +1840,7 @@ input[type='text'] {
 .box-pr-logo {
   max-width: 100%;
   height: auto;
-  width: 500px;
+  width: 1000px;
   border-radius: 35px;
 }
 
@@ -2064,6 +2091,10 @@ input[type='text'] {
 /* -----------------------------------------------
 /* HU Games Directory
 /* ----------------------------------------------- */
+
+.dir {
+  padding-top: 10px;
+}
 
 .box-g {
   padding: 10px 50px;

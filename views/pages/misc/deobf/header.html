@@ -15,100 +15,106 @@
   </a>
 </div>
 
-<ul class="navbar-1" role="list" aria-label="Primary navigation">
-  <li class="pulse" style="margin-left: 0" role="listitem">
-    <a
-      href="{{route}}{{/browsing}}"
-      title="{{mask}}{{Web Proxies - Access various web proxies to bypass restrictions}}"
-      >{{mask}}{{Web Proxies}}</a
-    >
-  </li>
-  <li class="pulse" role="listitem">
-    <a
-      href="{{route}}{{/games}}"
-      title="{{mask}}{{Games - Explore a range of games available through our service}}"
-      >{{mask}}{{Games}}</a
-    >
-  </li>
-  <li class="pulse" role="listitem">
-    <a
-      href="{{route}}{{/youtube}}"
-      title="{{mask}}{{YouTube - Access YouTube content through our proxy service}}"
-      >{{mask}}{{YouTube}}</a
-    >
-  </li>
-  <li class="pulse new" role="listitem">
-    <a
-      href="{{route}}{{/apps}}"
-      title="{{mask}}{{Applications - Browse a selection of useful applications}}"
-      >{{mask}}{{Applications}}</a
-    >
-  </li>
-</ul>
+<div class="navbar-group">
+  <ul class="navbar-1" role="list" aria-label="Primary navigation">
+    <li style="margin-left: 0" role="listitem">
+      <a
+        class="line"
+        href="{{route}}{{/browsing}}"
+        title="{{mask}}{{Web Proxies - Access various web proxies to bypass restrictions}}"
+        >{{mask}}{{Web Proxies}}</a
+      >
+    </li>
+    <li role="listitem">
+      <a
+        class="line"
+        href="{{route}}{{/games}}"
+        title="{{mask}}{{Games - Explore a range of games available through our service}}"
+        >{{mask}}{{Games}}</a
+      >
+    </li>
+    <li role="listitem">
+      <a
+        class="line"
+        href="{{route}}{{/youtube}}"
+        title="{{mask}}{{YouTube - Access YouTube content through our proxy service}}"
+        >{{mask}}{{YouTube}}</a
+      >
+    </li>
+    <li role="listitem">
+      <a
+        class="line"
+        href="{{route}}{{/apps}}"
+        title="{{mask}}{{Applications - Browse a selection of useful applications}}"
+        >{{mask}}{{Applications}}</a
+      >
+    </li>
+  </ul>
 
-<input id="mnavecb" type="checkbox" aria-hidden="true" />
-<label for="mnavecb" class="mnave" aria-label="Toggle navigation menu">
-  <span class="mnavebutton" aria-hidden="true"></span>
-</label>
+  <input id="mnavecb" type="checkbox" aria-hidden="true" />
+  <label for="mnavecb" class="mnave" aria-label="Toggle navigation menu">
+    <span class="mnavebutton" aria-hidden="true"></span>
+  </label>
 
-<ul class="navbar" role="list">
-  <li class="dropdown-parent">
-    <div class="pulse white-text">
-      <a href="#" tabindex="0">More <i class="fas fa-ellipsis-v"></i></a>
-    </div>
-    <div
-      class="dropdown-child"
-      tabindex="0"
-      role="menu"
-      aria-label="More options submenu"
-    >
-      <ul class="subnavbar">
-        <li role="menuitem">
-          <a
-            href="{{route}}{{/documentation}}"
-            title="{{mask}}{{Documentation - Detailed information and guides}}"
-            >Docs</a
-          >
-        </li>
-        <li role="menuitem">
-          <a
-            href="{{route}}{{/questions}}"
-            title="{{mask}}{{FAQ - Frequently asked questions and answers}}"
-            >FAQ</a
-          >
-        </li>
-        <li role="menuitem">
-          <a
-            href="{{route}}{{/credits}}"
-            title="{{mask}}{{Credits - Acknowledgements and contributions}}"
-            >Credits</a
-          >
-        </li>
-        <li role="menuitem">
-          <a
-            href="{{route}}{{/terms}}"
-            title="{{mask}}{{Terms of Service - Rules and policies of use}}"
-            >TOS</a
-          >
-        </li>
-      </ul>
-    </div>
-  </li>
-  <li class="dropdown-parent" role="listitem">
-    <div class="pulse white-text">
-      <a href="#" aria-label="Settings menu" tabindex="0"
-        >Settings <i class="fas fa-cog pulse" aria-hidden="true"></i
-      ></a>
-    </div>
-    <div
-      class="dropdown-settings"
-      tabindex="0"
-      role="menu"
-      aria-label="Settings menu"
-    >
-      <div id="csel">
-        <!--SETTINGS-->
+  <ul class="navbar" role="list">
+    <li class="dropdown-parent">
+      <div class="pulse white-text">
+        <a href="#" tabindex="0"><i class="fas fa-bars"></i></a>
       </div>
-    </div>
-  </li>
-</ul>
+      <div
+        class="dropdown-child"
+        tabindex="0"
+        role="menu"
+        aria-label="More options submenu"
+      >
+        <ul class="subnavbar">
+          <li role="menuitem">
+            <a
+              href="{{route}}{{/documentation}}"
+              title="{{mask}}{{Documentation - Detailed information and guides}}"
+              >Docs</a
+            >
+          </li>
+          <li role="menuitem">
+            <a
+              href="{{route}}{{/questions}}"
+              title="{{mask}}{{FAQ - Frequently asked questions and answers}}"
+              >FAQ</a
+            >
+          </li>
+          <li role="menuitem">
+            <a
+              href="{{route}}{{/credits}}"
+              title="{{mask}}{{Credits - Acknowledgements and contributions}}"
+              >Credits</a
+            >
+          </li>
+          <li role="menuitem">
+            <a
+              href="{{route}}{{/terms}}"
+              title="{{mask}}{{Terms of Service - Rules and policies of use}}"
+              >TOS</a
+            >
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="dropdown-parent smenu" role="listitem">
+      <div class="white-text">
+        <a href="#" aria-label="Settings menu" tabindex="0"
+          ><i class="fas fa-cog" aria-hidden="true"></i
+        ></a>
+      </div>
+      <div
+        class="dropdown-settings"
+        tabindex="0"
+        role="menu"
+        aria-label="Settings menu"
+      >
+        <div id="csel">
+          <!--SETTINGS-->
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
