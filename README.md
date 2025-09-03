@@ -137,7 +137,7 @@ cd Holy-Unblocker
 
 # Edit config.js and set production to true if you want to use pm2 (Allows for easier VPS hosting)
 npm run fresh-install
-npm starts
+npm start
 
 # Or on subsequent uses...
 npm restart
