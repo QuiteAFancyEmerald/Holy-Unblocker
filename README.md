@@ -126,7 +126,9 @@ Replit is no longer free and Heroku has a set policy against web proxies. Try Gi
 
 ### Terminal
 
-Either use the button above to deploy to the deployment options above or type the commands below on a dedicated server:
+Either use the button above to deploy to the deployment options above or type the commands below on a dedicated server
+
+Please ensure you are using Node 20.x please:
 
 ```bash
 git clone https://github.com/QuiteAFancyEmerald/Holy-Unblocker.git
@@ -155,7 +157,7 @@ npm run test
 
 This website is hosted locally with Scramjet, Ultraviolet (Wisp, Bare-Mux, EpoxyTransport, CurlTransport) and Rammerhead built-in.
 
-You will need Node.js and Git installed; below is an example for Debian/Ubuntu setup.
+You will need Node.js 20.x and Git installed; below is an example for Debian/Ubuntu setup.
 
 <details>
 
