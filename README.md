@@ -317,6 +317,8 @@ Download the latest release <a href="https://github.com/QuiteAFancyEmerald/Holy-
 - `loader.js` is used as an asset for DOM masquerading.
 - `register-sw.js` creates and manages service workers that allow Ultraviolet to function, and also uses bare transport.
 
+</details>
+
 ## Future Additions
 
 <a href="https://github.com/QuiteAFancyEmerald/Holy-Unblocker/blob/master/TODO.md">This</a> is our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above. Release for production will be v7.x.x and above.
