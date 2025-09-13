@@ -241,6 +241,8 @@ const insert = JSON.parse(
 if (!config.usingSEO) {
   useAltPaths(altPaths, pages);
   useAltPaths(altPaths, externalPages);
+  delete pages['robots.txt'];
+  delete pages['sitemap.xml'];
 }
 
 const cookingInserts = insert.content,
