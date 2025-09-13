@@ -38,7 +38,7 @@
     "@mercuryworkshop/libcurl-transport": "^1.5.0",
     "@mercuryworkshop/scramjet": "https://github.com/MercuryWorkshop/scramjet/releases/download/latest/mercuryworkshop-scramjet-2.0.0-alpha.tgz",
     "@titaniumnetwork-dev/ultraviolet": "^3.2.10",
-    "axios": "^1.11.0",
+    "axios": "^1.12.0",
     "chii": "^1.15.5",
     "fastify": "^5.5.0",
     "pm2": "^6.0.8",
