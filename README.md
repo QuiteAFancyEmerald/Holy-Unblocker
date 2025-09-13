@@ -214,7 +214,7 @@ Every other localized changes for source randomization, auto-minify, etc. are lo
 - `disguiseFiles`: Enable DOM masquerading which obfuscates real the real content fetches for HU LTS. This is done through disguising requests, decompressing and then reconstructing the DOM tree.
 - `usingSEO`: Enable Source Randomization which randomizes the source by swapping chunks of data specified in `./src/data.json`. Highly useful for masking keywords that will automatically flag or block Holy Unblocker LTS as well as preventing source blocks.
 
-#### Tor/Onion Routing Setup
+#### Tor/Onion/SOCKS5 Routing Setup
 
 You need to setup Tor (no GUI need/GUI is alright) in order for the Onion Routing setting to work!
 
@@ -224,13 +224,25 @@ Alternative Guide (for CLI): https://community.torproject.org/onion-services/set
 
 If you are hosting Holy Unblocker LTS on a VPS utilizing Ubuntu consider attaching Tor to systemctl for easier production management. Once Tor is up and running on either Linux or Windows it will work automatically with Holy Unblocker LTS when enabled by the user via the Settings menu.
 
+If you wish to use a custom HTTP/HTTPS/SOCKS5 proxy to route all traffic through for Scramjet and Ultraviolet this is handled in `./views/assets/js/register-sw.js.` Modify `proxyUrl` with the respective protocol and address. This is done via the proxy option for Wisp. You can change the cases as needed.
+
+```js
+  proxyUrl = {
+    tor: 'socks5h://localhost:9050',
+    eu: 'socks5h://localhost:7000',
+    usWest: 'socks5h://localhost:7001',
+    usEast: 'socks5h://localhost:7002',
+    jp: 'socks5h://localhost:7003',
+  }
+```
+
 #### Proxy Configuration
 
 The primary location for tweaking any web proxy related settings assigned via the Settings menu is `./views/assets/js/register-sw.js`. Here you can modify the provided transport options set locally via a cookie, swap out SOCKS5 proxies, change Onion routing ports, specify a blacklist, and more.
 
 - `stockSW`: The default service worker configuration file for Ultraviolet. For Holy Unblocker however adblocking is automatically enabled so this is not used by default.
 - `blacklistSW`: A modified version of Ultraviolet that allows for blacklisting domains and adblocking.
-- `proxyUrl`: Specifies a SOCKS5 protocol URL defaulting to the default Tor proxy port. This can be swapped out with any valid port or SOCK5s proxy.
+- `proxyUrl`: Specifies a SOCKS5/HTTPS/HTTP protocol URL defaulting to the default Tor proxy port. This can be swapped out with any valid port or SOCK5s proxy. This is done via the proxy option for both epoxy and libcurl.
 - `transports`: Specifies any provided ports to be swapped via Bare-Mux and utilize Wisp.
 - `wispUrl`: Modify the pathname or url handling for Wisp
 - `defaultMode`: Specify the default transport used globally (can be swapped by the users still via the Settings menu)
