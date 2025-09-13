@@ -29,7 +29,7 @@ Also has a good amount of locally hosted games featured on the site.
 
 #### Considering switching branches for self-hosting to a production branch!
 
-View the <a href="#deploy-holy-unblocker">self-deployment options</a> if you wish to self host this prokect. Can't deploy using any of the free options? Check out Railway or look into cheap, paid VPS hosting solutions. If you don't wish to self-host join the discord for more official instance links that are restocked frequently.
+View the <a href="#deploy-holy-unblocker">self-deployment options</a> if you wish to self host this project. Can't deploy using any of the free options? Check out Railway or look into cheap, paid VPS hosting solutions. If you don't wish to self-host join the discord for more official instance links that are restocked frequently.
 
 **Be sure to join Titanium Network's Discord for more official site links:** <a href="https://discord.gg/unblock">https://discord.gg/unblock</a>
 
