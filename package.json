@@ -44,7 +44,8 @@
     "pm2": "^6.0.8",
     "puppeteer": "^24.17.0",
     "wisp-server-node": "^1.1.7",
-    "ws": "^8.18.3"
+    "ws": "^8.18.3",
+    "utf-8-validate": "^5.0.2"
   },
   "devDependencies": {
     "@babel/node": "^7.28.0",
