@@ -11,6 +11,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Improve adblocking functions on site using Workerware + a pre-bundled uBlock Origin
 - [ ] Add a "website self-destruct" button to the settings menu
 - [ ] Transport Options Swapping on Frame (Settings Menu doesn't swap)
+- [ ] Implement advanced data URI system
 - [x] Fix keyword/descriptor randomisation - done
 - [x] Adapt Wisp protocol replacing bare which is very unsecure - done
 - [x] Improved error handling for proxy errors - done
