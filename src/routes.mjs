@@ -100,6 +100,7 @@ let externalPages = {
   codespaces: 'https://github.com/codespaces',
   'tor-project': 'https://tb-manual.torproject.org/installation',
   'titaniumnetwork-documentation': 'https://docs.titaniumnetwork.org',
+  'patreon': 'https://www.patreon.com/holyunblockerlts',
   'titaniumnetwork-discord': 'https://discord.gg/CwWpdGkuWY',
   'truffled': 'https://truffled.lol',
   'rammerhead-discord': 'https://discord.gg/VNT4E7gN5Y',

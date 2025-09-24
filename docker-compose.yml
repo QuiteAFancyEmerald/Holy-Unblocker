@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   holy-unblocker:
-    image: quiteafancyemerald/holy-unblocker:6.9.1
+    image: quiteafancyemerald/holy-unblocker:6.9.3
     build: .
     container_name: holy-unblocker
     ports:

@@ -1,6 +1,6 @@
 {
   "name": "holyunblocker",
-  "version": "6.9.2",
+  "version": "6.9.3",
   "repository": "https://github.com/QuiteAFancyEmerald/Holy-Unblocker",
   "description": "Holy Unblocker LTS is a web proxy service that helps you access websites that may be blocked by your network, government or policy all within your browser with no download or setup.",
   "main": "backend.js",

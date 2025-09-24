@@ -1122,7 +1122,7 @@ input[type='text'] {
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 40px 0 0 80px;
+  padding: 40px 40px 0 80px;
   flex: 1;
   display: flex;
   justify-content: center;
@@ -1635,6 +1635,11 @@ input[type='text'] {
   align-items: center;
   justify-content: center;
   margin-right: 10%;
+}
+
+.image-container-hero > a {
+  width: 150px;
+  text-align: center;
 }
 
 .hero {

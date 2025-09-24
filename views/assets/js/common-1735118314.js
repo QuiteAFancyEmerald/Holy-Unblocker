@@ -67,7 +67,6 @@ const storageId = '{{hu-lts}}-storage',
 
 const searchEngines = Object.freeze({
     '{{Startpage}}': 'startpage.com/sp/search?query=',
-    '{{Leta}}': 'leta.mullvad.net/search?q=',
     '{{Google}}': 'google.com/search?q=',
     '{{Bing}}': 'bing.com/search?q=',
     '{{DuckDuckGo}}': 'duckduckgo.com/?q=',
@@ -78,7 +77,6 @@ const searchEngines = Object.freeze({
     // Startpage has used both Google's and Bing's autocomplete.
     // For now, just use Bing.
     '{{Startpage}}': 'www.bing.com/AS/Suggestions?csr=1&cvid=0&qry=',
-    '{{Leta}}': 'www.bing.com/AS/Suggestions?csr=1&cvid=0&qry=',
     '{{Google}}': 'www.google.com/complete/search?client=gws-wiz&callback=_&q=',
     '{{Bing}}': 'www.bing.com/AS/Suggestions?csr=1&cvid=0&qry=',
     '{{DuckDuckGo}}': 'duckduckgo.com/ac/?q=',
@@ -102,7 +100,6 @@ const searchEngines = Object.freeze({
   },
   responseHandlers = Object.freeze({
     '{{Startpage}}': (jsonData) => responseHandlers['{{Bing}}'](jsonData),
-    '{{Leta}}': (jsonData) => responseHandlers['{{Bing}}'](jsonData),
     '{{Google}}': (jsonData) =>
       jsonData[0].map(([suggestion]) =>
         formatSuggestion(suggestion, ['<b>', '</b>'])

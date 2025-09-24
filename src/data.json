@@ -87,5 +87,5 @@
   "splash": [
     "{{mask}}{{This version is the public build of the HU LTS project, and it's being worked on via the master branch! Stuff will NOT work!}}"
   ],
-  "version": ["6.9.2"]
+  "version": ["6.9.3"]
 }

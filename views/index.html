@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -322,15 +322,13 @@
             <p>
               <span class="cmd"
                 >git clone --recurse-submodules<span class="url">
-                  {{mask}}{{https://github.com/QuiteAFancyEmerald/Holy-Unblocker.git}}</span
+                {{mask}}{{https://github.com/QuiteAFancyEmerald/Holy-Unblocker.git}}</span
                 >&#13;</span
               ><br />
               <span class="cmd">cd {{mask}}{{Holy-Unblocker}}&#13;</span><br />
-              <span class="comment"
-                >Recommended you switch branches to a production branch such as
-                v6.x instead of master.</span
-              ><br />
-              <span class="cmd">npm run fresh-install&#13;</span><br />
+              <span class="comment">For first-time setup on a production branch...</span><br />
+              <span class="cmd">npm run fresh-start&#13;</span><br />
+              <span class="comment">Or typical uses...</span><br />
               <span class="cmd">npm start&#13;</span><br />
               <span class="comment">Or on subsequent uses...</span><br />
               <span class="cmd">npm restart&#13;</span><br /><br />
@@ -411,6 +409,9 @@
             <h2>Free and transparent for use</h2>
             <a class="fancybutton glowbutton" href="{{route}}{{/browsing}}"
               >Browse Now</a
+            >
+            <a class="fancybutton glowbutton" href="{{route}}{{/patreon}}"
+              >Donate</a
             >
           </div>
         </div>
@@ -590,6 +591,12 @@
                 blockers overseas put in place by governments, chrome
                 extensions, localized client firewalls, and network-related
                 filters. }}
+              </p>
+              <p>
+                {{mask}}{{ Please consider donating to this project so we can
+                keep things free! We offer more domains per month, beta access,
+                personal domains and priority feature requests. }}<br />
+                You can donate <a href="{{route}}{{/patreon}}">here</a>.
               </p>
             </div>
           </div>
