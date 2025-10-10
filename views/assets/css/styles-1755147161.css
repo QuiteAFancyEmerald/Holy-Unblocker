@@ -800,6 +800,11 @@ details[open] summary {
   transform: translateX(14px);
 }
 
+#csel #newtab {
+  padding: 2.25px 4.5px;
+  margin: 0;
+}
+
 select {
   margin: 0 0 0 10px;
   padding: 10px;

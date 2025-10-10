@@ -7,17 +7,22 @@
     <div class="csel-container-left">
       <p class="cseltitle">{{mask}}{{Browser Tab Cloak}}</p>
       <form id="titleform" class="cloakform">
-        <input type="text" placeholder="Enter a tab title here..." spellcheck="false" />
+        <input
+          type="text"
+          placeholder="Enter a tab title here..."
+          spellcheck="false"
+        />
         <input type="submit" value="Apply" />
       </form>
       <form id="iconform" class="cloakform">
-        <input type="text" placeholder="Enter an icon URL here..." spellcheck="false" />
+        <input
+          type="text"
+          placeholder="Enter an icon URL here..."
+          spellcheck="false"
+        />
         <input type="submit" value="Apply" />
       </form>
-      <a
-        href="{{route}}{{/questions}}"
-        >{{mask}}{{Find Icon URL}}</a
-        >
+      <a href="{{route}}{{/questions}}">{{mask}}{{Find Icon URL}}</a>
       <p class="cseltitle">{{mask}}{{Wisp Protocol Transport}}</p>
       <div class="radio-group {{wisp-transport}}-list">
         <label>
@@ -60,7 +65,7 @@
         <label>
           <p>
             Enable Autocomplete
-            <span class="default-badge">Proxied Suggestions</span>
+            <span class="default-badge">{{mask}}{{Proxied Suggestions}}</span>
           </p>
           <input type="checkbox" class="switch useac" checked />
         </label>
@@ -83,7 +88,7 @@
         </label>
         <label>
           <p>Dark</p>
-          <input type="radio" name="theme" value="dark" checked/>
+          <input type="radio" name="theme" value="dark" checked />
         </label>
       </div>
       <p class="cseltitle">Icon Presets</p>
@@ -98,7 +103,9 @@
       <div class="radio-group">
         <label>
           <p>
-            {{mask}}{{Eruda Devtools}}<span class="alt-badge">C<wbr>TRL+SH<wbr>IFT+I</span>
+            {{mask}}{{Eruda Devtools}}<span class="alt-badge"
+              >C<wbr />TRL+SH<wbr />IFT+I</span
+            >
           </p>
           <input type="checkbox" class="switch eruda" />
         </label>

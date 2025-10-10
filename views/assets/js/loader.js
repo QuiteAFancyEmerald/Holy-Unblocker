@@ -1,77 +1,102 @@
 (() => {
-  const _addEventListener = addEventListener,
-    windowEventListeners = [],
+  const windowEventListeners = [],
     documentEventListeners = [],
     loadedModules = [];
+  let _addEventListener = addEventListener,
+    _document = document,
+    _window = window,
+    origin = location;
   _addEventListener('keydown', (event) => {
     if (event.ctrlKey && event.code === 'KeyM' && event.isTrusted) {
       if (localStorage.getItem('{{hu-lts}}-loader-key') !== navigator.userAgent)
         localStorage.setItem('{{hu-lts}}-loader-key', navigator.userAgent);
       else localStorage.removeItem('{{hu-lts}}-loader-key');
-      location.reload();
+      _window.location.reload();
     }
   });
-  Window.prototype.addEventListener = (...args) => {
-    windowEventListeners.push([...args]);
-    return _addEventListener(...args);
+  const setListeners = () => {
+    const currentWindow = _window,
+      currentDoc = _document;
+    currentWindow.Window.prototype.addEventListener = (...args) => {
+      windowEventListeners.push([...args]);
+      return _addEventListener.bind(currentWindow)(...args);
+    };
+    currentWindow.Document.prototype.addEventListener = (...args) => {
+      documentEventListeners.push([...args]);
+      return _addEventListener.bind(currentDoc)(...args);
+    };
   };
-  Document.prototype.addEventListener = (...args) => {
-    documentEventListeners.push([...args]);
-    return _addEventListener.bind(document)(...args);
-  };
-  const displayErrorPage = (overwrite = false) => {
-    document.body.removeAttribute('style');
-    if (overwrite) document.body.replaceWith(document.createElement('body'));
-    document.body.insertAdjacentHTML(
+  setListeners();
+  const displayErrorPage = (overwrite = false, currentDoc = _document) => {
+    currentDoc.body.removeAttribute('style');
+    if (overwrite)
+      currentDoc.body.replaceWith(currentDoc.createElement('body'));
+    currentDoc.body.insertAdjacentHTML(
       'afterbegin',
       '<center><h1>403 Forbidden</h1></center><center>You don’t have permission to access this page.</center><hr><center>nginx</center>'
     );
-    let head = document.createElement('head'),
-      title = document.createElement('title');
+    let head = currentDoc.createElement('head'),
+      title = currentDoc.createElement('title');
     title.textContent = '500 Internal Server Error';
     head.appendChild(title);
-    document.head.replaceWith(head);
-    if (document.currentScript) document.currentScript.remove();
+    currentDoc.head.replaceWith(head);
+    if (currentDoc.currentScript) currentDoc.currentScript.remove();
   };
-  if (localStorage.getItem('{{hu-lts}}-loader-key') !== navigator.userAgent)
+  if (
+    _window.localStorage.getItem('{{hu-lts}}-loader-key') !==
+    navigator.userAgent
+  )
     return displayErrorPage();
   const lastUpdated = '{{cacheVal}}',
     retrieveUrl = (pathname) => {
-      let capturedUrl = new URL(pathname, location),
+      let capturedUrl = new URL(pathname, origin),
         capturedParams = new URLSearchParams(capturedUrl.search);
       capturedParams.set('cache', lastUpdated);
       capturedUrl.search = capturedParams.toString();
       return capturedUrl;
     };
 
+  const loadAttachments = () => {
+    if (_document.readyState === 'complete') loadPage()();
+    else addEventListener('load', loadPage());
+    _addEventListener('popstate', () => {
+      if (_window.location.href.includes('#')) return;
+      _window.console.clear();
+      loadPage(location, false)();
+    });
+  };
+
   const loadPage =
-    (destination = location, pushState = true) =>
+    (destination = origin, pushState = true) =>
     () => {
-      fetch(
-        retrieveUrl(
-          destination.pathname.replace(/\/+/g, '/').replace(/\/$/, '') + '.ico'
-        ),
-        { mode: 'same-origin' }
-      )
+      _window
+        .fetch(
+          retrieveUrl(
+            destination.pathname.replace(/\/+/g, '/').replace(/\/$/, '') +
+              '.ico'
+          ),
+          { mode: 'same-origin' }
+        )
         .then((response) => {
           let i = windowEventListeners.length - 1;
           for (; i >= 0; i--) {
-            removeEventListener(...windowEventListeners[i]);
+            _window.removeEventListener(...windowEventListeners[i]);
             windowEventListeners.pop();
           }
           for (i = documentEventListeners.length - 1; i >= 0; i--) {
-            document.removeEventListener(...documentEventListeners[i]);
+            _document.removeEventListener(...documentEventListeners[i]);
             documentEventListeners.pop();
           }
-          if (destination !== location && pushState) {
-            console.clear();
+          if (destination !== _window.location && pushState) {
+            _window.console.clear();
             if (response.status === 200) {
-              history.pushState({}, '', retrieveUrl(destination));
-            } else return location.assign(new URL(destination, location));
+              if (_window === window)
+                _window.history.pushState({}, '', retrieveUrl(destination));
+            } else return _window.location.assign(new URL(destination, origin));
           }
           response.blob().then((blob) => {
-            new Response(
-              blob.stream().pipeThrough(new DecompressionStream('gzip'))
+            new _window.Response(
+              blob.stream().pipeThrough(new _window.DecompressionStream('gzip'))
             )
               .text()
               .then((text) => {
@@ -111,7 +136,23 @@
                       if (replacement.childNodes.length > 0)
                         loadNextScript(isDefer, replacement)();
                     } else if (!isDefer && !waitForHead) loadNextScript(true)();
-                    else reachedEnd = true;
+                    else {
+                      reachedEnd = true;
+                      if (waitForHead) return;
+                      [
+                        ...windowEventListeners,
+                        ...documentEventListeners,
+                      ].forEach((listenerParams) => {
+                        if (listenerParams[0] === 'DOMContentLoaded')
+                          listenerParams[1](
+                            new _window.Event('DOMContentLoaded')
+                          );
+                      });
+                      windowEventListeners.forEach((listenerParams) => {
+                        if (listenerParams[0] === 'load')
+                          listenerParams[1](new _window.Event('load'));
+                      });
+                    }
                   };
                   const recursiveClone = (node) => {
                     if (node.nodeType !== Node.ELEMENT_NODE) return node;
@@ -149,7 +190,7 @@
                                 event.preventDefault();
                                 if (attrValue === '{{route}}{{/}}')
                                   attrValue = '{{route}}{{/index}}';
-                                loadPage(new URL(attrValue, location))();
+                                loadPage(new URL(attrValue, origin))();
                               });
                             else if (nodeName === 'link') {
                               src = retrieveUrl(node.href);
@@ -213,6 +254,17 @@
                           headScripts++;
                       }
                     }
+                    /*
+                    if (node.id === 'newtab')
+                      elementCopy.addEventListener('click', () => {
+                        origin = new URL(location.href);
+                        _window = open();
+                        _addEventListener = _addEventListener.bind(_window);
+                        _document = _window.document;
+                        setListeners();
+                        loadAttachments();
+                      });
+                    */
                     return elementCopy;
                   };
                   let currentType = currentDoc.doctype,
@@ -253,22 +305,16 @@
 
                   loadNextScript(false)();
                 })(
-                  document,
-                  new DOMParser().parseFromString(text, 'text/html')
+                  _document,
+                  new _window.DOMParser().parseFromString(text, 'text/html')
                 );
               });
           });
         })
         .catch((error) => {
-          console.log(error);
+          _window.console.log(error);
           displayErrorPage(true);
         });
     };
-  if (document.readyState === 'complete') loadPage()();
-  else addEventListener('load', loadPage());
-  _addEventListener('popstate', () => {
-    if (location.href.includes('#')) return;
-    console.clear();
-    loadPage(location, false)();
-  });
+  loadAttachments();
 })();

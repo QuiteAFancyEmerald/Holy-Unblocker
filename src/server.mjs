@@ -195,6 +195,7 @@ if (config.disguiseFiles) {
     if (!shouldNotHandle.test(path)) exemptDirs.push(path.slice(1));
   exemptPages = exemptPages.concat(exemptDirs);
   if (pages.default === 'login') exemptPages.push('');
+
   app.addHook('preHandler', (req, reply, done) => {
     if (req.params.modified) return done();
     const reqPath = new URL(req.url, serverUrl).pathname.slice(
@@ -218,6 +219,7 @@ if (config.disguiseFiles) {
       if (req.params.path) req.params.path = getActualPath(req.params.path);
       if (req.params['*']) req.params['*'] = getActualPath(req.params['*']);
       reply.type(supportedTypes[disguise]);
+      reply.header('Access-Control-Allow-Origin', 'null');
     }
     return done();
   });
