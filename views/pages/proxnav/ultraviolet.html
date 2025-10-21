@@ -12,7 +12,7 @@
     <style>
       :root {
         --bg-dark: #05060f;
-        --bg-panel: rgba(11, 13, 27, 0.78);
+        --bg-panel: rgba(9, 11, 24, 0.72);
         --accent: #64d2ff;
         --accent-strong: #4c77ff;
         --text-primary: #f5f7ff;
@@ -34,82 +34,60 @@
           var(--bg-dark);
         min-height: 100vh;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 5vw, 4rem);
       }
 
       body::before {
         content: '';
         position: fixed;
         inset: 0;
-        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 45%),
+        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 40%),
           radial-gradient(circle at 60% 20%, rgba(100, 210, 255, 0.12), transparent 55%);
         pointer-events: none;
-        opacity: 0.8;
-        z-index: -1;
+        opacity: 0.75;
       }
 
-      #header,
-      #footer {
-        width: 100%;
-      }
-
-      #background-animated {
-        position: fixed;
-        inset: 0;
-        z-index: -2;
-        opacity: 0.4;
-      }
-
-      #mainbody {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        padding: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 5vw, 4rem) clamp(2.5rem, 6vw, 4rem);
-      }
-
-      .uv-wrapper {
-        width: 100%;
-        max-width: 960px;
-      }
-
-      .uv-card {
+      .hero {
         position: relative;
         width: 100%;
+        max-width: 960px;
         padding: clamp(3rem, 6vw, 4.5rem);
         background: var(--bg-panel);
-        backdrop-filter: blur(18px);
+        backdrop-filter: blur(16px);
         border-radius: 28px;
         border: 1px solid rgba(255, 255, 255, 0.08);
         box-shadow: 0 32px 70px rgba(8, 14, 40, 0.55);
         display: grid;
-        gap: clamp(1.75rem, 4vw, 2.5rem);
+        gap: clamp(2rem, 4vw, 3rem);
         overflow: hidden;
       }
 
-      .uv-card::after {
+      .hero::after {
         content: '';
         position: absolute;
-        inset: auto -30% -40% -30%;
+        inset: auto -25% -35% -25%;
         height: 240px;
         background: radial-gradient(circle, rgba(80, 125, 255, 0.35), transparent 70%);
         filter: blur(40px);
-        opacity: 0.65;
+        opacity: 0.7;
       }
 
-      .uv-card > * {
+      .hero > * {
         position: relative;
         z-index: 1;
       }
 
-      .uv-card-header {
+      .hero-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 1rem;
+        gap: 1.5rem;
         flex-wrap: wrap;
       }
 
-      .uv-badge {
+      .hero-badge {
         display: inline-flex;
         align-items: center;
         gap: 0.55rem;
@@ -122,28 +100,27 @@
         text-transform: uppercase;
       }
 
-      .uv-status {
-        color: rgba(255, 255, 255, 0.65);
+      .hero-status {
+        color: rgba(255, 255, 255, 0.6);
         font-size: 0.9rem;
       }
 
-      .uv-title {
+      .hero-title {
+        font-size: clamp(2.75rem, 5vw, 3.75rem);
         margin: 0;
-        font-size: clamp(2.5rem, 5vw, 3.4rem);
-        line-height: 1.1;
+        line-height: 1.05;
       }
 
-      .uv-summary {
-        margin: 0;
-        font-size: 1.05rem;
-        line-height: 1.65;
+      .hero-copy {
+        max-width: 54ch;
         color: var(--text-secondary);
-        max-width: 52ch;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        margin: 0;
       }
 
-      .uv-form-shell {
-        display: flex;
-        flex-direction: column;
+      .hero-search {
+        display: grid;
         gap: 1rem;
       }
 
@@ -151,7 +128,7 @@
         display: flex;
         align-items: center;
         gap: 0.85rem;
-        padding: 0.85rem 1rem;
+        padding: 0.9rem 1.15rem;
         border-radius: 18px;
         border: 1px solid rgba(255, 255, 255, 0.08);
         background: rgba(5, 6, 15, 0.9);
@@ -174,7 +151,7 @@
 
       #pr-runprod .pr-button {
         border-radius: 999px;
-        padding: 0.7rem 1.45rem;
+        padding: 0.75rem 1.6rem;
         font-weight: 600;
         letter-spacing: 0.02em;
         background: linear-gradient(135deg, var(--accent-strong), var(--accent));
@@ -188,63 +165,68 @@
         box-shadow: 0 22px 38px rgba(80, 125, 255, 0.58);
       }
 
-      .uv-reload-row {
+      .hero-terminal {
+        position: relative;
+        border-radius: 22px;
+        padding: 1.9rem 2.15rem;
+        background: rgba(5, 6, 15, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        font-family: 'JetBrains Mono', 'SFMono-Regular', ui-monospace, Menlo, monospace;
+        font-size: 0.98rem;
+        line-height: 1.7;
+        display: grid;
+        gap: 0.6rem;
+        overflow: hidden;
+      }
+
+      .hero-terminal::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, rgba(76, 119, 255, 0.18), transparent 60%);
+        opacity: 0.85;
+      }
+
+      .hero-terminal span {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-terminal span:first-child {
+        color: var(--accent);
+      }
+
+      .hero-footer {
         display: flex;
-        flex-wrap: wrap;
         align-items: center;
-        gap: 1rem;
         justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
         color: var(--text-secondary);
         font-size: 0.95rem;
       }
 
-      .uv-reload {
+      .hero-footer button {
         border-radius: 999px;
         padding: 0.65rem 1.6rem;
         border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(18, 22, 42, 0.8);
+        background: rgba(18, 22, 42, 0.85);
         color: var(--text-primary);
         font-weight: 600;
         transition: transform 0.2s ease, border-color 0.2s ease;
       }
 
-      .uv-reload:hover {
+      .hero-footer button:hover {
         border-color: rgba(100, 210, 255, 0.45);
         transform: translateY(-2px);
       }
 
-      .uv-details {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      }
-
-      .uv-details strong {
-        display: block;
-        margin-bottom: 0.65rem;
-        font-size: 0.9rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.68);
-      }
-
-      .uv-text {
-        margin: 0;
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-        line-height: 1.6;
-      }
-
-      .uv-text a {
-        color: var(--accent);
-      }
-
       @media (max-width: 640px) {
-        #mainbody {
+        body {
           padding-top: 2.75rem;
         }
 
-        .uv-card {
+        .hero {
           padding: 2.5rem;
         }
 
@@ -256,14 +238,14 @@
         #pr-runprod .pr-button {
           width: 100%;
           justify-content: center;
-          text-align: center;
         }
 
-        .uv-reload-row {
+        .hero-footer {
+          flex-direction: column;
           align-items: stretch;
         }
 
-        .uv-reload {
+        .hero-footer button {
           width: 100%;
           text-align: center;
         }
@@ -276,50 +258,38 @@
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.5/tsparticles.bundle.min.js"></script>
   </head>
   <body>
-    <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <div id="header" class="fullwidth"><!--HEADER--></div>
-    <div id="background-animated" class="fullwidth"></div>
-    <div id="mainbody" class="fullwidth">
-      <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-      <div class="uv-wrapper">
-        <div class="uv-card">
-          <div class="uv-card-header">
-            <span class="uv-badge">Ultraviolet beta</span>
-            <span class="uv-status">Stealth transport ready</span>
-          </div>
-          <h1 class="uv-title">Launch a cloaked Ultraviolet session.</h1>
-          <p class="uv-summary">Drop a URL or search term below and the proxy handles the routing, masking, and acceleration automatically.</p>
-          <div class="uv-form-shell">
-            <div id="pr-runprod" class="pr-form">
-              <input
-                type="text"
-                spellcheck="false"
-                autocomplete="off"
-                placeholder="Search or enter a target site"
-              />
-              <a href="#" style="display: none" class="pr-button glowbutton pr-go1">Stealth</a>
-              <a href="#" class="pr-button glowbutton pr-go2">Stealth</a>
-            </div>
-          </div>
-          <div class="uv-reload-row">
-            <span class="uv-reload-note">Network fix if errors appear or a blank page loads.</span>
-            <button id="reload" class="homebutton glowbutton uv-reload">Refresh</button>
-          </div>
-          <div class="uv-details">
-            <div>
-              <strong>Coverage</strong>
-              <p class="uv-text">Optimized for YouTube, now.gg, Spotify, Coolmath, and most .io games. CAPTCHA challenges remain supported.</p>
-            </div>
-            <div>
-              <strong>Source</strong>
-              <p class="uv-text">GitHub: <a class="bluelink" id="tnlink"><strong>https://github.com/titaniumnetwork-dev</strong></a></p>
-            </div>
+    <main>
+      <div class="hero">
+        <div class="hero-header">
+          <span class="hero-badge">Ultraviolet beta</span>
+          <span class="hero-status">Stealth transport ready</span>
+        </div>
+        <h1 class="hero-title">Launch a cloaked Ultraviolet session.</h1>
+        <p class="hero-copy">Enter any URL or search term to spin up a clean tunnel that routes around filters while keeping your session private.</p>
+        <div class="hero-search">
+          <div id="pr-runprod" class="pr-form">
+            <input
+              type="text"
+              spellcheck="false"
+              autocomplete="off"
+              placeholder="Search or enter a target site"
+            />
+            <a href="#" style="display: none" class="pr-button glowbutton pr-go1">Stealth</a>
+            <a href="#" class="pr-button glowbutton pr-go2">Stealth</a>
           </div>
         </div>
+        <div class="hero-terminal">
+          <span>$ uv launch --stealth</span>
+          <span>&gt; handshake synced // fingerprints masked</span>
+          <span>&gt; transport idle — awaiting destination</span>
+          <span>&gt; drop a link or query to begin</span>
+        </div>
+        <div class="hero-footer">
+          <span>If the target stalls or errors, refresh the tunnel and try again.</span>
+          <button id="reload" class="homebutton glowbutton">Refresh tunnel</button>
+        </div>
       </div>
-    </div>
-    <div id="footer" class="fullwidth"><!--FOOTER--></div>
-    <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+    </main>
     <script src="/worker/w.controller.js"></script>
     <script src="assets/js/common.js"></script>
     <script src="assets/js/csel.js"></script>
