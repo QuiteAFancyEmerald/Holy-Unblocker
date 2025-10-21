@@ -1,286 +1,656 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Launch the O-SShadow proxy in one click." />
     <meta name="version" content="<!-- VERSION -->" />
     <title>O-SShadow Proxy</title>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <link rel="icon" href="assets/ico/favicon.ico">
+    <link rel="icon" href="assets/ico/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/modern-styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg-dark: #05060f;
+        --bg-panel: rgba(11, 13, 27, 0.7);
+        --accent: #64d2ff;
+        --accent-strong: #4c77ff;
+        --text-primary: #f5f7ff;
+        --text-secondary: #c4c8da;
+        --border: rgba(255, 255, 255, 0.08);
+        --glow: rgba(100, 210, 255, 0.45);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        color: var(--text-primary);
+        background: radial-gradient(circle at 15% 20%, rgba(104, 116, 255, 0.18), transparent 55%),
+          radial-gradient(circle at 85% 25%, rgba(100, 210, 255, 0.22), transparent 55%),
+          radial-gradient(circle at 50% 80%, rgba(135, 88, 255, 0.18), transparent 60%),
+          var(--bg-dark);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 40%),
+          radial-gradient(circle at 60% 20%, rgba(100, 210, 255, 0.12), transparent 55%);
+        pointer-events: none;
+        opacity: 0.8;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(14px);
+        background: linear-gradient(180deg, rgba(6, 8, 21, 0.78) 0%, rgba(6, 8, 21, 0.58) 100%);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav {
+        margin: 0 auto;
+        padding: 1.5rem clamp(1.5rem, 4vw, 3rem);
+        max-width: 1200px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.25rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .logo-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: linear-gradient(145deg, rgba(76, 119, 255, 0.8), rgba(100, 210, 255, 0.75));
+        display: grid;
+        place-items: center;
+        font-size: 1.2rem;
+        box-shadow: 0 12px 30px rgba(64, 110, 255, 0.45);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+      }
+
+      .nav-links a:hover {
+        color: var(--text-primary);
+      }
+
+      main {
+        flex: 1;
+      }
+
+      .hero {
+        position: relative;
+        padding: clamp(4rem, 7vw, 7rem) clamp(1.5rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem);
+        display: grid;
+        gap: 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .hero-copy {
+        z-index: 1;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.85rem;
+        border-radius: 999px;
+        border: 1px solid rgba(100, 210, 255, 0.35);
+        color: var(--accent);
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 5vw, 3.8rem);
+        line-height: 1.1;
+        margin: 0 0 1.25rem;
+      }
+
+      .hero p {
+        margin: 0 0 2.25rem;
+        color: var(--text-secondary);
+        font-size: 1.05rem;
+        max-width: 40ch;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .cta-primary,
+      .cta-secondary {
+        border-radius: 999px;
+        padding: 0.85rem 1.8rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        border: 1px solid transparent;
+      }
+
+      .cta-primary {
+        background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+        color: #05060f;
+        box-shadow: 0 18px 35px rgba(80, 125, 255, 0.55);
+      }
+
+      .cta-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 38px rgba(80, 125, 255, 0.6);
+      }
+
+      .cta-secondary {
+        color: var(--text-primary);
+        border-color: rgba(255, 255, 255, 0.12);
+        background: rgba(18, 22, 42, 0.65);
+      }
+
+      .cta-secondary:hover {
+        border-color: rgba(100, 210, 255, 0.42);
+        background: rgba(18, 22, 42, 0.85);
+        transform: translateY(-2px);
+      }
+
+      .cards-stack {
+        position: relative;
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .card {
+        backdrop-filter: blur(16px);
+        background: var(--bg-panel);
+        border-radius: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 1.75rem;
+        box-shadow: 0 28px 60px rgba(8, 14, 40, 0.55);
+        position: relative;
+      }
+
+      .card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(135deg, rgba(76, 119, 255, 0.4), rgba(100, 210, 255, 0.1));
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+
+      .card-title {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 1.2rem;
+      }
+
+      .card-terminal {
+        font-family: 'JetBrains Mono', 'SFMono-Regular', ui-monospace, Menlo, monospace;
+        background: rgba(5, 6, 15, 0.92);
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 1.2rem 1.5rem;
+        line-height: 1.6;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card-terminal::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, rgba(76, 119, 255, 0.12), transparent 60%);
+        opacity: 0.8;
+      }
+
+      .terminal-line {
+        position: relative;
+        z-index: 1;
+      }
+
+      .terminal-line span:first-child {
+        color: var(--accent);
+        margin-right: 0.8rem;
+      }
+
+      .glow {
+        position: absolute;
+        inset: auto 10% -12% 10%;
+        height: 140px;
+        background: radial-gradient(circle, rgba(80, 125, 255, 0.35), transparent 70%);
+        filter: blur(40px);
+        opacity: 0.7;
+      }
+
+      .section {
+        padding: clamp(3.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
+        max-width: 1150px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        max-width: 60ch;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: clamp(2rem, 3.8vw, 2.8rem);
+      }
+
+      .section-header p {
+        margin: 0;
+        color: var(--text-secondary);
+        font-size: 1rem;
+      }
+
+      .feature-grid {
+        margin-top: 2.5rem;
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .feature {
+        background: rgba(11, 13, 27, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 18px;
+        padding: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .feature:hover {
+        transform: translateY(-4px);
+        border-color: rgba(100, 210, 255, 0.32);
+      }
+
+      .feature strong {
+        font-size: 1.05rem;
+      }
+
+      .feature span {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: clamp(2rem, 5vw, 3rem);
+        margin-top: 3.5rem;
+      }
+
+      .panel {
+        background: rgba(11, 13, 27, 0.7);
+        border-radius: 20px;
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .panel::before {
+        content: '';
+        position: absolute;
+        inset: -30% -20% auto;
+        height: 60%;
+        background: radial-gradient(circle at top, rgba(76, 119, 255, 0.45), transparent 70%);
+        opacity: 0.4;
+      }
+
+      .panel h3 {
+        margin: 0;
+        font-size: 1.4rem;
+      }
+
+      .panel-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 1.15rem;
+        color: var(--text-secondary);
+      }
+
+      .panel-list li {
+        display: flex;
+        gap: 0.85rem;
+        align-items: flex-start;
+      }
+
+      .panel-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        background: rgba(100, 210, 255, 0.18);
+        color: var(--accent);
+        font-size: 0.8rem;
+        flex-shrink: 0;
+        border: 1px solid rgba(100, 210, 255, 0.35);
+      }
+
+      .cta-footer {
+        margin-top: 4.5rem;
+        padding: clamp(3rem, 6vw, 4rem);
+        background: radial-gradient(circle at 15% 20%, rgba(76, 119, 255, 0.35), rgba(11, 13, 27, 0.9) 55%),
+          radial-gradient(circle at 85% 25%, rgba(100, 210, 255, 0.35), rgba(11, 13, 27, 0.9) 55%);
+        border-radius: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 30px 60px rgba(8, 14, 40, 0.55);
+        text-align: center;
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      .cta-footer p {
+        margin: 0;
+        color: var(--text-secondary);
+        font-size: 1.05rem;
+      }
+
+      footer {
+        padding: 2.5rem clamp(1.5rem, 4vw, 3rem) 2rem;
+        margin-top: auto;
+        background: rgba(5, 7, 18, 0.9);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .footer-inner {
+        max-width: 1150px;
+        margin: 0 auto;
+        display: grid;
+        gap: 3rem;
+      }
+
+      .footer-columns {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2rem;
+      }
+
+      .footer-brand p {
+        color: var(--text-secondary);
+        margin: 0.75rem 0 0;
+        max-width: 32ch;
+      }
+
+      .footer-title {
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+      }
+
+      .footer-links {
+        display: grid;
+        gap: 0.55rem;
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+      }
+
+      .footer-links a:hover {
+        color: var(--text-primary);
+      }
+
+      .footer-meta {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 1.5rem;
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 0.85rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .fade-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .fade-up.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 720px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          padding-top: 3.25rem;
+        }
+
+        .cta-footer {
+          text-align: left;
+        }
+      }
+    </style>
   </head>
-
   <body>
-    <!-- Modern Gradient Background -->
-    <div class="gradient-bg">
-      <div class="gradient-layer-1"></div>
-      <div class="gradient-layer-2"></div>
-      <div class="gradient-layer-3"></div>
-      <div class="noise-overlay"></div>
-    </div>
-
-    <!-- Header with Glass Morphism -->
-    <header class="glass-header">
-      <div class="header-content">
-        <a href="https://o-sshadow.github.io" class="back-arrow" aria-label="Back to O-SShadow">
-          <i data-lucide="arrow-left"></i>
-        </a>
-        <div class="brand-container">
-          <div class="brand-icon">
-            <i data-lucide="shield"></i>
-          </div>
-          <h1 class="brand-text">O-SShadow Proxy</h1>
+    <header>
+      <nav class="nav">
+        <div class="logo">
+          <span class="logo-mark">OS</span>
+          <span>O-SShadow Proxy</span>
         </div>
-        <div class="header-actions">
-          <button class="glass-btn secondary" onclick="toggleSettings()">
-            <i data-lucide="settings"></i>
-          </button>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#workflow">How it works</a>
+          <a href="#mission">Why O-SShadow</a>
         </div>
-      </div>
+      </nav>
     </header>
-
-    <!-- Hero Section -->
-    <main class="hero-section">
-      <div class="hero-content">
-        <div class="hero-text" data-aos="fade-up" data-aos-delay="200">
-          <h1 class="hero-title">
-            <span class="gradient-text">Break Through</span>
-            <br>Digital Barriers
-          </h1>
-          <p class="hero-subtitle">
-            Experience the future of web browsing with O-SShadow Proxy. 
-            Secure, fast, and completely anonymous web access at your fingertips.
-          </p>
+    <main>
+      <section class="hero">
+        <div class="hero-copy fade-up">
+          <span class="eyebrow">Secure access in seconds</span>
+          <h1>Run the modern proxy that stays ahead of every block.</h1>
+          <p>Bring the full internet back to your devices with zero configuration. O-SShadow Proxy launches instantly, preserves privacy, and adapts to every network environment.</p>
           <div class="hero-actions">
-            <a href="/browsing" class="cta-btn primary">
-              <span>Start Browsing</span>
-              <i data-lucide="arrow-right"></i>
-            </a>
-            <a href="#features" class="cta-btn secondary">
-              <span>Learn More</span>
-              <i data-lucide="info"></i>
-            </a>
+            <a class="cta-primary" href="/a">Start proxy</a>
+            <a class="cta-secondary" href="#features">Explore capabilities</a>
           </div>
         </div>
-        
-        <div class="hero-visual" data-aos="fade-left" data-aos-delay="400">
-          <div class="floating-card">
-            <div class="card-header">
-              <div class="traffic-lights">
-                <span class="light red"></span>
-                <span class="light yellow"></span>
-                <span class="light green"></span>
-              </div>
-              <div class="url-bar">
-                <i data-lucide="lock" class="lock-icon"></i>
-                <span class="url-text">o-sshadow.proxy</span>
-              </div>
-            </div>
-            <div class="card-content">
-              <div class="terminal">
-                <div class="terminal-line">
-                  <span class="prompt">$</span>
-                  <span class="command">npx o-sshadow-proxy start</span>
-                </div>
-                <div class="terminal-line output">
-                  <span class="success">✓ Proxy server running on port 8080</span>
-                </div>
-                <div class="terminal-line output">
-                  <span class="success">✓ SSL encryption enabled</span>
-                </div>
-                <div class="terminal-line output">
-                  <span class="success">✓ Ready to bypass restrictions</span>
-                </div>
-                <div class="terminal-cursor"></div>
-              </div>
+        <div class="cards-stack fade-up">
+          <div class="card">
+            <div class="card-title">Instant telemetry snapshot</div>
+            <div class="card-terminal">
+              <div class="terminal-line"><span>$</span><span>launch proxy --profile=os-shadow</span></div>
+              <div class="terminal-line"><span>&gt;</span><span>Routing engine online — latency 18ms</span></div>
+              <div class="terminal-line"><span>&gt;</span><span>Stealth transport engaged — fingerprint neutral</span></div>
+              <div class="terminal-line"><span>&gt;</span><span>Adaptive caching warming — throughput boosted</span></div>
             </div>
           </div>
+          <div class="card" style="margin-left: clamp(0rem, 4vw, 2rem);">
+            <div class="card-title">What you get</div>
+            <div class="panel-list">
+              <div class="panel-list-item">Private end-to-end pipes with rotating identities.</div>
+              <div class="panel-list-item">Live bypass intelligence tuned for school and enterprise firewalls.</div>
+              <div class="panel-list-item">Unified launch across laptop, tablet, and BYOD.</div>
+            </div>
+          </div>
+          <div class="glow"></div>
         </div>
-      </div>
-      
-      <!-- Scroll Indicator -->
-      <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="800">
-        <i data-lucide="chevron-down"></i>
-      </div>
+      </section>
+      <section id="features" class="section fade-up">
+        <div class="section-header">
+          <h2>Designed to outpace restrictions.</h2>
+          <p>Every layer of O-SShadow Proxy is purpose-built to stay live, stay invisible, and keep your browsing experience fast.</p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature">
+            <strong>Live evasion engine</strong>
+            <span>Heuristics adapt transport signatures in real time so common blocks never land.</span>
+          </div>
+          <div class="feature">
+            <strong>Zero trace sessioning</strong>
+            <span>Sessions auto-expire, wipe metadata, and leave no footprint on shared devices.</span>
+          </div>
+          <div class="feature">
+            <strong>Edge acceleration</strong>
+            <span>Smart caching and compression keep latency low even on congested networks.</span>
+          </div>
+          <div class="feature">
+            <strong>Device harmony</strong>
+            <span>Progressive UI and responsive tunnels work equally well on touch and desktop.</span>
+          </div>
+          <div class="feature">
+            <strong>Command center</strong>
+            <span>Observe health, latency, and bandwidth in a single glance without revealing anything sensitive.</span>
+          </div>
+          <div class="feature">
+            <strong>Open core</strong>
+            <span>Auditable, extendable, and backed by a community that ships weekly iterations.</span>
+          </div>
+        </div>
+      </section>
+      <section id="workflow" class="section fade-up">
+        <div class="section-header">
+          <h2>Three steps. You are on.</h2>
+          <p>No installers, no VPN credentials. Launch directly from the browser with a workflow built for speed.</p>
+        </div>
+        <div class="split">
+          <div class="panel">
+            <h3>Launch</h3>
+            <ul class="panel-list">
+              <li><span class="panel-badge">1</span><span>Hit <strong>Start proxy</strong> and we spin up an isolated transport tailored to your network.</span></li>
+              <li><span class="panel-badge">2</span><span>Automatic handshake scrambles the fingerprint so filters treat it like native traffic.</span></li>
+              <li><span class="panel-badge">3</span><span>Dashboard confirms you are cloaked and ready to browse.</span></li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>Stay ahead</h3>
+            <ul class="panel-list">
+              <li><span class="panel-badge">A</span><span>Threat feeds watch for the newest domain and SNI blocks.</span></li>
+              <li><span class="panel-badge">B</span><span>Fallbacks deploy before downtime hits, keeping sessions seamless.</span></li>
+              <li><span class="panel-badge">C</span><span>Activity never logs locally; once you close, the tunnel folds.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="mission" class="section fade-up">
+        <div class="cta-footer">
+          <h2>Freedom-first access for every network.</h2>
+          <p>Thousands rely on O-SShadow Proxy to reclaim the open web from filters, throttles, and surveillance. Join them in one click.</p>
+          <a class="cta-primary" href="/a">Start proxy</a>
+        </div>
+      </section>
     </main>
-
-    <!-- Features Section -->
-    <section id="features" class="features-section">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up">
-          <h2 class="section-title">Why Choose O-SShadow?</h2>
-          <p class="section-subtitle">Advanced proxy technology meets modern design</p>
-        </div>
-        
-        <div class="features-grid">
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="feature-icon">
-              <i data-lucide="zap"></i>
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-columns">
+          <div>
+            <div class="logo">
+              <span class="logo-mark">OS</span>
+              <span>O-SShadow Proxy</span>
             </div>
-            <h3>Lightning Fast</h3>
-            <p>Optimized proxy servers ensure minimal latency and maximum speed for seamless browsing.</p>
-          </div>
-          
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="feature-icon">
-              <i data-lucide="shield-check"></i>
+            <div class="footer-brand">
+              <p>Secure, adaptable proxy infrastructure built for real-world censorship challenges.</p>
             </div>
-            <h3>Secure & Private</h3>
-            <p>End-to-end encryption and zero-log policy protect your privacy and sensitive data.</p>
           </div>
-          
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="feature-icon">
-              <i data-lucide="globe"></i>
-            </div>
-            <h3>Universal Access</h3>
-            <p>Bypass geographical restrictions and access content from anywhere in the world.</p>
-          </div>
-          
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
-            <div class="feature-icon">
-              <i data-lucide="smartphone"></i>
-            </div>
-            <h3>Cross Platform</h3>
-            <p>Works seamlessly across all devices and browsers with responsive design.</p>
-          </div>
-          
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
-            <div class="feature-icon">
-              <i data-lucide="code"></i>
-            </div>
-            <h3>Open Source</h3>
-            <p>Transparent, community-driven development with regular updates and improvements.</p>
-          </div>
-          
-          <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
-            <div class="feature-icon">
-              <i data-lucide="cpu"></i>
-            </div>
-            <h3>Advanced Tech</h3>
-            <p>Built with cutting-edge web technologies and modern proxy protocols.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section">
-      <div class="container">
-        <div class="stats-grid" data-aos="fade-up">
-          <div class="stat-item">
-            <div class="stat-number">99.9%</div>
-            <div class="stat-label">Uptime</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">0ms</div>
-            <div class="stat-label">Logs Stored</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">256-bit</div>
-            <div class="stat-label">Encryption</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">24/7</div>
-            <div class="stat-label">Support</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-content" data-aos="fade-up">
-          <h2>Ready to Experience True Freedom?</h2>
-          <p>Join thousands of users who trust O-SShadow Proxy for secure, unrestricted web access.</p>
-          <a href="/browsing" class="cta-btn primary large">
-            <span>Get Started Now</span>
-            <i data-lucide="arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="modern-footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <div class="brand-container">
-              <div class="brand-icon">
-                <i data-lucide="shield"></i>
-              </div>
-              <span class="brand-text">O-SShadow</span>
-            </div>
-            <p>Secure proxy solutions for the modern web.</p>
-          </div>
-          <div class="footer-links">
-            <div class="footer-column">
-              <h4>Product</h4>
-              <a href="/browsing">Web Proxy</a>
-              <a href="/apps">Applications</a>
+          <div>
+            <div class="footer-title">Access</div>
+            <div class="footer-links">
+              <a href="/a">Start proxy</a>
+              <a href="/apps">Apps</a>
               <a href="/games">Games</a>
             </div>
-            <div class="footer-column">
-              <h4>Resources</h4>
+          </div>
+          <div>
+            <div class="footer-title">Learn</div>
+            <div class="footer-links">
               <a href="/docs">Documentation</a>
               <a href="/faq">FAQ</a>
               <a href="/support">Support</a>
             </div>
-            <div class="footer-column">
-              <h4>Community</h4>
-              <a href="https://github.com/o-sshadow" target="_blank">GitHub</a>
-              <a href="https://discord.gg/osshadow" target="_blank">Discord</a>
-              <a href="https://o-sshadow.github.io" target="_blank">Main Site</a>
+          </div>
+          <div>
+            <div class="footer-title">Connect</div>
+            <div class="footer-links">
+              <a href="https://github.com/o-sshadow" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://discord.gg/osshadow" target="_blank" rel="noopener noreferrer">Discord</a>
+              <a href="https://o-sshadow.github.io" target="_blank" rel="noopener noreferrer">Main site</a>
             </div>
           </div>
         </div>
-        <div class="footer-bottom">
-          <p>&copy; 2025 O-SShadow. Open source project.</p>
+        <div class="footer-meta">
+          <span>&copy; 2025 O-SShadow. Open source and community powered.</span>
+          <span>Need a feature? Reach out on Discord and help shape the roadmap.</span>
         </div>
       </div>
     </footer>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="assets/js/modern-app.js"></script>
     <script>
-      // Initialize Lucide icons
-      lucide.createIcons();
-      
-      // Initialize AOS
-      AOS.init({
-        duration: 800,
-        easing: 'ease-out-cubic',
-        once: true,
-        offset: 100
-      });
-      
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
           });
-        });
-      });
-      
-      // Settings toggle function
-      function toggleSettings() {
-        // Add settings functionality here
-        console.log('Settings toggle clicked');
-      }
+        },
+        { threshold: 0.2 }
+      );
+
+      document.querySelectorAll('.fade-up').forEach(node => observer.observe(node));
     </script>
   </body>
 </html>
