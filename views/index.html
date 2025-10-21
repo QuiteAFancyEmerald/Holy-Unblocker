@@ -20,7 +20,6 @@
         --text-primary: #f5f7ff;
         --text-secondary: #c4c8da;
         --border: rgba(255, 255, 255, 0.08);
-        --glow: rgba(100, 210, 255, 0.45);
       }
 
       * {
@@ -47,21 +46,7 @@
         background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 40%),
           radial-gradient(circle at 60% 20%, rgba(100, 210, 255, 0.12), transparent 55%);
         pointer-events: none;
-        opacity: 0.8;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        backdrop-filter: blur(14px);
-        background: linear-gradient(180deg, rgba(6, 8, 21, 0.78) 0%, rgba(6, 8, 21, 0.58) 100%);
-        border-bottom: 1px solid var(--border);
+        opacity: 0.75;
       }
 
       .nav {
@@ -94,60 +79,72 @@
         box-shadow: 0 12px 30px rgba(64, 110, 255, 0.45);
       }
 
-      .nav-links {
-        display: flex;
-        gap: 1.5rem;
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-      }
-
-      .nav-links a:hover {
-        color: var(--text-primary);
-      }
-
       main {
         flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 5vw, 4rem);
       }
 
       .hero {
         position: relative;
-        padding: clamp(4rem, 7vw, 7rem) clamp(1.5rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem);
+        width: 100%;
+        max-width: 960px;
+        padding: clamp(3rem, 6vw, 4.5rem);
+        background: rgba(9, 11, 24, 0.72);
+        backdrop-filter: blur(16px);
+        border-radius: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 32px 70px rgba(8, 14, 40, 0.55);
         display: grid;
-        gap: 3rem;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        max-width: 1200px;
-        margin: 0 auto;
+        gap: clamp(2rem, 4vw, 3rem);
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: auto -25% -35% -25%;
+        height: 240px;
+        background: radial-gradient(circle, rgba(80, 125, 255, 0.35), transparent 70%);
+        filter: blur(40px);
+        opacity: 0.7;
+      }
+
+      .hero-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.45rem 0.95rem;
+        border-radius: 999px;
+        border: 1px solid rgba(100, 210, 255, 0.38);
+        color: var(--accent);
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .hero-title {
+        font-size: clamp(2.75rem, 5vw, 3.75rem);
+        margin: 0;
+        line-height: 1.05;
       }
 
       .hero-copy {
-        z-index: 1;
-      }
-
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.35rem 0.85rem;
-        border-radius: 999px;
-        border: 1px solid rgba(100, 210, 255, 0.35);
-        color: var(--accent);
-        font-size: 0.8rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        margin-bottom: 1.5rem;
-      }
-
-      .hero h1 {
-        font-size: clamp(2.5rem, 5vw, 3.8rem);
-        line-height: 1.1;
-        margin: 0 0 1.25rem;
-      }
-
-      .hero p {
-        margin: 0 0 2.25rem;
+        max-width: 52ch;
         color: var(--text-secondary);
         font-size: 1.05rem;
-        max-width: 40ch;
+        line-height: 1.6;
+        margin: 0;
       }
 
       .hero-actions {
@@ -156,22 +153,17 @@
         gap: 1rem;
       }
 
-      .cta-primary,
-      .cta-secondary {
+      .cta-primary {
         border-radius: 999px;
-        padding: 0.85rem 1.8rem;
+        padding: 0.95rem 2.25rem;
         display: inline-flex;
         align-items: center;
         gap: 0.65rem;
         font-weight: 600;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-        border: 1px solid transparent;
-      }
-
-      .cta-primary {
         background: linear-gradient(135deg, var(--accent-strong), var(--accent));
         color: #05060f;
         box-shadow: 0 18px 35px rgba(80, 125, 255, 0.55);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
 
       .cta-primary:hover {
@@ -179,307 +171,64 @@
         box-shadow: 0 22px 38px rgba(80, 125, 255, 0.6);
       }
 
-      .cta-secondary {
-        color: var(--text-primary);
-        border-color: rgba(255, 255, 255, 0.12);
-        background: rgba(18, 22, 42, 0.65);
-      }
-
-      .cta-secondary:hover {
-        border-color: rgba(100, 210, 255, 0.42);
-        background: rgba(18, 22, 42, 0.85);
-        transform: translateY(-2px);
-      }
-
-      .cards-stack {
+      .hero-terminal {
         position: relative;
-        display: grid;
-        gap: 1.5rem;
-      }
-
-      .card {
-        backdrop-filter: blur(16px);
-        background: var(--bg-panel);
         border-radius: 22px;
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        padding: 1.75rem;
-        box-shadow: 0 28px 60px rgba(8, 14, 40, 0.55);
-        position: relative;
-      }
-
-      .card::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        padding: 1px;
-        background: linear-gradient(135deg, rgba(76, 119, 255, 0.4), rgba(100, 210, 255, 0.1));
-        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        mask-composite: exclude;
-        pointer-events: none;
-      }
-
-      .card-title {
-        font-size: 1rem;
-        color: var(--text-secondary);
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        margin-bottom: 1.2rem;
-      }
-
-      .card-terminal {
-        font-family: 'JetBrains Mono', 'SFMono-Regular', ui-monospace, Menlo, monospace;
+        padding: 1.9rem 2.15rem;
         background: rgba(5, 6, 15, 0.92);
-        border-radius: 16px;
         border: 1px solid rgba(255, 255, 255, 0.06);
-        padding: 1.2rem 1.5rem;
-        line-height: 1.6;
-        position: relative;
+        font-family: 'JetBrains Mono', 'SFMono-Regular', ui-monospace, Menlo, monospace;
+        font-size: 0.98rem;
+        line-height: 1.7;
+        display: grid;
+        gap: 0.6rem;
         overflow: hidden;
       }
 
-      .card-terminal::before {
+      .hero-terminal::before {
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(120deg, rgba(76, 119, 255, 0.12), transparent 60%);
-        opacity: 0.8;
+        background: linear-gradient(120deg, rgba(76, 119, 255, 0.18), transparent 60%);
+        opacity: 0.85;
       }
 
-      .terminal-line {
+      .hero-terminal span {
         position: relative;
         z-index: 1;
       }
 
-      .terminal-line span:first-child {
+      .hero-terminal span:first-child {
         color: var(--accent);
-        margin-right: 0.8rem;
-      }
-
-      .glow {
-        position: absolute;
-        inset: auto 10% -12% 10%;
-        height: 140px;
-        background: radial-gradient(circle, rgba(80, 125, 255, 0.35), transparent 70%);
-        filter: blur(40px);
-        opacity: 0.7;
-      }
-
-      .section {
-        padding: clamp(3.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
-        max-width: 1150px;
-        margin: 0 auto;
-      }
-
-      .section-header {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        max-width: 60ch;
-      }
-
-      .section-header h2 {
-        margin: 0;
-        font-size: clamp(2rem, 3.8vw, 2.8rem);
-      }
-
-      .section-header p {
-        margin: 0;
-        color: var(--text-secondary);
-        font-size: 1rem;
-      }
-
-      .feature-grid {
-        margin-top: 2.5rem;
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      }
-
-      .feature {
-        background: rgba(11, 13, 27, 0.72);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 18px;
-        padding: 1.75rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.85rem;
-        transition: transform 0.2s ease, border-color 0.2s ease;
-      }
-
-      .feature:hover {
-        transform: translateY(-4px);
-        border-color: rgba(100, 210, 255, 0.32);
-      }
-
-      .feature strong {
-        font-size: 1.05rem;
-      }
-
-      .feature span {
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-        line-height: 1.55;
-      }
-
-      .split {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: clamp(2rem, 5vw, 3rem);
-        margin-top: 3.5rem;
-      }
-
-      .panel {
-        background: rgba(11, 13, 27, 0.7);
-        border-radius: 20px;
-        padding: 2rem;
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        display: flex;
-        flex-direction: column;
-        gap: 1.75rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .panel::before {
-        content: '';
-        position: absolute;
-        inset: -30% -20% auto;
-        height: 60%;
-        background: radial-gradient(circle at top, rgba(76, 119, 255, 0.45), transparent 70%);
-        opacity: 0.4;
-      }
-
-      .panel h3 {
-        margin: 0;
-        font-size: 1.4rem;
-      }
-
-      .panel-list {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: grid;
-        gap: 1.15rem;
-        color: var(--text-secondary);
-      }
-
-      .panel-list li {
-        display: flex;
-        gap: 0.85rem;
-        align-items: flex-start;
-      }
-
-      .panel-badge {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 28px;
-        height: 28px;
-        border-radius: 999px;
-        background: rgba(100, 210, 255, 0.18);
-        color: var(--accent);
-        font-size: 0.8rem;
-        flex-shrink: 0;
-        border: 1px solid rgba(100, 210, 255, 0.35);
-      }
-
-      .cta-footer {
-        margin-top: 4.5rem;
-        padding: clamp(3rem, 6vw, 4rem);
-        background: radial-gradient(circle at 15% 20%, rgba(76, 119, 255, 0.35), rgba(11, 13, 27, 0.9) 55%),
-          radial-gradient(circle at 85% 25%, rgba(100, 210, 255, 0.35), rgba(11, 13, 27, 0.9) 55%);
-        border-radius: 28px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 30px 60px rgba(8, 14, 40, 0.55);
-        text-align: center;
-        display: grid;
-        gap: 1.25rem;
-      }
-
-      .cta-footer p {
-        margin: 0;
-        color: var(--text-secondary);
-        font-size: 1.05rem;
       }
 
       footer {
-        padding: 2.5rem clamp(1.5rem, 4vw, 3rem) 2rem;
-        margin-top: auto;
+        padding: 2.25rem clamp(1.5rem, 4vw, 3rem) 2rem;
         background: rgba(5, 7, 18, 0.9);
         border-top: 1px solid rgba(255, 255, 255, 0.05);
       }
 
       .footer-inner {
-        max-width: 1150px;
+        max-width: 960px;
         margin: 0 auto;
-        display: grid;
-        gap: 3rem;
-      }
-
-      .footer-columns {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 2rem;
-      }
-
-      .footer-brand p {
-        color: var(--text-secondary);
-        margin: 0.75rem 0 0;
-        max-width: 32ch;
-      }
-
-      .footer-title {
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        letter-spacing: 0.2em;
-        color: var(--text-secondary);
-        margin-bottom: 1rem;
-      }
-
-      .footer-links {
-        display: grid;
-        gap: 0.55rem;
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-      }
-
-      .footer-links a:hover {
-        color: var(--text-primary);
-      }
-
-      .footer-meta {
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        padding-top: 1.5rem;
-        color: rgba(255, 255, 255, 0.45);
-        font-size: 0.85rem;
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.75rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.88rem;
       }
 
-      .fade-up {
-        opacity: 0;
-        transform: translateY(24px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
+      @media (max-width: 640px) {
+        .nav {
+          justify-content: center;
+        }
 
-      .fade-up.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      @media (max-width: 720px) {
-        .nav-links {
-          display: none;
+        main {
+          padding-top: 2.75rem;
         }
 
         .hero {
-          padding-top: 3.25rem;
-        }
-
-        .cta-footer {
-          text-align: left;
+          padding: 2.5rem;
         }
       }
     </style>
@@ -491,166 +240,29 @@
           <span class="logo-mark">OS</span>
           <span>O-SShadow Proxy</span>
         </div>
-        <div class="nav-links">
-          <a href="#features">Features</a>
-          <a href="#workflow">How it works</a>
-          <a href="#mission">Why O-SShadow</a>
-        </div>
       </nav>
     </header>
     <main>
-      <section class="hero">
-        <div class="hero-copy fade-up">
-          <span class="eyebrow">Secure access in seconds</span>
-          <h1>Run the modern proxy that stays ahead of every block.</h1>
-          <p>Bring the full internet back to your devices with zero configuration. O-SShadow Proxy launches instantly, preserves privacy, and adapts to every network environment.</p>
-          <div class="hero-actions">
-            <a class="cta-primary" href="/a">Start proxy</a>
-            <a class="cta-secondary" href="#features">Explore capabilities</a>
-          </div>
-        </div>
-        <div class="cards-stack fade-up">
-          <div class="card">
-            <div class="card-title">Instant telemetry snapshot</div>
-            <div class="card-terminal">
-              <div class="terminal-line"><span>$</span><span>launch proxy --profile=os-shadow</span></div>
-              <div class="terminal-line"><span>&gt;</span><span>Routing engine online — latency 18ms</span></div>
-              <div class="terminal-line"><span>&gt;</span><span>Stealth transport engaged — fingerprint neutral</span></div>
-              <div class="terminal-line"><span>&gt;</span><span>Adaptive caching warming — throughput boosted</span></div>
-            </div>
-          </div>
-          <div class="card" style="margin-left: clamp(0rem, 4vw, 2rem);">
-            <div class="card-title">What you get</div>
-            <div class="panel-list">
-              <div class="panel-list-item">Private end-to-end pipes with rotating identities.</div>
-              <div class="panel-list-item">Live bypass intelligence tuned for school and enterprise firewalls.</div>
-              <div class="panel-list-item">Unified launch across laptop, tablet, and BYOD.</div>
-            </div>
-          </div>
-          <div class="glow"></div>
-        </div>
-      </section>
-      <section id="features" class="section fade-up">
-        <div class="section-header">
-          <h2>Designed to outpace restrictions.</h2>
-          <p>Every layer of O-SShadow Proxy is purpose-built to stay live, stay invisible, and keep your browsing experience fast.</p>
-        </div>
-        <div class="feature-grid">
-          <div class="feature">
-            <strong>Live evasion engine</strong>
-            <span>Heuristics adapt transport signatures in real time so common blocks never land.</span>
-          </div>
-          <div class="feature">
-            <strong>Zero trace sessioning</strong>
-            <span>Sessions auto-expire, wipe metadata, and leave no footprint on shared devices.</span>
-          </div>
-          <div class="feature">
-            <strong>Edge acceleration</strong>
-            <span>Smart caching and compression keep latency low even on congested networks.</span>
-          </div>
-          <div class="feature">
-            <strong>Device harmony</strong>
-            <span>Progressive UI and responsive tunnels work equally well on touch and desktop.</span>
-          </div>
-          <div class="feature">
-            <strong>Command center</strong>
-            <span>Observe health, latency, and bandwidth in a single glance without revealing anything sensitive.</span>
-          </div>
-          <div class="feature">
-            <strong>Open core</strong>
-            <span>Auditable, extendable, and backed by a community that ships weekly iterations.</span>
-          </div>
-        </div>
-      </section>
-      <section id="workflow" class="section fade-up">
-        <div class="section-header">
-          <h2>Three steps. You are on.</h2>
-          <p>No installers, no VPN credentials. Launch directly from the browser with a workflow built for speed.</p>
-        </div>
-        <div class="split">
-          <div class="panel">
-            <h3>Launch</h3>
-            <ul class="panel-list">
-              <li><span class="panel-badge">1</span><span>Hit <strong>Start proxy</strong> and we spin up an isolated transport tailored to your network.</span></li>
-              <li><span class="panel-badge">2</span><span>Automatic handshake scrambles the fingerprint so filters treat it like native traffic.</span></li>
-              <li><span class="panel-badge">3</span><span>Dashboard confirms you are cloaked and ready to browse.</span></li>
-            </ul>
-          </div>
-          <div class="panel">
-            <h3>Stay ahead</h3>
-            <ul class="panel-list">
-              <li><span class="panel-badge">A</span><span>Threat feeds watch for the newest domain and SNI blocks.</span></li>
-              <li><span class="panel-badge">B</span><span>Fallbacks deploy before downtime hits, keeping sessions seamless.</span></li>
-              <li><span class="panel-badge">C</span><span>Activity never logs locally; once you close, the tunnel folds.</span></li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section id="mission" class="section fade-up">
-        <div class="cta-footer">
-          <h2>Freedom-first access for every network.</h2>
-          <p>Thousands rely on O-SShadow Proxy to reclaim the open web from filters, throttles, and surveillance. Join them in one click.</p>
+      <div class="hero">
+        <div class="hero-header">
+          <span class="hero-badge">Instant access</span>
           <a class="cta-primary" href="/a">Start proxy</a>
         </div>
-      </section>
+        <h1 class="hero-title">Open the tunnel and get back online.</h1>
+        <p class="hero-copy">Launch the O-SShadow proxy directly in your browser. One click spins up a clean, private session that keeps you moving past blocks without any installs or logins.</p>
+        <div class="hero-terminal">
+          <span>$ launch proxy --fast</span>
+          <span>&gt; handshake complete // transport cloaked</span>
+          <span>&gt; session routed through adaptive edge</span>
+          <span>&gt; ready when you are — hit start</span>
+        </div>
+      </div>
     </main>
     <footer>
       <div class="footer-inner">
-        <div class="footer-columns">
-          <div>
-            <div class="logo">
-              <span class="logo-mark">OS</span>
-              <span>O-SShadow Proxy</span>
-            </div>
-            <div class="footer-brand">
-              <p>Secure, adaptable proxy infrastructure built for real-world censorship challenges.</p>
-            </div>
-          </div>
-          <div>
-            <div class="footer-title">Access</div>
-            <div class="footer-links">
-              <a href="/a">Start proxy</a>
-              <a href="/apps">Apps</a>
-              <a href="/games">Games</a>
-            </div>
-          </div>
-          <div>
-            <div class="footer-title">Learn</div>
-            <div class="footer-links">
-              <a href="/docs">Documentation</a>
-              <a href="/faq">FAQ</a>
-              <a href="/support">Support</a>
-            </div>
-          </div>
-          <div>
-            <div class="footer-title">Connect</div>
-            <div class="footer-links">
-              <a href="https://github.com/o-sshadow" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://discord.gg/osshadow" target="_blank" rel="noopener noreferrer">Discord</a>
-              <a href="https://o-sshadow.github.io" target="_blank" rel="noopener noreferrer">Main site</a>
-            </div>
-          </div>
-        </div>
-        <div class="footer-meta">
-          <span>&copy; 2025 O-SShadow. Open source and community powered.</span>
-          <span>Need a feature? Reach out on Discord and help shape the roadmap.</span>
-        </div>
+        <span>&copy; 2025 O-SShadow. Community built, freedom focused.</span>
+        <span>Need help? Reach us on Discord or GitHub any time.</span>
       </div>
     </footer>
-    <script>
-      const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
-
-      document.querySelectorAll('.fade-up').forEach(node => observer.observe(node));
-    </script>
   </body>
 </html>

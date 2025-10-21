@@ -1,82 +1,320 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-    />
-    <title>Hol&#173;y U&#173;nb&#173;lo&#173;cker | Ul&#173;travi&#173;olet</title>
-    <link rel="icon" href="assets/ico/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Holy Unblocker | Ultraviolet</title>
+    <link rel="icon" href="assets/ico/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <style>
+      :root {
+        --bg-dark: #05060f;
+        --bg-panel: rgba(11, 13, 27, 0.78);
+        --accent: #64d2ff;
+        --accent-strong: #4c77ff;
+        --text-primary: #f5f7ff;
+        --text-secondary: #c4c8da;
+        --border: rgba(255, 255, 255, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        color: var(--text-primary);
+        background: radial-gradient(circle at 15% 20%, rgba(104, 116, 255, 0.18), transparent 55%),
+          radial-gradient(circle at 85% 25%, rgba(100, 210, 255, 0.22), transparent 55%),
+          radial-gradient(circle at 50% 80%, rgba(135, 88, 255, 0.18), transparent 60%),
+          var(--bg-dark);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 45%),
+          radial-gradient(circle at 60% 20%, rgba(100, 210, 255, 0.12), transparent 55%);
+        pointer-events: none;
+        opacity: 0.8;
+        z-index: -1;
+      }
+
+      #header,
+      #footer {
+        width: 100%;
+      }
+
+      #background-animated {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        opacity: 0.4;
+      }
+
+      #mainbody {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        padding: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 5vw, 4rem) clamp(2.5rem, 6vw, 4rem);
+      }
+
+      .uv-wrapper {
+        width: 100%;
+        max-width: 960px;
+      }
+
+      .uv-card {
+        position: relative;
+        width: 100%;
+        padding: clamp(3rem, 6vw, 4.5rem);
+        background: var(--bg-panel);
+        backdrop-filter: blur(18px);
+        border-radius: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 32px 70px rgba(8, 14, 40, 0.55);
+        display: grid;
+        gap: clamp(1.75rem, 4vw, 2.5rem);
+        overflow: hidden;
+      }
+
+      .uv-card::after {
+        content: '';
+        position: absolute;
+        inset: auto -30% -40% -30%;
+        height: 240px;
+        background: radial-gradient(circle, rgba(80, 125, 255, 0.35), transparent 70%);
+        filter: blur(40px);
+        opacity: 0.65;
+      }
+
+      .uv-card > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .uv-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .uv-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.45rem 0.95rem;
+        border-radius: 999px;
+        border: 1px solid rgba(100, 210, 255, 0.38);
+        color: var(--accent);
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .uv-status {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.9rem;
+      }
+
+      .uv-title {
+        margin: 0;
+        font-size: clamp(2.5rem, 5vw, 3.4rem);
+        line-height: 1.1;
+      }
+
+      .uv-summary {
+        margin: 0;
+        font-size: 1.05rem;
+        line-height: 1.65;
+        color: var(--text-secondary);
+        max-width: 52ch;
+      }
+
+      .uv-form-shell {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      #pr-runprod {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        padding: 0.85rem 1rem;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(5, 6, 15, 0.9);
+        box-shadow: inset 0 0 0 1px rgba(100, 210, 255, 0.08);
+        backdrop-filter: blur(12px);
+      }
+
+      #pr-runprod input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        color: var(--text-primary);
+      }
+
+      #pr-runprod input::placeholder {
+        color: rgba(255, 255, 255, 0.45);
+      }
+
+      #pr-runprod .pr-button {
+        border-radius: 999px;
+        padding: 0.7rem 1.45rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+        color: #05060f;
+        box-shadow: 0 18px 35px rgba(80, 125, 255, 0.45);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      #pr-runprod .pr-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 38px rgba(80, 125, 255, 0.58);
+      }
+
+      .uv-reload-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+        justify-content: space-between;
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+      }
+
+      .uv-reload {
+        border-radius: 999px;
+        padding: 0.65rem 1.6rem;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(18, 22, 42, 0.8);
+        color: var(--text-primary);
+        font-weight: 600;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .uv-reload:hover {
+        border-color: rgba(100, 210, 255, 0.45);
+        transform: translateY(-2px);
+      }
+
+      .uv-details {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+
+      .uv-details strong {
+        display: block;
+        margin-bottom: 0.65rem;
+        font-size: 0.9rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.68);
+      }
+
+      .uv-text {
+        margin: 0;
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .uv-text a {
+        color: var(--accent);
+      }
+
+      @media (max-width: 640px) {
+        #mainbody {
+          padding-top: 2.75rem;
+        }
+
+        .uv-card {
+          padding: 2.5rem;
+        }
+
+        #pr-runprod {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        #pr-runprod .pr-button {
+          width: 100%;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .uv-reload-row {
+          align-items: stretch;
+        }
+
+        .uv-reload {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    </style>
     <script src="/baremux/index.js" defer></script>
     <script src="/network/network.bundle.js" defer></script>
     <script src="/network/network.config.js" defer></script>
     <script src="/assets/js/register-sw.js" defer></script>
-    <script src="
-    https://cdn.jsdelivr.net/npm/tsparticles@3.5/tsparticles.bundle.min.js
-    "></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.5/tsparticles.bundle.min.js"></script>
   </head>
-
   <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <div id="header" class="fullwidth"><!--HEADER--></div>
     <div id="background-animated" class="fullwidth"></div>
     <div id="mainbody" class="fullwidth">
-      <div class="ad" id="ad-left"></div>
-      <div class="ad" id="ad-right"></div>
       <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-      <div class="box box-medium text-center textm">
-        <h1 class="bigtitle">Ultr&#173;aviol&#173;et (Be&#173;ta)</h1>
-        <p>
-          T&#173;he hi&#173;ghly innov&#173;ative p&#173;rox&#173;y of Titan&#173;ium Net&#173;work using technologies
-          such as ser&#173;vice wo&#173;rkers and sophistic&#173;ated rewri&#173;ting techniqu&#173;es with
-          CAPT&#173;CHA suppo&#173;rt.
-        </p>
-        <div id="pr-runprod" class="pr-form">
-          <input
-            type="text"
-            spellcheck="false"
-            autocomplete="off"
-            placeholder="Sea&#173;rch or enter in a targ&#173;et si&#173;te!"
-          />
-          <a href="#" style="display: none" class="pr-button glowbutton pr-go1"
-            >Stea&#173;lth</a
-          >
-          <a href="#" class="pr-button glowbutton pr-go2">Stea&#173;lth</a>
-        </div>
-        <h3>N<wbr>etwo<wbr>rk fi<wbr>x i<wbr>f erro<wbr>rs occ<wbr>urs or bla<wbr>nk pa<wbr>ge:</h3>
-        <button id="reload" class="homebutton glowbutton">Ref<wbr>re<wbr>sh</button>
-        <br><br>
-        <h3>Mo&#173;re Inform&#173;ation:</h3>
-        <div class="font3">
-          <p class="accented">
-            Focu&#173;sing on speed U&#173;V works with YouT&#173;ube, n&#173;ow.g&#173;g, Sp&#173;otify,
-            Cool&#173;Ma&#173;thGames and var&#173;ious .i&#173;o s&#173;ites!
-            <br />CAPT&#173;CHA is suppor&#173;ted! <br />Ultra&#173;violet is hi&#173;ghly recomm&#173;ended
-            due to its sp&#173;eed and enha&#173;nced supp&#173;ort for almost every site making
-            it one of the most advan&#173;ed web pro&#173;xi&#173;es. <br />Sit&#173;es with given
-            support for loggin&#173;g in are Twit&#173;ter, Spoti&#173;fy, Red&#173;dit, and Dis&#173;cord.
-            Yo&#173;uTube a&#173;llows for nearly full func&#173;tional&#173;ity. <br />D&#173;iscord supp&#173;ort
-            on Rammer&#173;head is a KNO&#173;WN bug. It is bei&#173;ng w&#173;orked on.
-          </p>
-          <p class="accented">
-            Co&#173;mmon Er&#173;rors with Solut&#173;ions:
-            <br />- Having issues with CAP&#173;TCHAs? It will take trial and e&#173;rror
-            but try to go slow when it comes to solving them. CAPT&#173;CHA is a giv&#173;en
-            but will take a few attempts. <br />- Try using Class&#173;ic mode or
-            doing 'Relo&#173;ad F&#173;rame'. ("cdn.examp&#173;le.com" canno&#173;t be reached.) <br />-
-            You may not be able to login normally into a number of sites. Ph&#173;one
-            verif&#173;ication on a select number of sites may oc&#173;cur also w&#173;ith no real
-            soluion.
-          </p>
-          <p>
-            Gi&#173;tHub:&nbsp;<a class="bluelink" id="tnlink"
-              ><strong>htt&#173;ps://git&#173;hub.com/titaniu&#173;m&#173;netw&#173;ork-d&#173;ev</strong></a
-            >
-          </p>
+      <div class="uv-wrapper">
+        <div class="uv-card">
+          <div class="uv-card-header">
+            <span class="uv-badge">Ultraviolet beta</span>
+            <span class="uv-status">Stealth transport ready</span>
+          </div>
+          <h1 class="uv-title">Launch a cloaked Ultraviolet session.</h1>
+          <p class="uv-summary">Drop a URL or search term below and the proxy handles the routing, masking, and acceleration automatically.</p>
+          <div class="uv-form-shell">
+            <div id="pr-runprod" class="pr-form">
+              <input
+                type="text"
+                spellcheck="false"
+                autocomplete="off"
+                placeholder="Search or enter a target site"
+              />
+              <a href="#" style="display: none" class="pr-button glowbutton pr-go1">Stealth</a>
+              <a href="#" class="pr-button glowbutton pr-go2">Stealth</a>
+            </div>
+          </div>
+          <div class="uv-reload-row">
+            <span class="uv-reload-note">Network fix if errors appear or a blank page loads.</span>
+            <button id="reload" class="homebutton glowbutton uv-reload">Refresh</button>
+          </div>
+          <div class="uv-details">
+            <div>
+              <strong>Coverage</strong>
+              <p class="uv-text">Optimized for YouTube, now.gg, Spotify, Coolmath, and most .io games. CAPTCHA challenges remain supported.</p>
+            </div>
+            <div>
+              <strong>Source</strong>
+              <p class="uv-text">GitHub: <a class="bluelink" id="tnlink"><strong>https://github.com/titaniumnetwork-dev</strong></a></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
