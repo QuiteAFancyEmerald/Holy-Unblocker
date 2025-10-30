@@ -205,6 +205,8 @@ Resources for self-hosting:
 
 The default PORT for the proxy when started is `http://localhost:8080`. You can change the PORT and other production metrics if needed in `./ecosystem.config.js`. 
 
+The default PORT for Rammerhead is `3000`. You can change this <a href="https://github.com/QuiteAFancyEmerald/Holy-Unblocker/blob/8f6dcfedb71439a43a19cc0a015ee6ca7e29fd11/lib/rammerhead/holy-config.js#L9">here</a>.
+
 Every other localized changes for source randomization, auto-minify, etc. are located in `./config.json`.
 
 **config.json**
