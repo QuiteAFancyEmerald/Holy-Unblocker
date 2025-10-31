@@ -8,9 +8,12 @@ User-agent: *
 Allow: /assets/ico
 
 User-agent: *
-Disallow: /uv
+Disallow: /github
 
 User-agent: *
-Disallow: /github
+Disallow: /scram
+
+User-agent: *
+Disallow: /uv
  
 Sitemap: https://holyunblocker.org/sitemap.xml
