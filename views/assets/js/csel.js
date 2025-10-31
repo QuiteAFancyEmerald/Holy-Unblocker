@@ -141,9 +141,7 @@ const storageId = '{{hu-lts}}-storage',
   defaultTheme = 'dark',
   // Choose the default transport mode, for proxying, based on the browser.
   // Firefox is not supported by epoxy yet, which is why this is implemented.
-  defaultMode = /(?:Chrome|AppleWebKit)\//.test(navigator.userAgent)
-    ? '{{epoxy}}'
-    : '{{libcurl}}',
+  defaultMode = '{{libcurl}}',
   defaultSearch = '{{defaultSearch}}';
 
 // All code in this block is used by menu items that adjust website settings.

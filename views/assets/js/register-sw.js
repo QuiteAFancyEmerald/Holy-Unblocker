@@ -26,9 +26,7 @@
     storageId = '{{hu-lts}}-storage',
     storageObject = () => JSON.parse(localStorage.getItem(storageId)) || {},
     readStorage = (name) => storageObject()[name],
-    defaultMode = /(?:Chrome|AppleWebKit)\//.test(navigator.userAgent)
-      ? '{{epoxy}}'
-      : '{{libcurl}}';
+    defaultMode = '{{libcurl}}';
 
   transports.default = transports[defaultMode];
 
