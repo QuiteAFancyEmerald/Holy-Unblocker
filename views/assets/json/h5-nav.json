@@ -6,12 +6,12 @@
   },
   {
     "name": "Celeste Web",
-    "path": "webleste/",
+    "custom": "webleste",
     "img": "celeste.webp"
   },
   {
     "name": "Terraria Web",
-    "path": "terraria/",
+    "custom": "terraria",
     "img": "terraria.webp"
   },
   {

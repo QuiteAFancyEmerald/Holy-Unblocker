@@ -1,6 +1,6 @@
 import Fastify from 'fastify';
 import { createServer } from 'node:http';
-import wisp from 'wisp-server-node';
+import { server as wisp, logging } from "@mercuryworkshop/wisp-js/server";
 import createRammerhead from '../lib/rammerhead/src/server/index.js';
 import fastifyHelmet from '@fastify/helmet';
 import fastifyStatic from '@fastify/static';
@@ -20,6 +20,21 @@ import { existsSync, unlinkSync } from 'node:fs';
  * at /ecosystem.config.js.
  */
 console.log(serverUrl);
+
+// Wisp Configuration: Refer to the documentation at https://www.npmjs.com/package/@mercuryworkshop/wisp-js
+
+logging.set_level(logging.NONE);
+wisp.options.allow_udp_streams = false;
+wisp.options.allow_loopback_ips = true;
+
+// For security reasons only allow these ports. Any additional regional proxies or default sandboxied Tor ports should be added here.
+wisp.options.port_whitelist = [
+  80,
+  443,
+  9050,
+  7000,
+  7001
+];
 
 // The server will check for the existence of this file when a shutdown is requested.
 // The shutdown script in run-command.js will temporarily produce this file.
@@ -302,6 +317,7 @@ else {
 
 app.listen({ port: serverUrl.port, host: serverUrl.hostname });
 console.log(`Holy Unblocker is listening on port ${serverUrl.port}.`);
+console.log(`When hosting with a reverse proxy please ensure you are using NGINX only.\nCaddy and Apache are not supported and have security risks due to wisp-js and loopbacks.\nPorts are whitelisted and security is maintained with NGINX only.`);
 if (config.disguiseFiles)
   console.log(
     'disguiseFiles is enabled. Visit src/routes.mjs to see the entry point, listed within the pages variable.'

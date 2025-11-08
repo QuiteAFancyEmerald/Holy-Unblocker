@@ -532,11 +532,9 @@ const preparePage = async () => {
 
     rammerhead: asyncUrlHandler(rhUrl),
 
-    searx: urlHandler(location.protocol + `//c.${getDomain()}/engine/`),
+    terraria: urlHandler(location.protocol + '//a' + getDomain()),
 
-    libreddit: urlHandler(location.protocol + '//c.' + getDomain()),
-
-    rnav: urlHandler(location.protocol + '//client.' + getDomain()),
+    celeste: urlHandler(location.protocol + '//b.' + getDomain()),
 
     osu: urlHandler(location.origin + '{{route}}{{/archive/osu}}'),
 

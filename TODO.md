@@ -12,6 +12,8 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Add a "website self-destruct" button to the settings menu
 - [ ] Transport Options Swapping on Frame (Settings Menu doesn't swap)
 - [ ] Implement advanced data URI system
+- [ ] Allow custom Wisp urls from the settings menu (not config side)
+- [x] Swap to wisp-js over wisp-server-node for security and performance - done
 - [x] Fix keyword/descriptor randomisation - done
 - [x] Adapt Wisp protocol replacing bare which is very unsecure - done
 - [x] Improved error handling for proxy errors - done

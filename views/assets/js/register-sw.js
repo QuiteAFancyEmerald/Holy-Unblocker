@@ -15,9 +15,7 @@
     proxyUrl = {
       tor: 'socks5h://localhost:9050',
       eu: 'socks5h://localhost:7000',
-      usWest: 'socks5h://localhost:7001',
-      usEast: 'socks5h://localhost:7002',
-      jp: 'socks5h://localhost:7003',
+      jp: 'socks5h://localhost:7001',
     },
     transports = {
       '{{epoxy}}': '{{route}}{{/epoxy/index.mjs}}',

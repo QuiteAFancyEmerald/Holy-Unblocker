@@ -120,7 +120,7 @@ Replit is no longer free and Heroku has a set policy against web proxies. Try Gi
 
 ## How to Setup
 
-#### It is highly recommended you switch branches via your IDE to a production released branch. Often the master branch contains unstable or WIP changes.
+#### It is highly recommended you switch branches via your IDE to a production released branch. Often the master branch contains unstable or WIP changes.|
 
 #### Example: v6.x_production instead of master
 
@@ -128,7 +128,9 @@ Replit is no longer free and Heroku has a set policy against web proxies. Try Gi
 
 Either use the button above to deploy to the deployment options above or type the commands below on a dedicated server
 
-Please ensure you are using Node 20.x please:
+**THIS PROJECT REQUIRES NGINX NOT CADDY.** 
+
+Please ensure you are using Node 20.x as well:
 
 ```bash
 git clone https://github.com/QuiteAFancyEmerald/Holy-Unblocker.git
@@ -157,10 +159,24 @@ npm run test
 
 This website is hosted locally with Scramjet, Ultraviolet (Wisp, Bare-Mux, EpoxyTransport, CurlTransport) and Rammerhead built-in.
 
-You will need Node.js 20.x and Git installed; below is an example for Debian/Ubuntu setup.
+#### You will need Node.js 20.x and Git installed; below is an example for Debian/Ubuntu setup.
+
+### For security reasons when hosting with a reverse proxy PLEASE use NGINX not Caddy. This is due to wisp-js using loopbacks.
 
 <details>
 
+For simplicity sake you can join the TN discord at discord.gg/unblock and request for mirror site links (that are restocked and unblocked).
+
+### Hosting
+
+If you wish to self-host however you will first need a VPS or hosting provider: 
+https://docs.titaniumnetwork.org/guides/vps-hosting/
+https://github.com/QuiteAFancyEmerald/Holy-Unblocker#deploy-holy-unblocker
+https://docs.titaniumnetwork.org/guides/dns-setup/
+
+### Dependencies
+
+You will then need to setup git, nginx (or caddy) and Node.js. Here is an example for Ubuntu LTS:
 ```
 sudo apt update
 sudo apt upgrade
@@ -173,24 +189,37 @@ export NVM_DIR="$HOME/.nvm"
 
 nvm install 20
 nvm use 20
+```
+https://github.com/nvm-sh/nvm
+https://docs.titaniumnetwork.org/guides/nginx/
 
+### Tor Support (Optional)
+https://github.com/QuiteAFancyEmerald/Holy-Unblocker#toronionsocks5-routing-setup
+
+### Configurating Holy Unblocker
+Most important options are production along with the obfuscation and DOM masquerading techniques. 
+
+From there just configure as needed: https://github.com/QuiteAFancyEmerald/Holy-Unblocker#configuration
+
+### Cloning and Running Holy Unblocker
+
+Then run the respective process; if you have production set to true in the configuration pm2 will be automatically enabled with our own workers/cache system. 
+
+```
 git clone https://github.com/QuiteAFancyEmerald/Holy-Unblocker.git
 cd Holy-Unblocker
 
-npm run fresh-install
+npm run fresh-start
+```
 
-# Then edit config.json to change production to true to automatically use pm2
-
-npm start
-
-# Then setup a reverse proxy using NGINX; use the link below for the NGINX guide. You can edit the file in /etc/nginx
-
+Then of course if you used NGINX or caddy please restart/reload it
+```
 sudo systemctl restart nginx
-
-# For Tor look it up if you need it setup
+sudo systemctl restart tor
 ```
 
 </details>
+
 
 Resources for self-hosting:
 
@@ -218,7 +247,7 @@ Every other localized changes for source randomization, auto-minify, etc. are lo
 
 #### Tor/Onion/SOCKS5 Routing Setup
 
-You need to setup Tor (no GUI need/GUI is alright) in order for the Onion Routing setting to work!
+You need to setup Tor (no GUI need/GUI is alright. With GUI replace port 9050 with 9150) in order for the Onion Routing setting to work!
 
 Simply host Tor using this guide: https://tb-manual.torproject.org/installation/
 
@@ -232,9 +261,7 @@ If you wish to use a custom HTTP/HTTPS/SOCKS5 proxy to route all traffic through
   proxyUrl = {
     tor: 'socks5h://localhost:9050',
     eu: 'socks5h://localhost:7000',
-    usWest: 'socks5h://localhost:7001',
-    usEast: 'socks5h://localhost:7002',
-    jp: 'socks5h://localhost:7003',
+    jp: 'socks5h://localhost:7001',
   }
 ```
 
