@@ -170,9 +170,10 @@ For simplicity sake you can join the TN discord at discord.gg/unblock and reques
 ### Hosting
 
 If you wish to self-host however you will first need a VPS or hosting provider: 
-https://docs.titaniumnetwork.org/guides/vps-hosting/
-https://github.com/QuiteAFancyEmerald/Holy-Unblocker#deploy-holy-unblocker
-https://docs.titaniumnetwork.org/guides/dns-setup/
+
+- https://docs.titaniumnetwork.org/guides/vps-hosting/
+- https://github.com/QuiteAFancyEmerald/Holy-Unblocker#deploy-holy-unblocker
+- https://docs.titaniumnetwork.org/guides/dns-setup/
 
 ### Dependencies
 
