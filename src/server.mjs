@@ -27,7 +27,7 @@ logging.set_level(logging.NONE);
 wisp.options.allow_udp_streams = false;
 wisp.options.allow_loopback_ips = true;
 
-// For security reasons only allow these ports. Any additional regional proxies or default sandboxied Tor ports should be added here.
+// For security reasons only allow these ports. Any additional regional proxies or default sandboxed Tor ports should be added here.
 wisp.options.port_whitelist = [
   80,
   443,

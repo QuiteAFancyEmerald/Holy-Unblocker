@@ -532,9 +532,9 @@ const preparePage = async () => {
 
     rammerhead: asyncUrlHandler(rhUrl),
 
-    terraria: urlHandler(location.protocol + '//a' + getDomain()),
+    terraria: urlHandler(location.protocol + '//a.' + getDomain()),
 
-    celeste: urlHandler(location.protocol + '//b.' + getDomain()),
+    webleste: urlHandler(location.protocol + '//b.' + getDomain()),
 
     osu: urlHandler(location.origin + '{{route}}{{/archive/osu}}'),
 
