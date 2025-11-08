@@ -159,10 +159,10 @@ npm run test
 
 This website is hosted locally with Scramjet, Ultraviolet (Wisp, Bare-Mux, EpoxyTransport, CurlTransport) and Rammerhead built-in.
 
-#### You will need Node.js 20.x and Git installed; below is an example for Debian/Ubuntu setup.
-
 ### For security reasons when hosting with a reverse proxy PLEASE use NGINX not Caddy. This is due to wisp-js using loopbacks.
 
+#### Detailed Setup (Ubuntu Example)
+You will need Node.js 20.x and Git installed; below is an example for Debian/Ubuntu setup.
 <details>
 
 For simplicity sake you can join the TN discord at discord.gg/unblock and request for mirror site links (that are restocked and unblocked).
