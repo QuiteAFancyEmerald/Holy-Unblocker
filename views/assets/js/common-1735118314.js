@@ -946,7 +946,7 @@ const preparePage = async () => {
                 : () => {},
               // h5-nav
               item.custom && goProx[item.custom]
-                ? () => goProx[item.custom]('stealth')
+                ? () => goProx[item.custom]('window')
                 : () => goFrame('{{route}}{{/archive/g/}}' + item.path),
             ];
 
