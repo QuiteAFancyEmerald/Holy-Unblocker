@@ -1,4 +1,4 @@
-import Fastify, { fastify } from 'fastify';
+import Fastify from 'fastify';
 import fastifyExpress from '@fastify/express'
 import express from 'express'
 import { createServer } from 'node:http';
@@ -110,7 +110,7 @@ const app = Fastify({
 });
 
 // use a 'bridge' of sorts between fastify and express so venus can be used
-fastify.register(fastifyExpress, {}, (err) => {
+app.register(fastifyExpress, {}, (err) => {
   if (err) throw err
 
   const expressApp = express()
