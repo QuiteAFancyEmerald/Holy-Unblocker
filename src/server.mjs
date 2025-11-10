@@ -1,4 +1,6 @@
-import Fastify from 'fastify';
+import Fastify, { fastify } from 'fastify';
+import fastifyExpress from '@fastify/express'
+import express from 'express'
 import { createServer } from 'node:http';
 import { server as wisp, logging } from "@mercuryworkshop/wisp-js/server";
 import createRammerhead from '../lib/rammerhead/src/server/index.js';
@@ -14,6 +16,7 @@ import {
 import { tryReadFile, preloaded404 } from './templates.mjs';
 import { fileURLToPath } from 'node:url';
 import { existsSync, unlinkSync } from 'node:fs';
+import venus from "./venus.bundle.js"
 
 /* Record the server's location as a URL object, including its host and port.
  * The host can be modified at /src/config.json, whereas the ports can be modified
@@ -105,6 +108,18 @@ const app = Fastify({
   logger: false,
   serverFactory: serverFactory,
 });
+
+// use a 'bridge' of sorts between fastify and express so venus can be used
+fastify.register(fastifyExpress, {}, (err) => {
+  if (err) throw err
+
+  const expressApp = express()
+
+  venus(expressApp) // create a tarpit that should trap all scrapers
+
+  fastify.use(expressApp)
+})
+
 
 // Apply Helmet middleware for security.
 app.register(fastifyHelmet, {

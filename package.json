@@ -31,6 +31,7 @@
   "author": "Titanium Network",
   "license": "GNU AFFERO",
   "dependencies": {
+    "@fastify/express": "^4.0.2",
     "@fastify/helmet": "^13.0.2",
     "@fastify/static": "^8.3.0",
     "@mercuryworkshop/bare-mux": "^2.1.7",
@@ -41,6 +42,7 @@
     "@titaniumnetwork-dev/ultraviolet": "^3.2.10",
     "axios": "^1.13.2",
     "chii": "^1.15.5",
+    "express": "^5.1.0",
     "fastify": "^5.6.1",
     "pm2": "^6.0.13",
     "puppeteer": "^24.29.1",
