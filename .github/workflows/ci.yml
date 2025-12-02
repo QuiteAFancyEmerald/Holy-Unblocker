@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: '20.8.0'
 
+      - name: Install Wisp Python
+        run: python3 -m pip install --upgrade pip wisp-python
+
       - name: Install dependencies
         run: npm run fresh-install
 

@@ -4,7 +4,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 
 - [ ] Fix GeForce Now support
 - [ ] Update to use scramjetFrame instead of our own window handling
-- [ ] Implement wisp python to the project instead of the unreliable wisp-server-node
+- [x] Implement wisp python to the project instead of the unreliable wisp-server-node
 - [ ] Add booksmark menu (source wise already present pretty much)
 - [ ] Add Chii + ensuring users can access devtools while browsing - partial
 - [ ] Setting to open multiple stealth frames; basically about:blank but using our system. Pops out in another tab
