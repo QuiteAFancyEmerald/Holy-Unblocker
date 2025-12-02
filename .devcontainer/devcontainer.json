@@ -4,5 +4,5 @@
   "features": {
     "node": "20"
   },
-  "postCreateCommand": "npm install"
+  "postCreateCommand": "npm install && (python3 -m pip install --no-cache-dir wisp-python || pip install --no-cache-dir wisp-python || true)"
 }
