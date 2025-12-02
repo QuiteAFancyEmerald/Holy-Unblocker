@@ -1,6 +1,7 @@
 import Fastify from 'fastify';
 import { createServer } from 'node:http';
-import { server as wisp, logging } from "@mercuryworkshop/wisp-js/server";
+import { connect } from 'node:net';
+import { spawn, spawnSync } from 'node:child_process';
 import createRammerhead from '../lib/rammerhead/src/server/index.js';
 import fastifyHelmet from '@fastify/helmet';
 import fastifyStatic from '@fastify/static';
@@ -21,20 +22,155 @@ import { existsSync, unlinkSync } from 'node:fs';
  */
 console.log(serverUrl);
 
-// Wisp Configuration: Refer to the documentation at https://www.npmjs.com/package/@mercuryworkshop/wisp-js
+/* Wisp (Python) configuration.
+ * A managed wisp-server-python instance is started locally and upgrade requests
+ * to the Wisp route are proxied to it. Disable autostart or point host/port to
+ * an external instance via config.json > wispPython.
+ */
+const wispDefaults = Object.freeze({
+    enabled: true,
+    autostart: true,
+    host: '127.0.0.1',
+    port: 8070,
+    allowLoopback: true,
+    allowPrivate: true,
+    blockUdp: false,
+    logLevel: 'warning',
+    pythonPath: '',
+    proxy: '',
+  }),
+  wispConfig = Object.freeze({
+    ...wispDefaults,
+    ...(config.wispPython || {}),
+  }),
+  wispPath = getAltPrefix('wisp', serverUrl.pathname),
+  formatHeaders = (req) => {
+    let headerStr = '';
+    for (let i = 0; i < req.rawHeaders.length; i += 2)
+      headerStr += `${req.rawHeaders[i]}: ${req.rawHeaders[i + 1]}\r\n`;
+    return headerStr;
+  },
+  proxyWispUpgrade = (req, socket, head) => {
+    if (!wispConfig.enabled) {
+      socket.write(
+        'HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nContent-Length: 16\r\n\r\nWisp unavailable'
+      );
+      return socket.destroy();
+    }
 
-logging.set_level(logging.NONE);
-wisp.options.allow_udp_streams = false;
-wisp.options.allow_loopback_ips = true;
+    const upstream = connect(
+      { host: wispConfig.host, port: wispConfig.port },
+      () => {
+        upstream.write(
+          `${req.method} ${req.url} HTTP/${req.httpVersion}\r\n${formatHeaders(req)}\r\n`
+        );
+        if (head?.length) upstream.write(head);
+        socket.pipe(upstream);
+        upstream.pipe(socket);
+      }
+    );
 
-// For security reasons only allow these ports. Any additional regional proxies or default sandboxed Tor ports should be added here.
-wisp.options.port_whitelist = [
-  80,
-  443,
-  9050,
-  7000,
-  7001
-];
+    const handleProxyError = (err) => {
+      if (!socket.destroyed) {
+        socket.write(
+          'HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nContent-Length: 11\r\n\r\nBad Gateway'
+        );
+        socket.destroy();
+      }
+      if (!upstream.destroyed) upstream.destroy();
+      if (err?.message) console.error('[Wisp Python] proxy error:', err.message);
+    };
+
+    upstream.on('error', handleProxyError);
+    socket.on('error', handleProxyError);
+    upstream.on('close', () => !socket.destroyed && socket.destroy());
+    socket.on('close', () => !upstream.destroyed && upstream.destroy());
+  },
+  resolvePython = () => {
+    const candidates = [
+      wispConfig.pythonPath,
+      process.env.WISP_PYTHON,
+      process.platform === 'win32' ? 'py' : 'python3',
+      'python',
+    ].filter(Boolean);
+
+    for (const cmd of candidates) {
+      const probe = spawnSync(cmd, ['--version'], { stdio: 'ignore' });
+      if (!probe.error) return cmd;
+    }
+    return null;
+  },
+  waitForWispPort = (host, port, timeout = 2000) =>
+    new Promise((resolve) => {
+      const timer = setTimeout(() => resolve(false), timeout);
+      const socket = connect({ host, port }, () => {
+        clearTimeout(timer);
+        socket.destroy();
+        resolve(true);
+      });
+      socket.on('error', () => {
+        clearTimeout(timer);
+        resolve(false);
+      });
+    });
+
+let wispProcess;
+
+const startWispPython = async () => {
+  if (!wispConfig.enabled || wispConfig.autostart === false) return;
+  if (await waitForWispPort(wispConfig.host, wispConfig.port)) {
+    console.log(
+      `[Wisp Python] Found an existing instance on ${wispConfig.host}:${wispConfig.port}; not starting a managed one.`
+    );
+    return;
+  }
+
+  const pythonBin = resolvePython();
+  if (!pythonBin) {
+    console.warn(
+      '[Wisp Python] No Python interpreter found. Wisp traffic will fail until one is available.'
+    );
+    return;
+  }
+
+  const args = [
+    '-m',
+    'wisp.server',
+    '--host',
+    wispConfig.host,
+    '--port',
+    String(wispConfig.port),
+  ];
+  if (wispConfig.allowLoopback) args.push('--allow-loopback');
+  if (wispConfig.allowPrivate) args.push('--allow-private');
+  if (wispConfig.blockUdp) args.push('--block-udp');
+  if (wispConfig.proxy) args.push('--proxy', wispConfig.proxy);
+  if (wispConfig.logLevel) args.push('--log-level', wispConfig.logLevel);
+
+  console.log(
+    `[Wisp Python] Starting managed wisp-server-python via ${pythonBin} ${args.join(' ')}`
+  );
+
+  wispProcess = spawn(pythonBin, args, { stdio: 'inherit' });
+  wispProcess.once('exit', (code, signal) => {
+    console.warn(
+      `[Wisp Python] Process exited with code ${code ?? 'null'}${signal ? ` (signal ${signal})` : ''}`
+    );
+  });
+};
+
+const stopWispPython = () => {
+  if (wispProcess && !wispProcess.killed) wispProcess.kill();
+};
+
+await startWispPython();
+process.on('exit', stopWispPython);
+['SIGINT', 'SIGTERM'].forEach((sig) =>
+  process.on(sig, () => {
+    stopWispPython();
+    process.exit();
+  })
+);
 
 // The server will check for the existence of this file when a shutdown is requested.
 // The shutdown script in run-command.js will temporarily produce this file.
@@ -91,8 +227,7 @@ const serverFactory = (handler) => {
     })
     .on('upgrade', (req, socket, head) => {
       if (shouldRouteRh(req)) routeRhUpgrade(req, socket, head);
-      else if (req.url.endsWith(getAltPrefix('wisp', serverUrl.pathname)))
-        wisp.routeRequest(req, socket, head);
+      else if (req.url.endsWith(wispPath)) proxyWispUpgrade(req, socket, head);
     });
 };
 
@@ -317,7 +452,9 @@ else {
 
 app.listen({ port: serverUrl.port, host: serverUrl.hostname });
 console.log(`Holy Unblocker is listening on port ${serverUrl.port}.`);
-console.log(`When hosting with a reverse proxy please ensure you are using NGINX only.\nCaddy and Apache are not supported and have security risks due to wisp-js and loopbacks.\nPorts are whitelisted and security is maintained with NGINX only.`);
+console.log(
+  `Wisp (Python) is proxied at ${wispPath} -> ${wispConfig.host}:${wispConfig.port}. With a reverse proxy, route that path internally and keep the Python port firewalled from the public internet.`
+);
 if (config.disguiseFiles)
   console.log(
     'disguiseFiles is enabled. Visit src/routes.mjs to see the entry point, listed within the pages variable.'
