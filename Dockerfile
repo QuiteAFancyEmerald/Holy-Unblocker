@@ -8,7 +8,8 @@ LABEL org.opencontainers.image.title="Holy Unblocker LTS" \
       org.opencontainers.image.authors="Holy Unblocker Team" \
       org.opencontainers.image.source="https://github.com/QuiteAFancyEmerald/Holy-Unblocker/"
 
-RUN apk add --no-cache tor bash
+RUN apk add --no-cache tor bash python3 py3-pip && \
+    pip3 install --no-cache-dir wisp-python
 
 COPY . .
 
