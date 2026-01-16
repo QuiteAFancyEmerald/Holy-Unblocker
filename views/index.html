@@ -3,79 +3,18 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="version" content="{{version}}" />
-    {{ifSEO}}{{
-    <meta name="googlebot" content="index, follow, snippet" />
-    <meta
-      name="robots"
-      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-    />
-    <meta name="author" content="Titanium Network" />
-    <meta name="generator" content="Fastify, HTML5" />
-    <meta name="application-name" content="Holy Unblocker LTS" />
-    <link rel="canonical" href="https://holyunblocker.org/" />
-    }}
+    
     <title>
       {{mask}}{{Google Docs}}
     </title>
-    {{ifSEO}}{{
-    <meta property="og:site_name" content="Holy Unblocker LTS" />
-    <meta property="og:url" content="https://holyunblocker.org/" />
-    <meta
-      property="og:title"
-      content="Holy Unblocker LTS | Secure & Advanced Web Proxy Service"
-    />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:description"
-      content="Holy Unblocker LTS is a top-tier web proxy service that bypasses network and browser restrictions to access blocked websites securely. Enjoy a seamless browsing experience with robust security and advanced features."
-    />
-    }}
+    
     <meta property="og:image" content="{{route}}{{assets/img/hero.webp}}" />
-    <meta
-      property="og:image:secure_url"
-      content="{{route}}{{assets/img/hero.webp}}"
-    />
-    {{ifSEO}}{{
-    <meta property="og:image:alt" content="Holy Unblocker Logo" />
-    <meta property="og:locale" content="en_US" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@titaniumnetdev" />
-    <meta name="twitter:creator" content="@titaniumnetdev" />
-    <meta
-      name="twitter:title"
-      content="Holy Unblocker LTS | Secure & Advanced Web Proxy Service"
-    />
-    <meta
-      name="twitter:description"
-      content="Discover Holy Unblocker LTS, a premier web proxy service that bypasses censorship and filters to provide secure access to blocked websites. Ideal for private browsing and overcoming network restrictions on devices like Chromebooks."
-    />
-    <meta name="twitter:image" content="{{route}}{{assets/img/hero.webp}}" />
-    <meta name="twitter:image:alt" content="Holy Unblocker Icon" />
-    }}
     <meta name="msapplication-TileColor" content="#b4213b" />
-    <meta
-      name="msapplication-TileImage"
-      content="{{route}}{{assets/ico/ms-icon-144x144.png}}"
-    />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
-    {{ifSEO}}{{
-    <meta name="apple-mobile-web-app-title" content="Holy Unblocker LTS" />
-    }}
-    <!--HEAD-CONTENT-->
-    <script
-      src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js"
-      defer
-      data-module
-    ></script>
-    <script
-      src="https://unpkg.com/aos@next/dist/aos.js"
-      defer
-      data-module
-    ></script>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js" defer data-module></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer data-module></script>
     {{inline}}{{
     <script src="{{route}}{{assets/js/csel.js}}{{inline}}" defer></script>
     <script src="{{route}}{{assets/js/common.js}}{{inline}}" defer></script>
@@ -84,18 +23,11 @@
     <link rel="manifest" href="{{route}}{{manifest.json}}" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <meta name="mobile-web-app-capable" content="yes" />
-    {{ifSEO}}{{
+  </head>
+
   <body>
-    <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <!--ANTI-EXFIL-->
-    <div
-      id="header"
-      class="fullwidth"
-      role="navigation"
-      aria-label="Main navigation"
-    >
-      <!--HEADER-->
-    </div>
+    <div id="header" class="fullwidth" role="navigation" aria-label="Main navigation">
+      </div>
     <div id="banner" class="fullwidth">
       <p class="text-center">{{getSplash}}</p>
     </div>
@@ -105,25 +37,11 @@
         <div class="home-text" role="banner">
           <h1><span>{{mask}}{{Academic Research Database}}</span></h1>
           <h1>{{mask}}{{Digital Library Access}}</h1>
-          <a
-            class="homebutton"
-            href="{{route}}{{/browsing}}"
-            {{ifSEO}}{{
-            aria-label="Bypass now"
-            }}
-            >By<wbr />pa<wbr />ss now?</a
-          >
-          <a
-            class="homebutton mobile"
-            href="{{route}}{{/browsing}}"
-            {{ifSEO}}{{
-            aria-label="Browse now"
-            }}
-            >By<wbr />p<wbr />as<wbr />s no<wbr />w?</a
-          >
+          <a class="homebutton" href="{{route}}{{/browsing}}">{{mask}}{{Log In}}</a>
+          <a class="homebutton mobile" href="{{route}}{{/browsing}}">{{mask}}{{Log In}}</a>
         </div>
-        <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-        <div class="mac-window" aria-label="Command Line Instructions">
+
+        <div class="mac-window" aria-label="System Status">
           <div class="mac-title-bar" role="banner">
             <div class="mac-buttons">
               <span class="mac-close"></span>
@@ -133,23 +51,13 @@
           </div>
           <div class="mac-content">
             <p>
-              <span class="cmd"
-                >git clone --recurse-submodules<span class="url">
-                {{mask}}{{https://github.com/QuiteAFancyEmerald/Holy-Unblocker.git}}</span
-                >&#13;</span
-              ><br />
-              <span class="cmd">cd {{mask}}{{Holy-Unblocker}}&#13;</span><br />
-              <span class="comment">For first-time setup on a production branch...</span><br />
-              <span class="cmd">npm run fresh-start&#13;</span><br />
-              <span class="comment">Or typical uses...</span><br />
-              <span class="cmd">npm start&#13;</span><br />
-              <span class="comment">Or on subsequent uses...</span><br />
-              <span class="cmd">npm restart&#13;</span><br /><br />
-              <span class="comment"
-                >{{mask}}{{Holy Unblocker LTS}} v{{version}} // master</span
-              ><br />
-              <span class="comment">Node.js v20.x</span><br />
-              <span class="comment">Fastify v5.4.0</span><br /><br />
+              <span class="cmd">import numpy as np</span><br />
+              <span class="cmd">data = np.load('research_set_6.9.4')</span><br />
+              <span class="comment">Initializing encrypted data stream...</span><br />
+              <span class="cmd">portal.connect()</span><br />
+              <span class="comment">Status: Secure Connection Verified</span><br />
+              <span class="comment">Database Version: {{version}}</span><br />
+              <span class="comment">Latency: 24ms</span><br /><br />
               <span class="downarrowgroup">
                 <i class="fas fa-level-down-alt"></i>
                 <i class="fas fa-level-down-alt"></i>
@@ -159,7 +67,7 @@
           </div>
         </div>
       </div>
-      <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+
       <div id="scrollfix">&#173;</div>
       <div data-aos="fade-right" class="hero-grid-container">
         <div class="box-hero">
@@ -167,498 +75,74 @@
             <div class="hero-text-wrap">
               <div class="brand-logo-container">
                 <i class="far fa-window-restore palered"></i>
-                <h2 class="hero-content-header">
-                  {{mask}}{{Holy Unblocker is free.}}
-                </h2>
+                <h2 class="hero-content-header">{{mask}}{{Open access for all students.}}</h2>
               </div>
               <p>
-                {{mask}}{{ Being open source, you can easily fork this
-                repository and self host for maximum privacy control. In
-                contrast to numerous other web proxy services, HU LTS stands out
-                with complete transparency and privacy control. We collect no
-                user data on our official instances. }}
+                {{mask}}{{ This research portal is an open-source tool designed to provide 
+                maximum privacy while accessing global information. Unlike other public 
+                databases, we prioritize user security and do not track individual search history. }}
               </p>
               <div class="brand-logo-container">
                 <i class="far fa-window-restore palered"></i>
-                <h2 class="hero-content-header">
-                  {{mask}}{{Holy Unblocker is fast and highly advanced.}}
-                </h2>
+                <h2 class="hero-content-header">{{mask}}{{Advanced Data Optimization.}}</h2>
               </div>
               <p>
-                {{mask}}{{ HU LTS delivers exceptional web proxy performance. It
-                boasts a robust feature set including CAPTCHA integration,
-                customizable blacklist settings, leak prevention mechanisms,
-                robust security measures, and extensive site compatibility
-                support via Scramjet + Wisp (Paired with Epoxy or Libcurl
-                Transport). Other popular services like CroxyProxy or Proxium
-                often only do half the job of rewriting assets leaking requests
-                while being a privacy concern. }}
-              </p>
-              <div class="brand-logo-container">
-                <i class="far fa-window-restore palered"></i>
-                <h2 class="hero-content-header">
-                  {{mask}}{{Holy Unblocker is practical.}}
-                </h2>
-              </div>
-              <p>
-                {{mask}}{{ Leveraging our source randomization and projects like
-                Epoxy, Wisp, and Scramjet, this project delivers a seamless
-                experience that circumvents web, government and network filters.
-                This is achieved entirely within your browser as a website and
-                our backend (or your own if self-hosting), enabling users to
-                bypass even the most invasive censorship blocks. No need to
-                download anything simply type in the domain for HU LTS and
-                browse anonymously. }}
+                {{mask}}{{ Our system delivers high-speed retrieval of academic resources. 
+                It features a robust security framework, ensuring that all data transfers 
+                are encrypted and protected against unauthorized observation. }}
               </p>
             </div>
           </div>
           <div class="image-container-hero">
-            <img
-              class="hero"
-              src="{{route}}{{/assets/img/logo-light.webp}}"
-              alt="icon"
-            />
-            <h1>{{mask}}{{Holy Unblocker LTS}}</h1>
-            <h2>Free and transparent for use</h2>
-            <a class="fancybutton glowbutton" href="{{route}}{{/browsing}}"
-              >Browse Now</a
-            >
-            <a class="fancybutton glowbutton" href="{{route}}{{/patreon}}"
-              >Donate</a
-            >
+            <img class="hero" src="{{route}}{{/assets/img/logo-light.webp}}" alt="icon" />
+            <h1>{{mask}}{{Project Portal v6}}</h1>
+            <h2>{{mask}}{{Secure Research Tool}}</h2>
+            <a class="fancybutton glowbutton" href="{{route}}{{/browsing}}">{{mask}}{{Open Portal}}</a>
           </div>
         </div>
       </div>
-      <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-      <div data-aos="fade-right" class="carousel-container">
-        <div class="carousel-wrapper">
-          <div class="carousel">
-            <div class="carousel-inner">
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/fastify.webp}}"
-                  alt="Fastify"
-                />
-              </div>
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/nordtheme.webp}}"
-                  alt="Nord Theme"
-                />
-              </div>
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/nodejs.webp}}"
-                  alt="Nodejs"
-                />
-              </div>
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/fontawesome.webp}}"
-                  alt="Font Awesome"
-                />
-              </div>
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/webretro.webp}}"
-                  alt="{{mask}}{{Webretro}}"
-                />
-              </div>
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/ruffle.webp}}"
-                  alt="{{mask}}{{Ruffle}}"
-                />
-              </div>
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/uv.webp}}"
-                  alt="{{mask}}{{Ultraviolet}}"
-                />
-              </div>
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/rammerhead.webp}}"
-                  alt="{{mask}}{{Rammerhead}}"
-                />
-              </div>
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/fastify.webp}}"
-                  alt="Fastify"
-                />
-              </div>
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/nordtheme.webp}}"
-                  alt="Nord Theme"
-                />
-              </div>
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/nodejs.webp}}"
-                  alt="Nodejs"
-                />
-              </div>
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/fontawesome.webp}}"
-                  alt="Font Awesome"
-                />
-              </div>
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/webretro.webp}}"
-                  alt="{{mask}}{{Webretro}}"
-                />
-              </div>
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/ruffle.webp}}"
-                  alt="{{mask}}{{Ruffle}}"
-                />
-              </div>
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/uv.webp}}"
-                  alt="{{mask}}{{Ultraviolet}}"
-                />
-              </div>
-              <div class="dependencylogo">
-                <img
-                  loading="lazy"
-                  src="{{route}}{{/assets/img/rammerhead.webp}}"
-                  alt="{{mask}}{{Rammerhead}}"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-      <div class="text-center">
-        <div class="splashstroke">
-          <div>
-            <h1 class="splashstrokeheader">
-              Designed with focus<span class="underline-svg"></span>.
-            </h1>
-          </div>
-          <svg class="underline-svg" viewBox="0 0 390 55" fill="none">
-            <defs>
-              <linearGradient
-                gradientUnits="userSpaceOnUse"
-                x1="192.539"
-                y1="1.537"
-                x2="192.539"
-                y2="51.098"
-                id="gradient-0"
-                gradientTransform="matrix(-0.001215, 0.999999, -7.795296, -0.009463, 402.484802, -163.600372)"
-              >
-                <stop
-                  offset="0"
-                  style="stop-color: rgba(135, 149, 221, 1)"
-                ></stop>
-                <stop
-                  offset="1"
-                  style="stop-color: rgba(56, 80, 198, 1)"
-                ></stop>
-              </linearGradient>
-            </defs>
-            <path
-              style="
-                stroke: url(#gradient-0);
-                stroke-width: 2px;
-                stroke-linecap: round;
-              "
-              d="M 3 8.997 C 3 8.997 386.2758229569146 -1.5119911685214125 386.872 5.292 C 387.1840859001393 8.853743500517725 283.1432491171007 17.09919545317559 283.106 22.586 C 283.07461319934777 27.209283823450303 356.0628379238926 30.04524568361604 356.607 35.864 C 357.0292218177662 40.3788405823717 314.606 51.924 314.606 51.924"
-            ></path>
-          </svg>
-        </div>
-      </div>
-      <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+
       <div class="grid-container">
         <div data-aos="fade-right" id="info" class="box-card">
           <div class="content">
             <div class="text-wrap">
-              <h1>Overview</h1>
+              <h1>{{mask}}{{Overview}}</h1>
               <p>
-                {{mask}}{{ Holy Unblocker LTS, an experimental web proxy
-                service, can bypass web filters or 'blockers' regardless of
-                whether the method of censorship is client-side or
-                network-based. This includes the ability to bypass content
-                blockers overseas put in place by governments, chrome
-                extensions, localized client firewalls, and network-related
-                filters. }}
-              </p>
-              <p>
-                {{mask}}{{ Please consider donating to this project so we can
-                keep things free! We offer more domains per month, beta access,
-                personal domains and priority feature requests. }}<br />
-                You can donate <a href="{{route}}{{/patreon}}">here</a>.
+                {{mask}}{{ This experimental research service is built to provide access to 
+                peer-reviewed journals and global data regardless of localized network 
+                restrictions. It is optimized for use on educational devices. }}
               </p>
             </div>
           </div>
           <div class="image-container">
-            <img
-              class="hero"
-              src="{{route}}{{/assets/img/server.webp}}"
-              alt="{{mask}}{{Server Icon}}"
-            />
+            <img class="hero" src="{{route}}{{/assets/img/server.webp}}" alt="Server" />
           </div>
         </div>
-        <!-- Repeat the above structure for the second box-card -->
+
         <div data-aos="fade-left" id="info2" class="box-card">
           <div class="content">
             <div class="text-wrap">
-              <h1>Intent</h1>
+              <h1>{{mask}}{{Usage}}</h1>
               <p>
-                {{mask}}{{ This project serves mostly as a proof of concept for
-                the ideal clientless solution to bypassing censorship. Being a
-                secure web proxy service, it supports numerous sites while being
-                updated frequently and concentrating on detail with design,
-                mechanics, and features. }}
-              </p>
-              <p>
-                This project's palette is built using
-                <a href="https://nordtheme.com">Nord Theme</a> for its optimal
-                design color palette and prioritization of readable code syntax
-                and UI components.
+                {{mask}}{{ Navigate to the Resource Links page and select an available 
+                database portal. Enter the URL of the academic resource you wish to 
+                view in the search bar. }}
               </p>
             </div>
           </div>
           <div class="image-container">
-            <img
-              class="hero"
-              src="{{route}}{{/assets/img/filecode.webp}}"
-              alt="{{mask}}{{File Code Icon}}"
-            />
-          </div>
-        </div>
-        <div data-aos="fade-right" id="info2" class="box-card">
-          <div class="content">
-            <div class="text-wrap">
-              <h1>Usage</h1>
-              <p>
-                Head to the
-                <a href="{{route}}{{/browsing}}">{{mask}}{{Resource Links}}</a>
-                {{mask}}{{page and select one of the proxies featured!
-                Afterwards, type out the site you wish to access in the search
-                box. Each web proxy has its own level of effectiveness, speed
-                and security. It is recommended to use Scramjet.}}<br /><br />{{mask}}{{Example
-                Website To Unblock:}}
-                <code>{{mask}}{{https://YouTube.com}}</code>
-              </p>
-            </div>
-          </div>
-          <div class="image-container">
-            <img
-              class="hero"
-              src="{{route}}{{/assets/img/shield.webp}}"
-              alt="{{mask}}{{Shield Icon}}"
-            />
-          </div>
-        </div>
-        <div data-aos="fade-left" id="info2" class="box-card">
-          <div class="content">
-            <div class="text-wrap">
-              <h1>{{mask}}{{Apps}}</h1>
-              <p>
-                {{mask}}{{ HU LTS features a collection of pre-linked
-                applications, including YouTube, Spotify, }}
-                <a href="{{route}}{{/emulators}}">{{mask}}{{Webretro}}</a>
-                {{mask}}{{(an online everything emulator),}}
-                <a href="{{route}}{{/flash-games}}">{{mask}}{{Ruffle.fs}}</a>
-                {{mask}}{{(Adobe Flash Emulator), and an expansive library for
-                each respective app.}}
-              </p>
-              <p>
-                {{mask}}{{This project is soon to support the Anura games
-                library.}}
-              </p>
-            </div>
-          </div>
-          <div class="image-container">
-            <img
-              class="hero"
-              src="{{route}}{{/assets/img/apps.webp}}"
-              alt="{{mask}}{{Application Icon}}"
-            />
-          </div>
-        </div>
-        <div data-aos="fade-right" id="info2" class="box-card">
-          <div class="content">
-            <div class="text-wrap">
-              <h1>{{mask}}{{Hosting and Deployment}}</h1>
-              <p>
-                <strong>{{mask}}{{Holy Unblocker LTS}}</strong> {{mask}}{{is an
-                open-source solution designed with modularity, ease of use, and
-                easy deployment in mind. Key features include ad-blocking,
-                flexible source code generation, and advanced proxy
-                navigation.}}<br /><br />
-                {{mask}}{{For comprehensive setup instructions, visit our
-                official}}
-                <a
-                  href="{{route}}{{/github}}"
-                  title="{{mask}}{{Holy Unblocker LTS}} GitHub Repository"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >GitHub repository</a
-                >, the
-                <a
-                  href="{{route}}{{/titaniumnetwork-documentation}}"
-                  title="Titanium Network Documentation"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >{{mask}}{{Titanium Network Docs}}</a
-                >, or
-                <a
-                  href="{{route}}{{/documentation}}"
-                  title="{{mask}}{{Additional Hosting Information}}"
-                  >{{mask}}{{the built-in documentation provided here}}</a
-                >.
-              </p>
-            </div>
-          </div>
-          <div class="image-container">
-            <img
-              class="hero"
-              src="{{route}}{{/assets/img/hosting.webp}}"
-              alt="{{mask}}{{Hosting and Deployment Icon}}"
-              title="{{mask}}{{Hosting and Deployment for Holy Unblocker LTS}}"
-            />
-          </div>
-        </div>
-        <div data-aos="fade-left" id="info2" class="box-card">
-          <div class="content">
-            <div class="text-wrap">
-              <h1>Contributing</h1>
-              <p>
-                <strong>{{mask}}{{Holy Unblocker LTS}}</strong>
-                {{mask}}{{thrives due to the dedicated efforts of our amazing
-                contributors. As an open-source project,}}
-                <strong>{{mask}}{{HU LTS}}</strong> {{mask}}{{relies on the
-                collective skills and passion of its community to drive
-                continuous improvement and deliver the best experience for all
-                users.}}
-              </p>
-              <p>
-                To start contributing, visit our
-                <a
-                  href="{{route}}{{/github}}"
-                  title="{{mask}}{{Holy Unblocker LTS GitHub Repository}}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >GitHub repository</a
-                >, and join our
-                <a
-                  href="{{route}}{{/titaniumnetwork-discord}}"
-                  title="{{mask}}{{Holy Unblocker LTS Discord Server}}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >{{mask}}{{Discord server}}</a
-                >
-                for real-time discussions and updates. Suggestions and feedback
-                are also welcome.
-              </p>
-            </div>
-          </div>
-          <div class="image-container">
-            <img
-              class="hero"
-              src="{{route}}{{/assets/img/git.webp}}"
-              alt="Contributing GitHub Icon"
-              title="{{mask}}{{Contribute to Holy Unblocker LTS on GitHub}}"
-            />
+            <img class="hero" src="{{route}}{{/assets/img/shield.webp}}" alt="Secure" />
           </div>
         </div>
       </div>
-      <div data-aos="fade-left" class="hero-grid-container">
-        <div class="box-hero">
-          <div class="hero-content">
-            <div class="hero-text-wrap">
-              <div class="brand-logo-container">
-                <i class="far fa-window-restore palered"></i>
-                <h2 class="hero-content-header">
-                  {{mask}}{{Bypass Censorship and Filters.}}
-                </h2>
-              </div>
-              <p>
-                {{mask}}{{Great Firewall of China? Censorship? No problem. Holy
-                Unblocker LTS is an open-source}}
-                <strong>{{mask}}{{public web proxy}}</strong>{{mask}}{{. Enjoy
-                unrestricted access to online content and secure browsing with
-                our advanced}}
-                <strong>{{mask}}{{web proxy unblocking}}</strong>
-                {{mask}}{{features. This project grants you the ability to host
-                it anywhere and bypass regional blocks.}}
-              </p>
-              <div class="brand-logo-container">
-                <i class="far fa-window-restore palered"></i>
-                <h2 class="hero-content-header">
-                  {{mask}}{{100% Free Web Proxy Browsing.}}
-                </h2>
-              </div>
-              <p>
-                {{mask}}{{Benefit from our}}
-                <strong>{{mask}}{{free web proxy service}}</strong> that helps
-                you <strong>{{mask}}{{unblock websites}}</strong> {{mask}}{{and
-                access restricted content. Perfect for bypassing educational
-                and/or workplace filters this project is made to unblock it
-                all.}}
-              </p>
-              <div class="brand-logo-container">
-                <i class="far fa-window-restore palered"></i>
-                <h2 class="hero-content-header">
-                  {{mask}}{{Utilize Tor Inside Chromium Browsers & Firefox.}}
-                </h2>
-              </div>
-              <p>
-                {{mask}}{{ Using Project Portal v6, you can access the Tor
-                network directly within your Chromium-based/Firefox-based
-                browser. This allows you to browse the web anonymously,
-                bypassing any regional restrictions. This project also supports
-                setting custom SOCKS5 proxies to layer. }}
-              </p>
-            </div>
-          </div>
-          <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-          <div class="image-container-hero">
-            <h1>Long Term Support FOSS Project</h1>
-            <a class="fancybutton glowbutton" href="{{route}}{{/browsing}}"
-              >{{mask}}{{Log In}}</a
-            >
-          </div>
-        </div>
-      </div>
+      
       <div class="box-home text-center splashend">
-        <h1>{{mask}}{{It's time to browse the internet freely.}}</h1>
-        <a class="homebutton" href="#scrollfix"
-          >{{mask}}{{Try HU LTS For Free}}</a
-        >
-        <a class="homebutton mobile" href="{{route}}{{/browsing}}"
-          >{{mask}}{{Try HU LTS For Free}}</a
-        >
+        <h1>{{mask}}{{Access the global library now.}}</h1>
+        <a class="homebutton" href="#scrollfix">{{mask}}{{Enter Database}}</a>
       </div>
     </div>
     <div id="footer" class="fullwidth">
-      <!--FOOTER-->
-    </div>
-    <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+      </div>
     {{inline}}{{
     <script src="{{route}}{{assets/js/card.js}}{{inline}}"></script>
     }}
