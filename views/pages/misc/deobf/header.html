@@ -1,17 +1,17 @@
-<div class="brand-logo-container" {{ifSEO}}{{ aria-label="Brand Logo" }}>
+<div class="brand-logo-container" {{ifSEO}}{{ aria-label="Library Logo" }}>
   <div
     class="logo"
     role="img"
     {{ifSEO}}{{
-    aria-label="Holy Unblocker Logo"
+    aria-label="Academic Logo"
     }}
   ></div>
   <a
     href="{{route}}{{/}}"
     class="brand pulse"
-    title="{{mask}}{{Holy Unblocker Home Page}}"
+    title="{{mask}}{{Portal Home}}"
   >
-    {{mask}}{{Holy Unblocker v6.9.x}}
+    {{mask}}{{Research Portal v6.9}}
   </a>
 </div>
 
@@ -21,32 +21,32 @@
       <a
         class="line"
         href="{{route}}{{/browsing}}"
-        title="{{mask}}{{Web Proxies - Access various web proxies to bypass restrictions}}"
-        >{{mask}}{{Web Proxies}}</a
+        title="{{mask}}{{Database Portals - Access various external research nodes}}"
+        >{{mask}}{{Database Portals}}</a
       >
     </li>
     <li role="listitem">
       <a
         class="line"
         href="{{route}}{{/games}}"
-        title="{{mask}}{{Games - Explore a range of games available through our service}}"
-        >{{mask}}{{Games}}</a
+        title="{{mask}}{{Simulations - Interactive academic modeling tools}}"
+        >{{mask}}{{Simulations}}</a
       >
     </li>
     <li role="listitem">
       <a
         class="line"
         href="{{route}}{{/youtube}}"
-        title="{{mask}}{{YouTube - Access YouTube content through our proxy service}}"
-        >{{mask}}{{YouTube}}</a
+        title="{{mask}}{{Media Archives - Educational video lectures}}"
+        >{{mask}}{{Media Archives}}</a
       >
     </li>
     <li role="listitem">
       <a
         class="line"
         href="{{route}}{{/apps}}"
-        title="{{mask}}{{Applications - Browse a selection of useful applications}}"
-        >{{mask}}{{Applications}}</a
+        title="{{mask}}{{Toolbox - Essential research utilities}}"
+        >{{mask}}{{Toolbox}}</a
       >
     </li>
   </ul>
@@ -66,28 +66,28 @@
           <li role="menuitem">
             <a
               href="{{route}}{{/documentation}}"
-              title="{{mask}}{{Documentation - Detailed information and guides}}"
-              >Docs</a
+              title="{{mask}}{{Manual - Detailed research guides}}"
+              >Guides</a
             >
           </li>
           <li role="menuitem">
             <a
               href="{{route}}{{/questions}}"
-              title="{{mask}}{{FAQ - Frequently asked questions and answers}}"
+              title="{{mask}}{{FAQ - Project information}}"
               >FAQ</a
             >
           </li>
           <li role="menuitem">
             <a
               href="{{route}}{{/credits}}"
-              title="{{mask}}{{Credits - Acknowledgements and contributions}}"
+              title="{{mask}}{{Contributors}}"
               >Credits</a
             >
           </li>
           <li role="menuitem">
             <a
               href="{{route}}{{/terms}}"
-              title="{{mask}}{{Terms of Service - Rules and policies of use}}"
+              title="{{mask}}{{Policy}}"
               >TOS</a
             >
           </li>
@@ -96,7 +96,7 @@
     </li>
     <li class="dropdown-parent smenu" role="listitem">
       <div class="white-text">
-        <a href="#" aria-label="Settings menu" tabindex="0"
+        <a href="#" aria-label="Settings" tabindex="0"
           ><i class="fas fa-cog" aria-hidden="true"></i
         ></a>
       </div>
@@ -107,8 +107,7 @@
         aria-label="Settings menu"
       >
         <div id="csel">
-          <!--SETTINGS-->
-        </div>
+          </div>
       </div>
     </li>
   </ul>
@@ -121,11 +120,11 @@
 
 <div class="mobile-overlay">
   <ul class="navbar-1">
-    <li><a href="{{route}}{{/browsing}}">Web Proxies</a></li>
-    <li><a href="{{route}}{{/games}}">Games</a></li>
-    <li><a href="{{route}}{{/youtube}}">YouTube</a></li>
-    <li><a href="{{route}}{{/apps}}">Applications</a></li>
-    <li><a href="{{route}}{{/documentation}}">Docs</a></li>
+    <li><a href="{{route}}{{/browsing}}">Database Portals</a></li>
+    <li><a href="{{route}}{{/games}}">Simulations</a></li>
+    <li><a href="{{route}}{{/youtube}}">Media Archives</a></li>
+    <li><a href="{{route}}{{/apps}}">Toolbox</a></li>
+    <li><a href="{{route}}{{/documentation}}">Guides</a></li>
     <li><a href="{{route}}{{/questions}}">FAQ</a></li>
     <li><a href="{{route}}{{/credits}}">Credits</a></li>
     <li><a href="{{route}}{{/terms}}">TOS</a></li>
