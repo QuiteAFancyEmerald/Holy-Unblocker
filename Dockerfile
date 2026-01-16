@@ -2,16 +2,14 @@ FROM node:20
 
 WORKDIR /app
 
-LABEL org.opencontainers.image.title="Holy Unblocker LTS" \
-      org.opencontainers.image.description="An effective, privacy-focused web proxy service" \
-      org.opencontainers.image.version="6.9.3" \
-      org.opencontainers.image.authors="Holy Unblocker Team" \
-      org.opencontainers.image.source="https://github.com/QuiteAFancyEmerald/Holy-Unblocker/"
+# Update the label/metadata if you'd like, or keep it as is.
 
-RUN apk add --no-cache tor bash
+# CHANGE THIS LINE: Use apt-get instead of apk
+RUN apt-get update && apt-get install -y tor bash && rm -rf /var/lib/apt/lists/*
 
 COPY . .
 
+# These remain the same
 RUN npm run fresh-install
 RUN npm run build
 
