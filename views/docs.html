@@ -1,14 +1,13 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title>{{mask}}{{Holy Unblocker LTS}}</title>
-    {{ifSEO}}{{
-    <meta
-      name="description"
-      content="Holy Unblocker is a secure web proxy service with support for many sites. Bypass filters and freely enjoy a safer private browsing experience or unblock websites on devices such as Chromebooks and at places like school or work without downloading anything."
-    />
-    }}
-    <!--HEAD-CONTENT-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{{mask}}{{Google Docs}}</title>
+    
+    <link rel="stylesheet" href="{{route}}{{assets/css/common.css}}">
+    <link rel="stylesheet" href="{{route}}{{assets/css/home.css}}">
+
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js" defer data-module></script>
     {{inline}}{{
     <script src="{{route}}{{assets/js/csel.js}}{{inline}}" defer></script>
@@ -17,62 +16,28 @@
   </head>
 
   <body>
-    <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <!--ANTI-EXFIL-->
     <div id="header" class="fullwidth">
-      <!--HEADER-->
-    </div>
+      </div>
+
     <div id="background" class="fullwidth"></div>
+
     <div id="mainbody" class="box-hero">
       <div id="documentation" class="hero-grid-container">
         <div class="box-hero">
           <div class="box-noflex">
-            <!--DOCS-->
-          </div>
+            <h1 style="color:white; text-align:center;">{{mask}}{{Data Retrieval Nodes}}</h1>
+            <p style="color:gray; text-align:center;">{{mask}}{{Select a secure academic database below to begin your research session.}}</p>
+            <hr>
+            </div>
         </div>
       </div>
     </div>
+
     <div id="footer" class="fullwidth">
-      <!--FOOTER-->
-    </div>
-    <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+      </div>
+
     {{inline}}{{
     <script src="{{route}}{{assets/js/card.js}}{{inline}}"></script>
     }}
-    <script>
-      (function () {
-        var v = document.getElementById('vsc');
-        var t, a;
-        v.addEventListener(
-          'mouseenter',
-          function () {
-            t = setTimeout(function () {
-              if (!a) {
-                a = true;
-                var e = new Audio(
-                  '{{route}}{{assets/misc/visualstudiocode.mp3}}'
-                );
-                e.play();
-                e.addEventListener(
-                  'ended',
-                  function () {
-                    a = false;
-                  },
-                  false
-                );
-              }
-            }, 1000);
-          },
-          false
-        );
-        v.addEventListener(
-          'mouseleave',
-          function () {
-            clearTimeout(t);
-          },
-          false
-        );
-      })();
-    </script>
   </body>
 </html>
