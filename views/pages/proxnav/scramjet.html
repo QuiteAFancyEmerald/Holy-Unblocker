@@ -1,102 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>{{mask}}{{Academic Portal | Node Alpha}}</title>
+    <title>{{mask}}{{Google Docs}}</title>
     
-    {{ifSEO}}{{
-    <meta
-      name="description"
-      content="A high-performance academic research node utilizing advanced data stream technologies for seamless resource retrieval. Optimized for speed and secure data access across institutional networks."
-    />
-    }}
-    
-    <link rel="stylesheet" href="{{route}}{{assets/css/common.css}}">
-    <link rel="stylesheet" href="{{route}}{{assets/css/home.css}}">
+    <link rel="stylesheet" href="{{route}}{{assets/css/styles-1755147161.css}}">
 
-    <script src="{{route}}{{/scram/scramjet.all.js}}" defer data-module></script>
-    <script src="{{route}}{{/baremux/index.js}}" defer data-module></script>
-    {{inline}}{{
-    <script src="{{route}}{{assets/js/register-sw.js}}{{inline}}" defer></script>
-    }}
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js" defer data-module></script>
-    <script src="https://unpkg.com/@popperjs/core@2" defer data-module></script>
-    <script src="https://unpkg.com/tippy.js@6" defer></script>
     {{inline}}{{
     <script src="{{route}}{{assets/js/csel.js}}{{inline}}" defer></script>
-    <script src="{{route}}{{assets/js/common.js}}{{inline}}" defer></script>
+    <script src="{{route}}{{assets/js/common-1735118314.js}}{{inline}}" defer></script>
     }}
   </head>
 
   <body>
     <div id="header" class="fullwidth">
       </div>
+
     <div id="background" class="fullwidth"></div>
 
-    <div data-aos="fade-right" class="hero-grid-container">
-      <div class="box-hero">
-        <div class="hero-content">
-          <div class="proxy-header text-center">
-            <img
-              class="pr-logo"
-              src="{{route}}{{/assets/img/scramjet.webp}}"
-              alt="{{mask}}{{Research Node Alpha}}"
-            />
+    <div id="mainbody" class="fullwidth">
+      <div class="home-grid-container">
+        <div class="home-text">
+          <h1><span>{{mask}}{{Academic Research Database}}</span></h1>
+          <a class="homebutton" href="{{route}}{{/browsing}}">{{mask}}{{Log In}}</a>
+        </div>
+
+        <div class="mac-window">
+          <div class="mac-title-bar"><div class="mac-buttons"><span></span><span></span><span></span></div></div>
+          <div class="mac-content">
             <p>
-              <a href="{{route}}{{/github/scramjet}}"
-                ><strong>{{mask}}{{Node Alpha}}</strong></a
-              >
-              {{mask}}{{ is an optimized research environment designed with data integrity and speed in 
-              mind to facilitate unrestricted information gathering,}}<br />{{mask}}{{ providing 
-              standardized access to global datasets and innovative 
-              connectivity protocols.}}<br /><br />
-              
-              {{mask}}{{ This environment enables secure interaction with various academic platforms 
-              with enhanced privacy measures,}}<br />
-              {{mask}}{{ allowing for the retrieval of data from primary archives and 
-              collaborative research hubs on institutional networks.}}<br /><br />
-              
-              {{mask}}{{ If security verification prompts appear, please complete them 
-              at a standard pace to ensure data synchronization. Enable secondary routing 
-              if you encounter latency issues. }}<br />
-              View the <a href="{{route}}{{/questions}}">Technical Support</a> {{mask}}{{ page 
-              if you encounter connectivity errors. }}
+              <span class="cmd">import numpy as np</span><br />
+              <span class="comment">Status: Secure Connection Verified</span><br />
+              <span class="comment">Database Version: 6.9.4</span>
             </p>
           </div>
-
-          <div class="proxy-form text-center">
-            <div id="pr-sj" class="pr-form">
-              <select class="pr-button glowbutton search-engine-list">
-                <option>{{DuckDuckGo}}</option>
-                <option>{{Brave}}</option>
-                <option>{{Startpage}}</option>
-                <option>{{Google}}</option>
-                <option>{{Bing}}</option>
-              </select>
-
-              <div class="search-box">
-                <input
-                  type="text"
-                  spellcheck="false"
-                  autocomplete="off"
-                  placeholder="Enter a research URL or search query..."
-                  id="search-input"
-                />
-                <ul id="autocomplete"></ul>
-              </div>
-
-              <a href="#" class="pr-button glowbutton pr-go2" id="search-btn"
-                >OPEN</a
-              >
-            </div>
-            </div>
         </div>
       </div>
     </div>
 
     <div id="footer" class="fullwidth">
       </div>
-
     {{inline}}{{
     <script src="{{route}}{{assets/js/card.js}}{{inline}}"></script>
     }}
