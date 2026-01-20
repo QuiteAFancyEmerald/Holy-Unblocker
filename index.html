@@ -4,10 +4,45 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Holy-Unblocker</title>
+  <style>
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;background:#f7f9fc;color:#111}
+    .card{max-width:780px;padding:28px;border-radius:12px;background:#fff;box-shadow:0 6px 24px rgba(15,23,42,0.06);text-align:center}
+    pre{white-space:pre-wrap;word-break:break-word}
+  </style>
 </head>
 <body>
-  <h1>Holy-Unblocker — site is up</h1>
-  <p>If you see this, GitHub Pages is serving files correctly.</p>
-  <p>Repository: MaIlKiD55/Holy-Unblocker</p>
+  <div class="wrap">
+    <div class="card">
+      <h1>Holy-Unblocker — site is up</h1>
+      <p>If you see this, GitHub Pages is serving files correctly.</p>
+      <p>Repository: <a href="https://github.com/MaIlKiD55/Holy-Unblocker" target="_blank" rel="noopener">MaIlKiD55/Holy-Unblocker</a></p>
+      <p>If this page is blank for you, try a hard reload (Ctrl/Cmd+Shift+R) or open in a private window.</p>
+      <pre id="debug"></pre>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var dbg=document.getElementById('debug');
+      function log(m){ if(dbg) dbg.textContent += m + '\n'; }
+
+      // Ensure document is visible in case something hid it
+      try{ document.documentElement.style.display = 'block'; }catch(e){}
+
+      // Unregister any service workers that might be serving a stale or blank page
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(regs){
+          if(!regs || regs.length===0){ log('No service workers registered'); return; }
+          regs.forEach(function(r,i){ r.unregister().then(function(ok){ log('Unregistered SW#'+i+': '+ok); }).catch(function(e){ log('Failed to unregister SW#'+i+': '+e); }); });
+        }).catch(function(e){ log('Error getting SW registrations: '+e); });
+      } else {
+        log('Service workers not supported');
+      }
+
+      // Helpful console message
+      if(console && console.log) console.log('Holy-Unblocker: index loaded; attempted to unregister service workers.');
+    })();
+  </script>
 </body>
 </html>
