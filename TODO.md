@@ -7,7 +7,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Add booksmark menu (source wise already present pretty much)
 - [ ] Add Chii + ensuring users can access devtools while browsing - partial
 - [ ] Setting to open multiple stealth frames; basically about:blank but using our system. Pops out in another tab
-- [ ] Omnibox should state what the current site the user is on like a proper URL bar 
+- [x] Omnibox should state what the current site the user is on like a proper URL bar 
 - [ ] Improve adblocking functions on site using Workerware + a pre-bundled uBlock Origin
 - [ ] Add a "website self-destruct" button to the settings menu
 - [ ] Transport Options Swapping on Frame (Settings Menu doesn't swap)

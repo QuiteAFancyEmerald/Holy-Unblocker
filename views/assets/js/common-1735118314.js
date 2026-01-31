@@ -630,6 +630,11 @@ const preparePage = async () => {
       prGo1 = document.querySelectorAll(`#${id}.pr-go1, #${id} .pr-go1`),
       prGo2 = document.querySelectorAll(`#${id}.pr-go2, #${id} .pr-go2`);
 
+    const frame = document.getElementById('frame');
+    if (prUrl && frame && frame.src) {
+      prUrl.value = decodeURIComponent(frame.src.split('/').pop());
+    }
+
     // Handle the other menu buttons differently if there is no omnibox. Menus
     // which lack an omnibox likely use buttons as mere links.
     const goProxMethod = prUrl
@@ -782,12 +787,27 @@ const preparePage = async () => {
   prSet('pr-wa', 'wikipedia');
   prSet('pr-ng', 'newgrounds');
 
-  // Load the frame for stealth mode if it exists.
-  const windowFrame = document.getElementById('frame'),
-    loadFrame = () => {
-      windowFrame.src = localStorage.getItem('{{hu-lts}}-frame-url');
-      return true;
+  // Update omnibox when frame location changes
+  const windowFrame = document.getElementById('frame');
+  if (windowFrame) {
+    const omniboxes = document.querySelectorAll('[id^="pr-"] input[type=text]');
+    let lastUrl = '';
+    const updateOmnibox = () => {
+      const url = decodeURIComponent(windowFrame.contentWindow.location.href.split('/').pop());
+      if (url !== lastUrl) {
+        lastUrl = url;
+        omniboxes.forEach((input) => { input.value = url; });
+      }
+      requestAnimationFrame(updateOmnibox);
     };
+    requestAnimationFrame(updateOmnibox);
+  }
+
+  // Load the frame for stealth mode if it exists.
+  const loadFrame = () => {
+    windowFrame.src = localStorage.getItem('{{hu-lts}}-frame-url');
+    return true;
+  };
   if (windowFrame) {
     if (uvConfig && sjObject)
       (await callAfterWorkers(
