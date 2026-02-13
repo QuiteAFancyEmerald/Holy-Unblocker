@@ -17,3 +17,4 @@ lib/rammerhead/src/client/hammerhead.min.js
 lib/rammerhead/src/client/rammerhead.min.js
 views/archive/gfiles/rarch/roms
 .idea
+.env
