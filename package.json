@@ -2,7 +2,7 @@
   "name": "Scbypass",
   "version": "6.9.4",
   "repository": "https://www.tiktok.com/@holy.nik.offz",
-  "description": "Follow My Tiktok https://www.tiktok.com/@holy.nik.offz.",
+  "description": "SCBypass - Secure web proxy / unblocker. Follow my TikTok for updates & drops: https://www.tiktok.com/@holy.nik.offz | Join Discord: https://discord.gg/TnPCzYWZAP",
   "main": "backend.js",
   "engines": {
     "node": "20.x"
@@ -26,9 +26,10 @@
   "keywords": [
     "proxy",
     "node.js",
-    "unblocker"
+    "unblocker",
+    "scbypass"
   ],
-  "author": "Titanium Network",
+  "author": "holy.nik.offz",
   "license": "GNU AFFERO",
   "dependencies": {
     "@fastify/helmet": "^13.0.2",
