@@ -1,5 +1,5 @@
 {
-  "name": "Holy Unblocker LTS",
+  "name": "Scbypass",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:0-20",
   "features": {
     "node": "20"
