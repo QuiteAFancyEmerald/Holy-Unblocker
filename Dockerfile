@@ -1,23 +1,47 @@
+# ────────────────────────────────────────────────
+# Base image: lightweight Node 20 on Alpine
+# ────────────────────────────────────────────────
 FROM node:20-alpine
 
+# Set working directory
 WORKDIR /app
 
-LABEL org.opencontainers.image.title="Holy Unblocker LTS" \
-      org.opencontainers.image.description="An effective, privacy-focused web proxy service" \
+# Metadata / OCI labels – updated to SCBypass branding
+LABEL org.opencontainers.image.title="SCBypass" \
+      org.opencontainers.image.description="Secure, fast web proxy / unblocker – bypass filters with strong privacy & evasion features" \
       org.opencontainers.image.version="6.9.4" \
-      org.opencontainers.image.authors="Holy Unblocker Team" \
-      org.opencontainers.image.source="https://github.com/QuiteAFancyEmerald/Holy-Unblocker/"
+      org.opencontainers.image.authors="holy.nik.offz" \
+      org.opencontainers.image.source="https://www.tiktok.com/@holy.nik.offz" \
+      org.opencontainers.image.url="https://discord.gg/TnPCzYWZAP"
 
-RUN apk add --no-cache tor bash
+# Install runtime + build dependencies
+RUN apk add --no-cache \
+    tor \
+    bash \
+    git \
+    python3 \
+    py3-pip \
+    make \
+    g++ \
+    && rm -rf /var/cache/apk/*
 
+# Copy project files
 COPY . .
 
-RUN npm run fresh-install
-RUN npm run build
+# Install deps & build (in one layer for smaller image)
+RUN npm run fresh-install \
+    && npm run build
 
+# Expose main proxy port + Tor control/auth ports (optional)
 EXPOSE 8080 9050 9051
 
+# Copy startup script
 COPY serve.sh /serve.sh
 RUN chmod +x /serve.sh
 
+# Healthcheck – helps Fly.io detect when app is ready/alive
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
+
+# Start command
 CMD ["/serve.sh"]
