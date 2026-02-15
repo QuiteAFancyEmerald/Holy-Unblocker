@@ -1,21 +1,18 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title>{{mask}}{{Holy Unblocker LTS}}</title>
-    {{ifSEO}}{{
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SCBypass | Icon Information</title>
     <meta
       name="description"
-      content="Holy Unblocker is a secure web proxy service with support for many sites. Bypass filters and freely enjoy a safer private browsing experience or unblock websites on devices such as Chromebooks and at places like school or work without downloading anything."
+      content="Learn how to set custom icons / tab cloaking on SCBypass to disguise your browsing. Quick bookmarklet included."
     />
-    }}
     <!--HEAD-CONTENT-->
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js" defer data-module></script>
-    {{inline}}{{
-    <script src="{{route}}{{assets/js/csel.js}}{{inline}}" defer></script>
-    <script src="{{route}}{{assets/js/common.js}}{{inline}}" defer></script>
-    }}
+    <script src="{{route}}{{assets/js/csel.js}}" defer></script>
+    <script src="{{route}}{{assets/js/common.js}}" defer></script>
   </head>
-
   <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <!--ANTI-EXFIL-->
@@ -24,30 +21,44 @@
     </div>
     <div id="background" class="fullwidth"></div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+
     <div id="mainbody" class="fullwidth">
       <div class="box-clear text-center textm">
-        <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-        <h1 class="bigtitle">{{mask}}{{Icon Information}}</h1>
-        <h3>{{mask}}{{How to find the Icon URL of a Site}}</h3>
+        <h1 class="bigtitle">Icon Information & Tab Cloak</h1>
+
+        <h3>How to Set a Custom Icon / Disguise Your Tab</h3>
+
         <p>
-          {{mask}}{{ Go to the website you want an icon from, then use this
-          bookmarklet (drag it to your bookmarks bar): }}
+          Want to change the tab title and favicon to make it look like something else?<br>
+          Follow these quick steps:
         </p>
-        <div id="bks-parent">
+
+        <ol style="max-width: 680px; margin: 1.5rem auto; text-align: left; line-height: 1.6;">
+          <li>Go to the website you want to use as a disguise (e.g. Google, Classroom, Wikipedia, etc.)</li>
+          <li>Drag the button below to your bookmarks bar (or right-click → Add to bookmarks):</li>
+        </ol>
+
+        <div id="bks-parent" style="margin: 2rem 0;">
           <a id="iconfinder" class="fancybutton fb-l glowbutton"
-            >Find Icon URL</a
-          >
+             href="javascript:alert((Array.from(document.head.querySelectorAll('link[rel*=\"icon\"], link[rel*=\"shortcut\"]')).slice(-1)[0]?.href || location.origin + '/favicon.ico'))">
+            Find Icon URL (Drag Me!)
+          </a>
         </div>
-        <script>
-          document.getElementById('iconfinder').href =
-            `javascript:alert((Array.from(document.head.querySelectorAll("link[rel*='icon']")).slice(-1)[0]||0).href||location.origin+"{{route}}{{/favicon.ico}}")`;
-        </script>
-        <p>
-          {{mask}}{{ Copy the URL that the bookmarklet gives you. Then go back
-          to HU LTS and enter in the URL for the Icon URL in Settings. Enjoy! }}
+
+        <p style="margin-top: 1.5rem;">
+          <strong>Click the bookmarklet</strong> on the disguise site → it will show you the correct favicon URL.<br>
+          Copy that URL, go back to SCBypass → open <strong>Settings → Tab Cloak</strong> → paste it in the Icon URL field.<br>
+          You can also change the tab title there.
+        </p>
+
+        <p style="margin-top: 2rem; font-size: 0.95rem; opacity: 0.9;">
+          Need help or new disguise ideas?<br>
+          <a href="https://www.tiktok.com/@holy.nik.offz" target="_blank">@holy.nik.offz on TikTok</a> • 
+          <a href="https://discord.gg/TnPCzYWZAP" target="_blank">Join the Discord</a>
         </p>
       </div>
     </div>
+
     <div id="footer" class="fullwidth">
       <!--FOOTER-->
     </div>
