@@ -1,31 +1,22 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title>{{mask}}{{Holy Unblocker LTS | Web Emulation}}</title>
-    {{ifSEO}}{{
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SCBypass | Games & Emulation</title>
     <meta
       name="description"
-      content="Holy Unblocker is a secure web proxy service with support for many sites. Bypass filters and freely enjoy a safer private browsing experience or unblock websites on devices such as Chromebooks and at places like school or work without downloading anything."
+      content="SCBypass offers a wide selection of unblocked games, emulators and utilities. Play retro classics, Flash games, HTML5 titles and more directly in your browser."
     />
-    }}
     <!--HEAD-CONTENT-->
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js" defer data-module></script>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/tippy.js@6/dist/backdrop.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/tippy.js@6/animations/shift-away.css"
-    />
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/backdrop.css" />
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css" />
     <script src="https://unpkg.com/@popperjs/core@2" defer data-module></script>
     <script src="https://unpkg.com/tippy.js@6" defer></script>
-    {{inline}}{{
-    <script src="{{route}}{{assets/js/csel.js}}{{inline}}" defer></script>
-    <script src="{{route}}{{assets/js/common.js}}{{inline}}" defer></script>
-    }}
+    <script src="{{route}}{{assets/js/csel.js}}" defer></script>
+    <script src="{{route}}{{assets/js/common.js}}" defer></script>
   </head>
-
   <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <!--ANTI-EXFIL-->
@@ -40,57 +31,63 @@
           <img
             class="box-pr-logo"
             src="{{route}}{{/assets/img/directory_splash.webp}}"
-            {{ifSEO}}{{
-            alt="Holy Unblocker Browsing Splash"
-            }}
+            alt="SCBypass Games Splash"
           />
         </div>
         <div class="box-text-container">
           <p class="box-badge">
-            <span class="box-default-badge">Tip</span>{{mask}}{{If you can't find your game simply look it up via the Web Proxies page!}}
+            <span class="box-default-badge">Tip</span>
+            Can't find your game? Try searching for it via the Web Proxies page!
           </p>
-          <h1>
-            {{mask}}{{ Holy Unblocker LTS features a wide selection of unblocked
-            games, emulators and utilities. }}
-          </h1>
+          <h1>SCBypass Games & Emulation</h1>
           <h2 class="box-description">
-            {{mask}}{{ Here you can find cool stuff like emulators and games!
-            Using projects like webretro and Ruffle you can now play emulated
-            games in your browser from legacy consoles or flash.}}<br />
+            Play retro classics, Flash titles, HTML5 games and more — all unblocked and running directly in your browser.
           </h2>
           <h2 class="box-description">
-            {{mask}}{{ Select a directory below: }}
+            Powered by projects like WebRetro (RetroArch port) and Ruffle (Flash emulator).
           </h2>
+          <h2 class="box-description">Choose a category:</h2>
+
           <div class="box-button-container">
             <a
               id="emtooltip"
               href="{{route}}{{/emulators}}"
               class="box-button tippy-button"
-              data-tippy-content="{{mask}}{{Emulators [Webretro v6.5]: Fully ported RetroArch with over 20 emulators featured!}}"
-              >{{mask}}{{Emulators}}</a
+              data-tippy-content="Emulators – WebRetro (RetroArch port) with support for 20+ console systems"
             >
+              Emulators
+            </a>
             <a
               id="eltooltip"
               href="{{route}}{{/retro-games}}"
               class="box-button tippy-button"
-              data-tippy-content="{{mask}}{{EmuLibrary [Collection]: Popular collection of games sourced from other websites. You can set this via the settings menu.}}"
-              >{{mask}}{{EmuLibrary}}</a
+              data-tippy-content="EmuLibrary – Curated collection of popular retro & emulated games"
             >
+              EmuLibrary
+            </a>
             <a
               id="wgtooltip"
               href="{{route}}{{/web-games}}"
               class="box-button tippy-button"
-              data-tippy-content="{{mask}}{{Web Games [Collection]: Collection of popular web games, including WebGL and HTML5 games.}}"
-              >{{mask}}{{Web Games}}</a
+              data-tippy-content="Web Games – HTML5, WebGL and browser-native titles"
             >
+              Web Games
+            </a>
             <a
               id="fgtooltip"
               href="{{route}}{{/flash-games}}"
               class="box-button tippy-button"
-              data-tippy-content="{{mask}}{{Flash Games [Collection]: Collection of Flash games emulated via Ruffle.}}"
-              >{{mask}}{{Flash Games}}</a
+              data-tippy-content="Flash Games – Classic Flash titles running via Ruffle emulator"
             >
+              Flash Games
+            </a>
           </div>
+
+          <p style="margin-top: 2rem; font-size: 0.95rem; opacity: 0.9;">
+            Follow for new games, mirrors & updates:<br>
+            <a href="https://www.tiktok.com/@holy.nik.offz" target="_blank">@holy.nik.offz on TikTok</a> • 
+            <a href="https://discord.gg/TnPCzYWZAP" target="_blank">Discord Community</a>
+          </p>
         </div>
       </div>
     </div>
