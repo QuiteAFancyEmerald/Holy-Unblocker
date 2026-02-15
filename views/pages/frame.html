@@ -1,33 +1,33 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title>{{mask}}{{Holy Unblocker LTS}}</title>
-    {{ifSEO}}{{
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SCBypass</title>
     <meta
       name="description"
-      content="Holy Unblocker is a secure web proxy service with support for many sites. Bypass filters and freely enjoy a safer private browsing experience or unblock websites on devices such as Chromebooks and at places like school or work without downloading anything."
+      content="SCBypass – secure web proxy for unblocking sites and private browsing. Fast, reliable, no downloads required."
     />
-    }}
     <!--HEAD-CONTENT-->
     <script src="{{route}}{{/scram/scramjet.all.js}}" defer data-module></script>
     <script src="{{route}}{{/baremux/index.js}}" defer data-module></script>
     <script src="{{route}}{{/uv/uv.bundle.js}}" defer data-module></script>
     <script src="{{route}}{{/uv/uv.config.js}}" defer data-module></script>
-    {{inline}}{{
-    <script src="{{route}}{{/assets/js/register-sw.js}}{{inline}}" defer></script>
-    <script src="{{route}}{{assets/js/csel.js}}{{inline}}" defer></script>
-    <script src="{{route}}{{assets/js/common.js}}{{inline}}" defer></script>
-    }}
+    <script src="{{route}}{{/assets/js/register-sw.js}}" defer></script>
+    <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js" defer data-module></script>
+    <script src="{{route}}{{assets/js/csel.js}}" defer></script>
+    <script src="{{route}}{{assets/js/common.js}}" defer></script>
   </head>
-
   <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <!--ANTI-EXFIL-->
+
     <div class="loader loader-active">
       <div class="loader-w"></div>
     </div>
+
     <div class="omnibar" id="pr-sj">
-      <a class="logo" href="{{route}}{{/browsing}}" role="img" aria-label="Holy Unblocker Logo"></a>
+      <a class="logo" href="{{route}}{{/}}" role="img" aria-label="SCBypass Logo"></a>
       <button title="Back"><i class="fas fa-arrow-left"></i></button>
       <button title="Forward"><i class="fas fa-arrow-right"></i></button>
       <button title="Refresh"><i class="fas fa-redo-alt"></i></button>
@@ -36,17 +36,12 @@
           class="glowbutton"
           id="search-input"
           type="text"
-          placeholder="Type a URL or search..."
+          placeholder="Enter URL or search..."
           spellcheck="false"
           autocomplete="off"
         />
         <ul id="autocomplete"></ul>
       </div>
-      <!-- 
-      <button title="Bookmarks" id="bookmarks-toggle">
-        <i class="fas fa-bookmark"></i>
-      </button>
-      -->
       <div title="Settings" class="dropdown-parent">
         <a href="#" tabindex="0">
           <i class="fas fa-cog pulse" aria-hidden="true"></i>
@@ -66,9 +61,11 @@
         <i class="fas fa-chevron-up"></i>
       </button>
     </div>
+
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <iframe id="frame" allow="fullscreen" autofocus></iframe>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+
     <script>
       const windowFrame = document.getElementById('frame');
       const omnibar = document.getElementById('pr-sj');
@@ -90,15 +87,16 @@
       backArrow.addEventListener('click', () => {
         history.back();
       });
+
       forwardArrow.addEventListener('click', () => {
         history.forward();
       });
+
       reloadArrow.addEventListener('click', () => {
         windowFrame.contentWindow.location.reload();
       });
 
       let statusObject = { isLoading: true, timesErrored: 0 };
-
       const loaderTimeout = (timeout) => {
         statusObject.isLoading = true;
         setTimeout(() => {
@@ -123,25 +121,16 @@
       const loader = document.getElementsByClassName('loader')[0];
       const updateLoader = () => {
         if (windowFrame.contentWindow.location.href === 'about:blank') return;
-
         statusObject.isLoading =
           windowFrame.contentWindow.document.readyState === 'loading';
-
-        // Do not remove the loading screen if the page is an error page
-        // and should be reloaded.
         if (!statusObject.isLoading && errorRefresh()) {
           statusObject.isLoading = true;
           return;
         }
-
-        // Display the loading screen if statusObject.isLoading is true.
         loader.classList.toggle('loader-active', statusObject.isLoading);
-
-        // Remove the loading screen if it takes longer than 5 seconds.
         if (statusObject.isLoading) loaderTimeout(5000);
       };
 
-      // Reattach load events whenever the content window has changed.
       const loadHandler = () => {
         setTimeout(() => {
           windowFrame.contentWindow.addEventListener('beforeunload', () => {
