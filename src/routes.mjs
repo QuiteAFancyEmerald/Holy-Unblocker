@@ -10,7 +10,7 @@ const ecosystemConfig = Object.freeze(
   ecosystem.apps.find((app) => app.name === 'Scbypass') || ecosystem.apps[0]
 );
 
-/* 
+/*
  * Server base URL object — host from config.json, port from ecosystem.config.js
  */
 const serverUrl = ((base) => {
@@ -26,7 +26,6 @@ const serverUrl = ((base) => {
     (config.pathname || '/').replace(/\/+$|[^\w\/\.-]+/g, '') + '/';
   return Object.freeze(base);
 })();
-
 console.log(`SCBypass server base: ${serverUrl}`);
 
 /* ────────────────────────────────────────────────
@@ -35,17 +34,13 @@ console.log(`SCBypass server base: ${serverUrl}`);
 let pages = {
   // Default entry point (changes if disguiseFiles is enabled)
   default: config.disguiseFiles ? 'login' : 'index',
-
   index: 'index.html',
   'manifest.json': 'manifest.json',
-
   // Login / entry point required when disguiseFiles = true
   // Also update exemptPages in src/server.mjs if changed
   login: 'pages/misc/deobf/entry-point.html',
-
   // 404 / error page base
   'test-404': 'error.html',
-
   /* ──────────────── Main ──────────────── */
   documentation: 'docs.html',
   questions: 'faq.html',
@@ -53,30 +48,25 @@ let pages = {
   browsing: 'pages/surf.html',
   credits: 'pages/nav/credits.html',
   terms: 'pages/nav/terms.html',
-
   /* ──────────────── Games ──────────────── */
   games: 'pages/nav/directory.html',
   'web-games': 'pages/nav/games5.html',
   emulators: 'pages/nav/emulators.html',
   'flash-games': 'pages/nav/flash.html',
   'retro-games': 'pages/nav/emulibrary.html',
-
   /* ──────────────── Proxies ──────────────── */
   ultraviolet: 'pages/proxnav/ultraviolet.html',
   scramjet: 'pages/proxnav/scramjet.html',
   uverror: 'pages/proxnav/ultraviolet-error.html',
   sjerror: 'pages/proxnav/scramjet-error.html',
   rammerhead: 'pages/proxnav/rammerhead.html',
-
   /* ──────────────── Proxy Presets ──────────────── */
   youtube: 'pages/proxnav/preset/youtube.html',
   apps: 'pages/proxnav/preset/applications.html',
-
   /* ──────────────── Misc ──────────────── */
   flash: 'archive/gfiles/flash/index.html',
   webretro: 'archive/gfiles/rarch/index.html',
   'vibe-os': 'archive/vibeOS/index.html',
-
   'robots.txt': 'robots.txt',
   'sitemap.xml': 'sitemap.xml',
   'browserconfig.xml': 'browserconfig.xml',
@@ -256,7 +246,10 @@ if (!config.usingSEO) {
   delete pages['sitemap.xml'];
 }
 
-/* Export everything needed by server.mjs */
+/* ────────────────────────────────────────────────
+   SAFE EXPORT – no spread syntax in named export list
+   (this fixes the SyntaxError on Node 20 ESM)
+   ──────────────────────────────────────────────── */
 export {
   config,
   serverUrl,
@@ -267,7 +260,13 @@ export {
   text404,
   uvError,
   sjError,
-  ...insert, // cookingInserts, vegetables, charRandom, delimiter, textMasks, splashRandom, versionValue
+  cookingInserts: insert.content,
+  vegetables: insert.keywords,
+  charRandom: insert.chars,
+  delimiter: insert.delimiter,
+  textMasks: insert.textMasks,
+  splashRandom: insert.splash,
+  versionValue: insert.version,
   cacheBustList: {
     'styles.css': 'styles-1755147161.css',
     'common.js': 'common-1735118314.js',
