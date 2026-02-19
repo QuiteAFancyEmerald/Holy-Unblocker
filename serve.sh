@@ -14,7 +14,6 @@ echo "========================================"
 
 # ────────────────────────────────────────────────
 # Optional: Start Tor if ENABLE_TOR is set to true
-# (useful for .onion routing or extra privacy)
 # ────────────────────────────────────────────────
 
 if [ "${ENABLE_TOR:-false}" = "true" ]; then
@@ -22,7 +21,6 @@ if [ "${ENABLE_TOR:-false}" = "true" ]; then
     tor --RunAsDaemon 1 > /dev/null 2>&1 || {
         echo "Warning: Tor failed to start – continuing without it"
     }
-    # Give Tor a few seconds to bootstrap (prevents immediate connection issues)
     sleep 6
     echo "Tor started (or attempted)."
 else
@@ -31,8 +29,6 @@ fi
 
 # ────────────────────────────────────────────────
 # Start the Node.js application
-# Prefers pm2-runtime if available (common in production Docker setups)
-# Fallback to plain node otherwise
 # ────────────────────────────────────────────────
 
 echo "Launching Node application..."
@@ -42,6 +38,5 @@ if command -v pm2 >/dev/null 2>&1; then
     exec pm2-runtime start ecosystem.config.js
 else
     echo "pm2 not found – starting node directly"
-    # Replace backend.js with your actual entry point (most likely src/index.js)
-    exec node src/index.js
+    exec node src/server.mjs
 fi
