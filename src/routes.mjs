@@ -258,6 +258,12 @@ const textMasks = insert.textMasks;
 const splashRandom = insert.splash;
 const versionValue = insert.version;
 
+/* Cache bust mapping */
+const cacheBustList = Object.freeze({
+  'styles.css': 'styles-1755147161.css',
+  'common.js': 'common-1735118314.js'
+});
+
 /* ────────────────────────────────────────────────
    FINAL SAFE EXPORT – no trailing commas, no spread
    (this is guaranteed to work in Node 20 ESM)
@@ -279,8 +285,6 @@ export {
   textMasks,
   splashRandom,
   versionValue,
-  cacheBustList: {
-    'styles.css': 'styles-1755147161.css',
-    'common.js': 'common-1735118314.js'
-  }
+  cacheBustList
 };
+
