@@ -24,19 +24,22 @@
     <div class="loader loader-active">
       <div class="loader-w"></div>
     </div>
+
     <div class="omnibar" id="pr-sj">
       <a 
         class="logo" 
         href="{{route}}{{/}}" 
         role="img" 
-        aria-label="SCBypass" 
-        style="background-image: none !important; font-size: 1.2rem; font-weight: bold; color: white; padding: 0 1rem; text-decoration: none;"
+        aria-label="SCBypass"
+        style="background-image: none !important; background: transparent !important; font-size: 1.4rem; font-weight: bold; color: #ffffff; padding: 0 1rem; text-decoration: none; line-height: 50px;"
       >
         SCBypass
       </a>
+
       <button title="Back"><i class="fas fa-arrow-left"></i></button>
       <button title="Forward"><i class="fas fa-arrow-right"></i></button>
       <button title="Refresh"><i class="fas fa-redo-alt"></i></button>
+
       <div class="search-box">
         <input
           class="glowbutton"
@@ -48,6 +51,7 @@
         />
         <ul id="autocomplete"></ul>
       </div>
+
       <div title="Settings" class="dropdown-parent">
         <a href="#" tabindex="0">
           <i class="fas fa-cog pulse" aria-hidden="true"></i>
@@ -63,13 +67,16 @@
           </div>
         </div>
       </div>
+
       <button id="omnibar-toggle" title="Hide Bar">
         <i class="fas fa-chevron-up"></i>
       </button>
     </div>
+
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <iframe id="frame" allow="fullscreen" autofocus></iframe>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+
     <script>
       const windowFrame = document.getElementById('frame');
       const omnibar = document.getElementById('pr-sj');
@@ -78,6 +85,7 @@
       const forwardArrow = omnibar.querySelector("[title='Forward' i]");
       const reloadArrow = omnibar.querySelector("[title='Refresh' i]");
       let hidden = false;
+
       toggle.addEventListener('click', () => {
         hidden = !hidden;
         omnibar.classList.toggle('omnibar-hidden', hidden);
@@ -86,15 +94,19 @@
         (hidden ? document.body : omnibar).appendChild(toggle);
         toggle.title = hidden ? 'Show Bar' : 'Hide Bar';
       });
+
       backArrow.addEventListener('click', () => {
         history.back();
       });
+
       forwardArrow.addEventListener('click', () => {
         history.forward();
       });
+
       reloadArrow.addEventListener('click', () => {
         windowFrame.contentWindow.location.reload();
       });
+
       let statusObject = { isLoading: true, timesErrored: 0 };
       const loaderTimeout = (timeout) => {
         statusObject.isLoading = true;
@@ -103,6 +115,7 @@
             loader.classList.toggle('loader-active', false);
         }, timeout);
       };
+
       const errorRefresh = () => {
         const shouldRefresh =
           statusObject.timesErrored <= 5 &&
@@ -115,6 +128,7 @@
         } else statusObject.timesErrored = 0;
         return shouldRefresh;
       };
+
       const loader = document.getElementsByClassName('loader')[0];
       const updateLoader = () => {
         if (windowFrame.contentWindow.location.href === 'about:blank') return;
@@ -127,6 +141,7 @@
         loader.classList.toggle('loader-active', statusObject.isLoading);
         if (statusObject.isLoading) loaderTimeout(5000);
       };
+
       const loadHandler = () => {
         setTimeout(() => {
           windowFrame.contentWindow.addEventListener('beforeunload', () => {
@@ -141,6 +156,7 @@
           updateLoader();
         });
       };
+
       windowFrame.addEventListener('load', updateLoader);
       loadHandler();
     </script>
