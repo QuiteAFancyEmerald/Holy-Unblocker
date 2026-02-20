@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SCBypass</title>
+    <title>SCBypass – Proxy Browsing</title>
     <meta
       name="description"
       content="SCBypass – secure web proxy for unblocking sites and private browsing. Fast, reliable, no downloads required."
@@ -21,13 +21,19 @@
   <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <!--ANTI-EXFIL-->
-
     <div class="loader loader-active">
       <div class="loader-w"></div>
     </div>
-
     <div class="omnibar" id="pr-sj">
-      <a class="logo" href="{{route}}{{/}}" role="img" aria-label="SCBypass Logo"></a>
+      <a 
+        class="logo" 
+        href="{{route}}{{/}}" 
+        role="img" 
+        aria-label="SCBypass" 
+        style="background-image: none !important; font-size: 1.2rem; font-weight: bold; color: white; padding: 0 1rem; text-decoration: none;"
+      >
+        SCBypass
+      </a>
       <button title="Back"><i class="fas fa-arrow-left"></i></button>
       <button title="Forward"><i class="fas fa-arrow-right"></i></button>
       <button title="Refresh"><i class="fas fa-redo-alt"></i></button>
@@ -61,11 +67,9 @@
         <i class="fas fa-chevron-up"></i>
       </button>
     </div>
-
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <iframe id="frame" allow="fullscreen" autofocus></iframe>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-
     <script>
       const windowFrame = document.getElementById('frame');
       const omnibar = document.getElementById('pr-sj');
@@ -74,7 +78,6 @@
       const forwardArrow = omnibar.querySelector("[title='Forward' i]");
       const reloadArrow = omnibar.querySelector("[title='Refresh' i]");
       let hidden = false;
-
       toggle.addEventListener('click', () => {
         hidden = !hidden;
         omnibar.classList.toggle('omnibar-hidden', hidden);
@@ -83,19 +86,15 @@
         (hidden ? document.body : omnibar).appendChild(toggle);
         toggle.title = hidden ? 'Show Bar' : 'Hide Bar';
       });
-
       backArrow.addEventListener('click', () => {
         history.back();
       });
-
       forwardArrow.addEventListener('click', () => {
         history.forward();
       });
-
       reloadArrow.addEventListener('click', () => {
         windowFrame.contentWindow.location.reload();
       });
-
       let statusObject = { isLoading: true, timesErrored: 0 };
       const loaderTimeout = (timeout) => {
         statusObject.isLoading = true;
@@ -104,7 +103,6 @@
             loader.classList.toggle('loader-active', false);
         }, timeout);
       };
-
       const errorRefresh = () => {
         const shouldRefresh =
           statusObject.timesErrored <= 5 &&
@@ -117,7 +115,6 @@
         } else statusObject.timesErrored = 0;
         return shouldRefresh;
       };
-
       const loader = document.getElementsByClassName('loader')[0];
       const updateLoader = () => {
         if (windowFrame.contentWindow.location.href === 'about:blank') return;
@@ -130,7 +127,6 @@
         loader.classList.toggle('loader-active', statusObject.isLoading);
         if (statusObject.isLoading) loaderTimeout(5000);
       };
-
       const loadHandler = () => {
         setTimeout(() => {
           windowFrame.contentWindow.addEventListener('beforeunload', () => {
@@ -145,7 +141,6 @@
           updateLoader();
         });
       };
-
       windowFrame.addEventListener('load', updateLoader);
       loadHandler();
     </script>
