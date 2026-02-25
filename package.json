@@ -38,7 +38,7 @@
     "@mercuryworkshop/epoxy-transport": "^2.1.28",
     "@mercuryworkshop/libcurl-transport": "^1.5.1",
 
-    "@mercuryworkshop/scramjet": "github:MercuryWorkshop/scramjet#2.0.0-alpha.7",
+    "@mercuryworkshop/scramjet": "github:MercuryWorkshop/scramjet",
 
     "@mercuryworkshop/wisp-js": "^0.4.1",
     "@titaniumnetwork-dev/ultraviolet": "^3.2.10",
@@ -55,4 +55,3 @@
     "esbuild": "^0.27.3"
   }
 }
-
