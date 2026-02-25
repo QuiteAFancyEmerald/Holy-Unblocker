@@ -29,17 +29,11 @@ RUN apk add --no-cache \
 # Copy project files
 COPY . .
 
-# Install required Node dependencies
-# EXPRESS is REQUIRED for Rammerhead to run
-RUN npm install \
-    express \
-    fastify \
-    node-fetch@2 \
-    ws \
-    uuid \
-    && npm install
+# Install ALL dependencies (Rammerhead, UV, Scramjet, Fastify, etc.)
+# --legacy-peer-deps is REQUIRED for Rammerhead + UV + Scramjet to install correctly
+RUN npm install --legacy-peer-deps
 
-# Build SCBypass
+# Build SCBypass (ignore build errors if optional)
 RUN npm run build || true
 
 # Expose main proxy port + Tor ports
