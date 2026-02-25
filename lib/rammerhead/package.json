@@ -1,56 +1,58 @@
 {
-  "name": "@rubynetwork/rammerhead",
-  "version": "1.2.41-ruby.2",
-  "description": "User friendly web proxy powered by testcafe-hammerhead",
-  "main": "src/index.js",
-  "private": false,
+  "name": "Scbypass",
+  "version": "6.9.4",
+  "repository": "https://www.tiktok.com/@holy.nik.offz",
+  "description": "SCBypass - Secure web proxy / unblocker. Follow my TikTok for updates & drops: https://www.tiktok.com/@holy.nik.offz | Join Discord: https://discord.gg/TnPCzYWZAP",
+  "main": "backend.js",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
-    "start": "node server.js",
-    "build": "node src/build.js",
-    "bstart": "npm run build && npm run start",
-    "test": "npm run format && npm run lint && npm run build",
-    "lint": "eslint -c .eslintrc.json --ext .js src",
-    "format": "prettier --write 'src/**/*.js'",
-    "clientes5": "es-check es5 src/client/*.js public/**/*.js"
+    "fresh-install": "npm cache verify && npm update && npm ci && cd lib/rammerhead && npm ci",
+    "fresh-start": "npm run fresh-install && npm start",
+    "start": "npm stop && npm run build && npm run manual-start",
+    "restart": "node run-command.mjs stop start",
+    "stop": "node run-command.mjs stop",
+    "test": "npm run proxy-validator",
+    "manual-start": "node run-command.mjs start",
+    "kill": "node run-command.mjs stop kill",
+    "build": "node run-command.mjs build && cd lib/rammerhead && npm run build",
+    "clear": "node run-command.mjs clean",
+    "clean": "node run-command.mjs clean format",
+    "proxy-validator": "node proxyServiceValidator.js",
+    "workflow-test": "node run-command.mjs workflow",
+    "deployment": "npm install && npm run build && node backend.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/binary-person/rammerhead.git"
-  },
-  "author": "Simon Cheng <simoncheng559@gmail.com> (https://github.com/binary-person)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/binary-person/rammerhead/issues"
-  },
-  "homepage": "https://github.com/binary-person/rammerhead#readme",
+  "keywords": [
+    "proxy",
+    "node.js",
+    "unblocker",
+    "scbypass"
+  ],
+  "author": "holy.nik.offz",
+  "license": "GNU AFFERO",
   "dependencies": {
-    "async-exit-hook": "^2.0.1",
-    "cookie": "^0.5.0",
-    "fastify": "^4.26.2",
-    "keyv-lru-files": "github:holy-unblocker/keyv-lru-files",
-    "mime": "^2.5.2",
-    "testcafe-hammerhead": "24.5.18",
-    "uglify-js": "^3.15.3",
-    "uuid": "^8.3.2",
-    "ws": "^8.2.0"
+    "@fastify/helmet": "^13.0.2",
+    "@fastify/static": "^9.0.0",
+    "@mercuryworkshop/bare-mux": "^2.1.8",
+    "@mercuryworkshop/epoxy-transport": "^2.1.28",
+    "@mercuryworkshop/libcurl-transport": "^1.5.1",
+
+    "@mercuryworkshop/scramjet": "github:MercuryWorkshop/scramjet",
+
+    "@mercuryworkshop/wisp-js": "^0.4.1",
+    "@titaniumnetwork-dev/ultraviolet": "^3.2.10",
+    "axios": "^1.13.5",
+    "chii": "^1.15.5",
+    "fastify": "^5.7.4",
+    "pm2": "^6.0.14",
+    "puppeteer": "^24.37.2",
+    "utf-8-validate": "^6.0.6",
+    "ws": "^8.19.0"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "dotenv-flow": "^3.2.0",
-    "eslint": "^7.32.0",
-    "npm-force-resolutions": "0.0.10",
-    "prettier": "^2.3.2"
-  },
-  "resolutions": {
-    "tmp": "0.2.1"
-  },
-  "files": [
-    "src/*",
-    "holy-config.js",
-    "CHANGELOG.md",
-    "package.json",
-    "README.md",
-    "sessions/.gitkeep",
-    "cache-js/.gitkeep"
-  ]
+    "@babel/node": "^7.29.0",
+    "esbuild": "^0.27.3"
+  }
 }
+
