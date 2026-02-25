@@ -1,58 +1,50 @@
-{
-  "name": "Scbypass",
-  "version": "6.9.4",
-  "repository": "https://www.tiktok.com/@holy.nik.offz",
-  "description": "SCBypass - Secure web proxy / unblocker. Follow my TikTok for updates & drops: https://www.tiktok.com/@holy.nik.offz | Join Discord: https://discord.gg/TnPCzYWZAP",
-  "main": "backend.js",
-  "engines": {
-    "node": "20.x"
-  },
-  "scripts": {
-    "fresh-install": "npm cache verify && npm update && npm ci && cd lib/rammerhead && npm ci",
-    "fresh-start": "npm run fresh-install && npm start",
-    "start": "npm stop && npm run build && npm run manual-start",
-    "restart": "node run-command.mjs stop start",
-    "stop": "node run-command.mjs stop",
-    "test": "npm run proxy-validator",
-    "manual-start": "node run-command.mjs start",
-    "kill": "node run-command.mjs stop kill",
-    "build": "node run-command.mjs build && cd lib/rammerhead && npm run build",
-    "clear": "node run-command.mjs clean",
-    "clean": "node run-command.mjs clean format",
-    "proxy-validator": "node proxyServiceValidator.js",
-    "workflow-test": "node run-command.mjs workflow",
-    "deployment": "npm install && npm run build && node backend.js"
-  },
-  "keywords": [
-    "proxy",
-    "node.js",
-    "unblocker",
-    "scbypass"
-  ],
-  "author": "holy.nik.offz",
-  "license": "GNU AFFERO",
-  "dependencies": {
-    "@fastify/helmet": "^13.0.2",
-    "@fastify/static": "^9.0.0",
-    "@mercuryworkshop/bare-mux": "^2.1.8",
-    "@mercuryworkshop/epoxy-transport": "^2.1.28",
-    "@mercuryworkshop/libcurl-transport": "^1.5.1",
+# ────────────────────────────────────────────────
+# Base image: lightweight Node 20 on Alpine
+# ────────────────────────────────────────────────
+FROM node:20-alpine
 
-    "@mercuryworkshop/scramjet": "github:MercuryWorkshop/scramjet",
+# Set working directory
+WORKDIR /app
 
-    "@mercuryworkshop/wisp-js": "^0.4.1",
-    "@titaniumnetwork-dev/ultraviolet": "^3.2.10",
-    "axios": "^1.13.5",
-    "chii": "^1.15.5",
-    "fastify": "^5.7.4",
-    "pm2": "^6.0.14",
-    "puppeteer": "^24.37.2",
-    "utf-8-validate": "^6.0.6",
-    "ws": "^8.19.0"
-  },
-  "devDependencies": {
-    "@babel/node": "^7.29.0",
-    "esbuild": "^0.27.3"
-  }
-}
+# Metadata / OCI labels – SCBypass branding
+LABEL org.opencontainers.image.title="SCBypass" \
+      org.opencontainers.image.description="Secure, fast web proxy / unblocker – bypass filters with strong privacy & evasion features" \
+      org.opencontainers.image.version="6.9.4" \
+      org.opencontainers.image.authors="holy.nik.offz" \
+      org.opencontainers.image.source="https://www.tiktok.com/@holy.nik.offz" \
+      org.opencontainers.image.url="https://discord.gg/TnPCzYWZAP"
 
+# Install runtime + build dependencies
+RUN apk add --no-cache \
+    tor \
+    bash \
+    git \
+    python3 \
+    py3-pip \
+    make \
+    g++ \
+    wget \
+    && rm -rf /var/cache/apk/*
+
+# Copy project files
+COPY . .
+
+# Install ALL dependencies (Rammerhead, UV, Scramjet, Fastify, etc.)
+RUN npm install --legacy-peer-deps
+
+# Build SCBypass (ignore build errors if optional)
+RUN npm run build || true
+
+# Expose main proxy port + Tor ports
+EXPOSE 8080 9050 9051
+
+# Copy startup script
+COPY serve.sh /serve.sh
+RUN chmod +x /serve.sh
+
+# Healthcheck – Fly.io uses this to detect readiness
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
+
+# Start command
+CMD ["/serve.sh"]
