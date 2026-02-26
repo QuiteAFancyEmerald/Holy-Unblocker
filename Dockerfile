@@ -12,9 +12,16 @@ RUN apk add --no-cache \
     && npm install -g pnpm@9 \
     && rm -rf /var/cache/apk/*
 
+# Disable only-allow checks but keep build scripts enabled
+ENV ONLY_ALLOW_SKIP=true
+ENV ADBLOCK=true
+ENV DISABLE_OPENCOLLECTIVE=true
+ENV NPM_CONFIG_FUND=false
+ENV NPM_CONFIG_AUDIT=false
+
 COPY . .
 
-RUN pnpm install --shamefully-hoist --ignore-scripts
+RUN pnpm install --shamefully-hoist
 
 RUN pnpm run build || true
 
