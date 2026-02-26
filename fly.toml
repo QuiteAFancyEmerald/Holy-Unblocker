@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for schoolbypass on 2026-02-24T11:13:25Z
+# fly.toml app configuration file generated for schoolbypass on 2026-02-26T09:06:27Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
 app = 'schoolbypass'
-primary_region = 'arn'
+primary_region = 'lhr'
 
 [build]
 
