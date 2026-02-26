@@ -14,7 +14,7 @@ RUN apk add --no-cache \
 
 COPY . .
 
-RUN pnpm install --shamefully-hoist
+RUN pnpm install --shamefully-hoist --ignore-scripts
 
 RUN pnpm run build || true
 
