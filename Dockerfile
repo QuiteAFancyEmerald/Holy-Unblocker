@@ -9,7 +9,7 @@ LABEL org.opencontainers.image.title="SCBypass" \
 
 RUN apk add --no-cache \
     tor bash git python3 py3-pip make g++ wget \
-    && npm install -g pnpm \
+    && npm install -g pnpm@9 \
     && rm -rf /var/cache/apk/*
 
 COPY . .
@@ -27,4 +27,3 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
 
 CMD ["/serve.sh"]
-
