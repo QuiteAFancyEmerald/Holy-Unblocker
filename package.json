@@ -8,20 +8,19 @@
     "node": "20.x"
   },
   "scripts": {
-    "fresh-install": "npm cache verify && npm update && npm ci && cd lib/rammerhead && npm ci",
-    "fresh-start": "npm run fresh-install && npm start",
-    "start": "npm stop && npm run build && npm run manual-start",
+    "fresh-install": "pnpm install --shamefully-hoist && cd lib/rammerhead && pnpm install",
+    "fresh-start": "pnpm run fresh-install && pnpm start",
+    "start": "pnpm run build && pnpm run manual-start",
     "restart": "node run-command.mjs stop start",
     "stop": "node run-command.mjs stop",
-    "test": "npm run proxy-validator",
+    "test": "node proxyServiceValidator.js",
     "manual-start": "node run-command.mjs start",
     "kill": "node run-command.mjs stop kill",
-    "build": "node run-command.mjs build && cd lib/rammerhead && npm run build",
+    "build": "node run-command.mjs build && cd lib/rammerhead && pnpm run build",
     "clear": "node run-command.mjs clean",
     "clean": "node run-command.mjs clean format",
-    "proxy-validator": "node proxyServiceValidator.js",
     "workflow-test": "node run-command.mjs workflow",
-    "deployment": "npm install && npm run build && node backend.js"
+    "deployment": "pnpm install --shamefully-hoist && pnpm run build && node backend.js"
   },
   "keywords": [
     "proxy",
@@ -37,9 +36,7 @@
     "@mercuryworkshop/bare-mux": "^2.1.8",
     "@mercuryworkshop/epoxy-transport": "^2.1.28",
     "@mercuryworkshop/libcurl-transport": "^1.5.1",
-
-    "@mercuryworkshop/scramjet": "github:MercuryWorkshop/scramjet",
-
+    "@mercuryworkshop/scramjet": "1.0.0",
     "@mercuryworkshop/wisp-js": "^0.4.1",
     "@titaniumnetwork-dev/ultraviolet": "^3.2.10",
     "axios": "^1.13.5",
