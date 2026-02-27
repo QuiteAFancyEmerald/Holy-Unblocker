@@ -1,86 +1,38 @@
-<p align="center">
-  <img align="center" src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/github_banner.png" alt="SCBypass Banner">
-</p>
+# rammerhead
 
-<p align="left">
-  <img width="40px" src="https://raw.githubusercontent.com/titaniumnetwork-dev/Holy-Unblocker/master/views/assets/img/logo_github.png" alt="SCBypass Logo">
-</p>
+> proxy based on testcafe-hammerhead (password is `sharkie4life`)
 
-# SCBypass (v6.9.4)
+Demo link: https://demo-opensource.rammerhead.org
 
-![GitHub Actions Status](https://github.com/QuiteAFancyEmerald/Holy-Unblocker/workflows/CI-Production/badge.svg)
-![GitHub Actions Status](https://github.com/QuiteAFancyEmerald/Holy-Unblocker/workflows/CI-Win/badge.svg)
-[![Docker Image Version](https://img.shields.io/docker/v/quiteafancyemerald/holy-unblocker.svg)](https://hub.docker.com/r/quiteafancyemerald/holy-unblocker)
-[![Docker Pulls](https://img.shields.io/docker/pulls/quiteafancyemerald/holy-unblocker.svg)](https://hub.docker.com/r/quiteafancyemerald/holy-unblocker)
+Polished closed-source-for-now browser version: https://browser.rammerhead.org (more links by awesome community members in the discord server at the end of readme)
 
-**SCBypass** is a secure, clientless web proxy / unblocker that bypasses almost any content filter — whether it's school Chromebooks, network-level blocks, government censorship, or browser extension blockers.
 
-It supports **YouTube**, **Discord**, **GeForce NOW**, **Spotify**, Reddit, Instagram — and basically any site you throw at it — including the ability to access **Tor / .onion** domains directly in a normal browser.
+## Supporting me and contributing
 
-Follow my TikTok for updates, new drops & mirrors:  
-https://www.tiktok.com/@holy.nik.offz
+Server infrastructure costs money and developing this project consumes a lot of my time, so I would appreciate it greatly if you become a Patreon member: https://www.patreon.com/rammerhead
 
-Join the Discord community:  
-https://discord.gg/TnPCzYWZAP
 
-> Over the years similar proxies reached **30M+** users. SCBypass continues that legacy with frequent updates and strong focus on evasion + self-hosting privacy.
+## Who is this package for
 
-### Current Branch: **v6.9.4_production** (recommended for self-hosting)
+Package is for those who want a fully-configurable proxy that works on many sites
 
-<details>
-<summary>Branch types (for reference)</summary>
+## Effectiveness of proxy
 
-- `master` / `main` → development, readable source, SEO experiments
-- `beta` → upcoming changes (may break things)
-- `v6.x_production` → stable, heavily obfuscated, maximum filter evasion, production-ready
+This proxy supports proxying
+- basically everything except google logins
 
-</details>
+## Features of proxy
 
-**Tip:** For best evasion when self-hosting → use a **production** branch (`v6.9.4_production` or similar).
+The proxy allows users to create a "session". When they access their session, their localStorage and cookies will be synced with rammerhead. This allows for accurately mocking cookied requests and conveniently save their logins even if they switch devices. This also enables users to configure a custom HTTP proxy server for rammerhead to connect to for the session.
 
-## Deploy SCBypass (one-click options)
+## Installing and running
 
-### Free Deployments
+Rammerhead recommends you to have at least **node v16** to be installed. Once you installed nodejs, clone the repo, then run `npm install` and `npm run build`.
 
-[![Deploy to Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?name=scbypass&type=git&repository=QuiteAFancyEmerald%2FHoly-Unblocker&branch=v6.9.4_production&builder=dockerfile&ports=8080%3Bhttp%3B%2F)
+After, configure your settings in [src/config.js](src/config.js). If you wish to consistently pull updates from this repo without the hassle of merging, create `config.js` in the root folder so they override the configs in `src/`.
 
-<details>
-<summary>Alternative free platforms</summary>
+Finally run the following to start rammerhead: `node src/server.js`
 
-- Render  
-- Fly.io  
-- Cyclic (if still available)  
-- Oracle Cloud Always Free tier
+## Discord server
 
-</details>
-
-### Paid / Higher-performance Options (credit card may be required)
-
-- Railway.app
-- Render.com (paid tier)
-- DigitalOcean / Vultr / Linode ~$5–12/mo droplets
-- Azure / Google Cloud / AWS free credits for new accounts
-
-**Note:** Replit & Heroku no longer support free proxy hosting. Use Koyeb, Railway or a cheap VPS instead.
-
-## Quick Setup (VPS / Dedicated Server)
-
-```bash
-# Clone production branch (recommended)
-git clone -b v6.9.4_production https://github.com/QuiteAFancyEmerald/Holy-Unblocker.git scbypass
-cd scbypass
-
-# Install dependencies
-npm run fresh-install
-
-# Start (pm2 will be used automatically if production: true in config)
-npm start
-
-# Later restarts / updates
-npm restart
-
-# Stop all pm2 processes
-npm run kill
-
-# Clean Rammerhead cache if needed
-npm run clean
+For any user-help non-issue related questions, especially pertaining to Rammerhead Browser, please ask them here: [Rammerhead Support Server](https://discord.gg/VNT4E7gN5Y).
