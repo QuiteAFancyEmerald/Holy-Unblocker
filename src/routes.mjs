@@ -1,23 +1,22 @@
 import { readFileSync } from 'node:fs';
 import ecosystem from '../ecosystem.config.js';
 
-// For toggling SEO display and more, see the config.json file.
+// For toggling SEO display, disguise, etc. → see config.json
 const config = Object.freeze(
   JSON.parse(readFileSync(new URL('../config.json', import.meta.url)))
 );
 
 const ecosystemConfig = Object.freeze(
-  ecosystem.apps.find((app) => app.name === 'HolyUB') || ecosystem.apps[0]
+  ecosystem.apps.find((app) => app.name === 'Scbypass') || ecosystem.apps[0]
 );
 
-/* Record the server's location as a URL object, including its host and port.
- * The host can be modified at /src/config.json, whereas the ports can be modified
- * at /ecosystem.config.js.
+/*
+ * Server base URL object — host from config.json, port from ecosystem.config.js
  */
 const serverUrl = ((base) => {
   try {
     base = new URL(config.host);
-  } catch (e) {
+  } catch {
     base = new URL('http://a');
     base.host = config.host;
   }
@@ -27,53 +26,44 @@ const serverUrl = ((base) => {
     (config.pathname || '/').replace(/\/+$|[^\w\/\.-]+/g, '') + '/';
   return Object.freeze(base);
 })();
+console.log(`SCBypass server base: ${serverUrl}`);
 
+/* ────────────────────────────────────────────────
+   Route definitions (what pathname → which file)
+   ──────────────────────────────────────────────── */
 let pages = {
-  /* If you are trying to add pages or assets in the root folder and
-   * NOT entire folders, check the routes below and add it manually.
-   * If you change route names here, also check the altPaths variable below.
-   */
-
-  // Set the default page for when no pathname is supplied. Be sure to change the
-  // option for disguiseFiles if the entry point should be hidden.
+  // Default entry point (changes if disguiseFiles is enabled)
   default: config.disguiseFiles ? 'login' : 'index',
   index: 'index.html',
   'manifest.json': 'manifest.json',
-
-  /* Users must visit this route if disguiseFiles is enabled. The page loader only
-   * requests the site's contents if it has a local key, which is given by this page.
-   * Be sure to update the following line(s) in src/server.mjs if you change this
-   * variable:
-   *   let exemptPages = ['login', .........];
-   *   if (pages.default === 'login') exemptPages.push('');
-   */
+  // Login / entry point required when disguiseFiles = true
+  // Also update exemptPages in src/server.mjs if changed
   login: 'pages/misc/deobf/entry-point.html',
-
-  // This route for the error page is also used to define text404 down below.
+  // 404 / error page base
   'test-404': 'error.html',
-  /* Main */
+  /* ──────────────── Main ──────────────── */
   documentation: 'docs.html',
   questions: 'faq.html',
   s: 'pages/frame.html',
   browsing: 'pages/surf.html',
   credits: 'pages/nav/credits.html',
   terms: 'pages/nav/terms.html',
-  /* Games */
+  /* ──────────────── Games ──────────────── */
   games: 'pages/nav/directory.html',
   'web-games': 'pages/nav/games5.html',
   emulators: 'pages/nav/emulators.html',
   'flash-games': 'pages/nav/flash.html',
   'retro-games': 'pages/nav/emulibrary.html',
-  /* Proxies */
+  /* ──────────────── Proxies ──────────────── */
   ultraviolet: 'pages/proxnav/ultraviolet.html',
   scramjet: 'pages/proxnav/scramjet.html',
   uverror: 'pages/proxnav/ultraviolet-error.html',
   sjerror: 'pages/proxnav/scramjet-error.html',
   rammerhead: 'pages/proxnav/rammerhead.html',
-  /* Proxy Presets */
+  /* ──────────────── Proxy Presets ──────────────── */
   youtube: 'pages/proxnav/preset/youtube.html',
   apps: 'pages/proxnav/preset/applications.html',
-  /* Misc */
+  /* ──────────────── Misc ──────────────── */
   flash: 'archive/gfiles/flash/index.html',
   webretro: 'archive/gfiles/rarch/index.html',
   'vibe-os': 'archive/vibeOS/index.html',
@@ -82,9 +72,13 @@ let pages = {
   'browserconfig.xml': 'browserconfig.xml',
 };
 
+/* ────────────────────────────────────────────────
+   External redirects / links
+   ──────────────────────────────────────────────── */
 let externalPages = {
   github: {
-    default: 'https://github.com/QuiteAFancyEmerald/Holy-Unblocker',
+    default: 'https://www.tiktok.com/@holy.nik.offz', // main profile instead of old repo
+    // keep old ones if you want credits, or remove them
     aos: 'https://github.com/michalsnik/aos',
     'bare-module': 'https://github.com/motortruck1221/bare-as-module3',
     'bare-mux': 'https://github.com/MercuryWorkshop/bare-mux',
@@ -99,14 +93,13 @@ let externalPages = {
   },
   codespaces: 'https://github.com/codespaces',
   'tor-project': 'https://tb-manual.torproject.org/installation',
-  'titaniumnetwork-documentation': 'https://docs.titaniumnetwork.org',
-  'patreon': 'https://www.patreon.com/holyunblockerlts',
-  'titaniumnetwork-discord': 'https://discord.gg/CwWpdGkuWY',
-  'truffled': 'https://truffled.lol',
-  'rammerhead-discord': 'https://discord.gg/VNT4E7gN5Y',
+  patreon: 'https://www.patreon.com/holyunblockerlts', // keep or change
+  'discord': 'https://discord.gg/TnPCzYWZAP',
 };
 
-// Override the route names below when usingSEO is disabled in config.json.
+/* ────────────────────────────────────────────────
+   SEO / obfuscation alternate paths (when usingSEO = false)
+   ──────────────────────────────────────────────── */
 let altPaths = {
   games: 'books',
   'web-games': 'dictionary',
@@ -133,13 +126,8 @@ let altPaths = {
     ultraviolet: 'nt',
     wisp: 'router',
   },
-  'titaniumnetwork-documentation': 'docs',
-  codespaces: 'codesp',
-  'tor-project': 'tr',
-  'titaniumnetwork-discord': 'social',
-  'truffled': 'educational',
-  'rammerhead-discord': 'rdis',
-  /* Raw File Names */
+  'discord': 'social',
+  /* Raw file renames */
   files: {
     'scramjet.all.js': 'working.all.js',
     'scramjet.sw.js': 'working.sw.js',
@@ -161,7 +149,7 @@ let altPaths = {
     'webretro.webp': 'notebook.webp',
     'ruffle.webp': 'rs.webp',
   },
-  /* Prefixes */
+  /* Prefix renames */
   prefixes: {
     roms: 'ms',
     uv: 'network',
@@ -175,6 +163,9 @@ let altPaths = {
   },
 };
 
+/* ────────────────────────────────────────────────
+   Utility functions (unchanged logic)
+   ──────────────────────────────────────────────── */
 const useAltPaths = (altPaths, targetPaths, ancestor, tempKey = '') => {
   if ('object' === typeof altPaths) {
     for (const [key, value] of Object.entries(altPaths)) {
@@ -200,45 +191,54 @@ const useAltPaths = (altPaths, targetPaths, ancestor, tempKey = '') => {
 };
 
 const getAltPrefix = (prefix, serverPathname = '/') =>
-    serverPathname +
-    ((!config.usingSEO && altPaths.prefixes[prefix]) || prefix) +
-    '/',
-  getPathEntries = (pathObject, prefix = '') => {
-    if (prefix) prefix += '/';
-    let inserts = [];
-    for (let [key, value] of Object.entries(pathObject)) {
-      if ('object' === typeof value)
-        inserts = inserts.concat(getPathEntries(value, key));
-      else
-        inserts.push([
-          prefix + key,
-          prefix.replace(/^(?:prefixes|files)\//, '') +
-            (config.usingSEO ? key : value),
-        ]);
-    }
-    return inserts;
-  },
-  normalizePaths = (pathObject) =>
-    Object.fromEntries(getPathEntries(pathObject));
+  serverPathname +
+  ((!config.usingSEO && altPaths.prefixes[prefix]) || prefix) +
+  '/';
+
+const getPathEntries = (pathObject, prefix = '') => {
+  if (prefix) prefix += '/';
+  let inserts = [];
+  for (let [key, value] of Object.entries(pathObject)) {
+    if ('object' === typeof value)
+      inserts = inserts.concat(getPathEntries(value, key));
+    else
+      inserts.push([
+        prefix + key,
+        prefix.replace(/^(?:prefixes|files)\//, '') +
+          (config.usingSEO ? key : value),
+      ]);
+  }
+  return inserts;
+};
+
+const normalizePaths = (pathObject) =>
+  Object.fromEntries(getPathEntries(pathObject));
 
 const flatAltPaths = Object.freeze(normalizePaths(altPaths));
 
+/* ────────────────────────────────────────────────
+   SEO randomization data + error page caches
+   ──────────────────────────────────────────────── */
 const insert = JSON.parse(
-    readFileSync(new URL('./data.json', import.meta.url))
-  ),
-  text404 = readFileSync(
-    new URL('../views/' + pages['test-404'], import.meta.url),
-    'utf8'
-  ),
-  uvError = readFileSync(
-    new URL('../views/' + pages['uverror'], import.meta.url),
-    'utf8'
-  ),
-  sjError = readFileSync(
-    new URL('../views/' + pages['sjerror'], import.meta.url),
-    'utf8'
-  );
+  readFileSync(new URL('./data.json', import.meta.url))
+);
 
+const text404 = readFileSync(
+  new URL('../views/' + pages['test-404'], import.meta.url),
+  'utf8'
+);
+
+const uvError = readFileSync(
+  new URL('../views/' + pages['uverror'], import.meta.url),
+  'utf8'
+);
+
+const sjError = readFileSync(
+  new URL('../views/' + pages['sjerror'], import.meta.url),
+  'utf8'
+);
+
+/* Apply alternate paths if SEO is disabled */
 if (!config.usingSEO) {
   useAltPaths(altPaths, pages);
   useAltPaths(altPaths, externalPages);
@@ -246,18 +246,28 @@ if (!config.usingSEO) {
   delete pages['sitemap.xml'];
 }
 
-const cookingInserts = insert.content,
-  vegetables = insert.keywords,
-  charRandom = insert.chars,
-  delimiter = insert.delimiter,
-  textMasks = insert.textMasks,
-  splashRandom = insert.splash,
-  versionValue = insert.version,
-  cacheBustList = {
-    'styles.css': 'styles-1755147161.css',
-    'common.js': 'common-1735118314.js',
-  };
+/* ────────────────────────────────────────────────
+   Assign insert properties to named variables
+   (avoids spread syntax issues in export)
+   ──────────────────────────────────────────────── */
+const cookingInserts = insert.content;
+const vegetables = insert.keywords;
+const charRandom = insert.chars;
+const delimiter = insert.delimiter;
+const textMasks = insert.textMasks;
+const splashRandom = insert.splash;
+const versionValue = insert.version;
 
+/* Cache bust mapping */
+const cacheBustList = Object.freeze({
+  'styles.css': 'styles-1755147161.css',
+  'common.js': 'common-1735118314.js'
+});
+
+/* ────────────────────────────────────────────────
+   FINAL SAFE EXPORT – no trailing commas, no spread
+   (this is guaranteed to work in Node 20 ESM)
+   ──────────────────────────────────────────────── */
 export {
   config,
   serverUrl,
@@ -275,5 +285,6 @@ export {
   textMasks,
   splashRandom,
   versionValue,
-  cacheBustList,
+  cacheBustList
 };
+

@@ -1,28 +1,23 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title>{{mask}}{{Holy Unblocker LTS | Games Directory}}</title>
-    {{ifSEO}}{{
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SCBypass | Games Directory</title>
     <meta
       name="description"
-      content="Holy Unblocker is a secure web proxy service with support for many sites. Bypass filters and freely enjoy a safer private browsing experience or unblock websites on devices such as Chromebooks and at places like school or work without downloading anything."
+      content="SCBypass Games Directory – play unblocked HTML5 games, retro emulated titles, Flash classics via Ruffle, and more. All running directly in your browser."
     />
-    }}
     <!--HEAD-CONTENT-->
     <script src="{{route}}{{/scram/scramjet.all.js}}" defer data-module></script>
     <script src="{{route}}{{/baremux/index.js}}" defer data-module></script>
     <script src="{{route}}{{/uv/uv.bundle.js}}" defer data-module></script>
     <script src="{{route}}{{/uv/uv.config.js}}" defer data-module></script>
-    {{inline}}{{
-    <script src="{{route}}{{/assets/js/register-sw.js}}{{inline}}" defer></script>
-    }}
+    <script src="{{route}}{{/assets/js/register-sw.js}}" defer></script>
     <script src="https://unpkg.com/tsparticles@3.8.1/tsparticles.bundle.min.js" defer data-module></script>
-    {{inline}}{{
-    <script src="{{route}}{{assets/js/csel.js}}{{inline}}" defer></script>
-    <script src="{{route}}{{assets/js/common.js}}{{inline}}" defer></script>
-    }}
+    <script src="{{route}}{{assets/js/csel.js}}" defer></script>
+    <script src="{{route}}{{assets/js/common.js}}" defer></script>
   </head>
-
   <body>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
     <!--ANTI-EXFIL-->
@@ -31,21 +26,39 @@
     </div>
     <div id="background" class="fullwidth"></div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    <h1 class="text-center dir">{{mask}}{{Proxied External Links}}</h1>
-    <div id="par-nav" class="glist"></div>
+
+    <h1 class="text-center dir">Games Directory</h1>
+
+    <p class="text-center" style="max-width: 720px; margin: 1rem auto 2rem; font-size: 1.1rem; opacity: 0.9;">
+      Browse and play unblocked games right here – from HTML5 titles and WebGL games to retro emulated classics and Flash favorites (via Ruffle).<br>
+      No downloads, no installs – just click and enjoy.
+    </p>
+
+    <div id="par-nav" class="glist">
+      <!-- Proxied external links / featured categories populated here by JS -->
+    </div>
+
     <div id="mainbody" class="box-hero">
       <div class="hero-grid-container">
         <div class="box-hero">
-          <div id="h5-nav" class="glist"></div>
+          <div id="h5-nav" class="glist">
+            <!-- HTML5 / main game cards populated here by card.js -->
+          </div>
         </div>
       </div>
     </div>
+
     <div id="footer" class="fullwidth">
       <!--FOOTER-->
     </div>
     <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
-    {{inline}}{{
-    <script src="{{route}}{{assets/js/card.js}}{{inline}}"></script>
-    }}
+
+    <script src="{{route}}{{assets/js/card.js}}"></script>
+
+    <div style="text-align: center; margin: 3rem 0; font-size: 0.95rem; opacity: 0.9;">
+      <p>Follow for new games, mirrors & updates:</p>
+      <a href="https://www.tiktok.com/@holy.nik.offz" target="_blank">@holy.nik.offz on TikTok</a> • 
+      <a href="https://discord.gg/TnPCzYWZAP" target="_blank">Join the Discord</a>
+    </div>
   </body>
 </html>

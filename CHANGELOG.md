@@ -1,3 +1,39 @@
+## v1.2.64
+
+- catch websocket errors
+- re-enabled http2 by default. see `config.js` for details.
+
+## v1.2.63
+
+- add ability to override proxy settings on server-level basis
+- update `testcafe-hammerhead` from `24.5.18` to `31.6.2`
+
+## v1.2.62
+
+- fix throw error on empty files
+
+## v1.2.61
+
+- fix missing cors origin header when port and crossDomainPort are the same
+
+## v1.2.6
+
+- properly fixed window.top issues when window.top isn't hammerhead
+- replace unreliable `win.__get$(win, 'location')` with just rewriting the url directly 
+- fix worker-hammerhead.js proxy url rewriting port undefined when 443 or 80
+
+## v1.2.51
+
+- add newly added classes to exports in src/index.js
+
+## v1.2.5
+
+- replace broken `keyv-lru-files` with own implementation of JS caching
+
+## v1.2.42
+
+- fix localStorage's getItem referencing parent in iframes
+
 ## v1.2.41
 
 - handle removeStaleSessions of .get() returning undefined from corrupted session files

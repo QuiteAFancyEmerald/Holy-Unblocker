@@ -1,18 +1,64 @@
 {
-  "name": "Holy Unblocker v6.8.7",
-  "description": "Holy Unblocker is a secure web proxy service supporting numerous sites while concentrating on detail with design, mechanics, and features. Bypass web filters regardless of whether it is an extension or network-based.",
-  "repository": "https://github.com/QuiteAFancyEmerald/Holy-Unblocker",
-  "logo": "https://raw.githubusercontent.com/QuiteAFancyEmerald/Holy-Unblocker/master/views/assets/img/icon.png",
+  "name": "Scbypass",
+  "version": "6.9.4",
+  "description": "SCBypass is a secure, fast web proxy service for bypassing filters and accessing blocked content. Supports numerous sites with focus on performance, design, and strong evasion features.",
+  "repository": "https://www.tiktok.com/@holy.nik.offz",
+  "logo": "https://raw.githubusercontent.com/QuiteAFancyEmerald/Holy-Unblocker/master/views/assets/img/icon.png", 
+  "author": "holy.nik.offz",
+  "license": "GNU AFFERO",
+  "main": "src/index.js",
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "fresh-install": "npm cache verify && npm update && npm ci && cd lib/rammerhead && npm ci",
+    "fresh-start": "npm run fresh-install && npm start",
+    "start": "npm stop && npm run build && npm run manual-start",
+    "restart": "node run-command.mjs stop start",
+    "stop": "node run-command.mjs stop",
+    "test": "npm run proxy-validator",
+    "manual-start": "node run-command.mjs start",
+    "kill": "node run-command.mjs stop kill",
+    "build": "node run-command.mjs build && cd lib/rammerhead && npm run build",
+    "clear": "node run-command.mjs clean",
+    "clean": "node run-command.mjs clean format",
+    "proxy-validator": "node proxyServiceValidator.js",
+    "workflow-test": "node run-command.mjs workflow",
+    "deployment": "npm install && npm run build && node src/index.js"
+  },
   "keywords": [
-    "holyunblocker",
-    "rammerhead",
-    "scramjet",
-    "ultraviolet",
-    "titaniumnetwork",
-    "node",
+    "scbypass",
     "proxy",
     "unblocker",
     "webproxy",
-    "games"
-  ]
+    "rammerhead",
+    "scramjet",
+    "ultraviolet",
+    "wisp",
+    "epoxy",
+    "bypass",
+    "games",
+    "node"
+  ],
+  "dependencies": {
+    "@fastify/helmet": "^13.0.2",
+    "@fastify/static": "^9.0.0",
+    "@mercuryworkshop/bare-mux": "^2.1.8",
+    "@mercuryworkshop/epoxy-transport": "^2.1.28",
+    "@mercuryworkshop/libcurl-transport": "^1.5.1",
+    "@mercuryworkshop/scramjet": "https://github.com/MercuryWorkshop/scramjet/releases/download/latest/mercuryworkshop-scramjet-2.0.0-alpha.tgz",
+    "@mercuryworkshop/wisp-js": "^0.4.1",
+    "@titaniumnetwork-dev/ultraviolet": "^3.2.10",
+    "axios": "^1.13.5",
+    "chii": "^1.15.5",
+    "fastify": "^5.7.4",
+    "pm2": "^6.0.14",
+    "puppeteer": "^24.37.2",
+    "utf-8-validate": "^6.0.6",
+    "ws": "^8.19.0"
+  },
+  "devDependencies": {
+    "@babel/node": "^7.29.0",
+    "esbuild": "^0.27.3"
+  }
 }
