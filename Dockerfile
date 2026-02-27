@@ -2,27 +2,20 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-LABEL org.opencontainers.image.title="SCBypass" \
-      org.opencontainers.image.description="Secure web proxy / unblocker" \
-      org.opencontainers.image.version="6.9.4" \
-      org.opencontainers.image.authors="holy.nik.offz"
-
 RUN apk add --no-cache \
     tor bash git python3 py3-pip make g++ wget \
     && npm install -g pnpm@9 \
     && rm -rf /var/cache/apk/*
 
-# Disable only-allow checks but keep build scripts enabled
-ENV ONLY_ALLOW_SKIP=true
-ENV ADBLOCK=true
-ENV DISABLE_OPENCOLLECTIVE=true
-ENV NPM_CONFIG_FUND=false
-ENV NPM_CONFIG_AUDIT=false
-
 COPY . .
 
+# Install main dependencies
 RUN pnpm install --shamefully-hoist
 
+# Install Rammerhead dependencies
+RUN cd lib/rammerhead && pnpm install --shamefully-hoist
+
+# Build SCBypass + Rammerhead
 RUN pnpm run build || true
 
 EXPOSE 8080 9050 9051
