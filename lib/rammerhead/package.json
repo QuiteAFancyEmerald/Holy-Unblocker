@@ -1,58 +1,20 @@
 {
-  "name": "Scbypass",
-  "version": "6.9.4",
-  "repository": "https://www.tiktok.com/@holy.nik.offz",
-  "description": "SCBypass - Secure web proxy / unblocker. Follow my TikTok for updates & drops: https://www.tiktok.com/@holy.nik.offz | Join Discord: https://discord.gg/TnPCzYWZAP",
-  "main": "backend.js",
-  "engines": {
-    "node": "20.x"
-  },
+  "name": "rammerhead",
+  "version": "1.0.0",
+  "description": "Rammerhead browser proxy engine",
+  "main": "run-command.mjs",
+  "type": "module",
   "scripts": {
-    "fresh-install": "npm cache verify && npm update && npm ci && cd lib/rammerhead && npm ci",
-    "fresh-start": "npm run fresh-install && npm start",
-    "start": "npm stop && npm run build && npm run manual-start",
-    "restart": "node run-command.mjs stop start",
-    "stop": "node run-command.mjs stop",
-    "test": "npm run proxy-validator",
-    "manual-start": "node run-command.mjs start",
-    "kill": "node run-command.mjs stop kill",
-    "build": "node run-command.mjs build && cd lib/rammerhead && npm run build",
-    "clear": "node run-command.mjs clean",
-    "clean": "node run-command.mjs clean format",
-    "proxy-validator": "node proxyServiceValidator.js",
-    "workflow-test": "node run-command.mjs workflow",
-    "deployment": "npm install && npm run build && node backend.js"
+    "build": "node run-command.mjs build",
+    "start": "node run-command.mjs start"
   },
-  "keywords": [
-    "proxy",
-    "node.js",
-    "unblocker",
-    "scbypass"
-  ],
-  "author": "holy.nik.offz",
-  "license": "GNU AFFERO",
   "dependencies": {
-    "@fastify/helmet": "^13.0.2",
-    "@fastify/static": "^9.0.0",
+    "@mercuryworkshop/scramjet": "1.0.0",
     "@mercuryworkshop/bare-mux": "^2.1.8",
     "@mercuryworkshop/epoxy-transport": "^2.1.28",
     "@mercuryworkshop/libcurl-transport": "^1.5.1",
-
-    "@mercuryworkshop/scramjet": "github:MercuryWorkshop/scramjet",
-
     "@mercuryworkshop/wisp-js": "^0.4.1",
-    "@titaniumnetwork-dev/ultraviolet": "^3.2.10",
-    "axios": "^1.13.5",
-    "chii": "^1.15.5",
     "fastify": "^5.7.4",
-    "pm2": "^6.0.14",
-    "puppeteer": "^24.37.2",
-    "utf-8-validate": "^6.0.6",
     "ws": "^8.19.0"
-  },
-  "devDependencies": {
-    "@babel/node": "^7.29.0",
-    "esbuild": "^0.27.3"
   }
 }
-
