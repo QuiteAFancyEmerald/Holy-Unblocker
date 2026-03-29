@@ -16,7 +16,7 @@ Holy Unblocker LTS is an experimental web proxy service that can bypass web filt
 This project serves mostly as a proof of concept for the ideal clientless solution to bypassing censorship. A good use case of this project would be if you ever needed a clientless solution to use Tor or leave minimal traces of device activity. Simply host this project on any domain and have an alternative solution to a VPN without needing to download anything on said device. Being a secure web proxy service, it supports numerous sites while being updated frequently and concentrating on being easy to self-host. Holy Unblocker LTS works with a large number of sites, including YouTube, Discord, GeForce NOW and more!
 Also has a good amount of locally hosted games featured on the site.
 
-### Over 30M+ users since 2020. Thank you so much for the support I could have never imagined how massive the web proxy community has become.
+#### Over 30M+ users since 2020. Thank you so much for the support I could have never imagined how massive the web proxy community has become.
 
 #### Current Branch: Latest
 
@@ -59,7 +59,7 @@ View the <a href="#deploy-holy-unblocker">self-deployment options</a> if you wis
 
 ### Free Deployments
 
-[![Deploy to Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?name=holy-unblocker&type=git&repository=QuiteAFancyEmerald%2FHoly-Unblocker&branch=v6.9.4_production&builder=dockerfile&ports=8080%3Bhttp%3B%2F)
+[![Deploy to Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?name=holy-unblocker&type=git&repository=QuiteAFancyEmerald%2FHoly-Unblocker&branch=v6.9.5_production&builder=dockerfile&ports=8080%3Bhttp%3B%2F)
 [![Deploy to Oracle Cloud](https://binbashbanana.github.io/deploy-buttons/buttons/remade/oraclecloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/BinBashBanana/deploy-buttons/archive/refs/heads/main.zip)
 
 <details><summary>Alternative Free Sources</summary>
@@ -94,6 +94,10 @@ Replit is no longer free and Heroku has a set policy against web proxies. Try Gi
 - Click "Make public" on the application popup, then access the deployed website via the ports tab.
 
 </details>
+
+### Partners
+- <a href="https://gitlab.com/fp-production/fp">The Freedom Project (Hard Fork)</a>
+- <a href="https://github.com/aukak/truffled">Truffled (Partner)</a>
 
 ## Table of contents:
 
@@ -507,6 +511,7 @@ This project currently uses Scramjet and Ultraviolet as web proxies adhering to 
 - <a href="https://github.com/MercuryWorkshop/bare-mux">Bare-Mux</a>
 - <a href="https://github.com/binary-person/rammerhead">Rammerhead</a>
 - <a href="https://gist.github.com/BinBashBanana/a1fd7345e2d86e69d5a532f16cbdbdaa">DetectorDetector</a>
+- <a href="https://gitlab.com/fp-production/fp">The Freedom Project (Hard Fork)</a>
 
 ### Other Dependencies:
 
