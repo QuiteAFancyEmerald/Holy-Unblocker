@@ -201,6 +201,17 @@ img {
   display: block;
 }
 
+code {
+  font-family: 'Source Code Pro', monospace;
+  background-color: var(--nord0m1);
+  color: var(--bigtitle-color, rgb(255, 88, 97));
+}
+
+strong {
+  color: var(--bigtitle-color, rgb(255, 88, 97));
+  font-weight: 500;
+}
+
 ::selection {
   background: rgba(180, 142, 173, 0.513);
 }
@@ -341,10 +352,10 @@ details[open] summary {
   position: sticky;
   top: 0;
   font-weight: bold;
-  font-size: 15px;
-  padding: 15px;
+  font-size: 16px;
+  padding: 20px;
   font-family: 'Rethink Sans', sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   z-index: 1;
   animation: fadeInAnimation ease-in-out 0.3s;
   animation-iteration-count: 1;
@@ -461,8 +472,9 @@ details[open] summary {
 
 .navbar-group {
   display: flex;
-  gap: 20px;
-  font-size: 15px;
+  gap: 30px;
+  font-size: 16px;
+  align-items: center;
 }
 
 .navbar-1 {
@@ -470,13 +482,12 @@ details[open] summary {
   padding: 0;
   margin: 0;
   display: flex;
-  align-items: center;
   color: var(--nord4);
   order: 2;
 }
 
 .navbar-1 > li {
-  margin-left: 45px;
+  margin-left: 55px;
 }
 
 .navbar-1 > li > a.line {
@@ -597,8 +608,9 @@ details[open] summary {
 
 .navbar .dropdown-settings,
 .omnibar .dropdown-settings {
-  display: none;
+  display: flex;
   pointer-events: none;
+  visibility: hidden;
   position: fixed;
   top: 0;
   left: 0;
@@ -610,12 +622,12 @@ details[open] summary {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .dropdown-parent:focus-within
   .dropdown-settings:not(:is(:has(.close-settings-btn:active))) {
-  display: flex;
+  visibility: visible;
   pointer-events: auto;
   opacity: 1;
 }
@@ -911,8 +923,10 @@ input[type='text'] {
   padding: 10px 12px;
   border-radius: 5px;
   margin: 5px 0;
+  font-family: 'Figtree', sans-serif;
+  font-size: 16px;
   background-color: var(--nord0);
-  border: 1px solid var(--nord9);
+  border: var(--nord11) 1px solid;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
@@ -992,10 +1006,6 @@ input[type='text'] {
 .footerlist ul {
   list-style: none;
   padding: 0;
-}
-
-.footerlist ul > li:hover {
-  animation: iconpulse 2s;
 }
 
 .footerlist ul > li {
@@ -2244,17 +2254,6 @@ input[type='text'] {
   }
 }
 
-/* Subtle Blur Hover Animation */
-
-@keyframes iconpulse {
-  0% {
-    filter: blur(0px);
-  }
-  50% {
-    filter: blur(0.9px);
-  }
-}
-
 /* Pulse Hover Animation */
 
 .pulse {
@@ -2325,6 +2324,31 @@ input[type='text'] {
   background: linear-gradient(90deg, var(--nord7), var(--nord8), var(--nord7));
   background-size: 100px auto;
   animation: glowshadow 2s linear infinite, glowbg 2s linear infinite;
+}
+
+.ad {
+    position: absolute;
+    margin: 0px 20px;
+    width: 100px;
+    height: 100%;
+    background-color: var(--nord1);
+    overflow: hidden;
+    display: block;
+    z-index: 1;
+}
+
+#ad-right {
+    right: 0px;
+}
+
+.ad::before {
+    content: "Advertisement";
+    font-family: 'Titillium Web', sans-serif;
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* -----------------------------------------------

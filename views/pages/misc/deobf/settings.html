@@ -52,13 +52,16 @@
       <p class="cseltitle">Advanced Options</p>
       <div class="radio-group">
         <label>
-          <p>Hide Ads <span class="default-badge">{{mask}}{{AdGuard}}</span></p>
+          <p>
+            Hide Ads
+            <span class="default-badge">{{mask}}{{Layered Adblocking}}</span>
+          </p>
           <input type="checkbox" class="switch hideads" checked />
         </label>
         <label>
           <p>
-            {{mask}}{{Enable Tor}}
-            <span class="alt-badge">{{mask}}{{SOCKS5 Onion Routing}}</span>
+            {{mask}}{{Enable Tor/Rotate IP}}
+            <span class="alt-badge">{{mask}}{{Onion Browser Routing}}</span>
           </p>
           <input type="checkbox" class="switch useonion" />
         </label>
@@ -83,11 +86,11 @@
       <p class="cseltitle">Select Theme</p>
       <div class="radio-group theme-list">
         <label>
-          <p>Light</p>
+          <p>Enable Light Theme</p>
           <input type="radio" name="theme" value="light" />
         </label>
         <label>
-          <p>Dark</p>
+          <p>Enable Dark Theme</p>
           <input type="radio" name="theme" value="dark" checked />
         </label>
       </div>
@@ -99,15 +102,18 @@
         <option>{{Google}} Drive</option>
         <option>Gmail</option>
       </select>
-      <p class="cseltitle">{{mask}}{{Enable Devtools}}</p>
+      <p class="cseltitle">Experimental Settings</p>
       <div class="radio-group">
         <label>
           <p>
-            {{mask}}{{Eruda Devtools}}<span class="alt-badge"
-              >C<wbr />TRL+SH<wbr />IFT+I</span
-            >
+            {{mask}}{{Region}}
+            <span class="default-badge">{{mask}}{{Swap Proxy Region}}</span>
           </p>
-          <input type="checkbox" class="switch eruda" />
+          <select class="region-list">
+            <option value="off">Off</option>
+            <option value="eu">Sweden</option>
+            <option value="jp">Japan</option>
+          </select>
         </label>
       </div>
     </div>

@@ -16,7 +16,7 @@ let sjEncode = {};
 // Get the preferred apex domain name. Not exactly apex, as any
 // subdomain other than those listed will be ignored.
 const getDomain = () =>
-    location.host.replace(/^(?:www|edu|cooking|beta)\./, ''),
+    location.host.replace(/^(?:www|beta)\./, ''),
   // This is used for stealth mode when visiting external sites.
   goFrame = (url) => {
     localStorage.setItem('{{hu-lts}}-frame-url', url);
@@ -554,6 +554,8 @@ const preparePage = async () => {
 
     chatgpt: urlHandler(sjUrl('https://chat.openai.com/chat')),
 
+    fmhy: urlHandler(sjUrl('https://fmhy.net')),
+
     discord: urlHandler(sjUrl('https://discord.com/app')),
 
     geforcenow: urlHandler(sjUrl('https://play.geforcenow.com/mall')),
@@ -574,7 +576,6 @@ const preparePage = async () => {
 
     wikipedia: urlHandler(sjUrl('https://www.wikiwand.com')),
 
-    newgrounds: urlHandler(sjUrl('https://www.newgrounds.com')),
   });
 
   // Call a function after a given number of service workers are active.
@@ -770,6 +771,7 @@ const preparePage = async () => {
   prSet('pr-yt', 'youtube');
   prSet('pr-iv', 'invidious');
   prSet('pr-cg', 'chatgpt');
+  prSet('pr-fm', 'fmhy');
   prSet('pr-dc', 'discord');
   prSet('pr-gf', 'geforcenow');
   prSet('pr-sp', 'spotify');
@@ -780,7 +782,6 @@ const preparePage = async () => {
   prSet('pr-ig', 'instagram');
   prSet('pr-rt', 'reddit');
   prSet('pr-wa', 'wikipedia');
-  prSet('pr-ng', 'newgrounds');
 
   // Load the frame for stealth mode if it exists.
   const windowFrame = document.getElementById('frame'),
