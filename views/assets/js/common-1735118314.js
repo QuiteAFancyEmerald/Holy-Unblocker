@@ -552,6 +552,8 @@ const preparePage = async () => {
 
     invidious: urlHandler(sjUrl('https://invidious.snopyta.org')),
 
+    freedomproject: urlHandler(sjUrl('https://0xdc.icu')),
+
     chatgpt: urlHandler(sjUrl('https://chat.openai.com/chat')),
 
     fmhy: urlHandler(sjUrl('https://fmhy.net')),
@@ -770,6 +772,8 @@ const preparePage = async () => {
   prSet('pr-rh', 'rammerhead');
   prSet('pr-yt', 'youtube');
   prSet('pr-iv', 'invidious');
+  prSet('pr-trl', 'tru');
+  prSet('pr-fe', 'freedomproject');
   prSet('pr-cg', 'chatgpt');
   prSet('pr-fm', 'fmhy');
   prSet('pr-dc', 'discord');
