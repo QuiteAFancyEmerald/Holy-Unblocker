@@ -45,7 +45,8 @@
     "pm2": "^6.0.14",
     "puppeteer": "^24.37.2",
     "utf-8-validate": "^6.0.6",
-    "ws": "^8.19.0"
+    "ws": "^8.19.0",
+    "dotenv-flow": "^4.1.0"
   },
   "devDependencies": {
     "@babel/node": "^7.29.0",
