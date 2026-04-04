@@ -32,11 +32,12 @@
     "testcafe-hammerhead": "24.5.18",
     "uglify-js": "^3.15.3",
     "uuid": "^8.3.2",
-    "ws": "^8.2.0"
+    "ws": "^8.2.0",
+    "dotenv-flow": "^3.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "dotenv-flow": "^3.2.0",
+
     "eslint": "^7.32.0",
     "npm-force-resolutions": "0.0.10",
     "prettier": "^2.3.2"
