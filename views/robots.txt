@@ -16,4 +16,4 @@ Disallow: /scram
 User-agent: *
 Disallow: /uv
  
-Sitemap: https://holyunblocker.org/sitemap.xml
+Sitemap: https://invisiproxy.com/sitemap.xml

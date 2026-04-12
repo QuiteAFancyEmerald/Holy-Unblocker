@@ -198,7 +198,7 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
     `<span style="display:none" data-fact="${randomListItem(vegetables)()}">${randomListItem(cookingInserts)()}</span>`,
   insertCooking = (str) =>
     str.replaceAll(
-      '<!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->',
+      '<!-- IMPORTANT-IVINSERT-DONOTDELETE -->',
       getCookingText
     ),
   encodingTable = (() => {
@@ -253,7 +253,7 @@ const regExpEscape = /[-[\]{}()*+?.,\\^$#\s]/g,
   }),
   // List of manual censors for unavoidable cases.
   manualCensors = Object.freeze({
-    Google: 'Google',
+    // Google: 'Google', Removed for now due to Securly
     Bing: 'Bing',
     Brave: 'Brave',
     DuckDuckGo: 'DuckDuckGo',

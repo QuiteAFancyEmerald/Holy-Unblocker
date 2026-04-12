@@ -40,6 +40,9 @@
   ],
   "delimiter": "*",
   "textMasks": {
+
+    "InvisiProxy": ["In*vi*s*i*P*r*o*x*y"],
+    "InvisiProxy LTS": ["In*vi*s*i*P*r*o*x*y L*T*S"],
     "Holy Unblocker": ["H*ol*y *Un*b*lo*c*k*er"],
     "Holy Unblocker LTS": ["H*ol*y *Un*b*lo*c*k*er *L*T*S"],
     "Webretro": ["W*e*b*r*e*t*r*o"],
@@ -85,7 +88,7 @@
     "Rammerhead": ["Ra*m*m*e*r*h*e*a*d"]
   },
   "splash": [
-    "{{mask}}{{This version is the public build of the HU LTS project, and it's being worked on via the master branch! Stuff will NOT work!}}"
+    "{{mask}}{{This version is the public build of the Invisi LTS project, and it's being worked on via the master branch! Stuff will NOT work!}}"
   ],
-  "version": ["6.9.5"]
+  "version": ["6.9.6"]
 }

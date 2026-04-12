@@ -54,7 +54,7 @@ ${l}`}}if((0,n.U5)("rewriterLogs",r.base))for(let e of s.errors)console.error("o
                 *,
                 body {
                     color: #eceff4;
-                    background-color: #1d232a;
+                    background-color: #0d1117;
                     font-family: 'Figtree', sans-serif;
                     font-optical-sizing: auto;
                     background-image:
@@ -276,7 +276,7 @@ ${l}`}}if((0,n.U5)("rewriterLogs",r.base))for(let e of s.errors)console.error("o
                 </style>
             </head>
             <body>
-                <!-- IMPORTANT-HUCOOKINGINSERT-DONOTDELETE -->
+                <!-- IMPORTANT-IVINSERT-DONOTDELETE -->
                 <!--ANTI-EXFIL-->
                 <div id="cover"></div>
                 <div id="inner" class="container-fluid text-center">
@@ -340,7 +340,7 @@ ${l}`}}if((0,n.U5)("rewriterLogs",r.base))for(let e of s.errors)console.error("o
                     ></code
                 >
                 <p class="footer-spacing">
-                    <i>{{mask}}{{Holy Unblocker LTS © 2020-2025 | Made With Love}} </i
+                    <i>{{mask}}{{InvisiProxy LTS © 2020-2025 | Made With Love}} </i
                     ><i class="nf nf-fa-heart"></i>
                 </p>
                 </div>

@@ -1,6 +1,6 @@
-# Contributing to Holy Unblocker
+# Contributing to InvisiProxy LTS
 
-Thank you for considering contributing to Holy Unblocker! Your contributions help us improve and provide better functionality. Please follow the guidelines below to ensure a smooth process.
+Thank you for considering contributing to InvisiProxy LTS! Your contributions help us improve and provide better functionality. Please follow the guidelines below to ensure a smooth process.
 
 ## Commit Message Guidelines
 
@@ -55,4 +55,4 @@ When updating the version in `package.json`, please follow the format `6.x.xx`. 
 5. **Push Your Changes**: Push your changes to your forked repository.
 6. **Create a Pull Request**: Submit a pull request to the main repository, providing a clear description of the changes and why they are necessary.
 
-Thank you for contributing to Holy Unblocker! We appreciate your help in making our project better.
+Thank you for contributing to InvisiProxy! We appreciate your help in making our project better.

@@ -1,8 +1,8 @@
 {
-  "name": "holyunblocker",
-  "version": "6.9.5",
-  "repository": "https://github.com/QuiteAFancyEmerald/Holy-Unblocker",
-  "description": "Holy Unblocker LTS is a web proxy service that helps you access websites that may be blocked by your network, government or policy all within your browser with no download or setup.",
+  "name": "invisiproxy",
+  "version": "6.9.6",
+  "repository": "https://github.com/QuiteAFancyEmerald/InvisiProxy",
+  "description": "InvisiProxy LTS is a web proxy service that helps you access websites that may be blocked by your network, government or policy all within your browser with no download or setup.",
   "main": "backend.js",
   "engines": {
     "node": "20.x"

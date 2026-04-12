@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'HolyUBLTS',
+      name: 'InvisiProxyLTS',
       script: './backend.js',
       env: {
         PORT: 8080,
@@ -21,7 +21,7 @@ module.exports = {
       watch: false,
     },
     {
-      name: 'HolyUBLTS-src-refresh',
+      name: 'InvisiProxyLTS-src-refresh',
       script: './run-command.mjs',
       args: 'build',
       env: {
@@ -39,7 +39,7 @@ module.exports = {
       watch: false,
     },
     {
-      name: 'HolyUBLTS-cache-clean',
+      name: 'InvisiProxyLTS-cache-clean',
       script: './run-command.mjs',
       args: 'clean',
       env: {

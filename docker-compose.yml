@@ -1,10 +1,10 @@
 version: "3.9"
 
 services:
-  holy-unblocker:
-    image: quiteafancyemerald/holy-unblocker:6.9.5
+  invisiproxy:
+    image: quiteafancyemerald/invisiproxy:6.9.6
     build: .
-    container_name: holy-unblocker
+    container_name: invisiproxy
     ports:
       - "8080:8080"
     restart: unless-stopped

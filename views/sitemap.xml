@@ -6,116 +6,110 @@
     http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
     <url>
-        <loc>https://holyunblocker.org/</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>1.00</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/browsing</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/browsing</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.98</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/scramjet</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/scramjet</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.98</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/ultraviolet</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/ultraviolet</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.90</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/rammerhead</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/rammerhead</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.90</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/youtube</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/youtube</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.85</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/apps</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/apps</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.80</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/games</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/games</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.95</priority>
         <changefreq>weekly</changefreq>
     </url>
         <url>
-        <loc>https://holyunblocker.org/partners</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/partners</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.95</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/web-games</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/web-games</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.85</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/emulators</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/emulators</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.85</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/flash-games</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/flash-games</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.70</priority>
         <changefreq>yearly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/retro-games</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
-        <priority>0.70</priority>
-        <changefreq>yearly</changefreq>
-    </url>
-    <url>
-        <loc>https://holyunblocker.org/documentation</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/documentation</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.70</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/questions</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/questions</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.65</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/credits</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/credits</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.60</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/terms</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/terms</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.55</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/flash</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/flash</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.40</priority>
         <changefreq>yearly</changefreq>
     </url>
     <url>
-        <loc>https://holyunblocker.org/webretro</loc>
-        <lastmod>2026-03-29T00:00:00+00:00</lastmod>
+        <loc>https://invisiproxy.com/webretro</loc>
+        <lastmod>2026-04-12T00:00:00+00:00</lastmod>
         <priority>0.40</priority>
         <changefreq>yearly</changefreq>
     </url>

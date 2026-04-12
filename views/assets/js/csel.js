@@ -196,7 +196,7 @@ if (document.getElementById('csel')) {
       // Allow users to reset the title to default if nothing is entered.
       focusElement.focus();
       removeStorage('Title');
-      pageTitle('Holy Unblocker LTS');
+      pageTitle('InvisiProxy LTS');
     }
   });
 
@@ -306,7 +306,7 @@ if (document.getElementById('csel')) {
           options: {
             background: {
               color: {
-                value: styles.getPropertyValue('--particles-bg') || '#1d232a',
+                value: styles.getPropertyValue('--particles-bg') || '#0d1117',
               },
             },
             fullScreen: {

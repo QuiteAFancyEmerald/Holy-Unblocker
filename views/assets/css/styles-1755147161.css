@@ -23,10 +23,11 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
 /* '~' function hexav(a,b){var da=parseInt(a,16),db=parseInt(b,16),diff=db-da,step=diff/3,dc=da+step,dd=db-step,c=Math.round(dc).toString(16),d=Math.round(dd).toString(16);return[c,d];} */
 
 :root {
-  --nord0: #1d232a;
+  --nord0: #0d1117;
   --nord0m1: #2e3440;
   --nord0m2: #323946;
   --nord0m3: #373d4c;
+  --nord0m4: #1c2027;
   --nord1: #3b4252;
   --nord2: #434c5e;
   --nord3: #4c566a;
@@ -132,6 +133,56 @@ see https://raw.githubusercontent.com/arcticicestudio/nord-docs/develop/assets/i
   --particles-op-max: 0.3;
   --particles-op-spd: 0.2;
   --particles-sz-spd: 0.3;
+}
+
+.nord:root {
+  --nord0: #1d232a;
+  --nord0m1: #2e3440;
+  --nord0m2: #323946;
+  --nord0m3: #373d4c;
+  --nord1: #3b4252;
+  --nord2: #434c5e;
+  --nord3: #4c566a;
+  --nord4: #d8dee9;
+  --nord5: #e5e9f0;
+  --nord6: #eceff4;
+  --nord7: #8fbcbb;
+  --nord8: #88c0d0;
+  --nord8lighter: #98d0e0;
+  --nord9: #81a1c1;
+  --nord10: #5e81ac;
+  --nord11: #bf616a;
+  --nord12: #d08770;
+  --nord13: #ebcb8b;
+  --nord14: #a3be8c;
+  --nord15: #b48ead;
+  --nord16: #abadb1;
+  --nord17: #ff5861;
+  --nord18: #2e3440;
+  --nord19: rgba(255, 87, 95, 0.569);
+  --blue: #375a7f;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #e74c3c;
+  --orange: #fd7e14;
+  --yellow: #f39c12;
+  --green: #00bc8c;
+  --teal: #20c997;
+  --cyan: #3498db;
+  --white: #fff;
+  --gray: #999;
+  --gray-dark: #303030;
+  --primary: #375a7f;
+  --secondary: #444;
+  --success: #00bc8c;
+  --info: #3498db;
+  --warning: #f39c12;
+  --danger: #e74c3c;
+  --light: #999;
+  --dark: #303030;
+  --dark2: #22262f;
+  --fancy-dark: rgba(46, 52, 64, 0.2);
 }
 
 /* -----------------------------------------------
@@ -348,7 +399,7 @@ details[open] summary {
 }
 
 #banner {
-  background-color: var(--banner-bg, var(--nord0m1));
+  background-color: var(--banner-bg, var(--nord0m4));
   position: sticky;
   top: 0;
   font-weight: bold;
@@ -1337,7 +1388,7 @@ input[type='text'] {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #1d232a;
+  background-color: #0d1117;
   background-image: radial-gradient(
       circle,
       rgba(131, 131, 131, 0.02) 1px,

@@ -1,9 +1,9 @@
 {
-  "short_name": "Holy Unblocker LTS",
-  "name": "Holy Unblocker LTS | Free Web Proxy Service",
+  "short_name": "InvisiProxy LTS",
+  "name": "InvisiProxy LTS | Free Web Proxy Service",
   "icons": [
     {
-      "src": "https://holyunblocker.org/assets/img/icon.png",
+      "src": "https://invisiproxy.com/assets/img/icon.png",
       "type": "image/png",
       "sizes": "300x300"
     },
@@ -48,7 +48,7 @@
   "display": "standalone",
   "theme_color": "#b4213b",
   "background_color": "#1f003e",
-  "description": "Holy Unblocker LTS is a free and secure web proxy service that helps you bypass web filters and access blocked websites. Enjoy anonymous browsing and internet freedom on devices like Chromebooks at school or work.",
+  "description": "InvisiProxy LTS is a free and secure web proxy service that helps you bypass web filters and access blocked websites. Enjoy anonymous browsing and internet freedom on devices like Chromebooks at school or work.",
   "short_description": "Free web proxy service for bypassing filters and accessing blocked sites.",
   "keywords": [
     "proxy",
@@ -60,7 +60,7 @@
     "proxy server",
     "proxy YouTube",
     "bypass web filters",
-    "Holy Unblocker",
+    "InvisiProxy",
     "unblock Chromebook",
     "Titanium Network",
     "fast proxy",
@@ -71,11 +71,11 @@
   "related_applications": [
     {
       "platform": "web",
-      "url": "https://holyunblocker.org"
+      "url": "https://invisiproxy.com"
     },
     {
       "platform": "github",
-      "url": "https://github.com/QuiteAFancyEmerald/Holy-Unblocker"
+      "url": "https://github.com/QuiteAFancyEmerald/InvisiProxy"
     },
     {
       "platform": "twitter",

@@ -1,12 +1,12 @@
-<h1>{{mask}}{{Holy Unblocker LTS (v6.x.x)}}</h1>
+<h1>{{mask}}{{InvisiProxy LTS (v6.x.x)}}</h1>
 {{ifSEO}}{{
 <p>
   <img
-    src="https://github.com/QuiteAFancyEmerald/Holy-Unblocker/workflows/CI-Production/badge.svg"
+    src="https://github.com/QuiteAFancyEmerald/InvisiProxy/workflows/CI-Production/badge.svg"
     alt="GitHub Actions Status"
   />
   <img
-    src="https://github.com/QuiteAFancyEmerald/Holy-Unblocker/workflows/CI-Win/badge.svg"
+    src="https://github.com/QuiteAFancyEmerald/InvisiProxy/workflows/CI-Win/badge.svg"
     alt="GitHub Actions Status"
   />
 </p>
@@ -34,9 +34,9 @@
   <a href="{{route}}{{/codespaces}}">Codespaces</a> website (ensure you
   have a GitHub account already made)<br />
   - Select <strong>New Codespaces</strong> and look for
-  <em>{{mask}}{{[USERNAME]/Holy-Unblocker}}</em> on your account<br />
+  <em>{{mask}}{{[USERNAME]/InvisiProxy}}</em> on your account<br />
   - Ensure the branch is set to <code>master</code> and the dev container
-  configuration is set to <strong>{{mask}}{{Holy Unblocker LTS}}</strong><br />
+  configuration is set to <strong>{{mask}}{{InvisiProxy LTS}}</strong><br />
   - Select <strong>Create Codespace</strong> and allow the container to setup<br />
   - Type <code>npm run fresh-install</code> and <code>npm start</code> in the terminal<br />
   - Click "Make public" on the application popup, then access the deployed
@@ -56,9 +56,9 @@
   {{mask}}{{Either use the button above to deploy to the deployment options above or type
   the commands below on a dedicated server:}}
 </p>
-<pre><code>{{mask}}{{git clone --recurse-submodules https://github.com/titaniumnetwork-dev/Holy-Unblocker.git}}
+<pre><code>{{mask}}{{git clone --recurse-submodules https://github.com/QuiteAFancyEmerald/InvisiProxy.git}}
 
-{{mask}}{{cd Holy-Unblocker}}
+{{mask}}{{cd InvisiProxy}}
 
 {{mask}}{{git submodule init}}
 
@@ -101,10 +101,9 @@ npm <span>run</span><span>{{mask}}{{ proxy-validator}}</span>
   >
 </p>
 <p>
-  {{mask}}{{If you are hosting Holy Unblocker LTS on a VPS utilizing Ubuntu consider
+  {{mask}}{{If you are hosting InvisiProxy LTS on a VPS utilizing Ubuntu consider
   attaching Tor to systemctl for easier production management. Once Tor is up
-  and running on either Linux or Windows it will work automatically with Holy
-  Unblocker LTS when enabled by the user via the Settings menu.}}
+  and running on either Linux or Windows it will work automatically with InvisiProxy LTS when enabled by the user via the Settings menu.}}
 </p>
 <br />
 <h4>{{mask}}{{Proxy Configuration}}</h4>
@@ -117,7 +116,7 @@ npm <span>run</span><span>{{mask}}{{ proxy-validator}}</span>
 <ul>
   <li>
     <code>{{mask}}{{stockSW}}</code>: {{mask}}{{The default service worker configuration file for
-    Ultraviolet. For Holy Unblocker however adblocking is automatically enabled
+    Ultraviolet. For InvisiProxy however adblocking is automatically enabled
     so this is not used by default.}}
   </li>
   <li>

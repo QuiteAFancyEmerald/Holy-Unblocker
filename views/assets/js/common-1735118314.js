@@ -1,7 +1,7 @@
 /* -----------------------------------------------
 /* Authors: QuiteAFancyEmerald, Yoct, and OlyB
 /* GNU Affero General Public License v3.0: https://www.gnu.org/licenses/agpl-3.0.en.html
-/* MAIN Holy Unblocker LTS Common Script
+/* MAIN InvisiProxy LTS Common Script
 /* ----------------------------------------------- */
 
 // Encase everything in a new scope so that variables are not accidentally
@@ -67,7 +67,7 @@ const storageId = '{{hu-lts}}-storage',
 
 const searchEngines = Object.freeze({
     '{{Startpage}}': 'startpage.com/sp/search?query=',
-    '{{Google}}': 'google.com/search?q=',
+    // '{{Google}}': 'google.com/search?q=',
     '{{Bing}}': 'bing.com/search?q=',
     '{{DuckDuckGo}}': 'duckduckgo.com/?q=',
     '{{Brave}}': 'search.brave.com/search?q=',
@@ -77,7 +77,7 @@ const searchEngines = Object.freeze({
     // Startpage has used both Google's and Bing's autocomplete.
     // For now, just use Bing.
     '{{Startpage}}': 'www.bing.com/AS/Suggestions?csr=1&cvid=0&qry=',
-    '{{Google}}': 'www.google.com/complete/search?client=gws-wiz&callback=_&q=',
+    // '{{Google}}': 'www.google.com/complete/search?client=gws-wiz&callback=_&q=',
     '{{Bing}}': 'www.bing.com/AS/Suggestions?csr=1&cvid=0&qry=',
     '{{DuckDuckGo}}': 'duckduckgo.com/ac/?q=',
     '{{Brave}}': 'search.brave.com/api/suggest?q=',
@@ -100,10 +100,11 @@ const searchEngines = Object.freeze({
   },
   responseHandlers = Object.freeze({
     '{{Startpage}}': (jsonData) => responseHandlers['{{Bing}}'](jsonData),
-    '{{Google}}': (jsonData) =>
+    /* '{{Google}}': (jsonData) =>
       jsonData[0].map(([suggestion]) =>
         formatSuggestion(suggestion, ['<b>', '</b>'])
       ),
+    */
     '{{Bing}}': (jsonData) =>
       jsonData.s.map(({ q }) => formatSuggestion(q, ['\ue000', '\ue001'])),
     '{{DuckDuckGo}}': (jsonData) => jsonData.map(({ phrase }) => phrase),
@@ -194,7 +195,7 @@ const updateAC = (listElement, searchResults, time) => {
   }
 };
 
-// Default search engine is set to Google. Intended to work just like the usual
+// Default search engine is set to DuckDuckGo. Intended to work just like the usual
 // bar at the top of a browser.
 const getSearchTemplate = (
     searchEngine = searchEngines[readStorage('SearchEngine')] ||
@@ -548,7 +549,7 @@ const preparePage = async () => {
 
     heli: urlHandler(sjUrl('https://benjames171.itch.io/helo-storm')),
 
-    youtube: urlHandler(sjUrl('https://youtube.com')),
+    youtube: urlHandler(uvUrl('https://michael.team/yt/')),
 
     invidious: urlHandler(sjUrl('https://invidious.snopyta.org')),
 

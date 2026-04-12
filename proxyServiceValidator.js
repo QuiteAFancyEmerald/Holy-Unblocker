@@ -1,5 +1,5 @@
 // This file is solely used for the automatically run GitHub job, which checks to
-// see if all HU LTS code is working properly (at least on an Ubuntu machine).
+// see if all InvisiProxy code is working properly (at least on an Ubuntu machine).
 
 const axios = require('axios');
 const puppeteer = require('puppeteer');
@@ -94,7 +94,7 @@ const testServerResponse = async () => {
     'http://localhost:8080/dictionary', 
     'http://localhost:8080/catalogue', 
     'http://localhost:8080/textbook',
-    'http://localhost:8080/math', 
+    'http://localhost:8080/interface', 
     'http://localhost:8080/wiki', 
     'http://localhost:8080/software', 
     'http://localhost:8080/whiteboard', 

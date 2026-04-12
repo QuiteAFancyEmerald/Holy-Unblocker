@@ -1,4 +1,4 @@
-This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above. Release for production will be v8.x.x and above.
+This will be our nonexhaustive todo list for InvisiProxy LTS v6.x.x and above. Release for production will be v8.x.x and above.
 
 ## Proxy/Site Functionality
 
@@ -13,6 +13,7 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - [ ] Transport Options Swapping on Frame (Settings Menu doesn't swap)
 - [ ] Implement advanced data URI system
 - [ ] Allow custom Wisp urls from the settings menu (not config side)
+- [x] Update respective site branding - done
 - [x] Fix GeForce Now support - done
 - [x] Swap to wisp-js over wisp-server-node for security and performance - done
 - [x] Fix keyword/descriptor randomisation - done
@@ -116,5 +117,5 @@ This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above
 - Incorporated makeshift domain blacklisting functionality into Ultraviolet, currently used for blocking ads if ads are disabled in settings
 - Fleshed out the SEO with more descriptions and better labeling
 - Switched to Fastify for serving content from the backend; a separate Express backend file is kept in case it's still needed
-- Rammerhead is now locally built into the HU LTS repository
-- Simplified the HU LTS setup process and added more default npm commands
+- Rammerhead is now locally built into the InvisiLTS repository
+- Simplified the InvisiLTS setup process and added more default npm commands

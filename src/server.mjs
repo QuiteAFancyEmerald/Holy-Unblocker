@@ -36,6 +36,20 @@ wisp.options.port_whitelist = [
   7001
 ];
 
+wisp.options.port_blacklist = [
+  [6881, 6889],
+  6969,
+  1337,
+  [6969, 6969], 
+  51413,
+  [49152, 65535]
+];
+
+wisp.options.hostname_blacklist = [
+  /google\.com/,
+  /youtube\.com/,
+];
+
 // The server will check for the existence of this file when a shutdown is requested.
 // The shutdown script in run-command.js will temporarily produce this file.
 const shutdown = fileURLToPath(new URL('./.shutdown', import.meta.url));
@@ -271,7 +285,7 @@ app.get(serverUrl.pathname + ':path', (req, reply) => {
   // If a GET request is sent to /test-shutdown and a script-generated shutdown file
   // is present, gracefully shut the server down.
   if (reqPath === 'test-shutdown' && existsSync(shutdown)) {
-    console.log('Holy Unblocker is shutting down.');
+    console.log('InvisiProxy is shutting down.');
     app.close();
     unlinkSync(shutdown);
     process.exitCode = 0;
@@ -316,7 +330,7 @@ else {
 }
 
 app.listen({ port: serverUrl.port, host: serverUrl.hostname });
-console.log(`Holy Unblocker is listening on port ${serverUrl.port}.`);
+console.log(`InvisiProxy is listening on port ${serverUrl.port}.`);
 console.log(`When hosting with a reverse proxy please ensure you are using NGINX only.\nCaddy and Apache have security risks due to wisp-js and loopbacks. Please configure them correctly.\nNGINX is recommended and used for production. Ports are whitelisted and security is maintained with NGINX only.`);
 if (config.disguiseFiles)
   console.log(
