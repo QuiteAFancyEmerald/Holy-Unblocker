@@ -1,4 +1,4 @@
-This will be our nonexhaustive todo list for InvisiProxy LTS v6.x.x and above. Release for production will be v8.x.x and above.
+This will be our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above. Release for production will be v8.x.x and above.
 
 ## Proxy/Site Functionality
 
@@ -117,5 +117,5 @@ This will be our nonexhaustive todo list for InvisiProxy LTS v6.x.x and above. R
 - Incorporated makeshift domain blacklisting functionality into Ultraviolet, currently used for blocking ads if ads are disabled in settings
 - Fleshed out the SEO with more descriptions and better labeling
 - Switched to Fastify for serving content from the backend; a separate Express backend file is kept in case it's still needed
-- Rammerhead is now locally built into the InvisiLTS repository
-- Simplified the InvisiLTS setup process and added more default npm commands
+- Rammerhead is now locally built into the HolyLTS repository
+- Simplified the HolyLTS setup process and added more default npm commands
