@@ -2,7 +2,7 @@
 
 <img align="left" width="40px" src="https://raw.githubusercontent.com/QuiteAFancyEmerald/InvisiProxy/master/views/assets/img/logo_github.png"></img>
 
-# InvisiProxy LTS (v6.x.x)
+# Holy Unblocker LTS (v6.x.x)
 
 ![GitHub Actions Status](https://github.com/QuiteAFancyEmerald/InvisiProxy/workflows/CI-Production/badge.svg)
 ![GitHub Actions Status](https://github.com/QuiteAFancyEmerald/InvisiProxy/workflows/CI-Win/badge.svg)
@@ -10,11 +10,11 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/quiteafancyemerald/invisiproxy.svg)](https://hub.docker.com/r/quiteafancyemerald/InvisiProxy)
 [![Docker Pulls](https://img.shields.io/docker/pulls/quiteafancyemerald/holy-unblocker.svg)](https://hub.docker.com/r/quiteafancyemerald/holy-unblocker)
 
-InvisiProxy LTS is an experimental web proxy service that can bypass web filters or "blockers" regardless of whether the method of censorship is client-side or network-based. This includes the ability to bypass content blockers from governments, chrome extensions, localized client firewalls, and network-related filters. The project even allows the ability to browse Tor/Onion sites in any browser (even Chromium) all through a website!
+Holy Unblocker LTS is an experimental web proxy service that can bypass web filters or "blockers" regardless of whether the method of censorship is client-side or network-based. This includes the ability to bypass content blockers from governments, chrome extensions, localized client firewalls, and network-related filters. The project even allows the ability to browse Tor/Onion sites in any browser (even Chromium) all through a website!
 
-## You can support InvisiProxy by starring the repository!
+## You can support Holy Unblocker by starring the repository!
 
-This project serves mostly as a proof of concept for the ideal clientless solution to bypassing censorship. A good use case of this project would be if you ever needed a clientless solution to use Tor or leave minimal traces of device activity. Simply host this project on any domain and have an alternative solution to a VPN without needing to download anything on said device. Being a secure web proxy service, it supports numerous sites while being updated frequently and concentrating on being easy to self-host. InvisiProxy LTS works with a large number of sites, including YouTube, Discord, GeForce NOW and more!
+This project serves mostly as a proof of concept for the ideal clientless solution to bypassing censorship. A good use case of this project would be if you ever needed a clientless solution to use Tor or leave minimal traces of device activity. Simply host this project on any domain and have an alternative solution to a VPN without needing to download anything on said device. Being a secure web proxy service, it supports numerous sites while being updated frequently and concentrating on being easy to self-host. Holy Unblocker LTS works with a large number of sites, including YouTube, Discord, GeForce NOW and more!
 Also has a good amount of locally hosted games featured on the site.
 
 #### Over 30M+ users since 2020. Thank you so much for the support I could have never imagined how massive the web proxy community has become.
@@ -25,22 +25,22 @@ Also has a good amount of locally hosted games featured on the site.
 
 - Latest (master; built for FOSS and SEO)
 - Beta (pending changes; changes that may break things)
-- Production (v4, v5, v6; stable version of InvisiProxy LTS. Changes for self hosting in production settings; max filtering evasion and request handling)
+- Production (v4, v5, v6; stable version of Holy Unblocker LTS. Changes for self hosting in production settings; max filtering evasion and request handling)
 </details>
 
 #### Considering switching branches for self-hosting to a production branch!
 
-View the <a href="#deploy-InvisiProxy">self-deployment options</a> if you wish to self host this project. Can't deploy using any of the free options? Check out Railway or look into cheap, paid VPS hosting solutions. If you don't wish to self-host join the discord for more official instance links that are restocked frequently.
+View the <a href="#deploy-Holy Unblocker">self-deployment options</a> if you wish to self host this project. Can't deploy using any of the free options? Check out Railway or look into cheap, paid VPS hosting solutions. If you don't wish to self-host join the discord for more official instance links that are restocked frequently.
 
 **Be sure to join Titanium Network's Discord for more official site links:** <a href="https://discord.gg/unblock">https://discord.gg/unblock</a>
 
 <br>
 
 > [!CAUTION]
-> If you are going to self-host InvisiProxy LTS please switch to the PRODUCTION branch for filter evasion features enabled automatically. The master branch will feature work-in-progress changes that are not ready for self hosting. If you wish to contribute to this project however please PR to the master branch.
+> If you are going to self-host Holy Unblocker LTS please switch to the PRODUCTION branch for filter evasion features enabled automatically. The master branch will feature work-in-progress changes that are not ready for self hosting. If you wish to contribute to this project however please PR to the master branch.
 
 > [!TIP]
-> InvisiProxy LTS is optimized for self-hosting to provide you with maximum privacy control! Fork this repository and consider starring. You can self-host using either free or paid deployment options, or set it up on a dedicated instance (VPS) for enhanced performance.
+> Holy Unblocker LTS is optimized for self-hosting to provide you with maximum privacy control! Fork this repository and consider starring. You can self-host using either free or paid deployment options, or set it up on a dedicated instance (VPS) for enhanced performance.
 
 | **Supported Sites**        | **Features**                                                                                                                          |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -56,7 +56,7 @@ View the <a href="#deploy-InvisiProxy">self-deployment options</a> if you wish t
 <img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/InvisiProxy/master/views/assets/img/preview/invisi-v6.9.6-preview.png"></img>
 <img src="https://raw.githubusercontent.com/QuiteAFancyEmerald/InvisiProxy/master/views/assets/img/preview/invisi-v6.9.6-preview-settings.png"></img>
 
-## Deploy InvisiProxy
+## Deploy Holy Unblocker
 
 ### Free Deployments
 
@@ -88,7 +88,7 @@ Replit is no longer free and Heroku has a set policy against web proxies. Try Gi
 - Fork (and star!) this repository to your GitHub account
 - Head to the official <a href="https://github.com/codespaces">Codespaces</a> website (ensure you have a GitHub account already made)
 - Select **New Codespaces** and look for _[USERNAME]/InvisiProxy_ on your account
-- Ensure the branch is set to `master` and the dev container configuration is set to **InvisiProxy LTS**
+- Ensure the branch is set to `master` and the dev container configuration is set to **Holy Unblocker LTS**
 - Select **Create Codespace** and allow the container to setup
 - Type `npm run fresh-install` and `npm start` in the terminal
 - Click "Make public" on the application popup, then access the deployed website via the ports tab.
@@ -176,7 +176,7 @@ For simplicity sake you can join the TN discord at discord.gg/unblock and reques
 If you wish to self-host however you will first need a VPS or hosting provider: 
 
 - https://docs.titaniumnetwork.org/guides/vps-hosting/
-- https://github.com/QuiteAFancyEmerald/InvisiProxy#deploy-InvisiProxy
+- https://github.com/QuiteAFancyEmerald/InvisiProxy#deploy-Holy Unblocker
 - https://docs.titaniumnetwork.org/guides/dns-setup/
 
 ### Dependencies
@@ -201,12 +201,12 @@ https://docs.titaniumnetwork.org/guides/nginx/
 ### Tor Support (Optional)
 https://github.com/QuiteAFancyEmerald/InvisiProxy#toronionsocks5-routing-setup
 
-### Configurating InvisiProxy
+### Configurating Holy Unblocker
 Most important options are production along with the obfuscation and DOM masquerading techniques. 
 
 From there just configure as needed: https://github.com/QuiteAFancyEmerald/InvisiProxy#configuration
 
-### Cloning and Running InvisiProxy
+### Cloning and Running Holy Unblocker
 
 Then run the respective process; if you have production set to true in the configuration pm2 will be automatically enabled with our own workers/cache system. 
 
@@ -248,7 +248,7 @@ Every other localized changes for source randomization, auto-minify, etc. are lo
 - `randomizeIdentifiers`: Enable experimental proxy global randomization for Ultraviolet. This reduces the chances of UV being detected by any extension based filters.
 - `production`: Utilize a pre-configured production setup for server hosting. Automatically has cache control, session jobs for Rammerhead and source rewrites setup.
 - `disguiseFiles`: Enable DOM masquerading which obfuscates real the real content fetches for InvisiLTS. This is done through disguising requests, decompressing and then reconstructing the DOM tree.
-- `usingSEO`: Enable Source Randomization which randomizes the source by swapping chunks of data specified in `./src/data.json`. Highly useful for masking keywords that will automatically flag or block InvisiProxy LTS as well as preventing source blocks.
+- `usingSEO`: Enable Source Randomization which randomizes the source by swapping chunks of data specified in `./src/data.json`. Highly useful for masking keywords that will automatically flag or block Holy Unblocker LTS as well as preventing source blocks.
 
 #### Tor/Onion/SOCKS5 Routing Setup
 
@@ -258,7 +258,7 @@ Simply host Tor using this guide: https://tb-manual.torproject.org/installation/
 
 Alternative Guide (for CLI): https://community.torproject.org/onion-services/setup/install/
 
-If you are hosting InvisiProxy LTS on a VPS utilizing Ubuntu consider attaching Tor to systemctl for easier production management. Once Tor is up and running on either Linux or Windows it will work automatically with InvisiProxy LTS when enabled by the user via the Settings menu.
+If you are hosting Holy Unblocker LTS on a VPS utilizing Ubuntu consider attaching Tor to systemctl for easier production management. Once Tor is up and running on either Linux or Windows it will work automatically with Holy Unblocker LTS when enabled by the user via the Settings menu.
 
 If you wish to use a custom HTTP/HTTPS/SOCKS5 proxy to route all traffic through for Scramjet and Ultraviolet this is handled in `./views/assets/js/register-sw.js.` Modify `proxyUrl` with the respective protocol and address. This is done via the proxy option for Wisp. You can change the cases as needed.
 
@@ -274,7 +274,7 @@ If you wish to use a custom HTTP/HTTPS/SOCKS5 proxy to route all traffic through
 
 The primary location for tweaking any web proxy related settings assigned via the Settings menu is `./views/assets/js/register-sw.js`. Here you can modify the provided transport options set locally via a cookie, swap out SOCKS5 proxies, change Onion routing ports, specify a blacklist, and more.
 
-- `stockSW`: The default service worker configuration file for Ultraviolet. For InvisiProxy however adblocking is automatically enabled so this is not used by default.
+- `stockSW`: The default service worker configuration file for Ultraviolet. For Holy Unblocker however adblocking is automatically enabled so this is not used by default.
 - `blacklistSW`: A modified version of Ultraviolet that allows for blacklisting domains and adblocking.
 - `proxyUrl`: Specifies a SOCKS5/HTTPS/HTTP protocol URL defaulting to the default Tor proxy port. This can be swapped out with any valid port or SOCK5s proxy. This is done via the proxy option for both epoxy and libcurl.
 - `transports`: Specifies any provided ports to be swapped via Bare-Mux and utilize Wisp.
@@ -287,7 +287,7 @@ The primary location for tweaking any web proxy related settings assigned via th
 The primary location for any client side navigation scripts is `./views/assets/js/common.js`. This file is primary used for Omnibox (Search Engine) functionality, swapping proxy options and linking games.
 
 - `getDomain`: This constant is used for specifying any subdomains to remove when appending a URL into the omnibox.
-- `goFrame`: This specifies the stealth frame used for InvisiProxy LTS
+- `goFrame`: This specifies the stealth frame used for Holy Unblocker LTS
 - `sx`: This constant specifies the search engine you want to be proxied whenever a user types something in that isn't a URL
 - `search/uvUrl/sjUrl`: These functions specify and parse the queries used for submitted URLs
 - `RammerheadEncode:` This constant is a dependency for Rammerhead parsing and querying
@@ -344,7 +344,7 @@ Download the latest release <a href="https://github.com/QuiteAFancyEmerald/Invis
 
 ### Structure Information
 
-- `/views/`: The physical site base of InvisiProxy goes here where static assets are served.
+- `/views/`: The physical site base of Holy Unblocker goes here where static assets are served.
 - `/src/`: For future implementation of obfuscation and keyword removing features.
 
 #### Details of `/views/`
@@ -367,7 +367,7 @@ Download the latest release <a href="https://github.com/QuiteAFancyEmerald/Invis
 
 ## Future Additions
 
-<a href="https://github.com/QuiteAFancyEmerald/InvisiProxy/blob/master/TODO.md">This</a> is our nonexhaustive todo list for InvisiProxy LTS v6.x.x and above. Release for production will be v7.x.x and above.
+<a href="https://github.com/QuiteAFancyEmerald/InvisiProxy/blob/master/TODO.md">This</a> is our nonexhaustive todo list for Holy Unblocker LTS v6.x.x and above. Release for production will be v7.x.x and above.
 
 ## Vague Explanation for Beginners With External Proxies and Hosting
 
@@ -387,10 +387,10 @@ After you have selected a decent VPS, use Cloudflare for the DNS records for bot
 This is an example of DNS records. Self-hosting will require `A records` preferably.
 <img src="https://raw.githubusercontent.com/titaniumnetwork-dev/InvisiProxy/master/views/assets/img/dnssetup.png" width="500"></img>
 
-- `@` and `www.example.com` are being used for InvisiProxy LTS.
+- `@` and `www.example.com` are being used for Holy Unblocker LTS.
 - `a.example.com` is being used for other instances like Libreddit, Invidious or web ported games depending on what the site maintainer needs.
 
-As stated previously, InvisiProxy is hosted locally with Scramjet, Ultraviolet and Rammerhead out of the box. No need for external instances.
+As stated previously, Holy Unblocker is hosted locally with Scramjet, Ultraviolet and Rammerhead out of the box. No need for external instances.
 
 #### Domain Steps
 
@@ -491,7 +491,7 @@ Emerald :HuTaoHype:
 
 ## More Information
 
-This project is maintained by the InvisiProxy LTS team and is an official flagship Titanium Network web proxy site.
+This project is maintained by the Holy Unblocker LTS team and is an official flagship Titanium Network web proxy site.
 
 - <a href="https://github.com/titaniumnetwork-dev/">https://github.com/titaniumnetwork-dev/</a>
 - <a href="https://titaniumnetwork.org/">https://titaniumnetwork.org/</a>
