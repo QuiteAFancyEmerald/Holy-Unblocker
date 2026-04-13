@@ -6,6 +6,7 @@ import {
   lstatSync,
   copyFileSync,
   rmSync,
+  renameSync,
   existsSync,
 } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -122,7 +123,8 @@ commands: for (let i = 2; i < process.argv.length; i++)
     }
 
     case 'build': {
-      const dist = fileURLToPath(new URL('./views/dist', import.meta.url));
+      const distFinal = fileURLToPath(new URL('./views/dist', import.meta.url));
+      const dist = fileURLToPath(new URL('./views/dist-new', import.meta.url));
       rmSync(dist, { force: true, recursive: true });
       mkdirSync(dist);
 
@@ -130,7 +132,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
        * rewrites are not intended to be used by any of those files.
        * Assets are compiled separately, before the rest of the files.
        */
-      const ignoredDirectories = ['dist', 'assets', 'uv', 'scram', 'archive'];
+      const ignoredDirectories = ['dist', 'dist-new', 'assets', 'uv', 'scram', 'archive'];
       const ignoredFileTypes = /\.map$/;
 
       const compile = (
@@ -153,7 +155,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
           const fileStats = lstatSync(oldLocation),
             targetPath = fileURLToPath(
               new URL(
-                './views/dist/' +
+                './views/dist-new/' +
                   outDir +
                   (base + dir + '/').slice(initialDir.length + 1) +
                   ((!config.usingSEO && flatAltPaths['files/' + file]) || file),
@@ -179,8 +181,14 @@ commands: for (let i = 2; i < process.argv.length; i++)
 
       const localAssetDirs = ['assets', 'scram', 'uv'];
       for (const path of localAssetDirs) {
-        mkdirSync('./views/dist/' + path);
-        compile('./views/' + path, '', path + '/', './views/' + path, true);
+        mkdirSync('./views/dist-new/' + path);
+        compile(
+          './views/' + path,
+          '',
+          path + '/',
+          './views/' + path,
+          path !== 'scram'
+        );
       }
 
       // Combine scripts from the corresponding node modules into the same
@@ -195,7 +203,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
       };
       for (const path of Object.entries(compilePaths)) {
         const prefix = path[0] + '/',
-          prefixUrl = new URL('./views/dist/' + prefix, import.meta.url);
+          prefixUrl = new URL('./views/dist-new/' + prefix, import.meta.url);
         if (!existsSync(prefixUrl)) mkdirSync(prefixUrl);
 
         compile(path[1].slice(path[1].indexOf('node_modules')), '', prefix);
@@ -205,11 +213,9 @@ commands: for (let i = 2; i < process.argv.length; i++)
       if (config.minifyScripts)
         await build({
           entryPoints: [
-            './views/dist/uv/**/*.js',
-            './views/dist/scram/**/*.js',
-            './views/dist/scram/**/*.wasm.wasm',
-            './views/dist/assets/js/**/*.js',
-            './views/dist/assets/css/**/*.css',
+            './views/dist-new/uv/**/*.js',
+            './views/dist-new/assets/js/**/*.js',
+            './views/dist-new/assets/css/**/*.css',
           ],
           platform: 'browser',
           sourcemap: true,
@@ -224,13 +230,13 @@ commands: for (let i = 2; i < process.argv.length; i++)
       compile('./views');
 
       // Compile the archive directory separately.
-      mkdirSync('./views/dist/archive');
+      mkdirSync('./views/dist-new/archive');
       if (existsSync('./views/archive'))
         compile('./views/archive', '', 'archive/');
 
       const createFile = (location, text) => {
         writeFileSync(
-          fileURLToPath(new URL('./views/dist/' + location, import.meta.url)),
+          fileURLToPath(new URL('./views/dist-new/' + location, import.meta.url)),
           paintSource(loadTemplates(text))
         );
       };
@@ -262,10 +268,13 @@ commands: for (let i = 2; i < process.argv.length; i++)
               await compress(fileLocation, true);
           }
         };
-        await compress('./views/dist');
-        await compress('./views/dist/pages', true);
-        await compress('./views/dist/archive', true);
+        await compress('./views/dist-new');
+        await compress('./views/dist-new/pages', true);
+        await compress('./views/dist-new/archive', true);
       }
+
+      rmSync(distFinal, { force: true, recursive: true });
+      renameSync(dist, distFinal);
 
       break;
     }
@@ -319,7 +328,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
         );
       else
         exec(
-          'npx pm2 delete ecosystem.config.js; pkill node',
+          'npx pm2 kill; pkill -f "node backend.js" || true',
           (error, stdout) => {
             console.log('[Kill]', stdout);
           }
