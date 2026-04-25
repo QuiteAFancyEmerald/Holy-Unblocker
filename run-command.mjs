@@ -126,6 +126,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
       const distFinal = fileURLToPath(new URL('./views/dist', import.meta.url));
       const dist = fileURLToPath(new URL('./views/dist-new', import.meta.url));
       rmSync(dist, { force: true, recursive: true });
+      rmSync(distFinal, { force: true, recursive: true });
       mkdirSync(dist);
 
       /* The archive directory is excluded from this process, since source
@@ -182,13 +183,7 @@ commands: for (let i = 2; i < process.argv.length; i++)
       const localAssetDirs = ['assets', 'scram', 'uv'];
       for (const path of localAssetDirs) {
         mkdirSync('./views/dist-new/' + path);
-        compile(
-          './views/' + path,
-          '',
-          path + '/',
-          './views/' + path,
-          path !== 'scram'
-        );
+        compile('./views/' + path, '', path + '/', './views/' + path, true);
       }
 
       // Combine scripts from the corresponding node modules into the same
@@ -214,6 +209,8 @@ commands: for (let i = 2; i < process.argv.length; i++)
         await build({
           entryPoints: [
             './views/dist-new/uv/**/*.js',
+            './views/dist-new/scram/**/*.js',
+            './views/dist-new/scram/**/*.wasm.wasm',
             './views/dist-new/assets/js/**/*.js',
             './views/dist-new/assets/css/**/*.css',
           ],
