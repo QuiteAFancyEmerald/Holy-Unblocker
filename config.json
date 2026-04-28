@@ -1,10 +1,10 @@
 {
   "title": "Invisi LTS",
-  "host": "0.0.0.0",
-  "pathname": "/",
+  "host": "https://quiteafancyemerald.github.io",
+  "pathname": "/InvisiProxy/",
   "minifyScripts": true,
   "randomizeIdentifiers": true,
-  "production": false,
-  "disguiseFiles": true,
-  "usingSEO": false
+  "production": true,
+  "disguiseFiles": false,
+  "usingSEO": true
 }
