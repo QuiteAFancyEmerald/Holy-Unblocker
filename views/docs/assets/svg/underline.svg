@@ -1,0 +1,9 @@
+<svg class="_prettyUnderline_1qw3a_154" viewBox="0 0 390 55" fill="none">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="192.539" y1="1.537" x2="192.539" y2="51.098" id="gradient-0" gradientTransform="matrix(-0.001215, 0.999999, -7.795296, -0.009463, 402.484802, -163.600372)">
+      <stop offset="0" style="stop-color: rgba(135, 149, 221, 1)"></stop>
+      <stop offset="1" style="stop-color: rgba(56, 80, 198, 1)"></stop>
+    </linearGradient>
+  </defs>
+  <path style="paint-order: fill; fill: none; stroke: url(#gradient-0); stroke-width: 5px; stroke-linecap: round;" d="M 3 8.997 C 3 8.997 386.2758229569146 -1.5119911685214125 386.872 5.292 C 387.1840859001393 8.853743500517725 283.1432491171007 17.09919545317559 283.106 22.586 C 283.07461319934777 27.209283823450303 356.0628379238926 30.04524568361604 356.607 35.864 C 357.0292218177662 40.3788405823717 314.606 51.924 314.606 51.924"></path>
+</svg>

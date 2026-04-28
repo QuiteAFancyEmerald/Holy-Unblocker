@@ -1,0 +1,2 @@
+(()=>{(()=>{let r=e=>{e.addEventListener("mousemove",t=>{let s=e.getBoundingClientRect(),y=t.clientX-s.left,n=t.clientY-s.top;e.style.setProperty("--mouse-x",`${y}px`),e.style.setProperty("--mouse-y",`${n}px`)})},c=e=>{e.addEventListener("mouseleave",()=>{e.style.setProperty("--mouse-x","50%"),e.style.setProperty("--mouse-y","50%")})},o=document.querySelectorAll(".box-card, .box-hero");o.forEach(r),o.forEach(c)})();})();
+//# sourceMappingURL=card.js.map

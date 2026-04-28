@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+User-agent: *
+Allow: /assets
+
+User-agent: *
+Allow: /assets/ico
+
+User-agent: *
+Disallow: /github
+
+User-agent: *
+Disallow: /scram
+
+User-agent: *
+Disallow: /uv
+ 
+Sitemap: https://invisiproxy.com/sitemap.xml

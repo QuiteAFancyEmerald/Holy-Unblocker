@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["sw.js"],
+  "sourcesContent": ["importScripts('/InvisiProxy/uv/uv.bundle.js');\nimportScripts('/InvisiProxy/uv/uv.config.js');\nimportScripts(self['_F4E19B#5+x1J(4x_.S[]=2'].sw || '/InvisiProxy/uv/uv.sw.js');\n\nconst uv = new UVServiceWorker();\n\nself.addEventListener('fetch', (event) => {\n  event.respondWith(\n    (async () => {\n      if (uv.route(event)) return await uv.fetch(event);\n\n      return await fetch(event.request);\n    })()\n  );\n});\n"],
+  "mappings": "MAAA,cAAc,8BAA8B,EAC5C,cAAc,8BAA8B,EAC5C,cAAc,KAAK,yBAAyB,EAAE,IAAM,0BAA0B,EAE9E,IAAMA,EAAK,IAAI,gBAEf,KAAK,iBAAiB,QAAUC,GAAU,CACxCA,EAAM,aACH,SACKD,EAAG,MAAMC,CAAK,EAAU,MAAMD,EAAG,MAAMC,CAAK,EAEzC,MAAM,MAAMA,EAAM,OAAO,GAC/B,CACL,CACF,CAAC",
+  "names": ["uv", "event"]
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inspect with Chii</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+      padding: 0 20px;
+      font-size: 13px;
+      min-width: 320px;
+    }
+    a {
+      color: #1966d2;
+    }
+    #container {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .toolbar {
+      background: transparent !important;
+      z-index: 1;
+      margin-bottom: 8px;
+    }
+    .toolbar > div:first-child {
+      margin-left: 0;
+    }
+    .toolbar > div:last-child {
+      margin-right: 0;
+    }
+    .description {
+      margin: 1rem 0;
+      font-size: .875rem;
+      line-height: 2;
+    }
+    .targets {
+      width: 100%;
+    }
+    .hidden {
+      display: none;
+    }
+    .luna-data-grid img {
+      height: 14px;
+      width: 14px;
+      margin: 0;
+      padding: 0;
+      margin-right: 2px;
+      flex-shrink: 0;
+      vertical-align: top;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #202124;
+        color: #ddd;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="toolbar"></div>
+    <div class="targets"></div>
+  </div>
+  <div class="description hidden">
+    You can use this script to inject the chii target code into your web page.<br/>
+    <a target="_blank" href="//{{domain}}{{basePath}}target.js">{{domain}}{{basePath}}target.js</a> <br/>
+    Or just open the demo page <a target="_blank" href="//{{domain}}{{basePath}}test/demo.html">{{domain}}{{basePath}}test/demo.html</a> to play around with.<br/>
+    <a target="_blank" href="https://chii.liriliri.io/">Chii v{{version}}</a>
+  </div>
+  <div class="help"></div>
+  <script>
+    window.domain = '{{domain}}';
+    window.basePath = '{{basePath}}';
+  </script>
+  <script src="//{{domain}}{{basePath}}index.js"></script>
+</body>
+</html>

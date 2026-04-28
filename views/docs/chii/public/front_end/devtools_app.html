@@ -1,0 +1,28 @@
+<!--
+ * Copyright 2018 The Chromium Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<title>DevTools</title>
+<style>
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: rgb(41 42 45);
+    }
+  }
+</style>
+<meta name="referrer" content="no-referrer">
+<script>
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  if (isSafari) {
+    document.write('<scr' + 'ipt src="./third_party/polyfill/customElement.js"></scr' + 'ipt>');
+  }
+  if (!window.requestIdleCallback) {
+    document.write('<scr' + 'ipt src="./third_party/polyfill/requestIdleCallback.js"></scr' + 'ipt>');
+  }
+</script>
+<script type="module" src="./entrypoints/devtools_app/devtools_app.js"></script>
+<body class="undocked" id="-blink-dev-tools">

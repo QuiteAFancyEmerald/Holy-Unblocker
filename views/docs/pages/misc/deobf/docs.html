@@ -1,0 +1,144 @@
+<h1>InvisiProxy LTS (v6.x.x)</h1>
+<p>
+  <img
+    src="https://github.com/QuiteAFancyEmerald/InvisiProxy/workflows/CI-Production/badge.svg"
+    alt="GitHub Actions Status"
+  />
+  <img
+    src="https://github.com/QuiteAFancyEmerald/InvisiProxy/workflows/CI-Win/badge.svg"
+    alt="GitHub Actions Status"
+  />
+</p>
+<br />
+<p>
+  Read below for information if the official site is blocked or for
+  obtaining more links. Can't deploy using any of the free options below? Check
+  out Railway or look into cheap, paid VPS hosting solutions.
+</p>
+<p>
+  <strong
+    >Be sure to join Titanium Network's Discord for more official site
+    links:</strong
+  >
+  <a href="/InvisiProxy/titaniumnetwork-discord">https://discord.gg/unblock</a>
+</p>
+<br />
+<h3>GitHub Codespaces</h3>
+<details>
+  <summary>Setup Instructions</summary>
+
+  - Fork (and star!) this repository to your GitHub account<br />
+  - Head to the official
+  <a href="/InvisiProxy/codespaces">Codespaces</a> website (ensure you
+  have a GitHub account already made)<br />
+  - Select <strong>New Codespaces</strong> and look for
+  <em>[USERNAME]/InvisiProxy</em> on your account<br />
+  - Ensure the branch is set to <code>master</code> and the dev container
+  configuration is set to <strong>InvisiProxy LTS</strong><br />
+  - Select <strong>Create Codespace</strong> and allow the container to setup<br />
+  - Type <code>npm run fresh-install</code> and <code>npm start</code> in the terminal<br />
+  - Click "Make public" on the application popup, then access the deployed
+  website via the ports tab.<br />
+</details>
+<br />
+<h2>How to Setup</h2>
+<h4>
+  It is highly recommended you switch branches via your IDE to a production
+  released branch. Often the master branch contains unstable or WIP changes.
+</h4>
+<h4>
+  Example: v6.x_production instead of master
+</h4>
+<h3>Terminal</h3>
+<p>
+  Either use the button above to deploy to the deployment options above or type
+  the commands below on a dedicated server:
+</p>
+<pre><code>git clone --recurse-submodules https://github.com/QuiteAFancyEmerald/InvisiProxy.git
+
+cd InvisiProxy
+
+git submodule init
+
+<span ># Using the configuration file you can automatically use pm2 if you are hosting on a VPS!</span>
+
+npm run fresh-install
+
+npm start
+
+<span ># Or on subsequent uses...</span>
+npm restart
+
+<span ># If you encounter any build errors...</span>
+npm <span>run</span><span> build
+</span>
+<span ># If you encounter any service errors...</span>
+npm <span>run</span><span> proxy-validator</span>
+</code></pre>
+<p>
+  This website is hosted locally with Scramjet, Ultraviolet (Wisp, Bare-Mux,
+  EpoxyTransport, CurlTransport) and Rammerhead built-in.
+</p>
+<h3>Configuration</h3>
+<h4>Server Configuration Setup</h4>
+<p>
+  The default place for the proxy when its started is
+  <code>http://localhost:8080</code>, but you can change it if needed in
+  <code>./ecosystem.config.js</code>. You can also modify the other
+  configuration values at <code>./config.json</code>. To clarify you change the
+  PORT and other production metrics via <code>./ecosystem.config.js</code>.
+  Localized changes for source randomization, auto-minify, etc. are located in
+  <code>./config.json</code>.
+</p>
+<br />
+<h4>Tor/Onion Routing Setup</h4>
+<p>
+  Simply host Tor using this guide:
+  <a href="/InvisiProxy/tr"
+    >https://tb-manual.torproject.org/installation/</a
+  >
+</p>
+<p>
+  If you are hosting InvisiProxy LTS on a VPS utilizing Ubuntu consider
+  attaching Tor to systemctl for easier production management. Once Tor is up
+  and running on either Linux or Windows it will work automatically with InvisiProxy LTS when enabled by the user via the Settings menu.
+</p>
+<br />
+<h4>Proxy Configuration</h4>
+<p>
+  The primary location for tweaking any web proxy related settings assigned via
+  the Settings menu is <code>./views/assets/js/register-sw.js</code>. Here you
+  can modify the provided transport options set locally via a cookie, swap out
+  SOCKS5 proxies, change Onion routing ports, specify a blacklist, and more.
+</p>
+<ul>
+  <li>
+    <code>stockSW</code>: The default service worker configuration file for
+    Ultraviolet. For InvisiProxy however adblocking is automatically enabled
+    so this is not used by default.
+  </li>
+  <li>
+    <code>blacklistSW</code>: A modified version of Ultraviolet that allows for
+    blacklisting domains and adblocking.
+  </li>
+  <li>
+    <code>proxyUrl</code>: Specifies a SOCKS5 protocol URL defaulting to the
+    default Tor proxy port. This can be swapped out with any valid port or
+    SOCK5s proxy.
+  </li>
+  <li>
+    <code>transports</code>: Specifies any provided ports to be swapped via
+    Bare-Mux and utilize Wisp.
+  </li>
+  <li><code>wispUrl</code>: Modify the pathname or url handling for Wisp</li>
+  <li>
+    <code>defaultMode</code>: Specify the default transport used globally (can
+    be swapped by the users still via the Settings menu)
+  </li>
+  <li>
+    <code>ScramjetController</code>: This constructor allows you to swap out the
+    prefix used for Scramjet dynamically and specify file locations. Note you
+    may need to edit <code>./views/scram/scramjet.sw</code> when changing file
+    names.
+  </li>
+</ul>

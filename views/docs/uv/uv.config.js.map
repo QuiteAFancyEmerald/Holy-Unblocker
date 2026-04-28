@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["uv.config.js"],
+  "sourcesContent": ["// This file overwrites the stock UV config.js\n\nself['_F4E19B#5+x1J(4x_.S[]=2'] = {\n  prefix: '/InvisiProxy/uv/service/',\n  encodeUrl: Ultraviolet.codec.xor.encode,\n  decodeUrl: Ultraviolet.codec.xor.decode,\n  handler: '/InvisiProxy/uv/uv.handler.js',\n  client: '/InvisiProxy/uv/uv.client.js',\n  bundle: '/InvisiProxy/uv/uv.bundle.js',\n  config: '/InvisiProxy/uv/uv.config.js',\n  sw: '/InvisiProxy/uv/uv.sw.js',\n};\n"],
+  "mappings": "MAEA,KAAK,yBAAyB,EAAI,CAChC,OAAQ,2BACR,UAAW,YAAY,MAAM,IAAI,OACjC,UAAW,YAAY,MAAM,IAAI,OACjC,QAAS,gCACT,OAAQ,+BACR,OAAQ,+BACR,OAAQ,+BACR,GAAI,0BACN",
+  "names": []
+}

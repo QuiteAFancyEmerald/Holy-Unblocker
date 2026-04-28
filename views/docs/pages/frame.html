@@ -1,0 +1,397 @@
+<!doctype html>
+<html>
+  <head>
+    <title>InvisiProxy LTS</title>
+    <meta
+      name="description"
+      content="InvisiProxy is a secure web proxy service with support for many sites. Bypass filters and freely enjoy a safer private browsing experience or unblock websites on devices such as Chromebooks and at places like school or work without downloading anything."
+    />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#434c5e"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/InvisiProxy/assets/ico/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/InvisiProxy/assets/ico/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/InvisiProxy/assets/ico/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/InvisiProxy/assets/ico/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/InvisiProxy/assets/ico/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/InvisiProxy/assets/ico/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/InvisiProxy/assets/ico/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/InvisiProxy/assets/ico/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/InvisiProxy/assets/ico/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/InvisiProxy/assets/ico/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/InvisiProxy/assets/ico/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/InvisiProxy/assets/ico/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/InvisiProxy/assets/ico/favicon-16x16.png"
+    />
+    <link rel="icon" href="/InvisiProxy/assets/ico/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link rel="stylesheet" href="/InvisiProxy/assets/css/styles-1755147161.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat+Alternates"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+    />
+    <script src="/InvisiProxy/scram/scramjet.all.js" defer data-module></script>
+    <script src="/InvisiProxy/baremux/index.js" defer data-module></script>
+    <script src="/InvisiProxy/uv/uv.bundle.js" defer data-module></script>
+    <script src="/InvisiProxy/uv/uv.config.js" defer data-module></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tippy.js@6/dist/backdrop.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tippy.js@6/animations/shift-away.css"
+    />
+    <script src="/InvisiProxy/assets/js/register-sw.js" defer></script>
+    <script src="/InvisiProxy/assets/js/csel.js" defer></script>
+    <script src="/InvisiProxy/assets/js/common-1735118314.js" defer></script>
+  </head>
+
+  <body>
+    <span style="display:none" data-fact="Write">Feel free to explore the features of this text editor. You can create bullet points, numbered lists, and even code snippets. The editor is designed to be user-friendly and intuitive, making it easy for anyone to use.</span>
+    
+    <div class="loader loader-active">
+      <div class="loader-w"></div>
+    </div>
+    <div class="omnibar" id="pr-sj">
+      <a class="logo" href="/InvisiProxy/browsing" role="img" aria-label="InvisiProxy Logo"></a>
+      <button title="Back"><i class="fas fa-arrow-left"></i></button>
+      <button title="Forward"><i class="fas fa-arrow-right"></i></button>
+      <button title="Refresh"><i class="fas fa-redo-alt"></i></button>
+      <div class="search-box">
+        <input
+          class="glowbutton"
+          id="search-input"
+          type="text"
+          placeholder="Type a URL or search..."
+          spellcheck="false"
+          autocomplete="off"
+        />
+        <ul id="autocomplete"></ul>
+      </div>
+      <!-- 
+      <button title="Bookmarks" id="bookmarks-toggle">
+        <i class="fas fa-bookmark"></i>
+      </button>
+      -->
+      <div title="Settings" class="dropdown-parent">
+        <a href="#" tabindex="0">
+          <i class="fas fa-cog pulse" aria-hidden="true"></i>
+        </a>
+        <div
+          class="dropdown-settings"
+          tabindex="0"
+          role="menu"
+          aria-label="Settings menu"
+        >
+          <div id="csel">
+            <div class="settings-content">
+              <div class="settings-header">
+                <p class="cseltitle-main">Settings</p>
+                <i class="far fa-times-circle close-settings-btn"></i>
+              </div>
+              <div class="settings-content-body">
+                <div class="csel-container-left">
+                  <p class="cseltitle">Browser Tab Cloak</p>
+                  <form id="titleform" class="cloakform">
+                    <input
+                      type="text"
+                      placeholder="Enter a tab title here..."
+                      spellcheck="false"
+                    />
+                    <input type="submit" value="Apply" />
+                  </form>
+                  <form id="iconform" class="cloakform">
+                    <input
+                      type="text"
+                      placeholder="Enter an icon URL here..."
+                      spellcheck="false"
+                    />
+                    <input type="submit" value="Apply" />
+                  </form>
+                  <a href="/InvisiProxy/questions">Find Icon URL</a>
+                  <p class="cseltitle">Wisp Protocol Transport</p>
+                  <div class="radio-group wisp-transport-list">
+                    <label>
+                      <p>
+                        Libcurl
+                        <span class="default-badge"
+                          >Cross-Browser/Secure (Firefox)</span
+                        >
+                      </p>
+                      <input
+                        type="radio"
+                        name="wisp-transport"
+                        value="libcurl"
+                        checked
+                      />
+                    </label>
+                    <label>
+                      <p>
+                        Epoxy
+                        <span class="alt-badge"
+                          >Fastest/Secure (Chromium, Apple)</span
+                        >
+                      </p>
+                      <input type="radio" name="wisp-transport" value="epoxy" />
+                    </label>
+                  </div>
+                  <p class="cseltitle">Advanced Options</p>
+                  <div class="radio-group">
+                    <label>
+                      <p>
+                        Hide Ads
+                        <span class="default-badge">Layered Adblocking</span>
+                      </p>
+                      <input type="checkbox" class="switch hideads" checked />
+                    </label>
+                    <label>
+                      <p>
+                        Enable Tor/Rotate IP
+                        <span class="alt-badge">Onion Browser Routing</span>
+                      </p>
+                      <input type="checkbox" class="switch useonion" />
+                    </label>
+                    <label>
+                      <p>
+                        Enable Autocomplete
+                        <span class="default-badge">Proxied Suggestions</span>
+                      </p>
+                      <input type="checkbox" class="switch useac" checked />
+                    </label>
+                  </div>
+                </div>
+                <div class="settings-right-column">
+                  <p class="cseltitle">Search Engine</p>
+                  <select class="search-engine-list">
+                    <option>DuckDuckGo</option>
+                    <option>Bing</option>
+                    <option>Brave</option>
+                    <option>Startpage</option>
+                  </select>
+                  <p class="cseltitle">Select Theme</p>
+                  <div class="radio-group theme-list">
+                    <label>
+                      <p>Enable Default (Dark) Theme</p>
+                      <input type="radio" name="theme" value="dark" checked />
+                    </label>
+                    <label>
+                      <p>Enable Light Theme</p>
+                      <input type="radio" name="theme" value="light" />
+                    </label>
+                    <label>
+                      <p>Enable Nordish Theme</p>
+                      <input type="radio" name="theme" value="nord" checked />
+                    </label>
+                  </div>
+                  <p class="cseltitle">Icon Presets</p>
+                  <select id="icon-list">
+                    <option><!-- Leave this blank to avoid a bug. --></option>
+                    <option>{{Google}}</option>
+                    <option>Bing</option>
+                    <option>{{Google}} Drive</option>
+                    <option>Gmail</option>
+                  </select>
+                  <p class="cseltitle">Experimental Settings</p>
+                  <div class="radio-group">
+                    <label>
+                      <p>
+                        Region
+                        <span class="default-badge">Swap Proxy Region</span>
+                      </p>
+                      <select class="region-list">
+                        <option value="off">Off</option>
+                        <option value="eu">Sweden</option>
+                        <option value="jp">Japan</option>
+                      </select>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="omnibar-toggle" title="Hide Bar">
+        <i class="fas fa-chevron-up"></i>
+      </button>
+    </div>
+    <span style="display:none" data-fact="Notebook">Whether you're jotting down quick notes or composing longer documents, this text editor has you covered. You can save your work, export it in different formats, and even collaborate with others in real-time.</span>
+    <iframe id="frame" allow="fullscreen" autofocus></iframe>
+    <span style="display:none" data-fact="Writer">You can also use this editor to write blog posts, articles, or any other type of content. The Markdown syntax allows for easy formatting, and the live preview feature lets you see how your text will look as you write.</span>
+    <script>
+      const windowFrame = document.getElementById('frame');
+      const omnibar = document.getElementById('pr-sj');
+      const toggle = document.getElementById('omnibar-toggle');
+      const backArrow = omnibar.querySelector("[title='Back' i]");
+      const forwardArrow = omnibar.querySelector("[title='Forward' i]");
+      const reloadArrow = omnibar.querySelector("[title='Refresh' i]");
+      let hidden = false;
+
+      toggle.addEventListener('click', () => {
+        hidden = !hidden;
+        omnibar.classList.toggle('omnibar-hidden', hidden);
+        toggle.classList.toggle('omnibar-s', hidden);
+        toggle.innerHTML = `<i class="fas fa-chevron-${hidden ? 'down' : 'up'}"></i>`;
+        (hidden ? document.body : omnibar).appendChild(toggle);
+        toggle.title = hidden ? 'Show Bar' : 'Hide Bar';
+      });
+
+      backArrow.addEventListener('click', () => {
+        history.back();
+      });
+      forwardArrow.addEventListener('click', () => {
+        history.forward();
+      });
+      reloadArrow.addEventListener('click', () => {
+        windowFrame.contentWindow.location.reload();
+      });
+
+      let statusObject = { isLoading: true, timesErrored: 0 };
+
+      const loaderTimeout = (timeout) => {
+        statusObject.isLoading = true;
+        setTimeout(() => {
+          if (statusObject.isLoading)
+            loader.classList.toggle('loader-active', false);
+        }, timeout);
+      };
+
+      const errorRefresh = () => {
+        const shouldRefresh =
+          statusObject.timesErrored <= 5 &&
+          windowFrame.contentWindow.document.head.querySelector(
+            "meta[itemprop='http-status'][content='404']"
+          );
+        if (shouldRefresh) {
+          statusObject.timesErrored++;
+          windowFrame.contentWindow.location.reload();
+        } else statusObject.timesErrored = 0;
+        return shouldRefresh;
+      };
+
+      const loader = document.getElementsByClassName('loader')[0];
+      const updateLoader = () => {
+        if (windowFrame.contentWindow.location.href === 'about:blank') return;
+
+        statusObject.isLoading =
+          windowFrame.contentWindow.document.readyState === 'loading';
+
+        // Do not remove the loading screen if the page is an error page
+        // and should be reloaded.
+        if (!statusObject.isLoading && errorRefresh()) {
+          statusObject.isLoading = true;
+          return;
+        }
+
+        // Display the loading screen if statusObject.isLoading is true.
+        loader.classList.toggle('loader-active', statusObject.isLoading);
+
+        // Remove the loading screen if it takes longer than 5 seconds.
+        if (statusObject.isLoading) loaderTimeout(5000);
+      };
+
+      // Reattach load events whenever the content window has changed.
+      const loadHandler = () => {
+        setTimeout(() => {
+          windowFrame.contentWindow.addEventListener('beforeunload', () => {
+            loader.classList.toggle('loader-active', true);
+            loaderTimeout(3000);
+          });
+          windowFrame.contentWindow.addEventListener('unload', loadHandler);
+          windowFrame.contentWindow.addEventListener(
+            'readystatechange',
+            updateLoader
+          );
+          updateLoader();
+        });
+      };
+
+      windowFrame.addEventListener('load', updateLoader);
+      loadHandler();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,262 @@
+<div class="brand-logo-container"  aria-label="Brand Logo" >
+  <div
+    class="logo"
+    role="img"
+    aria-label="InvisiProxy Logo"
+  ></div>
+  <a
+    href="/InvisiProxy/"
+    class="brand pulse"
+    title="InvisiProxy Home Page"
+  >
+    InvisiProxy v6.9.x
+  </a>
+</div>
+
+<div class="navbar-group">
+  <ul class="navbar-1" role="list" aria-label="Primary navigation">
+    <li style="margin-left: 0" role="listitem">
+      <a
+        class="line"
+        href="/InvisiProxy/browsing"
+        title="Web Proxies - Access various web proxies to bypass restrictions"
+        >Web Proxies</a
+      >
+    </li>
+    <li role="listitem">
+      <a
+        class="line"
+        href="/InvisiProxy/games"
+        title="Games - Explore a range of games available through our service"
+        >Games</a
+      >
+    </li>
+    <li role="listitem">
+      <a
+        class="line"
+        href="/InvisiProxy/partners"
+        title="Links - Select mirrors or between partner projects!"
+        >Links</a
+      >
+    </li>
+    <li role="listitem">
+      <a
+        class="line"
+        href="/InvisiProxy/youtube"
+        title="YouTube - Access YouTube content through our proxy service"
+        >YouTube</a
+      >
+    </li>
+    <li role="listitem">
+      <a
+        class="line"
+        href="/InvisiProxy/apps"
+        title="Applications - Browse a selection of useful applications"
+        >Apps</a
+      >
+    </li>
+  </ul>
+
+  <ul class="navbar" role="list">
+    <li class="dropdown-parent dmenu">
+      <div class="pulse white-text">
+        <a href="#" tabindex="0"><i class="fas fa-bars"></i></a>
+      </div>
+      <div
+        class="dropdown-child"
+        tabindex="0"
+        role="menu"
+        aria-label="More options submenu"
+      >
+        <ul class="subnavbar">
+          <li role="menuitem">
+            <a
+              href="/InvisiProxy/documentation"
+              title="Documentation - Detailed information and guides"
+              >Docs</a
+            >
+          </li>
+          <li role="menuitem">
+            <a
+              href="/InvisiProxy/questions"
+              title="FAQ - Frequently asked questions and answers"
+              >FAQ</a
+            >
+          </li>
+          <li role="menuitem">
+            <a
+              href="/InvisiProxy/credits"
+              title="Credits - Acknowledgements and contributions"
+              >Credits</a
+            >
+          </li>
+          <li role="menuitem">
+            <a
+              href="/InvisiProxy/terms"
+              title="Terms of Service - Rules and policies of use"
+              >TOS</a
+            >
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="dropdown-parent smenu" role="listitem">
+      <div class="white-text">
+        <a href="#" aria-label="Settings menu" tabindex="0"
+          ><i class="fas fa-cog" aria-hidden="true"></i
+        ></a>
+      </div>
+      <div
+        class="dropdown-settings"
+        tabindex="0"
+        role="menu"
+        aria-label="Settings menu"
+      >
+        <div id="csel">
+          <div class="settings-content">
+            <div class="settings-header">
+              <p class="cseltitle-main">Settings</p>
+              <i class="far fa-times-circle close-settings-btn"></i>
+            </div>
+            <div class="settings-content-body">
+              <div class="csel-container-left">
+                <p class="cseltitle">Browser Tab Cloak</p>
+                <form id="titleform" class="cloakform">
+                  <input
+                    type="text"
+                    placeholder="Enter a tab title here..."
+                    spellcheck="false"
+                  />
+                  <input type="submit" value="Apply" />
+                </form>
+                <form id="iconform" class="cloakform">
+                  <input
+                    type="text"
+                    placeholder="Enter an icon URL here..."
+                    spellcheck="false"
+                  />
+                  <input type="submit" value="Apply" />
+                </form>
+                <a href="/InvisiProxy/questions">Find Icon URL</a>
+                <p class="cseltitle">Wisp Protocol Transport</p>
+                <div class="radio-group wisp-transport-list">
+                  <label>
+                    <p>
+                      Libcurl
+                      <span class="default-badge"
+                        >Cross-Browser/Secure (Firefox)</span
+                      >
+                    </p>
+                    <input
+                      type="radio"
+                      name="wisp-transport"
+                      value="libcurl"
+                      checked
+                    />
+                  </label>
+                  <label>
+                    <p>
+                      Epoxy
+                      <span class="alt-badge"
+                        >Fastest/Secure (Chromium, Apple)</span
+                      >
+                    </p>
+                    <input type="radio" name="wisp-transport" value="epoxy" />
+                  </label>
+                </div>
+                <p class="cseltitle">Advanced Options</p>
+                <div class="radio-group">
+                  <label>
+                    <p>
+                      Hide Ads
+                      <span class="default-badge">Layered Adblocking</span>
+                    </p>
+                    <input type="checkbox" class="switch hideads" checked />
+                  </label>
+                  <label>
+                    <p>
+                      Enable Tor/Rotate IP
+                      <span class="alt-badge">Onion Browser Routing</span>
+                    </p>
+                    <input type="checkbox" class="switch useonion" />
+                  </label>
+                  <label>
+                    <p>
+                      Enable Autocomplete
+                      <span class="default-badge">Proxied Suggestions</span>
+                    </p>
+                    <input type="checkbox" class="switch useac" checked />
+                  </label>
+                </div>
+              </div>
+              <div class="settings-right-column">
+                <p class="cseltitle">Search Engine</p>
+                <select class="search-engine-list">
+                  <option>DuckDuckGo</option>
+                  <option>Bing</option>
+                  <option>Brave</option>
+                  <option>Startpage</option>
+                </select>
+                <p class="cseltitle">Select Theme</p>
+                <div class="radio-group theme-list">
+                  <label>
+                    <p>Enable Default (Dark) Theme</p>
+                    <input type="radio" name="theme" value="dark" checked />
+                  </label>
+                  <label>
+                    <p>Enable Light Theme</p>
+                    <input type="radio" name="theme" value="light" />
+                  </label>
+                  <label>
+                    <p>Enable Nordish Theme</p>
+                    <input type="radio" name="theme" value="nord" checked />
+                  </label>
+                </div>
+                <p class="cseltitle">Icon Presets</p>
+                <select id="icon-list">
+                  <option><!-- Leave this blank to avoid a bug. --></option>
+                  <option>{{Google}}</option>
+                  <option>Bing</option>
+                  <option>{{Google}} Drive</option>
+                  <option>Gmail</option>
+                </select>
+                <p class="cseltitle">Experimental Settings</p>
+                <div class="radio-group">
+                  <label>
+                    <p>
+                      Region
+                      <span class="default-badge">Swap Proxy Region</span>
+                    </p>
+                    <select class="region-list">
+                      <option value="off">Off</option>
+                      <option value="eu">Sweden</option>
+                      <option value="jp">Japan</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<input id="mnavecb" type="checkbox" aria-hidden="true" />
+<label for="mnavecb" class="mnave" aria-label="Toggle navigation menu">
+  <span class="mnavebutton" aria-hidden="true"></span>
+</label>
+
+<div class="mobile-overlay">
+  <ul class="navbar-1">
+    <li><a href="/InvisiProxy/browsing">Web Proxies</a></li>
+    <li><a href="/InvisiProxy/games">Games</a></li>
+    <li><a href="/InvisiProxy/youtube">YouTube</a></li>
+    <li><a href="/InvisiProxy/apps">Applications</a></li>
+    <li><a href="/InvisiProxy/documentation">Docs</a></li>
+    <li><a href="/InvisiProxy/questions">FAQ</a></li>
+    <li><a href="/InvisiProxy/credits">Credits</a></li>
+    <li><a href="/InvisiProxy/terms">TOS</a></li>
+  </ul>
+</div>

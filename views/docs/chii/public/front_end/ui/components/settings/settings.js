@@ -1,0 +1,13 @@
+import*as e from"../helpers/helpers.js";import*as t from"../../lit-html/lit-html.js";import*as i from"../../visual_logging/visual_logging.js";import*as n from"../input/input.js";import*as s from"../../../core/common/common.js";import*as a from"../icon_button/icon_button.js";const o=new CSSStyleSheet;o.replaceSync(":host{padding:0;margin:0}input{height:12px;width:12px;min-height:12px;min-width:12px}label{display:inline-flex;align-items:center;overflow:hidden;text-overflow:ellipsis}p{margin:12px 0}\n/*# sourceURL=settingCheckbox.css */\n");const r=new CSSStyleSheet;r.replaceSync(".clickable{cursor:pointer}devtools-icon{vertical-align:text-bottom;padding-left:2px}\n/*# sourceURL=settingDeprecationWarning.css */\n");class c extends HTMLElement{static litTagName=t.literal`devtools-setting-deprecation-warning`;#e=this.attachShadow({mode:"open"});connectedCallback(){this.#e.adoptedStyleSheets=[r]}set data(e){this.#t(e)}#t({disabled:e,warning:i,experiment:n}){const o={clickable:!1};let r;e&&n&&(o.clickable=!0,r=()=>{s.Revealer.reveal(n)}),t.render(t.html`<${a.Icon.Icon.litTagName} class=${t.Directives.classMap(o)} .data=${{iconName:"info",color:"var(--icon-default)",width:"16px"}} title=${i} @click=${r}></${a.Icon.Icon.litTagName}>`,this.#e,{host:this})}}e.CustomElements.defineComponent("devtools-setting-deprecation-warning",c);var l=Object.freeze({__proto__:null,SettingDeprecationWarning:c});class h extends HTMLElement{static litTagName=t.literal`setting-checkbox`;#e=this.attachShadow({mode:"open"});#i;#n=!1;#s;connectedCallback(){this.#e.adoptedStyleSheets=[n.checkboxStyles,o]}set data(e){this.#s&&this.#i&&this.#i.removeChangeListener(this.#s.listener),this.#i=e.setting,this.#n=Boolean(e.disabled),this.#s=this.#i.addChangeListener((()=>{this.#t()})),this.#t()}#a(){if(this.#i?.deprecation)return t.html`<${c.litTagName} .data=${this.#i.deprecation}></${c.litTagName}>`}#t(){if(!this.#i)throw new Error('No "Setting" object provided for rendering');const e=this.#a();t.render(t.html`
+      <p>
+        <label>
+          <input
+            type="checkbox"
+            .checked=${this.#i.get()}
+            ?disabled=${this.#n||this.#i.disabled()}
+            @change=${this.#o}
+            jslog=${i.toggle().track({click:!0}).context(this.#i.name)}
+            aria-label=${this.#i.title()}/>
+          ${this.#i.title()}${e}
+        </label>
+      </p>`,this.#e,{host:this})}#o(e){this.#i?.set(e.target.checked)}}e.CustomElements.defineComponent("setting-checkbox",h);var d=Object.freeze({__proto__:null,SettingCheckbox:h});export{d as SettingCheckbox,l as SettingDeprecationWarning};
