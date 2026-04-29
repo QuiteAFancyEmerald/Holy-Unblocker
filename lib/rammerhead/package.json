@@ -31,7 +31,7 @@
     "mime": "^2.5.2",
     "testcafe-hammerhead": "24.5.18",
     "uglify-js": "^3.15.3",
-    "uuid": "^8.3.2",
+    "uuid": "^14.0.0",
     "ws": "^8.2.0"
   },
   "devDependencies": {
