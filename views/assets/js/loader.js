@@ -8,9 +8,9 @@
     origin = location;
   _addEventListener('keydown', (event) => {
     if (event.ctrlKey && event.code === 'KeyM' && event.isTrusted) {
-      if (localStorage.getItem('{{hu-lts}}-loader-key') !== navigator.userAgent)
-        localStorage.setItem('{{hu-lts}}-loader-key', navigator.userAgent);
-      else localStorage.removeItem('{{hu-lts}}-loader-key');
+      if (localStorage.getItem('{{ip-lts}}-loader-key') !== navigator.userAgent)
+        localStorage.setItem('{{ip-lts}}-loader-key', navigator.userAgent);
+      else localStorage.removeItem('{{ip-lts}}-loader-key');
       _window.location.reload();
     }
   });
@@ -43,7 +43,7 @@
     if (currentDoc.currentScript) currentDoc.currentScript.remove();
   };
   if (
-    _window.localStorage.getItem('{{hu-lts}}-loader-key') !==
+    _window.localStorage.getItem('{{ip-lts}}-loader-key') !==
     navigator.userAgent
   )
     return displayErrorPage();

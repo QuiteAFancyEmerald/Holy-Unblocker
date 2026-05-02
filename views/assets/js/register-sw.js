@@ -21,7 +21,7 @@
       '{{epoxy}}': '{{route}}{{/epoxy/index.mjs}}',
       '{{libcurl}}': '{{route}}{{/libcurl/index.mjs}}',
     },
-    storageId = '{{hu-lts}}-storage',
+    storageId = '{{ip-lts}}-storage',
     storageObject = () => JSON.parse(localStorage.getItem(storageId)) || {},
     readStorage = (name) => storageObject()[name],
     defaultMode = '{{libcurl}}';
