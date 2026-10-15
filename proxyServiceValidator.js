@@ -113,6 +113,15 @@ const testServerResponse = async () => {
     'http://localhost:8080/network/networking.handler.js',
   ];
 
+  const deadline = Date.now() + 60000;
+  while (Date.now() < deadline) {
+    try {
+      await axios.get(endpoints[0], { validateStatus: () => true });
+      break;
+    } catch (error) {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
+  }
 
   const results = await Promise.all(endpoints.map(testEndpoint));
   const allPassed = results.every((result) => result);

@@ -345,29 +345,35 @@ commands: for (let i = 2; i < process.argv.length; i++)
         }
       );
       tempServer.stderr.on('data', (stderr) => {
-        // The temporary server will print startup errors that aren't deprecation
-        // warnings; stop the process and return an error exit code upon doing so.
         if (stderr.toString().indexOf('DeprecationWarning') >= 0)
           return console.log(stderr.toString());
         console.error(stderr.toString());
         tempServer.kill();
         process.exitCode = 1;
       });
-      tempServer.stdout.on('data', () => {
-        // There are no startup errors by this point, so kill the server and start
-        // over. The restart alters stdio to prevent the workflow check from hanging.
+      let restarting = false;
+      const startupTimeout = setTimeout(() => {
+        console.error('[Workflow Error] The server did not start in time.');
         tempServer.kill();
-        const server = fork(
-          fileURLToPath(new URL('./backend.js', import.meta.url)),
-          // The stdio: 'ignore' makes the server completely silent, yet it is also
-          // why this works for Windows when the start command's version does not.
-          { cwd: process.cwd(), stdio: 'ignore', detached: true }
-        );
-        server.unref();
-        server.disconnect();
+        process.exitCode = 1;
+      }, 60000);
+      tempServer.once('exit', () => clearTimeout(startupTimeout));
+      tempServer.stdout.on('data', () => {
+        if (restarting) return;
+        restarting = true;
+        tempServer.once('exit', () => {
+
+          const server = fork(
+            fileURLToPath(new URL('./backend.js', import.meta.url)),
+
+            { cwd: process.cwd(), stdio: 'ignore', detached: true }
+          );
+          server.unref();
+          server.disconnect();
+        });
+        tempServer.kill();
       });
-      tempServer.unref();
-      tempServer.disconnect();
+
       break;
     }
 
