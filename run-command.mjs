@@ -8,7 +8,11 @@ import {
   rmSync,
   renameSync,
   existsSync,
+  openSync,
+  closeSync,
+  readFileSync,
 } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { exec, fork } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -330,50 +334,50 @@ commands: for (let i = 2; i < process.argv.length; i++)
         );
       break;
 
-    /* Make a temporary server solely to test startup errors. The server will
-     * stop the command if there is an error, and restart itself otherwise.
-     * This uses the same command for both Windows and other platforms, but
-     * consequently forces the server to stay completely silent after startup.
+    /* Start the server as a silent background process for the CI workflow, and
+     * wait until it responds. Its output goes to a log file instead of a pipe so
+     * the process can outlive this command; the log is printed here, which means
+     * a server that crashes on startup fails this step with the real error.
      */
     case 'workflow': {
-      const tempServer = fork(
+      const logPath = join(tmpdir(), 'invisiproxy-workflow.log');
+      const logFd = openSync(logPath, 'w');
+      const server = fork(
         fileURLToPath(new URL('./backend.js', import.meta.url)),
         {
           cwd: process.cwd(),
-          stdio: ['inherit', 'pipe', 'pipe', 'ipc'],
+          stdio: ['ignore', logFd, logFd, 'ipc'],
           detached: true,
         }
       );
-      tempServer.stderr.on('data', (stderr) => {
-        if (stderr.toString().indexOf('DeprecationWarning') >= 0)
-          return console.log(stderr.toString());
-        console.error(stderr.toString());
-        tempServer.kill();
-        process.exitCode = 1;
+      let exitCode = null;
+      server.once('exit', (code, signal) => {
+        exitCode = code ?? signal;
       });
-      let restarting = false;
-      const startupTimeout = setTimeout(() => {
-        console.error('[Workflow Error] The server did not start in time.');
-        tempServer.kill();
+      let ready = false;
+      const deadline = Date.now() + 60000;
+      while (!ready && exitCode === null && Date.now() < deadline) {
+        try {
+          await fetch(`http://127.0.0.1:${serverUrl.port}/`);
+          ready = true;
+        } catch (e) {
+          await new Promise((resolve) => setTimeout(resolve, 500));
+        }
+      }
+      closeSync(logFd);
+      console.log('[Workflow] Server log:\n' + readFileSync(logPath, 'utf8'));
+      if (ready) {
+        server.unref();
+        server.disconnect();
+      } else {
+        console.error(
+          exitCode === null
+            ? '[Workflow Error] The server did not start in time.'
+            : `[Workflow Error] The server exited during startup (${exitCode}).`
+        );
+        server.kill();
         process.exitCode = 1;
-      }, 60000);
-      tempServer.once('exit', () => clearTimeout(startupTimeout));
-      tempServer.stdout.on('data', () => {
-        if (restarting) return;
-        restarting = true;
-        tempServer.once('exit', () => {
-
-          const server = fork(
-            fileURLToPath(new URL('./backend.js', import.meta.url)),
-
-            { cwd: process.cwd(), stdio: 'ignore', detached: true }
-          );
-          server.unref();
-          server.disconnect();
-        });
-        tempServer.kill();
-      });
-
+      }
       break;
     }
 
