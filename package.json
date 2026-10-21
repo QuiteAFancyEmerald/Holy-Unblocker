@@ -31,7 +31,7 @@
   "author": "QuiteAFancyEmerald",
   "license": "AGPL-3.0-only",
   "dependencies": {
-    "@fastify/helmet": "^13.1.1",
+    "@fastify/helmet": "^13.2.0",
     "@fastify/static": "^9.3.0",
     "@mercuryworkshop/bare-mux": "^2.1.9",
     "@mercuryworkshop/epoxy-transport": "^3.0.1",
@@ -42,15 +42,15 @@
     "@mercuryworkshop/scramjet-utils": "^0.0.3",
     "@titaniumnetwork-dev/ultraviolet": "https://github.com/titaniumnetwork-dev/Ultraviolet/releases/download/v3.2.10-headers/titaniumnetwork-dev-ultraviolet-3.2.10-headers.tgz",
     "axios": "^1.20.0",
-    "fastify": "^5.12.5",
+    "fastify": "^5.12.7",
     "pm2": "^7.0.4",
     "utf-8-validate": "^6.0.6",
-    "wispurr": "^4.2.1",
+    "wispurr": "^4.2.2",
     "ws": "^8.22.0"
   },
   "devDependencies": {
     "@babel/node": "^7.29.7",
     "esbuild": "^0.27.7",
-    "playwright": "^1.63.0"
+    "playwright": "^1.64.1"
   }
 }
